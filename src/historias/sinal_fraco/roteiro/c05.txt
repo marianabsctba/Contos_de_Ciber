@@ -1,0 +1,251 @@
+# Parte 2, adolescência. Capítulo 5: aprender sozinha.
+
+=== c05_inicio
+@cap 5 "Aprendendo sozinha"
+@idade adolescente
+@fundo quarto_adolescente
+@musica interior
+> Quatro anos depois. Pedra Lisa do Norte continua com uma barra de sinal na praça e duas na caixa d'água.
+> Mas você mudou. Cresceu doze centímetros, ganhou uma espinha teimosa no queixo e um apelido novo na escola.
+(Nerd do zap. Nem tenho zap direito, o celular é o da minha mãe, que trava se abrir duas conversas.)
+@roupa "Nova fase"
+> O quarto agora tem uma mesa de verdade, feita pelo Tio Juca com porta de guarda-roupa e dois cavaletes.
+@se marca:pc_queimou -> c05_pc_lembra_queimou
+@vai c05_pc_lembra_ok
+
+=== c05_pc_lembra_queimou
+> Em cima dela, o PC remendado. Ainda tem a marca preta na tomada daquele dia em que quase pegou fogo.
+(A minha mãe benze a tomada toda sexta. Não sei se é fé ou trauma.)
+@vai c05_mae_quarto
+
+=== c05_pc_lembra_ok
+> Em cima dela, o PC do Tio Juca, com o gabinete aberto de lado porque "esquenta menos assim", segundo o próprio Tio Juca.
+(Esquenta menos e junta mais pó. A física da gambiarra.)
+@vai c05_mae_quarto
+
+=== c05_mae_quarto
+@entra mae brava centro
+MAE: {nome}! Uma hora da manhã e essa luz azul acesa!
+EU [envergonhada]: Tô estudando, mãe.
+MAE: Estudando o quê, no computador? Estudo é no caderno.
+EU: Tô estudando o computador. No computador.
+MAE [pensativa]: Isso aí não dá vírus na vista? A Neide da igreja falou que dá.
+(A Neide da igreja também falou que micro-ondas rouba a alma da comida. E ela tem dois.)
+? Responder para a mãe
+* Explicar com calma o que está aprendendo -> c05_mae_calma {rel_mae+1}
+* Fingir que vai dormir e voltar quando ela sair -> c05_mae_finge {saude-1}
+* Dizer que vai ser hacker e ganhar em dólar -> c05_mae_dolar {rel_mae-1}
+
+=== c05_mae_calma
+EU [feliz]: Mãe, é como a costura da tia Zilda. Tem molde, tem linha, tem ponto. Só que é para computador.
+MAE [pensativa]: E dá dinheiro, essa costura?
+EU: Dá. Um dia.
+MAE: Um dia não paga a conta de luz que você tá gastando agora.
+@expr mae neutra
+MAE: Meia hora. Depois apaga.
+@sai mae
+(Meia hora em linguagem de mãe são quinze minutos. Vou usar os quinze direito.)
+@vai c05_forum
+
+=== c05_mae_finge
+EU: Tá bom, já vou deitar.
+@sai mae
+> Você apaga a tela, espera o chinelo dela sumir no corredor e liga de novo, com o brilho no mínimo.
+(Estudar no escuro com o brilho no zero. Talvez a Neide tenha razão sobre a vista.)
+@vai c05_forum
+
+=== c05_mae_dolar
+EU [feliz]: Vou ser hacker, mãe. Vou ganhar em dólar.
+MAE [assustada]: Hacker é bandido! Passou no Fantástico!
+EU: Não, mãe, tem hacker do bem...
+MAE [brava]: Bandido do bem não existe. Desliga isso.
+@sai mae
+(Nota mental: nunca usar a palavra hacker perto da Dona Rosilene. Usar "trabalho de computador".)
+@vai c05_forum
+
+=== c05_forum
+@fundo quarto_madrugada
+@musica hacker
+@som teclado
+> A sua escola agora é um fórum de informática com fundo cinza, onde todo mundo tem nome de usuário esquisito e foto de caveira.
+> A pergunta que você postou três dias atrás finalmente tem resposta.
+> "Pesquisa antes de perguntar, novato." Assinado: xXDarkL0rdXx.
+(Eu pesquisei. Por isso perguntei. Gente da internet é igual a vizinho fofoqueiro: responde tudo, menos o que você perguntou.)
+> Mas, embaixo, outra resposta. Usuária "vovo_linux", 61 anos segundo o perfil.
+> "Oi, querida. O que você quer é entender como o computador conversa com a internet. Comece por aqui." E um link para um PDF.
+? O que fazer com o link
+* Abrir o PDF, mesmo que seja grande -> c05_pdf {tecnica+1}
+* Responder agradecendo e perguntando mais -> c05_vovo_linux {tecnica+1 reputacao+1}
+** Comprar o "Curso Hacker Supremo" de R$ 997 que apareceu no anúncio -> c05_curso_supremo
+
+=== c05_curso_supremo
+@som especial
+> Um anúncio pisca do lado do fórum: um rapaz de óculos escuros dentro de uma Lamborghini alugada.
+> "APRENDA A INVADIR QUALQUER COISA EM 7 DIAS. Turma fechando. Últimas 3 vagas!"
+(Últimas três vagas desde terça. Que turma concorrida.)
+> O preço: R$ 997 ou 12 de R$ 99,70. Pagamento só por boleto ou cartão.
+> Você não tem cartão. Você tem R$ 14 e uma moeda de um real de 2014 que o Tio Juca jura que vale mil.
+EU [pensativa]: Ele mostra a Lamborghini e não mostra nada que ensinou.
+(Quem sabe de verdade explica de graça num fórum cinza. Quem não sabe vende curso em carro alugado.)
+> Você fecha a aba. O anúncio volta. Você fecha de novo.
+@muda etica+1
+@vai c05_pdf
+
+=== c05_vovo_linux
+@som mensagem
+> Você escreve um agradecimento enorme, com três pontos de exclamação, e pergunta por onde começar de verdade.
+> A vovo_linux responde em dez minutos.
+> "Primeiro, aprenda a não precisar de mim. Leia, teste no seu computador, erre. Segundo, aprenda inglês. Terceiro: nunca baixe programa crackeado. O crack é o presente que vem com o ladrão dentro."
+(Ela escreve igual a Vó Nita, se a Vó Nita soubesse o que é sistema operacional.)
+@muda rel_vo+1
+@vai c05_pdf
+
+=== c05_pdf
+@som pagina
+> O PDF tem 340 páginas, está em inglês e a capa tem um pinguim.
+(Trezentas e quarenta páginas. Em inglês. Eu sei falar "the book is on the table" e "game over".)
+> Você chega na segunda página e encalha na palavra "throughput".
+? Como encarar o inglês
+* Ir à biblioteca municipal e pegar o dicionário grande -> c05_biblioteca
+* Usar o tradutor da internet palavra por palavra -> c05_tradutor {tecnica+1}
+
+=== c05_tradutor
+> O tradutor traduz "throughput" como "através da colocação".
+> E "kernel" como "grão de milho". E "daemon" como "demônio".
+(O livro de computador está me ensinando sobre milho e demônios. A minha mãe vai ter certeza de que é coisa ruim.)
+> No dia seguinte, você vai à biblioteca do mesmo jeito.
+@vai c05_biblioteca
+
+=== c05_biblioteca
+@fundo biblioteca_municipal
+@musica interior
+> A biblioteca municipal de Pedra Lisa fica em cima dos Correios e tem cheiro de papel velho e cera de chão.
+> Tem um computador para o público. Ele roda um sistema de 2003 e está com o aviso "NÃO MEXER" colado com durex.
+> A bibliotecária, Dona Zuleide, dorme de óculos atrás do balcão.
+@se marca:mentiu_leni -> c05_leni_desconfia
+@vai c05_leni_biblioteca
+
+=== c05_leni_biblioteca
+@entra leni feliz direita
+LENI: {nome}! Olha quem eu achei no meio dos livros.
+EU [surpresa]: Professora Leni! A senhora vem aqui?
+LENI: Toda quinta. É o único lugar da cidade que tem silêncio e ar condicionado de verdade.
+LENI [pensativa]: E esse calhamaço de pinguim aí? Você está lendo isso?
+EU [envergonhada]: Tentando. Tô na página dois.
+LENI [feliz]: Página dois de trezentas é mais do que a maioria dos meus colegas leu na vida.
+@muda rel_leni+1
+@vai c05_leni_dicionario
+
+=== c05_leni_desconfia
+@entra leni neutra direita
+LENI: {nome}. Faz tempo.
+(Faz tempo desde aquela mentira, lá na época do laboratório. Ela não esqueceu. Eu também não.)
+EU [envergonhada]: Oi, professora. Eu... queria pedir desculpa por aquela vez.
+LENI [pensativa]: Eu fiquei chateada, sim. Mas eu também já tive treze anos e vontade de fazer as coisas do meu jeito.
+LENI: O que você está lendo?
+EU: Um livro de redes. Em inglês. Tô na página dois.
+LENI [feliz]: Então vamos para a página três.
+@muda rel_leni+1 etica+1
+@vai c05_leni_dicionario
+
+=== c05_leni_dicionario
+> Ela puxa da estante um dicionário inglês-português do tamanho de um tijolo.
+LENI: Esse aqui não traduz "kernel" como milho. Promete que me conta o que aprendeu?
+EU [feliz]: Prometo.
+LENI: E outra coisa. Não estude só tela. A internet vai te ensinar coisa certa e coisa errada com a mesma cara.
+LENI [pensativa]: Saber de onde vem uma informação é a primeira lição de segurança. Antes de qualquer programa.
+@sai leni
+@anota p2_aprender_sozinha
+@vai c05_semanas
+
+=== c05_semanas
+@fundo quarto_adolescente
+@musica alegre
+> Semanas viram meses. Você aprende com tudo o que aparece.
+> Vídeo de um indiano que explica endereço IP melhor que qualquer professor, com o ventilador barulhento ao fundo.
+> Fórum em espanhol que você lê "de ouvido", porque espanhol é português com mais confiança.
+> E o dicionário, que agora tem post-it colorido em metade das páginas.
+(Já sei o que é roteador, DNS, porta, protocolo. Ainda não sei fazer bolo, mas a vida é assim.)
+@muda tecnica+1
+@vai c05_bia_chega
+
+=== c05_bia_chega
+@som porta
+@entra bia feliz direita
+BIA: AMIGA. Para tudo. Preciso de você.
+EU: Você sempre precisa de mim quando o celular trava.
+BIA [envergonhada]: Não é o celular. É o computador da minha tia. Eu quero editar vídeo para o meu canal.
+BIA [feliz]: Já tenho 47 inscritos. Doze são da minha família, mas conta.
+BIA: Só que o programa de editar é caríssimo. Achei um "versão completa grátis" num vídeo. Instala para mim?
+@desafio p2_fonte_confiavel -> c05_fonte_acerto | c05_fonte_erro
+
+=== c05_fonte_acerto
+EU [pensativa]: Bia, esse "completo grátis" vem com um presente dentro.
+BIA: Que presente?
+EU: Praga. Do tipo que rouba senha e deixa o PC lento. A vovo_linux fala que o crack é o ladrão embrulhado.
+BIA: Quem é vovo_linux?
+EU: Uma senhora de 61 anos que manja mais que todo mundo do fórum.
+> Você instala um editor de vídeo livre, baixado do site do próprio projeto. Feio, mas honesto.
+BIA [feliz]: Ele é feio igual ao nosso uniforme, mas funciona!
+@muda tecnica+1 rel_bia+1
+@vai c05_bia_video
+
+=== c05_fonte_erro
+> Você baixa o "completo grátis". O instalador pede para desligar o antivírus "para não dar conflito".
+(Isso é como o ladrão pedir para desligar o alarme para não incomodar o cachorro.)
+> Tarde demais. O PC da tia da Bia agora abre três janelas de cassino sozinho e a página inicial é um buscador que ninguém conhece.
+BIA [assustada]: Amiga, o computador da minha tia está falando em russo!
+> Você passa a noite limpando. Desinstala, apaga, roda antivírus de novo. A tia da Bia acorda com o PC funcionando e sem saber de nada.
+EU [envergonhada]: Lição aprendida. Nunca mais.
+@muda saude-1 tecnica+1
+@vai c05_bia_video
+
+=== c05_bia_video
+BIA: Agora me ajuda a escolher o nome do canal. Pensei em "Bia Blogueirinha Oficial".
+EU: E se alguém já tiver esse nome?
+BIA [pensativa]: Aí eu ponho "Bia Blogueirinha Oficial Verdadeira".
+(A Bia não desiste nunca. É a pessoa mais corajosa que eu conheço, e também a mais teimosa.)
+BIA: E você? Vai fazer o quê com tanto inglês e tanto pinguim?
+? O que você responde
+* Vou trabalhar protegendo as pessoas na internet -> c05_bia_sonho {rel_bia+1}
+* Não sei ainda, mas eu vou descobrir -> c05_bia_sonho {saude+1}
+* Vou sair daqui, de Pedra Lisa -> c05_bia_sair {rel_bia-1}
+
+=== c05_bia_sair
+BIA [triste]: Sair? E me deixar aqui sozinha com 47 inscritos?
+EU: Não agora. Um dia.
+BIA [pensativa]: Um dia eu vou ser famosa e você vai voltar para me pedir autógrafo.
+@vai c05_bia_sonho
+
+=== c05_bia_sonho
+BIA [feliz]: Combinado. Você protege a internet e eu fico famosa nela.
+@sai bia
+@vai c05_vo
+
+=== c05_vo
+@fundo casa_cozinha
+@musica infancia
+@entra vo feliz centro
+VO: Olha a minha cientista. Vem cá, come esse bolo de fubá que você está mais fina que agulha.
+EU [feliz]: Vó, eu aprendi o que é um servidor.
+VO: Serve o quê, minha filha? Café?
+EU: Serve página. Quando você entra num site, tem um computador lá longe que manda a página para você.
+VO [pensativa]: Então é que nem a vizinha que manda bolo pela janela. Só que de longe.
+(É exatamente isso, Vó. Melhor que o livro de 340 páginas.)
+VO: E a televisão de escrever tá boa? Não pegou mais vírus?
+@se marca:primeiro_email -> c05_vo_email
+@vai c05_vo_fim
+
+=== c05_vo_email
+VO [feliz]: E aquele correio eletrônico que você me fez? Chegou uma carta lá dizendo que eu ganhei um carro.
+EU [assustada]: Vó! Você clicou?
+VO: Não cliquei não. Você me ensinou: ninguém dá carro para velha de graça. Nem o meu marido deu.
+@muda rel_vo+1
+@vai c05_vo_fim
+
+=== c05_vo_fim
+VO: Eu rezo todo dia pra você, viu? Pro seu juízo e pra sua internet.
+@sai vo
+> Naquela noite, você abre o caderno de capa dura e escreve na primeira página livre:
+> "Ninguém em Pedra Lisa sabe disso. Então eu vou ter que aprender sozinha. Tudo bem."
+@vai c06_inicio

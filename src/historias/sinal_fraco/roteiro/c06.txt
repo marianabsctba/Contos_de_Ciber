@@ -1,0 +1,186 @@
+# Capítulo 6: a menina do computador.
+
+=== c06_inicio
+@cap 6 "A menina do computador"
+@fundo praca_interior
+@musica alegre
+> Em Pedra Lisa, a notícia corre mais rápido que a internet. O que, convenhamos, não é difícil.
+> Bastou você consertar o PC da tia da Bia para virar assunto na fila do pão.
+> "A filha da Rosilene mexe em computador." "Aquela magrinha?" "Essa. Dizem que fala inglês com a máquina."
+(Eu falo inglês com o dicionário. A máquina só me entende quando eu peço por favor.)
+@vai c06_cida
+
+=== c06_cida
+@fundo lan_house
+@som porta
+@entra cida feliz centro
+CIDA: OLHA ELA! A MENINA DO COMPUTADOR!
+EU [envergonhada]: Dona Cida, fala baixo, por favor.
+CIDA: Baixo? Eu? Eu nasci com o volume no máximo, minha filha. Vem cá.
+CIDA [pensativa]: A Cida Net está ficando velha. Metade das máquinas reinicia sozinha e a outra metade pede atualização desde a Copa.
+CIDA: Você dá uma olhada? Eu não posso pagar muito. Mas te dou crédito de hora e um salgado por dia.
+? Aceitar o serviço da Cida
+* Aceitar e pedir para anotar o combinado num papel -> c06_cida_combinado {rel_cida+1 reputacao+1}
+* Aceitar de graça, ela sempre te deixou usar fiado -> c06_cida_graca {rel_cida+2 grana-1}
+** Fazer um cartão de visita em Comic Sans com brilho e foto de caveira -> c06_cartao
+
+=== c06_cartao
+@som especial
+> Você passa duas horas criando o cartão perfeito. Fundo preto, letra verde, Comic Sans, uma caveira de óculos escuros e o título:
+> "{nome} H4CK3R. Conserto PC, celular e coração partido."
+CIDA [surpresa]: Coração partido também?
+EU [envergonhada]: Foi a Bia que sugeriu.
+CIDA: Minha filha, ninguém vai deixar a filha da Rosilene mexer no computador com um cartão que diz H4CK3R. O povo aqui acha que hacker rouba aposentadoria.
+(E rouba mesmo, alguns. Esse é o problema da palavra.)
+CIDA [feliz]: Faz um cartão simples. Nome, telefone e "Conserto de computador". E põe que é de confiança.
+> Você imprime cinquenta cartões simples na impressora da Cida. Mas guarda um da caveira na carteira. Por amor.
+@muda reputacao+1 rel_cida+1
+@vai c06_cida_combinado
+
+=== c06_cida_graca
+EU [feliz]: De graça, Dona Cida. A senhora me deu fiado a infância inteira.
+CIDA [surpresa]: Ai, que menina boa.
+CIDA [pensativa]: Mas olha aqui. Trabalho de graça a gente faz uma vez, por gratidão. Se fizer sempre, o povo acha que não vale nada.
+CIDA: Da próxima vez você cobra. E de mim também, que eu não sou santa.
+@vai c06_cida_maquinas
+
+=== c06_cida_combinado
+CIDA [feliz]: Combinado no papel! Igualzinho gente grande.
+> Ela escreve num guardanapo: "Arrumar 6 PC. Pago com 20 horas e salgado. Assinado: Cida."
+(Meu primeiro contrato. Foi num guardanapo engordurado. Vou emoldurar.)
+@vai c06_cida_maquinas
+
+=== c06_cida_maquinas
+@som teclado
+> Você passa a tarde de sábado abrindo gabinete. Pó, cabelo, uma barata morta e uma moeda de cinco centavos.
+> Os PCs estão sem atualizar há anos. Um deles tem um programa de "acelerar internet" que, na verdade, só mostra propaganda.
+CIDA: E aí, doutora?
+EU: Atualização atrasada, praga de propaganda e muito pó. Quando o sistema não atualiza, fica com buraco que ladrão conhece.
+CIDA [pensativa]: Igual a casa com a janela quebrada.
+EU [feliz]: Igualzinho. A atualização é o vidraceiro.
+@muda tecnica+1
+@sai cida
+@vai c06_zeze
+
+=== c06_zeze
+@fundo casa_cozinha
+@musica interior
+> Na segunda, o telefone da sua mãe toca. É a Dona Zezé, a vizinha do muro azul.
+> O PC dela está "pensando muito" e tem as fotos do casamento da filha, que mora em São Paulo.
+> Você vai até lá com a sua caixa de ferramentas, que é uma lata de biscoito com chave de fenda, pen drive e esperança.
+> O PC demora seis minutos para ligar. A área de trabalho tem 412 ícones.
+(Quatrocentos e doze. Ela salva tudo na área de trabalho, inclusive a vida.)
+> A melhor solução é formatar. Mas antes, tem um jeito certo de fazer.
+@desafio p2_ordem_formatar -> c06_zeze_acerto | c06_zeze_erro
+
+=== c06_zeze_acerto
+EU: Dona Zezé, antes de mexer, me diz o que a senhora não pode perder.
+> Ela pensa um pouco e fala devagar: as fotos do casamento, a receita do bolo da avó digitada pelo neto e as cartas do falecido marido, escaneadas.
+> Você copia tudo para o HD externo do Tio Juca, abre cada pasta para conferir e só então formata.
+> No fim, o PC liga em quarenta segundos. As fotos estão numa pasta chamada "Casamento da Kátia".
+@anota p2_backup_antes
+@muda tecnica+1 reputacao+1
+@vai c06_zeze_fotos
+
+=== c06_zeze_erro
+> Você está confiante. Formata direto, rapidinho.
+(Espera. As fotos.)
+> Seu estômago gela. As fotos do casamento estavam na área de trabalho. Agora a área de trabalho é um campo verde vazio.
+> Você passa a madrugada com um programa de recuperação de arquivos, rezando para a Vó Nita, para a vovo_linux e para qualquer santo da informática.
+> Volta quase tudo. Faltam doze fotos da festa.
+EU [envergonhada]: Dona Zezé, eu errei. Perdi umas fotos da festa. Desculpa.
+@anota p2_backup_antes
+@muda saude-1 reputacao-1 tecnica+1
+@vai c06_zeze_fotos
+
+=== c06_zeze_fotos
+> Enquanto o PC termina de instalar, você vê uma pasta com nome estranho. "PARTICULAR NÃO ABRIR". Do filho da Dona Zezé, que mora com ela.
+(Não abrir. Está escrito. Simples assim.)
+> Mas a pasta é enorme. Pode ter praga. Pode não ter. A curiosidade coça.
+? O que fazer com a pasta
+* Não abrir. Copiar inteira, do jeito que está, e devolver -> c06_pasta_respeito {etica+2}
+* Dar só uma espiadinha para ver se tem vírus -> c06_pasta_espiada {etica-2}
+
+=== c06_pasta_espiada
+> Você abre. São fotos de um rapaz com uma moça. Fotos que não eram para você.
+> Você fecha rápido, com o rosto queimando.
+(Isso não era meu. Eu não tinha direito. Não importa se ninguém viu.)
+EU [envergonhada]: Nunca mais faço isso.
+@muda saude-1
+@anota p2_privacidade_cliente
+@vai c06_zeze_paga
+
+=== c06_pasta_respeito
+> Você copia a pasta inteira sem abrir, coloca de volta no lugar e escreve um bilhete: "A pasta particular foi copiada sem abrir. Está do mesmo jeito."
+(Quem conserta não é dono. A vovo_linux falou isso uma vez e eu nunca esqueci.)
+@anota p2_privacidade_cliente
+@vai c06_zeze_paga
+
+=== c06_zeze_paga
+> A Dona Zezé liga o PC e chora quando vê as fotos da filha.
+> Depois, abre a bolsa e tira uma nota de cinquenta reais, dobrada em quatro.
+EU [surpresa]: Dona Zezé, é muito!
+? Quanto cobrar
+* Aceitar os cinquenta, foi um dia inteiro de trabalho -> c06_zeze_cinquenta {grana+2}
+* Cobrar só vinte, ela é aposentada -> c06_zeze_vinte {grana+1 rel_mae+1}
+* Recusar, foi favor de vizinha -> c06_zeze_favor {reputacao+1}
+
+=== c06_zeze_cinquenta
+> Você aceita. A nota está quente da bolsa e tem cheiro de alfazema.
+(Meu primeiro dinheiro de trabalho. Cinquenta reais. Vou guardar dentro do dicionário, na letra R de riqueza.)
+@vai c06_mae_dinheiro
+
+=== c06_zeze_vinte
+EU: Vinte está bom, Dona Zezé. É o preço de vizinha.
+> Ela insiste. Você insiste mais. No fim, sai com vinte reais e um pote de doce de leite.
+@vai c06_mae_dinheiro
+
+=== c06_zeze_favor
+EU: Não precisa, Dona Zezé. É favor.
+> Ela não aceita "não" e você sai com um pote de doce de leite, um pano de prato bordado e a promessa de que ela vai "falar bem de você para a cidade inteira".
+(Em Pedra Lisa, propaganda boca a boca é o melhor anúncio. E de graça.)
+@vai c06_mae_dinheiro
+
+=== c06_mae_dinheiro
+@fundo casa_cozinha
+@musica triste
+@entra mae neutra centro
+> Em casa, a sua mãe está sentada na mesa da cozinha, com as contas espalhadas e a calculadora de botão grande.
+> A conta de luz veio com aviso de corte.
+MAE [triste]: Não é nada, filha. Vai dormir.
+(Não é nada que é tudo. Eu conheço essa voz.)
+? O que fazer
+* Colocar o dinheiro do conserto em cima da conta -> c06_mae_ajuda {rel_mae+2 grana-1}
+* Perguntar se pode ajudar de outro jeito -> c06_mae_conversa {rel_mae+1}
+
+=== c06_mae_ajuda
+> Você tira o dinheiro do bolso e coloca em cima da conta de luz, bem em cima do aviso vermelho.
+MAE [surpresa]: Que dinheiro é esse, menina?
+EU: Do computador da Dona Zezé. Eu consertei.
+> A sua mãe fica olhando a nota um tempo enorme.
+MAE [triste]: Eu limpei casa a vida inteira para você não precisar trabalhar cedo.
+EU: Mãe, eu gosto. Não é sacrifício.
+MAE [feliz]: Então tá. Mas metade é sua. Para comprar o que você precisar para esse tal de computador.
+@sai mae
+@vai c06_fim
+
+=== c06_mae_conversa
+EU: Mãe, eu posso ajudar. As pessoas estão me pagando para consertar computador.
+MAE [pensativa]: Pagando? De verdade?
+EU: De verdade. A Dona Zezé pagou. A Cida pagou em hora e salgado.
+MAE: Salgado não paga luz, {nome}.
+MAE [feliz]: Mas é um começo. Estuda direito, que um dia você paga a luz da cidade inteira.
+@sai mae
+@vai c06_fim
+
+=== c06_fim
+@fundo quarto_adolescente
+@musica alegre
+> Naquela semana, chegam mais três pedidos. O notebook do pastor, o PC da escola de datilografia que ainda existe e o celular da Dona Zezé, que agora te recomenda até para a missa.
+> Você ganhou um apelido novo: a menina do computador.
+(É melhor que nerd do zap. Muito melhor.)
+@som mensagem
+> No sábado, uma mensagem no celular da sua mãe: "Aqui é o Valdir da padaria. A Zezé falou que você faz site. Passa aqui amanhã cedo que tem pão quente."
+EU [surpresa]: Eu faço site?
+(Não faço. Ainda.)
+@vai c07_inicio

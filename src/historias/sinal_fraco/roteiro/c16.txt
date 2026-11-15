@@ -1,0 +1,336 @@
+=== c16_inicio
+@cap 16 "Capture a bandeira"
+@fundo auditorio_evento
+@musica hacker
+> O auditório da universidade tem cheiro de café, pizza fria e energético às oito da manhã.
+> Duzentas pessoas. Cento e noventa camisetas pretas. Notebooks cobertos de adesivo, um rapaz de capa de chuva dentro do prédio, uma moça com três monitores que ela trouxe de casa numa mala de rodinha.
+(Eu contei as mulheres. Somos onze. Contei de novo pra ter certeza. Onze.)
+@se marca:caiu_vaga_falsa -> c16_inicio_desconfia
+@vai c16_davi_chega
+
+=== c16_inicio_desconfia
+(Inscrição gratuita, pizza grátis, ninguém pediu Pix. Eu confirmei o evento no site da universidade duas vezes. Gato escaldado confere o domínio.)
+@vai c16_davi_chega
+
+=== c16_davi_chega
+> Alguém tropeça no fio do seu carregador remendado. Um rapaz de fone no pescoço, camiseta de um evento de 2019 e um copo de café que, por milagre, não cai.
+@entra davi surpresa centro
+DAVI: Foi mal! Foi mal. Esse carregador aí é... fita isolante?
+EU [envergonhada]: É tecnologia de Pedra Lisa. Aguenta mais que os originais.
+DAVI [feliz]: Respeito. O meu é original e morreu semana passada. Eu sou o Davi. Primeiro CTF?
+@marca conheceu_davi
+EU: Tá tão na cara assim?
+DAVI: Você tá lendo o regulamento. Ninguém lê o regulamento. Isso é ou muito iniciante ou muito perigosa.
+(Nenhuma das duas opções me deixa confortável. Mas ele sorriu quando disse "perigosa".)
+@vai c16_explica
+
+=== c16_explica
+EU: Pode me explicar o que é isso de verdade? Eu só sei que tem bandeira e ninguém tá correndo.
+DAVI: É tipo gincana de escola, só que de segurança. Cada desafio esconde uma "flag", um textinho tipo FLAG{alguma_coisa}. Achou, envia no site, ganha ponto.
+DAVI: Tem categoria de web, de criptografia, de forense, de achar informação pública. Quanto mais difícil, mais ponto.
+DAVI: E é tudo montado pra isso, num ambiente da organização. Ninguém invade nada de verdade aqui. Fora daqui, mexer em sistema dos outros sem autorização dá cadeia.
+(Uma gincana legalizada de quebrar coisa feita pra quebrar. Onde é que estava isso quando eu tinha doze anos?)
+@anota p3_ctf
+DAVI: Os times são de até três. O meu tá com dois. O outro cara é o Kaio, que tá dormindo ali no canto porque veio de outro evento.
+? Davi está te oferecendo a vaga no time
+* Aceitar. Melhor perder acompanhada -> c16_time_davi {rel_davi+1}
+* Agradecer e jogar sozinha, para ver do que você é capaz -> c16_time_sozinha {saude-1 tecnica+1}
+** Aceitar, mas só se o time mudar de nome para "Sinal Fraco" -> c16_time_nome {rel_davi+2}
+
+=== c16_time_davi
+DAVI: Fechou. Bem-vinda ao "Sem Café Sem Flag".
+(O nome do time é um pedido de socorro. Me identifico.)
+@vai c16_rafa
+
+=== c16_time_sozinha
+@expr davi pensativa
+DAVI: Justo. Se travar, a mesa é ali. A gente divide pizza com time adversário, não é guerra.
+@vai c16_rafa
+
+=== c16_time_nome
+@expr davi feliz
+DAVI: "Sinal Fraco"? Porque a sua cidade não tem sinal?
+EU: Porque a gente começa fraco. Mas pega.
+DAVI: Tá. Isso foi bonito demais pra eu discutir. Kaio, acorda, mudamos de nome.
+@vai c16_rafa
+
+=== c16_rafa
+@sai davi
+> Na mesa ao lado, um time com camiseta personalizada, adesivo próprio e um mapa mental colado na parede antes da competição começar.
+@entra rafa neutra centro
+RAFA: Primeiro CTF, né? Dá pra ver pelo caderno. Ninguém mais usa caderno.
+RAFA: Dica de graça: fica nas de 50 pontos. Nas de 500 você chora e atrapalha o Wi-Fi.
+(Ela tem franja reta, voz de quem já ganhou alguma coisa e o tom da prima rica no almoço de domingo.)
+? Como responder a Rafa?
+* "Vou começar nas de 50 e terminar nas de 500. Te vejo no placar." -> c16_rafa_lata {rel_rafa-1 saude+1}
+* "Faz quanto tempo que você joga? Como começou?" -> c16_rafa_pergunta {rel_rafa+1}
+* Ignorar e abrir o caderno -> c16_rafa_ignora
+
+=== c16_rafa_lata
+@expr rafa surpresa
+RAFA: Olha só. Tem dente. Gostei. Te vejo lá embaixo no placar, então.
+@sai rafa
+@vai c16_largada
+
+=== c16_rafa_pergunta
+@expr rafa pensativa
+RAFA: Três anos. Comecei no suporte de TI de uma escola, resetando senha de professor. A senha de todos era a data de nascimento.
+RAFA: Ninguém me deu dica no meu primeiro. Por isso eu dou. Do meu jeito, que é meio ruim.
+(Ela é antipática. Mas é antipática de quem também já esteve sozinha numa sala dessas.)
+@sai rafa
+@vai c16_largada
+
+=== c16_rafa_ignora
+RAFA: Ok. Caderno. Vintage.
+@sai rafa
+@vai c16_largada
+
+=== c16_largada
+@fundo sala_ctf
+@musica hacker
+@som alarme
+> Nove horas. O telão mostra o quadro de desafios: dezenas de quadradinhos com nomes esquisitos e pontos.
+> "Bem-vindos ao Pinguim", "Cookie da Vovó", "O Arquivo Que Não Abre", "Qual é a Senha, Seu Zé?".
+> Você clica no mais fácil, de 50 pontos: "Primeiros Passos". Dentro, só uma linha de letras e um sinal de igual no fim.
+@desafio p3_ctf_base64 -> c16_flag_acerto | c16_flag_erro
+
+=== c16_flag_acerto
+(Letras, números e dois iguais no fim. Isso é Base64. Eu via isso no código-fonte das páginas da Cida Net e achava que era o computador xingando.)
+> Você decodifica. Aparece: FLAG{codificar_nao_e_cifrar}.
+@som acerto
+> Você envia. O placar pisca. Seu nome aparece em verde: 50 pontos.
+@se marca:conheceu_davi -> c16_flag_davi
+@vai c16_flag_segue
+
+=== c16_flag_davi
+@entra davi feliz direita
+DAVI: Primeira flag em quatro minutos! O Kaio levou quarenta no primeiro dele.
+(O Kaio continua dormindo. Ganhei do Kaio dormindo. É um começo.)
+@sai davi
+@vai c16_flag_segue
+
+=== c16_flag_erro
+> Você passa vinte minutos achando que é uma senha criptografada impossível. Pesquisa "como quebrar criptografia militar". Fica com medo do resultado.
+@entra davi pensativa direita
+DAVI: Posso? Olha o final, os dois iguais. Isso é Base64. É só um jeito de escrever dado como texto. Qualquer um desfaz, sem chave.
+EU [envergonhada]: Então não era criptografia?
+DAVI: Era uma pegadinha pra ensinar exatamente isso. Codificar não é cifrar. Tá até escrito na flag.
+@sai davi
+@som acerto
+> FLAG{codificar_nao_e_cifrar}. Os 50 pontos entram, com um gostinho de cola.
+@vai c16_flag_segue
+
+=== c16_flag_segue
+@anota p3_base64
+@muda tecnica+1
+> Depois da primeira flag, vem a parede. Desafio de 100 pontos: "Qual é a Senha, Seu Zé?". Uma página de login, um arquivo de texto e nenhuma pista óbvia.
+> Uma hora. Duas. Você começa a colar no formulário de flag qualquer coisa que pareça flag. FLAG{admin}. FLAG{senha}. FLAG{seuze}. FLAG{socorro}.
+@vai c16_iracema_chega
+
+=== c16_iracema_chega
+@entra iracema neutra centro
+> Uma mulher para atrás da sua cadeira. Uns cinquenta anos, black power grisalho, óculos quadrado, caneca escrita "NÃO É BUG, É FEATURE" e crachá de organização.
+IRACEMA: Você mandou "FLAG socorro". O sistema de envio me mostra tudo, querida. Eu escrevi esse desafio.
+EU [assustada]: Desculpa! Eu tava só...
+IRACEMA: Chutando. Força bruta de gente desesperada. Funciona tão bem quanto chutar a senha do cofre do banco.
+@marca conheceu_iracema
+@expr iracema pensativa
+IRACEMA: Iracema. Analista sênior. Vinte e cinco anos nessa área e quinze deles sendo a única mulher preta na sala de servidor.
+> Um rapaz de colete passa e para, com um copo vazio na mão.
+> "Senhora, acabou o café ali na mesa. A senhora é da equipe do café?"
+@expr iracema brava
+IRACEMA: Não, querido. Sou da equipe que escreveu o desafio que você ainda não resolveu. O café é com a recepção.
+> O rapaz fica da cor da camiseta do time da Rafa e some.
+(Ela disse isso sem levantar a voz. Do jeito de quem já teve que dizer mil vezes.)
+@expr iracema neutra
+IRACEMA: Agora você. Para de chutar e me diz: qual é o método?
+@vai c16_metodo
+
+=== c16_metodo
+@desafio p3_ctf_metodo -> c16_metodo_acerto | c16_metodo_erro
+
+=== c16_metodo_acerto
+EU: Ler o enunciado de novo. Olhar o que me deram sem mexer. Pensar no que aquilo parece. Testar uma coisa por vez e anotar.
+@expr iracema feliz
+IRACEMA: E mandar a flag só quando tiver certeza. E depois escrever como resolveu. É isso. Você tem o método, só esqueceu dele quando ficou com medo.
+IRACEMA: Todo mundo esquece. A diferença é que você tem um caderno pra lembrar.
+@muda tecnica+1 rel_iracema+2
+@vai c16_sombra
+
+=== c16_metodo_erro
+EU: Testar tudo o mais rápido possível até alguma coisa dar certo?
+@expr iracema pensativa
+IRACEMA: Isso é o que eu chamo de método "Seu Zé apertando todos os botões do controle remoto". Às vezes liga a TV. Geralmente muda o idioma.
+IRACEMA: Lê de novo. Olha o que te deram sem mexer. Faz uma hipótese. Testa uma por vez. Anota. Escreve depois como resolveu. É chato. É assim que funciona, aqui e num incidente de verdade.
+@muda rel_iracema+1
+@vai c16_sombra
+
+=== c16_sombra
+> Ela puxa uma cadeira e senta, como se tivesse tempo. Não tem: é organizadora. Mas senta.
+IRACEMA: Sabe por que eu escrevo desafio de CTF? Porque eu passo a semana fazendo perícia em caso real, e caso real é feio.
+@se marca:pacto_doutor -> c16_doutor_pacto
+@se marca:denunciou_doutor -> c16_doutor_denuncia
+@se marca:aceitou_robson -> c16_robson
+@vai c16_sombra_geral
+
+=== c16_doutor_pacto
+IRACEMA: Esse ano eu ajudei num inquérito. Um sujeito de terno que se apresentava como "Doutor". Contratava gente nova do interior, com talento e sem dinheiro, para fazer serviço sujo.
+IRACEMA: Ele achava que estava limpo. Ninguém está limpo. Log não esquece. Cedo ou tarde, alguém puxa o fio.
+@expr eu assustada
+(O terno. O envelope. O "serviço" que eu fiz e que eu jurei que nunca ia lembrar.)
+(Ela não sabe. Ela não pode saber. Ou pode?)
+@muda saude-2
+? Iracema percebe que você ficou pálida.
+* Disfarçar: "É o energético. Tomei dois." -> c16_doutor_disfarca {saude-1}
+* Perguntar, com a voz baixa, o que acontece com quem trabalhou pra um cara desses -> c16_doutor_pergunta {etica+1}
+
+=== c16_doutor_disfarca
+@expr iracema pensativa
+IRACEMA: Energético dá isso. Bebe água.
+> Ela olha para você um segundo a mais do que precisava. Depois volta a falar do desafio.
+@vai c16_sombra_geral
+
+=== c16_doutor_pergunta
+@expr iracema pensativa
+IRACEMA: Depende. De quando foi, do que fez, e principalmente do que a pessoa faz depois.
+IRACEMA: Gente que procura advogado e colabora antes de ser achada tem uma história. Gente que espera ser achada tem outra.
+IRACEMA: Por que a pergunta?
+EU: Curiosidade.
+IRACEMA: Hum. Curiosidade é uma ótima qualidade nessa área. Nem sempre é a melhor desculpa.
+@vai c16_sombra_geral
+
+=== c16_doutor_denuncia
+IRACEMA: Esse ano eu ajudei num inquérito. Um sujeito de terno que se apresentava como "Doutor" e contratava gente nova do interior pra serviço sujo.
+IRACEMA: Sabe como começou? Uma denúncia de uma cidadezinha que nem sinal de celular tem direito. Alguém disse não e ainda avisou a polícia.
+(Pedra Lisa. Fui eu. Eu nunca soube se alguém tinha lido.)
+EU [feliz]: E pegaram ele?
+IRACEMA: Ainda não. Mas puxaram o fio. Quem quer que tenha sido, tem mais coragem que metade dessa sala.
+@muda saude+1 etica+1
+@vai c16_sombra_geral
+
+=== c16_robson
+IRACEMA: Semana passada foi um dono de loja que pagou alguém para atrapalhar o concorrente. Achou que era "esperteza de comércio". É crime, e o rastro sempre volta pra quem pagou e pra quem fez.
+(O Robson. A loja do concorrente. Eu era menor, eu precisava do dinheiro, eu... Não. Eu sabia.)
+@muda saude-1
+@vai c16_sombra_geral
+
+=== c16_sombra_geral
+IRACEMA: Por isso eu gosto de CTF. Aqui a gente aprende a quebrar o que foi feito para quebrar. E sai daqui sabendo proteger o que não foi.
+@sai iracema
+@vai c16_cabo_rafa
+
+=== c16_cabo_rafa
+@musica tensao
+> Faltando uma hora para acabar, um grito na mesa ao lado. O notebook principal do time da Rafa apagou. O carregador dela derreteu na ponta.
+@entra rafa assustada centro
+RAFA: Não. Não não não. Tá tudo nessa máquina. A gente tá em segundo!
+> Na sua mochila, enrolado em fita isolante, está o carregador universal do Tio Juca. Aquele que aguenta qualquer coisa, menos fiscalização do Inmetro.
+? A Rafa olha para o seu carregador. Você olha para o placar.
+* Emprestar o carregador sem pensar duas vezes -> c16_cabo_empresta {rel_rafa+2 marca:amiga_rafa}
+* Não emprestar. Competição é competição, e ela foi metida -> c16_cabo_nega {rel_rafa-2 marca:rival_rafa}
+** Emprestar, mas cobrar R$ 20 por hora, "taxa de material" -> c16_cabo_cobra {rel_rafa-1 grana+1 marca:rival_rafa}
+
+=== c16_cabo_empresta
+> Você estende o carregador. Ela olha para a fita isolante com desconfiança, pluga, e a máquina liga.
+@expr rafa feliz
+RAFA: Isso é a coisa mais feia e mais linda que eu já vi.
+RAFA: Te devo uma. Eu não gosto de dever, então vou te pagar com dica de verdade depois. Anota meu número, menina do caderno.
+(Ela me chamou de menina do caderno com carinho. Acho. É difícil saber com a Rafa.)
+@vai c16_placar
+
+=== c16_cabo_nega
+EU: Foi mal. Meu notebook também precisa.
+@expr rafa brava
+RAFA: Tá. Entendi. Justo.
+> Ela consegue um carregador emprestado com outro time dez minutos depois. Dez minutos que custam o segundo lugar.
+> Quando passa por você, ela não diz nada. Mas você vê no olho dela uma anotação mental com o seu nome.
+(Ganhei uma inimiga com franja. Isso vai dar trabalho.)
+@vai c16_placar
+
+=== c16_cabo_cobra
+@expr rafa brava
+RAFA: Taxa de material? Sério? Isso é golpe de vaga falsa!
+EU: Eu sei. Eu caí num. Tô repassando a experiência.
+> Ela faz o Pix de R$ 20 com a cara de quem está assinando uma declaração de guerra. O notebook liga.
+RAFA: Guarda esse dinheiro. Vai precisar quando eu te ganhar em todos os CTFs daqui pra frente.
+(Eu não sei se isso foi a pior ou a melhor ideia do dia. Tenho certeza de que foi a mais cara para a minha reputação.)
+@muda reputacao-1
+@vai c16_placar
+
+=== c16_placar
+@sai rafa
+@fundo auditorio_evento
+@musica triste
+@som alarme
+> Fim. O telão mostra o placar final.
+> Primeiro lugar: um time de três rapazes que trabalham juntos num banco. Segundo ou terceiro: o time da Rafa, dependendo de quem emprestou carregador para quem.
+> Lá embaixo, na antepenúltima linha, com 150 pontos: você.
+> Atrás de você, só um time que se inscreveu e esqueceu de vir, e o Kaio, que acordou às 16h.
+@entra davi feliz centro
+DAVI: Olha pelo lado bom: você ganhou de quem não veio.
+EU [triste]: Perdi feio, Davi.
+DAVI: Meu primeiro foi zero ponto. Zero. Eu tirei foto do placar e guardo até hoje. Daqui a um ano você vai olhar esse 150 e rir.
+@sai davi
+@vai c16_iracema_fim
+
+=== c16_iracema_fim
+@entra iracema neutra centro
+IRACEMA: Você perdeu.
+EU: Obrigada pela informação.
+@expr iracema feliz
+IRACEMA: De nada. Mas você foi a única iniciante que veio me perguntar como funcionava o desafio depois que acabou, em vez de ir embora. Isso conta mais que ponto.
+IRACEMA: Terça à noite tem grupo de estudo na biblioteca municipal do centro. De graça. Traz o caderno. E escreve o writeup do "Seu Zé" até lá.
+(Writeup. O relato de como resolveu. Ou, no meu caso, de como não resolveu.)
+@muda rel_iracema+1 reputacao+1
+@sai iracema
+@vai c16_davi_numero
+
+=== c16_davi_numero
+@fundo capital_rua
+@musica romance
+> Na saída, a rua está escura e a pizza acabou. O Davi está parado no ponto de ônibus, com o fone no pescoço.
+@entra davi envergonhada centro
+DAVI: Então. Tem outro CTF mês que vem. Online. Se você quiser, a gente monta time de novo. Ou... sei lá, toma um café antes. Café de verdade.
+? O que você responde?
+* Passar o número e dizer que topa o CTF e o café -> c16_davi_sim {rel_davi+2}
+* Passar o número, mas deixar claro que é só pelo CTF, por enquanto -> c16_davi_ctf {rel_davi+1}
+* Dizer que agora não dá: tem o call center, os estudos e zero espaço na cabeça -> c16_davi_nao {saude+1}
+
+=== c16_davi_sim
+@expr davi feliz
+DAVI: Fechado. Eu sei de uma cafeteria que tem tomada em todas as mesas. Pra gente que anda com carregador de fita isolante.
+(Ele lembrou do carregador. Pedra Lisa, a sua filha está corando num ponto de ônibus da capital.)
+@sai davi
+@vai c16_fim
+
+=== c16_davi_ctf
+DAVI: Por enquanto. Anotado. Eu também sou de anotar.
+@expr davi feliz
+DAVI: Vou te mandar umas plataformas de treino gratuitas. Sem taxa de material, prometo.
+@sai davi
+@vai c16_fim
+
+=== c16_davi_nao
+@expr davi pensativa
+DAVI: Entendo total. Call center de dia e estudo de noite não deixa espaço nem pra respirar.
+DAVI: Se mudar de ideia, eu tô no grupo do evento. Sou o que manda meme ruim de criptografia.
+@sai davi
+@vai c16_fim
+
+=== c16_fim
+@fundo onibus_noite
+@musica alegre
+> No ônibus de volta para a república, você abre o caderno e escreve na primeira página livre: "CTF número 1. 150 pontos. Antepenúltima."
+> Embaixo, menor: "Conheci gente. Aprendi Base64. Uma mulher chamada Iracema disse que eu tenho método."
+@som mensagem
+@se marca:amiga_rafa -> c16_fim_rafa
+@vai c16_fim_ultimo
+
+=== c16_fim_rafa
+> Mensagem de um número novo: "Aqui é a Rafa. A dica de verdade: estuda pra certificação de entrada, que RH ama sigla. Obrigada pelo carregador feio."
+@vai c16_fim_ultimo
+
+=== c16_fim_ultimo
+(Eu perdi feio. E foi o melhor dia desde que eu cheguei na capital.)
+(Agora só falta o resto: um emprego na área, uma certificação que custa três salários e dormir mais de cinco horas por noite. Fácil.)
+@vai c17_inicio

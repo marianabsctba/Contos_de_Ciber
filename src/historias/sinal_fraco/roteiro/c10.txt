@@ -1,0 +1,222 @@
+# Capítulo 10: o Doutor.
+# Regra: se ela aceita, o serviço acontece fora de cena, sem nenhum detalhe de como.
+
+=== c10_inicio
+@cap 10 "O Doutor"
+@fundo lan_house
+@musica misterio
+> Você não respondeu a mensagem. Mas o Dr. Anselmo não é homem de esperar resposta.
+> Na sexta à tarde, um carro preto de vidro escuro para na frente da Cida Net. Em Pedra Lisa, isso é mais raro que eclipse.
+@entra cida assustada esquerda
+CIDA: {nome}. Tem um homem de terno aí fora perguntando por você. De terno! Com esse calor!
+CIDA [pensativa]: Ou é político, ou é crente, ou é encrenca.
+@som porta
+@entra doutor feliz direita
+DOUTOR: Boa tarde. Senhorita {nome}, imagino. Anselmo. Pode me chamar de Doutor.
+(Doutor de quê? Ninguém pergunta. Ele tem cara de quem nunca respondeu.)
+DOUTOR: A senhora nos daria licença, Dona Cida?
+CIDA [brava]: A lan house é minha, moço. Eu fico.
+DOUTOR [pensativa]: Claro. Então vamos dar uma volta, senhorita.
+? Ir com ele
+* Ficar na lan house, com a Cida do lado -> c10_fica_cida {rel_cida+1 saude+1}
+* Ir até a praça, que tem gente passando -> c10_praca
+
+=== c10_fica_cida
+EU: Prefiro conversar aqui, Doutor.
+DOUTOR [feliz]: Prudente. Gosto disso.
+> A Cida se senta no caixa, a dois metros, fingindo que conta moeda. Ela nunca contou moeda em silêncio na vida.
+@sai cida
+@vai c10_proposta
+
+=== c10_praca
+@sai cida
+@fundo praca_interior
+> Vocês sentam no banco da praça. O carro preto acompanha devagar, a dez metros.
+(O carro segue a gente como cachorro. Isso não é conversa, é recado.)
+@vai c10_proposta
+
+=== c10_proposta
+DOUTOR: Eu sei do seu trabalho. A padaria. A lan house. Até umas coisas que a senhorita não conta para a sua mãe.
+@se marca:aceitou_cleiton -> c10_doutor_sabe
+@se marca:aceitou_robson -> c10_doutor_sabe
+@se marca:aceitou_marlene -> c10_doutor_sabe
+@vai c10_doutor_elogio
+
+=== c10_doutor_sabe
+DOUTOR [feliz]: O rapaz da ex. O lojista. Gente pequena, pagando pouco. A senhorita merece clientes melhores.
+(Como ele sabe? Quem contou? O Robson? O Cleiton? Na cidade pequena, todo segredo tem dono.)
+@muda saude-1
+@vai c10_doutor_elogio
+
+=== c10_doutor_elogio
+DOUTOR: Talento, no interior, morre de fome. Eu acho isso um desperdício.
+DOUTOR [pensativa]: Eu tenho uma proposta. Está escrita aqui. Leia com calma.
+> Ele entrega o celular dele, com uma mensagem aberta. Depois pega de volta e manda a mesma mensagem para o celular da sua mãe.
+@som mensagem
+@desafio p2_proposta_doutor -> c10_proposta_acerto | c10_proposta_erro
+
+=== c10_proposta_acerto
+(Dado de aposentado. Sigilo. Dinheiro vivo. "Você é menor, não dá nada." "Apague esta mensagem.")
+(Não é uma oportunidade. É um recrutamento. Ele quer uma peça para uma quadrilha de golpe de empréstimo.)
+@anota p2_aliciamento
+@muda tecnica+1
+@vai c10_escolha
+
+=== c10_proposta_erro
+(Oito mil reais. Oito mil. Dá para pagar o cursinho, a conta de luz, um notebook novo, a dentadura da Vó...)
+> Você lê a mensagem três vezes. Só na terceira as palavras param de brilhar e começam a pesar.
+(Lista de aposentados. Com telefone. A Vó Nita é aposentada.)
+@anota p2_aliciamento
+@vai c10_escolha
+
+=== c10_escolha
+@musica tensao
+DOUTOR [feliz]: Oito mil. Metade hoje. O meu motorista passa às sete para a senhorita me dar a resposta.
+DOUTOR: E, claro, se a senhorita não quiser, nós nunca nos vimos.
+@sai doutor
+> O carro preto vai embora devagar, levantando poeira vermelha da rua de terra.
+? O que você decide
+* Aceitar a proposta do Doutor -> c10_aceita {grana+8 etica-5 marca:pacto_doutor}
+* Recusar e não falar nada com ninguém -> c10_recusa_calada {etica+1}
+* Recusar, guardar a mensagem e denunciar -> c10_denuncia_mae {etica+3}
+** Fingir interesse para juntar mais provas, como nos filmes -> c10_detetive
+
+=== c10_detetive
+@som especial
+> Você se sente a protagonista de uma série policial. Às sete, entra no carro preto com o celular gravando no bolso.
+(Isso é uma péssima ideia. Eu sei que é uma péssima ideia. Mas tem trilha sonora na minha cabeça.)
+> O motorista dirige em silêncio por vinte minutos, para numa estrada de terra e diz:
+> "O Doutor mandou avisar que ele sabe onde a sua avó mora. Só para você saber com quem está falando."
+> Ele te deixa de volta na praça. O celular, no bolso, gravou tudo. A sua mão não para de tremer.
+@muda saude-3
+@marca bancou_detetive
+@vai c10_denuncia_mae
+
+=== c10_recusa_calada
+@fundo quarto_adolescente
+@musica triste
+> Às sete, o carro preto para na frente da sua casa. Você não sai. Ele espera dez minutos e vai embora.
+> Você apaga a mensagem do celular da sua mãe antes que ela veja.
+(Ninguém vai saber. Eu não fiz nada. Isso basta, não basta?)
+> Por semanas, todo carro escuro que passa na rua faz o seu coração parar.
+> Um mês depois, o rádio de Caiçara fala de uma quadrilha que roubou aposentados da região com empréstimos falsos.
+> A Dona Lurdes, amiga da Vó Nita da igreja, perdeu o décimo terceiro.
+(Ele achou quem fizesse. Sempre acha.)
+@muda saude-1
+@vai c10_fim
+
+=== c10_aceita
+@fundo quarto_adolescente
+@musica final_ruim
+> Às sete, você entra no carro preto.
+> O que você faz nas semanas seguintes não vai para o caderno. Nem para a memória, se depender de você.
+> O motorista te entrega dois envelopes. Oito mil reais em notas de cem. Você nunca tinha visto uma nota de cem de perto.
+(O dinheiro tem cheiro de nada. Eu achei que ia ter cheiro de alguma coisa.)
+> Você esconde o dinheiro dentro do gabinete do PC, entre o HD e a fonte.
+@vai c10_aceita_depois
+
+=== c10_aceita_depois
+@fundo casa_cozinha
+@musica triste
+@entra vo triste centro
+VO: Minha filha, você soube da Lurdes? A da igreja?
+EU [assustada]: Não, Vó.
+VO: Ligaram para ela dizendo que era do banco. Sabiam o nome dela, o CPF, o valor da aposentadoria. Fizeram um empréstimo no nome dela.
+VO [triste]: Ela tem setenta e oito anos. Chorou o culto inteiro. Agora vai pagar parcela até morrer.
+VO [pensativa]: Como é que esses bandidos sabem tudo da gente, hein? Você que entende de computador.
+EU [envergonhada]: Não sei, Vó.
+(Eu sei. Eu sei e nunca vou poder dizer.)
+@sai vo
+@muda saude-3 rel_vo-1
+@som mensagem
+> Naquela noite, uma última mensagem do número da capital: "Ótimo trabalho. Guardamos o seu contato. Um dia voltamos a conversar."
+@vai c10_fim
+
+=== c10_denuncia_mae
+@fundo casa_cozinha
+@musica tensao
+@entra mae assustada centro
+> Você mostra a mensagem para a sua mãe. Ela lê devagar, com o dedo seguindo as letras.
+MAE [brava]: Esse homem veio atrás de você? De carro preto? Na Cida?
+EU: Veio, mãe. Eu não vou fazer. Mas eu acho que tem que contar para a polícia.
+MAE [assustada]: Polícia? Filha, gente assim tem amigo na polícia. Tem amigo em todo lugar.
+? O que dizer para a mãe
+* Insistir: se ninguém denunciar, ele faz com outra menina -> c10_denuncia {rel_mae+1}
+* Pedir para a Vó Nita ir junto, para a mãe ficar mais tranquila -> c10_denuncia {rel_vo+1 rel_mae+1}
+
+=== c10_denuncia
+MAE [pensativa]: Tá. Mas eu vou junto. E você não sai de perto de mim.
+@sai mae
+@fundo delegacia
+@musica misterio
+> A delegacia de Pedra Lisa tem um escrivão, um ventilador e um calendário de 2011.
+> Mas, quando o escrivão vê o nome do Doutor na mensagem, ele para de digitar. Faz uma ligação. Pede para vocês esperarem.
+> Duas horas depois, entra uma mulher de farda, cabelo preso, com cara de quem dirigiu da capital sem parar.
+@entra delegada neutra centro
+DELEGADA: Delegada Márcia, crimes cibernéticos. Você é a {nome}?
+EU [assustada]: Sou.
+DELEGADA: Você guardou a mensagem? Não apagou nada?
+EU: Guardei. Tirei print com a data e o número. E anotei a placa do carro.
+DELEGADA [surpresa]: Anotou a placa.
+DELEGADA [feliz]: Eu tenho detetive com quinze anos de carreira que esquece de anotar a placa.
+@anota p2_denuncia
+@se marca:bancou_detetive -> c10_delegada_bronca
+@vai c10_delegada
+
+=== c10_delegada_bronca
+> Você mostra também a gravação do carro. A delegada escuta inteira, com o maxilar travado.
+DELEGADA [brava]: Você entrou no carro de um criminoso. Sozinha. Com dezessete anos.
+DELEGADA: A gravação ajuda. Mas nunca mais. Prova quem junta é a polícia. Você guarda o print e chama a gente.
+EU [envergonhada]: Desculpa.
+DELEGADA [pensativa]: E a casa da sua avó vai ter viatura passando na porta por um tempo. Por precaução.
+@muda rel_vo+1
+@vai c10_delegada
+
+=== c10_delegada
+DELEGADA [pensativa]: Esse "Doutor" a gente procura faz dois anos. Ele não sabe nada de computador. Ele contrata quem sabe. De preferência menina pobre do interior, que precisa de dinheiro e não tem a quem contar.
+DELEGADA: Ele aposta em duas coisas: na necessidade e no silêncio. Você tirou as duas dele.
+@se marca:aceitou_cleiton -> c10_delegada_aviso
+@se marca:aceitou_marlene -> c10_delegada_aviso
+@se marca:aceitou_robson -> c10_delegada_aviso
+@vai c10_delegada_cartao
+
+=== c10_delegada_aviso
+DELEGADA [pensativa]: Ele mencionou outros serviços seus na mensagem. Eu não vou perguntar agora.
+DELEGADA: Mas vou te dizer uma coisa que eu falo para todo mundo: o que a gente faz na internet deixa rastro. Pense nisso daqui para a frente.
+(Ela não perguntou. Mas ela sabe que tem pergunta.)
+@muda saude-1
+@vai c10_delegada_cartao
+
+=== c10_delegada_cartao
+DELEGADA: Tome o meu cartão. Se ele aparecer de novo, ou alguém em nome dele, liga direto para mim.
+DELEGADA [feliz]: E, {nome}, se um dia você quiser trabalhar do lado certo dessa história, a gente precisa de gente como você. Estude.
+@sai delegada
+@marca denunciou_doutor
+@muda reputacao+1 rel_mae+1
+> Na saída, a sua mãe segura a sua mão com força. Ela não fala nada no caminho inteiro.
+> Em casa, ela faz café e, pela primeira vez, chama o PC de "o seu computador" em vez de "o computador".
+@vai c10_fim
+
+=== c10_fim
+@fundo quarto_adolescente
+@musica interior
+@se marca:pacto_doutor -> c10_fim_pacto
+@se marca:denunciou_doutor -> c10_fim_denuncia
+@vai c10_fim_calada
+
+=== c10_fim_pacto
+> Você abre o caderno de capa dura. A página fica em branco por uma hora.
+> No fim, você escreve só uma frase, bem pequena, no canto: "Eu sei o que eu fiz."
+@vai c11_inicio
+
+=== c10_fim_denuncia
+> Três meses depois, o rádio de Caiçara anuncia a prisão de um falso consultor que aliciava jovens para golpes contra aposentados.
+> Não falam o seu nome. Não precisam.
+(Eu não salvei o mundo. Mas a Dona Lurdes ainda tem o décimo terceiro dela.)
+@muda saude+1
+@vai c11_inicio
+
+=== c10_fim_calada
+> Você guarda o medo numa gaveta e tenta estudar. O ENEM está chegando.
+(Dizem que o que não vira palavra vira pesadelo. Eu durmo pouco ultimamente.)
+@vai c11_inicio

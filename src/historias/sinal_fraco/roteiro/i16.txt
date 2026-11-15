@@ -1,0 +1,345 @@
+# Parte 4, ramo do interior, capítulo 16
+
+=== i16_inicio
+@cap 16 "Sinal forte"
+@fundo praca_interior
+@musica interior
+> Um mês depois da cooperativa. A colheita saiu, pesada na balança velha e depois na nova. A cidade voltou ao normal, o que em Pedra Lisa quer dizer: a internet cai quando chove e todo mundo sabe da vida de todo mundo.
+> Agora todo mundo sabe da vida dela também.
+@se marca:pacto_doutor -> i16_mandado
+@se marca:aceitou_prefeito e marca:abafou_incidente -> i16_inquerito
+@se marca:aceitou_prefeito e marca:aceitou_cleiton -> i16_inquerito
+@se marca:aceitou_prefeito e marca:aceitou_marlene -> i16_inquerito
+@se marca:aceitou_prefeito e marca:aceitou_robson -> i16_inquerito
+@se marca:aceitou_prefeito e etica<=-5 -> i16_inquerito
+@se marca:caiu_golpe_remoto e marca:caiu_recuperacao -> i16_conta_zerada
+@se marca:caiu_golpe_remoto e marca:levou_calote e grana<=0 -> i16_conta_zerada
+@se saude<=1 -> i16_corpo_cobra
+@vai i16_festa
+
+# ===== o passado com o Doutor =====
+
+=== i16_mandado
+@fundo assistencia_tecnica
+@musica tensao
+> Seis da manhã. Batidas na porta de ferro da assistência, firmes, educadas e insistentes, do jeito que só polícia bate.
+@som porta
+@entra delegada neutra direita
+DELEGADA: Bom dia. Operação Carteira Fria. O Anselmo foi preso ontem, na capital. Ele está falando muito.
+@se marca:colaborou_delegada -> i16_mandado_acordo
+DELEGADA [pensativa]: Ele falou de você. Do serviço de anos atrás e da prefeitura agora. Você mentiu para mim na cooperativa.
+EU [assustada]: Eu tinha medo.
+DELEGADA: Eu sei. Medo faz a gente fazer o pior. Tenho um mandado de busca. Você pode me acompanhar até a delegacia.
+> Pela fresta da porta, ela vê o carro da polícia parado. E, atrás da bancada, a mochila onde está o dinheiro que o Doutor pagou, guardado há anos sem coragem de gastar.
+(A estrada de terra para o Mato Grosso começa a duzentos metros daqui. O Tio Juca deixa a chave da moto pendurada no prego.)
+? O que você faz?
+* Abrir a porta inteira e contar tudo. -> i16_entrega {etica+2}
+* Pegar a mochila e a chave da moto e sumir pela estrada de terra. -> i16_foge {etica-3}
+
+=== i16_mandado_acordo
+DELEGADA: Ele falou de você também. Mas você falou primeiro. Isso conta, e conta muito.
+DELEGADA: O Ministério Público aceitou o acordo. Você vai responder, vai prestar serviço à comunidade, vai devolver o dinheiro. Mas vai responder em liberdade.
+EU [triste]: E depois?
+DELEGADA [feliz]: Depois você continua a sua vida. Sabendo que dormir tranquila vale mais que qualquer envelope.
+> Ela vai embora sem algemas e sem drama. Fica na bancada um papel com a data da audiência.
+? Na noite seguinte, sozinha, você...
+* Assina o acordo e encara as consequências. -> i16_acordo {etica+1 saude+2}
+* Arruma a mochila. Audiência é risco demais. -> i16_foge {etica-3}
+
+=== i16_acordo
+@sai todos
+> Ela devolve cada centavo do Doutor. Passa seis meses dando aula de segurança digital no CRAS, aos sábados, como pena alternativa.
+> As senhoras do CRAS não sabem por que ela está ali. Só sabem que agora ninguém da turma cai em golpe do falso parente.
+(O passado não sumiu. Ele foi registrado, julgado e pago. É diferente de sumir, e é melhor.)
+@vai i16_festa
+
+=== i16_entrega
+EU [triste]: Pode entrar, delegada. Eu vou contar tudo. Do começo.
+DELEGADA: Do começo é o melhor lugar.
+@vai ifim_presa
+
+=== i16_foge
+@sai todos
+@musica nenhuma
+> O motor da moto do Tio Juca pega na segunda tentativa.
+@vai ifim_foragida
+
+=== i16_inquerito
+@fundo delegacia
+@musica tensao
+@entra delegada neutra direita
+> Intimação. Delegacia regional, quarenta quilômetros de estrada. Ela vai de ônibus, com a roupa de ir ao fórum que a mãe passou a ferro.
+DELEGADA: A Vereadora Lúcia teve o celular invadido em ano de eleição. Os registros da prefeitura que deviam ter sumido não sumiram, porque alguém protocolou cópia.
+DELEGADA [pensativa]: E o seu nome aparece em mais lugar do que devia. Não é a primeira vez que você faz serviço que não podia fazer.
+DELEGADA: O consultor do prefeito, o tal Anselmo, já está conversando com a gente. E ele não tem lealdade com ninguém.
+(Cada "só dessa vez" ficou guardado em algum lugar. Num print, num log, numa memória de alguém que agora tem motivo para lembrar.)
+? O que você faz?
+* Assumir tudo e colaborar. -> i16_inquerito_assume {etica+2}
+* Negar tudo. Eles não têm prova. -> i16_inquerito_nega {etica-1}
+
+=== i16_inquerito_assume
+EU [triste]: Fui eu. Eu aceitei. Eu sabia que era errado e aceitei mesmo assim.
+DELEGADA: Isso não apaga o que aconteceu. Mas muda o que acontece daqui para frente.
+@vai ifim_presa
+
+=== i16_inquerito_nega
+EU [brava]: Eu não fiz nada. Eu só consertei uma impressora.
+DELEGADA: Uma impressora. Então vamos ver o que a impressora tem a dizer.
+> Ela empurra sobre a mesa uma pasta. Dentro, impressões de registros, horários e comprovantes de dez mil reais em espécie depositados em três agências diferentes.
+(Logs não esquecem. Eu ensinei isso para a cidade inteira e esqueci para mim.)
+@vai ifim_presa
+
+# ===== golpe atrás de golpe =====
+
+=== i16_conta_zerada
+@fundo assistencia_tecnica
+@musica triste
+> A conta está zerada. O cofrinho da vó também. O aluguel da bancada venceu duas vezes.
+> Na caixa de mensagem, um "investidor anjo" oferece capital para a assistência, mediante "taxa de análise de crédito". Ela nem abre.
+(Eu sei reconhecer golpe. Eu caí mesmo assim, duas vezes, cansada, às três da manhã. Saber não é armadura.)
+> Um homem da cidade vizinha quer comprar a bancada inteira, com ferro de solda, lupa e estoque de tela, por um terço do valor.
+@entra bia pensativa direita
+BIA: Amiga, você não precisa vender tudo. Você precisa de ajuda. É diferente.
+? O que você faz?
+* Vender a bancada e desistir de tudo isso. -> ifim_golpeada {saude-1}
+* Aceitar ajuda da Bia e recomeçar pequeno, sem vergonha. -> i16_recomeco {saude+2 rel_bia+1} [se rel_bia>=2]
+* Pedir ao Tio Juca para dividir a oficina de novo, sem aluguel. -> i16_recomeco {saude+1 rel_tio+1} [se rel_tio>=2]
+
+=== i16_recomeco
+BIA [feliz]: A gente divide a garagem. Eu corto cabelo de um lado, você conserta celular do outro. Cliente sai bonita e sem vírus.
+EU: E se eu cair de novo?
+BIA: Aí você me conta. Golpe vive de segredo. Você me ensinou isso.
+> Ela fecha o perfil do "investidor anjo", grava mais um vídeo contando como foi e volta para a bancada no dia seguinte.
+@sai bia
+@vai i16_festa
+
+# ===== o corpo cobra =====
+
+=== i16_corpo_cobra
+@fundo assistencia_tecnica
+@musica triste
+> Terça-feira, dez da manhã. Ela está trocando o conector de um celular quando as mãos começam a tremer.
+> O coração dispara. O ar não entra. A lupa cai no chão e quebra.
+(Não é ataque cardíaco. Eu sei o que é. Eu li sobre isso numa madrugada em que eu também não estava dormindo.)
+@entra vo assustada esquerda
+VO: Minha filha! Senta. Respira comigo. Devagar, igual eu ensinei na novena.
+> Ela respira com a vó. Quatro tempos para entrar, quatro para sair. Leva vinte minutos.
+VO [triste]: Você está cuidando de todo mundo dessa cidade. Quem está cuidando de você?
+? O que você faz?
+* Parar de verdade. Fechar a assistência por tempo indeterminado. -> ifim_burnout
+* Ir ao posto de saúde, começar a se tratar e voltar devagar. -> i16_trata {saude+3 rel_vo+1}
+
+=== i16_trata
+> Na Unidade Básica de Saúde, a médica de família escuta sem pressa. Encaminha para a psicóloga do CAPS, que atende às quintas.
+> Ela fecha a assistência às seis da tarde, em ponto. Desliga as notificações depois das nove. Volta a sovar pão de vez em quando.
+(Manutenção preventiva. Eu recomendo isso para servidor de prefeitura e nunca tinha recomendado para mim.)
+@anota p4_saude_mental
+@sai vo
+@vai i16_festa
+
+# ===== a festa e as propostas =====
+
+=== i16_festa
+@sai todos
+@fundo festa_junina
+@musica festa
+> Festa da Colheita de Pedra Lisa. Bandeirinha, quentão, forró ao vivo da banda Os Cabras do Sertão e a fila do pastel dando volta no coreto.
+@entra prefeito feliz direita
+PREFEITO: E queria agradecer, neste ano tão difícil, à nossa gestão, que salvou a colheita do ataque dos hackers internacionais!
+> Alguém no fundo grita o nome dela. Depois outro. Depois a fila do pastel inteira.
+@se marca:denunciou_prefeito -> i16_festa_prefeito_suando
+PREFEITO [envergonhada]: E à nossa especialista, claro. Que eu sempre apoiei. Desde pequena.
+(Desde pequena. Ele me conheceu no mês passado, por causa de uma impressora.)
+@vai i16_festa_aplauso
+
+=== i16_festa_prefeito_suando
+PREFEITO [assustada]: E à especialista, que é amiga da delegada, que é minha amiga também, porque eu sou amigo de todo mundo e não tenho nada a esconder.
+> Ele sai do palco antes do fim do discurso. Dizem que anda pagando advogado com o próprio dinheiro, o que em Pedra Lisa é inédito.
+@vai i16_festa_aplauso
+
+=== i16_festa_aplauso
+@sai prefeito
+> Ela sobe no palco porque a Dona Cida empurra. Não sabe o que dizer. Diz a única coisa que vem.
+EU [envergonhada]: Gente, nunca passem o código de seis dígitos para ninguém. Obrigada. Viva o feijão.
+> A cidade aplaude como se fosse gol.
+@se marca:pagou_resgate -> i16_aplauso_resgate
+@vai i16_kelly
+
+=== i16_aplauso_resgate
+(Eles aplaudem, mas eu sei. A cooperativa pagou, e o dinheiro do feijão foi para criminoso. Nem toda vitória é limpa.)
+@muda reputacao-1
+@vai i16_kelly
+
+=== i16_kelly
+@sai todos
+@fundo videochamada
+@musica cidade
+> No dia seguinte, uma videochamada. Uma empresa grande da capital, de consultoria em segurança, viu a história da cooperativa num portal de notícias.
+@entra kelly feliz centro
+KELLY: Oi, {nome}! Kelly, People and Culture. Seu case da cooperativa é muito inspirador. Muito resiliência, muito protagonismo.
+KELLY: Temos uma vaga de analista. Salário quatro vezes o que você tira hoje, plano de saúde, vale-refeição e um ambiente jovem com pebolim.
+EU [surpresa]: É remoto?
+KELLY: Presencial. Presença é nosso DNA. Você começaria em trinta dias, na capital.
+? O que você responde?
+* "Vou pensar com carinho." -> i16_kelly_pensa
+* "Obrigada, mas meu lugar é aqui." -> i16_kelly_recusa {rel_vo+1}
+** "Topo se eu puder trabalhar de cima da caixa d'água." -> i16_kelly_caixa
+
+=== i16_kelly_pensa
+KELLY [feliz]: Maravilha! Te mando o e-mail com a proposta. Sem pressa, mas com urgência.
+(Sem pressa, mas com urgência. A língua do RH é um idioma à parte.)
+> Pela primeira vez, ela confere: o e-mail vem do domínio oficial da empresa, a vaga está no site, a recrutadora tem nome e perfil verificável. É real.
+@marca proposta_capital
+@vai i16_tio_empresa
+
+=== i16_kelly_recusa
+KELLY [surpresa]: Uau. Admiro muito o seu senso de propósito. Vou deixar a porta aberta.
+> Ela fecha o notebook e fica olhando a parede por um minuto.
+(Quatro vezes o salário. Recusar dói. Mas fico pensando se recusei rápido demais.)
+@marca proposta_capital
+@vai i16_tio_empresa
+
+=== i16_kelly_caixa
+KELLY [pensativa]: Caixa d'água? É algum coworking?
+EU: É uma caixa d'água mesmo. Lá pega duas barras.
+KELLY: Que interior raiz. Amei. Mas é presencial.
+> A proposta chega por e-mail mesmo assim. A Kelly diz que achou ela "muito autêntica".
+@marca proposta_capital
+@vai i16_tio_empresa
+
+=== i16_tio_empresa
+@sai todos
+@fundo assistencia_tecnica
+@musica interior
+@entra tio feliz esquerda
+@entra bia feliz direita
+TIO: Sobrinha, reunião de diretoria. Eu e a Bia.
+BIA: A cooperativa quer contratar você todo mês, para cuidar dos computadores e do backup. A Cooperativa de Leite da cidade vizinha também ligou. E duas prefeituras.
+TIO: Isso não é mais assistência. Isso é empresa. Empresa de verdade, com contrato e nota.
+BIA: E eu faço o Instagram. Já tenho até o nome: "{nome} Segurança, com S".
+EU [feliz]: Com S.
+TIO: Com S. Eu aprendi.
+? O que você sente?
+* Medo. E se eu não der conta? -> i16_empresa_medo {saude-1}
+* Vontade. Pedra Lisa merece uma empresa de segurança. -> i16_empresa_vontade {reputacao+1}
+
+=== i16_empresa_medo
+BIA [pensativa]: Medo é normal. Eu tive medo quando abri o salão. Ainda tenho, toda segunda.
+TIO: E se não der conta, contrata alguém. Empresa é isso: não precisa saber fazer tudo sozinha.
+(Não precisa saber fazer tudo sozinha. Que frase. Alguém devia bordar isso num pano de prato.)
+@vai i16_leni
+
+=== i16_empresa_vontade
+TIO [feliz]: Essa é a minha sobrinha.
+BIA: A gente faz um evento de inauguração. Com bolo. E palestra de golpe pras vós.
+EU: E a Vó Nita como garota-propaganda.
+BIA: Ela vai cobrar cachê.
+@vai i16_leni
+
+=== i16_leni
+@sai todos
+@fundo escola_laboratorio
+@musica alegre
+> Na mesma semana, a Professora Leni chama ela na Escola Estadual. Na porta do laboratório de informática, o cadeado. O mesmo cadeado.
+@entra leni feliz direita
+LENI: Lembra dele?
+EU [surpresa]: Como eu ia esquecer? Eu passei a infância olhando para esse cadeado.
+LENI: A escola ganhou um curso técnico de informática para o ano que vem. Com vinte computadores novos. E nenhuma professora.
+> Ela estende a mão. Na palma, uma chave pequena e enferrujada.
+LENI: Eu estou me aposentando. Queria que a chave ficasse com você.
+@se marca:abafou_incidente -> i16_leni_magoa
+? O que você diz?
+* "Professora, eu não sei dar aula." -> i16_leni_duvida
+* Pegar a chave e abrir o cadeado ali mesmo. -> i16_leni_abre {rel_leni+1}
+
+=== i16_leni_magoa
+LENI [pensativa]: Eu ainda estou chateada com a história da cooperativa. Você ia esconder o vazamento.
+EU [envergonhada]: Eu sei. A senhora tinha razão.
+LENI: Uma professora precisa ensinar o certo mesmo quando o gerente pede o contrário. Pense nisso antes de aceitar.
+? O que você diz?
+* "Professora, eu errei. E aprendi com o erro." -> i16_leni_abre {rel_leni+1 etica+1}
+* "Talvez eu não seja a pessoa certa para isso." -> i16_leni_duvida
+
+=== i16_leni_duvida
+LENI: Você ensinou a sua avó a reconhecer golpe. Ensinou a Bia a proteger o WhatsApp. Ensinou um prefeito a fazer senha, mesmo que ele tenha colado no monitor.
+EU: Ninguém escutou o prefeito.
+LENI [feliz]: Ninguém escuta prefeito. Mas menina de doze anos escuta. Elas escutam tudo.
+@vai i16_valdir_check
+
+=== i16_leni_abre
+> O cadeado resiste, range e abre. Lá dentro, o cheiro de poeira e de plástico novo.
+LENI [feliz]: Pronto. Agora ele nunca mais fecha.
+(Eu tinha nove anos quando vi esse cadeado pela primeira vez. Ele não era de ferro. Era de "isso não é para você".)
+@vai i16_valdir_check
+
+=== i16_valdir_check
+@se marca:gosta_padaria -> i16_valdir
+@vai i16_vo
+
+=== i16_valdir
+@sai todos
+@fundo casa_cozinha
+@musica interior
+@entra valdir neutra direita
+> Três da manhã. O forno acende. Ela já sabe sovar de olho fechado.
+VALDIR: Tenho uma coisa para falar, e vou falar rápido, porque a massa não espera.
+VALDIR: Eu estou com setenta e quatro anos. Meus filhos estão em Goiânia e não querem saber de padaria. Eu queria que ela ficasse com quem gosta dela.
+EU [surpresa]: Comigo?
+VALDIR [feliz]: Com quem chega às três e sova sem ninguém pedir. Você tem mão boa. E sabe cuidar do site, que eu nunca soube.
+(Uma padaria. Eu passei a vida achando que ia ser hacker. Mas o lugar onde eu fico em paz é aqui, com farinha até o cotovelo.)
+@vai i16_vo
+
+=== i16_vo
+@sai todos
+@fundo casa_cozinha
+@musica triste
+@entra vo neutra esquerda
+> Noite. A cozinha de sempre. A Vó Nita debulha feijão numa bacia, que é o que ela faz quando quer conversar sem parecer que quer conversar.
+VO: Estão te oferecendo o mundo, não é?
+EU: Um pedaço de cada lado, vó. A capital, uma empresa, uma sala de aula.
+@se marca:gosta_padaria -> i16_vo_padaria
+@vai i16_vo_conselho
+
+=== i16_vo_padaria
+EU: E uma padaria.
+VO [surpresa]: Padaria? Desde quando você gosta de padaria?
+EU: Desde que eu descobri que lá eu durmo bem.
+VO [feliz]: Ah. Então isso não é pouca coisa, não.
+@vai i16_vo_conselho
+
+=== i16_vo_conselho
+VO [pensativa]: Quando eu benzo alguém, eu não pergunto o que a pessoa quer ouvir. Eu pergunto onde dói.
+VO: Então eu te pergunto: onde dói, minha neta?
+? Onde dói?
+* "Dói ficar e ver todo mundo indo embora." -> i16_dor_ficar {saude+1}
+* "Dói pensar em ir e deixar todo mundo aqui." -> i16_dor_ir {rel_vo+1}
+* "Dói o cansaço. Eu estou muito cansada, vó." -> i16_dor_cansaco {saude+1}
+
+=== i16_dor_ficar
+VO: Quem fica também vai a algum lugar. Só que vai mais devagar, e leva os outros junto.
+@vai i16_decisao
+
+=== i16_dor_ir
+VO: Ir não é abandonar. Seu avô foi trabalhar em São Paulo dois anos e voltou com uma geladeira e um sotaque.
+EU: E a senhora?
+VO [feliz]: Eu fiquei com a geladeira. O sotaque ele perdeu na primeira semana.
+@vai i16_decisao
+
+=== i16_dor_cansaco
+VO [triste]: Eu sei, minha filha. Eu vejo. Você tem olheira desde a cooperativa.
+VO: Cansaço não é preguiça. Cansaço é aviso. Escuta ele antes que ele grite.
+@vai i16_decisao
+
+=== i16_decisao
+@sai todos
+@fundo praca_interior
+@musica nenhuma
+> Ela sobe na caixa d'água, como fazia quando era menina, para pensar onde o sinal pega.
+> Lá de cima dá para ver tudo: a cooperativa, a escola, a padaria, a rodoviária, a oficina do tio com a placa torta.
+(Duas barras de sinal. Pedra Lisa inteira lá embaixo. E uma decisão que ninguém pode tomar por mim.)
+? O que você vai fazer da vida, {nome}?
+* Abrir a empresa de segurança e atender a região inteira. -> ifim_empresa [se reputacao>=2]
+* Aceitar a chave do laboratório e formar as meninas de Pedra Lisa. -> ifim_professora [se rel_leni>=1]
+* Ficar com a padaria do Seu Valdir. -> ifim_padaria [se marca:gosta_padaria]
+* Parar tudo por um tempo e cuidar de mim. -> ifim_burnout [se saude<=3]
+* Aceitar a vaga da capital e pegar o ônibus. -> ifim_onibus

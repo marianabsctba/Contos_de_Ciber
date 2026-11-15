@@ -1,0 +1,183 @@
+import type { Desafio, Nota } from '../../../motor/tipos';
+
+export const desafios: Desafio[] = [
+  {
+    id: 'p4_falso_parente',
+    tipo: 'achar',
+    titulo: 'O neto que trocou de número',
+    enunciado: 'A Vó Nita recebeu esta mensagem de um número desconhecido, com a foto do primo Diego. Toque nos trechos que mostram que é golpe.',
+    trechos: [
+      { texto: 'Oi vó, tudo bem? Sou eu.', suspeito: true, porque: 'Não diz o nome. O golpista espera que a vítima complete: "é você, Diego?". A partir daí, a própria vó entregou quem ele deve fingir ser.' },
+      { texto: 'Troquei de número, salva esse e apaga o antigo.', suspeito: true, porque: 'Pedir para apagar o número antigo serve para você não ligar no número verdadeiro e descobrir a farsa.' },
+      { texto: 'Que saudade do seu bolo de fubá!' },
+      { texto: 'Tô sem acesso ao app do banco no celular novo', suspeito: true, porque: 'É a desculpa clássica para justificar por que ele mesmo não paga a conta.' },
+      { texto: 'e preciso pagar um boleto hoje até as 16h.', suspeito: true, porque: 'Prazo apertado é para você agir antes de pensar e antes de conferir com alguém.' },
+      { texto: 'Faz um Pix de R$ 1.850 pra chave do meu amigo Ricardo?', suspeito: true, porque: 'O dinheiro vai para a conta de um terceiro, não do parente. Parente de verdade passa a chave dele.' },
+      { texto: 'Amanhã te devolvo, prometo.' },
+      { texto: 'Não me liga que tô em reunião, fala só por aqui.', suspeito: true, porque: 'Impedir a ligação de voz é o coração do golpe: uma chamada de dez segundos desmontaria tudo.' },
+    ],
+    minimo: 4,
+    explicacao:
+      'O golpe do falso parente usa a foto pública de alguém da família, um número novo e um pedido urgente de Pix para a conta de outra pessoa. A defesa é simples e funciona sempre: ligue para o número antigo ou para outro parente antes de pagar qualquer coisa, e combine com a família uma pergunta ou palavra que só vocês sabem.',
+  },
+  {
+    id: 'p4_vaga_dolar',
+    tipo: 'achar',
+    titulo: 'Dólar fácil às duas da manhã',
+    enunciado: 'Esta mensagem chegou no seu WhatsApp. Toque nos trechos que indicam golpe de "tarefa remunerada".',
+    trechos: [
+      { texto: 'Olá! Analisamos seu perfil e você foi selecionada', suspeito: true, porque: 'Você não se candidatou a nada. Seleção sem candidatura é isca.' },
+      { texto: 'para uma vaga remota na Global Remote Talent LLC.' },
+      { texto: 'O trabalho é simples: curtir vídeos e avaliar hotéis pelo celular.', suspeito: true, porque: 'Tarefa sem valor nenhum para uma empresa, paga como se fosse trabalho qualificado. Ninguém paga para você dar like.' },
+      { texto: 'Ganhe de US$ 40 a US$ 300 por dia, com 1 hora de dedicação.', suspeito: true, porque: 'Promessa de muito dinheiro por pouco esforço, sem nenhuma exigência de qualificação.' },
+      { texto: 'Sem entrevista e sem contrato.', suspeito: true, porque: 'Trabalho real tem contrato, nem que seja de prestação de serviço. Sem contrato, você não tem a quem cobrar.' },
+      { texto: 'Pagamento diário via Pix para começar já.', suspeito: true, porque: 'Empresa estrangeira pagando por Pix de pessoa física no Brasil? Os primeiros Pix pequenos existem só para ganhar sua confiança.' },
+      { texto: 'Benefícios: horário flexível.' },
+      { texto: 'Fale com a mentora Ana no Telegram: @ana_rh_global', suspeito: true, porque: 'Contratação por Telegram com "mentora" é marca registrada do golpe da tarefa. Empresa de verdade tem domínio próprio e processo formal.' },
+      { texto: 'Vagas limitadas! Responda em 30 minutos.', suspeito: true, porque: 'Urgência artificial para você não pesquisar.' },
+    ],
+    minimo: 5,
+    explicacao:
+      'No golpe da tarefa, as primeiras "missões" pagam centavos de verdade. Depois vem a "tarefa combinada" ou o "nível VIP", em que você precisa depositar para liberar o saldo, que nunca é liberado. Regra de ouro: emprego paga você, nunca o contrário. Pesquise o nome da empresa, o domínio do e-mail, reclamações e se existe processo seletivo formal.',
+  },
+  {
+    id: 'p4_senha_prefeito',
+    tipo: 'senha',
+    titulo: 'Adeus, Pitoco2024',
+    enunciado: 'A senha do e-mail do prefeito é o nome do cachorro com o ano. Crie uma frase-senha que ele consiga lembrar e que ninguém adivinhe olhando o Instagram do cachorro.',
+    minimoBits: 60,
+    explicacao:
+      'Uma boa senha é longa e imprevisível. Quatro ou cinco palavras sem relação entre si ("jabuticaba trator neblina sanfona") valem mais que "P1t0c0@2024", porque o tamanho pesa mais que o símbolo. Nome de pet, data e time são as primeiras coisas que um atacante testa. O ideal é um gerenciador de senhas e, por cima, verificação em duas etapas.',
+  },
+  {
+    id: 'p4_resposta_incidente',
+    tipo: 'ordenar',
+    titulo: 'A cooperativa parou',
+    enunciado: 'A tela de resgate apareceu em todos os computadores da cooperativa. Coloque as etapas da resposta na ordem certa.',
+    passos: [
+      'Conter: tirar da rede as máquinas afetadas, sem desligar, para o estrago não se espalhar',
+      'Investigar: descobrir quais sistemas e dados foram atingidos e por onde entraram, preservando as evidências',
+      'Erradicar: remover os acessos do invasor, trocar as senhas e fechar a porta de entrada',
+      'Recuperar: restaurar a partir de backup limpo e testado, e vigiar se o invasor volta',
+      'Aprender: reunião de lições aprendidas e plano para não repetir',
+    ],
+    explicacao:
+      'Primeiro se contém, para o ransomware parar de se espalhar; desligar tudo pode apagar evidências que estão só na memória. Depois se entende o tamanho do problema, se expulsa o invasor e só então se restaura, senão você restaura em cima de uma porta ainda aberta. Em paralelo, desde o começo: anotar tudo com horário, registrar boletim de ocorrência e comunicar os afetados e a ANPD quando houver risco aos titulares.',
+  },
+  {
+    id: 'p4_backup_321',
+    tipo: 'quiz',
+    titulo: 'Qual backup sobreviveu?',
+    enunciado: 'A cooperativa tem quatro "backups". O ransomware criptografou tudo que estava conectado. Qual deles ainda serve?',
+    opcoes: [
+      'O HD externo que ficava sempre plugado no servidor',
+      'A pasta BACKUP dentro do próprio servidor',
+      'A cópia semanal num HD que a Dona Cida leva para casa e só conecta na hora de copiar',
+      'A pasta do gerente que sincroniza sozinha com a nuvem',
+    ],
+    certa: 2,
+    explicacao:
+      'Backup que fica conectado é criptografado junto. Sincronização não é backup: ela copia o arquivo estragado por cima do bom. A regra 3-2-1 pede 3 cópias, em 2 tipos de mídia, com 1 fora do local, e hoje se recomenda que pelo menos uma seja offline ou imutável. E backup que nunca foi testado é só esperança.',
+  },
+];
+
+export const notas: Nota[] = [
+  {
+    id: 'p4_falso_parente',
+    titulo: 'Golpe do falso parente',
+    texto: 'O golpista pega a foto de alguém nas redes, cria um número novo e escreve para parentes dizendo que trocou de celular. Logo vem o pedido urgente de Pix, quase sempre para a conta de um "amigo".',
+    exemplo: 'Em Pedra Lisa, a cunhada da Dona Cida pagou R$ 2 mil para o "sobrinho" que estava sem app do banco. O sobrinho verdadeiro estava dormindo.',
+    defesa: 'Ligue para o número antigo ou para outro parente antes de pagar. Combine com a família uma palavra-senha. Deixe a foto de perfil do WhatsApp visível só para contatos.',
+  },
+  {
+    id: 'p4_whatsapp_2fa',
+    titulo: 'Código de seis dígitos e WhatsApp clonado',
+    texto: 'O código que chega por SMS serve para ativar o seu WhatsApp em outro aparelho. Quem pede esse código quer a sua conta. A confirmação em duas etapas cria um PIN extra que protege mesmo se o código vazar.',
+    exemplo: 'Uma "cliente" pediu para a Bia repassar o código para "confirmar o agendamento". Em dez minutos, o WhatsApp do salão pedia Pix para todas as clientes.',
+    defesa: 'Nunca repasse código de verificação para ninguém. Ative em Configurações, Conta, Confirmação em duas etapas, e cadastre um e-mail de recuperação.',
+  },
+  {
+    id: 'p4_med_pix',
+    titulo: 'Caí no golpe do Pix: e agora?',
+    texto: 'O Mecanismo Especial de Devolução (MED) permite pedir ao banco que bloqueie e devolva um Pix feito por golpe. A devolução depende de ainda haver dinheiro na conta do golpista, por isso a pressa importa.',
+    exemplo: 'A Vó Nita mandou R$ 150 e percebeu dez minutos depois. Pelo app do banco, a contestação foi aberta na mesma hora.',
+    defesa: 'Conteste o Pix no app ou na central do banco imediatamente (o prazo é de até 80 dias, mas o saldo some rápido), registre boletim de ocorrência e guarde prints da conversa.',
+  },
+  {
+    id: 'p4_golpe_tarefa',
+    titulo: 'Golpe do emprego remoto e da tarefa',
+    texto: 'A "vaga" paga para curtir vídeos ou avaliar produtos. As primeiras tarefas pagam pouco e de verdade, para criar confiança. Depois vem a tarefa que exige depósito para liberar o saldo, e o saldo nunca é liberado.',
+    exemplo: 'Uma "empresa americana" no Telegram pagou R$ 25 no primeiro dia e pediu R$ 500 no terceiro para "desbloquear a comissão de US$ 900".',
+    defesa: 'Emprego nunca cobra para você trabalhar. Pesquise a empresa, o domínio do e-mail e reclamações. Desconfie de contratação sem entrevista, sem contrato e por aplicativo de mensagem.',
+  },
+  {
+    id: 'p4_golpe_recuperacao',
+    titulo: 'Golpe da recuperação',
+    texto: 'Depois do primeiro golpe, aparece alguém prometendo recuperar o dinheiro por uma taxa adiantada: "advogado", "hacker do bem", "agente da Interpol". É o segundo golpe na mesma vítima.',
+    exemplo: 'Dois dias depois de perder dinheiro na vaga falsa, um "escritório de recuperação de ativos" pediu 20% adiantados para "rastrear o Pix".',
+    defesa: 'Banco, polícia e Procon não cobram para ajudar. Ninguém sério promete recuperação garantida. Use o MED, registre boletim e procure a delegacia de crimes cibernéticos.',
+  },
+  {
+    id: 'p4_rede_aberta',
+    titulo: 'Wi-Fi aberto na rede interna',
+    texto: 'Uma rede sem senha, ligada na mesma rede dos computadores internos, deixa qualquer pessoa na praça a um passo dos sistemas do órgão. O problema não é só a falta de senha: é a falta de separação.',
+    exemplo: 'O Wi-Fi PREFEITURA_LIVRE pegava até no banco da praça e estava na mesma rede do computador que emite o IPTU.',
+    defesa: 'Rede de visitantes separada da rede interna, com isolamento entre aparelhos. Rede interna com senha forte e, de preferência, autenticação por usuário.',
+  },
+  {
+    id: 'p4_menor_privilegio',
+    titulo: 'Princípio do menor privilégio',
+    texto: 'Cada pessoa deve ter só o acesso de que precisa para fazer o seu trabalho, e nada além disso. Se uma conta for invadida, o estrago fica limitado ao que ela podia fazer.',
+    exemplo: 'Na prefeitura, o estagiário, o motorista e o prefeito entravam no sistema com o mesmo usuário "admin". Ninguém sabia quem tinha apagado o cadastro da merenda.',
+    defesa: 'Um usuário por pessoa, permissões por função, revisão periódica de acessos e remoção imediata de quem sai.',
+  },
+  {
+    id: 'p4_2fa',
+    titulo: 'Verificação em duas etapas',
+    texto: 'Além da senha, o login pede uma segunda prova: um código de aplicativo autenticador, uma chave física ou uma notificação no celular. Senha vazada sozinha não abre a porta.',
+    exemplo: 'O e-mail do gabinete foi acessado de outro estado com a senha "Pitoco2024". Com duas etapas, o invasor teria parado no código.',
+    defesa: 'Ative a verificação em duas etapas no e-mail, no WhatsApp e no banco. Prefira aplicativo autenticador ou chave física ao SMS.',
+  },
+  {
+    id: 'p4_lgpd_publico',
+    titulo: 'LGPD vale para a prefeitura também',
+    texto: 'O poder público trata dados pessoais para cumprir suas funções, mas precisa seguir a LGPD: finalidade, necessidade, segurança e transparência. A ANPD pode aplicar sanções a órgãos públicos, como advertência, publicização da infração e bloqueio ou eliminação dos dados, embora não aplique multa a eles.',
+    exemplo: 'A planilha com CPF, endereço e renda de duas mil famílias do programa social circulava por e-mail pessoal e por grupo de WhatsApp de servidores.',
+    defesa: 'Dados de cidadãos só em sistemas oficiais, com acesso restrito. Nada de e-mail pessoal ou grupo de mensagem. Nomear um encarregado de dados e registrar quem acessa o quê.',
+  },
+  {
+    id: 'p4_ransomware',
+    titulo: 'Ransomware',
+    texto: 'Programa malicioso que criptografa os arquivos e pede resgate para devolvê-los. Muitos grupos também copiam os dados antes e ameaçam publicar. Costuma entrar por senha fraca em acesso remoto, e-mail com anexo ou sistema desatualizado.',
+    exemplo: 'Na véspera da colheita, a balança, a folha de pagamento e as notas fiscais da cooperativa amanheceram com a extensão .lock e um bilhete pedindo bitcoin.',
+    defesa: 'Backup offline e testado, atualização em dia, verificação em duas etapas no acesso remoto, menor privilégio e um plano de resposta escrito antes de precisar.',
+  },
+  {
+    id: 'p4_resposta_incidente',
+    titulo: 'Resposta a incidente',
+    texto: 'As etapas clássicas são preparar, detectar e analisar, conter, erradicar, recuperar e aprender. Pagar o resgate não garante a chave, financia o crime e não apaga a cópia que os criminosos levaram.',
+    exemplo: 'A cooperativa tirou as máquinas da rede, chamou a polícia, descobriu que entraram por um acesso remoto com senha "coop123" e só depois restaurou o backup.',
+    defesa: 'Tenha um plano escrito com contatos, responsáveis e passos. Anote tudo com horário. Não desligue nem formate nada antes de entender o que aconteceu.',
+  },
+  {
+    id: 'p4_backup_321',
+    titulo: 'Backup 3-2-1',
+    texto: 'Três cópias dos dados, em dois tipos de mídia diferentes, com uma fora do local. Pelo menos uma deve ficar desconectada ou ser imutável, porque o ransomware criptografa tudo que alcança.',
+    exemplo: 'O HD sempre plugado no servidor foi criptografado junto. O HD que a Dona Cida levava para casa toda sexta salvou a safra.',
+    defesa: 'Automatize o backup, mantenha uma cópia offline e faça um teste de restauração de verdade de tempos em tempos.',
+  },
+  {
+    id: 'p4_comunicar_incidente',
+    titulo: 'Comunicar o incidente',
+    texto: 'Esconder um vazamento piora tudo. Pela regra da ANPD, quando o incidente pode causar risco ou dano relevante aos titulares, o controlador deve comunicar a ANPD e os afetados em até três dias úteis depois de saber dele.',
+    exemplo: 'A cooperativa mandou áudio nos grupos dos cooperados explicando o que aconteceu, que dados podiam ter vazado e o que cada um devia fazer, antes que o boato chegasse primeiro.',
+    defesa: 'Comunique com clareza: o que aconteceu, quais dados, o que já foi feito e o que a pessoa deve fazer. Um canal só, uma voz só, sem achismo.',
+  },
+  {
+    id: 'p4_saude_mental',
+    titulo: 'Quem cuida de quem cuida',
+    texto: 'Plantões, madrugadas e a sensação de que tudo depende de você levam ao esgotamento. A OMS reconhece o burnout como fenômeno ligado ao trabalho. Descansar não é fraqueza: é manutenção preventiva.',
+    exemplo: 'Depois de quatro noites sem dormir salvando a cooperativa, ela esqueceu o próprio PIN do celular e chorou no meio da padaria.',
+    defesa: 'Divida o plantão, durma, peça ajuda. No SUS, a porta de entrada é a Unidade Básica de Saúde, e o CAPS atende casos mais graves. O CVV atende 24 horas pelo 188.',
+  },
+];

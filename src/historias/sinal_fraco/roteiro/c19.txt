@@ -1,0 +1,268 @@
+# Parte 5, capital. Capítulo 19: ransomware no hospital cliente, resposta a incidente, backup, comunicação.
+
+=== c19_inicio
+@cap 19 "Código azul"
+@fundo soc_sala
+@musica tensao
+> Seis meses de SOC. Você já sabe o nome de todos os alertas e o humor de todas as máquinas de café.
+> Madrugada de domingo, 2h47.
+@som alarme
+> A tela do cliente Hospital Santa Luzia fica vermelha inteira. Não é um alerta. São trezentos, ao mesmo tempo.
+@entra rafa assustada direita
+RAFA: Arquivos sendo renomeados em massa. Servidor de prontuário, servidor de exames, estações da emergência. Tudo com a mesma extensão estranha.
+@som mensagem
+> Na tela de uma estação da recepção aparece um arquivo de texto aberto sozinho: "Seus arquivos foram criptografados. Pague em 72 horas ou publicaremos os dados dos seus pacientes."
+EU [assustada]: Ransomware. Num hospital. Num domingo.
+RAFA: A UTI usa esse sistema pra ver prescrição!
+(Respira. Isso não é prova. É gente na maca.)
+@vai c19_primeira_decisao
+
+=== c19_primeira_decisao
+RAFA: A Iracema tá a quarenta minutos daqui. O que a gente faz agora?
+? Qual é a sua primeira ordem?
+* Pedir para isolar da rede as máquinas afetadas, sem desligar -> c19_isolou {tecnica+1 reputacao+1 marca:c19_isolou}
+* Mandar a TI do hospital desligar tudo da tomada, já -> c19_desligou {marca:c19_desligou}
+* Esperar a Iracema chegar pra não errar sozinha -> c19_esperou {reputacao-1 marca:c19_demorou}
+** Ligar no número do resgate e pechinchar igual na feira de Pedra Lisa -> c19_pechincha {saude-1}
+
+=== c19_isolou
+EU: Isola da rede. Tira o cabo, desliga o Wi-Fi, bloqueia no switch. Mas não desliga as máquinas.
+RAFA: Por que não desligar?
+EU: Porque o que está na memória some quando desliga. E a gente vai precisar saber por onde eles entraram.
+@sai rafa
+@entra iracema neutra centro
+IRACEMA: Tô no viva-voz, no carro. Ouvi tudo. É isso. Contém primeiro, pergunta depois. Continua.
+@vai c19_hospital
+
+=== c19_desligou
+> A TI do hospital puxa tudo da tomada. A criptografia para. A memória das máquinas some junto, com as pistas de por onde o atacante entrou.
+@sai rafa
+@entra iracema pensativa centro
+IRACEMA: Pararam a espalhação, isso é bom. Mas desligar arrancou o que estava na memória. Agora a investigação vai ser no escuro.
+IRACEMA: Da próxima vez: isola da rede, não puxa da tomada. Contém sem destruir evidência.
+@muda tecnica+1
+@marca c19_isolou
+@vai c19_hospital
+
+=== c19_esperou
+> Você espera. Em quarenta minutos, mais dois servidores ficam vermelhos. O de agendamento e o da farmácia.
+@sai rafa
+@entra iracema brava centro
+IRACEMA: Por que ninguém isolou nada?
+EU [envergonhada]: Eu fiquei com medo de errar sozinha.
+IRACEMA: Em incidente, não fazer nada também é uma decisão. Geralmente a pior. Isola agora, comigo.
+@marca c19_isolou
+@vai c19_hospital
+
+=== c19_pechincha
+EU: Alô? Moço, setenta e duas horas é pouco, a gente tá no domingo. E esse valor, faz no Pix com desconto?
+@sai rafa
+@entra iracema brava centro
+IRACEMA: DESLIGA ESSE TELEFONE.
+IRACEMA: Ninguém fala com criminoso sem plano, sem advogado e sem a diretoria do cliente. Cada palavra sua vira informação pra eles.
+EU [envergonhada]: Na feira funcionava.
+IRACEMA: Na feira o tomate não tem os dados de doze mil pacientes. Isola as máquinas da rede. Agora.
+@marca c19_isolou
+@vai c19_hospital
+
+=== c19_hospital
+@sai todos
+@fundo hospital_corredor
+@musica tensao
+> 4h30. Você e a Iracema chegam ao hospital. Corredor cheio, impressora velha funcionando no limite, enfermeiras escrevendo prescrição à mão.
+@entra thais assustada direita
+THAIS: {nome}? Você trabalha nisso? Graças a Deus.
+EU [surpresa]: Thaís? Você tá de plantão aqui?
+THAIS: Doze horas. A gente voltou pro papel e caneta. Eu tenho um paciente na UTI e não consigo ver o exame de ontem.
+THAIS: Me diz que vai voltar. Me diz que alguém sabe o que tá fazendo.
+@sai thais
+@entra iracema neutra esquerda
+IRACEMA: Agora é método. Ninguém aqui vai sair correndo igual barata. Me diz a ordem do que vem agora.
+@desafio p5_resposta_incidente -> c19_ordem_ok | c19_ordem_erro
+
+=== c19_ordem_ok
+IRACEMA [feliz]: Contém, preserva evidência, erradica, recupera e aprende. Do jeito que tem que ser.
+IRACEMA: Quem pula a erradicação restaura o backup e o atacante volta pela mesma porta na semana seguinte.
+@muda tecnica+1 reputacao+1
+@marca c19_metodo
+@anota p5_resposta_incidente
+@vai c19_backup
+
+=== c19_ordem_erro
+IRACEMA [pensativa]: Não. Se você restaura antes de tirar o invasor, ele criptografa de novo. Se você apaga tudo antes de copiar, perde a prova.
+IRACEMA: Contém, preserva evidência, erradica, recupera e aprende. Repete comigo, que no hospital ninguém tem tempo de ler manual.
+@anota p5_resposta_incidente
+@vai c19_backup
+
+=== c19_backup
+> 7h. A pergunta de um milhão: tem backup?
+> O backup na rede foi criptografado junto, porque estava no mesmo domínio, com a mesma senha de administrador. Clássico.
+IRACEMA [brava]: Backup que o atacante alcança não é backup. É mais um refém.
+@sai iracema
+> Mas o técnico mais antigo do hospital, Seu Jair, sessenta e um anos, abre uma gaveta com chave.
+> "Toda sexta eu faço uma cópia num disco e guardo desligado aqui. Me chamavam de dinossauro."
+(Seu Jair, o dinossauro, acabou de salvar o hospital. Viva os dinossauros.)
+@anota p5_backup_offline
+@entra iracema neutra esquerda
+IRACEMA: Cópia de sexta, fora da rede. Perdemos dois dias de dado, não perdemos o hospital.
+? O que você recomenda fazer com o disco do Seu Jair?
+* Testar a restauração num ambiente isolado antes de ligar na rede limpa -> c19_testa_backup {tecnica+1 reputacao+1}
+* Ligar logo no servidor principal, a UTI está esperando -> c19_pressa_backup {saude-1}
+
+=== c19_testa_backup
+EU: Primeiro a gente testa numa máquina isolada. Se o backup estiver contaminado ou corrompido, a gente descobre lá, e não na UTI.
+IRACEMA: Isso. Backup que nunca foi testado é só uma esperança com etiqueta.
+> O teste mostra que a cópia está limpa. Em quatro horas, o sistema de prescrição volta, numa rede nova e separada.
+@vai c19_resgate
+
+=== c19_pressa_backup
+> Você liga o disco num servidor da rede antiga. Vinte minutos depois, o antivírus apita: um resto do invasor ainda estava lá, esperando.
+@som erro
+IRACEMA [brava]: Para tudo. Desconecta o disco.
+> Por sorte, ele não chegou a ser criptografado. A Iracema monta uma máquina isolada e vocês recomeçam. Foram seis horas a mais.
+IRACEMA: Pressa em incidente é como correr na cozinha com faca. Você chega rápido no pronto-socorro.
+@vai c19_resgate
+
+=== c19_resgate
+@sai todos
+@fundo hospital_corredor
+> Meio-dia. Sala da diretoria. O diretor do hospital, um senhor de gravata torta, não dorme desde ontem.
+> "Eu vou pagar. Eles disseram que liberam tudo. Quanto mais cedo pagar, mais cedo acaba."
+@entra iracema pensativa esquerda
+IRACEMA: A decisão é da diretoria. A recomendação é nossa. {nome}, explica pra ele.
+? O que você diz sobre pagar o resgate?
+* Explicar que pagar não garante nada e financia o próximo ataque -> c19_nao_pagar {etica+1 reputacao+1}
+* Dizer que a decisão é dele, mas entregar os riscos por escrito -> c19_riscos_escrito {reputacao+1 tecnica+1}
+* Concordar em pagar, todo mundo está exausto -> c19_pagar {etica-1 marca:c19_pagou}
+
+=== c19_nao_pagar
+EU: Doutor, pagar não garante a chave, não garante que eles apaguem os dados e coloca o hospital na lista de quem paga.
+EU: A gente já tem backup limpo. O dinheiro do resgate compra a próxima invasão de outro hospital.
+> O diretor olha pela janela um tempo. Depois fala baixo: "Então não pago. Me ajudem a explicar isso pro conselho."
+@vai c19_comunicacao
+
+=== c19_riscos_escrito
+EU: A decisão é da diretoria. Mas deixa eu te entregar por escrito: sem garantia de chave, sem garantia de apagar os dados, risco de sanção e de ser alvo de novo.
+> Você escreve uma página, em português de gente, com os riscos e a alternativa do backup. O diretor lê duas vezes. Desiste de pagar.
+IRACEMA [feliz]: Recomendação escrita é proteção pra todo mundo. Inclusive pra você.
+@vai c19_comunicacao
+
+=== c19_pagar
+> O hospital paga. A "chave" chega em dez horas e funciona em metade dos arquivos. Uma semana depois, os criminosos publicam parte dos dados mesmo assim.
+IRACEMA [triste]: É isso que acontece quase sempre. Não é negócio, é extorsão. Extorsão não tem nota fiscal.
+(Eu fiquei com pena do cansaço dele e esqueci de pensar nos pacientes.)
+@muda reputacao-1
+@vai c19_comunicacao
+
+=== c19_comunicacao
+> Fim da tarde. Repórter na porta, grupo de família fervendo: "o hospital foi hackeado e vão vender meu exame de colesterol".
+> O diretor quer soltar uma nota: "instabilidade sistêmica pontual em manutenção programada".
+@entra iracema neutra esquerda
+IRACEMA: Teve vazamento de dado de paciente. Isso tem consequência legal. Mas a decisão de como falar também é técnica.
+? O que você defende sobre a comunicação?
+* Comunicar a verdade: polícia, ANPD, pacientes afetados e uma nota clara -> c19_transparente {etica+1 reputacao+1 marca:c19_comunicou}
+* Ficar quieta. Comunicação não é o meu papel -> c19_quieta {etica-1}
+** Escrever o comunicado oficial no português da Vó Nita, que todo mundo entende -> c19_vo_nita {reputacao+2 etica+1 marca:c19_comunicou rel_vo+1}
+
+=== c19_transparente
+EU: Se a gente chama de manutenção e o dado aparece na internet semana que vem, ninguém nunca mais acredita no hospital.
+EU: Boletim de ocorrência, comunicação à ANPD no prazo, aviso aos pacientes dizendo o que vazou e o que fazer. E um canal de atendimento.
+> O jurídico do hospital concorda. O diretor suspira e assina.
+@anota p5_comunicacao_incidente
+@vai c19_sombra_check
+
+=== c19_quieta
+> A nota sai com "instabilidade sistêmica". Dez dias depois, os dados aparecem num fórum. A imprensa descobre que o hospital sabia.
+IRACEMA [brava]: Silêncio em incidente com vazamento não protege ninguém. Só adia a conta e aumenta os juros.
+@muda reputacao-1
+@anota p5_comunicacao_incidente
+@vai c19_sombra_check
+
+=== c19_vo_nita
+> Você escreve: "Na madrugada de domingo, criminosos invadiram nossos computadores e sequestraram arquivos. Alguns dados de pacientes podem ter sido copiados. Não pagamos o sequestro. Ninguém do hospital vai ligar pedindo senha, código ou Pix. Se ligarem, é golpe."
+IRACEMA [surpresa]: Isso tá melhor que o comunicado de banco grande.
+EU [feliz]: Minha avó diz que quem fala difícil quer esconder alguma coisa.
+> A nota vai junto com a comunicação à ANPD e o boletim de ocorrência. No dia seguinte, o grupo da família compartilha e, pela primeira vez, compartilha a coisa certa.
+@anota p5_comunicacao_incidente
+@vai c19_sombra_check
+
+=== c19_sombra_check
+@sai todos
+@se marca:pacto_doutor -> c19_sombra
+@vai c19_recuperacao
+
+=== c19_sombra
+@fundo soc_sala
+@musica misterio
+> De madrugada, revisando as evidências, você vê o nome da empresa usada para receber o dinheiro do resgate em outros casos.
+> "Anselmo Consultoria e Soluções". O mesmo nome que o Doutor usava nos negócios dele em Pedra Lisa, anos atrás.
+(Não. Não pode ser. Eu fiz uma coisa pra ele. Uma vez. Eu era uma menina.)
+(Será que o que eu fiz ajudou a montar isso aqui?)
+? O que você faz com o que descobriu?
+* Contar tudo à Iracema, inclusive o que eu fiz para o Doutor -> c19_conta_iracema {etica+2 rel_iracema+1 marca:contou_iracema}
+* Guardar segredo e torcer para ninguém ligar os pontos -> c19_guarda_segredo {saude-2 marca:escondeu_doutor}
+
+=== c19_conta_iracema
+@entra iracema pensativa centro
+IRACEMA: Senta. Fala tudo, do começo.
+> Você fala. A Iracema não interrompe nenhuma vez. Quando você termina, ela tira os óculos.
+IRACEMA: Isso vai ter consequência. Você precisa de advogada e vai precisar falar com a polícia. Mas você acabou de fazer a primeira coisa certa.
+IRACEMA: Eu não vou passar a mão na sua cabeça. Mas também não vou largar a sua mão.
+@sai iracema
+@vai c19_recuperacao
+
+=== c19_guarda_segredo
+> Você fecha a tela. Apaga o rascunho de mensagem para a Iracema. Não consegue dormir.
+(Na segurança, tudo fica registrado em algum lugar. Eu sei disso melhor que ninguém.)
+@vai c19_recuperacao
+
+=== c19_recuperacao
+@fundo hospital_corredor
+@musica triste
+> Setenta e duas horas depois, o hospital volta a funcionar. A UTI vê exame de novo. A Thaís dorme no sofá da sala dos médicos com o jaleco ainda abotoado.
+@se marca:c19_metodo e marca:c19_comunicou -> c19_reconhecida
+@vai c19_licoes
+
+=== c19_reconhecida
+@entra iracema feliz centro
+IRACEMA: O diretor ligou pro nosso diretor. Disse que a analista júnior do turno da noite salvou o hospital duas vezes: na rede e no comunicado.
+IRACEMA: Eu disse que salvamos juntas. Mas que você foi a primeira a acordar.
+@muda reputacao+2
+@marca c19_liderou
+@sai iracema
+@vai c19_licoes
+
+=== c19_licoes
+@fundo escritorio_moderno
+@musica trabalho
+> Uma semana depois, reunião de lições aprendidas. Sem caça às bruxas: o que deu certo, o que deu errado, o que muda.
+> A entrada foi uma conta de acesso remoto de um fornecedor, sem verificação em duas etapas e com privilégio de administrador. O menor privilégio volta a cara da Iracema na sua cabeça.
+@entra rafa neutra direita
+RAFA: Eles vão pedir alguém pra escrever o relatório final. Ninguém quer, é chato.
+? Você se oferece pra escrever o relatório de lições aprendidas?
+* Me ofereço. O que não vira relatório, se repete -> c19_relatorio {tecnica+1 reputacao+1 saude-1 marca:c19_relatorio}
+* Deixar pra Rafa. Eu preciso dormir pela primeira vez em uma semana -> c19_dormir {saude+2 rel_rafa+1}
+
+=== c19_relatorio
+RAFA [surpresa]: Você é estranha. Eu gosto.
+> Você escreve vinte páginas: linha do tempo, causa raiz, o que funcionou, o que mudar. Fornecedor com verificação em duas etapas, backup fora da rede, conta de administrador só quando precisa, ensaio de incidente a cada seis meses.
+> O hospital adota tudo. O Seu Jair ganha uma placa: "Dinossauro do Ano".
+@sai rafa
+@vai c19_fim
+
+=== c19_dormir
+RAFA [feliz]: Vai. Eu escrevo e você revisa depois. Dupla, lembra?
+> Você dorme catorze horas seguidas. Sonha com a Pedra Lisa e com um servidor que fala igual a Vó Nita.
+@sai rafa
+@vai c19_fim
+
+=== c19_fim
+@fundo republica_quarto
+@musica interior
+@entra thais feliz direita
+THAIS: Voltei do plantão mais longo da minha vida. O paciente da UTI recebeu alta hoje.
+THAIS: Eu nunca entendi direito o seu trabalho. Agora eu entendi. Você trabalha na UTI dos computadores.
+EU [feliz]: E você na UTI de gente. A gente faz a mesma coisa: contém, trata e não deixa espalhar.
+@muda rel_thais+1
+@sai thais
+@vai c20_inicio

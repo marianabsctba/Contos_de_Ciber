@@ -1,0 +1,208 @@
+=== c15_inicio
+@cap 15 "Taxa de material"
+@fundo quarto_madrugada
+@musica misterio
+> A mensagem continua, em bloco, cheia de exclamação:
+> "Você foi APROVADA para Analista de Segurança Júnior! Home office, R$ 4.500, sem experiência!"
+> "Para garantir sua vaga, envie RG frente e verso, selfie segurando o documento, seus dados bancários e o Pix da taxa de material de R$ 89,90. O notebook chega em casa!"
+> "As vagas fecham HOJE!"
+@muda saude+1
+(R$ 4.500. É o triplo do call center. É notebook que não desliga sozinho. É a minha mãe parando de trabalhar no sábado.)
+@expr eu pensativa
+(Mas a Kelly sumiu por três semanas e agora volta me aprovando num cargo de outra empresa? Sem entrevista?)
+? O que você faz com essa mensagem?
+* Ler tudo de novo, devagar, como o anúncio do quarto -> c15_analisa
+* Mandar os documentos e o Pix logo, antes que a vaga feche -> c15_caiu_direto
+** Mandar um áudio de três minutos agradecendo a Deus, à Kelly e ao santo dos empregos da Vó Nita -> c15_audio {saude+1}
+
+=== c15_audio
+> Você grava o áudio chorando de felicidade. Cita a vó, a mãe, a Dona Cida e o Seu Valdir.
+> A resposta chega em quatro segundos, rápida demais para quem ouviu três minutos de áudio:
+> "Amém, querida!! Agora só falta o Pix da taxa pra garantir, tá?"
+(Quatro segundos. Ela não ouviu. Ninguém responde áudio de três minutos em quatro segundos. Nem a minha mãe.)
+@vai c15_analisa
+
+=== c15_analisa
+@se marca:caiu_golpe_aluguel -> c15_analisa_lembra
+@vai c15_analisa_desafio
+
+=== c15_analisa_lembra
+(Pressa, Pix e uma pessoa que eu nunca vi pessoalmente. Já vi esse filme. Paguei R$ 400 pelo ingresso.)
+@vai c15_analisa_desafio
+
+=== c15_analisa_desafio
+@desafio p3_vaga_falsa -> c15_percebeu | c15_caiu_erro
+
+=== c15_caiu_erro
+(Tem umas coisas esquisitas. Mas a Kelly é real, eu falei com ela por vídeo. Deve ser outro processo da mesma empresa.)
+@vai c15_caiu_direto
+
+=== c15_caiu_direto
+> Você tira foto do RG na mesa da cozinha. A selfie segurando o documento sai tremida, então você faz de novo. Manda os dados do banco.
+@som dinheiro
+> Pix de R$ 89,90 para "Logística Parceira", em nome de um tal de Josué.
+@muda grana-1
+@marca caiu_vaga_falsa
+@som mensagem
+> "Recebido! Agora só falta o seguro do equipamento, R$ 249, porque o notebook é de alto valor. Também reembolsável!"
+@expr eu assustada
+? O "seguro do equipamento" é quase tudo o que sobrou do salário.
+* Pagar. Se eu parar agora, perco os R$ 89,90 também -> c15_paga_seguro {grana-2}
+* Parar. Tem alguma coisa muito errada -> c15_para_seguro {tecnica+1}
+
+=== c15_paga_seguro
+@som dinheiro
+(Já entrei, agora vou até o fim. É assim que o golpista pensa que eu penso. E ele tá certo.)
+> Você paga. A resposta seguinte é um pedido de "taxa de frete expresso". Você não paga essa. Ela também não importa mais: o número some.
+@muda saude-1
+@vai c15_bloqueada
+
+=== c15_para_seguro
+> Você escreve: "Pode descontar o seguro do primeiro salário?"
+> A resposta é imediata: "Infelizmente não, querida. Sem o seguro, a vaga vai para o próximo candidato."
+(Empresa que não pode descontar R$ 249 de um salário de R$ 4.500. Claro.)
+@vai c15_bloqueada
+
+=== c15_bloqueada
+@musica triste
+> Você procura o site da empresa. Não existe vaga nenhuma. Procura o perfil da Kelly no LinkedIn.
+> Post de três horas atrás, da Kelly de verdade: "ATENÇÃO: estão usando minha foto e meu nome no WhatsApp oferecendo vagas falsas! Eu NUNCA peço Pix. Já são 47 vítimas."
+@expr eu triste
+(Quarenta e sete. Eu sou a quadragésima oitava. Ou a quinquagésima, se as outras forem mais lentas.)
+@entra thais assustada centro
+THAIS: Mandou documento? Mandou selfie com documento?
+EU [envergonhada]: Mandei tudo. Até a selfie tremida.
+THAIS: Tá. Respira. Primeiro o banco, de novo. Depois BO. Depois a gente vê o resto.
+@anota p3_golpe_vaga_falsa
+@anota p3_documentos_com_golpista
+> Com a Thaís lendo o caderno em voz alta, você faz a lista: banco, MED, boletim de ocorrência, avisar a Kelly de verdade, consultar o Registrato do Banco Central para ver se abriram conta no seu nome.
+@muda tecnica+1
+@se marca:caiu_golpe_aluguel e grana<=1 -> c15_fundo
+@vai c15_recomeca
+
+=== c15_fundo
+@musica nenhuma
+> Você abre o aplicativo do banco. O saldo cabe num pacote de bolacha.
+> O aluguel vence em oito dias. O Wellington levou o primeiro mês. O falso RH levou o resto. Seus documentos estão em algum lugar do mundo, na mão de alguém.
+(Eu cheguei aqui com uma mochila e um sonho. A mochila ainda tá aqui.)
+@expr thais triste
+THAIS: Ei. Olha pra mim. Isso acontece com médico, com advogado, com policial. Golpe é profissão deles. Não é burrice sua.
+THAIS: Eu posso segurar teu aluguel esse mês. Não é favor, é investimento. Você me paga com juros de Wi-Fi.
+? Você está no fundo do poço, e o poço tem Wi-Fi que cai quando chove.
+* Aceitar a ajuda da Thaís e continuar -> c15_aceita_thais {rel_thais+2 saude+1 grana+1}
+* Desistir de tudo. Vender o notebook, comprar a passagem e não pensar mais em segurança nunca mais -> c15_desiste
+
+=== c15_desiste
+@fundo rodoviaria
+@musica final_ruim
+> Você vende o notebook para um rapaz da república do lado. Ele paga metade do que vale, e você aceita, porque não tem força para negociar.
+> Na rodoviária, a mesma poltrona 37, ao lado do banheiro. Agora no sentido contrário.
+@entra mae triste centro
+MAE: Volta, filha. Mas volta sem contar pra ninguém o que aconteceu, que a cidade fala.
+@sai mae
+(Eu sabia reconhecer golpe com doze anos. Adulta, caí em dois em poucos meses. Saber não é vacina. Cansaço abre todas as portas.)
+@final golpeada
+
+=== c15_aceita_thais
+@expr thais feliz
+THAIS: Ótimo. Agora você deita, chora o que tiver que chorar e amanhã a gente faz o BO de novo, que o primeiro você preencheu com o nome da tua mãe no lugar do teu.
+(Ela tem razão. Eu preenchi.)
+@sai thais
+@vai c15_kelly_real
+
+=== c15_recomeca
+@expr thais pensativa
+THAIS: Olha, dói. Mas foi dinheiro, não foi você. E você aprendeu, que é o que você mais gosta de fazer.
+EU: Eu queria aprender de um jeito mais barato.
+THAIS: Ninguém quer. Vem, vamos escrever pra essa Kelly de verdade.
+@sai thais
+@vai c15_kelly_real
+
+=== c15_percebeu
+@musica tensao
+(Aprovada sem entrevista. Salário de pleno para quem não tem experiência. Selfie com documento. Taxa. Pix para uma "parceira". E a pressa de sempre. Kelly, sua impostora.)
+> Você não responde. Abre o LinkedIn. A Kelly de verdade postou há três horas:
+> "ATENÇÃO: estão usando minha foto e meu nome no WhatsApp oferecendo vagas falsas! Eu NUNCA peço Pix. Já são 47 vítimas."
+@anota p3_golpe_vaga_falsa
+@muda tecnica+1 saude+1
+? O que fazer com o falso RH, que continua mandando "oi?? ainda tem interesse??"
+* Denunciar o número no WhatsApp, avisar a Kelly de verdade e alertar o grupo de vagas -> c15_denuncia {etica+1 reputacao+1}
+* Enrolar o golpista por uma hora, só pra ele perder tempo -> c15_enrola {saude+1}
+** Fazer um comprovante de Pix falso pra mandar pro golpista, que é pra ele provar do próprio veneno -> c15_veneno {etica-1}
+
+=== c15_denuncia
+> Você denuncia o número, manda print para a Kelly pelo LinkedIn e escreve no grupo de vagas: "Gente, essa vaga é golpe, a recrutadora verdadeira confirmou. Ninguém paga nada pra ser contratado."
+> Doze pessoas respondem. Três dizem que estavam prestes a pagar.
+@anota p3_denunciar_golpe
+@vai c15_kelly_real
+
+=== c15_enrola
+> Você responde que vai mandar o Pix, mas que o aplicativo do banco está "atualizando". Depois que acabou a bateria. Depois que o gato sentou no celular.
+> O golpista manda catorze mensagens, cada uma mais irritada. Você ri sozinha no escuro.
+@entra thais pensativa centro
+THAIS: Engraçado. Mas ele tem teu número, teu nome e tua foto. Bloqueia e denuncia, que zoar golpista é igual cutucar marimbondo.
+(Ela tem razão. O marimbondo tem meu CPF... não, espera, não tem. Eu não mandei. Ufa.)
+@sai thais
+> Você bloqueia, denuncia o número, manda print para a Kelly de verdade e avisa o grupo de vagas.
+@anota p3_denunciar_golpe
+@vai c15_kelly_real
+
+=== c15_veneno
+> Você abre um editor de imagem. Antes de chegar no segundo clique, a Thaís aparece na porta do quarto.
+@entra thais brava centro
+THAIS: Você vai falsificar um comprovante de banco? Pra mandar pra um criminoso que tem o teu número?
+EU [envergonhada]: Falando assim parece pior.
+THAIS: Porque é pior. Comprovante falso é crime, não interessa pra quem. Bloqueia, denuncia e vai dormir.
+@muda rel_thais-1
+@sai thais
+(Eu quase virei a golpista da história de outra pessoa. Por vingança. Às 23h50.)
+> Você fecha o editor, denuncia o número, manda print para a Kelly de verdade e avisa o grupo de vagas.
+@anota p3_denunciar_golpe
+@vai c15_kelly_real
+
+=== c15_kelly_real
+@fundo videochamada
+@musica alegre
+> Dois dias depois, a Kelly de verdade marca uma chamada de vídeo. Sem blazer rosa. Com cara de quem dormiu pouco.
+@entra kelly triste centro
+KELLY: Oi. Obrigada por me avisar. Eu tô recebendo mensagem de gente chorando desde segunda.
+KELLY: Eu sempre achei que golpe era coisa de pessoa desatenta. Mas usaram a minha cara. A minha cara de "Business Partner"!
+@se marca:caiu_vaga_falsa -> c15_kelly_caiu
+@vai c15_kelly_nao_caiu
+
+=== c15_kelly_caiu
+EU: Eu caí, Kelly. Mandei até a selfie.
+@expr kelly triste
+KELLY: Ai, sinto muito. De verdade, sem hashtag.
+(Sem hashtag. É a frase mais sincera que eu já ouvi de alguém de RH.)
+@vai c15_kelly_dica
+
+=== c15_kelly_nao_caiu
+EU: Eu não caí. Mas quase. Era exatamente o que eu queria ouvir.
+@expr kelly pensativa
+KELLY: É isso que me assusta. O golpe é bom porque ele sabe o que a gente quer ouvir.
+(Quem diria. A Kelly do RH, falando a coisa mais certa sobre engenharia social que eu já ouvi.)
+@vai c15_kelly_dica
+
+=== c15_kelly_dica
+@expr kelly neutra
+KELLY: Olha, seu processo aqui não andou. Desculpa pelo sumiço, eram trezentos candidatos e o meu gestor some com as vagas.
+KELLY: Mas eu tenho uma dica. O pessoal de segurança da empresa vive falando de um tal de "CTF". Capture the... flag? Parece gincana.
+KELLY: Tem um sábado agora, numa universidade, de graça. Dizem que é lá que a galera de segurança contrata de verdade. Sem fit cultural.
+@expr kelly feliz
+KELLY: Não é frase de LinkedIn. Prometo.
+@sai kelly
+? Ir num evento cheio de gente que sabe mais que você, num sábado depois do turno?
+* Ir. O pior que acontece é eu passar vergonha comendo pizza de graça -> c15_fim {saude+1}
+* Ir, mas morrendo de medo -> c15_fim {saude+0}
+** Fazer uma camiseta com "FLAG{eu_vim}" escrito com caneta de tecido -> c15_camiseta {saude+1}
+
+=== c15_camiseta
+> A caneta de tecido borra no "{". Fica parecendo "FLAG(eu_vim". Você decide que é estilo.
+(Ninguém vai entender. Ou todo mundo vai entender. Só tem um jeito de descobrir.)
+@vai c15_fim
+
+=== c15_fim
+@fundo quarto_madrugada
+> Sábado, seis da manhã, depois do turno de sexta. Você coloca na mochila o caderno, o carregador de fita isolante e um sanduíche de mortadela.
+@vai c16_inicio

@@ -1,0 +1,249 @@
+# Parte 4, ramo do interior, capítulo 14
+
+=== i14_inicio
+@cap 14 "Senha: Pitoco"
+@fundo prefeitura_sala
+@musica trabalho
+> Prefeitura Municipal de Pedra Lisa do Norte. Um prédio amarelo com ar-condicionado de 1998, uma bandeira desbotada e um quadro do prefeito em todas as salas, inclusive no banheiro.
+> Ela foi chamada porque "a impressora do gabinete parou de imprimir o brasão". Paga: R$ 150, em trinta dias, por empenho.
+(Trinta dias por empenho. O Tio Juca recebe mais rápido de caminhoneiro.)
+@entra prefeito feliz direita
+PREFEITO: Olha ela! A menina do computador! Minha esposa disse que você salvou o celular da sogra.
+EU: Bom dia, prefeito. Foi um golpe do falso parente, a cidade inteira está recebendo.
+PREFEITO [surpresa]: A cidade inteira? Por que ninguém me avisa dessas coisas?
+> Ele se senta e aponta para o monitor. Colado na borda, um post-it amarelo: "email: Pitoco2024".
+> Na mesa, um porta-retratos de um vira-lata caramelo de laço vermelho.
+PREFEITO [feliz]: Esse aí é o Pitoco. Primeiro-cachorro de Pedra Lisa. Tem até Instagram.
+(Tem até Instagram. Com a data de aniversário dele. E a senha do e-mail oficial é o nome dele com o ano.)
+? Como você fala da senha?
+* Com jeitinho, elogiando o Pitoco primeiro. -> i14_senha_jeito {rel_prefeito+1}
+* Na lata: "Prefeito, essa senha cai em cinco minutos." -> i14_senha_lata {etica+1}
+** Oferecer o pacote "Prefeitura Blindada Gold Plus" por R$ 80 mil, sem licitação. -> i14_senha_gold
+
+=== i14_senha_gold
+PREFEITO [feliz]: Oitenta mil? Blindada? Gostei do nome. Tem desconto pra quem pagar com verba da saúde?
+EU [assustada]: Não! Era brincadeira, prefeito. Isso é contratação sem licitação com dinheiro da saúde. Isso dá cadeia.
+PREFEITO: Ah, brincadeira. Eu também estava brincando.
+(Ele não estava brincando.)
+@vai i14_senha_lata
+
+=== i14_senha_jeito
+EU: Que cachorro lindo, prefeito. Tão lindo que todo mundo sabe o nome dele.
+PREFEITO [feliz]: Todo mundo! Ele desfila no Sete de Setembro.
+EU: Pois é. Por isso a senha com o nome dele é a primeira que um bandido tentaria.
+PREFEITO [pensativa]: Mas tem o 2024 no final. Ninguém sabe que é 2024.
+EU: Todo mundo sabe que é 2024, prefeito. Está no calendário.
+@vai i14_troca_senha
+
+=== i14_senha_lata
+EU: Prefeito, uma senha com o nome do cachorro e o ano é das primeiras que um invasor testa. Ainda mais com o cachorro no Instagram.
+PREFEITO [brava]: Você está dizendo que o Pitoco é um risco à segurança municipal?
+EU: O Pitoco não. A senha.
+PREFEITO: Hum. Então faz uma nova aí. Mas que eu lembre.
+@vai i14_troca_senha
+
+=== i14_troca_senha
+> Ela puxa uma folha de rascunho e explica: frase-senha. Palavras sem relação, longas, fáceis de lembrar e difíceis de adivinhar.
+PREFEITO [pensativa]: Tipo um verso de forró?
+EU: Quase isso. Mas sem ser um forró famoso.
+@desafio p4_senha_prefeito -> i14_senha_acerto | i14_senha_erro
+
+=== i14_senha_acerto
+@som acerto
+> A nova senha é longa, estranha e o prefeito decora cantando.
+PREFEITO [feliz]: Ficou bonita. Vou anotar num lugar seguro.
+> Ele escreve num post-it novo e cola na borda do monitor, no lugar do antigo.
+EU [surpresa]: Prefeito...
+PREFEITO: Agora está seguro. Esse post-it é rosa.
+(Ninguém escuta. É o tema do capítulo, eu já entendi.)
+EU: Vamos ativar a verificação em duas etapas, então. Assim, mesmo que alguém leia o post-it, precisa do seu celular.
+PREFEITO: Do meu celular? Mas quem atende meu celular é a Dona Socorro.
+@anota p4_2fa
+@muda tecnica+1
+@vai i14_wifi
+
+=== i14_senha_erro
+@som erro
+> A senha nova sai curta demais e com o nome da primeira-dama no meio.
+PREFEITO [feliz]: Perfeito. Ninguém sabe o nome da minha esposa.
+EU [envergonhada]: Ela é a vereadora mais votada da cidade.
+PREFEITO: Ah. Então põe a do Pitoco de novo, que eu já estava acostumado.
+(Ganhei o debate e perdi a guerra.)
+EU: Pelo menos vamos ativar a verificação em duas etapas. Assim a senha sozinha não basta.
+PREFEITO: Faz aí. Depois eu vejo.
+@anota p4_2fa
+@vai i14_wifi
+
+=== i14_wifi
+@sai prefeito
+> Enquanto a impressora reinicia pela quarta vez, ela olha a lista de redes no celular.
+> PREFEITURA_LIVRE. Sem senha. Sinal cheio. Ela sai na janela e vê que o sinal chega até o banco da praça, onde três adolescentes jogam no celular.
+> No computador do setor de tributos, ao lado, o mesmo nome de rede aparece como "conectada".
+(A rede aberta da praça é a mesma rede do computador que emite o IPTU. Quem senta no banco da praça está, na prática, dentro da prefeitura.)
+@anota p4_rede_aberta
+> E tem mais. No sistema de cadastro, o login de todo mundo é "admin". A senha está escrita no quadro branco, ao lado do cardápio da semana.
+> O estagiário, o motorista, a secretária da saúde e o prefeito: todos admin.
+@anota p4_menor_privilegio
+@entra prefeito neutra direita
+PREFEITO: Já imprimiu o brasão?
+EU: Prefeito, tem uma coisa mais urgente que o brasão.
+? Como você começa?
+* Explicar a rede aberta, com calma e um desenho. -> i14_explica_rede {tecnica+1}
+* Explicar o usuário admin compartilhado. -> i14_explica_admin {tecnica+1}
+* Falar do jeito que ele entende: "e se a oposição descobrir?" -> i14_explica_politica {rel_prefeito+1}
+
+=== i14_explica_rede
+> Ela desenha no verso de um ofício: a praça, a prefeitura, uma rede só, setas para todo lado.
+EU: O certo é ter duas redes. Uma para o público, isolada. Outra para os computadores da prefeitura, com senha e controle.
+PREFEITO [pensativa]: Mas aí o povo fica sem internet na praça. Eu prometi internet na praça. Está no meu santinho.
+EU: O povo continua com internet. Só não fica com acesso ao IPTU.
+PREFEITO: Hum. Ano que vem, quem sabe.
+@vai i14_planilha
+
+=== i14_explica_admin
+EU: Se todo mundo entra como admin, ninguém sabe quem fez o quê. E qualquer um pode apagar tudo.
+PREFEITO [surpresa]: Foi assim que sumiu o cadastro da merenda?
+EU: Pode ter sido. Ninguém vai saber, porque todo mundo é a mesma pessoa no sistema.
+PREFEITO: Que coisa. Mas se eu tirar o admin do motorista ele fica magoado.
+(Gestão de identidade e acesso, versão interior: o motorista fica magoado.)
+@vai i14_planilha
+
+=== i14_explica_politica
+EU: Prefeito, imagina se a oposição descobre que qualquer um da praça entra no sistema da prefeitura. Em ano de eleição.
+PREFEITO [assustada]: Em ano de eleição!
+EU: E se vazar dado de cidadão, a LGPD vale para prefeitura também.
+PREFEITO: Isso é grave. Muito grave. Vou montar uma comissão.
+EU: Uma comissão?
+PREFEITO [feliz]: Comissão Municipal de Assuntos Cibernéticos. Você não faz parte, mas pode mandar sugestão por escrito.
+@vai i14_planilha
+
+=== i14_planilha
+@sai prefeito
+> Para testar a impressora, a Dona Socorro abre o e-mail. O e-mail pessoal dela. Num computador da prefeitura.
+> Na caixa de entrada, um anexo encaminhado vinte vezes: "cadastro_programa_social_COMPLETO_FINAL2.xlsx".
+> Duas mil famílias. Nome, CPF, endereço, renda, quantos filhos, quem tem deficiência.
+> O mesmo arquivo foi mandado no grupo "Servidores PL Unidos", que tem 214 participantes, incluindo um número de Portugal que ninguém sabe de quem é.
+(Isso é a vida inteira de duas mil famílias. A minha vó está aí. A minha mãe está aí.)
+@anota p4_lgpd_publico
+? O que você faz com o que viu?
+* Escrever um relatório formal e protocolar no gabinete. -> i14_relatorio {etica+1 reputacao+1}
+* Conversar com a Dona Socorro, servidora por servidora. -> i14_socorro {rel_prefeito+1}
+* Postar no grupo da cidade que a prefeitura vaza dados. -> i14_posta {reputacao-1}
+
+=== i14_posta
+> Ela começa a escrever. Para no meio.
+(Se eu postar isso, o arquivo vai ser procurado por todo mundo. Quem não tinha, vai querer ver. Eu exponho as famílias que quero proteger.)
+EU [pensativa]: Divulgação responsável. Primeiro quem pode corrigir. Depois, se ninguém corrigir, os órgãos certos.
+> Ela apaga o post. Só um "kkkk prefeitura" escapa para o grupo, por engano, e a cidade passa dois dias tentando entender a piada.
+@vai i14_relatorio
+
+=== i14_socorro
+> Ela senta com a Dona Socorro, servidora há trinta anos, que já viu cinco prefeitos e três enchentes.
+EU: Dona Socorro, essa planilha não pode circular em e-mail pessoal nem em grupo de WhatsApp.
+> A Dona Socorro suspira: o sistema oficial vive fora do ar, então todo mundo manda por onde funciona.
+(O vazamento não é maldade. É gambiarra de quem precisa trabalhar com ferramenta ruim.)
+> Ela promete apagar do e-mail dela. Os outros 213 do grupo, ninguém sabe.
+@vai i14_relatorio
+
+=== i14_relatorio
+> Ela escreve três páginas, em linguagem de gente: o problema, o risco, o que fazer primeiro, o que custa pouco e o que custa nada.
+> Rede de visitantes separada. Um usuário por pessoa. Verificação em duas etapas no e-mail oficial. Dados de cidadãos só no sistema oficial. Um encarregado de dados nomeado.
+> Protocola no gabinete. A Dona Socorro carimba, data e coloca numa pilha onde também está um ofício de 2019 sobre os buracos da Rua do Cemitério.
+(Protocolado. Ninguém vai ler, mas existe. Em segurança, o que está registrado salva a gente depois.)
+@marca relatorio_prefeitura
+@vai i14_consultor
+
+=== i14_consultor
+@fundo prefeitura_sala
+@musica tensao
+> No fim da tarde, quando ela guarda as ferramentas, o prefeito volta. Não está sozinho.
+@entra prefeito neutra esquerda
+@entra doutor neutra direita
+@se marca:pacto_doutor -> i14_doutor_conhece
+DOUTOR: Boa tarde. Anselmo, consultor de estratégia. O prefeito me falou muito bem da senhora.
+(Terno em Pedra Lisa, num calor de 36 graus. Ou é advogado, ou é coisa pior.)
+@vai i14_proposta
+
+=== i14_doutor_conhece
+DOUTOR [feliz]: Ora, ora. A minha melhor contratada de todos os tempos. Quanto tempo, sócia.
+EU [assustada]: Eu não sou sua sócia.
+DOUTOR: Não? O pagamento que você recebeu de mim diz outra coisa. Mas não vamos falar de passado na frente do prefeito.
+PREFEITO [surpresa]: Vocês se conhecem?
+DOUTOR: Ela me prestou um serviço, anos atrás. Muito competente. E muito discreta.
+(Estômago no chão. Ele está aqui. Na minha cidade. Na prefeitura.)
+@muda saude-1
+@vai i14_proposta
+
+=== i14_proposta
+PREFEITO: Vou ser direto, que eu sou homem simples. A eleição está aí, e a Vereadora Lúcia vai sair candidata contra mim.
+DOUTOR: Nós precisamos saber com quem ela conversa. O que ela planeja. Só uma olhadinha no celular dela.
+DOUTOR: E, de quebra, aqueles registros de acesso do sistema, que a senhora viu hoje, podiam sumir. Para evitar mal-entendido.
+PREFEITO: Dez mil reais. Em dinheiro. Sem empenho, sem trinta dias.
+> O silêncio dura o tempo de um ventilador dar uma volta inteira.
+(Invadir o celular de alguém é crime. Apagar registro da prefeitura é crime. E dez mil reais é o que eu ganho em um ano bom.)
+@se marca:denunciou_doutor -> i14_proposta_lembra
+@vai i14_decide
+
+=== i14_proposta_lembra
+(E eu já denunciei esse homem uma vez. A Delegada Márcia me deu o cartão dela. Ainda está na minha carteira, atrás da foto da vó.)
+@vai i14_decide
+
+=== i14_decide
+? O que você responde?
+* "Não. Isso é crime, e eu não faço." -> i14_recusa {etica+2 rel_prefeito-1}
+* Aceitar o dinheiro. -> i14_aceita {grana+4 etica-3}
+* Recusar e ligar para a Delegada Márcia na frente deles. -> i14_denuncia {etica+2 rel_prefeito-3} [se marca:denunciou_doutor]
+** "Faço por vinte mil e um cargo comissionado para o meu tio." -> i14_aceita {grana+5 etica-4}
+
+=== i14_recusa
+EU: Não. Invadir celular de alguém é crime, prefeito. Apagar registro também. Eu conserto, eu protejo. Isso eu não faço.
+PREFEITO [brava]: Ninguém está falando de crime. Estamos falando de estratégia.
+DOUTOR: Deixe, prefeito. A moça tem princípios. Princípios são caros, mas cada um paga os seus.
+> Ele sorri e entrega um cartão de visita dourado. Ela não pega.
+@marca recusou_prefeito
+@vai i14_saida
+
+=== i14_denuncia
+EU: Não. E eu vou fazer uma ligação agora.
+> Ela tira o cartão da carteira e liga, no viva-voz. A Delegada Márcia atende no segundo toque.
+DOUTOR [brava]: Isso foi uma conversa entre amigos, minha jovem.
+PREFEITO [assustada]: Que delegada? Eu não falei nada! Eu falei de estratégia!
+> O Doutor sai pela porta lateral antes de a ligação terminar. O prefeito ficou, suando, explicando para o telefone que tudo era um mal-entendido sobre impressoras.
+@marca recusou_prefeito
+@marca denunciou_prefeito
+@muda reputacao+1
+@vai i14_saida
+
+=== i14_aceita
+> Ela estende a mão. O envelope é grosso e tem cheiro de gaveta.
+DOUTOR [feliz]: Eu sabia que a gente se entendia.
+> O que acontece depois acontece fora daqui: em outra noite, em outro computador, de um jeito que ela não vai contar para ninguém.
+(Eu disse a mim mesma que era só uma vez. Todo mundo diz.)
+@marca aceitou_prefeito
+@muda saude-2
+@vai i14_saida
+
+=== i14_saida
+@sai todos
+@fundo praca_interior
+@musica interior
+> Na praça, ela senta no banco onde o Wi-Fi da prefeitura pega cheio.
+@entra bia neutra esquerda
+BIA: E aí, consertou a impressora?
+EU: Consertei. Era o cabo.
+BIA: E o resto?
+EU: O resto ninguém quis ouvir.
+@se marca:aceitou_prefeito -> i14_saida_culpa
+BIA [feliz]: Bem-vinda à vida de mulher que sabe das coisas. Eu falo pra cliente não alisar o cabelo toda semana desde 2018.
+EU: E elas?
+BIA: Alisam toda semana. Mas uma ou outra me escuta. E essas voltam com o cabelo vivo.
+(Uma ou outra escuta. Talvez seja assim que se muda uma cidade.)
+@muda saude+1 rel_bia+1
+@vai i15_inicio
+
+=== i14_saida_culpa
+BIA [pensativa]: Você está com cara de quem comeu coisa estragada.
+EU: Calor. Só calor.
+> No bolso, o envelope pesa mais que dez mil reais deveriam pesar.
+(A Bia me conhece desde os seis anos. Ela sabe que não é calor.)
+@vai i15_inicio

@@ -1,0 +1,217 @@
+=== c13_inicio
+@cap 13 "Bom dia, meu nome é..."
+@fundo call_center
+@musica trabalho
+> O call center ocupa um andar inteiro de um prédio espelhado. Trezentas baias, trezentos fones, trezentas pessoas dizendo "pois não" ao mesmo tempo.
+> O ar-condicionado tem duas temperaturas: Polo Norte e desligado.
+@entra fabio neutra centro
+FABIO: Bom dia, turma nova. Eu sou o Fábio, supervisor de vocês. Aqui a gente vive de três números.
+FABIO: TMA, tempo médio de atendimento: três minutos e meio. Meta de resolução: oitenta por cento. Pausa de banheiro: cinco minutos.
+FABIO: A planilha não mente. A planilha não tem dó. A planilha é minha melhor amiga.
+(Ele falou "planilha" com o mesmo carinho que a Vó Nita fala "Nossa Senhora".)
+> Ele te entrega um fone com a espuma gasta e um cheiro vago de perfume de outra pessoa.
+FABIO: E tem o script. Tudo o que você fala tá no script. Se o cliente xingar, você agradece o contato.
+? Primeira reação ao treinamento
+* Anotar tudo no caderno, até a parte do "agradeço o contato" -> c13_treino_anota {rel_fabio+1}
+* Perguntar se tem plano de carreira na área de TI da empresa -> c13_treino_carreira
+** Avisar que pode pular o treinamento porque "já sabe hackear" -> c13_treino_hacker {rel_fabio-1}
+
+=== c13_treino_anota
+@expr fabio feliz
+FABIO: Olha só, alguém que anota. Em doze anos de operação, você é a quarta.
+(As outras três devem ter sido promovidas. Ou fugido.)
+@vai c13_rotina
+
+=== c13_treino_carreira
+@expr fabio pensativa
+FABIO: Tem. É assim: você bate meta seis meses, vira monitora, bate meta mais um ano, vira supervisora. Daí você vira eu.
+FABIO: TI é no outro prédio. Eles têm cadeira que reclina.
+(Uma cadeira que reclina. O sonho tem formato.)
+@vai c13_rotina
+
+=== c13_treino_hacker
+> A sala inteira olha para você. O Fábio respira fundo como quem conta até dez em planilha.
+@expr fabio brava
+FABIO: Que ótimo. Então hackeia o seu TMA pra três minutos e meio, que é a única invasão que eu autorizo aqui.
+(Por que eu falei isso. Por que eu falo as coisas.)
+@vai c13_rotina
+
+=== c13_rotina
+@sai fabio
+@som notificacao
+> A primeira semana é um borrão de vozes.
+> A senhora que quer cancelar a internet porque "o neto mexeu e agora sai uma moça falando inglês". Era o assistente de voz.
+> O homem que te xinga por quatro minutos e no fim diz "desculpa, filha, o problema não é você". Você agradece o contato.
+> O rapaz que liga só para saber se a ligação está sendo gravada e desliga.
+@muda saude-1 grana+1
+(Três minutos e meio para resolver a vida de alguém. Eu levava três horas pra tirar barra de ferramentas do PC da Dona Zefa.)
+> No sétimo dia, você repara numa coisa. Para confirmar que o cliente é o cliente, o sistema pede só três dados: CPF, data de nascimento e nome da mãe.
+(Isso aí tá em todo vazamento de dados desde que eu tinha doze anos. Tem gente vendendo planilha com isso no grupo de golpe por cinco reais.)
+@anota p3_verificacao_identidade
+? O que fazer com isso?
+* Escrever uma sugestão educada para o Fábio sobre o risco dessas perguntas -> c13_sugestao {reputacao+1 rel_fabio+1}
+* Ficar quieta e bater meta. Não é seu trabalho -> c13_quieta {grana+1}
+* Reclamar no grupo de zap dos operadores com um meme -> c13_meme {rel_fabio-1 saude+1}
+
+=== c13_sugestao
+@entra fabio pensativa centro
+FABIO: "Riscos do processo de verificação de identidade." Você escreveu isso no intervalo?
+EU: Escrevi. Esses dados vazaram tanto que qualquer golpista acerta. Dava pra confirmar por código no celular já cadastrado, ou retornar a ligação.
+FABIO: Eu não mando no processo. Mas vou encaminhar para a área de fraude. Com o seu nome.
+(Com o meu nome. Primeira vez que meu nome vai para uma área de segurança, mesmo que seja num e-mail que ninguém vai ler.)
+@sai fabio
+@vai c13_ligacao_inicio
+
+=== c13_quieta
+(O procedimento é o procedimento. A meta é a meta. A farofa da vó acabou ontem.)
+@vai c13_ligacao_inicio
+
+=== c13_meme
+> Você manda no grupo uma foto de um cadeado aberto com a legenda "verificação de identidade da empresa".
+> Trinta e duas risadas. Uma delas é o Fábio, que está no grupo, e que manda "kkk" seguido de "conversa comigo depois".
+@entra fabio brava centro
+FABIO: Engraçado. Mas meme não muda processo. E-mail muda. Às vezes. Quase nunca. Mas muda.
+@sai fabio
+@vai c13_ligacao_inicio
+
+=== c13_ligacao_inicio
+@musica tensao
+@som notificacao
+> Sexta-feira, 17h48. Doze minutos para o fim do turno. Uma ligação entra.
+> A voz é de um homem ofegante: "Moça, pelo amor de Deus, me ajuda. Minha esposa tá internada, a conta é dela."
+> "Eu preciso trocar o celular e o e-mail da conta pro meu número, agora. O banco dela tá mandando código pro celular dela e o celular tá com ela na UTI."
+> Ele sabe o CPF. Sabe a data de nascimento. Sabe o nome da mãe da esposa. Começa a chorar. Depois começa a gritar.
+> "Se acontecer alguma coisa com ela por causa da sua burocracia, eu vou te processar. Qual é o seu nome completo?"
+@se marca:aceitou_cleiton -> c13_lembra_cleiton
+@se marca:recusou_cleiton -> c13_lembra_cleiton_recusou
+@vai c13_ligacao_decide
+
+=== c13_lembra_cleiton
+(Eu conheço esse tom. É o tom do Cleiton pedindo pra "recuperar" a conta da ex. Do outro lado do balcão, eu ajudei. Do lado de cá, eu sei exatamente o que vem depois.)
+@muda saude-1
+@vai c13_ligacao_decide
+
+=== c13_lembra_cleiton_recusou
+(Cleiton, versão adulta e com crachá falso de marido. Eu disse não pra ele com quinze anos. Dá pra dizer não agora.)
+@vai c13_ligacao_decide
+
+=== c13_ligacao_decide
+> O TMA na tela fica vermelho. O Fábio passa atrás da sua baia olhando a planilha.
+@desafio p3_troca_titular -> c13_ligacao_acerto | c13_ligacao_erro
+
+=== c13_ligacao_acerto
+EU: Senhor, eu sinto muito pela sua esposa. Mas não posso alterar os dados de contato sem a titular.
+EU: Posso registrar o atendimento e a equipe entra em contato pelo número que já está cadastrado.
+> Silêncio do outro lado. O choro para de repente, como torneira que fecha.
+> "Você vai se arrepender", ele diz, numa voz bem calma. E desliga.
+(Ninguém para de chorar tão rápido. A não ser quem nunca estava chorando.)
+> Você registra a tentativa no sistema, com horário, os dados que ele informou e o pedido de troca.
+@som notificacao
+> Segunda-feira, a titular liga. Não está internada. Está no trabalho, apavorada, porque recebeu um alerta de tentativa de troca de dados e ninguém da família ligou pra lugar nenhum.
+@entra fabio surpresa centro
+FABIO: A área de fraude achou mais quatro tentativas iguais. Mesmo número, mesma história do hospital. Duas operadoras trocaram os dados. A sua conta foi a única que não caiu.
+FABIO: Parabéns. De verdade.
+@expr fabio neutra
+FABIO: Seu TMA nessa ligação foi de nove minutos, aliás. Mas eu vou fingir que a planilha não viu.
+@muda reputacao+2 rel_fabio+1 tecnica+1
+@vai c13_licao
+
+=== c13_ligacao_erro
+> A pressão, o choro, o relógio. Você começa a alterar o celular da conta.
+> O sistema pede uma confirmação final: "Será enviado um aviso para o contato atual do titular."
+> Você confirma. Dois minutos depois, a titular, que não está internada coisa nenhuma, liga para a central aos gritos. A troca é bloqueada na revisão.
+@entra fabio brava centro
+FABIO: Senta aqui. Ninguém perdeu dinheiro porque o sistema tem uma segunda trava. Mas ele tinha o CPF, a data e o nome da mãe porque comprou numa planilha.
+FABIO: O choro era o golpe. A pressa era o golpe. Você foi a primeira barreira e abriu.
+@expr eu envergonhada
+(Eu, que saí de Pedra Lisa pra trabalhar com segurança, fui a falha de segurança da sexta-feira.)
+@expr fabio pensativa
+FABIO: Olha. Todo mundo cai uma vez nessa. Eu caí em 2014. A diferença é se a pessoa aprende.
+@muda saude-1 rel_fabio-1
+@vai c13_licao
+
+=== c13_licao
+> O Fábio puxa uma cadeira. Pela primeira vez, ele não está olhando para a planilha.
+@expr fabio neutra
+FABIO: Sabe como chama isso? Engenharia social. O cara não ataca o sistema, ataca a pessoa que atende o sistema.
+FABIO: Urgência, emoção, autoridade. "Minha esposa está morrendo", "eu vou te processar", "eu sou da diretoria". Todo golpe bom tem pelo menos dois.
+@anota p3_engenharia_social
+EU: E por que o senhor sabe tanto disso?
+FABIO: Doze anos de call center. Você aprende mais sobre golpe aqui do que em faculdade. Só que do lado de quem atende o telefone.
+(Eu vim pra capital querendo aprender segurança. Estou aprendendo. Pelo fone fedido.)
+? O que você conta pro Fábio?
+* Contar que estuda segurança à noite e quer trabalhar na área -> c13_conta_sonho {rel_fabio+1}
+* Só agradecer e voltar pra baia -> c13_agradece
+* Perguntar por que ele, que sabe tanto, nunca foi pra TI -> c13_pergunta_fabio {rel_fabio+1 saude+0}
+
+=== c13_conta_sonho
+@expr fabio feliz
+FABIO: Eu desconfiei. Você lê PDF de rede no intervalo e esconde atrás do cardápio do bandejão.
+FABIO: Vai. Só não pede demissão antes de ter outro emprego. A capital não perdoa quem fica sem salário.
+@vai c13_pagamento
+
+=== c13_agradece
+FABIO: Por nada. Agora volta, que tem fila de espera de vinte e três pessoas.
+@vai c13_pagamento
+
+=== c13_pergunta_fabio
+@expr fabio triste
+FABIO: Porque eu tinha uma filha de dois anos e um aluguel. E o curso era de noite, e de noite eu dormia em pé.
+FABIO: Não deixa a planilha virar a sua vida. A minha virou.
+(Eu achava que ele era um robô de meta. Ele é só um homem cansado com crachá.)
+@vai c13_pagamento
+
+=== c13_pagamento
+@sai fabio
+@fundo republica_cozinha
+@musica alegre
+@som dinheiro
+> Dia cinco. O salário cai. Não é muito, mas é a primeira vez que um dinheiro chega no dia que prometeram.
+@muda grana+2
+@se marca:caiu_golpe_aluguel -> c13_pagamento_golpe
+@vai c13_pagamento_escolha
+
+=== c13_pagamento_golpe
+(Metade vai pro buraco do Wellington. A outra metade vai pro aluguel de verdade. Sobra pro miojo e pra passagem.)
+@muda grana-1
+@vai c13_pagamento_escolha
+
+=== c13_pagamento_escolha
+? O que fazer com o primeiro salário da capital?
+* Mandar R$ 100 pra mãe pagar a conta de luz -> c13_manda_mae {grana-1 rel_mae+2}
+* Guardar tudo. Cada real vai para os estudos -> c13_guarda {grana+1}
+** Comprar o "Kit Hacker Profissional" de uma página do Instagram: adesivo de caveira, moletom com capuz e um pendrive "mágico" -> c13_kit_hacker {grana-1}
+
+=== c13_manda_mae
+@som mensagem
+@entra mae feliz centro
+MAE: Filha!!! Caiu!!! Vou pagar a luz e comprar um frango.
+MAE: Tua vó mandou dizer que a televisão de escrever deu certo.
+@sai mae
+(Não deu certo ainda. Mas a luz da casa da minha mãe vai ficar acesa por minha causa.)
+@vai c13_fim
+
+=== c13_guarda
+> Você abre uma planilha no celular chamada "FUGA DO CALL CENTER". Primeira linha: certificação. Segunda: notebook que não desligue sozinho. Terceira: dignidade.
+(Fábio ficaria orgulhoso da planilha. Isso me preocupa.)
+@vai c13_fim
+
+=== c13_kit_hacker
+> O kit chega em doze dias. O moletom é tamanho infantil. O adesivo de caveira está escrito "HAKER".
+> O pendrive "mágico" vem com um cartão: "conecte no seu computador e desbloqueie poderes hacker".
+@entra thais pensativa centro
+THAIS: Você vai enfiar no teu notebook um pendrive de um desconhecido que vende moletom com erro de ortografia?
+EU [envergonhada]: ...Não?
+THAIS: Até eu sei que isso é igual a tomar remédio sem bula. E eu sou enfermeira, eu sei o que é remédio sem bula.
+@sai thais
+> O pendrive vai para o lixo eletrônico do mercado. O moletom vira pano de chão. O adesivo, você cola no fone do call center, por vingança.
+@anota p3_pendrive_desconhecido
+@vai c13_fim
+
+=== c13_fim
+@fundo quarto_madrugada
+@musica triste
+> Turno das oito às duas. Metrô. Miojo. Depois, das dez à uma da manhã, PDF, vídeo e vaga.
+> Você digita no buscador: "vaga júnior segurança da informação".
+> O resultado tem mil e duzentas vagas. Você clica na primeira.
+@vai c14_inicio

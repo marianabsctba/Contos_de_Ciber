@@ -1,0 +1,259 @@
+# Parte 5, finais do ramo da capital. Cada final tem epílogo com a mãe, a Vó Nita e Pedra Lisa.
+
+# ===================== CISO =====================
+
+=== fim_ciso
+@fundo escritorio_moderno
+@musica final_bom
+> Cinco anos depois.
+> Uma sala de vidro no último andar. Na porta, uma placa: "{nome}, Diretora de Segurança da Informação".
+(A menina do laboratório trancado agora decide quem tem a chave. E dá a menor chave possível, pelo menor tempo possível.)
+@entra iracema feliz centro
+IRACEMA: Eu vim me aposentar e te dar um conselho. Só um.
+IRACEMA: Contrata gente que veio de onde ninguém procura. Call center, lan house, interior. A gente desconfia melhor.
+EU [feliz]: Já contratei três. Uma é de Pedra Lisa.
+@sai iracema
+@se marca:amiga_rafa -> fim_ciso_rafa
+@vai fim_ciso_davi_check
+
+=== fim_ciso_rafa
+@entra rafa feliz centro
+RAFA: Coordenadora do SOC se reportando à diretora. Quem diria, hein? Duas meninas da cadeira que balança.
+@sai rafa
+@vai fim_ciso_davi_check
+
+=== fim_ciso_davi_check
+@se marca:namora_davi -> fim_ciso_davi
+@vai fim_ciso_casa
+
+=== fim_ciso_davi
+@entra davi feliz centro
+DAVI: Seu marido aqui trouxe marmita. E não, eu não vou te contar a senha do meu e-mail. Ela tem 2FA.
+EU [feliz]: Orgulho de você.
+@sai davi
+@vai fim_ciso_casa
+
+=== fim_ciso_casa
+@fundo casa_cozinha
+@musica interior
+> Natal em Pedra Lisa. A casa da sua mãe tem reboco novo, panela de pressão que apita afinada e um roteador que você mesma configurou.
+@entra mae feliz esquerda
+@entra vo feliz direita
+MAE: A senha do Wi-Fi continua o nome do cachorro. Mas agora tem esse tal de código que chega no celular.
+EU [feliz]: É a verificação em duas etapas, mãe.
+MAE: Eu sei. Eu explico pras vizinhas. Elas acham que eu sou da polícia.
+VO: Minha neta é chefe dos computadores de uma firma grande. A televisão de escrever deu certo na vida.
+> Lá fora, na caixa d'água, os meninos da rua sobem pra pegar sinal. Agora pega três barras. Ainda dá risada.
+@final ciso
+
+# ===================== PESQUISADORA =====================
+
+=== fim_pesquisadora
+@fundo palco_premiacao
+@musica final_bom
+> Duas mil cadeiras cheias. Na tela, o título: "O que um hospital, um dinossauro e uma avó benzedeira me ensinaram sobre resposta a incidente".
+EU: Boa noite. Eu sou {nome}, de Pedra Lisa do Norte, onde o sinal pega na praça e na caixa d'água.
+EU: Eu vou falar de ransomware. Mas, antes, eu vou falar do Seu Jair, que guardava o backup numa gaveta e era chamado de dinossauro.
+> A plateia ri, depois silencia, depois anota. No fim, aplaude em pé. Você não sabe onde pôr as mãos.
+@se marca:namora_davi -> fim_pesquisadora_davi
+@vai fim_pesquisadora_publico
+
+=== fim_pesquisadora_davi
+> Na primeira fila, o Davi chora sem vergonha nenhuma, exatamente como prometeu.
+@vai fim_pesquisadora_publico
+
+=== fim_pesquisadora_publico
+@fundo auditorio_evento
+@musica interior
+> Depois da palestra, uma fila de gente pra tirar foto. A última é uma menina de uns quinze anos, de mochila de escola pública e caderno de capa dura.
+> "Eu também sou do interior. Lá na minha escola o laboratório vive trancado."
+EU [feliz]: Então anota meu e-mail. E escolhe uma senha boa pra ele, tá?
+@vai fim_pesquisadora_casa
+
+=== fim_pesquisadora_casa
+@fundo praca_interior
+@musica final_bom
+> Um mês depois, Pedra Lisa. A sua palestra passou no telão da praça, ideia do prefeito, que ainda não sabe o que é ransomware mas sabe o que é voto.
+@entra mae feliz esquerda
+@entra vo feliz direita
+MAE: Você falou da sua avó na frente de duas mil pessoas!
+VO: E falou bem de mim, que eu ouvi. Agora a igreja inteira quer que eu benza computador.
+EU [feliz]: Vó, benze o do hospital. Mal não faz.
+@se marca:mentiu_leni -> fim_pesquisadora_fim
+@vai fim_pesquisadora_leni
+
+=== fim_pesquisadora_leni
+@sai todos
+@entra leni feliz centro
+LENI: Eu sabia. Desde o dia que você ficou com o nariz grudado no vidro do laboratório, eu sabia.
+EU [feliz]: A senhora deixou a porta aberta primeiro, professora.
+@vai fim_pesquisadora_fim
+
+=== fim_pesquisadora_fim
+> À noite, você sobe na caixa d'água, como fazia aos nove anos. Duas barras de sinal. Uma mensagem da menina do caderno: "Consegui entrar no laboratório. A professora deixou."
+@final pesquisadora
+
+# ===================== BUG BOUNTY =====================
+
+=== fim_bug_bounty
+@fundo aeroporto
+@musica final_bom
+> Três anos depois. Aeroporto, sala de embarque, um crachá de conferência internacional no pescoço.
+> Seu nome está no hall da fama de doze empresas. Bancos, aplicativos, uma companhia aérea. Todas as falhas reportadas pelo canal certo, corrigidas antes de qualquer criminoso achar.
+(Eu achei falhas que valiam uma fortuna no mercado errado. Vendi todas pro mercado certo: o de quem corrige.)
+@se marca:namora_davi -> fim_bounty_davi
+@vai fim_bounty_casa
+
+=== fim_bounty_davi
+@entra davi feliz centro
+DAVI: Dupla de CTF em viagem de trabalho. A gente perdeu aquele primeiro por três pontos, lembra?
+EU [feliz]: E ganhou todos os outros.
+@sai davi
+@vai fim_bounty_casa
+
+=== fim_bounty_casa
+@fundo casa_cozinha
+@musica interior
+> Antes de embarcar, videochamada com Pedra Lisa. A câmera mostra o teto, depois o nariz da sua mãe, depois finalmente as duas.
+@entra mae feliz esquerda
+@entra vo feliz direita
+MAE: Você vai pra onde agora?
+EU [feliz]: Pra um evento lá fora, mãe. Vou mostrar como achei uma falha num banco.
+VO: Eu contei pra igreja que você trabalha caçando vírus para os americanos. O pastor pediu pra você olhar o celular dele.
+MAE: E com o dinheiro dos americanos, ela trocou o telhado da minha casa. Tá vendo, mãe? Computador dá telhado.
+> Você ri. A ligação cai. Deve estar chovendo em Pedra Lisa.
+@final bug_bounty
+
+# ===================== BURNOUT =====================
+
+=== fim_burnout
+@fundo praca_interior
+@musica final_bom
+> Um ano depois. Pedra Lisa, fim de tarde. Você está sentada no banco da praça, sem celular no bolso. Ele ficou em casa, carregando, no modo avião.
+(Eu saí da área. Pela primeira vez, a pessoa que eu protegi fui eu.)
+@entra vo feliz direita
+VO: Hoje eu benzi você de quebranto, de mau-olhado e de planilha.
+EU [feliz]: De planilha, Vó?
+VO: Planilha também pega na gente. Você chegou aqui toda pesada de número.
+@entra mae neutra esquerda
+MAE: Tá dormindo, comendo e rindo. Pra mim isso é emprego bom.
+EU [feliz]: Eu tô ajudando o Seu Valdir na padaria e consertando o celular das senhoras da igreja. De graça. Devagar.
+MAE [feliz]: Devagar é a velocidade de Pedra Lisa, minha filha. Aqui ninguém tem meta.
+> O sol desce atrás da caixa d'água. Uma barra de sinal. E, pela primeira vez em anos, isso parece suficiente.
+@final burnout
+
+# ===================== OUTRA CARREIRA =====================
+
+=== fim_outra_carreira
+@fundo cafeteria
+@musica final_bom
+> Dois anos depois. Um café pequeno numa esquina da capital, com cheiro de forno e uma placa de giz na porta: "Café Sinal Fraco. Wi-Fi forte, rede de visitantes separada."
+(O roteador dos clientes não enxerga a maquininha. A senha muda toda semana. Ninguém aqui cai em golpe do motoboy.)
+@entra thais feliz direita
+THAIS: Seu café é o único lugar da cidade onde a moça do caixa recusa comprovante de Pix falso só de olhar.
+EU [feliz]: Eu confiro no app do banco. Sempre. Comprovante é imagem, imagem se faz em qualquer lugar.
+@sai thais
+@se marca:namora_davi -> fim_outra_davi
+@vai fim_outra_casa
+
+=== fim_outra_davi
+@entra davi feliz centro
+DAVI: Mais um pão de queijo. Pro investidor anjo.
+EU: Você é meu namorado, não investidor.
+DAVI [feliz]: Investidor anjo apaixonado, então.
+@sai davi
+@vai fim_outra_casa
+
+=== fim_outra_casa
+@fundo casa_cozinha
+@musica interior
+> No feriado, você leva o café pra Pedra Lisa. Uma barraca na festa da padroeira, fila até a praça.
+@entra mae feliz esquerda
+@entra vo feliz direita
+MAE: Tanto computador pra no fim você virar dona de café. Eu falei que você devia fazer curso de culinária.
+EU [feliz]: E a senhora tinha razão em metade, mãe. Já é muito.
+VO: O bolo tá batido com a colher de pau?
+EU: Tá, Vó. Com fé.
+> Você não trabalha mais com segurança. Mas cada senha, cada backup e cada golpe que você não deixa entrar no seu café diz o contrário.
+@final outra_carreira
+
+# ===================== VOLTA PRA CASA =====================
+
+=== fim_volta_pra_casa
+@fundo onibus_noite
+@musica final_bom
+> Ônibus da noite, catorze horas de viagem. A mesma estrada da ida, ao contrário. A janela devolve o seu reflexo, mais velho e menos assustado.
+(Eu não consegui o crachá dos sonhos. Mas eu sei coisa que ninguém em Pedra Lisa sabe. E eu sei voltar.)
+@fundo rodoviaria
+> 6h da manhã. Rodoviária de Pedra Lisa, que é um banco, uma lanchonete e um cachorro.
+@entra mae feliz esquerda
+@entra vo feliz direita
+MAE: Chegou! Magra! Eu trouxe bolo.
+VO: Deixa a menina respirar, Rosilene. Vem cá, minha neta. A televisão de escrever ainda tá lá em casa, coberta com um paninho.
+EU [triste]: Eu voltei sem nada, Vó.
+VO: Voltou com você. Isso é tudo.
+@sai todos
+@fundo praca_interior
+@musica interior
+> Uma semana depois, a cooperativa pergunta se você entende de computador. A escola pergunta se você pode dar uma oficina. A vizinha pergunta por que o celular dela está mandando Pix sozinho.
+(Ainda dá tempo. Sempre dá.)
+@final volta_pra_casa
+
+# ===================== PRESA =====================
+
+=== fim_presa
+@fundo delegacia
+@musica final_ruim
+> Três meses depois. Mandado de busca às 6h. Os policiais levam o notebook, o celular, o HD velho.
+@entra delegada pensativa centro
+DELEGADA: Você apagou do seu lado. O outro lado guardou tudo. Mensagem, horário, pagamento.
+DELEGADA: E agora tem também a mentira e o que você destruiu. Isso pesa mais que o erro de anos atrás.
+EU [triste]: Eu sabia. Eu ensinava isso pros outros.
+DELEGADA: Eu sei. Por isso dói mais.
+@sai delegada
+@musica triste
+> Dia de visita. A sua mãe veio de Pedra Lisa em três ônibus, com uma sacola de pão de queijo que o agente não deixou entrar.
+@entra mae triste centro
+MAE: A sua avó mandou dizer que tá rezando. E que não acredita que você é ruim. Ela acha que você só errou o caminho.
+EU [triste]: E você, mãe?
+MAE: Eu acho que mãe não desiste. Nem quando a filha desiste dela mesma.
+@sai mae
+> À noite, no papel, você escreve uma carta pra uma menina de Pedra Lisa que você nunca vai conhecer: "Quando alguém de terno oferecer muito dinheiro por uma coisa pequena, a coisa nunca é pequena."
+@final presa
+
+# ===================== FORAGIDA =====================
+
+=== fim_foragida
+@fundo aeroporto
+@musica final_ruim
+> Dois anos depois. Outro aeroporto, outro país, outro nome no passaporte que você não quer saber de onde veio.
+> O dinheiro do Doutor durou. A paz, não. Você troca de celular todo mês. Não usa a mesma rede duas vezes. Conhece todos os jeitos de alguém te achar, e é isso que não deixa você dormir.
+(Eu passei a vida aprendendo a proteger gente. Agora eu só sei me esconder.)
+@fundo quarto_madrugada
+> 3h da manhã num quarto de hotel sem janela. Você abre um perfil falso só pra ver o status da sua mãe.
+> Uma foto da Vó Nita na varanda, mais magra, segurando um terço. A legenda: "Rezando pela minha neta, onde ela estiver."
+> Outra foto: a praça de Pedra Lisa, a caixa d'água ao fundo. Alguém pintou nela: "Duas barras de sinal".
+EU [triste]: Duas barras. Daria pra ligar.
+> Você não liga. Fecha o perfil, tira o chip, quebra no meio.
+@final foragida
+
+# ===================== GOLPEADA =====================
+
+=== fim_golpeada
+@fundo republica_quarto
+@musica final_ruim
+> Um mês depois. Você devolve a chave do apartamento e volta pra um quarto dividido com três desconhecidas, longe do metrô.
+> A vaga falsa, o aluguel que não existia, o curso milagroso, o empréstimo que pedia taxa. Cada golpe parecia pequeno sozinho. Juntos, comeram tudo.
+(Eu, que sei explicar golpe pra qualquer pessoa. Eu caí. Porque golpe não pega quem é burro. Pega quem tá cansado, com pressa e com medo.)
+@som mensagem
+@entra mae triste centro
+MAE: Filha, a gente juntou um dinheiro aqui. Eu, sua avó e o Tio Juca. Não é muito. É pra passagem.
+EU [triste]: Eu não queria voltar assim, mãe.
+MAE: Ninguém quer. Mas voltar não é o fim do caminho. É só a volta da estrada.
+@sai mae
+@fundo onibus_noite
+@musica triste
+> No ônibus, você registra boletim de ocorrência de cada golpe pelo celular, um por um, com print e comprovante. Talvez não volte nada. Mas alguém, algum dia, vai puxar esse fio.
+@entra vo feliz centro
+VO: Vem pra casa, minha neta. Aqui ninguém pede taxa de nada. Só pede a bênção.
+@final golpeada

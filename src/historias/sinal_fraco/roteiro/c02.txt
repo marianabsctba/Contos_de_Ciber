@@ -1,0 +1,306 @@
+# Parte 1, capítulo 2: Cida Net (ela tem 10 anos)
+
+=== c02_inicio
+@cap 2 "Cida Net"
+@fundo praca_interior
+@musica interior
+@entra bia feliz esquerda
+> Um ano depois. Sábado de manhã, dia seguinte à quermesse da igreja. A praça está forrada de latinha amassada.
+BIA: É ouro, {nome}! Ouro de alumínio!
+EU [feliz]: Pega as de guaraná que pesam mais, que tem resto dentro.
+BIA: Que nojo. Que genial.
+> Uma semana inteira de latinha, de sacola em sacola, até o ferro-velho do primo da Bia. Pesa, conta, pesa de novo.
+BIA: Quatro e cinquenta pra cada uma! A gente é rica!
+(Quatro e cinquenta. Dá quatro meias horas de lan house. Ou um quarto de um botijão de gás. Eu sei fazer essa conta desde os sete anos.)
+@sai bia
+@vai c02_casa
+
+=== c02_casa
+@fundo casa_cozinha
+@musica triste
+@entra mae pensativa direita
+> Em casa, a mãe está sentada na mesa, contando moeda de um em um. O fogão está frio.
+MAE: Acabou o gás. O moço do caminhão passa amanhã, e eu tenho quarenta e um reais.
+MAE: O botijão tá quarenta e cinco.
+> Ela fala como quem fala do tempo. Mas a mão dela treme um pouco em cima das moedas.
+(Quatro reais. Faltam quatro reais. Eu tenho quatro e cinquenta no bolso, quente de tanto eu apertar.)
+? O que você faz com o dinheiro das latinhas?
+* Coloca tudo na mesa, do lado das moedas da mãe -> c02_gas {rel_mae+2 etica+1}
+* Fica quieta e guarda o dinheiro para a lan house -> c02_guarda
+* Dá quatro reais e guarda os cinquenta centavos -> c02_metade {rel_mae+1}
+
+=== c02_gas
+@expr mae surpresa
+MAE: Que é isso? De onde saiu esse dinheiro?
+EU: Das latinhas. Eu e a Bia catamos a semana toda.
+@expr mae brava
+MAE: Guarda. Isso é seu. Dinheiro de criança não paga conta de casa.
+EU: Então finge que é de adulto. Eu deixo.
+@expr mae triste
+> A mãe fica um tempo olhando para as moedas. Depois junta tudo de uma vez, sem olhar para a filha.
+MAE: Isso aqui eu te devolvo. Quando a patroa pagar o extra.
+(Ela nunca vai devolver. E tudo bem. Eu também nunca vou cobrar.)
+@expr mae feliz
+MAE: Vem cá. Me dá um abraço, que hoje o feijão é por sua conta.
+@sai mae
+@vai c02_vitrine
+
+=== c02_guarda
+> A {nome} fica quieta. O dinheiro continua no bolso, cada vez mais quente.
+MAE: Vou pedir emprestado pra Dona Zefa. De novo. Ela vai fazer aquela cara.
+EU [envergonhada]: Mãe...
+MAE: Que foi?
+EU [envergonhada]: Nada não.
+> A mãe sai pela porta, com a cara de quem vai pedir favor pela terceira vez no mês.
+(Eu vou me divertir com esse dinheiro. Vou. Por que tá doendo a barriga, então?)
+@muda saude-1 grana+1
+@sai mae
+@vai c02_lanhouse
+
+=== c02_metade
+@expr mae surpresa
+MAE: Quatro reais? Menina, de onde você tirou isso?
+EU: Das latinhas. Os cinquenta centavos eu guardei pra mim. Sou sócia, não sou santa.
+@expr mae feliz
+MAE: Sócia. Olha só. Tá certo, sócia, eu te devolvo com juros de pão doce.
+> A mãe ri de verdade, pela primeira vez na semana.
+@sai mae
+@vai c02_vitrine
+
+=== c02_vitrine
+@fundo lan_house
+@musica alegre
+@entra cida surpresa direita
+> Cida Net: seis computadores, um ventilador de teto que gira com preguiça, uma placa escrita "IMPRIMO CURRÍCULO, FAÇO TRABALHO ESCOLAR, NÃO CONSERTO CELULAR".
+> A {nome} fica do lado de fora, com o nariz no vidro, olhando os meninos jogando.
+CIDA: Ô menina! Vai entrar ou vai lamber minha vitrine?
+EU [envergonhada]: Eu tô só olhando, Dona Cida. Hoje eu não tenho dinheiro.
+@expr cida pensativa
+CIDA: Você não é a filha da Rosilene? Que limpou minha casa inteira quando eu quebrei a perna e não cobrou o sábado?
+EU: Sou.
+@expr cida feliz
+CIDA: Entra. Meia hora fiado. Eu anoto no caderno e você me paga em latinha, em dinheiro ou em ajudar a varrer.
+(Fiado! Eu tenho crédito na praça. Sou praticamente uma empresária.)
+@muda rel_cida+2
+@vai c02_regras
+
+=== c02_lanhouse
+@fundo lan_house
+@musica alegre
+@entra cida feliz direita
+> Cida Net: seis computadores, um ventilador de teto que gira com preguiça, uma placa escrita "IMPRIMO CURRÍCULO, FAÇO TRABALHO ESCOLAR, NÃO CONSERTO CELULAR".
+CIDA: Chega, menina! Meia hora é um real. Uma hora é dois. E tem o combo.
+EU [surpresa]: Que combo?
+CIDA: O Combo Turbo Gamer VIP. Três horas, um guaraná e a cadeira que não balança. Quatro e cinquenta.
+? Qual pacote você pega?
+* Meia hora, um real. O resto fica guardado -> c02_regras {grana+1}
+** O Combo Turbo Gamer VIP, com tudo que tem direito -> c02_combo {grana-1 rel_cida+1}
+
+=== c02_combo
+EU [feliz]: Eu quero o combo!
+@expr cida surpresa
+CIDA: Opa! Cliente VIP! Senta aqui, na cadeira de honra.
+> A cadeira de honra balança exatamente igual às outras. O guaraná está quente. E, quarenta minutos depois, começa a chover.
+@som erro
+> Quando chove em Pedra Lisa, a internet cai. É lei da física e da prefeitura.
+CIDA: Ih, caiu. Mas o tempo tá correndo, viu? A chuva não é culpa minha, é culpa de Deus.
+(Gastei todo o meu dinheiro para ficar olhando a ampulheta do Windows rodar. Aprendi uma lição sobre combo premium.)
+@expr cida feliz
+CIDA: Tá bom, tá bom. Pela cara de enterro, te dou o resto do tempo outro dia. Anoto no caderno.
+@vai c02_regras
+
+=== c02_regras
+@expr cida brava
+CIDA: Regras da Cida Net! Escuta que eu só falo uma vez por dia, mas falo alto.
+CIDA: Proibido salgadinho no teclado. Proibido gritar no joguinho de tiro. Proibido entrar em site de safadeza, que eu vejo tudo pelo reflexo do vidro.
+CIDA: E proibido esquecer conta aberta. Esqueceu, o próximo que sentar vira você.
+EU [pensativa]: Como assim, vira eu?
+CIDA: Você vai entender do jeito fácil ou do jeito difícil. Senta no três.
+@sai cida
+@entra bia feliz esquerda
+BIA: {nome}! Eu tô no quatro! Vamo fazer Orkut! Mas tem que ter e-mail antes.
+EU: Então vamos fazer e-mail.
+> As duas abrem a página de criar conta. Primeiro campo: o endereço de e-mail.
+? Que endereço você escolhe?
+* princesinha.do.forro.2000 -> c02_end_forro {rel_bia+1}
+* {nome}.pedralisa, que é para a vida inteira -> c02_end_serio {reputacao+1}
+* hacker.do.capuz.verde -> c02_end_hacker
+
+=== c02_end_forro
+BIA: Princesinha do forró! Que lindo! Quando você tiver trinta anos vai mandar currículo com esse e-mail.
+EU [feliz]: Com trinta anos eu vou ter outro. Esse aqui é pra ser feliz.
+@vai c02_senha
+
+=== c02_end_serio
+BIA: Que sem graça. Parece e-mail de dentista.
+EU: Dentista tem carro, Bia.
+BIA [pensativa]: Faz sentido.
+@vai c02_senha
+
+=== c02_end_hacker
+BIA: Hacker do capuz verde? Você nem tem capuz.
+EU: Tenho a blusa de frio da minha mãe. É capuz de adulto, conta dobrado.
+@vai c02_senha
+
+=== c02_senha
+> Segundo campo: senha. A Bia já digitou a dela, rapidinho.
+BIA: Pronto! "bia123". Ninguém nunca vai adivinhar.
+EU [pensativa]: Bia... seu nome com um, dois, três?
+BIA: É criptografado. Tem número.
+@entra cida pensativa direita
+CIDA: Menina, escuta a Cida. Senha não é pra ser bonita. É pra ser comprida e difícil de adivinhar.
+CIDA: Nada de aniversário, nome de cachorro, nome de namorado. E uma senha diferente pra cada coisa.
+@marca primeiro_email
+@desafio p1_senha_primeiro_email -> c02_senha_boa | c02_senha_ruim
+
+=== c02_senha_boa
+> A {nome} pensa numa frase que só ela entende, sobre a goteira Valdemar, a vó e uma quantidade absurda de feijão.
+@expr cida surpresa
+CIDA: Tá vendo, Bia? Isso é uma senha. A sua é uma placa de "entre, a casa é sua".
+BIA [envergonhada]: Tá bom, eu troco depois.
+(Ela não vai trocar depois. Ninguém troca depois.)
+@muda tecnica+1 rel_cida+1
+@anota p1_senha_forte
+@vai c02_recuperacao
+
+=== c02_senha_ruim
+> A {nome} digita a data do próprio aniversário, que é fácil de lembrar.
+@expr bia feliz
+BIA: Deixa eu adivinhar sua senha. É seu aniversário!
+EU [surpresa]: Como você sabe?!
+BIA: Eu fui na sua festa, {nome}. A cidade inteira foi. Teve bolo de prestígio.
+@expr cida brava
+CIDA: Viu? Se a Bia adivinha em uma tentativa, qualquer um adivinha. Troca agora.
+> E ela troca, envergonhada, por uma frase comprida que só ela entende.
+@anota p1_senha_forte
+@vai c02_recuperacao
+
+=== c02_recuperacao
+> Próxima tela: "Pergunta de segurança. Qual o nome do seu primeiro animal de estimação?"
+@expr cida feliz
+CIDA: Seu cachorro é o Pipoca. Aquele que late pra moto e foge da galinha.
+EU [surpresa]: A senhora sabe o nome do meu cachorro?
+CIDA: Menina, Pedra Lisa inteira sabe o nome do seu cachorro. Isso não é segredo, é fofoca.
+? O que você responde na pergunta de segurança?
+* "Pipoca", que é a verdade -> c02_pipoca
+* Inventa uma resposta sem nada a ver e anota no caderno escondido -> c02_inventa {tecnica+1}
+* Coloca o e-mail da Cida para recuperar a conta -> c02_email_cida {rel_cida+1}
+
+=== c02_pipoca
+@expr cida pensativa
+CIDA: Pipoca. Então qualquer vizinho que quiser recupera sua senha. Vai pela Cida: resposta tem que ser coisa que ninguém sabe.
+EU: Mas aí eu esqueço.
+CIDA: Então anota num caderno e esconde em casa. Caderno escondido debaixo do colchão ninguém de fora lê pela internet.
+> A {nome} volta e troca a resposta. "Pipoca" vira uma palavra que só ela e o colchão conhecem.
+@anota p1_recuperar_conta
+@vai c02_orkut
+
+=== c02_inventa
+EU: Vou colocar "Pastel de vento com chuchu". Ninguém adivinha. Nem eu, se não anotar.
+@expr cida feliz
+CIDA: Isso! Anota em casa, guarda bem. A pergunta de segurança é uma porta dos fundos. Porta dos fundos também precisa de tranca.
+@anota p1_recuperar_conta
+@vai c02_orkut
+
+=== c02_email_cida
+EU: Posso colocar o seu e-mail para recuperar, Dona Cida? A minha mãe não tem.
+@expr cida surpresa
+CIDA: O meu? Menina, eu tenho e-mail desde 2003. Pode. Mas aí, se alguém pedir pra trocar sua senha, chega pra mim primeiro. E eu te conto.
+CIDA: E na pergunta de segurança você inventa uma resposta que ninguém sabe. Nem eu.
+(Agora eu tenho e-mail, senha e uma madrinha digital que grita.)
+@anota p1_recuperar_conta
+@vai c02_orkut
+
+=== c02_orkut
+@sai cida
+@expr bia feliz
+> Vinte minutos depois, a Bia já tem Orkut, foto de perfil com efeito de brilho e quatro comunidades, uma delas "Eu odeio acordar cedo".
+BIA: {nome}! Olha! Apareceu um aplicativo: "Descubra quem visitou seu perfil"! Só tem que colocar meu e-mail e minha senha!
+EU [pensativa]: Ele pede sua senha? Pra quê?
+BIA: Pra descobrir, ué. Quero saber se o Wesley me visitou.
+? O que você faz?
+* Segura a mão dela: "Bia, não. Quem pede sua senha fora do site é golpe." -> c02_bia_salva {rel_bia+1 tecnica+1}
+* Deixa. A Bia é teimosa e você quer saber do Wesley também -> c02_bia_cai {rel_bia-1}
+
+=== c02_bia_salva
+BIA [brava]: Golpe? Mas tá dentro do Orkut!
+EU: Por isso mesmo. Ele finge que é do site. O site de verdade já sabe sua senha, não precisa perguntar de novo.
+@expr bia pensativa
+BIA: E se ele pegar minha senha?
+EU: Entra na sua conta, manda recado pra todo mundo e você nem fica sabendo quem foi.
+@entra cida brava direita
+CIDA: Ela tá certa. Semana passada o Orkut da metade da cidade mandou "ganhe créditos grátis" pros outros. Todo mundo caiu nesse aí.
+@expr bia feliz
+BIA: Tá bom, tá bom. Você é a minha segurança particular, {nome}.
+(Segurança particular. Primeira cliente. Pagamento: nenhum. Tá bom pra começar.)
+@vai c02_tempo
+
+=== c02_bia_cai
+> A Bia digita a senha. O aplicativo pensa, pensa e mostra uma lista aleatória de pessoas. O Wesley não está.
+BIA: Hum. Que estranho.
+> Três dias depois, todo mundo da escola recebe um recado do Orkut da Bia: "Ganhe créditos grátis no celular! Clique aqui!"
+@expr bia triste
+BIA: {nome}, não fui eu! Juro! E agora eu não consigo entrar, mudaram minha senha!
+@entra cida pensativa direita
+CIDA: Era golpe, minha filha. O aplicativo pegou sua senha. "bia123" ainda por cima.
+> A {nome} passa a tarde ajudando a Bia a recuperar a conta pelo e-mail, trocar a senha e avisar a sala inteira para não clicar.
+EU [triste]: Desculpa, Bia. Eu desconfiei e fiquei quieta.
+BIA: Da próxima vez você grita. Igual a Dona Cida.
+@muda tecnica+1
+@vai c02_tempo
+
+=== c02_tempo
+@sai todos
+@entra cida brava centro
+@som alarme
+CIDA: Acabou o tempo do três! Acabou o tempo do quatro! Levanta, que tem fila!
+> Atrás da cadeira, um menino de dez anos e cara de quem vai aprontar já está esperando.
+? Você levanta correndo e...
+* Clica em "Sair" no e-mail, fecha o navegador e só depois levanta -> c02_sai_certo {tecnica+1}
+* Fecha só a janelinha do navegador, porque a Cida tá gritando -> c02_sai_errado {reputacao-1}
+
+=== c02_sai_certo
+@expr cida feliz
+CIDA: Saiu da conta? Fechou tudo? Olha aí, essa vai longe.
+EU: A senhora disse que se esquecer, o próximo vira eu.
+CIDA: E é verdade. Computador de lan house é igual banheiro de rodoviária: todo mundo usa, ninguém é dono.
+@anota p1_sair_da_conta
+@vai c02_fim
+
+=== c02_sai_errado
+> No dia seguinte, a {nome} chega na escola e a Bia está vermelha de rir.
+@sai cida
+@entra bia feliz centro
+BIA: {nome}! Você me mandou um e-mail escrito "EU AMO O WESLEY" com vinte corações!
+EU [assustada]: Eu não mandei nada!
+BIA: Mandou do seu e-mail! Pra mim, pra professora e pra sua prima!
+(O menino do três. Eu fechei só a janela. A conta continuou aberta, esperando ele.)
+@sai bia
+@fundo lan_house
+@entra cida pensativa centro
+CIDA: Eu avisei. Fechar a janela não é sair. Clica em "Sair", sempre. E se puder, fecha o navegador inteiro.
+> A {nome} troca a senha na mesma hora. E nunca mais esquece de sair da conta, nem em casa.
+@anota p1_sair_da_conta
+@vai c02_fim
+
+=== c02_fim
+@sai todos
+@fundo casa_cozinha
+@musica interior
+@entra mae neutra direita
+@entra vo feliz esquerda
+> De noite, na cozinha, a {nome} conta a novidade.
+EU [feliz]: Mãe, eu tenho e-mail!
+MAE: E-mail? Pra que criança tem e-mail?
+EU: Pra receber coisa.
+@expr mae pensativa
+MAE: E quem vai te mandar carta pela televisão? O prefeito?
+VO: Eu! Manda uma pra mim, minha flor. Que eu quero receber uma carta de computador antes de morrer.
+EU: Vó, a senhora não tem e-mail.
+VO: Então faz um pra mim. Bota a senha bem difícil. Bota o nome de todos os santos.
+(A vó entendeu senha forte melhor que a Bia.)
+@expr mae feliz
+MAE: Só não me esquece da escola. E a vista? Tá doendo?
+EU: Não, mãe. A vista tá ótima.
+> Naquela noite, a {nome} começa um caderno novo, de capa dura e espiral torta. Na primeira página escreve: "COISAS QUE EU APRENDI NO COMPUTADOR".
+@vai c03_inicio

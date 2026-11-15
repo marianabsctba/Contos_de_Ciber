@@ -1,0 +1,248 @@
+# Parte 1, capítulo 3: O PC do Tio Juca (ela tem 11 anos)
+
+=== c03_inicio
+@cap 3 "O PC do Tio Juca"
+@fundo casa_cozinha
+@musica alegre
+@entra tio feliz direita
+> Mais um ano. Numa terça qualquer, o Tio Juca entra pela porta da cozinha carregando uma caixa de papelão escrita "CUIDADO: OVOS".
+TIO: Sobrinha! Trouxe um presente. E não é ovo.
+EU [surpresa]: Tio, isso é...
+TIO: Um computador! Um cliente deixou na oficina pra consertar e nunca mais voltou. Faz oito meses. Pela lei da oficina, agora é nosso.
+(Não sei se essa lei existe. Mas não vou ser eu a perguntar pro juiz.)
+> Dentro da caixa: um gabinete bege sem a tampa do lado, um monitor de tubo que pesa mais que a Bia, um teclado sem a tecla do Ç e um saquinho com peças soltas.
+TIO: É um Pentium 4. Praticamente da NASA. Da NASA de 2004, mas da NASA.
+@entra mae brava esquerda
+MAE: Juca, se essa coisa queimar a minha casa, você vem morar aqui e eu vou morar na sua oficina.
+TIO: Rosilene, eu sou o rei da gambiarra. Já liguei motor de geladeira em bicicleta.
+MAE: É disso que eu tenho medo.
+@sai mae
+@entra vo feliz esquerda
+VO: A televisão de escrever! Chegou na nossa casa! Ai, Jesus, tenho que benzer.
+TIO: Sábado eu volto e a gente monta junto. Só peça solta, sobrinha. Não liga nada sem mim, ouviu?
+@sai tio
+> O Tio Juca sai assoviando. A caixa fica no canto da sala, olhando para a {nome} como quem chama.
+? O que você faz até sábado?
+* Espera o Tio Juca, contando os dias no calendário da farmácia -> c03_sabado {rel_tio+1}
+** Pede para a Vó Nita benzer o gabinete antes de qualquer coisa -> c03_benzer {rel_vo+2 saude+1}
+* Não aguenta esperar e monta sozinha de noite, no benjamim da geladeira -> c03_arrisca {marca:pc_queimou}
+
+=== c03_benzer
+@expr vo feliz
+VO: Vem cá, máquina. Que Deus te dê memória boa e juízo.
+> A vó passa o raminho de arruda pela placa, pelo monitor e pelo teclado. Na hora da tecla do Ç, ela demora mais.
+VO: Essa aqui tá faltando um pedaço. Tadinha. Igual a gente.
+EU [feliz]: Vó, a senhora benzeu até o mouse?
+VO: O ratinho? Benzi. Rato de casa de pobre sofre muito.
+(A benzedura não vai fazer o computador ligar. Mas meu coração ficou mais calmo. Isso também conta.)
+@sai vo
+@vai c03_sabado
+
+=== c03_arrisca
+@sai todos
+@fundo casa_cozinha
+@musica tensao
+> Onze da noite. Todo mundo dormindo. A {nome} encaixa as peças no olho, do jeito que viu no Google da escola, e procura uma tomada.
+> A única livre é o benjamim da cozinha, onde já estão a geladeira, o liquidificador e o carregador do celular da mãe.
+(É só um minutinho. Só pra ver se liga.)
+> Ela não olha a chavinha vermelha atrás da fonte. Não sabe nem que existe. Coloca o plugue no benjamim e aperta o botão.
+@som erro
+> Um estalo seco. Um clarão. Um cheiro de plástico queimado que sobe pelo corredor. A luz da casa inteira apaga de uma vez.
+@entra mae assustada direita
+MAE: Que foi isso?! {nome}! Que cheiro é esse?!
+EU [assustada]: Mãe, eu só queria ver se ligava!
+> O benjamim está preto e meio derretido na parede. A fonte do computador solta uma fumacinha fina.
+@vai c03_bronca
+
+=== c03_sabado
+@sai todos
+@fundo casa_quarto_infancia
+@musica alegre
+@entra tio feliz centro
+> Sábado. O Tio Juca espalha as peças em cima de uma toalha de banho, do jeito que ele faz com motor na oficina.
+TIO: Aula com o professor Juca. Essa placa grande aqui é a placa-mãe. Tudo se liga nela.
+TIO: Esse quadradinho com ventilador em cima é o processador. É o cérebro. Se tirar o ventilador, ele frita igual ovo.
+TIO: Esse pente fininho é a memória. É onde o computador guarda o que tá fazendo agora. Desligou, ela esquece tudo.
+TIO: Essa caixa de metal pesada é a fonte. Ela pega a energia da tomada e entrega do jeitinho que as peças aguentam.
+TIO: E esse tijolinho é o HD. Ele guarda tudo pra sempre. Ou até quebrar, que é quase pra sempre.
+(Cérebro, memória curta, memória longa e coração. O computador é praticamente uma pessoa. Uma pessoa que não pode tomar chuva.)
+@anota p1_hardware_basico
+@muda tecnica+1
+@som notificacao
+> O celular do tio toca. É da oficina: um caminhão quebrou na frente da igreja e o padre tá nervoso.
+TIO: Ih. Vou ter que ir. Sobrinha, você consegue montar a parte de dentro? Mas na ordem certa, hein? E com segurança.
+EU [pensativa]: Qual é a ordem certa?
+TIO: Pensa. Você é esperta. Só me promete uma coisa: antes de ligar, olha a chavinha vermelha atrás da fonte.
+@sai tio
+@desafio p1_ordenar_montagem -> c03_ligou | c03_errou
+
+=== c03_errou
+@musica tensao
+> A {nome} encaixa tudo, fecha o gabinete, coloca na tomada e aperta o botão. Na pressa, esqueceu a chavinha vermelha.
+> A chave estava em 110. A tomada da casa é 220.
+@som erro
+> Um estalo seco. Um clarão. Um cheiro de plástico queimado que sobe pelo corredor. O disjuntor cai e a casa inteira apaga.
+@entra mae assustada direita
+MAE: Que foi isso?! {nome}! Que cheiro é esse?!
+EU [assustada]: Mãe! Eu esqueci a chavinha!
+> A fonte do computador solta uma fumacinha fina. Por sorte, o disjuntor desarmou antes de qualquer coisa pegar fogo.
+@marca pc_queimou
+@vai c03_bronca
+
+=== c03_bronca
+@musica triste
+@expr mae brava
+MAE: Eu falei! Eu falei que essa coisa ia queimar a minha casa!
+> A vó aparece no corredor de camisola, com um terço numa mão e um copo d'água na outra.
+@sai mae
+@entra vo assustada esquerda
+@entra mae brava direita
+VO: Ninguém se machucou? Graças a Deus. O resto é coisa.
+MAE: Coisa que custa dinheiro, mãe! E se pegasse fogo na cortina?
+EU [triste]: Desculpa. Eu não sabia que ia acontecer isso.
+@expr mae triste
+MAE: Não sabia porque não esperou quem sabe. Pressa é bicho que morde, {nome}.
+(Ela tá certa. Eu sabia que não sabia. E fiz mesmo assim.)
+@muda rel_mae-1 saude-1
+@sai todos
+@fundo casa_cozinha
+@musica interior
+@entra tio pensativa centro
+> No dia seguinte, o Tio Juca vem ver o estrago. Cheira a fonte, faz careta, abre, fecha.
+TIO: Queimou só a fonte. A placa sobreviveu. Você teve uma sorte que eu nunca tive na vida.
+TIO: Ó, presta atenção: antes de mexer em qualquer coisa, tira da tomada. Antes de ligar, olha a voltagem. E nunca, nunca no benjamim da geladeira.
+EU [envergonhada]: Tio, eu estraguei o presente.
+@expr tio feliz
+TIO: Estragou nada. Tenho uma fonte usada na oficina, de um computador que morreu de velhice. Computador é igual carro: peça a gente troca.
+TIO: E agora você não esquece nunca mais. A melhor aula é a que deixa cheiro de queimado.
+@anota p1_eletricidade_segura
+@anota p1_benjamim_e_filtro
+> Três semanas depois, com a fonte nova e a supervisão do tio, a {nome} monta tudo de novo. Dessa vez, olha a chavinha três vezes.
+@vai c03_primeiro_boot
+
+=== c03_ligou
+> A {nome} tira tudo da tomada, toca na parte de metal do gabinete para descarregar a eletricidade do corpo, encaixa a memória até as travinhas fecharem, liga os cabos do HD.
+> Confere se não ficou parafuso solto lá dentro, nem fio encostando na ventoinha. Fecha o gabinete. Liga o monitor, o teclado, o mouse.
+> Antes do plugue, olha a chavinha vermelha atrás da fonte. Estava em 110. A tomada da casa é 220. Ela muda para 220.
+(Ufa. Se eu não olhasse, isso aqui ia virar churrasco de placa-mãe.)
+> Coloca o plugue no filtro de linha que o tio deixou. E aperta o botão.
+@som notificacao
+> Um bipe curto. As ventoinhas giram. A tela de tubo pisca e acende, com letrinhas brancas sobre o fundo preto.
+@entra tio surpresa direita
+TIO: Ligou? Sozinha? Sem queimar nada?
+EU [feliz]: Eu olhei a chavinha, tio! Tava em 110!
+@expr tio feliz
+TIO: Menina, você salvou a fonte, a casa e o meu casamento com a sua mãe. Que ela ia me matar.
+@muda tecnica+2 rel_tio+2
+@anota p1_eletricidade_segura
+@anota p1_benjamim_e_filtro
+@vai c03_primeiro_boot
+
+=== c03_primeiro_boot
+@sai todos
+@fundo casa_quarto_infancia
+@musica alegre
+@entra vo feliz esquerda
+> A tela azul do Windows XP aparece, com aquela musiquinha de começo de filme. Depois, o papel de parede da colina verde, com céu azul de propaganda.
+VO: Olha que lindo, minha flor! Isso é onde?
+EU [feliz]: Ninguém sabe, vó. Acho que é no computador.
+VO: Que lugar bonito. Parece o sítio do seu avô depois da chuva.
+> Não tem internet em casa. Mas tem um computador. Um computador inteiro, na casa dela, com goteira e tudo.
+@se marca:pc_queimou -> c03_boot_queimou
+@vai c03_primeiro_uso
+
+=== c03_boot_queimou
+@entra mae pensativa direita
+MAE: Ligou? E não vai explodir de novo?
+EU: Não, mãe. Agora tá tudo certo. Eu olhei a voltagem três vezes.
+MAE: Olha quatro. E esse benjamim novo eu comprei com o dinheiro da feira, viu?
+@sai mae
+@vai c03_primeiro_uso
+
+=== c03_primeiro_uso
+? Qual é a primeira coisa que você faz no seu computador?
+* Digita as receitas da Vó Nita, ditadas por ela, antes que ela esqueça -> c03_receitas {rel_vo+2 marca:receitas_vo}
+* Ensina a mãe a jogar Paciência -> c03_paciencia {rel_mae+2}
+* Abre o gabinete de novo para ver tudo funcionando por dentro -> c03_olhar_dentro {tecnica+1}
+
+=== c03_receitas
+VO: Escreve aí. Bolo de fubá da Nita. Três ovos. Uma xícara de fubá. Uma de açúcar. E o segredo.
+EU: Qual é o segredo, vó?
+VO: O segredo é fazer com amor. E uma colher de erva-doce. Mas escreve o amor primeiro.
+> Duas horas depois, a pasta "RECEITAS DA VÓ" tem doze arquivos. Cada um começa com "Com amor".
+(A televisão de escrever agora guarda a vó inteira. Ou pelo menos o bolo dela.)
+@vai c03_luz
+
+=== c03_paciencia
+@sai vo
+@entra mae neutra direita
+EU: Mãe, senta aqui. É só arrastar as cartas. Vermelha em cima de preta.
+MAE: Eu não vou mexer nisso, vai que dá vírus na vista.
+> Quarenta minutos depois.
+@expr mae feliz
+MAE: Só mais uma. Essa eu ganho. Vai, sai daí, que tá atrapalhando minha concentração.
+(Minha mãe, a maior inimiga do computador, agora está viciada em Paciência. Minha primeira usuária.)
+@vai c03_luz
+
+=== c03_olhar_dentro
+> A {nome} tira a tampa lateral e fica olhando as ventoinhas girando, as luzinhas da placa, o pente de memória que ela mesma encaixou.
+@sai vo
+@entra tio brava direita
+TIO: Menina! Gabinete aberto e ligado não! Vai que cai um parafuso lá dentro, ou você enfia o dedo na ventoinha.
+EU [envergonhada]: Eu só queria ver.
+@expr tio feliz
+TIO: Ver é bom. Mas olha de longe, com ele desligado e fora da tomada quando for mexer. Curiosidade com segurança, sobrinha.
+@vai c03_luz
+
+=== c03_luz
+@sai todos
+@fundo casa_cozinha
+@musica interior
+@entra mae pensativa direita
+> No fim do mês, a mãe abre a conta de luz com a cara de quem abre exame de laboratório.
+MAE: Subiu doze reais. Doze reais, {nome}. É o computador?
+EU: Um pouco é. E um pouco é o chuveiro, que a senhora deixa no inverno.
+MAE: O chuveiro é necessidade. O computador é luxo.
+MAE: A partir de hoje, uma hora por dia. E desliga o monitor quando levantar.
+? Como você responde à regra da mãe?
+* Aceita e promete desligar tudo direitinho no filtro de linha -> c03_regra_aceita {rel_mae+1}
+* Negocia: "Uma hora por dia e duas no domingo, que é dia do Senhor." -> c03_regra_negocia {rel_mae+1 reputacao+1}
+* Reclama que todo mundo na escola fica no computador o dia inteiro -> c03_regra_reclama {rel_mae-1}
+
+=== c03_regra_aceita
+@expr mae feliz
+MAE: Isso. Menina que cuida do que tem, um dia tem mais.
+(E eu ainda aprendi que monitor de tubo gasta uma fortuna. Vou desligar até a luzinha laranja.)
+@vai c03_fim
+
+=== c03_regra_negocia
+@expr mae surpresa
+MAE: Dia do Senhor? Você não vai na missa desde a Páscoa.
+EU: Mas eu rezo pro computador não travar. Conta como oração.
+@expr mae feliz
+MAE: Tá bom, advogada. Duas no domingo. Mas se a nota de matemática cair, o computador vai morar com o seu tio.
+@vai c03_fim
+
+=== c03_regra_reclama
+@expr mae brava
+MAE: Todo mundo da escola tem mãe que paga a conta de luz sem chorar no banheiro?
+EU [envergonhada]: ...
+@expr mae triste
+MAE: Uma hora, {nome}. Não é castigo. É o que dá.
+(Ela chorou no banheiro? Quando? Eu nunca percebi. Que tipo de pessoa eu sou que nunca percebi?)
+@muda saude-1
+@vai c03_fim
+
+=== c03_fim
+@sai todos
+@fundo casa_quarto_infancia
+@musica infancia
+@entra tio feliz direita
+> Antes de ir embora, o Tio Juca para na porta do quarto e olha o computador ligado, com o papel de parede da colina verde.
+TIO: Sabe o que eu acho, sobrinha? Que você tem mão boa. Mão de quem conserta.
+EU: O senhor também tem.
+TIO: Eu tenho mão de gambiarra. Você tem mão de quem entende. É diferente.
+TIO: Um dia todo computador quebrado de Pedra Lisa vai bater na sua porta. Aí você cobra caro, hein? Menos de mim.
+(Mão de quem entende. Vou escrever isso no caderno, na página da frente.)
+@sai tio
+@vai c04_inicio

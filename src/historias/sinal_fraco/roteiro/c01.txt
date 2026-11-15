@@ -1,0 +1,303 @@
+# Parte 1, capítulo 1: A televisão de escrever (ela tem 9 anos, 2010)
+
+=== c01_inicio
+@cap 1 "A televisão de escrever"
+@idade crianca
+@fundo casa_quarto_infancia
+@musica infancia
+> Pedra Lisa do Norte, 2010. Onze mil habitantes, uma barra de sinal na praça e duas em cima da caixa d'água.
+> Numa casa de três cômodos e uma goteira com nome próprio, uma menina de nove anos acorda antes do galo.
+(A goteira se chama Valdemar. Ele trabalha mais quando chove.)
+> Essa menina é {nome}. Hoje começa o quarto ano, e ela passou a noite inteira pensando na roupa.
+@roupa "Primeiro dia de aula"
+@entra mae neutra direita
+MAE: {nome}, levanta! Se perder a hora, vai a pé e chega suando.
+EU [surpresa]: Mãe, eu já vou a pé de qualquer jeito.
+MAE: Então vai a pé e chega cedo. Deixa eu ver essa roupa.
+@expr mae pensativa
+MAE: Tá bonita. O tênis da sua prima ainda deu, graças a Deus.
+(O tênis tem o nome dela escrito por dentro: KAREN. Eu agora sou a Karen dos pés.)
+? O que você responde?
+* "Ficou lindo, mãe. Obrigada." -> c01_cafe {rel_mae+1}
+* "Mãe, tá escrito KAREN no tênis." -> c01_karen
+* Dar um abraço apertado sem dizer nada -> c01_cafe {rel_mae+2}
+
+=== c01_karen
+@expr mae brava
+MAE: E daí? Karen também é gente. Quando você tiver dinheiro, compra um escrito {nome}.
+EU [envergonhada]: Tá bom...
+@expr mae neutra
+MAE: Ninguém vai olhar dentro do seu tênis, filha. Vão olhar o que tem dentro da sua cabeça.
+(Isso foi bonito. Ela vai negar que disse até a morte.)
+@vai c01_cafe
+
+=== c01_cafe
+@fundo casa_cozinha
+@sai mae
+@entra vo feliz esquerda
+@entra mae neutra direita
+> Na cozinha, a Vó Nita já tinha passado o café e benzido o pão, por garantia.
+VO: Vem cá, minha flor. Deixa a vó benzer pra você aprender ligeiro.
+> Ela passa um raminho de arruda na testa da neta e murmura umas palavras que ninguém da família sabe de cor.
+VO: Pronto. Agora nem tabuada te derruba.
+MAE: Mãe, não enche a menina de folha. Ela vai chegar na escola cheirando a quintal.
+VO: Dizem na igreja que chegou computador na escola. A televisão de escrever.
+EU [surpresa]: Computador? De verdade?
+@expr mae pensativa
+MAE: Computador dá vírus na vista. A filha da comadre ficou de óculos fundo de garrafa.
+(A filha da comadre já usava óculos antes. Mas na minha casa o computador é culpado até provarem o contrário.)
+VO: Deixa a menina, Rosilene. Quem sabe ela não vira doutora da televisão de escrever.
+MAE: Doutora, primeiro, tem que passar de ano. Toma o café que esfria.
+@vai c01_escola
+
+=== c01_escola
+@sai todos
+@fundo escola_sala
+@musica alegre
+@entra bia feliz esquerda
+> Escola Municipal Padre Cícero de Pedra Lisa. Ventilador barulhento, carteira riscada, quadro verde manchado de giz.
+BIA: {nome}! Senta aqui! Guardei o lugar com a minha mochila e com a minha vida.
+EU [feliz]: Bia! Você cortou a franja sozinha?
+BIA: Cortei. Ficou torta de propósito. É tendência. Vi na revista da minha tia.
+(A revista da tia dela é de 2006.)
+BIA: Quando eu crescer, vou ter um blog de maquiagem e vou ser famosa na internet inteira.
+EU: A internet inteira de Pedra Lisa são três pessoas na praça segurando o celular pro alto.
+BIA: Por isso mesmo. Vai ter pouca concorrência.
+@sai bia
+@entra leni neutra direita
+> Entra uma professora nova, de óculos redondos e um molho de chaves que faz barulho de sino.
+LENI: Bom dia, quarto ano. Eu sou a Professora Leni, e este ano eu cuido do laboratório de informática.
+@expr leni pensativa
+LENI: Chegaram cinco computadores do governo. Eles ficam trancados com cadeado, porque a escola não tem técnico e a diretora tem medo de roubo.
+LENI: Mas toda sexta, quarenta minutos, a gente abre. Combinado?
+> A sala explode em gritos. Cinco computadores para trinta e dois alunos. A matemática não fecha, mas a felicidade fecha.
+? Enquanto todo mundo grita, você...
+* Levanta a mão: "Professora, por que trancar? Computador não foge." -> c01_pergunta {rel_leni+1}
+* Cochicha com a Bia sobre o que vocês vão fazer no computador -> c01_cochicho {rel_bia+1}
+** Pergunta se no computador da escola dá para virar hacker -> c01_hacker {rel_leni+1 tecnica+1}
+
+=== c01_pergunta
+@expr leni feliz
+LENI: Computador não foge, mas tem quem leve ele embora. Ano passado levaram até a torneira do banheiro.
+EU [pensativa]: Mas trancado ninguém aprende.
+@expr leni surpresa
+LENI: Pois é. Você acabou de dizer o que eu falo na reunião de professores toda semana.
+(Ganhei uma aliada de óculos redondos. Anotado.)
+@vai c01_lab
+
+=== c01_cochicho
+@entra bia feliz esquerda
+BIA: Eu vou entrar no Orkut e mandar depoimento pra todo mundo da sala.
+EU: E eu vou descobrir o que tem dentro dele. Deve ter uns fios, umas luzinhas, um anão pedalando.
+BIA: Um anão? Você é doida, {nome}.
+LENI: As duas do fundo vão contar a piada pra sala ou vão guardar para o recreio?
+BIA [envergonhada]: Recreio, professora.
+@sai bia
+@vai c01_lab
+
+=== c01_hacker
+@expr leni surpresa
+LENI: Hacker? Onde você ouviu essa palavra?
+EU [feliz]: No filme da Sessão da Tarde. O moço de capuz digitava rápido e a tela ficava verde.
+> A sala inteira ri. A Leni não ri. Ela sorri, que é diferente.
+LENI: Hacker, no começo, queria dizer só uma pessoa muito curiosa, que gosta de entender como as coisas funcionam por dentro.
+LENI: Quem entra na conta dos outros sem permissão é outra coisa. Isso é crime. E tem gente que trabalha justamente protegendo as pessoas desses criminosos.
+EU [pensativa]: Dá pra trabalhar protegendo computador?
+LENI: Dá. E paga bem melhor que dar aula, viu?
+(Ela falou rindo, mas os olhos dela não estavam rindo.)
+@anota p1_o_que_e_hacker
+@vai c01_lab
+
+=== c01_lab
+@sai todos
+@fundo escola_laboratorio
+@musica alegre
+@entra leni feliz centro
+> Sexta-feira. O cadeado faz um barulho de cofre de banco, e a porta se abre para o paraíso: cinco monitores bege, cinco teclados encardidos e um cheiro de plástico novo.
+> Seis alunos por computador. A {nome} ficou com o do canto, que tem um adesivo do governo meio descolado.
+LENI: Antes de mexer, quero saber uma coisa. Qual dessas partes é o computador de verdade?
+(Pensa, {nome}. É a sua chance de não passar vergonha na frente da sala inteira.)
+@desafio p1_quiz_partes_pc -> c01_lab_acerto | c01_lab_erro
+
+=== c01_lab_acerto
+@expr leni surpresa
+EU [feliz]: É a caixa! O gabinete. A tela só mostra, o teclado e o mouse só mandam. Quem pensa é ali dentro.
+LENI: Perfeito. Quem te ensinou?
+EU: Ninguém. Eu fiquei olhando o fio.
+@expr leni feliz
+LENI: Pois continue olhando o fio. Quem olha o fio vai longe.
+@muda tecnica+1 rel_leni+1
+@anota p1_partes_do_pc
+@vai c01_lab_mexe
+
+=== c01_lab_erro
+EU [envergonhada]: É a tela? A televisão de escrever?
+> Um menino do fundo grita "TELEVISÃO DE ESCREVER" e a sala inteira cai na gargalhada.
+@expr leni brava
+LENI: Ninguém ri de quem pergunta. Quem ri hoje vai perguntar a mesma coisa amanhã.
+@expr leni neutra
+LENI: A tela é o monitor, ela só mostra. O computador de verdade é essa caixa, o gabinete. É lá dentro que ele pensa.
+(Nunca mais vou esquecer. A vergonha grava melhor que caneta.)
+@anota p1_partes_do_pc
+@vai c01_lab_mexe
+
+=== c01_lab_mexe
+> A Leni abre o navegador. A barra de carregamento anda devagar, feito fila de banco no dia do pagamento.
+LENI: A internet daqui vem por rádio, de uma antena no morro. Quando venta muito, ela vai embora junto.
+LENI: Cada um pode fazer uma pesquisa. Uma só. Pensem bem.
+? O que você digita na caixinha do Google?
+* "como funciona o computador por dentro" -> c01_pesquisa_dentro {tecnica+1}
+* "como ganhar dinheiro rápido" -> c01_pesquisa_dinheiro
+* "desenho de menina com franja torta" -> c01_pesquisa_bia {rel_bia+1}
+
+=== c01_pesquisa_dentro
+> Aparece um desenho com nomes estranhos: placa-mãe, processador, memória RAM, fonte, HD.
+(Placa-mãe. Até o computador tem mãe. Deve ser ela que manda ele desligar na hora de dormir.)
+LENI: Gostou?
+EU [feliz]: Professora, eu quero ver isso de verdade um dia. Abrir e olhar.
+LENI: Um dia. Hoje, se você abrir, a diretora me demite.
+@vai c01_sino
+
+=== c01_pesquisa_dinheiro
+> A tela se enche de propaganda: "Ganhe R$ 5 mil por semana em casa!", "Descubra o segredo que os bancos escondem!".
+EU [pensativa]: Professora, por que todo mundo sabe ganhar dinheiro rápido e ninguém em Pedra Lisa é rico?
+@expr leni pensativa
+LENI: Porque quase tudo isso é golpe. Se fosse tão fácil, eles não precisavam gastar com propaganda pra te contar.
+LENI: Regra da vida e da internet: quando a promessa é boa demais, desconfia.
+(Eu só queria ajudar a minha mãe com a conta de luz. Mas tudo bem, guardei a regra.)
+@muda etica+1
+@vai c01_sino
+
+=== c01_pesquisa_bia
+@entra bia feliz esquerda
+@sai leni
+@entra leni neutra direita
+> Aparece uma menina de desenho animado com uma franja tão torta quanto a da Bia.
+BIA: Ela é igualzinha a mim! Eu sou tendência mundial!
+EU [feliz]: Você é tendência na Disney, Bia.
+LENI: Bonito. Agora vocês descobriram a coisa mais importante da internet: tem de tudo nela.
+LENI: Inclusive coisa mentirosa. Então não é porque tá na tela que é verdade, combinado?
+@sai bia
+@vai c01_sino
+
+=== c01_sino
+@sai todos
+@entra leni neutra centro
+@som alarme
+> O sinal toca. Quarenta minutos passaram como se fossem quatro.
+LENI: Acabou, pessoal. Desliguem com cuidado, pelo menu Iniciar. Nada de arrancar da tomada.
+> Todo mundo sai correndo para a merenda. A {nome} fica parada na frente do monitor, que ainda brilha.
+(Eu não quero ir. É a primeira vez que uma coisa na minha vida parece maior que Pedra Lisa.)
+? A Leni está trancando o laboratório. O que você faz?
+* Mente: "Professora, minha mãe pediu pra eu esperar aqui, ela vem me buscar mais tarde." -> c01_mentira {etica-1 marca:mentiu_leni}
+* Pede com sinceridade: "Posso ficar mais um pouco? Eu quero muito aprender." -> c01_verdade {etica+1 rel_leni+1}
+* Vai embora com a Bia antes que acabe a merenda -> c01_bia {rel_bia+1}
+
+=== c01_mentira
+@expr leni pensativa
+LENI: Sua mãe vem te buscar? Tá bom. Eu tenho prova pra corrigir mesmo. Pode mexer, mas sem abrir nada estranho.
+> Duas horas. A {nome} descobre o Paint, o Paciência, o som de quando o Windows liga e uma tal de Painel de Controle, que parece a sala de máquinas de um navio.
+@muda tecnica+1
+> Às seis da tarde, ninguém veio. Lógico que ninguém veio. A mãe dela estava esfregando o chão da casa do dentista.
+@fundo rua_interior_noite
+@musica triste
+LENI: Vou te levar em casa. Sua mãe deve ter se enrolado.
+@sai leni
+@fundo casa_cozinha
+@entra vo surpresa esquerda
+@entra leni neutra direita
+VO: Ué, professora. A Rosilene? Tá na faxina até as oito, minha filha. Ela nunca busca a menina.
+> A Leni olha para a {nome}. Não está brava. É pior: está decepcionada.
+LENI: Da próxima vez, é só pedir. Eu teria deixado do mesmo jeito.
+EU [envergonhada]: Desculpa, professora.
+@sai leni
+VO: Mentira tem perna curta, minha flor. E a sua só tem nove anos.
+@muda rel_leni-1
+@vai c01_noite
+
+=== c01_verdade
+@expr leni surpresa
+LENI: Hoje não dá, tenho que entregar a chave pra diretora. Mas...
+@expr leni feliz
+LENI: Toda quarta eu fico depois da aula organizando o laboratório. Se sua mãe deixar, você me ajuda. Tirar poeira, enrolar fio, essas coisas.
+EU [feliz]: Enrolar fio é a coisa que eu mais quero fazer na vida!
+LENI: Ninguém nunca disse isso pra mim. Traz o bilhete assinado.
+(Vou falsificar a assinatura? Não. Vou pedir direito. Hoje eu tô honesta.)
+@muda tecnica+1
+@vai c01_noite
+
+=== c01_bia
+@sai todos
+@fundo praca_interior
+@musica interior
+@entra bia feliz esquerda
+> As duas atravessam a praça e sobem os degraus da caixa d'água, onde o celular pega duas barras.
+BIA: Olha, {nome}! Duas barras! Aqui a gente é praticamente americana.
+EU [feliz]: Pena que a gente não tem celular.
+BIA: Detalhe. Escuta: a Dona Cida abriu uma lan house do lado da farmácia. Um real a meia hora.
+EU [pensativa]: Um real... a gente não tem um real.
+BIA: Mas a gente tem rua cheia de latinha. Meu primo vende no ferro-velho.
+(A Bia sempre tem um plano. Os planos dela nunca dão certo, mas sempre são divertidos.)
+@sai bia
+@vai c01_noite
+
+=== c01_noite
+@sai todos
+@fundo casa_cozinha
+@musica interior
+@entra mae triste direita
+> Oito e meia da noite. A mãe chega com os pés inchados e uma sacola de pão dormido que a patroa deu.
+MAE: Que cara é essa? Aprontou?
+EU: Mãe, hoje eu mexi no computador. No de verdade.
+@expr mae pensativa
+MAE: E a vista? Tá doendo? Tá vendo tudo embaçado?
+EU: Tô vendo tudo direitinho, mãe.
+MAE: Computador é coisa de rico, filha. A gente aqui tem que pensar em coisa que dá dinheiro.
+? O que você faz?
+* Conta tudo animada e pede um computador de Natal -> c01_noite_pede
+* Fica quieta e faz massagem nos pés da mãe -> c01_noite_pes {rel_mae+2}
+* Diz que vai ser "a primeira da família a trabalhar sentada" -> c01_noite_sentada {rel_mae+1}
+
+=== c01_noite_pede
+EU [feliz]: Mãe, eu quero um de Natal! Nem precisa ser novo. Pode ser um velhinho.
+@expr mae triste
+> A mãe tira da bolsa um papel dobrado em quatro. É a conta de luz. Tem um carimbo vermelho escrito "AVISO DE CORTE".
+MAE: Pedir, pode. Ter, é outra conversa.
+(Eu nunca mais quero ver esse carimbo vermelho na mão dela.)
+@muda saude-1
+@expr mae neutra
+MAE: Estuda. Estudo ninguém tira de você. Nem a companhia de luz.
+@vai c01_fim
+
+=== c01_noite_pes
+> A {nome} senta no chão e aperta os pés da mãe, do jeito que a vó ensinou.
+@expr mae feliz
+MAE: Ai, que mão boa. Vai ser massagista.
+EU: Vou ser outra coisa. Mas a massagem eu continuo fazendo de graça.
+MAE: Me conta então desse tal computador. Mas fala baixo, que eu tô cansada.
+> E ela conta. A mãe dorme na cadeira no meio da história do Paint. Mas dorme sorrindo.
+@vai c01_fim
+
+=== c01_noite_sentada
+EU [feliz]: Mãe, eu vou ser a primeira da família a trabalhar sentada. Numa cadeira que gira.
+@expr mae surpresa
+MAE: Cadeira que gira? Igual de banco?
+EU: Igual de banco. E com ar-condicionado.
+@expr mae feliz
+> A mãe dá uma gargalhada, e depois fica quieta, olhando a filha como quem olha uma coisa que não sabia que tinha.
+MAE: Então estuda, menina. Que eu ralo o joelho no chão dos outros pra você sentar.
+(Ela disse isso secando o olho. Disse que era cisco. Era cisco nenhum.)
+@vai c01_fim
+
+=== c01_fim
+@sai todos
+@fundo casa_quarto_infancia
+@musica infancia
+@entra vo feliz centro
+> Na cama, a {nome} não consegue dormir. Fica desenhando no ar, com o dedo, um monitor e um teclado.
+VO: Tá acordada, minha flor?
+EU: Vó, a senhora acha que menina de Pedra Lisa pode mexer com computador?
+VO: Menina de Pedra Lisa pode o que quiser. A televisão de escrever não sabe de onde você veio.
+> A vó benze a neta mais uma vez, dessa vez sem arruda, só com a mão.
+(Ela tem razão. O computador não sabe que eu moro numa casa com uma goteira chamada Valdemar.)
+@vai c02_inicio

@@ -1,0 +1,184 @@
+# Capítulo 7: o site da padaria.
+
+=== c07_inicio
+@cap 7 "O site da padaria"
+@fundo feira_rua
+@musica alegre
+> Domingo, seis da manhã. A Padaria Pão de Ouro já tem fila até a esquina.
+> O cheiro de pão francês chega antes de você dobrar a rua.
+@entra valdir feliz centro
+VALDIR: Chegou a engenheira! Entra, entra. Pega um sonho.
+EU [feliz]: Bom dia, Seu Valdir.
+VALDIR: Seguinte. A padaria de Caiçara tem site. A de Pedra Lisa, que é a minha, não tem. Isso é uma vergonha para a família Valdir.
+VALDIR [pensativa]: Eu quero um site com o cardápio, o horário e o telefone para encomenda de bolo. E uma foto minha sorrindo.
+(Não sei fazer site. Mas sei aprender. E tem sonho de creme na jogada.)
+? Responder ao Seu Valdir
+* Ser honesta e dizer que nunca fez, mas que vai aprender -> c07_honesta {etica+1 rel_valdir+1}
+* Dizer que já fez vários, para passar confiança -> c07_mentira {etica-1}
+
+=== c07_honesta
+EU [envergonhada]: Seu Valdir, eu nunca fiz um site. Mas eu aprendo rápido e vou fazer direito.
+VALDIR [feliz]: Eu também nunca tinha feito pão quando comecei. Queimei três fornadas. A quarta ficou boa.
+VALDIR: Prefiro quem fala a verdade. Vamos combinar o preço.
+@vai c07_preco
+
+=== c07_mentira
+EU: Já fiz vários, Seu Valdir. É tranquilo.
+VALDIR [feliz]: Ótimo! Então para sexta tá bom?
+(Sexta. Eu não sei nem o que é hospedagem. Parabéns, {nome}.)
+@muda saude-1
+@vai c07_preco
+
+=== c07_preco
+VALDIR [pensativa]: Quanto você cobra? Eu pago em dinheiro e em pão. Sou homem do pão.
+? Combinar o pagamento
+* Cento e cinquenta reais e pão todo dia por um mês -> c07_preco_justo {grana+2 rel_valdir+1}
+* Só pão, para não assustar o cliente -> c07_preco_pao {grana+0 saude+1}
+** Pedir pagamento em sonho de creme vitalício -> c07_preco_sonho
+
+=== c07_preco_sonho
+@som especial
+EU [feliz]: Seu Valdir, eu quero ser paga em sonho de creme. Para sempre.
+VALDIR [surpresa]: Para sempre? Você vai ficar redonda!
+EU: É um risco que eu corro.
+VALDIR [feliz]: Fechado. Mas com contrato escrito, que eu sou homem sério. E cem reais por fora, para você comprar as coisas.
+> Ele escreve num saco de pão: "Sonho de creme vitalício para a menina do computador. Valdir."
+(Meu segundo contrato. Este eu vou emoldurar de verdade.)
+@muda grana+1 rel_valdir+2 saude+1
+@vai c07_aprender
+
+=== c07_preco_pao
+EU: Pode ser só o pão, Seu Valdir.
+VALDIR [brava]: De jeito nenhum. Trabalho se paga. Pão é agrado. Leva cem reais e o pão.
+@muda grana+1
+@vai c07_aprender
+
+=== c07_preco_justo
+VALDIR [feliz]: Justo. E o pão eu ia dar de qualquer jeito.
+@vai c07_aprender
+
+=== c07_aprender
+@fundo quarto_madrugada
+@musica hacker
+@som teclado
+> Os dias seguintes são de madrugada, vídeo em inglês e o dicionário aberto do lado.
+> Você aprende o que é domínio, o que é hospedagem e o que é um painel de administração, onde o site é editado.
+> Escolhe uma hospedagem barata e um sistema de site bem conhecido, com painel simples.
+(O painel é a cozinha do site. Quem entra nela muda o cardápio. Ou coloca veneno no bolo.)
+> Na sexta à noite, o site está no ar. Fundo amarelo-pão, foto do Seu Valdir sorrindo com um bigode de farinha.
+@muda tecnica+1
+@vai c07_entrega
+
+=== c07_entrega
+@fundo feira_rua
+@musica alegre
+@entra valdir feliz centro
+VALDIR [surpresa]: Olha eu na internet! Tá vendo, Marieta? EU, NA INTERNET!
+> A dona Marieta, esposa dele, aparece do fundo com a mão cheia de massa e diz que ele está mais bonito no site que pessoalmente.
+VALDIR: Agora me ensina a mexer. Quero trocar o preço do pão de queijo sozinho.
+EU: Então vamos criar a sua senha do painel.
+VALDIR [feliz]: Fácil. Padaria123. Ninguém nunca vai adivinhar.
+(É a primeira senha que qualquer pessoa no mundo adivinharia. Depois de "123456" e "senha".)
+@desafio p2_senha_painel -> c07_senha_acerto | c07_senha_erro
+
+=== c07_senha_acerto
+EU: Seu Valdir, a senha vai ser uma frase. Quatro palavras que não combinam, com uns tracinhos.
+VALDIR [pensativa]: Frase? Tipo uma oração?
+EU: Tipo isso. Só o senhor sabe. E eu vou ligar a verificação em duas etapas: quando alguém tentar entrar, chega um código no seu celular.
+VALDIR [feliz]: Igual o banco! Tô me sentindo importante.
+> Você cria um usuário só para ele e outro só para você, cada um com a sua senha. Ninguém compartilha senha.
+@anota p2_senha_painel
+@muda tecnica+1 rel_valdir+1
+@vai c07_postit
+
+=== c07_senha_erro
+> Você tenta convencer, mas acaba aceitando uma senha meio fraca. "Valdir1962", o ano em que ele nasceu.
+VALDIR: Viu? Fácil de lembrar.
+(Fácil de lembrar. E de adivinhar. Está na carteira de identidade dele, no Facebook e no bolo de aniversário.)
+> Duas semanas depois, o site amanhece com propaganda de aposta no lugar do cardápio.
+VALDIR [assustada]: {nome}! Meu site virou cassino!
+> Você passa a tarde limpando. Troca a senha por uma frase longa, liga a verificação em duas etapas e atualiza tudo.
+EU [envergonhada]: Foi a senha, Seu Valdir. Robô na internet testa ano de nascimento o dia todo.
+@anota p2_senha_painel
+@muda tecnica+1 saude-1
+@vai c07_postit
+
+=== c07_postit
+> Na semana seguinte, você passa na padaria e vê um papelzinho amarelo colado no caixa.
+> Em letra de forma, a senha do painel, inteirinha.
+VALDIR [feliz]: Para não esquecer!
+? O que fazer com o post-it
+* Explicar com jeito e ajudar a guardar num gerenciador de senhas -> c07_gerenciador {tecnica+1 rel_valdir+1}
+* Arrancar o papel e dar bronca -> c07_bronca {rel_valdir-1}
+
+=== c07_bronca
+EU [brava]: Seu Valdir! Qualquer cliente lê isso!
+VALDIR [envergonhada]: Calma, menina. Eu tenho sessenta anos, não sou computador.
+(Ele tem razão. Bronca não ensina. Só faz a pessoa esconder o erro da próxima vez.)
+EU [envergonhada]: Desculpa. Vamos fazer de um jeito que o senhor não precise lembrar.
+@vai c07_gerenciador
+
+=== c07_gerenciador
+EU: Seu Valdir, tem um programa que é um cofre de senhas. O senhor lembra só uma senha, a do cofre, e ele guarda as outras.
+VALDIR [pensativa]: Um cofre dentro do celular.
+EU: Isso. E se o senhor quiser papel, guarda em casa, numa gaveta, nunca no caixa.
+VALDIR [feliz]: Igual a receita do pão de queijo da minha mãe. Ninguém vê.
+@vai c07_backup
+
+=== c07_backup
+@musica tensao
+> Um mês depois, a hospedagem barata manda um e-mail em inglês: "Service interruption". O servidor deu problema.
+> O site sumiu. O cardápio, as fotos, o bigode de farinha.
+(Calma. Respira. Eu fiz backup? Eu fiz backup. Eu fiz backup?)
+@desafio p2_backup_321 -> c07_backup_acerto | c07_backup_erro
+
+=== c07_backup_acerto
+> Você fez. Uma cópia na hospedagem, outra no pen drive guardado em casa e outra na nuvem.
+> Em uma tarde, o site volta, com bigode e tudo.
+VALDIR [feliz]: Você é uma bruxa boa, menina. Igual a sua avó.
+@anota p2_backup_321
+@muda reputacao+1 tecnica+1
+@marca site_padaria
+@vai c07_fim
+
+=== c07_backup_erro
+> A única cópia estava numa pasta chamada "backup", dentro do mesmo servidor que caiu.
+(Guardei o guarda-chuva dentro da casa que pegou fogo.)
+> Você passa o fim de semana refazendo o site do zero, com as fotos que ainda estavam no celular do Seu Valdir.
+VALDIR [pensativa]: Ficou até mais bonito. Mas nunca mais faz isso comigo, viu?
+EU [envergonhada]: Nunca mais. Agora são três cópias, em dois lugares diferentes, uma fora daqui.
+@anota p2_backup_321
+@muda saude-1 tecnica+1
+@marca site_padaria
+@vai c07_fim
+
+=== c07_fim
+@musica interior
+@entra valdir feliz centro
+VALDIR: Sabe o que mais? As encomendas de bolo dobraram. A Marieta não dá conta.
+VALDIR [pensativa]: E você, menina, vai fazer faculdade de quê?
+EU: De computação. Se eu conseguir.
+VALDIR: Vai conseguir. E quando ficar famosa, volta aqui para comer sonho.
+? Despedir do Seu Valdir
+* Pedir para ele te indicar para outros comércios -> c07_indicacao {reputacao+1}
+* Só agradecer e levar o sonho -> c07_sonho {saude+1}
+
+=== c07_indicacao
+VALDIR [feliz]: Já indiquei para meio mundo. Só cuidado, viu? Tem gente boa e tem gente que pede coisa estranha.
+VALDIR [pensativa]: Se alguém te pedir para fazer coisa errada, você lembra do pão: receita boa não tem atalho.
+@sai valdir
+@vai c07_ultima
+
+=== c07_sonho
+> Você come o sonho na calçada, com o açúcar caindo na blusa.
+(Meu primeiro site no ar. Meu primeiro cliente feliz. E um sonho de creme. Hoje a vida tem duas barras de sinal.)
+@sai valdir
+@vai c07_ultima
+
+=== c07_ultima
+@fundo quarto_adolescente
+@som mensagem
+> Naquela noite, o celular da sua mãe vibra três vezes seguidas. Número desconhecido.
+> "Oi, é a menina do computador? Aqui é o Cleiton. Preciso de um serviço. Pago bem."
+(Pago bem. Duas palavras que, em Pedra Lisa, quase nunca vêm juntas.)
+@vai c08_inicio

@@ -1,0 +1,251 @@
+# Parte 4, ramo do interior, capítulo 13
+
+=== i13_inicio
+@cap 13 "Dólar de madrugada"
+@fundo quarto_madrugada
+@musica triste
+> Duas e quarenta da manhã. A casa dorme. O ventilador range. Na tela do notebook remendado, a plataforma da faculdade a distância carrega devagar, como quem acorda de ressaca.
+(Tecnólogo em Segurança da Informação, EAD. Mensalidade em doze vezes, no carnê, como um sofá.)
+> De madrugada é o único horário em que a internet da PedraNet Fibra funciona direito. Durante o dia, divide a banda com a cidade inteira assistindo vídeo de receita.
+@som notificacao
+> AVISO: Prova da disciplina Redes de Computadores disponível até as 4h. Duração: 60 minutos.
+> Lá fora, começa a trovejar.
+EU [assustada]: Não. Não, não, não. Hoje não.
+> A primeira gota cai no telhado. A luzinha verde do roteador pisca, pensa e fica vermelha.
+(A fibra da PedraNet passa amarrada num poste de eucalipto. Quando chove, o poste balança e a internet vai junto.)
+? Onde você faz a prova?
+* Correr na chuva até a Cida Net, que tem gerador e internet via rádio. -> i13_cida {rel_cida+1 saude-1}
+* Rotear do celular em cima da caixa d'água, onde pega duas barras. -> i13_caixa {saude-1 tecnica+1}
+* Bater na padaria do Seu Valdir, que acende o forno às três. -> i13_padaria
+
+=== i13_cida
+@fundo lan_house
+@entra cida surpresa direita
+CIDA: Menina! Três da manhã, encharcada, na minha porta. Brigou com a sua mãe de novo?
+EU: Prova online, Dona Cida. A internet caiu.
+CIDA [feliz]: Ah, a PedraNet. Senta na máquina quatro, que é a única que não dá choque.
+> A Cida Net virou "Cida Net, Xerox e Impressão de Boleto". Os computadores de 2010 ainda estão lá, como fósseis de um tempo em que a cidade jogava Counter-Strike até a mãe buscar.
+CIDA: Você pagava a hora com latinha. Lembra?
+EU: Lembro. Hoje eu pago em Pix.
+CIDA: Hoje é por conta da casa. Mas se passar, quero ver a nota.
+> Ela faz a prova com a Dona Cida roncando no sofá ao lado e passa com sete e meio.
+@vai i13_proposta
+
+=== i13_caixa
+@fundo praca_interior
+> Ela sobe a escada de ferro da caixa d'água com o celular dentro de um saco de pão, para não molhar.
+> Lá em cima, duas barras. Uma de vez em quando.
+EU [brava]: Pergunta 14: "Explique como funciona a redundância de enlaces em uma rede corporativa".
+(Redundância de enlace: eu, o celular, e a fé na Nossa Senhora do Sinal.)
+> O 4G cai duas vezes. A prova volta das duas, porque ela salva cada resposta assim que escreve.
+> Passa com seis. Pega um resfriado de três dias.
+@vai i13_proposta
+
+=== i13_padaria
+@fundo casa_cozinha
+@entra valdir surpresa direita
+VALDIR: Três da manhã? Ou alguém morreu ou a internet caiu.
+EU: A internet caiu, Seu Valdir. Eu tenho prova.
+VALDIR [feliz]: Senta aí perto do forno. A internet daqui vem por rádio, lá da torre da cooperativa. Chuva não derruba.
+> Ela faz a prova numa mesa coberta de farinha, sentindo o cheiro do primeiro pão da cidade.
+> Quando termina, o Seu Valdir põe uma bacia de massa na frente dela.
+VALDIR: Agora sova. Quem estuda de madrugada precisa bater em alguma coisa.
+> Ela sova. Empurra com a base da mão, dobra, gira, empurra de novo. Os ombros, que estavam no pescoço há meses, descem.
+(Por que isso é tão bom? Por que ninguém me falou que sovar pão é melhor que terapia?)
+VALDIR: Você tem mão boa. Mão quente estraga massa folhada, mas pão francês adora.
+EU [feliz]: Posso voltar amanhã? Sem prova?
+VALDIR: Forno acende às três. Quem chega, sova.
+@muda saude+2 rel_valdir+1
+@marca gosta_padaria
+@vai i13_proposta
+
+=== i13_proposta
+@sai todos
+@fundo quarto_madrugada
+@musica misterio
+> Dias depois, de madrugada outra vez. A mensalidade da faculdade venceu, o carnê das Casas também, e a assistência está numa semana de três clientes.
+@som mensagem
+> Mensagem nova no WhatsApp, de um número com código dos Estados Unidos.
+> "Olá! Analisamos seu perfil e você foi selecionada para uma vaga remota. Ganhe em dólar, de casa, 1 hora por dia."
+EU [surpresa]: Em dólar?
+(Calma. Respira. Você é a mulher que desmascarou o falso Diego. Você sabe o que é isso.)
+(Mas é em dólar.)
+> Na mesma hora, um e-mail chega também: uma empresa de anotação de dados para inteligência artificial, com contrato, teste de qualificação e pagamento por plataforma internacional.
+? O que você faz?
+* Investigar as duas propostas com calma antes de responder. -> i13_investiga {tecnica+1}
+* Responder a do WhatsApp e fazer as "tarefas de teste", só para ver. -> i13_tarefas
+** Entrar direto no "Grupo VIP Dólar Diário" com bônus de 300% no primeiro depósito. -> i13_vip
+
+=== i13_vip
+> O Grupo VIP tem 2.300 membros, todos com foto de praia e frases como "gratidão, já paguei minha casa".
+> A "mentora" manda áudio com música de fundo de academia: "Quem tem coragem, enriquece. Quem tem medo, fica pobre."
+(Eu tenho medo. Medo é um ótimo sistema de detecção de intrusão.)
+> Mesmo assim, ela entra. O brilho do bônus de 300% é forte às três da manhã.
+@vai i13_tarefas
+
+=== i13_investiga
+> Ela abre um caderno de verdade, de papel, e começa a fazer o que faria para um cliente.
+> Pesquisa o nome da empresa do WhatsApp: nenhum site, nenhum registro, mas quinze páginas de reclamação com o mesmo texto.
+> Pesquisa a do e-mail: site próprio, endereço, termos de uso, avaliações de trabalhadores de vários países, umas boas, outras reclamando do valor baixo por tarefa.
+(Reclamação de que paga pouco é sinal de que paga. Golpe não tem reclamação de valor baixo, tem reclamação de valor nenhum.)
+> Então ela volta para a mensagem do WhatsApp e lê de novo, trecho por trecho.
+@desafio p4_vaga_dolar -> i13_desmascara | i13_quase
+
+=== i13_quase
+@som erro
+(Ok, algumas coisas são estranhas. Mas eu não vi tudo. Talvez seja uma empresa pequena começando no Brasil.)
+> Ela responde. "Quero saber mais."
+> A "mentora Ana" responde em quatro segundos, às três da manhã, com emojis de dólar.
+@vai i13_tarefas
+
+=== i13_tarefas
+@som mensagem
+> Dia 1: curtir dez vídeos e mandar print. Pagamento: R$ 25 por Pix, de uma conta em nome de "Marcos A. S.".
+> Dia 2: avaliar cinco hotéis de Dubai com cinco estrelas. Pagamento: R$ 40, de uma conta em nome de "Jaqueline R.".
+(Cada dia paga uma pessoa diferente. Empresa americana com quarenta CPFs brasileiros.)
+> Dia 3: "Parabéns! Você foi promovida à Tarefa Combinada. Comissão de US$ 900. Para desbloquear, deposite R$ 500 de garantia. O valor volta junto com a comissão."
+? E agora?
+* Depositar. Eles já me pagaram duas vezes, é sério. -> i13_deposita {grana-3 saude-1}
+* Quem paga não cobra. Sair e denunciar. -> i13_sai_tarde {tecnica+1}
+
+=== i13_sai_tarde
+EU [brava]: Emprego me paga. Emprego não me cobra. Nunca.
+> Ela manda uma única mensagem para a mentora Ana: "Os R$ 65 vocês podem considerar o preço da minha aula."
+> Bloqueia, denuncia o número no próprio WhatsApp e no Telegram, e guarda os prints.
+(Sessenta e cinco reais de lucro num golpe. Eu devo ser a única pessoa do Brasil que saiu no positivo.)
+@anota p4_golpe_tarefa
+@vai i13_desmascara_grupo
+
+=== i13_deposita
+> Ela transfere os quinhentos reais. O dinheiro da mensalidade e um pedaço do aluguel da bancada.
+@som dinheiro
+> A tela mostra o saldo: US$ 1.400. Só que agora aparece outro aviso: "Taxa de saque internacional: R$ 1.200."
+EU [assustada]: Taxa de saque? Vocês disseram que o valor voltava!
+> A mentora Ana manda um áudio com voz doce: "Calma, querida. É a última etapa. Todo mundo do VIP paga."
+> Ela escreve três vezes. Na quarta, o número já não existe.
+@som erro
+(O saldo nunca existiu. Era só um número numa tela que eles mesmos desenharam.)
+@marca caiu_golpe_remoto
+@anota p4_golpe_tarefa
+@vai i13_vergonha
+
+=== i13_vergonha
+@musica triste
+EU [triste]: Eu explico golpe para a cidade inteira. Eu ensinei minha vó. E caí num golpe de curtir vídeo.
+(A vergonha é a melhor amiga do golpista. É ela que faz a vítima ficar quieta.)
+> No dia seguinte, ainda de manhã, chega um e-mail com timbre dourado: "Escritório Internacional de Recuperação de Ativos Digitais".
+> "Sabemos que você foi vítima da Global Remote Talent. Rastreamos o seu Pix. Recuperamos 100% mediante honorário adiantado de 20%."
+? O que você faz?
+* Pagar os honorários. Eles sabem até o nome da empresa, devem ser sérios. -> i13_recupera_paga {saude-2}
+* Isso é o segundo golpe. Ir ao banco e à delegacia, que não cobram nada. -> i13_recupera_certo {tecnica+1 saude+1}
+
+=== i13_recupera_paga
+> Ela paga o que sobrou na conta. Mais trezentos reais, emprestados do cofrinho da vó com promessa de devolver na sexta.
+@som dinheiro
+> O "escritório" manda um certificado em PDF com brasão, um número de protocolo e, dois dias depois, silêncio.
+@muda grana=0
+@marca caiu_recuperacao
+@anota p4_golpe_recuperacao
+EU [triste]: Zerou. Zerou tudo. E o dinheiro da vó.
+(Como eles sabiam o nome da empresa? Porque eram os mesmos. Ou porque compram a lista de quem já caiu.)
+@vai i13_fim
+
+=== i13_recupera_certo
+EU [brava]: Ninguém que me procura sozinho, sabendo que eu fui roubada, quer me ajudar. Quer me roubar de novo.
+> Ela abre a contestação do Pix no app do banco, pelo MED, e registra o boletim de ocorrência na delegacia online.
+> Da conta para onde foi o depósito, o banco consegue bloquear cento e vinte reais. Melhor que nada.
+@muda grana+1
+@anota p4_golpe_recuperacao
+@anota p4_med_pix
+> E então ela faz a coisa mais difícil: conta para alguém.
+@vai i13_conta_vo
+
+=== i13_conta_vo
+@fundo casa_cozinha
+@entra vo neutra esquerda
+EU [envergonhada]: Vó, eu caí num golpe.
+VO [surpresa]: Você? A minha neta que caça bandido?
+EU: Eu. Quinhentos reais.
+VO: Ah, minha filha. A mulher do farmacêutico mandou dois mil e é formada em farmácia.
+> A Vó Nita esquenta um café e coloca na mesa um pedaço de bolo de fubá que ninguém pediu.
+VO: Golpe não pega burro. Pega gente cansada. Você está cansada.
+(Às vezes a vó diz coisas de manual de segurança sem saber o que é manual de segurança.)
+@muda rel_vo+1 saude+1
+@sai vo
+@vai i13_desmascara_grupo
+
+=== i13_desmascara
+@som acerto
+EU: Selecionada sem me candidatar, curtir vídeo por dólar, sem contrato, Pix de pessoa física, mentora no Telegram e urgência de trinta minutos. É golpe da tarefa, com todos os ingredientes.
+(Bingo de golpe. Cartela cheia.)
+> Ela responde à empresa de anotação de dados, faz o teste de qualificação e passa.
+@anota p4_golpe_tarefa
+@marca trabalho_real
+@vai i13_desmascara_grupo
+
+=== i13_desmascara_grupo
+> Ela grava um vídeo curto para o Instagram da assistência: "Vaga em dólar para curtir vídeo? Cinco sinais de que é golpe."
+@se marca:caiu_golpe_remoto -> i13_video_honesto
+> O vídeo bate quatro mil visualizações. Em Pedra Lisa, isso é um terço da cidade, mais os parentes de Minas.
+@muda reputacao+1
+@se marca:trabalho_real -> i13_trabalho_real
+@vai i13_fim
+
+=== i13_video_honesto
+> No vídeo, ela conta que caiu. Sem enfeite. Mostra os prints, o depósito, o saldo de mentira.
+> É o vídeo mais assistido que ela já fez. Nos comentários, setenta pessoas contam que também caíram e nunca tinham contado para ninguém.
+(Vergonha dividida pesa menos. E ainda vira alerta para o próximo.)
+@muda reputacao+2 saude+1
+@vai i13_fim
+
+=== i13_trabalho_real
+@fundo quarto_madrugada
+> O trabalho de verdade não tem nada de glamour. São rótulos em imagens, revisões de texto, avaliação de respostas, pagos por tarefa, em dólar, numa plataforma com contrato e imposto declarado.
+> O valor por hora não paga uma vida nos Estados Unidos. Em Pedra Lisa, paga a faculdade e sobra para o gás.
+(É real. É chato. É real.)
+? Quanto desse trabalho você pega?
+* Só algumas horas por semana, para pagar a faculdade. -> i13_real_pouco {grana+1}
+* Todas as horas possíveis. Dólar é dólar. -> i13_real_muito {grana+3 saude-2}
+
+=== i13_real_pouco
+> Ela coloca um limite: duas noites por semana. O resto é faculdade, assistência e dormir.
+(Primeira vez que eu faço planejamento de capacidade da minha própria vida.)
+@muda saude+1
+@vai i13_fim
+
+=== i13_real_muito
+> Ela pega tudo. Assistência de dia, faculdade de noite, dólar de madrugada.
+> Em um mês, paga o carnê das Casas inteiro. Em dois, compra um nobreak para a internet. Em três, esquece como é dormir seis horas seguidas.
+@vai i13_fim
+
+=== i13_fim
+@sai todos
+@fundo casa_cozinha
+@musica interior
+@entra mae neutra direita
+> Cinco e meia da manhã. Dona Rosilene, já de uniforme de diarista, encontra a filha dormindo em cima do notebook.
+MAE [brava]: Esse computador vai te deixar cega. Eu falei quando você tinha nove anos e falo de novo.
+EU: Não é o computador, mãe. É a vida.
+MAE [pensativa]: A vida eu conheço. Ela também não deixa ninguém dormir. Mas você é nova, tem que dormir enquanto pode.
+> Ela coloca um copo de café na frente da filha e sai para o ônibus das seis.
+? Depois que a mãe sai, você...
+* Dorme três horas e larga um dos trampos de madrugada. -> i13_dorme {saude+2 grana-1 rel_mae+1}
+* Aguenta firme. É só por um tempo. -> i13_aguenta {saude-2 grana+1}
+** Compra uma caixa de energético importado "para alta performance". -> i13_energetico {saude-2 grana-1}
+
+=== i13_dorme
+> Ela dorme. Sonha com um poste de eucalipto que fala.
+> Acorda às nove, abre a assistência atrasada, e pela primeira vez em semanas acerta o troco de primeira.
+@vai i14_inicio
+
+=== i13_aguenta
+> Ela lava o rosto, toma o café da mãe e abre a assistência às oito em ponto.
+> Às onze, troca a tela de um celular e esquece de colocar o parafuso. O cliente volta às duas.
+(É só por um tempo. É só por um tempo. É sempre só por um tempo.)
+@vai i14_inicio
+
+=== i13_energetico
+> A caixa chega com doze latas pretas, letras em inglês e um raio desenhado.
+> Ela toma duas antes da faculdade. O coração bate em ritmo de forró. A prova não melhora, mas ela escreve as respostas três vezes mais rápido e duas vezes mais erradas.
+(Descobri um novo tipo de ataque de negação de serviço: contra mim mesma.)
+@vai i14_inicio

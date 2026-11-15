@@ -1,0 +1,320 @@
+# Parte 5, capital. Capítulo 18: primeiro emprego na área, SOC noturno, triagem, impostora, Rafa, Davi.
+
+=== c18_inicio
+@cap 18 "Turno da noite"
+@fundo call_center
+@musica trabalho
+> Último dia de call center. Você ensaiou o discurso no ônibus, entre um cotovelo e uma mochila.
+@entra fabio neutra centro
+FABIO: Você quer falar comigo? Se for sobre a pausa do banheiro, a regra continua cinco minutos.
+? Como você pede demissão?
+* Agradecer, cumprir o aviso prévio e sair de porta aberta -> c18_demissao_educada {rel_fabio+2 reputacao+1}
+* Falar tudo o que guardou sobre a meta de quatro minutos -> c18_demissao_desabafo {rel_fabio-2 saude+1}
+** Entregar a demissão em forma de planilha, com gráfico de pizza e meta batida -> c18_demissao_planilha {rel_fabio+1 saude+1}
+
+=== c18_demissao_educada
+FABIO [surpresa]: Segurança da informação? Olha só. Você sempre foi a que mais desconfiava dos clientes.
+FABIO: Isso aqui era defeito. Lá vai ser qualidade.
+EU [feliz]: Obrigada, Fábio. Sério.
+@vai c18_sai_call
+
+=== c18_demissao_desabafo
+EU [brava]: Quatro minutos não dá pra resolver problema de ninguém, Fábio! Dá pra desligar na cara com educação!
+FABIO [brava]: A meta vem de cima. Eu também tenho meta. Eu também tenho chefe.
+(Pela primeira vez eu vi que a planilha dele também tinha uma planilha em cima.)
+@vai c18_sai_call
+
+=== c18_demissao_planilha
+FABIO [surpresa]: "Motivos da saída: 62% salário, 25% sonho, 13% lombar." Tem até legenda.
+FABIO [feliz]: É a demissão mais organizada que eu já recebi. Posso usar de modelo no treinamento?
+EU: Pode. Só tira meu nome. LGPD.
+@vai c18_sai_call
+
+=== c18_sai_call
+@sai fabio
+> Você devolve o headset. A orelha esquerda agradece em silêncio.
+@vai c18_primeiro_dia
+
+=== c18_primeiro_dia
+@fundo escritorio_moderno
+@musica cidade
+> Uma semana depois. Prédio espelhado, catraca com reconhecimento facial e um crachá com a sua foto. A foto ficou horrível. Você ama a foto.
+@roupa "Primeiro dia no SOC"
+(Eu passei a vida inteira do lado de fora de laboratório trancado. Agora a porta abre com o meu rosto.)
+@vai c18_soc
+
+=== c18_soc
+@fundo soc_sala
+@musica hacker
+> O SOC fica no sexto andar. Telas enormes com gráficos, mapas e listas que rolam sem parar. Ar-condicionado no modo Polo Norte.
+@se marca:rival_rafa -> c18_rafa_rival
+@se marca:amiga_rafa -> c18_rafa_amiga
+@vai c18_rafa_nova
+
+=== c18_rafa_rival
+@entra rafa brava direita
+RAFA: Olha quem chegou. Achei que você ia ficar no call center contando historinha de Pedra Lisa.
+EU [brava]: E eu achei que você ia continuar copiando a resposta dos outros. A vida surpreende.
+RAFA: Eu tô aqui há oito meses. Senta ali, na cadeira que balança. É a de quem chegou por último.
+(Ótimo. Turno da noite, frio de geladeira e a Rafa. O pacote completo.)
+@vai c18_turno
+
+=== c18_rafa_amiga
+@entra rafa feliz direita
+RAFA: Não acredito! Você veio mesmo! Eu guardei a cadeira boa pra você, a que não balança.
+EU [feliz]: Rafa! Eu achei que você tinha sumido do mapa.
+RAFA: Sumi pro sexto andar. Bem-vinda ao SOC, a gente vive de café e de alerta.
+@vai c18_turno
+
+=== c18_rafa_nova
+@entra rafa neutra direita
+RAFA: Você é a indicada da Iracema? Eu sou a Rafa. Oito meses de casa.
+RAFA: Regra número um: não se apega aos gráficos coloridos. Regra número dois: o café da máquina é ruim, mas é o que tem.
+EU: E a regra número três?
+RAFA [pensativa]: Ainda tô descobrindo. Quando descobrir, te conto. Ou não.
+@vai c18_turno
+
+=== c18_turno
+> 23h. A Iracema passa a madrugada de sobreaviso, de casa. Na sala, só você, a Rafa e quatrocentos alertas na fila.
+RAFA: Bem-vinda à triagem. A maioria é ruído. Um ou dois por noite são de verdade. O trabalho é achar esses dois sem dormir em cima do teclado.
+(Quatrocentos alertas. Eu nem sabia que existia tanto jeito de uma coisa dar errado.)
+@sai rafa
+> O primeiro alerta da sua vida pisca na tela: "Login suspeito em conta de usuário". Você não sabe se clica, se reza ou se liga pra mãe.
+@entra iracema neutra centro
+IRACEMA: Tô aqui no fone. Antes de clicar em qualquer coisa, me diz a ordem. Triagem tem ordem, igual a pronto-socorro.
+@desafio p5_triagem -> c18_triagem_ok | c18_triagem_erro
+
+=== c18_triagem_ok
+IRACEMA [feliz]: Perfeito. Entende o alerta, olha o contexto, correlaciona, decide e documenta. Na dúvida, escala.
+IRACEMA: Ninguém é demitido por escalar com evidência. As pessoas são demitidas por esconder.
+@muda tecnica+1 reputacao+1
+@anota p5_triagem_alerta
+@sai iracema
+@vai c18_ruido
+
+=== c18_triagem_erro
+IRACEMA [pensativa]: Calma. Você foi direto pra decisão sem olhar o contexto. É igual dar remédio sem perguntar a alergia.
+IRACEMA: Primeiro entende o que disparou. Depois quem é o usuário, que máquina é, que horas são. Depois cruza com outros registros. Só então decide. E escreve tudo.
+@anota p5_triagem_alerta
+@sai iracema
+@vai c18_ruido
+
+=== c18_ruido
+> O "login suspeito" era o seu Osvaldo, do financeiro, entrando de Caldas Novas nas férias. Falso positivo. Você documenta e fecha.
+> Às 3h12, outro alerta. Esse tem cheiro diferente.
+@som alarme
+> "Usuário aprovou login após 27 notificações de MFA recusadas. Origem: país onde a empresa não tem escritório."
+@entra rafa neutra direita
+RAFA: Ih, isso aí deve ser o diretor de novo, viajando. Ele vive aprovando coisa sem ler.
+@desafio p5_alerta_mfa -> c18_mfa_ok | c18_mfa_erro
+
+=== c18_mfa_ok
+EU [pensativa]: Vinte e sete pedidos recusados e depois um aceito, às três da manhã? Ninguém viaja assim. Alguém tem a senha dele e ficou apertando a campainha até ele abrir a porta.
+RAFA [surpresa]: Fadiga de MFA. A pessoa cansa de recusar e aprova pra fazer parar.
+@muda tecnica+1
+@anota p5_fadiga_mfa
+@vai c18_decide_alerta
+
+=== c18_mfa_erro
+EU [envergonhada]: Será que é só o diretor errando o dedo?
+RAFA [pensativa]: Errar o dedo uma vez, vai. Vinte e sete?
+> Você relê. Um pedido aceito depois de vinte e sete recusados, de madrugada, de outro país. Alguém tem a senha e ficou insistindo até a vítima cansar.
+@anota p5_fadiga_mfa
+@vai c18_decide_alerta
+
+=== c18_decide_alerta
+RAFA: Se você acordar a Iracema às três da manhã por causa de diretor viajando, ela te come viva.
+(E se não for viagem? Se for alguém dentro da conta de um diretor, agora, enquanto eu tomo café ruim?)
+? O que você faz com o alerta?
+* Escalar para a Iracema pelo plantão, com as evidências anotadas -> c18_escalou {reputacao+2 etica+1 marca:c18_escalou}
+* Ir na da Rafa: ela tem mais tempo de casa -> c18_ignorou {reputacao-1 saude-1}
+** Seguir o playbook à risca e pedir o bloqueio da conta do diretor às 3h20 da manhã -> c18_bloqueou_diretor {reputacao+2 tecnica+1 marca:c18_escalou}
+
+=== c18_escalou
+@sai rafa
+@entra iracema neutra centro
+IRACEMA: Tô acordada. Manda.
+> Você manda: horário, origem, quantidade de pedidos recusados, aprovação, o que a conta acessou depois.
+IRACEMA [feliz]: Isso é um escalonamento bonito. Dá vontade de imprimir e colar na geladeira.
+IRACEMA: Vou acionar o bloqueio da sessão e a troca de senha. Ele vai acordar bravo e protegido.
+@sai iracema
+@vai c18_manha
+
+=== c18_ignorou
+> Você fecha o alerta como "provável viagem". A Rafa acena satisfeita.
+@sai rafa
+> Às 6h40, a Iracema chega mais cedo, de cara fechada.
+@entra iracema brava centro
+IRACEMA: Alguém entrou na conta do diretor de operações e tentou mudar a conta bancária de três fornecedores. O banco segurou por sorte.
+IRACEMA: Quem fechou o alerta das 3h12?
+EU [envergonhada]: Fui eu.
+IRACEMA [pensativa]: Tá. Errou, admitiu. Agora aprende: na dúvida, escala. Acordar alguém custa um mau humor. Não acordar pode custar uma empresa.
+@muda rel_iracema+1
+@sai iracema
+@vai c18_manha
+
+=== c18_bloqueou_diretor
+> Você abre o playbook. Está escrito, com letra de manual: "Conta com indício de comprometimento: solicitar bloqueio imediato da sessão e escalar."
+EU: Então vamos de manual.
+RAFA [assustada]: Você vai pedir pra bloquear a conta do DIRETOR?
+@sai rafa
+> Às 7h, o diretor liga furioso de Lisboa. Às 7h10, descobre que alguém tentou trocar a conta de pagamento de três fornecedores usando o login dele. Às 7h15, manda um e-mail de agradecimento com três pontos de exclamação.
+@entra iracema feliz centro
+IRACEMA: Você bloqueou um diretor na primeira semana. Seguindo o playbook. Eu tô orgulhosa e um pouco com medo.
+@sai iracema
+@vai c18_manha
+
+=== c18_manha
+@fundo capital_rua
+@musica triste
+> 7h. Você sai do prédio quando a cidade está chegando. Todo mundo indo, você voltando. O sol parece fazer piada.
+(Será que eu sou boa nisso ou foi sorte? Todo mundo ali sabe sigla que eu nunca ouvi. Daqui a pouco alguém descobre que eu sou a menina da lan house fiado.)
+@vai c18_impostora
+
+=== c18_impostora
+@fundo cafeteria
+@entra iracema neutra centro
+IRACEMA: Você tá com cara de quem vai pedir desculpa por existir.
+EU [triste]: Eu não sei se eu mereço estar ali, Iracema. Eu chorei no banheiro duas vezes essa semana.
+IRACEMA: Só duas? Você é forte. Eu chorei no primeiro ano todo, no banheiro masculino, porque o feminino era longe.
+IRACEMA: Isso que você sente tem nome. Síndrome da impostora. Ela adora mulher, preto, pobre e gente do interior. Ela escolhe a dedo.
+IRACEMA: Faz assim: anota toda noite uma coisa que você resolveu. Quando ela vier falar, você mostra a lista.
+@muda saude+1 rel_iracema+1
+@anota p5_impostora
+@sai iracema
+@vai c18_rafa_conversa
+
+=== c18_rafa_conversa
+@fundo soc_sala
+@musica trabalho
+> Noite seguinte. A Rafa chega com dois cafés da padaria da esquina, não da máquina.
+@entra rafa pensativa direita
+RAFA: Toma. É pedido de desculpa ou suborno, você escolhe.
+RAFA: Eu fiquei com medo de você me passar. Oito meses e eu ainda tenho pavor de escalar errado.
+? O que você diz pra Rafa?
+* "A gente pode escalar junto. Duas cabeças, um alerta." -> c18_rafa_aliada {rel_rafa+2 marca:amiga_rafa}
+* "Medo eu entendo. Mas você não pode mandar a novata ignorar alerta." -> c18_rafa_tensa {rel_rafa-1 etica+1}
+** "Aceito o café se você me ensinar todas as siglas que eu finjo que entendo." -> c18_rafa_siglas {rel_rafa+2 tecnica+1 marca:amiga_rafa}
+
+=== c18_rafa_aliada
+@desmarca rival_rafa
+RAFA [feliz]: Fechado. Eu sei filtro de log, você sabe desconfiar de gente. Juntas, a gente é um analista inteiro.
+@vai c18_davi
+
+=== c18_rafa_tensa
+RAFA [brava]: Justo. Doeu, mas é justo.
+@se marca:amiga_rafa -> c18_davi
+@marca rival_rafa
+(Rival não é inimiga. Rival é alguém que me obriga a estudar mais.)
+@vai c18_davi
+
+=== c18_rafa_siglas
+@desmarca rival_rafa
+RAFA [feliz]: Você também finge? Graças a Deus. Eu passei três meses achando que todo mundo sabia tudo.
+> Vocês fazem uma lista de siglas na parede, com post-it rosa. Até a Iracema contribui com uma, sublinhada: "PSN: perguntar sem neura".
+@vai c18_davi
+
+=== c18_davi
+@sai todos
+@se marca:namora_davi -> c18_davi_namoro
+@se marca:conheceu_davi -> c18_davi_convite
+@vai c18_davi_conhece
+
+=== c18_davi_conhece
+@fundo escritorio_moderno
+@musica romance
+> 7h, troca de turno. Um rapaz de fone no pescoço e camiseta de evento entra apressado, derruba o crachá e quase derruba você.
+@entra davi surpresa centro
+DAVI: Foi mal! Davi, time de testes de invasão autorizados, turno do dia. Você é a que bloqueou o diretor?
+EU [envergonhada]: Depende de quem pergunta.
+DAVI [feliz]: Pergunta um fã. Aquilo virou lenda no andar de cima.
+@marca conheceu_davi
+@vai c18_davi_convite
+
+=== c18_davi_convite
+@fundo cafeteria
+@musica romance
+@entra davi feliz centro
+DAVI: A gente só se cruza na troca de turno, você saindo e eu chegando. Parece novela.
+DAVI: No sábado tem pastel na feira e um CTF pequeno à tarde. Você topa? Pode ser o pastel, pode ser o CTF, pode ser os dois.
+(Ele gaguejou no "os dois". Eu reparei. Eu sou analista de segurança, eu reparo em tudo.)
+? O que você responde pro Davi?
+* "Topo os dois. E isso é um encontro, tá?" -> c18_davi_sim {rel_davi+2 saude+1 marca:namora_davi}
+* "Topo o CTF. O resto, devagar. Agora eu preciso de chão." -> c18_davi_amigo {rel_davi+1}
+** Responder mandando um currículo em PDF de mim mesma, com seção de hobbies -> c18_davi_curriculo {rel_davi+2 saude+1 marca:namora_davi}
+
+=== c18_davi_sim
+DAVI [feliz]: É um encontro. Com pastel de queijo. Eu levo o álcool em gel e você leva a desconfiança.
+> No sábado, vocês perdem o CTF por três pontos e ganham uma tarde inteira de conversa sobre Pedra Lisa, mãe brava e computador que dava choque.
+@sai davi
+@vai c18_fim
+
+=== c18_davi_amigo
+DAVI [pensativa]: Justo. Chão primeiro. Eu também gosto de chão.
+DAVI: Mas o lugar de dupla no CTF é seu, tá?
+@sai davi
+@vai c18_fim
+
+=== c18_davi_curriculo
+DAVI [surpresa]: "Experiência: 6 anos consertando PC de vizinho. Hobbies: desconfiar. Pretensão: pastel de queijo."
+DAVI [feliz]: Aprovada sem entrevista. Começa sábado.
+@sai davi
+@vai c18_fim
+
+=== c18_davi_namoro
+@fundo cafeteria
+@musica romance
+@entra davi feliz centro
+DAVI: Então agora a gente namora em fuso horário diferente. Eu acordo, você vai dormir.
+EU [feliz]: A gente se vê sete minutos por dia, na catraca. Os melhores sete minutos.
+DAVI: Eu deixei um bilhete no seu armário. Não abre no SOC, que tem câmera.
+? Como você cuida do namoro no turno da noite?
+* Combinar um café de verdade toda sexta, sem celular -> c18_namoro_cafe {rel_davi+2 saude+1}
+* Deixar pra depois, agora o foco é provar que eu mereço a vaga -> c18_namoro_foco {rel_davi-1 tecnica+1 saude-1}
+
+=== c18_namoro_cafe
+DAVI: Sexta, sem celular. Se o mundo pegar fogo, a Iracema liga.
+@sai davi
+@vai c18_fim
+
+=== c18_namoro_foco
+DAVI [triste]: Eu entendo. Só não esquece que você não precisa provar nada pra mim.
+@sai davi
+@vai c18_fim
+
+=== c18_fim
+@fundo republica_quarto
+@musica cidade
+> Primeiro holerite da área. Você abre o app do banco três vezes pra conferir se é verdade. É.
+@muda grana+2
+@som dinheiro
+@se marca:pacto_doutor -> c18_numero_estranho
+@vai c18_fim_mae
+
+=== c18_numero_estranho
+@musica misterio
+@som mensagem
+> Uma mensagem de um número que você não conhece. Sem foto. Sem nome.
+> "Vi que você subiu na vida, menina. Crachá bonito. Lembra de mim? A gente ainda vai conversar."
+(Só uma pessoa me chamava de menina daquele jeito. De terno, em Pedra Lisa, com dinheiro demais no bolso.)
+? O que você faz com a mensagem?
+* Bloquear o número e tentar esquecer -> c18_bloqueia_numero {saude-1}
+* Guardar o print com data e hora, por via das dúvidas -> c18_guarda_print {etica+1 marca:guardou_print}
+
+=== c18_bloqueia_numero
+> Você bloqueia. O coração não bloqueia junto.
+@vai c18_fim_mae
+
+=== c18_guarda_print
+> Você salva o print numa pasta com data. Se um dia precisar contar essa história, quer contar com prova.
+@vai c18_fim_mae
+
+=== c18_fim_mae
+@musica interior
+@entra mae feliz centro
+MAE: Chegou o dinheiro que você mandou. Comprei a panela de pressão nova. A velha tava apitando desafinada.
+EU [feliz]: Usa com cuidado, mãe.
+MAE: Sua avó disse que vai rezar pro seu computador do trabalho não pegar vírus na vista.
+(Eu nunca falei que o trabalho é justamente esse. Deixa ela rezar. Ajuda.)
+@sai mae
+@vai c19_inicio

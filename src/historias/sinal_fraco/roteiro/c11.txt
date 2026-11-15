@@ -1,0 +1,351 @@
+# Capítulo 11: formatura e a encruzilhada. Fim da Parte 2.
+
+=== c11_inicio
+@cap 11 "Formatura e a encruzilhada"
+@fundo escola_sala
+@musica trabalho
+> Terceiro ano. A sala tem quarenta e dois alunos, trinta e oito cadeiras e um ventilador que gira só para a esquerda.
+> No quadro, a professora de português escreveu em letra grande: "FALTAM 90 DIAS PARA O ENEM".
+> Alguém embaixo escreveu: "e 0 reais para a faculdade".
+(Engraçado porque é verdade. Triste pelo mesmo motivo.)
+> O cursinho particular de Caiçara custa quatrocentos reais por mês. O pré-vestibular popular da igreja é de graça, mas é a uma hora de ônibus, às sete da noite.
+? Como estudar para o ENEM
+* Encarar o pré-vestibular popular, ônibus e tudo -> c11_cursinho {tecnica+1 saude-1 marca:estudou_enem}
+* Estudar sozinha de madrugada, como sempre -> c11_sozinha {marca:estudou_enem}
+* Pegar mais conserto para juntar dinheiro e estudar o que der -> c11_trabalhar {grana+2 saude-1}
+
+=== c11_cursinho
+@fundo onibus_noite
+@musica interior
+> O ônibus das seis e quinze sai lotado, com gente voltando da roça, caixa de ovo no colo e um rádio tocando sertanejo sem fone.
+> O professor de matemática do pré-vestibular é um engenheiro aposentado que dá aula de graça "porque alguém deu para mim".
+(Ele explica função como quem conta causo. Pela primeira vez, logaritmo parece gente.)
+> Você chega em casa às onze e meia, todo dia. A sua mãe deixa o prato no forno, coberto com outro prato.
+@muda rel_mae+1
+@vai c11_estudo
+
+=== c11_sozinha
+@fundo quarto_madrugada
+@musica hacker
+> Você imprime provas antigas na Cida Net, fiado como nos velhos tempos, e resolve de madrugada.
+> O PC fica ligado com vídeo-aula de química e o dicionário de inglês do lado, só por costume.
+(Aprender sozinha eu já sei. O difícil é aprender sozinha com sono.)
+@vai c11_estudo
+
+=== c11_trabalhar
+@fundo assistencia_tecnica
+@musica trabalho
+> Você vira uma mini assistência técnica no quartinho dos fundos do Tio Juca. Celular de vó, PC de igreja, notebook de vereador.
+@entra tio feliz centro
+TIO: Tá faturando mais que eu, menina! Daqui a pouco eu viro seu funcionário.
+EU [pensativa]: Tio, e se eu não passar no ENEM?
+TIO: Se não passar, passa no outro. Eu reprovei duas vezes na autoescola e hoje dirijo até de olho fechado.
+EU: Isso não é bom, Tio.
+TIO [feliz]: Por isso que eu abro.
+@sai tio
+@vai c11_estudo
+
+=== c11_estudo
+@se marca:pacto_doutor -> c11_estudo_pacto
+@vai c11_enem
+
+=== c11_estudo_pacto
+> Às vezes, no meio de uma questão de história, você olha para o gabinete do PC. O dinheiro continua lá dentro.
+(Dava para pagar o cursinho de Caiçara. Dava para tudo. Mas cada nota tem o rosto da Dona Lurdes.)
+@muda saude-1
+@vai c11_enem
+
+=== c11_enem
+@fundo escola_sala
+@musica tensao
+> Domingo de ENEM. A prova é em Caiçara. Você acorda às quatro, a sua mãe às três e meia, para fazer café.
+> A Vó Nita te benze na porta com um galho de arruda. A Bia te liga às cinco para dizer que "você vai arrasar, amiga, eu sinto".
+> Na sala, o fiscal recolhe o celular num saco plástico. Pela primeira vez em anos, você fica sem sinal nenhum por vontade própria.
+> Questão 37. Um texto sobre aplicativos de graça.
+(Eu sei isso. Eu sei MUITO isso.)
+@desafio p2_enem -> c11_enem_acerto | c11_enem_erro
+
+=== c11_enem_acerto
+(Quando é de graça, o produto é você. A LGPD inteira passou na minha frente.)
+> A redação pede algo sobre a manipulação do comportamento do usuário pelos dados na internet.
+> Você escreve com a mão tremendo e o coração calmo. Cita a LGPD. Cita a Vó Nita, mas não pelo nome.
+@se marca:estudou_enem -> c11_enem_bom
+@se tecnica>=6 -> c11_enem_bom
+@vai c11_enem_medio
+
+=== c11_enem_erro
+> Você erra a questão. Pior: fica tão nervosa que perde vinte minutos nela.
+(Logo eu. Na questão de dados. A Professora Leni ia rir. Ou chorar.)
+> A redação sai apressada, mas sai.
+@se marca:estudou_enem e tecnica>=6 -> c11_enem_bom
+@vai c11_enem_medio
+
+=== c11_enem_bom
+@musica vitoria
+> Dois meses depois, a nota sai. Você abre na Cida Net, com a Cida lendo por cima do seu ombro.
+@entra cida surpresa centro
+CIDA: NOVECENTOS E VINTE NA REDAÇÃO? MENINA! NOVECENTOS E VINTE!
+> A lan house inteira bate palma. Inclusive dois meninos jogando que não sabem o que é redação.
+> Com essa nota, dá para entrar em Ciência da Computação na universidade federal da capital. De graça. Mas na capital.
+@sai cida
+@marca enem_bom
+@muda reputacao+1
+@vai c11_mae_briga
+
+=== c11_enem_medio
+@musica interior
+> A nota sai. Não é ruim. Não é o suficiente para a federal da capital na primeira chamada.
+> Mas dá para tentar bolsa numa faculdade particular da capital, com o resto pago em parcelas. Ou um curso técnico a distância, daqui mesmo.
+(Não foi o sonho. Foi um passo. Passo também leva a lugar.)
+@vai c11_mae_briga
+
+=== c11_mae_briga
+@fundo casa_cozinha
+@musica triste
+@entra mae brava centro
+MAE: Capital? Você quer ir para a capital? Com que dinheiro, {nome}?
+EU: Eu dou um jeito, mãe. Trabalho lá. Tem república, tem bolsa...
+MAE [brava]: Dá um jeito! Eu dei um jeito a vida inteira. Sabe o que é dar um jeito? É limpar a casa dos outros com a coluna travada.
+MAE: Lá ninguém te conhece. Lá tem golpe em cada esquina. Lá ninguém vai fazer prato para você e deixar no forno.
+? Como responder
+* Gritar de volta: ela nunca acreditou em você -> c11_briga_grito {rel_mae-2}
+* Respirar e perguntar do que ela tem medo de verdade -> c11_briga_medo {rel_mae+2}
+* Sair batendo a porta -> c11_briga_porta {rel_mae-1 saude-1}
+
+=== c11_briga_grito
+EU [brava]: A senhora nunca acreditou em mim! Nunca! Chamava o computador de vírus na vista!
+MAE [triste]: Eu não acreditava no computador. Em você eu sempre acreditei.
+> Silêncio. A panela de pressão apita no fogão e ninguém se mexe.
+EU [envergonhada]: Mãe...
+@vai c11_briga_medo
+
+=== c11_briga_porta
+@som porta
+> Você sai e bate a porta. Senta no meio-fio da rua de terra, onde ninguém te vê chorar, além de três galinhas e um cachorro chamado Biscoito.
+> Meia hora depois, a porta abre de novo. A sua mãe senta do seu lado, no meio-fio, de avental.
+@vai c11_briga_medo
+
+=== c11_briga_medo
+@expr mae triste
+MAE: Eu tinha dezessete anos quando passei na escola normal, para ser professora.
+EU [surpresa]: A senhora? Professora?
+MAE: Em Caiçara. Mas não tinha dinheiro de ônibus. E aí veio você. E aí veio a faxina.
+MAE [triste]: Eu não tenho medo de você não conseguir, filha. Eu tenho medo de você conseguir e não voltar mais.
+(Dezessete anos morando com ela, e eu nunca soube disso. Nunca perguntei.)
+? O que dizer
+* Prometer que volta, sempre -> c11_mae_promessa {rel_mae+1}
+* Dizer que talvez fique, por ela -> c11_mae_fica {rel_mae+1 saude-1}
+* Abraçar sem dizer nada -> c11_mae_abraco {rel_mae+2 saude+1}
+
+=== c11_mae_promessa
+EU: Mãe, eu volto. Todo Natal, todo aniversário da Vó. E um dia eu volto para ficar, se quiser.
+MAE [feliz]: Promete por escrito. Igual você faz com os clientes.
+> Você escreve num guardanapo: "Eu volto. Assinado, {nome}." Ela guarda no sutiã, onde guarda tudo que importa.
+@sai mae
+@vai c11_formatura
+
+=== c11_mae_fica
+EU: E se eu ficar, mãe? Por você?
+MAE [brava]: Por mim, não. Se ficar, fica por você. Eu não quero carregar isso também.
+MAE [triste]: Já carrego coisa demais nessa coluna.
+@sai mae
+@vai c11_formatura
+
+=== c11_mae_abraco
+> Você abraça a sua mãe. Ela cheira a sabão em pedra e a café.
+> Ela chora no seu ombro como você chorava no dela, quando o PC não ligava.
+MAE: Vai ser o que você quiser, viu? O que você quiser.
+@sai mae
+@vai c11_formatura
+
+=== c11_formatura
+@fundo escola_sala
+@musica festa
+> A formatura é no pátio da escola, com cadeira de plástico emprestada da igreja e um bolo de três andares do Seu Valdir.
+@roupa "Formatura"
+> A sua mãe veio de vestido novo, comprado no carnê. A Vó Nita veio de lenço florido e chorou desde o hino.
+@se marca:site_padaria -> c11_valdir_bolo
+@vai c11_leni_discurso
+
+=== c11_valdir_bolo
+@entra valdir feliz direita
+VALDIR: O bolo é por conta da casa. Em homenagem à engenheira do site.
+VALDIR [feliz]: Ainda tô te devendo sonho de creme até o fim da vida. E pretendo pagar.
+@sai valdir
+@vai c11_leni_discurso
+
+=== c11_leni_discurso
+@entra leni feliz centro
+LENI: Quando eu cheguei nesta escola, o laboratório de informática vivia trancado.
+LENI: Uma menina de nove anos ficava grudada no vidro da porta, olhando os computadores desligados como quem olha vitrine de loja.
+LENI [feliz]: Hoje essa menina conserta metade dos computadores da cidade. E me ensinou a não clicar em link de prêmio.
+> Todo mundo olha para você. Você queria virar fumaça. Também queria que esse momento não acabasse nunca.
+LENI: {nome}, a chave do laboratório. Eu prometi para mim mesma que, no dia da sua formatura, ia te entregar.
+@sai leni
+> Ela coloca na sua mão uma chave velha, com um chaveiro de plástico escrito "LAB".
+(É só uma chave. É a chave mais importante da minha vida.)
+@muda rel_leni+2
+@vai c11_bia
+
+=== c11_bia
+@fundo praca_interior
+@musica romance
+@entra bia feliz centro
+BIA: Amiga. Vem cá. Preciso te contar uma coisa e você não pode chorar.
+EU: Você vai me fazer chorar.
+BIA [feliz]: Eu vou ficar. Vou fazer o curso de cabeleireira e abrir o meu salão aqui, do lado da padaria.
+BIA: O canal ainda tem 312 inscritos. Mas eu descobri que gosto mais de deixar as pessoas bonitas ao vivo do que de ser famosa na tela.
+EU [surpresa]: E a Bia Blogueirinha Oficial Verdadeira?
+BIA [envergonhada]: Morreu. Foi bonito enquanto durou.
+BIA [triste]: E você vai embora, né? Eu sei que vai. Eu sempre soube.
+? Responder para a Bia
+* Dizer que ainda não decidiu -> c11_bia_indecisa {rel_bia+1}
+* Pedir para ela fazer o seu cabelo antes de qualquer decisão -> c11_bia_cabelo {rel_bia+2 saude+1}
+* Dar para ela o cartão de visita da caveira que você guardou anos -> c11_bia_cartao {rel_bia+2}
+
+=== c11_bia_indecisa
+EU: Eu não sei ainda, Bia. Juro que não sei.
+BIA [pensativa]: Sabe sim. Só tá com medo de saber.
+@vai c11_bia_fim
+
+=== c11_bia_cabelo
+EU: Faz o meu cabelo? Antes de eu decidir qualquer coisa.
+BIA [feliz]: Achei que você nunca ia pedir! Dez anos de cabelo preso com lápis, amiga.
+> Ali mesmo, no banco da praça, ela faz uma trança que dá a volta na sua cabeça, com um grampo de borboleta.
+BIA: Pronto. Agora você pode ir para qualquer lugar. Ou ficar em qualquer lugar.
+@vai c11_bia_fim
+
+=== c11_bia_cartao
+> Você tira da carteira o cartão velho: fundo preto, Comic Sans, caveira de óculos escuros. "Conserto PC, celular e coração partido."
+BIA [surpresa]: VOCÊ GUARDOU ISSO?
+EU: Foi você que inventou o coração partido. Fica com você.
+BIA [triste]: Eu vou emoldurar no salão. E quando alguém perguntar, eu digo que a minha melhor amiga conserta coração de longe.
+@vai c11_bia_fim
+
+=== c11_bia_fim
+BIA: Seja o que for, você me liga. De vídeo. Mesmo com uma barra de sinal, mesmo travando.
+EU [feliz]: Mesmo travando.
+@sai bia
+@vai c11_noite
+
+=== c11_noite
+@fundo rua_interior_noite
+@musica nenhuma
+> Naquela noite, você não consegue dormir. Sai de casa de chinelo e sobe a escadinha da caixa d'água, onde pega duas barras de sinal.
+> Pedra Lisa inteira cabe no seu olho daqui de cima. A padaria, a Cida Net, a escola, a casa da Vó, o salão que ainda não existe.
+@se marca:pacto_doutor -> c11_noite_pacto
+@se marca:denunciou_doutor -> c11_noite_delegada
+@vai c11_noite_vo
+
+=== c11_noite_pacto
+> No bolso, o celular vibra. Número desconhecido, da capital. Você não atende.
+(Na capital, ele tem mais gente. Aqui, ele já tem a mim. Para onde eu fuja, eu levo o que fiz.)
+@vai c11_noite_vo
+
+=== c11_noite_delegada
+> Na carteira, junto com a chave do laboratório, está o cartão da Delegada Márcia. "Crimes cibernéticos. Capital."
+(Ela disse: estude. Ela disse: a gente precisa de gente como você.)
+@vai c11_noite_vo
+
+=== c11_noite_vo
+@musica triste
+> Alguém sobe a escadinha, devagar, um degrau de cada vez, reclamando do joelho.
+@entra vo feliz centro
+VO: Eu sabia que você tava aqui. Desde pequena você vem para cá quando o coração aperta.
+EU [surpresa]: Vó! A senhora subiu a escada com esse joelho?
+VO: Joelho de benzedeira aguenta. O que não aguenta é ver neta sofrendo sozinha.
+> Ela senta do seu lado e tira do bolso do vestido um envelope amassado.
+VO: Dinheiro de benzeção. Dez anos juntando. Não é muito. Dá uma passagem e um mês de aluguel, se for barato.
+VO [pensativa]: E se você ficar, dá para comprar ferramenta para a sua lojinha de consertar.
+? O envelope da Vó
+* Aceitar, chorando -> c11_envelope_aceita {grana+2 rel_vo+1}
+* Recusar: ela precisa mais que você -> c11_envelope_recusa {rel_vo+1 etica+1}
+
+=== c11_envelope_aceita
+> Você pega o envelope. Ele é leve. É a coisa mais pesada que você já segurou.
+VO [feliz]: Não chora não, que lágrima de neta estraga benzeção.
+@vai c11_vo_fala
+
+=== c11_envelope_recusa
+EU: Não, Vó. Esse dinheiro é seu. É do seu remédio.
+VO [brava]: Remédio eu benzo. Pega.
+> Ela enfia o envelope no seu bolso com uma força que ninguém diria que uma senhora de oitenta anos tem.
+@muda grana+2
+@vai c11_vo_fala
+
+=== c11_vo_fala
+VO: Minha filha, vou te dizer uma coisa e depois fico quieta.
+VO: Ir embora não é abandonar. E ficar não é desistir. Quem decide o que é cada coisa é o coração de quem vai ou de quem fica.
+VO [feliz]: Eu benzo os dois caminhos. Agora escolhe o seu.
+> Lá embaixo, o último ônibus para a capital passa na estrada, com as luzes acesas, como um peixe brilhante no rio escuro.
+> Amanhã tem outro, às cinco e quarenta.
+@vai c11_escolha_grande
+
+=== c11_escolha_grande
+@musica romance
+(Na capital: a faculdade, o mercado, as empresas de verdade, o mundo. E nenhuma pessoa que me conhece.)
+(Em Pedra Lisa: a minha mãe, a Vó, a Bia, o Seu Valdir. Uma cidade inteira de computador sem antivírus e senha com nome de cachorro.)
+? A decisão da sua vida
+* Ir para a capital no ônibus das cinco e quarenta -> c11_vai_capital {marca:capital}
+* Ficar em Pedra Lisa e fazer daqui o seu lugar -> c11_fica_interior {marca:interior}
+** Jogar a moeda de um real de 2014 do Tio Juca e deixar a sorte decidir -> c11_moeda
+
+=== c11_moeda
+@som especial
+> Você tira a moeda da carteira. Aquela que o Tio Juca jura que vale mil reais e que, segundo a internet, vale exatamente um real.
+EU: Cara, capital. Coroa, Pedra Lisa.
+VO [pensativa]: Joga, minha filha.
+> A moeda sobe, brilha na luz da caixa d'água, gira, gira, e cai na sua mão.
+> Você fecha a mão antes de olhar.
+(Espera. Enquanto ela estava no ar, eu torci por um lado. Eu sei qual foi.)
+VO [feliz]: Viu? A moeda não serve para escolher. Serve para mostrar o que você já escolheu.
+> Você abre a mão sem olhar para a moeda. Guarda ela no bolso. Nunca vai saber o que deu.
+? O lado que você torceu
+* Capital -> c11_vai_capital {marca:capital saude+1}
+* Pedra Lisa -> c11_fica_interior {marca:interior saude+1}
+
+=== c11_vai_capital
+@fundo rodoviaria
+@musica romance
+> Cinco e meia da manhã. A rodoviária de Pedra Lisa é um banco de madeira, uma lanchonete fechada e um cachorro dormindo.
+> Mas hoje tem gente. A sua mãe, de avental por cima do vestido, porque saiu correndo. A Vó Nita, de lenço. A Bia, de pijama e chinelo.
+@se marca:site_padaria -> c11_capital_valdir
+@vai c11_capital_despedida
+
+=== c11_capital_valdir
+> E o Seu Valdir, com um saco de papel ainda quente. Doze sonhos de creme. "Para a viagem e para fazer amigo na capital."
+@vai c11_capital_despedida
+
+=== c11_capital_despedida
+@entra mae triste esquerda
+@entra bia triste direita
+MAE: Leva o casaco. Lá faz frio. E não passa o CPF para ninguém.
+EU [feliz]: Mãe, quem vive me falando para não passar CPF sou eu.
+MAE [feliz]: Então agora sou eu.
+BIA: Liga de vídeo. Mesmo travando.
+EU: Mesmo travando.
+> O ônibus buzina. Você sobe. Pela janela, a sua mãe acena com o pano de prato, como uma bandeira.
+@sai todos
+@fundo onibus_noite
+@musica cidade
+> Pedra Lisa fica pequena. Depois fica um ponto. Depois fica uma barra de sinal, que some na curva da serra.
+(Eu volto. Está escrito num guardanapo. Num sutiã. Na minha cabeça.)
+@vai c12_inicio
+
+=== c11_fica_interior
+@fundo praca_interior
+@musica interior
+> O ônibus das cinco e quarenta passa vazio de você.
+> Às seis e meia, você está na porta da oficina do Tio Juca com uma lata de biscoito cheia de chave de fenda e um plano no caderno.
+@entra tio surpresa esquerda
+TIO: Você não ia para a capital?
+EU [feliz]: Ia. Vou ficar, Tio. Pedra Lisa precisa de alguém que saiba o que é backup.
+TIO [feliz]: Então o quartinho dos fundos é seu. Aluguel é um café por dia e consertar o meu celular para sempre.
+@entra mae feliz direita
+MAE: Fica, mas estuda. Faculdade de computador pela internet existe?
+EU: Existe, mãe. Chama ensino a distância.
+MAE [pensativa]: Ensino a distância. Igual a minha vida inteira com a sua avó: perto, mas de longe.
+@sai todos
+> Naquela tarde, você pinta uma placa de madeira com tinta que sobrou da igreja: "{nome} Conserta. Computador, celular e golpe."
+(Golpe a gente não conserta. Mas a gente avisa. E aqui, avisar já é consertar muita coisa.)
+@vai i12_inicio

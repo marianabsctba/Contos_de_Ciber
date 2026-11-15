@@ -1,0 +1,289 @@
+# Parte 1, capítulo 4: Vírus na vista (ela tem uns 12 anos)
+
+=== c04_inicio
+@cap 4 "Vírus na vista"
+@fundo casa_cozinha
+@musica alegre
+@entra mae pensativa direita
+> Pedra Lisa, mais um ano. A grande novidade da rua: a {nome} convenceu a mãe a dividir a internet a rádio com a vizinha, Dona Zefa. Vinte reais cada uma.
+MAE: Vinte reais por mês pra uma coisa que eu nem vejo. Isso tem cara de golpe.
+EU: Mãe, é pra pesquisa da escola. A professora pede trabalho digitado.
+MAE: No meu tempo a gente pesquisava na Barsa da casa do padre.
+(No tempo dela, a Barsa do padre era a internet. Com menos propaganda.)
+@se marca:pc_queimou -> c04_inicio_queimou
+@vai c04_bia
+
+=== c04_inicio_queimou
+@expr mae brava
+MAE: E escuta: esse computador já quase queimou a minha casa uma vez. Se agora ele trouxer a internet pra dentro e queimar de novo...
+EU: Internet não queima, mãe. Internet só entra.
+MAE: Tudo que entra pode sair pegando fogo, minha filha. Pergunta pro seu tio.
+@vai c04_bia
+
+=== c04_bia
+@sai mae
+@fundo casa_quarto_infancia
+@entra bia feliz esquerda
+@som mensagem
+> No MSN, a Bia manda uma janela piscando, com sete pontos de exclamação.
+BIA: {nome}!!!!!!! Achei um site com TODOS os jogos de graça! superjogosgratis ponto alguma coisa!
+BIA: Tem o de corrida que a gente viu na lan house! Grátis! Sem pagar nada!
+EU [pensativa]: Grátis mesmo? Aquele custa quarenta reais na loja.
+BIA: Grátis! É internet, {nome}. Na internet tudo é de graça.
+> A {nome} abre o site. A página é um carnaval: piscando, tocando música, com cinco botões verdes escritos "DOWNLOAD".
+> Ela clica no maior. Baixa um arquivo. Abre. Aparece um instalador cheio de telas.
+? Como você passa pelas telas do instalador?
+* Clica em "Avançar" em tudo, bem rápido, para jogar logo -> c04_pragas
+* Tenta ler cada tela, mas o texto é confuso e as caixinhas já vêm marcadas -> c04_pragas {tecnica+1}
+
+=== c04_pragas
+@sai todos
+@musica misterio
+> No dia seguinte, o computador não é mais o mesmo.
+> Três barras de ferramentas novas: "Barra MegaBusca", "Barra Sorte Grande" e uma que mostra a previsão do tempo de uma cidade da Ucrânia.
+> A página inicial do navegador virou um site de busca que ninguém conhece. A cada clique, abre uma janela: "PARABÉNS! Você é o visitante número 1.000.000!"
+> O jogo de corrida? Nunca apareceu.
+@som alarme
+> E então, do nada, uma janela vermelha gritando: "ATENÇÃO! SEU COMPUTADOR ESTÁ COM 347 VÍRUS! Baixe o Acelerador Turbo Ultra e deixe seu PC 300% mais rápido!"
+@entra mae assustada direita
+MAE: Que barulho é esse? Que tela vermelha é essa?
+EU [assustada]: Mãe, o computador pegou vírus.
+@expr mae brava
+MAE: Eu falei! Eu falei que dava vírus na vista! Agora deu no computador também! Daqui a pouco passa pra mim!
+@entra vo pensativa esquerda
+VO: Quer que eu benza ele de novo?
+EU: Vó, acho que dessa vez vai precisar de mais que arruda.
+? O que você faz?
+* Vai até a escola pedir ajuda à Professora Leni -> c04_leni
+* Corre até a Cida Net pedir socorro à Dona Cida -> c04_cida {rel_cida+1}
+** Clica no "Acelerador Turbo Ultra" que promete resolver tudo -> c04_acelerador {saude-1}
+
+=== c04_acelerador
+@sai todos
+@musica tensao
+> O Acelerador Turbo Ultra instala sozinho, com uma barra de progresso dourada e música de vitória.
+> Depois, faz uma "varredura completa". Encontra 347 vírus, depois 512, depois 1.024.
+> E aparece a mensagem: "Para remover TODOS os vírus, ative a versão Premium por apenas R$ 49,90. Pague agora no boleto ou no cartão!"
+(Ele achou mais vírus do que antes de eu instalar. Que médico é esse que faz o paciente piorar e manda a conta?)
+@entra mae surpresa direita
+MAE: Cartão? Que cartão? Eu tenho o carnê das Casas e a caderneta do mercadinho.
+EU [envergonhada]: Mãe, acho que esse programa é o próprio vírus.
+@expr mae pensativa
+MAE: Igual aquele moço que vendia remédio pra tudo na feira. Curava calo, gastrite e mau-olhado. Prenderam ele em Juazeiro.
+> A {nome} não paga nada. Mas agora o computador tem quatro barras de ferramentas e um programa que pede dinheiro a cada cinco minutos.
+@vai c04_leni
+
+=== c04_cida
+@sai todos
+@fundo lan_house
+@musica alegre
+@entra cida brava centro
+CIDA: Jogo grátis? Daquele site que pisca? Ai, menina. Toda segunda eu formato as máquinas daqui por causa disso.
+EU [triste]: A senhora pode formatar o meu?
+CIDA: Formatar apaga tudo. E eu nem tenho o CD de instalação do seu Windows. Ninguém aqui tem nada original, minha filha, isso é Pedra Lisa.
+@expr cida pensativa
+CIDA: Mas escuta uma coisa: aquela janela vermelha dizendo que você tem mil vírus e pedindo dinheiro? Aquilo é golpe. Antivírus de verdade não fica gritando e cobrando pra te deixar em paz.
+CIDA: Vai na Professora Leni. Ela é a única pessoa nessa cidade que lê o manual.
+@vai c04_leni
+
+=== c04_leni
+@sai todos
+@fundo escola_laboratorio
+@musica interior
+@se marca:mentiu_leni -> c04_leni_desconfia
+@vai c04_leni_ajuda
+
+=== c04_leni_desconfia
+@entra leni pensativa centro
+> A Leni está sozinha, trocando um mouse quebrado por um que funciona metade das vezes.
+EU: Professora... eu preciso de ajuda. Meu computador tá cheio de vírus.
+LENI: É verdade dessa vez? Ou sua mãe vai vir te buscar às seis?
+EU [envergonhada]: É verdade. E... desculpa por aquela vez. Eu menti porque queria ficar no computador. Foi feio.
+@expr leni feliz
+LENI: Demorou três anos, mas veio. Desculpa aceita.
+LENI: Sabe por que eu fiquei chateada? Porque confiança é igual senha: demora pra criar e vaza num segundo.
+@muda rel_leni+2 etica+1
+@vai c04_leni_ajuda
+
+=== c04_leni_ajuda
+@sai todos
+@entra leni neutra centro
+EU: Eu baixei um jogo grátis, professora. E veio tudo isso. Barra, janela, uma tela vermelha.
+LENI: Deixa eu adivinhar. O jogo nunca apareceu.
+EU [surpresa]: Como a senhora sabe?
+LENI: Porque o jogo nunca é o produto. Você é que é o produto.
+@expr leni pensativa
+LENI: Esses programas que entram escondidos e fazem coisa que você não pediu têm um nome: malware. Programa malicioso.
+LENI: Tem de vários tipos. Uns só enchem de propaganda. Outros roubam senha. Outros sequestram seus arquivos. O seu, pelo jeito, é do tipo chato e pidão.
+LENI: E as barras de ferramentas vieram de carona no instalador, naquelas caixinhas que já vinham marcadas. Quando você clica em "Avançar" em tudo, você aceita tudo.
+@anota p1_malware
+@anota p1_programas_indesejados
+@muda tecnica+1
+LENI: Agora vou te mostrar uma coisa. Olha essa página de download. Me diz tudo o que tem de suspeito nela.
+@desafio p1_achar_download_falso -> c04_achou | c04_nao_achou
+
+=== c04_achou
+@expr leni surpresa
+EU [feliz]: O endereço é estranho, não é o site de quem fez o jogo. Tem botão de download em todo canto, que é anúncio. E pede pra desativar o antivírus. Ninguém honesto pede isso.
+LENI: Você acabou de fazer o que muito adulto não faz. Desconfiou antes de clicar.
+@expr leni feliz
+LENI: Regra de ouro: só baixa programa do site oficial de quem fez, ou da loja oficial. Se é pago e está de graça num site que pisca, desconfia.
+@muda tecnica+1 rel_leni+1
+@anota p1_fonte_oficial
+@vai c04_limpeza
+
+=== c04_nao_achou
+EU: Eu clicaria nesse botão verde grande, "BAIXAR AGORA". Parece o certo.
+@expr leni pensativa
+LENI: Esse aí é um anúncio. Ele está fingindo ser o botão de download. Foi exatamente assim que você trouxe o problema pra casa.
+LENI: Olha o endereço: não é o site de quem fez o jogo. E essa página pede pra você desativar o antivírus. Quem pede isso quer passar pela porta sem ser visto.
+EU [envergonhada]: Tem armadilha em todo canto.
+LENI: Tem. Por isso a regra: só baixa do site oficial de quem fez, ou da loja oficial. O resto é loteria, e quem ganha nunca é você.
+@anota p1_fonte_oficial
+@vai c04_limpeza
+
+=== c04_limpeza
+@sai todos
+@fundo casa_quarto_infancia
+@musica hacker
+> Em casa, com o caderno aberto ao lado do teclado, a {nome} encara o computador cheio de barras como quem encara um quintal cheio de mato.
+(Ou eu limpo com paciência, ou peço pro tio passar o trator.)
+? Como você resolve?
+* Limpa com calma: desinstala um por um no Painel de Controle, arruma a página inicial e passa um antivírus baixado do site oficial -> c04_limpa_calma {tecnica+2 saude-1}
+* Pede para o Tio Juca formatar tudo e começar do zero -> c04_formata {rel_tio+1}
+
+=== c04_limpa_calma
+> Painel de Controle. Adicionar ou remover programas. "Barra MegaBusca": remover. "Barra Sorte Grande": remover. "Acelerador Turbo Ultra", se estiver lá: remover com prazer.
+> Depois, a página inicial do navegador volta a ser o Google. Depois, o antivírus gratuito, baixado do site do fabricante, roda a noite inteira.
+> Às duas da manhã, ele encontra mais três coisas escondidas e manda para a quarentena.
+@entra mae brava direita
+MAE: {nome}! Duas da manhã! Amanhã tem prova!
+EU: Mãe, eu tô curando o computador.
+@expr mae pensativa
+MAE: Curou?
+EU [feliz]: Curou. Tá rápido de novo. Sem janela, sem barra, sem tela vermelha.
+@expr mae feliz
+MAE: Então vai dormir, doutora. Antes que a sua vista pegue vírus.
+@anota p1_antivirus_e_atualizacao
+@vai c04_bia_link
+
+=== c04_formata
+@entra tio feliz direita
+TIO: Formatar? Deixa comigo. Tenho um CD de instalação que salvou meio Pedra Lisa. Não pergunta de onde veio.
+(Eu não pergunto. Mas anoto no caderno: um dia vou ter as coisas originais.)
+> Três horas depois, o computador está limpo. Limpo de verdade: sem barra, sem vírus, sem nada. Nada mesmo.
+@se marca:receitas_vo -> c04_receitas_perdidas
+TIO: Pronto. Novinho de fábrica. Agora instala um antivírus do site oficial e mantém tudo atualizado, senão daqui a um mês tá igual.
+@anota p1_antivirus_e_atualizacao
+@vai c04_bia_link
+
+=== c04_receitas_perdidas
+@entra vo pensativa esquerda
+VO: Minha flor, e as receitas? O bolo de fubá, a canjica, o doce de leite?
+EU [assustada]: Vó... formatar apaga tudo. Eu esqueci das receitas.
+@expr vo triste
+> A vó fica quieta. Doze receitas, todas começando com "Com amor". Foram embora junto com a Barra MegaBusca.
+TIO: Ih. Sobrinha, você não tinha guardado uma cópia em outro lugar? Num CD, num pendrive?
+EU [triste]: Eu nem sabia que precisava.
+@expr vo feliz
+VO: Tá bom, tá bom. A receita tá aqui na minha cabeça. A gente escreve de novo. E dessa vez você guarda em dois lugares.
+(Lição que custou um bolo de fubá: o que só existe num lugar, um dia não existe mais.)
+@muda saude-1 rel_vo+1
+@anota p1_antivirus_e_atualizacao
+@vai c04_bia_link
+
+=== c04_bia_link
+@sai todos
+@fundo escola_sala
+@musica alegre
+@entra bia feliz esquerda
+> Uma semana depois, na escola, a Bia chega com o celular novo da tia na mão e um sorriso perigoso.
+BIA: {nome}, agora é de verdade! Achei um site com o jogo da Barbie Cabeleireira grátis! Vou te mandar no MSN!
+EU [pensativa]: Do site oficial da Barbie?
+BIA: Do site do meu primo. Ele disse que é confiável. O primo do ferro-velho.
+? O que você faz?
+* Explica que só baixa de site oficial, e propõe juntarem latinha para comprar o jogo -> c04_bia_latinha {rel_bia+1 etica+1}
+* Diz que não baixa, mas que a Bia pode testar no computador da escola -> c04_bia_escola {rel_leni-1 etica-1}
+
+=== c04_bia_latinha
+BIA [brava]: Você agora é a chata da segurança, é?
+EU: Sou. A chata da segurança que não tem Barra Sorte Grande no computador.
+@expr bia pensativa
+BIA: Tá. Mas a latinha tem que ser meio a meio. E eu escolho a cor da Barbie.
+EU [feliz]: Fechado. E se um dia você tiver um blog de maquiagem, eu cuido da senha.
+BIA: Você vai ser minha técnica de informática particular quando eu for famosa.
+(Segunda vez que ela me contrata sem pagar. Estou construindo uma carreira sólida de trabalho voluntário.)
+@vai c04_despedida
+
+=== c04_bia_escola
+> Na sexta, a Bia abre o link no computador do canto do laboratório. Dez minutos depois, a máquina está com três barras de ferramentas e uma tela vermelha.
+@entra leni brava direita
+LENI: Quem baixou o quê nesse computador?
+BIA [envergonhada]: Eu, professora. A {nome} disse que aqui podia.
+@expr leni pensativa
+LENI: Computador da escola não é cobaia, {nome}. Se é perigoso pro seu, é perigoso pro de todo mundo.
+EU [envergonhada]: Desculpa. Eu vou ajudar a limpar.
+> E ela ajuda, a tarde inteira. A Leni não fala muito. Mas no fim deixa ela desligar o computador do canto, o que é quase um perdão.
+@sai bia
+@vai c04_despedida
+
+=== c04_despedida
+@sai todos
+@fundo escola_laboratorio
+@musica triste
+@entra leni triste centro
+> No último dia de aula do ano, a Leni chama a {nome} no laboratório. As caixas de papelão estão em cima das mesas.
+LENI: Meu contrato acabou. A prefeitura não renovou. Ano que vem eu vou dar aula em outra cidade, a duas horas daqui.
+EU [triste]: E o laboratório?
+LENI: Vai voltar pro cadeado. Até arrumarem um técnico. Que não vão arrumar.
+> Ela tira de uma das caixas uma apostila velha, de capa azul, toda anotada a lápis: "Informática Básica e Redes".
+LENI: É minha. Já tá velha, mas o começo das coisas não muda tanto.
+LENI: A biblioteca municipal tem internet de manhã. Tem curso gratuito, vídeo, fórum, gente que explica de graça. Em inglês tem mais, mas um dicionário resolve.
+LENI: Ninguém aprende só na sala de aula, {nome}. A sala de aula é só a porta.
+? O que você diz para a Leni?
+* Abraça a professora e promete que vai aprender sozinha -> c04_promessa {rel_leni+2}
+* Diz que um dia vai voltar e abrir esse cadeado de vez -> c04_cadeado {rel_leni+1 reputacao+1}
+* Fica brava com a prefeitura, com o cadeado, com tudo -> c04_brava {saude-1}
+
+=== c04_promessa
+EU [triste]: Eu vou aprender, professora. Sozinha, se precisar. Prometo.
+@expr leni feliz
+LENI: Eu sei que vai. Você olha o fio.
+> As duas ficam abraçadas um tempo, no meio das caixas, do jeito que só professora de escola pública e aluna de escola pública sabem.
+@vai c04_fim
+
+=== c04_cadeado
+EU: Um dia eu volto e abro esse cadeado. E ele não fecha nunca mais.
+@expr leni surpresa
+LENI: Promete?
+EU [feliz]: Prometo. E a senhora vem na inauguração.
+@expr leni feliz
+LENI: Vou de óculos novos, pra enxergar direitinho.
+@vai c04_fim
+
+=== c04_brava
+EU [brava]: Não é justo! Tem computador aqui e ninguém pode usar! Tem a senhora e mandam embora!
+@expr leni pensativa
+LENI: Não é justo. Você tá certa. A raiva é sua, pode ficar com ela.
+LENI: Só não deixa ela virar desistência. Usa ela de combustível. Que é o único combustível de graça que a gente tem.
+(Combustível de graça. Já que é de graça, vou encher o tanque.)
+@vai c04_fim
+
+=== c04_fim
+@sai todos
+@fundo casa_quarto_infancia
+@musica infancia
+@entra mae neutra direita
+> Naquela noite, a {nome} senta na cama com o caderno de capa dura e a apostila azul da Leni.
+> Na última página do caderno, ela escreve, em letra caprichada: "SE NINGUÉM VAI ME ENSINAR, EU APRENDO SOZINHA."
+MAE: Ainda acordada?
+EU: Mãe, a Leni foi embora. Não tem mais ninguém pra me ensinar computador em Pedra Lisa.
+@expr mae pensativa
+MAE: E aí? Vai desistir?
+EU [surpresa]: Não.
+@expr mae feliz
+MAE: Foi o que eu pensei. Você é teimosa igual a sua avó e cabeça dura igual a mim. Isso dá trabalho, mas dá gente.
+MAE: Então aprende. Só não deixa de dormir, nem de comer, nem de passar em matemática.
+> Ela dá um beijo na testa da filha e apaga a luz do quarto. A tela do computador ainda brilha um pouquinho, esperando.
+(Tá bom, Pedra Lisa. Uma barra de sinal na praça e duas na caixa d'água. Vai ter que dar.)
+@vai c05_inicio

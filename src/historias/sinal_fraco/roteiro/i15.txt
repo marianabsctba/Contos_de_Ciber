@@ -1,0 +1,288 @@
+# Parte 4, ramo do interior, capítulo 15
+
+=== i15_inicio
+@cap 15 "A balança parou"
+@fundo cooperativa
+@musica tensao
+> Véspera da colheita do feijão. Seis da manhã. A fila de caminhões na frente da Cooperativa Agrícola de Pedra Lisa já dobra a esquina do posto.
+@som alarme
+> E nenhum caminhão anda.
+> A balança rodoviária é ligada num computador. O computador mostra uma tela preta com letras vermelhas: SEUS ARQUIVOS FORAM CRIPTOGRAFADOS. PAGUE EM 72 HORAS OU SEUS DADOS SERÃO PUBLICADOS.
+> O mesmo aviso está na folha de pagamento, no sistema de notas fiscais, no computador do gerente e no que a cooperativa usa para tocar música na festa do peão.
+@entra cida assustada direita
+CIDA: Menina! Graças a Deus. Me ligaram às cinco. Disseram que só você sabe mexer nisso.
+EU [assustada]: Dona Cida? O que a senhora faz aqui?
+CIDA: Eu cuido da xerox e da digitalização da cooperativa há seis anos. Toda sexta eu copio os arquivos num HD e levo pra casa, porque o gerente tem medo de enchente.
+(Toda sexta. Num HD. Que ela leva para casa. Dona Cida, a senhora talvez tenha salvado esta cidade sem saber.)
+CIDA: Mas agora o gerente quer desligar tudo da tomada e ligar de novo. Diz que resolve.
+@anota p4_ransomware
+? O que você faz primeiro?
+* Gritar para ninguém desligar nada e tirar os cabos de rede. -> i15_contencao {tecnica+1}
+* Ligar para o gerente e pedir calma, explicando por telefone. -> i15_telefone {rel_cida+1}
+** Abrir o bilhete de resgate e responder aos criminosos com um "bom dia, tudo bem?". -> i15_bom_dia
+
+=== i15_bom_dia
+> Ela abre o chat do grupo criminoso, que é mais bonito que o site da prefeitura. Tem até atendimento.
+EU: Bom dia, tudo bem? Aqui é da cooperativa.
+> A resposta chega em segundos, em português de tradutor automático: "Bom dia. Preço é 4 bitcoin. Desconto de 20% se pagar hoje. Tenha um dia abençoado."
+CIDA [surpresa]: Bandido com desconto de liquidação.
+(Lição um: não se conversa com criminoso antes de ter um plano. Lição dois: eles têm um SAC melhor que o da PedraNet.)
+@muda saude-1
+@vai i15_contencao
+
+=== i15_telefone
+> O gerente não atende. Ele está desligando os computadores um por um, com a dedicação de quem apaga vela de aniversário.
+CIDA: Ele já desligou três!
+EU: Então vamos correr antes que ele chegue no servidor.
+@muda tecnica-1
+@vai i15_contencao
+
+=== i15_contencao
+> Ela corre pelo escritório puxando cabos de rede, como quem arranca mato.
+EU: Ninguém desliga nada! Só tira o cabo de rede e desliga o Wi-Fi. Desligar pode apagar pistas que estão na memória.
+CIDA: E o servidor?
+EU: Tira da rede também. E ninguém conecta pen drive, HD, nada.
+@sai cida
+@entra leni pensativa direita
+LENI: Eu vim assim que soube. Eu sou do conselho fiscal da cooperativa, sabia?
+EU [surpresa]: Professora Leni!
+LENI: Eu sempre disse que um dia você ia salvar alguma coisa nessa cidade. Só não imaginava que ia ser o feijão.
+@se marca:mentiu_leni -> i15_leni_passado
+@vai i15_plano
+
+=== i15_leni_passado
+LENI [pensativa]: Sabe que eu nunca esqueci aquela vez, quando você era pequena, em que você mentiu para mim.
+EU [envergonhada]: Eu sei. Desculpa, professora.
+LENI: Tudo bem. Você era uma menina querendo um computador. Eu já vi gente mentir por coisa muito pior.
+@muda rel_leni+1
+@vai i15_plano
+
+=== i15_plano
+LENI: Então, especialista. Qual é o plano? Todo mundo está olhando para você.
+(Todo mundo. O gerente, a Dona Cida, a Professora Leni, trinta caminhoneiros e o feijão de uma cidade inteira.)
+> Ela pega o caderno, respira e escreve a ordem das coisas.
+@desafio p4_resposta_incidente -> i15_plano_acerto | i15_plano_erro
+
+=== i15_plano_acerto
+@som acerto
+EU: Primeiro a gente contém, e isso já fizemos. Depois descobre o que foi atingido e por onde entraram. Depois expulsa o invasor e fecha a porta. Só então restaura. E no fim a gente aprende.
+LENI [feliz]: E em paralelo?
+EU: Em paralelo, anoto tudo com horário, a gente registra boletim de ocorrência e avisa quem precisa ser avisado.
+@anota p4_resposta_incidente
+@muda tecnica+1 rel_leni+1 reputacao+1
+@vai i15_entrada
+
+=== i15_plano_erro
+@som erro
+EU: Vamos restaurar tudo agora, rápido, e depois a gente vê como entraram.
+> Às três da tarde, metade dos arquivos está de volta. Às quatro, a tela vermelha volta junto.
+LENI [pensativa]: Voltou?
+EU [envergonhada]: Voltou. Eles ainda estavam lá dentro. Eu restaurei em cima de uma porta aberta.
+(Restaurar antes de erradicar é trocar a fechadura com o ladrão ainda na sala.)
+> Ela recomeça, agora na ordem certa: investigar, erradicar, restaurar. Perdem um dia.
+@anota p4_resposta_incidente
+@muda saude-1 tecnica+1
+@vai i15_entrada
+
+=== i15_entrada
+@musica hacker
+> Os registros contam a história. Três semanas antes, alguém entrou pelo acesso remoto que um técnico da capital tinha instalado para dar suporte.
+> Usuário: suporte. Senha: coop123. Sem verificação em duas etapas. Aberto para a internet inteira.
+EU [brava]: Coop123.
+LENI: Isso é ruim?
+EU: É a senha que o invasor testa logo depois de "123456" e "senha".
+> Durante três semanas, o invasor andou pela rede. Copiou o cadastro dos 600 cooperados: nome, CPF, conta bancária, produção de cada um.
+(Não é só sequestro. É sequestro e vazamento. Eles levaram os dados antes de trancar.)
+> Ela troca as senhas, desliga o acesso remoto e remove as contas que o invasor criou, uma por uma, anotando cada coisa com horário.
+@vai i15_backup
+
+=== i15_backup
+@sai leni
+@entra cida neutra direita
+CIDA: Então. E os backups? O gerente diz que tem quatro.
+> Ela olha os quatro "backups" da cooperativa, um por um.
+@desafio p4_backup_321 -> i15_backup_acerto | i15_backup_erro
+
+=== i15_backup_acerto
+@som acerto
+EU: O único que serve é o seu, Dona Cida. O HD que vai para a sua casa toda sexta e só fica ligado na hora de copiar.
+CIDA [feliz]: O meu? Eu sabia! O gerente dizia que eu era maluca.
+EU: A senhora fez sozinha um pedaço da regra 3-2-1. Uma cópia longe, desconectada.
+CIDA: Está debaixo da minha cama, embrulhado num pano de prato da Festa do Divino.
+@anota p4_backup_321
+@muda rel_cida+2
+@vai i15_resgate
+
+=== i15_backup_erro
+@som erro
+EU: O HD externo do servidor! Ele estava ali do lado, tem tudo.
+> Ela conecta. Os arquivos estão lá, todos com a mesma extensão .lock.
+CIDA [pensativa]: E se fosse o meu, que fica lá em casa?
+EU [surpresa]: O seu fica desligado?
+CIDA: Só ligo na sexta, pra copiar. Depois embrulho num pano de prato.
+EU: Dona Cida, é esse. É o único que o ransomware não alcançou.
+@anota p4_backup_321
+@muda rel_cida+1
+@vai i15_resgate
+
+=== i15_resgate
+@sai cida
+@entra leni pensativa esquerda
+> Reunião de emergência da diretoria, na sala do gerente, com café de garrafa térmica e cinco homens de chapéu.
+> O presidente da cooperativa quer pagar. Diz que é mais rápido. Diz que o primo de um amigo pagou e deu certo.
+LENI: A decisão é da diretoria. Mas a especialista é você. O que você recomenda?
+? Qual é a sua recomendação?
+* Não pagar e restaurar do backup da Dona Cida. -> i15_nao_paga {etica+1 reputacao+1}
+* Pagar. É mais rápido e a colheita não espera. -> i15_paga {reputacao-1}
+
+=== i15_nao_paga
+EU: Não pagar. Pagar não garante a chave, financia o próximo ataque e não faz os criminosos apagarem os dados que levaram. Quem paga entra na lista de quem paga.
+LENI [feliz]: E temos o backup.
+EU: Temos o backup da última sexta. Perdemos quatro dias de lançamento, que dá para refazer pelos papéis.
+> A diretoria vota. Quatro a um. O um é o primo do amigo.
+@vai i15_cidade
+
+=== i15_paga
+> A diretoria paga. Quatro bitcoins, com o desconto de liquidação.
+> A chave chega. Funciona em sessenta por cento dos arquivos. O resto continua trancado, e a planilha da folha de pagamento sai com os números embaralhados.
+LENI [triste]: E os dados dos cooperados?
+EU [triste]: Continuam com eles. Pagar não apaga cópia.
+> Mesmo assim, ela restaura o resto do HD da Dona Cida.
+@marca pagou_resgate
+@vai i15_cidade
+
+=== i15_cidade
+@sai todos
+@fundo praca_interior
+@musica interior
+> Enquanto isso, a cidade para.
+> A balança não pesa, e os caminhões não descarregam. A folha de pagamento não roda, e o mercadinho começa a vender fiado. O salão da Bia fica vazio, porque ninguém sabe se vai receber na sexta.
+@entra tio feliz direita
+TIO: Sobrinha, tive uma ideia. Lá no fundo da oficina tem a balança mecânica antiga da cooperativa, de 1982. Eu guardei.
+EU [surpresa]: O senhor guardou uma balança de caminhão?
+TIO: Guardei. Ninguém joga fora coisa boa. Se eu e os meninos levarmos de trator, ela pesa. Na mão, no papel, mas pesa.
+(A melhor resposta a incidente da história de Pedra Lisa: uma gambiarra de 1982 e o Tio Juca.)
+> No fim da tarde, os caminhões voltam a andar, pesados na balança velha, anotados num caderno de capa dura pela Professora Leni.
+@muda rel_tio+1
+@sai tio
+@vai i15_comunicacao
+
+=== i15_comunicacao
+@fundo cooperativa
+@entra leni neutra esquerda
+> O gerente chama ela num canto. Fala baixo, como quem vai pedir um favor.
+> Ele quer que ninguém saiba do vazamento. Diz que os cooperados vão entrar em pânico. Diz que a cooperativa vai ficar com fama ruim.
+LENI [pensativa]: E você, o que acha?
+? O que você responde ao gerente?
+* Comunicar: cooperados, ANPD e polícia. Com clareza e sem pânico. -> i15_comunica {etica+1 reputacao+1}
+* Concordar em abafar. Ninguém vai descobrir. -> i15_abafa {etica-2}
+
+=== i15_comunica
+EU: Os dados de seiscentas famílias vazaram. CPF e conta bancária. Se a gente não avisar, o golpista avisa por nós, ligando como se fosse a cooperativa.
+LENI: E a lei?
+EU: A LGPD pede comunicar a ANPD e os afetados quando há risco relevante. O prazo é de três dias úteis.
+> Ela escreve, junto com a Leni, uma mensagem simples para os grupos dos cooperados: o que aconteceu, que dados vazaram, que a cooperativa nunca vai ligar pedindo senha ou Pix, e onde tirar dúvida.
+> A Dona Cida grava o áudio. Ninguém em Pedra Lisa ignora um áudio da Dona Cida.
+@anota p4_comunicar_incidente
+@muda rel_leni+1
+@vai i15_delegada
+
+=== i15_abafa
+EU: Tudo bem. A gente não fala nada.
+LENI [brava]: Você vai deixar seiscentas famílias sem saber que o CPF delas está na mão de bandido?
+EU [envergonhada]: O gerente pediu.
+LENI: O gerente pediu. Eu te ensinei a pensar, não a obedecer gerente.
+> Duas semanas depois, cooperados começam a receber ligações de uma "central da cooperativa" pedindo confirmação de dados bancários. Três caem.
+@marca abafou_incidente
+@muda rel_leni-2 reputacao-1
+@vai i15_delegada
+
+=== i15_delegada
+@sai leni
+@fundo cooperativa
+@musica misterio
+@som porta
+@entra delegada neutra direita
+DELEGADA: Delegada Márcia, crimes cibernéticos. Recebemos o boletim de ocorrência. Quem coordenou a resposta?
+EU: Eu.
+@se marca:pacto_doutor -> i15_delegada_perguntas
+@se marca:denunciou_doutor -> i15_delegada_aliada
+DELEGADA [pensativa]: Bom trabalho na preservação das evidências. Os registros com horário vão ajudar muito. Esse grupo já atacou duas prefeituras da região.
+@se marca:aceitou_prefeito -> i15_delegada_prefeitura
+@muda reputacao+1
+@vai i15_fim
+
+=== i15_delegada_aliada
+DELEGADA [feliz]: Eu lembro de você. A denúncia contra o tal Doutor, anos atrás. Você fez a coisa certa naquela vez também.
+EU: E aquilo deu em alguma coisa?
+DELEGADA: Deu em várias coisas. Ainda dá. Esse tipo de gente sempre aparece de novo.
+@muda reputacao+1 rel_delegada+1
+@se marca:aceitou_prefeito -> i15_delegada_prefeitura
+@vai i15_fim
+
+=== i15_delegada_prefeitura
+DELEGADA [pensativa]: Aliás, uma pergunta. Você trabalhou na prefeitura recentemente, não é?
+EU [assustada]: Uma impressora. Só uma impressora.
+DELEGADA: Certo. A Vereadora Lúcia registrou ocorrência por invasão do celular dela. Estamos ouvindo todo mundo que mexeu em computador por aqui.
+> Ela anota alguma coisa num bloquinho e não explica o quê.
+@muda saude-2
+@vai i15_fim
+
+=== i15_delegada_perguntas
+DELEGADA [pensativa]: Uma coisa curiosa. A carteira de criptomoeda que esse grupo usa para receber resgate já apareceu num inquérito antigo nosso.
+DELEGADA: Uma operação de um sujeito chamado Anselmo. O "Doutor". Você já ouviu esse nome?
+> O sangue some do rosto dela. A Delegada Márcia percebe, porque perceber é o trabalho dela.
+DELEGADA: No inquérito do Doutor aparece um serviço feito por alguém da região, na época uma adolescente. Nunca identificamos quem.
+? O que você responde?
+* Contar a verdade sobre o serviço para o Doutor. -> i15_conta_verdade {etica+2 saude-1}
+* "Nunca ouvi falar." -> i15_mente {saude-2 etica-1}
+
+=== i15_conta_verdade
+EU [triste]: Fui eu. Eu tinha dezessete anos e precisava de dinheiro. Ele pagou, e eu fiz. Nunca mais fiz nada para ele.
+DELEGADA [surpresa]: Você sabe que isso tem consequência.
+EU: Sei. Faz anos que eu sei. Faz anos que eu não durmo direito por causa disso.
+DELEGADA: Colaborar conta. Contar antes de ser descoberta conta muito. E eu vi o que você fez aqui hoje.
+> Ela entrega um cartão e uma intimação para depor, com data marcada.
+@marca colaborou_delegada
+@vai i15_fim
+
+=== i15_mente
+EU: Nunca ouvi falar.
+DELEGADA: Certo.
+> Ela guarda o bloquinho. Não parece acreditar, mas também não insiste.
+DELEGADA: Se lembrar de alguma coisa, me procura. Às vezes as pessoas lembram depois.
+(Ela sabe. Ela sabe e vai voltar.)
+@marca mentiu_delegada
+@vai i15_fim
+
+=== i15_fim
+@sai todos
+@fundo casa_cozinha
+@musica triste
+> Quatro dias e quatro noites. A cooperativa volta a funcionar no quinto dia, com senhas novas, acesso remoto com verificação em duas etapas e um HD a mais debaixo da cama da Dona Cida.
+> Ela chega em casa às duas da manhã do quinto dia e não lembra a senha do próprio celular.
+? E você?
+* Deixar a Dona Cida e a Leni cobrirem o próximo plantão e dormir dois dias. -> i15_dorme {saude+2}
+* Voltar de manhã. Ninguém mais sabe fazer o que eu faço. -> i15_volta {saude-2 tecnica+1}
+* Ir para a padaria às três e sovar pão até o corpo parar de tremer. -> i15_sova {saude+1 rel_valdir+1}
+
+=== i15_dorme
+> Ela dorme dezesseis horas. Acorda com a Vó Nita benzendo ela com um galho de arruda, por garantia.
+(Descansar também é parte do plano de resposta. Ninguém escreve isso nos manuais, mas devia.)
+@anota p4_saude_mental
+@vai i16_inicio
+
+=== i15_volta
+> Ela volta às sete. E às sete do dia seguinte. A cooperativa já está de pé, mas ela não consegue parar de conferir se a tela vermelha voltou.
+> À noite, sonha com cadeado. De dia, enxerga extensão .lock em tudo, até no rótulo do feijão.
+@vai i16_inicio
+
+=== i15_sova
+@fundo casa_cozinha
+@entra valdir feliz direita
+VALDIR: Eu soube. A cidade inteira soube. Senta. Ou melhor, levanta e sova.
+> Ela sova. Chora no meio, um choro sem drama, de corpo cansado. O Seu Valdir finge que não vê e põe mais farinha.
+VALDIR: Sabe por que eu acordo às três há quarenta anos? Porque o pão não liga para o que aconteceu ontem. Ele só quer ser sovado.
+@marca gosta_padaria
+@anota p4_saude_mental
+@vai i16_inicio

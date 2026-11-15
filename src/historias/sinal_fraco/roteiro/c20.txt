@@ -1,0 +1,377 @@
+# Parte 5, capital. Capítulo 20: caminhos. Promoção, palestra, bug bounty, ou o passado bate à porta.
+
+=== c20_inicio
+@cap 20 "Caminhos"
+@fundo apartamento_capital
+@musica cidade
+> Um ano de SOC. Você saiu da república e alugou um apartamento de um quarto. Desta vez, antes de pagar, você visitou, conferiu a matrícula do imóvel e falou com o síndico.
+(Vinte e oito metros quadrados. Uma janela que dá pra outra janela. E é meu. Quer dizer, é do proprietário, mas o contrato é meu.)
+@se marca:pacto_doutor -> c20_intimacao_doutor
+@se marca:aceitou_cleiton -> c20_intimacao_freela
+@se marca:aceitou_marlene -> c20_intimacao_freela
+@se marca:denunciou_doutor -> c20_delegada_amiga
+@vai c20_tronco
+
+=== c20_intimacao_doutor
+@musica tensao
+@som porta
+> Terça, 9h. Dois policiais na porta, um envelope e um "a senhora precisa nos acompanhar para prestar esclarecimentos".
+@fundo delegacia
+@entra delegada neutra centro
+DELEGADA: Sou a Delegada Márcia, de crimes cibernéticos. Senta, por favor. Café?
+DELEGADA: A gente desmontou o esquema do Anselmo, o tal Doutor. Extorsão, lavagem, ransomware contra hospital. Tinha muita coisa no celular dele.
+DELEGADA: E o seu nome aparece. De anos atrás, de Pedra Lisa. Um "serviço".
+(Meu estômago desceu até o subsolo da delegacia.)
+DELEGADA: Logs não esquecem, {nome}. Conversas, pagamentos, horários. Eu não preciso que você me conte o que aconteceu. Eu preciso saber se você vai me contar.
+@se marca:contou_iracema -> c20_doutor_com_iracema
+@se marca:guardou_print -> c20_doutor_com_print
+@vai c20_doutor_escolha
+
+=== c20_doutor_com_iracema
+> A porta abre. A Iracema entra com uma advogada de terninho cinza e cara de quem ganha causa.
+@sai delegada
+@entra iracema neutra esquerda
+@entra delegada neutra direita
+IRACEMA: Ela me contou tudo semanas atrás, quando viu o nome do Anselmo no caso do hospital. Ela veio com advogada. Ela vai colaborar.
+DELEGADA [surpresa]: Isso muda bastante coisa. Quem procura a gente antes é diferente de quem a gente vai buscar.
+@vai c20_doutor_escolha
+
+=== c20_doutor_com_print
+> Você lembra da pasta. O print da mensagem do número sem nome, com data e hora: "A gente ainda vai conversar."
+EU [pensativa]: Doutora, ele me procurou de novo ano passado. Eu guardei a mensagem.
+DELEGADA [surpresa]: Guardou? Com data? Isso ajuda a gente a ligar o número dele a outras coisas.
+@vai c20_doutor_escolha
+
+=== c20_doutor_escolha
+? O que você faz diante da delegada?
+* Contar tudo, entregar o que tenho e colaborar com a investigação -> c20_colabora {etica+3 reputacao-3 marca:colaborou}
+* Negar tudo e, chegando em casa, apagar o que restou daquela época -> c20_esconde {etica-3}
+* Pedir pra ir ao banheiro, sair pela porta dos fundos e sumir com o dinheiro do Doutor -> c20_fuga {etica-2}
+
+=== c20_colabora
+@sai todos
+@entra delegada pensativa centro
+> Você conta. Do começo. O dinheiro que parecia muito, a idade que você tinha, a vergonha que veio depois.
+DELEGADA: Você vai responder pelo que fez. Mas colaborar conta, e muito. A sua informação vai ajudar a fechar outras portas do esquema.
+DELEGADA: Eu já vi gente se perder por menos. E já vi gente se reerguer por mais. Depende do que você faz daqui pra frente.
+> Meses depois, o processo termina num acordo: prestação de serviços à comunidade, multa e uma ficha que vai te acompanhar por um bom tempo.
+> A empresa te afasta do SOC. Você não discute. Você entende.
+@sai delegada
+@musica triste
+(Logs não esquecem. Mas gente pode mudar. As duas coisas são verdade.)
+@anota p5_rastro_digital
+@vai c20_tronco
+
+=== c20_esconde
+@sai todos
+@fundo apartamento_capital
+@musica misterio
+> Você nega. Volta pra casa, apaga conversas, formata um disco velho, joga um chip fora.
+(Eu sei melhor que ninguém que apagar do meu lado não apaga do lado de lá.)
+@vai fim_presa
+
+=== c20_fuga
+@sai todos
+@fundo capital_rua
+@musica misterio
+> Você pede pra ir ao banheiro. Tem uma porta de serviço no fim do corredor, entreaberta.
+> Quando percebe, já está na rua, com o coração na boca, vendendo mentalmente tudo o que tem.
+@vai fim_foragida
+
+=== c20_intimacao_freela
+@musica tensao
+@fundo delegacia
+@entra delegada neutra centro
+DELEGADA: Sou a Delegada Márcia, de crimes cibernéticos. Obrigada por vir. Não é prisão, é depoimento. Por enquanto.
+@se marca:aceitou_cleiton -> c20_freela_cleiton
+@vai c20_freela_marlene
+
+=== c20_freela_cleiton
+DELEGADA: A ex-namorada de um tal Cleiton registrou ocorrência. Ele foi preso por perseguição. Contou que, anos atrás, uma menina de Pedra Lisa entrou na conta dela pra ele.
+DELEGADA: A conta dela tem histórico de acesso. Horário, aparelho, local. A perícia chegou num computador de Pedra Lisa.
+(Eu tinha quinze anos e achei que era só uma senha. Pra ela, era a vida.)
+@vai c20_freela_escolha
+
+=== c20_freela_marlene
+DELEGADA: Um senhor de Pedra Lisa registrou ocorrência contra a ex-mulher, Marlene, por invasão do celular dele. No depoimento, ela disse quem fez o serviço.
+DELEGADA: O aparelho dele guardou registros de acesso. A perícia chegou num computador de Pedra Lisa.
+(A Marlene chorava quando me pediu. Eu achei que era ajudar. Era invadir.)
+@vai c20_freela_escolha
+
+=== c20_freela_escolha
+DELEGADA: Invasão de dispositivo é crime desde 2012. Eu quero ouvir a sua versão antes de decidir o que fazer com ela.
+? O que você responde?
+* Assumir, contar a verdade e pedir desculpas à vítima -> c20_freela_assume {etica+3 reputacao-2 marca:assumiu_freela}
+* Dizer que nunca fez isso e, em casa, apagar as conversas antigas -> c20_freela_esconde {etica-3}
+
+=== c20_freela_assume
+DELEGADA [pensativa]: Você era adolescente, foi há anos, e está assumindo. Vou registrar tudo isso.
+DELEGADA: Pelo tamanho do caso, deve acabar em acordo. Mas a vítima existe, e o pedido de desculpas a ela vai na sua consciência, não no processo.
+> O caso termina num acordo: serviço comunitário numa ONG que ajuda mulheres vítimas de perseguição digital. Você ensina a configurar privacidade e verificação em duas etapas.
+(Eu desfaço, aos poucos, o tipo de estrago que eu já fiz.)
+@sai delegada
+@anota p5_rastro_digital
+@vai c20_tronco
+
+=== c20_freela_esconde
+@sai todos
+@fundo apartamento_capital
+@musica misterio
+> Você nega com a voz firme. Em casa, apaga conversas de anos atrás e acha que resolveu.
+> Duas semanas depois, a perícia encontra as mesmas conversas no celular da outra pessoa, intactas, com o seu número.
+@vai fim_presa
+
+=== c20_delegada_amiga
+@fundo cafeteria
+@musica alegre
+@entra delegada feliz centro
+DELEGADA: Você não me conhece, mas eu conheço você. Sou a Delegada Márcia.
+DELEGADA: Lembra da denúncia que uma adolescente de Pedra Lisa fez contra um tal "Doutor"? Foi o primeiro fio que a gente puxou. Ele caiu semana passada, com o esquema inteiro.
+EU [surpresa]: Eu achei que ninguém tinha lido aquilo.
+DELEGADA: Eu li. Guardei. Demorou, mas a gente chegou. Obrigada.
+DELEGADA: Se um dia quiser dar aula na academia de polícia sobre golpe digital, a porta tá aberta.
+@muda reputacao+2 etica+1
+@sai delegada
+@vai c20_tronco
+
+=== c20_tronco
+@fundo apartamento_capital
+@musica cidade
+@se marca:caiu_vaga_falsa e marca:caiu_golpe_aluguel e grana<=3 -> c20_buraco
+@se marca:comprou_curso_997 e marca:caiu_vaga_falsa e grana<=1 -> c20_buraco
+@se marca:comprou_curso_997 e marca:caiu_golpe_aluguel e grana<=1 -> c20_buraco
+@se saude<=2 -> c20_corpo_cobra
+@vai c20_propostas
+
+=== c20_buraco
+@musica triste
+> A fatura chega. Depois a outra. A taxa da vaga falsa, o aluguel que não existia, o curso de Lamborghini alugada. Tudo virou parcela, e as parcelas viraram juros.
+@som mensagem
+> No celular, uma mensagem com logo de banco: "EMPRÉSTIMO PRÉ-APROVADO DE R$ 15 MIL! Sem consulta ao SPC. Só pagar a taxa de liberação de R$ 490 no Pix."
+(Eu sei que isso é golpe. Eu sei. Mas eu tô tão cansada que uma parte de mim quer acreditar.)
+? O que você faz?
+* Pagar a taxa de liberação. Só dessa vez, pra respirar -> c20_paga_taxa {grana-2}
+* Ligar pra minha mãe e contar a verdade -> c20_liga_mae {rel_mae+2}
+* Pedir ajuda à Iracema pra organizar as dívidas -> c20_ajuda_iracema [se rel_iracema>=3]
+
+=== c20_paga_taxa
+@som dinheiro
+> O Pix sai. A "liberação" nunca chega. O número que mandou a mensagem some. O banco de verdade nunca tinha ouvido falar de você.
+@anota p5_emprestimo_taxa
+@vai fim_golpeada
+
+=== c20_liga_mae
+@entra mae triste centro
+MAE: Minha filha, você tá chorando? É o computador?
+EU [triste]: Não, mãe. Sou eu. Eu me enrolei com dinheiro. Caí em golpe. Mais de um.
+MAE: Golpe acontece até com padre, filha. Volta pra casa um tempo. Aqui tem feijão e tem colo.
+@anota p5_emprestimo_taxa
+@sai mae
+@vai fim_volta_pra_casa
+
+=== c20_ajuda_iracema
+@entra iracema neutra centro
+IRACEMA: Planilha. Agora. Toda dívida, todo juro, toda data.
+IRACEMA: Você vai ligar pro banco de verdade e renegociar. Vai registrar boletim de ocorrência dos golpes. E nunca, nunca paga taxa antecipada pra receber empréstimo. Banco sério desconta da parcela, não pede Pix.
+> Três meses de arroz, ovo e renegociação depois, o buraco vira um degrau.
+@muda grana+3 saude+1
+@anota p5_emprestimo_taxa
+@sai iracema
+@vai c20_propostas
+
+=== c20_corpo_cobra
+@fundo soc_sala
+@musica triste
+> 4h da manhã. Um alerta qualquer, nada demais. E de repente você não consegue respirar.
+> O peito aperta, as mãos tremem, a tela vira um borrão. Você sai correndo pro corredor e senta no chão.
+@entra thais assustada centro
+THAIS: A Rafa me ligou. Eu vim de moto. Olha pra mim. Você tá tendo uma crise de pânico. Você não vai morrer. Respira comigo.
+THAIS: Quanto tempo faz que você não tira férias?
+EU [triste]: Desde... Pedra Lisa?
+THAIS: Seu corpo tá fazendo o trabalho que você não faz: dizendo não.
+? O que você faz?
+* Pedir afastamento e sair da área pra cuidar de mim -> c20_sai_area {saude+2}
+* Voltar pra Pedra Lisa um tempo, pra perto da minha mãe e da Vó -> c20_volta_cansada {saude+1 rel_mae+1}
+* Tirar férias de verdade, fazer terapia e depois decidir -> c20_ferias {saude+4}
+
+=== c20_sai_area
+THAIS: Sair não é desistir. É mudar de turno com a vida.
+@sai thais
+@vai fim_burnout
+
+=== c20_volta_cansada
+THAIS [triste]: Vou sentir falta de você roncando.
+EU: Quem ronca é você!
+THAIS [feliz]: Detalhe técnico.
+@sai thais
+@vai fim_volta_pra_casa
+
+=== c20_ferias
+> Trinta dias sem notebook. Terapia pelo posto, caminhada, novela das nove com a Thaís. Você descobre que não odeia segurança. Odiava o jeito que estava vivendo ela.
+@sai thais
+@vai c20_propostas
+
+=== c20_propostas
+@fundo apartamento_capital
+@musica alegre
+> Num mesmo mês, chegam três mensagens. Parece que o universo resolveu fazer promoção de oportunidade.
+@som mensagem
+> A primeira, do diretor de segurança da empresa: "Queremos você na coordenação do SOC. Com chance de assumir a área inteira em dois anos."
+@som mensagem
+> A segunda, do maior evento de segurança do país: "Gostaríamos de convidá-la para palestrar sobre a resposta ao incidente do Hospital Santa Luzia."
+@som mensagem
+> A terceira, de uma plataforma internacional de caça a falhas: "Programa privado de bug bounty. Convite por indicação."
+@se marca:namora_davi -> c20_propostas_davi
+@vai c20_propostas_iracema
+
+=== c20_propostas_davi
+@entra davi feliz centro
+DAVI: Fui eu que te indiquei pro bug bounty. Mas não é pressão. Se você escolher a coordenação, eu faço bolo. Se escolher palestra, eu sento na primeira fila e choro.
+DAVI: E se não escolher nada disso, eu continuo aqui. Igual.
+@muda rel_davi+1
+@sai davi
+@vai c20_escolha_grande
+
+=== c20_propostas_iracema
+@entra iracema pensativa centro
+IRACEMA: Três propostas. Nenhuma é obrigação. Só faz uma pergunta: daqui a dez anos, qual dessas te deixa dormir bem?
+IRACEMA: E, se a resposta for nenhuma, isso também é resposta.
+@sai iracema
+@vai c20_escolha_grande
+
+=== c20_escolha_grande
+@musica nenhuma
+(É isso. A menina do laboratório trancado tem um cardápio de futuro na mão.)
+? Qual caminho você escolhe?
+* Aceitar a coordenação do SOC e subir para liderar a segurança da empresa -> c20_promocao [se reputacao>=3 e !marca:colaborou]
+* Aceitar o convite pra palestrar sobre o incidente do hospital -> c20_palestra [se tecnica>=5 e !marca:colaborou]
+* Entrar no programa de bug bounty -> c20_bounty [se tecnica>=6 e etica>=1 e !marca:colaborou]
+* Largar a segurança e abrir o negócio que eu sempre sonhei -> c20_negocio
+* Voltar pra Pedra Lisa e recomeçar de lá -> c20_volta
+** Aceitar a vaga de "CEO de Cibersegurança" que a Kelly mandou no LinkedIn -> c20_kelly [se !marca:viu_kelly]
+
+=== c20_kelly
+@entra kelly feliz centro
+KELLY: Oi, {nome}! Vi seu perfil e senti uma sinergia enorme. Temos uma vaga de CEO de Cibersegurança!
+KELLY: É uma oportunidade de empreender: você compra o kit de revenda de cursos por R$ 2.997 e monta a sua equipe de CEOs abaixo de você!
+EU [brava]: Kelly, isso é pirâmide.
+KELLY [surpresa]: A gente prefere "estrutura de crescimento horizontal vertical".
+> Você bloqueia, denuncia o perfil e volta pro cardápio de verdade.
+@sai kelly
+@marca viu_kelly
+@vai c20_escolha_grande
+
+=== c20_promocao
+@fundo escritorio_moderno
+@musica trabalho
+> Reunião com a diretoria. Mesa comprida, água com gás, gente que fala "alavancar" sem rir.
+> Um diretor pede: "No relatório pro conselho, vamos dizer que o risco do fornecedor está controlado, né? Não precisa assustar."
+? O que você responde?
+* "Não está controlado. Eu apresento o risco e o plano pra controlar." -> c20_promo_honesta {etica+1 reputacao+1}
+** Apresentar o risco usando o grupo da família como analogia, com áudio da tia do zap -> c20_promo_tia {reputacao+2}
+
+=== c20_promo_honesta
+> Silêncio na sala. Depois, o presidente da empresa pede pra ver o plano. Pede orçamento. Aprova.
+@vai c20_promo_check
+
+=== c20_promo_tia
+EU: Senhores, o fornecedor é aquela tia que encaminha tudo no grupo sem ler. A gente não pode tirar ela da família, mas pode tirar dela o poder de apagar o grupo.
+> O presidente ri. Depois entende. Depois aprova o orçamento inteiro de controle de acesso de fornecedores.
+@vai c20_promo_check
+
+=== c20_promo_check
+@se saude<=3 -> c20_promo_cansada
+@vai fim_ciso
+
+=== c20_promo_cansada
+@musica triste
+> Você chega em casa e não consegue tirar o sapato. Senta no chão do banheiro de roupa e tudo.
+(Eu ganhei a cadeira. E não sei se tenho corpo pra sentar nela.)
+? E agora?
+* Aceitar o cargo mesmo assim e segurar no braço -> c20_promo_segura {saude-3}
+* Pedir três meses, começar terapia e assumir depois, inteira -> fim_ciso {saude+3}
+
+=== c20_promo_segura
+> Seis meses depois, o corpo cobra o que a planilha não mostrava.
+@vai fim_burnout
+
+=== c20_palestra
+@fundo auditorio_evento
+@musica tensao
+@roupa "Dia da palestra"
+> Backstage. Duas mil cadeiras. Um microfone de lapela que você já ajustou onze vezes.
+@entra iracema neutra centro
+IRACEMA: Você ensaiou com os slides que o hospital aprovou? Sem nome de paciente, sem print de prontuário?
+? Como você vai contar o caso?
+* Do jeito aprovado: anonimizado, com o que deu certo e o que deu errado -> c20_palestra_certa {etica+1 reputacao+1}
+* Mostrar o print com nome de paciente, impacta mais a plateia -> c20_palestra_print {etica-1}
+
+=== c20_palestra_certa
+IRACEMA [feliz]: Então vai. E fala devagar. Mineiro fala devagar e todo mundo acha que é sábio.
+@sai iracema
+@vai fim_pesquisadora
+
+=== c20_palestra_print
+IRACEMA [brava]: Não. Você vai expor um paciente que já foi exposto pelo criminoso. A plateia aplaude e a pessoa sofre de novo.
+EU [envergonhada]: Você tem razão. Tira o slide.
+IRACEMA: Tirado. Impacto bom é o que ensina, não o que expõe.
+@sai iracema
+@vai fim_pesquisadora
+
+=== c20_bounty
+@fundo quarto_madrugada
+@musica hacker
+> Programa privado, com regras claras: o que pode ser testado, o que não pode, como reportar. Você lê o escopo duas vezes, como quem lê bula.
+> No terceiro dia, você encontra uma falha num aplicativo de banco dentro do escopo. Uma que deixaria qualquer pessoa ver o extrato de outra.
+(Isso é o tipo de coisa que o Doutor pagaria uma fortuna pra ter. E é exatamente por isso que tem que ir pro lugar certo.)
+@desafio p5_divulgacao -> c20_bounty_ok | c20_bounty_erro
+
+=== c20_bounty_ok
+> Você escreve o relatório pela plataforma: o que encontrou, o impacto, como reproduzir de forma segura, sem acessar dados de ninguém além da sua conta de teste.
+> O banco corrige em nove dias, agradece e paga a recompensa. Em dólar.
+@som dinheiro
+@muda grana+3 reputacao+2
+@anota p5_divulgacao_responsavel
+@vai fim_bug_bounty
+
+=== c20_bounty_erro
+@entra iracema brava centro
+IRACEMA: Você ia postar a falha numa rede social antes de avisar o banco? Pra quê, curtida?
+IRACEMA: Divulgação responsável é: avisa pelo canal oficial, dá prazo pra corrigir, não acessa dado de ninguém e só fala em público depois, se o programa permitir.
+EU [envergonhada]: Apaguei o rascunho. Vou pelo canal.
+> Você manda pela plataforma. O banco corrige, agradece e paga. Um pouco menos do que pagaria se o relatório estivesse completo, mas paga.
+@som dinheiro
+@muda grana+2 reputacao+1
+@anota p5_divulgacao_responsavel
+@sai iracema
+@vai fim_bug_bounty
+
+=== c20_negocio
+@fundo cafeteria
+@musica alegre
+> Você sempre falou que ia abrir um café. Só nunca levou a sério. Até agora.
+@se marca:site_padaria -> c20_negocio_valdir
+@vai c20_negocio_vo
+
+=== c20_negocio_valdir
+@entra valdir feliz centro
+VALDIR: Recebi sua mensagem! Você quer a receita do meu pão de queijo? Menina, essa receita nem minha mulher tem.
+VALDIR: Mas você fez meu site quando ninguém fazia nada por Pedra Lisa. Toma. Só não coloca a receita na internet sem senha.
+@muda rel_valdir+2
+@sai valdir
+@vai fim_outra_carreira
+
+=== c20_negocio_vo
+@entra vo feliz centro
+VO: Você quer o bolo de fubá da sua bisavó? Pra vender na capital?
+VO: Pode levar. Mas tem que bater com a colher de pau. Batedeira não tem fé.
+@muda rel_vo+2
+@sai vo
+@vai fim_outra_carreira
+
+=== c20_volta
+@fundo rodoviaria
+@musica triste
+> Você não tem uma razão grande. Tem várias pequenas. A saudade da sua mãe. O cheiro da Vó Nita. A sensação de que a capital é um lugar ótimo pra visitar e péssimo pra morar.
+(Não é desistir. É voltar pra casa com o que eu aprendi.)
+@vai fim_volta_pra_casa

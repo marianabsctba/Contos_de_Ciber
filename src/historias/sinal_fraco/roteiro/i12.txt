@@ -1,0 +1,300 @@
+# Parte 4, ramo do interior, capítulo 12
+
+=== i12_inicio
+@idade adulta
+@cap 12 "Celular de vó"
+@fundo assistencia_tecnica
+@musica interior
+> Pedra Lisa do Norte, três anos depois da formatura.
+> Nos fundos da oficina do Tio Juca, entre um carburador aberto e um pneu de trator, existe agora uma bancada com lupa, ferro de solda e uma plaquinha escrita à mão.
+(Minha empresa. Meu CNPJ de MEI. Minha cadeira de plástico emprestada do bar do Neném.)
+@roupa "Vida nova em Pedra Lisa"
+@entra tio feliz direita
+TIO: Chegou a placa nova, sobrinha! Mandei pintar na fachada, com letra de caminhão.
+> A fachada diz, em azul e vermelho, com sombra e tudo: {nome} CONCERTA.
+EU [surpresa]: Tio. É conserta com S.
+TIO: E com C é o quê?
+EU: Com C é orquestra.
+TIO [pensativa]: Então tá certo. Você não faz o celular do povo tocar de novo?
+? O que fazer com a placa?
+* Deixar assim. Virou ponto turístico. -> i12_placa_fica {rel_tio+1}
+* Pintar de novo, com S, e agradecer o tio mesmo assim. -> i12_placa_nova {reputacao+1}
+** Contratar um designer do Instagram por R$ 400 para fazer uma logo profissional. -> i12_placa_logo {grana-1}
+
+=== i12_placa_fica
+TIO [feliz]: Eu sabia que você tinha bom gosto. Puxou a mim.
+> Em uma semana, três pessoas tiram selfie na frente da placa. Uma delas deixa um carregador para trocar o conector.
+(Marketing é isso. Erro de português gera engajamento.)
+@vai i12_abertura
+
+=== i12_placa_nova
+TIO [envergonhada]: Mas o pintor já foi embora com o dinheiro.
+EU: Eu pinto, tio. Pincel eu sei usar. Obrigada por ter pensado em mim.
+> Ela passa o domingo em cima da escada. O S fica um pouco torto, mas fica.
+TIO: Ficou bonito. Parece uma cobrinha.
+@vai i12_abertura
+
+=== i12_placa_logo
+> Quatro dias depois chega a logo: um escudo com cadeado, um raio e a palavra CYBER em fonte de filme de ação.
+> No canto, discreta, a marca d'água de um banco de imagens gringo.
+TIO [surpresa]: Que escudo bonito. É de time?
+EU [envergonhada]: É de um banco de imagens. O designer baixou de graça e me cobrou quatrocentos.
+(Fui golpeada por um escudo. Que vergonha para uma profissional de segurança.)
+TIO: Põe na parede do mesmo jeito. Pelo menos o cadeado é de verdade.
+@vai i12_abertura
+
+=== i12_abertura
+@se marca:levou_calote -> i12_sinal_adiantado
+@se marca:site_padaria -> i12_valdir_indica
+@vai i12_vo_chega
+
+=== i12_sinal_adiantado
+> Embaixo da placa, um cartaz plastificado: SERVIÇO SÓ COM 50% DE SINAL. FIADO SÓ AMANHÃ.
+TIO: Isso aí é por causa daquele sujeito que sumiu sem pagar, né?
+EU: É. Calote ensina mais que qualquer curso.
+(Aprendi que contrato e sinal não são grosseria. São higiene.)
+@se marca:site_padaria -> i12_valdir_indica
+@vai i12_vo_chega
+
+=== i12_valdir_indica
+> Na bancada, um saquinho de pão de queijo ainda quente e um bilhete: "Mandei mais dois clientes. Ass.: Valdir".
+TIO: O padeiro fala de você pra cidade inteira. Diz que o site dele vende mais que a vitrine.
+(O site que eu fiz com dezessete anos e um tutorial em espanhol. Ainda no ar. Ainda com backup.)
+@muda reputacao+1 rel_valdir+1
+@vai i12_vo_chega
+
+=== i12_vo_chega
+@som porta
+@sai tio
+@entra vo feliz esquerda
+VO: Minha neta! Vim trazer a televisão de bolso, que ela está doente.
+EU [feliz]: Bênção, vó. O que ele tem?
+VO: Bênção. Ele está cheio de bichinho piscando, e a letra ficou do tamanho de uma formiga.
+> O celular da Vó Nita tem a tela trincada em forma de estrela, 47 grupos de WhatsApp, três aplicativos de lanterna e um de "Bíblia com prêmios".
+(Três lanternas. A vó não sai de casa depois das oito. Para que três lanternas?)
+VO: E tem mais. A Dona Cida falou que tem golpe rodando pela cidade. Os netos estão pedindo dinheiro pras avós.
+EU [pensativa]: O golpe do falso parente. Já são quantas?
+VO: A cunhada da Cida, o sacristão e a mulher do farmacêutico. A do farmacêutico mandou dois mil.
+? Por onde começar com o celular da vó?
+* Limpar os aplicativos de lanterna e de prêmios primeiro. -> i12_limpa {tecnica+1}
+* Aumentar a letra e arrumar a tela inicial do jeito dela. -> i12_letra {rel_vo+1}
+* Perguntar se chegou alguma mensagem estranha nesses dias. -> i12_mensagem
+
+=== i12_limpa
+EU: Vó, esses aplicativos de lanterna pedem acesso a seus contatos, à sua localização e ao seu microfone.
+VO [surpresa]: Pra que lanterna quer ouvir a gente?
+EU: Ótima pergunta. Nenhuma lanterna precisa disso. O celular já tem lanterna de fábrica.
+> Ela desinstala os três e o "Bíblia com prêmios", que mostrava propaganda de cassino entre um salmo e outro.
+VO: Que pecado. Cassino no meio do salmo.
+@vai i12_mensagem
+
+=== i12_letra
+> Ela aumenta a fonte, coloca os ícones grandes e deixa na tela inicial só o que importa: telefone, WhatsApp, câmera, o rádio da igreja e o jogo de paciência.
+VO [feliz]: Agora sim. Estou enxergando até o que eu não queria.
+EU: E o atalho de ligar pra mim fica bem aqui, no meio.
+VO: Do lado do paciência. Que bom, vou lembrar de você toda hora.
+@vai i12_mensagem
+
+=== i12_mensagem
+VO [pensativa]: Agora que você falou, chegou uma ontem. Do Diego, seu primo. Mas com outro número.
+> Ela vira o celular. Lá está a foto de perfil do Diego, a mesma do Facebook, com camisa de formatura.
+VO: Eu ainda não respondi porque estava sem óculos. Lê pra mim?
+@desafio p4_falso_parente -> i12_falso_acerto | i12_falso_erro
+
+=== i12_falso_acerto
+@som acerto
+EU [brava]: Vó, isso não é o Diego. Olha: ele não diz o nome, pede para apagar o número antigo, pede Pix para conta de outra pessoa e não quer que a senhora ligue.
+VO [assustada]: Mas a foto é dele!
+EU: A foto está pública na internet, vó. Qualquer um pega.
+> Ela liga para o número antigo do Diego no viva-voz. Ele atende com voz de quem acordou agora.
+VO: Diego, você está sem banco?
+@vai i12_falso_acerto2
+
+=== i12_falso_acerto2
+> Do outro lado, o Diego verdadeiro jura que está com o mesmo número, o mesmo banco e a mesma dívida de sempre com a vó.
+VO [brava]: Bandido. Usando a cara do meu neto.
+EU: Vamos denunciar e bloquear o número. E combinar uma coisa: se alguém da família pedir dinheiro por mensagem, a senhora liga antes. Sempre.
+@anota p4_falso_parente
+@muda tecnica+1 rel_vo+1
+@marca vo_protegida
+@vai i12_palavra
+
+=== i12_falso_erro
+@som erro
+EU [pensativa]: Parece meio estranho, mas o jeito de escrever é a cara do Diego.
+VO: Então eu mando? Coitado, sem banco.
+> Antes que ela termine de pensar, a vó já apertou o botão do Pix com uma agilidade que não tem para atender ligação.
+> Cento e cinquenta reais. "Por enquanto", escreveu o falso Diego. "Manda o resto que falta."
+(O resto que falta. Parente de verdade não diz "o resto que falta".)
+EU [assustada]: Vó, para! Vamos ligar pro número antigo dele.
+> O Diego verdadeiro atende. Não trocou de número. Não está sem banco.
+@vai i12_med
+
+=== i12_med
+VO [triste]: Eu caí, minha filha. Igual à mulher do farmacêutico.
+EU: Foram cento e cinquenta, não dois mil. E dá para tentar pegar de volta.
+> Ela abre o aplicativo do banco da vó e procura a opção de contestar o Pix por golpe.
+EU: Isso aqui é o MED, o Mecanismo Especial de Devolução. O banco bloqueia o que ainda estiver na conta do golpista.
+VO: E volta?
+EU: Se ainda tiver dinheiro lá, volta. Por isso tem que ser agora. Depois a gente faz o boletim de ocorrência pela internet.
+@anota p4_med_pix
+@anota p4_falso_parente
+@muda tecnica+1 rel_vo+1 grana-1
+@vai i12_palavra
+
+=== i12_palavra
+VO [pensativa]: E como eu vou saber da próxima vez, se a foto é igual?
+EU: A gente combina uma palavra-senha da família. Quem pedir dinheiro tem que saber.
+? Que palavra-senha vocês combinam?
+* O nome do cachorro, o Pitucho. -> i12_palavra_cachorro
+* Uma frase que só a família sabe, tipo "pudim de quiabo". -> i12_palavra_pudim {tecnica+1}
+* Uma pergunta: "qual era o apelido do vô?" -> i12_palavra_pergunta {rel_vo+1}
+
+=== i12_palavra_cachorro
+VO [feliz]: Pitucho! Fácil de lembrar.
+EU [envergonhada]: Fácil de lembrar e fácil de descobrir. O Pitucho tem perfil no Instagram com quinhentos seguidores.
+VO: Foi a Bia que fez. Ele é famoso.
+EU: Então não serve. Vamos de "pudim de quiabo", que ninguém nunca vai postar sobre isso.
+VO: Porque é horrível.
+EU: Exatamente.
+@vai i12_bia_chega
+
+=== i12_palavra_pudim
+VO [surpresa]: Pudim de quiabo? Que coisa mais nojenta.
+EU: É por isso que funciona. Ninguém vai adivinhar, e ninguém vai postar.
+VO: Pudim de quiabo. Vou anotar atrás do santinho.
+(Anotar a senha atrás do santinho na carteira. Não é o ideal, mas o golpista não vai roubar a carteira da vó em outro estado.)
+@vai i12_bia_chega
+
+=== i12_palavra_pergunta
+VO [feliz]: Bigode de Arame! Era assim que chamavam o seu avô no forró.
+EU: Isso não está em rede social nenhuma. Só a família sabe.
+VO: E a cidade inteira de 1974. Mas esses já morreram quase todos.
+(Segurança da informação, versão Pedra Lisa: o risco residual é o pessoal do forró de 1974.)
+@vai i12_bia_chega
+
+=== i12_bia_chega
+@som porta
+@sai vo
+@entra bia assustada direita
+BIA: Amiga, me salva. Meu WhatsApp do salão está pedindo Pix para todas as minhas clientes!
+> Bia agora é cabeleireira. O "Bia Divas Studio" funciona na garagem da mãe dela, com dois lavatórios, um espelho com lâmpadas e uma fila de espera que vai até o Natal.
+EU [surpresa]: Calma. O que aconteceu antes?
+BIA: Uma cliente nova mandou mensagem pra marcar progressiva. Disse que ia chegar um código pra confirmar o horário e pediu pra eu mandar.
+EU: Um código de seis dígitos, por SMS?
+BIA [envergonhada]: É. Eu mandei. Era só um código.
+(Era só a chave da casa, Bia.)
+EU: Aquele código é o que o WhatsApp usa para ativar a sua conta em outro celular. Agora tem alguém usando o seu WhatsApp em outro aparelho.
+? Como você ajuda a Bia?
+* Recuperar a conta agora, antes de qualquer outra coisa. -> i12_bia_recupera {tecnica+1}
+* Primeiro avisar as clientes pelo Instagram do salão. -> i12_bia_avisa {reputacao+1}
+** Ligar para o número do golpista e dar um sermão em nome de Deus e da Vó Nita. -> i12_bia_sermao {saude+1}
+
+=== i12_bia_sermao
+> Ela liga. Alguém atende, escuta dez segundos de "você não tem mãe?" e desliga.
+> Ela liga de novo. O número já bloqueou o dela.
+BIA: Que mal educado.
+EU [brava]: Pelo menos eu desabafei. Agora vamos ao que funciona.
+@vai i12_bia_recupera
+
+=== i12_bia_avisa
+> Ela posta no Instagram do salão, com a cara da Bia e letras garrafais: O WHATSAPP DO SALÃO FOI CLONADO. NÃO FAÇA PIX.
+BIA: Doze clientes já responderam. A Dona Lurdes já tinha mandado oitenta reais.
+EU: Fala para ela contestar o Pix no app do banco agora. E vamos recuperar a conta.
+@vai i12_bia_recupera
+
+=== i12_bia_recupera
+EU: Abre o WhatsApp no seu celular e registra o seu número de novo. Vai chegar outro código.
+BIA: E eu mando pra quem?
+EU [brava]: Para ninguém! Nunca mais! Você digita ele no seu próprio aparelho.
+> A conta volta para o celular da Bia. Do outro lado, o golpista perde o acesso.
+EU: Agora a parte importante: confirmação em duas etapas. Você cria um PIN de seis números que só você sabe.
+BIA: Posso pôr meu aniversário?
+EU: Que está no seu Instagram, com bolo e tudo? Não.
+BIA [pensativa]: E o dia em que eu passei no curso de cabeleireira?
+EU: Isso ninguém sabe?
+BIA: Só eu e Deus.
+EU: Serve. E cadastra um e-mail de recuperação.
+@anota p4_whatsapp_2fa
+@muda rel_bia+1
+@vai i12_bia_paga
+
+=== i12_bia_paga
+@expr bia feliz
+BIA: Você é um anjo de óculos. Quanto eu te devo?
+? Quanto você cobra da Bia?
+* Preço de amiga: cinquenta reais. -> i12_paga_dinheiro {grana+1}
+* Pagamento em escova e hidratação. -> i12_paga_escova {rel_bia+1 saude+1}
+* Nada. Amiga é amiga. -> i12_paga_nada {rel_bia+1 grana-1}
+
+=== i12_paga_dinheiro
+BIA: Justo. Pix?
+EU: Pix. Mas me manda pela chave do meu CNPJ, que está escrita ali na parede, e não por uma que alguém te mandar por mensagem.
+BIA [feliz]: Já aprendi, professora.
+@vai i12_noite
+
+=== i12_paga_escova
+BIA [feliz]: Sábado às oito. Vou dar um jeito nesse cabelo de quem dorme em cima do teclado.
+EU: Ele está ótimo.
+BIA: Ele está pedindo socorro em código Morse.
+> No sábado, ela sai do salão com o cabelo brilhando e três clientes novas para a assistência.
+@muda reputacao+1
+@vai i12_noite
+
+=== i12_paga_nada
+BIA [surpresa]: Nada? Você vai ficar pobre sendo boazinha.
+EU: Eu já sou pobre. Pelo menos fico pobre e com amiga.
+BIA: Então eu pago em propaganda. Vou falar de você para todas as fofoqueiras do salão.
+(Fofoqueira de salão de beleza: o maior alcance orgânico de Pedra Lisa.)
+@muda reputacao+1
+@vai i12_noite
+
+=== i12_noite
+@sai todos
+@fundo rua_interior_noite
+@musica interior
+> Fim do dia. Ela fecha a porta de ferro da assistência com aquele barulho que acorda o cachorro do vizinho.
+@entra tio neutra esquerda
+TIO: E aí, empresária. Quantos celulares hoje?
+EU: Onze. Dois de vó, um de golpe, três de tela, quatro de conector e um que caiu na privada.
+TIO [surpresa]: E o da privada voltou?
+EU: Voltou. Mas eu não quero falar sobre ele.
+TIO: Sabe que eu achei que você ia embora. Todo mundo achou.
+? O que você responde?
+* "Eu também achei. Ainda não sei se foi a escolha certa." -> i12_resposta_duvida {saude-1}
+* "Alguém tinha que ficar e cuidar do celular das vós." -> i12_resposta_orgulho {reputacao+1 rel_tio+1}
+* "Fiquei porque aqui eu sou a melhor. Lá eu seria mais uma." -> i12_resposta_ambicao {tecnica+1}
+
+=== i12_resposta_duvida
+TIO [pensativa]: Ninguém sabe, sobrinha. Eu abri essa oficina achando que ia ficar rico. Fiquei feliz, que é mais difícil.
+EU: E se eu tivesse ido?
+TIO: Aí você ia estar perguntando o mesmo lá, só que sem o meu café.
+@vai i12_fim
+
+=== i12_resposta_orgulho
+TIO [feliz]: Cuidar das vós e dos tios. Você trocou a bateria do meu celular de graça.
+EU: E o senhor me deu o primeiro computador da minha vida. Estamos quites até 2040.
+@vai i12_fim
+
+=== i12_resposta_ambicao
+TIO [feliz]: Melhor de Pedra Lisa. Isso não é pouca coisa, não.
+EU: É pouca coisa, tio. Pedra Lisa tem onze mil pessoas e uma barra de sinal.
+TIO: Mas as onze mil precisam de você. Lá, quem ia precisar?
+(Ele tem um jeito de dizer coisas grandes enquanto limpa graxa da mão.)
+@vai i12_fim
+
+=== i12_fim
+@sai todos
+@fundo casa_cozinha
+> Em casa, a Vó Nita deixou um prato no micro-ondas e um bilhete: "Pudim de quiabo. Não esqueci. Bença."
+@se marca:vo_protegida -> i12_fim_vo
+> No celular, uma mensagem da Dona Cida no grupo da cidade: "GENTE O GOLPE DO NETO CONTINUA. A MENINA DA ASSISTÊNCIA EXPLICA DE GRAÇA."
+(De graça. Obrigada, Dona Cida. Meu contador vai adorar.)
+@vai i13_inicio
+
+=== i12_fim_vo
+> No celular, um áudio de três minutos da Vó Nita para o grupo da igreja, contando como "a neta desmascarou o bandido que estava com a cara do Diego".
+> O áudio é encaminhado tantas vezes que chega no grupo da família de Minas.
+(Fui viralizada pela minha avó. Melhor assessoria de imprensa do Brasil.)
+@muda reputacao+1
+@vai i13_inicio

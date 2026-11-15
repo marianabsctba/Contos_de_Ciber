@@ -1,0 +1,230 @@
+# Capítulo 8: freelas estranhos. Cleiton e Marlene.
+# Regra: se ela aceita, o serviço acontece fora de cena, sem nenhum detalhe de como.
+
+=== c08_inicio
+@cap 8 "Freelas estranhos"
+@fundo praca_interior
+@musica misterio
+> O Cleiton marcou na praça, no banco perto da caixa d'água, "onde pega sinal".
+> Ele chega de boné para trás, camisa de time e um perfume que chega dois minutos antes dele.
+@entra cleiton neutra centro
+CLEITON: E aí, menina do computador. Ouvi falar de você.
+EU: Oi. Qual é o serviço?
+CLEITON [pensativa]: É coisa simples. A minha ex, a Daiane, trocou a senha da conta dela. A conta era nossa, tá ligada? Tinha foto nossa lá.
+CLEITON: Eu só quero entrar para pegar as minhas fotos. E ver umas coisinhas.
+(Umas coisinhas. Quando alguém fala "umas coisinhas", nunca são coisinhas.)
+CLEITON [feliz]: Pago trezentos. Na hora.
+> Trezentos reais. É mais do que a sua mãe ganha numa semana de faxina.
+@vai c08_cleiton_pergunta
+
+=== c08_cleiton_pergunta
+EU [pensativa]: Por que ela trocou a senha?
+CLEITON [brava]: Sei lá. Ficou doida. Terminou comigo do nada, foi morar com a irmã e não atende mais.
+CLEITON: Eu preciso saber com quem ela anda falando. Eu tenho o direito, a gente namorou três anos.
+@desafio p2_autorizacao -> c08_lei_acerto | c08_lei_erro
+
+=== c08_lei_acerto
+(Não existe "direito" de entrar na conta de outra pessoa. A conta é dela. Só ela autoriza. Ponto.)
+(E ele não quer foto. Ele quer saber onde ela está e com quem fala. Isso tem outro nome.)
+@anota p2_lei_12737
+@muda tecnica+1
+@vai c08_cleiton_escolha
+
+=== c08_lei_erro
+(Será que ele tem algum direito? Eles namoraram. A conta era dos dois, ele disse...)
+> Uma lembrança atravessa a sua cabeça: a Professora Leni, falando que saber de onde vem uma informação é a primeira lição.
+> E a única fonte dessa história é o próprio Cleiton.
+(Não. A conta é dela. Ter sabido a senha não é autorização. É só lembrança.)
+@anota p2_lei_12737
+@vai c08_cleiton_escolha
+
+=== c08_cleiton_escolha
+@musica tensao
+CLEITON [feliz]: E aí? Trezentos. Fechou?
+? O que você faz
+* Recusar e dizer por quê -> c08_cleiton_recusa {etica+2 marca:recusou_cleiton}
+* Recusar sem explicar e ir embora -> c08_cleiton_recusa_seca {etica+1 marca:recusou_cleiton}
+* Aceitar. Trezentos reais é muito dinheiro -> c08_cleiton_aceita {etica-3 grana+2 marca:aceitou_cleiton}
+** Pedir um minuto e ligar para a Vó Nita -> c08_vo_conselho
+
+=== c08_vo_conselho
+@som especial
+> Você se afasta, sobe no murinho da caixa d'água, onde tem duas barras, e liga para a Vó.
+VO: Alô? Quem é? Se for o banco, eu não tenho dinheiro.
+EU: Vó, sou eu. Uma pergunta rápida.
+> Você conta tudo, sem os detalhes técnicos. Um rapaz quer entrar na conta da ex para ver com quem ela fala.
+VO: Minha filha. Homem que vigia mulher não tá com saudade. Tá com raiva.
+VO: Eu benzi muita moça que chegava aqui com o olho roxo e dizia que ele era ciumento porque amava.
+VO: Não ajuda esse moço. E se puder, ajuda a moça.
+(A Vó Nita sabe mais de segurança que muito curso de R$ 997.)
+@muda rel_vo+1 etica+1
+@vai c08_cleiton_recusa
+
+=== c08_cleiton_recusa
+EU [brava]: Não vou fazer, Cleiton.
+CLEITON [surpresa]: Como assim?
+EU: Entrar na conta dela sem ela deixar é crime. Invasão. E vigiar ex com quem ela fala não é saudade, é perseguição.
+CLEITON [brava]: Perseguição? Eu só quero conversar!
+EU: Então ela respondeu que não quer. Isso também é resposta.
+@vai c08_cleiton_raiva
+
+=== c08_cleiton_recusa_seca
+EU: Não faço esse tipo de serviço.
+> Você levanta e vai embora antes que ele termine de abrir a boca.
+@vai c08_cleiton_raiva
+
+=== c08_cleiton_raiva
+CLEITON [brava]: Tá se achando, né? Menina do computador. Vou falar para a cidade inteira que você não sabe fazer nada.
+@sai cleiton
+@muda reputacao-1
+> E fala mesmo. Por uma semana, na oficina do Tio Juca, no bar, no grupo do futebol: "a menina do computador é enrolona".
+(Prefiro ser enrolona na boca do Cleiton do que cúmplice na vida da Daiane.)
+@anota p2_perseguicao
+? E a Daiane
+* Pedir para a Bia, que conhece a irmã dela, avisar a Daiane -> c08_daiane_aviso {etica+1 rel_bia+1}
+* Deixar quieto, não é problema seu -> c08_marlene_chega
+
+=== c08_daiane_aviso
+@fundo casa_cozinha
+@entra bia pensativa direita
+BIA: A Daiane? Ela faz unha no salão da tia Graça, onde eu tô aprendendo a fazer escova.
+BIA [triste]: Ela anda assustada. Diz que o Cleiton aparece do nada onde ela está. Como se soubesse.
+(Como se soubesse. Às vezes ele sabe porque ainda tem acesso a alguma coisa. Uma conta antiga, um aparelho conectado.)
+EU: Bia, fala para ela trocar as senhas a partir de um aparelho que só ela usa. Ligar a verificação em duas etapas. E ver se tem algum aparelho estranho conectado na conta, e sair de todos.
+BIA [pensativa]: E se ele continuar aparecendo?
+EU [triste]: Aí não é coisa de computador. É coisa de delegacia. Tem o 180 também, que atende mulher.
+@sai bia
+> Dias depois, a Bia manda: "A Daiane achou o celular do Cleiton conectado na conta dela. Tirou. Mandou te agradecer."
+@muda reputacao+1 saude+1
+@vai c08_marlene_chega
+
+=== c08_cleiton_aceita
+@musica triste
+EU: Tá. Eu faço.
+CLEITON [feliz]: Sabia que você era esperta.
+> O que acontece nas duas noites seguintes você não conta para ninguém. Nem para o caderno.
+> No terceiro dia, o Cleiton te paga trezentos reais em notas de vinte, no banco da praça, sem olhar na sua cara.
+@sai cleiton
+(Trezentos reais. Por que estão tão pesados?)
+@vai c08_cleiton_consequencia
+
+=== c08_cleiton_consequencia
+@fundo casa_cozinha
+@entra bia triste direita
+BIA: Amiga, você soube da Daiane? A do salão da tia Graça?
+EU [assustada]: Soube o quê?
+BIA: O Cleiton apareceu no salão ontem. Sabia o nome do rapaz com quem ela conversa, sabia a hora que ela sai. Fez um escândalo.
+BIA [triste]: Ela tá apavorada. Disse que ele leu as conversas dela. Que não sabe como.
+> O seu estômago vira de cabeça para baixo.
+(Eu sei como. Eu sei exatamente como.)
+@muda saude-2 rel_bia-1
+@anota p2_perseguicao
+? O que fazer agora
+* Contar para a Daiane, pedir desculpa e ajudar ela a se proteger -> c08_cleiton_conserta {etica+2 reputacao-1}
+* Ficar calada e torcer para passar -> c08_cleiton_cala {saude-1}
+
+=== c08_cleiton_conserta
+@sai bia
+> Você vai ao salão. A Daiane é mais nova do que você imaginava. Tem as unhas roídas.
+> Você conta. Ela chora. Você também.
+> Depois, você ajuda: senha nova num aparelho que é só dela, verificação em duas etapas, todos os outros aparelhos desconectados.
+> E vai junto com ela e com a irmã até a delegacia, para registrar a perseguição.
+(Isso não desfaz nada. Mas é o que dá para fazer agora.)
+> Os trezentos reais você deixa num envelope na mesa da manicure. Ela não devolve. Você não pede.
+@muda grana-2
+@vai c08_marlene_chega
+
+=== c08_cleiton_cala
+@sai bia
+> Você não fala nada. Guarda o dinheiro dentro do dicionário, na letra C. Toda vez que abre o dicionário, ele está lá.
+(Algumas coisas não saem com antivírus.)
+@vai c08_marlene_chega
+
+=== c08_marlene_chega
+@fundo casa_cozinha
+@musica misterio
+@som porta
+> No sábado, alguém bate na sua porta. Uma mulher de vestido de igreja, brinco de argola e bolsa apertada contra o peito.
+@entra marlene neutra centro
+MARLENE: Você que é a {nome}? A menina do computador?
+EU: Sou.
+MARLENE [envergonhada]: Eu sou a Marlene. Do Edvaldo do posto. Posso entrar? É assunto particular.
+> Ela senta, aceita o café da sua mãe e espera a sua mãe sair da cozinha.
+MARLENE [triste]: O Edvaldo anda esquisito. Fica no celular até de madrugada, vira a tela quando eu passo.
+MARLENE: Eu quero que você entre no zap dele. Só para eu ler. Eu pago quinhentos.
+(Quinhentos. O preço do ciúme sobe a cada semana.)
+? O que você responde
+* Recusar com carinho e explicar por que não -> c08_marlene_recusa {etica+2 rel_mae+1 marca:recusou_marlene}
+* Recusar e indicar alguém para conversar com ela -> c08_marlene_conversa {etica+2 marca:recusou_marlene}
+* Aceitar. Ela parece sofrer, e é dinheiro -> c08_marlene_aceita {etica-3 grana+3 marca:aceitou_marlene}
+
+=== c08_marlene_recusa
+EU: Dona Marlene, eu não vou fazer isso.
+MARLENE [brava]: Por quê? Eu sou a esposa dele!
+EU [pensativa]: Casamento não dá senha. A conversa dele é dele, e a de quem fala com ele também. Entrar sem ele deixar é crime.
+EU: E se a senhora descobrir alguma coisa desse jeito, a briga vai ser sobre isso. Sobre a senhora ter espiado.
+MARLENE [triste]: Então o que eu faço?
+EU: Pergunta para ele. Olhando no olho. Se ele mentir, isso já é uma resposta.
+@vai c08_marlene_sai
+
+=== c08_marlene_conversa
+EU: Dona Marlene, eu não faço isso. Mas a senhora não está bem, e isso é mais importante que o celular dele.
+MARLENE [surpresa]: Como assim?
+EU: O CRAS atende de graça, tem psicóloga. A senhora conversa com alguém. E conversa com ele.
+EU [pensativa]: Ler escondido não vai acalmar. Se não tiver nada, a senhora vai achar que ele apagou. Se tiver, a senhora vai sofrer do mesmo jeito.
+MARLENE [triste]: Você é muito nova para falar assim.
+EU: A minha avó é benzedeira. A gente aprende cedo.
+@muda rel_vo+1
+@vai c08_marlene_sai
+
+=== c08_marlene_sai
+@musica interior
+MARLENE [pensativa]: Vou pensar.
+@sai marlene
+@anota p2_lgpd
+> Duas semanas depois, você fica sabendo pela fila do pão. O Edvaldo estava fazendo hora extra escondido num segundo emprego, para pagar uma viagem de bodas de prata.
+> Não era amante. Era surpresa. E a Marlene, que não espiou, ganhou a viagem sem estragar a surpresa.
+(Às vezes a pior coisa que dá para fazer com um segredo é descobrir antes da hora.)
+@muda saude+1
+@vai c08_fim
+
+=== c08_marlene_aceita
+@musica triste
+EU: Tá bom, Dona Marlene.
+> Ela deixa o celular do marido com você por uma noite, "enquanto ele está no turno".
+> O que acontece naquela noite fica fora do caderno. No dia seguinte, ela pega o celular de volta e deixa quinhentos reais na mesa.
+@sai marlene
+@vai c08_marlene_consequencia
+
+=== c08_marlene_consequencia
+@som porta
+> Três dias depois, quem bate na porta é o Edvaldo. Grande, de uniforme do posto, com a voz tremendo.
+> O que a Marlene leu eram mensagens com um segundo emprego e com a agência de viagem. Uma surpresa de bodas de prata.
+> Mas ela ficou sabendo de outro jeito: ele descobriu que a mulher entrou no celular dele, e por quem.
+@entra mae assustada direita
+MAE [brava]: {nome}! O que você fez no celular desse homem?
+> O Edvaldo não grita. Só diz que vinte e cinco anos de casamento foram para o ralo por causa de quinhentos reais.
+> A sua mãe pede desculpa no seu lugar, de cabeça baixa, como quem pede desculpa à patroa.
+(Essa é a pior cena da minha vida até agora. E eu escrevi ela.)
+@sai mae
+@anota p2_lgpd
+@muda saude-2 rel_mae-2 reputacao-2
+@vai c08_fim
+
+=== c08_fim
+@fundo quarto_adolescente
+@musica interior
+> Naquela noite, você abre o caderno de capa dura e escreve em letra grande:
+> "Quem me pede para entrar na vida de outra pessoa está me pedindo para virar arma."
+@se marca:aceitou_cleiton -> c08_fim_pesado
+@se marca:aceitou_marlene -> c08_fim_pesado
+@vai c08_fim_leve
+
+=== c08_fim_pesado
+(E eu já virei. Uma vez. Não vai ter outra.)
+@muda etica+1
+@vai c09_inicio
+
+=== c08_fim_leve
+(Ainda bem que eu lembrei a tempo que computador não tem culpa. Quem tem é a mão que mexe.)
+@vai c09_inicio

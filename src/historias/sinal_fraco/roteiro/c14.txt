@@ -1,0 +1,266 @@
+=== c14_inicio
+@cap 14 "Júnior com cinco anos de experiência"
+@fundo quarto_madrugada
+@musica cidade
+> Vaga número um: "Analista de Segurança da Informação JÚNIOR."
+> Requisitos: cinco anos de experiência na área. Certificações CISSP, CEH e OSCP. Inglês fluente. Espanhol desejável. Disponibilidade para viagens e para "trabalhar sob pressão em ambiente dinâmico".
+> Salário: a combinar. Embaixo, em letra miúda: "faixa de R$ 2.200".
+(Cinco anos de experiência para júnior. Só se contar a lan house da Dona Cida. E aí eu sou sênior desde os nove anos.)
+@entra thais pensativa centro
+THAIS: Que cara é essa?
+EU: A vaga de iniciante pede uma certificação que exige cinco anos de experiência pra você poder fazer a prova.
+THAIS: É tipo pedir residência médica pra vaga de estagiária de enfermagem. Já vi. Odeio.
+? E agora?
+* Me candidatar mesmo assim. O pior que pode acontecer é ninguém responder -> c14_candidata {saude-1}
+* Rir, fechar a vaga e procurar outra -> c14_ri {saude+1}
+** Mandar um e-mail ao RH perguntando se os cinco anos de experiência podem incluir o tempo de lan house -> c14_email_rh {reputacao+0}
+
+=== c14_candidata
+> Você preenche o formulário. Ele pede para digitar de novo tudo o que já está no currículo anexado. Depois pede uma "carta de apresentação contando seu maior defeito".
+(Meu maior defeito é não ter nascido com cinco anos de experiência.)
+@sai thais
+@vai c14_kelly
+
+=== c14_ri
+THAIS: Isso. Ri. Quem ri não chora. Quer dizer, chora, mas depois.
+@sai thais
+@vai c14_kelly
+
+=== c14_email_rh
+> Para sua surpresa, quatro horas depois chega uma resposta.
+> "Olá! Agradecemos seu contato. Acreditamos que experiência vai muito além do tempo. Seguimos à disposição! #SomosFamília"
+@expr thais surpresa
+THAIS: Isso foi um sim ou um não?
+EU: Foi um "#SomosFamília".
+@sai thais
+@vai c14_kelly
+
+=== c14_kelly
+@fundo videochamada
+@musica alegre
+> Uma semana e quarenta currículos depois, uma empresa de tecnologia chama você para uma conversa por vídeo.
+@entra kelly feliz centro
+KELLY: Oiê! Eu sou a Kelly, People & Culture Business Partner. Mas pode me chamar de Kelly do RH, eu sou super humilde.
+KELLY: Antes de tudo: aqui não somos uma empresa. Somos uma família que acredita em sonhos grandes.
+(Toda vez que alguém diz que a empresa é uma família, alguém vai trabalhar no domingo.)
+KELLY: Buscamos pessoas proativas, resilientes, com fome de crescer e brilho no olho. Você tem brilho no olho?
+? Kelly espera uma resposta
+* "Tenho. E tenho vontade de aprender, que acho que é o que importa pra uma vaga júnior." -> c14_kelly_serio {reputacao+1}
+* "Meu olho brilha mais depois do café." -> c14_kelly_piada {saude+1}
+** Responder só em frases de LinkedIn: "Sou uma pessoa movida a propósito que transforma desafios em oportunidades sinérgicas" -> c14_kelly_linkedin {saude+1}
+
+=== c14_kelly_serio
+@expr kelly feliz
+KELLY: Amei! Que energia de protagonismo! Vou anotar aqui: "dá match com a cultura".
+@vai c14_teste
+
+=== c14_kelly_piada
+@expr kelly surpresa
+KELLY: Kkkk. Humor é um diferencial competitivo! Mas cuidado pra não ser informal demais, tá? A gente é leve, mas é sério.
+(Leve, mas sério. Família, mas empresa. Júnior, mas com cinco anos.)
+@vai c14_teste
+
+=== c14_kelly_linkedin
+@expr kelly feliz
+KELLY: Gente. GENTE. Eu tô arrepiada. Posso usar essa frase num post?
+EU: Fica à vontade. É de graça.
+(Vai ser a única coisa minha que a empresa vai usar sem me pagar. Ou não.)
+@vai c14_teste
+
+=== c14_teste
+KELLY: A próxima etapa é um desafiozinho técnico! Bem tranquilo, viu?
+@som mensagem
+> O "desafiozinho" chega por e-mail. Tem onze páginas.
+> Política de segurança completa para a empresa, análise de riscos do sistema que eles vendem, plano de resposta a incidentes e uma apresentação para a diretoria.
+> Prazo: 48 horas. Tempo estimado, segundo o próprio documento: "cerca de 40 horas".
+KELLY: Ah, e é sem remuneração, tá? É pra gente sentir sua entrega!
+@sai kelly
+(Quarenta horas. Meu turno no call center tem trinta e seis por semana. Eles querem uma semana inteira de trabalho de graça para "sentir minha entrega".)
+@anota p3_teste_tecnico
+? O que você faz com o teste?
+* Fazer tudo, virando duas noites sem dormir -> c14_teste_tudo {saude-2 tecnica+1}
+* Fazer uma parte muito bem feita e explicar por escrito até onde vai o seu tempo -> c14_teste_parte {tecnica+1 reputacao+1}
+* Agradecer e recusar com educação -> c14_teste_recusa {saude+1}
+
+=== c14_teste_tudo
+@fundo quarto_madrugada
+> Duas madrugadas. Um pacote inteiro de bolacha de água e sal. Um cochilo de quinze minutos no metrô em que você acorda na estação errada.
+> Você entrega às 23h58, dois minutos antes do prazo. A apresentação tem trinta e dois slides e um diagrama de que você se orgulha muito.
+@vai c14_ghosting
+
+=== c14_teste_parte
+> Você faz a análise de riscos com cuidado e escreve no fim: "Este teste tem estimativa de 40 horas. Entreguei a parte que reflete meu raciocínio. Fico feliz em conversar sobre o resto numa entrevista."
+(Se não quiserem alguém que sabe dizer o próprio limite, não querem alguém de segurança.)
+@vai c14_ghosting
+
+=== c14_teste_recusa
+> Você escreve: "Agradeço muito a oportunidade, mas não consigo dedicar 40 horas sem remuneração neste momento. Fico à disposição para um teste mais curto."
+(Escrever isso deu mais medo do que conectar fio na tomada do Tio Juca.)
+@vai c14_ghosting
+
+=== c14_ghosting
+@fundo call_center
+@musica triste
+> Cinco dias úteis, prometeu a Kelly.
+> Passam cinco dias. Dez. Três semanas. Você olha o e-mail no intervalo, no banheiro, no metrô, no meio de uma ligação de cancelamento.
+> Nada. Nem um "infelizmente".
+@som notificacao
+> No LinkedIn, a Kelly posta uma foto em frente a um pôr do sol: "Um não pode ser só um sim que ainda não chegou. #Gratidão #Recrutamento #Humanizar"
+@muda saude-1
+(A empresa sumiu igual o Wellington. Pelo menos o Wellington levou só R$ 400. Essa levou o meu fim de semana.)
+@se marca:site_padaria -> c14_portfolio
+@vai c14_entrevista_convite
+
+=== c14_portfolio
+(No meu portfólio tem uma coisa só: o site da padaria do Seu Valdir. Com backup e senha forte. É o projeto mais seguro dessa cidade inteira e ninguém quer saber.)
+@vai c14_entrevista_convite
+
+=== c14_entrevista_convite
+@som mensagem
+> Até que um e-mail diferente chega. Uma consultoria de segurança, das grandes, chama você para entrevista presencial. Na sede. De verdade.
+@fundo republica_quarto
+@musica alegre
+@entra thais feliz centro
+THAIS: Presencial? Então tem roupa. Abre meu guarda-roupa, pega o blazer. Ele já foi em duas entrevistas e um velório. Dá sorte.
+(Um blazer de velório dá sorte. Lógica de república.)
+@sai thais
+@roupa "Roupa de entrevista"
+@vai c14_entrevista
+
+=== c14_entrevista
+@fundo sala_entrevista
+@musica tensao
+> Uma sala de vidro, uma mesa branca, uma garrafa d'água que ninguém oferece. Do outro lado, um homem de uns cinquenta anos, camisa social, crachá de "Gerente Técnico".
+> Ele não sorri. Mexe no celular enquanto você fala. Depois, larga o celular e faz a primeira pergunta técnica.
+@desafio p3_hash_cripto -> c14_hash_acerto | c14_hash_erro
+
+=== c14_hash_acerto
+EU: Senha não se criptografa para depois mostrar. Guarda o hash, com sal por usuário e um algoritmo lento, tipo Argon2 ou bcrypt.
+> Ele levanta o olho do papel pela primeira vez.
+> "Hum. A última candidata falou em Base64."
+(A última candidata não tinha lido PDF escondida atrás do cardápio do bandejão.)
+@anota p3_hash_vs_cripto
+@muda tecnica+1
+@vai c14_pergunta_machista
+
+=== c14_hash_erro
+EU: Hum... criptografar? Pra poder recuperar se a pessoa esquecer?
+> Ele anota alguma coisa e diz, seco: "Se der para recuperar, dá para vazar. O certo é hash, com sal e algoritmo lento. Anota aí pra próxima."
+(Ele foi grosso. Mas ele tá certo. Odeio quando as duas coisas acontecem juntas.)
+@anota p3_hash_vs_cripto
+@muda saude-1
+@vai c14_pergunta_machista
+
+=== c14_pergunta_machista
+> Ele cruza os braços e se recosta.
+> "Última pergunta. Você é casada? Pretende ter filhos? É que a vaga exige dedicação, sabe. Plantão de madrugada, viagem. Mulher, quando tem filho, muda a prioridade."
+@expr eu brava
+(O candidato que saiu antes de mim era um rapaz. Eu ouvi a entrevista dele pela porta. Ninguém perguntou dos filhos dele.)
+@se marca:recusou_marlene -> c14_lembra_marlene
+@vai c14_resposta_machista
+
+=== c14_lembra_marlene
+(A Marlene queria ler o celular do marido. Eu disse não, que vida dos outros não se invade. Esse homem quer ler a minha vida inteira numa pergunta.)
+@vai c14_resposta_machista
+
+=== c14_resposta_machista
+? Como responder?
+* "Com todo respeito, isso não é critério para a vaga. Posso falar da minha experiência?" -> c14_resp_firme {etica+1 reputacao+1}
+* "Não, imagina. Nem penso nisso. Odeio criança." -> c14_resp_mente {saude-2}
+* "O senhor fez essa mesma pergunta para o candidato de antes?" -> c14_resp_devolve {etica+1 saude+1}
+** "Pretendo ter filhos, sim. E vou ensinar todos eles a não fazerem essa pergunta em entrevista." -> c14_resp_especial {saude+1 reputacao-1}
+
+=== c14_resp_firme
+> Ele pisca, como quem não esperava resistência.
+> "Claro, claro. É só uma conversa informal." E não faz mais nenhuma pergunta.
+(Conversa informal com crachá de gerente técnico. Anotado. Data, hora e nome.)
+@vai c14_pos_entrevista
+
+=== c14_resp_mente
+> Ele sorri pela primeira vez. "Ótimo. Gosto de gente focada."
+> Você sai da sala com o estômago embrulhado. A mentira saiu da boca e ficou morando no peito.
+@se marca:mentiu_leni -> c14_lembra_leni
+@vai c14_pos_entrevista
+
+=== c14_lembra_leni
+(A última vez que eu menti pra agradar alguém foi pra Professora Leni. Doeu igual. Eu cresci e a mentira não diminuiu.)
+@vai c14_pos_entrevista
+
+=== c14_resp_devolve
+> Silêncio. Ele procura a resposta no teto.
+> "É... perfil diferente. Era outra vaga." Era a mesma vaga. Estava escrito no papel na mesa.
+(Ele sabe. Eu sei. E agora ele sabe que eu sei.)
+@vai c14_pos_entrevista
+
+=== c14_resp_especial
+> Ele fica vermelho do pescoço até a careca.
+> "Bom. Acho que já temos o suficiente. Obrigado pelo seu tempo."
+(Talvez eu tenha perdido a vaga. Mas eu ganhei a melhor frase da minha vida e vou contar pra Vó Nita.)
+@vai c14_pos_entrevista
+
+=== c14_pos_entrevista
+@fundo capital_rua
+@musica triste
+> Dois dias depois, o e-mail: "Agradecemos sua participação. Infelizmente, optamos por seguir com perfis mais aderentes ao nosso fit cultural."
+(Fit cultural. Quer dizer: a gente gosta de quem não pergunta de volta.)
+@anota p3_discriminacao_entrevista
+@muda saude-1
+? Você lembra da nota que leu sobre a Lei 9.029. Dá pra denunciar.
+* Mandar uma denúncia ao Ministério Público do Trabalho com data, hora e o nome dele -> c14_denuncia {etica+1 saude+1}
+* Deixar pra lá. Vai que eles colocam meu nome numa lista -> c14_deixa {saude-1}
+
+=== c14_denuncia
+> O formulário do MPT pede detalhes. Você tem todos, porque anotou no caderno ainda no metrô.
+> A resposta é um número de protocolo. Não vai mudar nada amanhã. Mas talvez mude a entrevista da próxima menina.
+@vai c14_fundo_poco
+
+=== c14_deixa
+(Medo é uma coisa que a capital ensina rápido. Mais rápido que inglês.)
+@vai c14_fundo_poco
+
+=== c14_fundo_poco
+@fundo republica_cozinha
+> Sexta à noite. Você está sentada no chão da cozinha da república, de blazer de velório e meia furada, comendo miojo direto da panela.
+> Contagem do mês: quarenta e três currículos, um teste de quarenta horas, um ghosting, um "fit cultural" e um homem que queria saber do seu útero.
+@expr eu triste
+? Com quem você fala?
+* Ligar pra Vó Nita -> c14_liga_vo {saude+2 rel_vo+1}
+* Desabafar com a Thaís, que acabou de chegar do plantão -> c14_desabafa_thais {saude+1 rel_thais+1}
+* Ficar rolando o LinkedIn até as 3h da manhã -> c14_rola_linkedin {saude-1}
+
+=== c14_liga_vo
+@entra vo feliz centro
+VO: Minha neta! Tá comendo direito? Tá com cara de miojo.
+EU: Vó, é ligação de voz. A senhora não tá me vendo.
+VO: Eu vejo pela voz. Sempre vi.
+EU [triste]: Ninguém me quer, vó. Nem pra júnior.
+@expr vo brava
+VO: A televisão de escrever não te quer? Então ela é que perde. Tu desmontou computador com nove anos e quase queimou a casa do teu tio. Isso é coragem.
+VO: Vou acender uma vela pro santo dos empregos. Ele demora, mas paga.
+@sai vo
+(Não sei se existe santo dos empregos. Mas a Vó Nita existe, e isso já resolve metade.)
+@vai c14_fim
+
+=== c14_desabafa_thais
+@entra thais pensativa centro
+> A Thaís senta do seu lado, ainda de jaleco, rouba uma garfada do miojo e escuta tudo sem interromper.
+THAIS: Sabe quantas vezes eu fui recusada antes do hospital? Onze. Uma delas porque "meu cabelo não passava confiança". Era trança.
+THAIS: Eles não estão escolhendo a melhor. Estão escolhendo quem parece com eles. Você só tem que achar o lugar que parece com você.
+EU: E se não existir?
+THAIS: Aí você constrói. Mas antes, come esse miojo, que tá esfriando.
+@sai thais
+@vai c14_fim
+
+=== c14_rola_linkedin
+> 1h. Alguém da sua idade virou "Head de Inovação". 2h. Um coach diz que "quem quer, arruma vaga". 3h. A Kelly posta: "Rejeição é redirecionamento".
+(Eu queria redirecionar a Kelly pra um poço.)
+@vai c14_fim
+
+=== c14_fim
+@fundo quarto_madrugada
+@musica misterio
+@som mensagem
+> Quando você está quase dormindo, o celular vibra. Um número desconhecido, com a foto de perfil da Kelly e um blazer rosa.
+> "Oiê! Tenho uma notícia MARAVILHOSA pra você!!!"
+(A Kelly? Pelo WhatsApp? Às 23h40? Com três exclamações?)
+@vai c15_inicio

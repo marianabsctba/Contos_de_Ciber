@@ -1,0 +1,332 @@
+# Parte 5, capital. Capítulo 17: certificação cara, madrugadas, Iracema mentora, o curso de R$ 997.
+
+=== c17_inicio
+@cap 17 "Certificação cara"
+@idade adulta
+@fundo call_center
+@musica trabalho
+> Segunda-feira, 13h58. O headset aperta a orelha esquerda desde 2019.
+@entra fabio neutra direita
+FABIO: Pessoal, meta do dia: tempo médio de atendimento abaixo de quatro minutos. Quem passar disso, conversa comigo.
+FABIO: E sorriam. O cliente sente o sorriso pela voz.
+(O cliente sente o sorriso. Eu sinto a lombar.)
+@sai fabio
+> Entre uma ligação e outra, você abre no celular a página da certificação de entrada que toda vaga de segurança pede.
+> Preço da prova: R$ 2.400. À vista, ou em suaves prestações de desespero.
+EU [surpresa]: Dois mil e quatrocentos? Isso é três aluguéis da república!
+(Toda vaga júnior pede essa sigla. Nenhuma vaga júnior paga o suficiente pra eu comprar essa sigla.)
+@se marca:conheceu_iracema -> c17_iracema_zap
+@vai c17_ligacao_teste
+
+=== c17_ligacao_teste
+@som notificacao
+> A próxima ligação entra. Uma voz firme, de quem já cancelou muita internet na vida.
+@entra iracema neutra centro
+IRACEMA: Boa tarde, querida. Sou a titular da linha. Perdi o celular e preciso que você me confirme o CPF e o endereço cadastrados, que eu esqueci.
+(Ela esqueceu o próprio CPF. Claro. Acontece com todo mundo, principalmente com quem não é a titular.)
+? O que você responde?
+* "Por segurança, eu não informo dados. A senhora me confirma eles e eu valido." -> c17_teste_passou {tecnica+1 rel_iracema+2}
+* "Claro, senhora, só um minutinho que eu leio aqui pra você." -> c17_teste_falhou {rel_iracema+1}
+** "Senhora, a minha avó benze quebranto e golpe. Qual dos dois a senhora quer?" -> c17_teste_benzida {rel_iracema+2 reputacao+1}
+
+=== c17_teste_passou
+IRACEMA [feliz]: Muito bem. Era um teste, menina.
+IRACEMA: A operadora contratou a minha empresa pra testar o atendimento contra engenharia social. Até agora, de trinta atendentes, você foi a terceira que não me deu nada.
+EU [surpresa]: Teste? Tipo pegadinha do Faustão, só que de segurança?
+IRACEMA: Tipo isso, com contrato assinado e relatório no fim. Teste autorizado é trabalho. Sem autorização, é crime.
+@vai c17_iracema_cartao
+
+=== c17_teste_falhou
+> Você começa a ler o endereço. Ela interrompe.
+IRACEMA [brava]: Para. Era um teste, querida. A operadora contratou a gente pra ver quem entrega dado de cliente pra qualquer voz educada.
+EU [envergonhada]: Ai, meu Deus. Vou ser demitida?
+IRACEMA: Não. O relatório não leva nome. Leva a lição: quem liga pedindo, valida. Quem atende, nunca entrega.
+(Eu passei meses aprendendo engenharia social pelo lado de quem atende e caí na primeira voz de tia simpática.)
+@muda saude-1
+@vai c17_iracema_cartao
+
+=== c17_teste_benzida
+IRACEMA [feliz]: Hahaha! Essa eu vou botar no relatório.
+IRACEMA: Era um teste autorizado de engenharia social, contratado pela operadora. Você não me deu nada e ainda me fez rir. Isso é raro.
+EU: A Vó Nita diz que golpista tem a mesma voz de vendedor de colchão.
+IRACEMA: Sua avó deveria dar treinamento de conscientização. Eu pagaria.
+@vai c17_iracema_cartao
+
+=== c17_iracema_cartao
+IRACEMA: Meu nome é Iracema. Analista sênior, cinquenta anos, vinte e cinco de área. Anota meu número.
+IRACEMA: Você tem jeito. Jeito não paga prova, mas eu conheço quem paga.
+@marca conheceu_iracema
+@sai iracema
+(Uma mulher preta de cinquenta anos, sênior em segurança, me ligou num call center. Se isso não é sinal, eu não sei o que é.)
+@vai c17_conta
+
+=== c17_iracema_zap
+@som mensagem
+> Uma mensagem de áudio da Iracema. Um minuto e quarenta e dois segundos, que no idioma da Iracema é um bilhete curto.
+@entra iracema pensativa centro
+IRACEMA: Já marcou a prova? Não marcou, né? Eu tô sentindo daqui.
+IRACEMA: Não estuda sozinha, que estudar sozinha é como fazer backup no mesmo HD: parece que tá seguro até o dia que não tá.
+@muda rel_iracema+1
+@sai iracema
+@vai c17_conta
+
+=== c17_conta
+@fundo republica_cozinha
+@musica cidade
+> Noite. A geladeira da república tem três potes de margarina. Nenhum tem margarina.
+@entra thais neutra direita
+THAIS: Você tá fazendo conta no guardanapo de novo. Isso nunca termina bem.
+EU [triste]: A prova custa R$ 2.400. Eu tenho R$ 380 e uma passagem de ônibus.
+THAIS: E se reprovar, paga de novo?
+EU: Paga de novo. Igual a vida.
+THAIS: Enfermagem também tem isso. Curso caro, plantão, e o paciente ainda pergunta se eu sou a moça do cafezinho.
+@som notificacao
+> No celular, um anúncio do Instagram começa a tocar sozinho. Um rapaz de óculos escuros dentro de uma Lamborghini alugada.
+> "VIRE HACKER EM 7 DIAS. APROVAÇÃO GARANTIDA NA CERTIFICAÇÃO. DE R$ 4.997 POR APENAS R$ 997!"
+THAIS [pensativa]: Esse cara tá hackeando o quê? O estacionamento do shopping?
+? Como você vai bancar essa prova?
+* Parcelar a prova em dez vezes no cartão e rezar -> c17_parcelou {grana-2 saude-1}
+* Perguntar à Iracema sobre o programa de vouchers para mulheres na área -> c17_voucher [se rel_iracema>=2]
+* Juntar dinheiro fazendo conserto de PC no fim de semana -> c17_bico {grana+1 tecnica+1 saude-1}
+** Comprar o CURSO DE HACKER DE R$ 997 com aprovação garantida -> c17_curso {grana-3 marca:comprou_curso_997}
+
+=== c17_parcelou
+> Dez parcelas de R$ 240. Você olha a fatura como quem olha uma prova de cálculo.
+THAIS: Pelo menos agora você tem um motivo pra passar. Medo é um ótimo professor, só é péssimo colega.
+@sai thais
+@vai c17_estudo
+
+=== c17_bico
+> No sábado você formata três notebooks da vizinhança, troca a pasta térmica de um videogame e explica pra um senhor que "o Google" não é o mesmo que "a internet".
+THAIS: Cento e oitenta reais e um pudim. Tá indo bem.
+EU [feliz]: O pudim foi o melhor pagamento até agora.
+@muda grana+1
+@sai thais
+@vai c17_estudo
+
+=== c17_voucher
+@sai thais
+@fundo videochamada
+@entra iracema neutra centro
+IRACEMA: Existe programa de bolsa e voucher pra mulher entrando na área. Tem comunidade que paga a prova inteira se você cumprir a trilha de estudo.
+IRACEMA: Não é esmola, é investimento. A área precisa de gente que não veio do mesmo condomínio.
+EU [feliz]: E o que eu preciso fazer?
+IRACEMA: Estudar com cronograma, entregar os exercícios e aparecer nas reuniões. Simples. Difícil, mas simples.
+@muda grana+1 rel_iracema+1
+@marca voucher_iracema
+@sai iracema
+@vai c17_estudo
+
+=== c17_curso
+> Você clica. O Pix sai em dois segundos. O arrependimento leva um pouco mais, uns quinze minutos.
+@som dinheiro
+> O "curso" chega: um PDF de 12 páginas com texto copiado de enciclopédia, um vídeo de 4 minutos com a tela do Windows desfocada e o convite para o "Grupo VIP".
+@som mensagem
+> No Grupo VIP, a primeira mensagem já é do mentor.
+THAIS [brava]: Lê isso em voz alta. Eu quero ouvir a cara de pau.
+@desafio p5_curso_upsell -> c17_curso_acerto | c17_curso_erro
+
+=== c17_curso_acerto
+EU [brava]: Urgência falsa, garantia impossível, Pix pra pessoa física e pedido pra eu chamar mais três amigos. É pirâmide com certificado.
+THAIS: E agora?
+EU: Compra pela internet tem sete dias de arrependimento pelo Código de Defesa do Consumidor. Vou pedir o dinheiro de volta por escrito, guardar os prints e reclamar no Procon e no site de reclamação.
+> Dois dias depois, depois de um e-mail educado e um print do artigo 49, o estorno cai. Faltaram R$ 47 de "taxa de plataforma". Faltou vergonha também, mas essa não tem estorno.
+@som dinheiro
+@muda grana+2 tecnica+1
+@anota p5_curso_milagroso
+@sai thais
+@vai c17_estudo
+
+=== c17_curso_erro
+EU [envergonhada]: Será que se eu pagar a mentoria black aí eu passo?
+THAIS [brava]: Amiga. Ele tá numa Lamborghini alugada pedindo Pix de pessoa física.
+> Você deixa passar o prazo de arrependimento. O mentor some do grupo e reaparece uma semana depois com outro nome e outra Lamborghini.
+THAIS: Ninguém vende aprovação garantida. Quem promete garantia em prova que ele não controla está vendendo outra coisa: a sua esperança.
+@muda saude-1
+@anota p5_curso_milagroso
+@sai thais
+@vai c17_estudo
+
+=== c17_estudo
+@fundo quarto_madrugada
+@musica hacker
+> 2h13 da manhã. A Thaís ronca na cama de baixo. Você estuda com a luz do celular embaixo do cobertor, como fazia em Pedra Lisa.
+(Lá eu escondia a lanterna da minha mãe. Aqui eu escondo o cansaço de mim mesma.)
+@entra iracema neutra centro
+IRACEMA: Tá acordada? Eu sabia. Vamos fazer uma questão por noite, eu e você. Nem que seja uma.
+IRACEMA: Hoje é a mais importante da prova e da vida: quem pode o quê.
+@desafio p5_menor_privilegio -> c17_quiz_ok | c17_quiz_erro
+
+=== c17_quiz_ok
+IRACEMA [feliz]: Isso. Cada um com o acesso que precisa pra trabalhar, nem um botão a mais.
+IRACEMA: Metade dos incidentes que eu atendi começou com estagiário que era administrador de tudo "porque era mais prático".
+@muda tecnica+1 rel_iracema+1
+@anota p5_menor_privilegio
+@vai c17_madrugada
+
+=== c17_quiz_erro
+IRACEMA [pensativa]: Não. Dar acesso de administrador "pra não incomodar" é o jeito mais rápido de transformar um erro pequeno num incidente grande.
+IRACEMA: Menor privilégio: o mínimo de acesso pelo mínimo de tempo. Escreve isso no caderno com caneta, não com lápis.
+@anota p5_menor_privilegio
+@vai c17_madrugada
+
+=== c17_madrugada
+IRACEMA: Agora me diz uma coisa. Que horas você dorme?
+EU [envergonhada]: Defina "dormir".
+IRACEMA: Foi o que eu pensei.
+@sai iracema
+> Três semanas assim: oito horas de call center, duas de ônibus, quatro de estudo, três de sono quebrado. O café virou grupo alimentar.
+? Como você encara as próximas semanas até a prova?
+* Virar a noite de novo, com café e refrigerante -> c17_virou_noite {saude-2 tecnica+1}
+* Estudar em blocos curtos e dormir pelo menos seis horas -> c17_blocos {saude+1 tecnica+1}
+* Montar um grupo de estudo com a turma do CTF -> c17_grupo [se marca:conheceu_davi]
+** Tomar o "nootrópico natural de foco infinito" que o coach vende na live -> c17_nootropico {saude-2 grana-1}
+
+=== c17_virou_noite
+> Na quinta noite seguida, você lê o mesmo parágrafo sobre controle de acesso nove vezes. Na décima, descobre que estava lendo o rótulo do refrigerante.
+(Meu cérebro não está estudando. Está pedindo socorro em formato de bocejo.)
+@vai c17_corpo
+
+=== c17_blocos
+> Vinte e cinco minutos de estudo, cinco de pausa. Quatro blocos e uma pausa grande. Na pausa, você liga pra sua mãe.
+@entra mae neutra centro
+MAE: Tá estudando pro computador de novo? Cuidado com a vista, minha filha.
+EU [feliz]: Tô cuidando, mãe. Tô dormindo também.
+MAE [pensativa]: Dormindo? Você? Quem é você e o que fez com a minha filha?
+@muda rel_mae+1
+@sai mae
+@vai c17_corpo
+
+=== c17_grupo
+@fundo cafeteria
+@entra davi feliz direita
+DAVI: Grupo de estudo com café de R$ 4 e tomada liberada. Isso é luxo.
+DAVI: Eu explico redes, você explica controle de acesso. Quem errar paga o pão de queijo.
+> Vocês estudam juntos três noites por semana. Você paga dois pães de queijo. Ele paga sete.
+(Ensinar alguém é o jeito mais rápido de descobrir o que eu não sabia.)
+@muda tecnica+2 rel_davi+1 saude+1
+@sai davi
+@vai c17_corpo
+
+=== c17_nootropico
+> O "nootrópico natural" chega num pote sem rótulo da Anvisa. O gosto é de chá de boldo com bateria.
+> Você não fica focada. Fica com o coração batendo no ritmo de funk e a mão tremendo no teclado.
+@entra thais brava centro
+THAIS: Joga isso fora. Eu sou enfermeira e já vi gente parar no pronto-socorro por menos.
+THAIS: Suplemento milagroso sem registro é golpe com embalagem bonita. Igual curso de R$ 997.
+@sai thais
+@vai c17_corpo
+
+=== c17_corpo
+@se saude<=3 -> c17_quase_apaga
+@vai c17_prova
+
+=== c17_quase_apaga
+@fundo call_center
+@musica triste
+> Terça, 16h40. No meio de uma ligação, a tela do sistema fica longe, como se alguém tivesse dado zoom ao contrário.
+@som erro
+> Você tira o headset. As mãos estão geladas. O coração não para de correr.
+@entra thais assustada centro
+THAIS: Eu vim te buscar porque você não respondeu o zap. Senta aqui. Respira comigo. Quatro pra dentro, quatro segurando, quatro pra fora.
+THAIS: Isso tem nome, viu? Esgotamento. Não é frescura e não é fraqueza.
+? O que você faz?
+* Ir ao posto de saúde e tirar uns dias de verdade -> c17_descansa {saude+3 rel_thais+1}
+* Dizer que tá tudo bem e voltar pro atendimento -> c17_ignora {saude-1 marca:ignorou_corpo}
+
+=== c17_descansa
+> A médica do posto receita três dias de afastamento, sono, comida de verdade e menos tela. Você obedece pela primeira vez em anos.
+THAIS: Viu? Até servidor precisa de reinício.
+EU: Isso foi uma piada de informática?
+THAIS [feliz]: Eu moro com você há meses. Pega.
+@sai thais
+@vai c17_prova
+
+=== c17_ignora
+> Você volta pro atendimento. O Fábio nem percebe. A meta percebe menos ainda.
+THAIS [triste]: Eu vou deixar marmita na geladeira com seu nome. E vou ficar de olho.
+(Meu corpo mandou um alerta crítico e eu marquei como falso positivo.)
+@sai thais
+@vai c17_prova
+
+=== c17_prova
+@fundo sala_entrevista
+@musica tensao
+> Dia da prova. Sala gelada, câmera no teto, fiscal que não pisca. Noventa questões e um relógio que anda mais rápido que o normal.
+(Respira. Eu já expliquei engenharia social pra cliente bravo às seis da tarde. Isso aqui é só uma prova.)
+@se tecnica>=9 -> c17_aprovada
+@se saude>=5 -> c17_aprovada
+@se marca:voucher_iracema -> c17_aprovada
+@vai c17_reprovada
+
+=== c17_aprovada
+@musica vitoria
+@som acerto
+> A tela pisca. "APROVADA."
+EU [feliz]: Aprovada. Aprovada! Moço, eu passei!
+> O fiscal não sorri, mas balança a cabeça um centímetro. Para um fiscal, isso é um abraço.
+@muda reputacao+1 tecnica+1
+@marca certificada
+@vai c17_fim
+
+=== c17_reprovada
+@musica triste
+@som erro
+> A tela pisca. "REPROVADA. Faltaram 31 pontos."
+EU [triste]: Trinta e um pontos. Dois mil e quatrocentos reais e trinta e um pontos.
+> Você chora no banheiro do prédio. Depois manda mensagem pra Iracema.
+@entra iracema neutra centro
+IRACEMA: Eu reprovei na minha primeira também. Em 1999, de saia e salto, num auditório com quarenta homens.
+IRACEMA: Tem voucher de reteste com desconto. Seis semanas. Agora você sabe o formato da prova, e isso vale metade da nota.
+> Seis semanas depois, com sono e com cronograma, você faz de novo.
+@som acerto
+@musica vitoria
+EU [feliz]: Aprovada. Na segunda, mas aprovada.
+IRACEMA [feliz]: Na segunda conta igual. Ninguém pergunta na entrevista.
+@sai iracema
+@muda rel_iracema+1
+@marca certificada
+@marca reprovou_primeira
+@vai c17_fim
+
+=== c17_fim
+@fundo republica_quarto
+@musica interior
+> À noite, você liga pra Pedra Lisa. A ligação cai duas vezes. Deve estar chovendo lá.
+@entra mae neutra esquerda
+@entra vo feliz direita
+MAE: Passou na prova do computador?
+EU [feliz]: Passei, mãe. Agora eu sou certificada.
+VO [feliz]: Certificada! Igual o selo do mel do seu Antônio. Eu sempre soube que você era produto de qualidade.
+MAE [pensativa]: E isso dá emprego?
+? O que você responde pra sua mãe?
+* "Ainda não, mãe. Mas abre a porta." -> c17_resposta_honesta {rel_mae+1}
+* "Dá, mãe. Logo logo eu te mando dinheiro." -> c17_resposta_promessa {rel_mae+1 saude-1}
+** "Dá. E a primeira coisa que eu vou proteger é o seu Wi-Fi, que a senha ainda é 12345678." -> c17_resposta_wifi {rel_mae+1 rel_vo+1}
+
+=== c17_resposta_honesta
+MAE: Porta já é alguma coisa. Na minha época nem porta tinha. Tinha cerca.
+VO: Porta aberta a gente entra de cabeça erguida, minha filha.
+@vai c17_vaga
+
+=== c17_resposta_promessa
+MAE [triste]: Não promete. Só me manda notícia. Notícia eu prefiro.
+(Ela sempre soube quando eu prometia demais.)
+@vai c17_vaga
+
+=== c17_resposta_wifi
+MAE [brava]: Que é que tem a minha senha? Eu decorei!
+VO [feliz]: Até eu decorei. O vizinho também.
+EU: Esse é o problema, Vó.
+@vai c17_vaga
+
+=== c17_vaga
+@sai todos
+@som mensagem
+> Logo depois, uma mensagem da Iracema.
+@entra iracema feliz centro
+IRACEMA: Tem uma vaga de analista júnior no SOC onde eu trabalho. Turno da noite. Ninguém quer. Eu pensei em você.
+IRACEMA: Não é favor. Eu indico gente que eu confiaria às três da manhã com o servidor pegando fogo.
+EU [feliz]: Eu aceito. Eu aceito antes de você terminar de falar.
+@sai iracema
+@vai c18_inicio

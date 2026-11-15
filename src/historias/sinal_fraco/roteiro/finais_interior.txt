@@ -1,0 +1,131 @@
+# Parte 4, epílogos dos finais do ramo do interior
+
+=== ifim_empresa
+@sai todos
+@fundo assistencia_tecnica
+@musica final_bom
+> Cinco anos depois.
+> A placa nova da fachada é discreta, de acrílico, com S: {nome} Segurança. Embaixo, menor, uma placa velha pendurada de propósito: {nome} CONCERTA.
+> A empresa ocupa o andar de cima da oficina do Tio Juca. São sete pessoas, todas da região. Duas foram alunas do curso de golpe para a melhor idade, que hoje tem lista de espera.
+@entra tio feliz esquerda
+@entra bia feliz direita
+TIO: A prefeitura de Serra Alta assinou. Agora são nove prefeituras, três cooperativas e o mercadinho da Dona Lurdes.
+BIA: O mercadinho paga em pão de queijo. Eu contabilizei como receita.
+> Lá fora começa a chover. A fibra da PedraNet cai, como sempre.
+> No escritório, nada acontece. O link reserva via rádio assume sozinho, o nobreak apita uma vez e silencia.
+EU [feliz]: Redundância de enlace, tio.
+TIO: Eu não sei o que é isso, mas é bonito de ver.
+(Eu fiquei. E a cidade ficou um pouco mais segura porque eu fiquei. Duas barras de sinal e uma especialista.)
+> No celular, um áudio da Vó Nita, de três minutos, contando para o grupo da igreja que a neta agora "protege nove prefeituras contra os hackers internacionais".
+@final empresa_interior
+
+=== ifim_professora
+@sai todos
+@fundo escola_laboratorio
+@musica final_bom
+> Fevereiro. Primeiro dia de aula do curso técnico.
+> Na parede do laboratório, emoldurado como diploma, está o cadeado velho. Embaixo, uma etiqueta escrita à mão: "Aposentado".
+> Vinte computadores. Vinte e seis alunos, porque a fila deu volta no pátio e ninguém teve coragem de mandar ninguém embora. Quinze são meninas.
+@entra leni feliz direita
+LENI: Eu vim só para ver. Prometo que não vou corrigir o seu quadro.
+EU [feliz]: Pode corrigir, professora. Eu deixei um erro de propósito, para a senhora se sentir em casa.
+> Ela se vira para a turma.
+EU: Primeira aula: o que é uma senha boa. Segunda aula: por que o nome do cachorro não é uma senha boa. Terceira aula: vocês vão ensinar isso para as avós de vocês.
+> No fundo da sala, uma menina de nove anos, que nem devia estar ali, que veio acompanhando a irmã, anota tudo num caderno de capa dura.
+(Eu sei exatamente quem ela é. Ela sou eu, com a porta aberta.)
+@final professora
+
+=== ifim_padaria
+@sai todos
+@fundo casa_cozinha
+@musica final_bom
+> Dois anos depois. Padaria Pão do Valdir, agora com um "e da {nome}" pintado embaixo, com S e sem erro.
+> Três da manhã. O forno acende. Ela sova a primeira massa do dia e escuta a cidade dormir.
+@entra valdir feliz direita
+VALDIR: Passei só para ver se você não estragou a minha receita.
+EU [feliz]: Estraguei. Melhorei. A fila do sábado chega na farmácia.
+> No caixa, o QR Code do Pix tem um aviso em letra grande: "Confira se o recebedor é PADARIA PÃO DO VALDIR. Se for outro nome, é golpe." O site da padaria tem backup em três lugares. A senha do Wi-Fi dos clientes não é o nome de cachorro nenhum.
+> Aos domingos, depois da missa, a fila não é de pão. É de vó com celular na mão, esperando a padeira olhar "se esse link é de verdade".
+VALDIR: Você largou a segurança?
+EU: Não larguei nada, Seu Valdir. Só achei um lugar onde eu durmo bem.
+(Eu queria ser hacker. Virei padeira que sabe o que é phishing. Talvez fosse isso o tempo todo.)
+@final outra_carreira
+
+=== ifim_burnout
+@sai todos
+@fundo praca_interior
+@musica triste
+> Ela fecha a assistência. Coloca na porta um papel: "Volto quando voltar. Não é golpe. Assinado: a {nome}."
+> Os primeiros meses são de dormir. Depois, de caminhar até o rio. Depois, de psicóloga às quintas no CAPS e de almoço com a mãe aos domingos, sem celular na mesa.
+@entra vo feliz esquerda
+VO: Você está com cor de gente de novo.
+EU: Estou aprendendo a bordar, vó. É tipo programar, só que o bug aparece na hora.
+VO [feliz]: E se aparecer, você desmancha e faz de novo. Igual a vida.
+> Numa tarde de sol, a Bia aparece com o celular travado. Ela conserta em cinco minutos, sem pressa, sem cobrar, e percebe que sorriu fazendo isso.
+(Talvez eu volte. Talvez não. Pela primeira vez, as duas respostas estão boas.)
+> Ela coloca o celular em modo avião e deita a cabeça no colo da vó, como quando tinha nove anos.
+@final burnout
+
+=== ifim_onibus
+@sai todos
+@fundo rodoviaria
+@musica cidade
+> Ela aceita. Arruma uma mala, entrega a chave da bancada para o Tio Juca e pega o ônibus das onze para a capital.
+> Na capital, ela é boa. Muito boa. E é uma entre quinhentas, num andar com pebolim que ninguém usa e reunião às sete da noite.
+> Depois de um ano, o crachá ainda não diz o que ela sonhava. O que ela sente falta não tem nome em inglês.
+@fundo rodoviaria
+@musica final_bom
+> Rodoviária de Pedra Lisa, doze meses depois. Ela desce do ônibus com a mesma mala e um pouco menos de certeza sobre tudo.
+@entra vo feliz esquerda
+VO: Eu falei pra você trazer uma geladeira.
+EU [feliz]: Trouxe um notebook novo e um sotaque, vó.
+VO: O sotaque você perde na primeira semana. Vem, tem bolo de fubá.
+(Não deu como eu queria. Mas eu fui, e voltei inteira, e sei mais do que quando saí. Ainda dá tempo. Sempre dá.)
+@final volta_pra_casa
+
+=== ifim_presa
+@sai todos
+@fundo delegacia
+@musica final_ruim
+> O depoimento dura seis horas. Ela conta tudo, do começo, com datas, e a delegada anota sem interromper.
+> A sentença sai meses depois. Não é a mais pesada que podia ser, porque ela colaborou. Mas é pesada.
+> Na unidade prisional, ela entra no programa de remição pela leitura: cada livro lido e resenhado tira dias da pena. Ela lê quarenta.
+> Aos domingos, a Vó Nita vem de ônibus, quarenta quilômetros, com bolo de fubá que a revista sempre corta ao meio.
+@entra vo triste esquerda
+VO: Você está magra.
+EU [triste]: A comida aqui não tem pudim de quiabo.
+VO [feliz]: Graças a Deus.
+> Na biblioteca da unidade, ela começa a dar aula para as outras presas: como reconhecer golpe, como proteger o celular dos filhos, como não cair em promessa fácil.
+(Logs não esquecem. Eu também não vou esquecer. Mas um dia eu saio daqui, e vou saber exatamente o que não fazer de novo.)
+@final presa
+
+=== ifim_foragida
+@sai todos
+@fundo rua_interior_noite
+@musica final_ruim
+> A estrada de terra vira asfalto, o asfalto vira outra estrada, a outra estrada vira outro estado.
+> O dinheiro do Doutor dura bastante. Ela muda de cidade três vezes no primeiro ano, de nome duas, de celular todo mês.
+> Mora num apartamento bonito, numa cidade onde ninguém sabe que ela consertava celular de vó.
+> Toda vez que alguém bate na porta, o coração dispara do jeito que disparava na assistência, no dia da delegada.
+> Numa madrugada, chega no número antigo, que ela ainda carrega desligado só para ler, um áudio de três minutos da Vó Nita.
+> "Minha neta, eu não sei onde você está. Mas a palavra é pudim de quiabo, tá? Se for você, fala a palavra."
+> Ela ouve o áudio onze vezes. Não responde. Não pode responder.
+(Tenho tudo o que o dinheiro compra. E nenhuma das coisas que me fizeram querer ser alguém.)
+> Ela desliga o celular, abre a janela e procura a caixa d'água da cidade, por costume. Não tem. Aqui o sinal pega em todo lugar e ela nunca se sentiu tão sem sinal.
+@final foragida
+
+=== ifim_golpeada
+@sai todos
+@fundo assistencia_tecnica
+@musica final_ruim
+> O homem da cidade vizinha leva a bancada numa caminhonete: o ferro de solda, a lupa, as telas, a cadeira emprestada do bar do Neném.
+> A placa {nome} CONCERTA fica. Ninguém quis comprar uma placa com erro de português.
+> Ela arruma emprego de caixa no supermercado da praça. Oito horas em pé, sábado sim, domingo também.
+@fundo praca_interior
+> Mas ela não consegue não ver.
+> Na fila do caixa, uma senhora mostra no celular um "prêmio" de um supermercado que pede o CPF e a senha do cartão. Ela para tudo.
+EU [pensativa]: Senhora, isso é golpe. Supermercado nenhum pede senha. Me dá aqui que eu apago com a senhora.
+> A fila reclama. A senhora agradece com os olhos cheios de água. Amanhã ela volta com duas amigas.
+(Eu caí. Caí feio, cansada, às três da manhã, achando que era esperta demais para cair. Ninguém está imune. E quem caiu é quem melhor sabe avisar.)
+> Num caderno de papel, atrás do balcão, ela começa a anotar os golpes que vê na fila. Um dia, talvez, isso vire alguma coisa de novo.
+@final golpeada

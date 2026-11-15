@@ -1,0 +1,294 @@
+=== c12_inicio
+@cap 12 "Rodoviária"
+@idade adulta
+@fundo onibus_noite
+@musica cidade
+> Ônibus da meia-noite. Poltrona 37, a do lado do banheiro, porque era a mais barata.
+> Na mochila: duas mudas de roupa, o carregador remendado com fita isolante e uma marmita de farofa que a Vó Nita jurou que "aguenta três dias fora da geladeira".
+(Aguenta três dias, mas eu não sei se o motorista aguenta o cheiro.)
+> Pela janela, Pedra Lisa do Norte some numa curva. A caixa d'água, onde pegava duas barras de sinal, é a última coisa a sumir.
+@se marca:enem_bom -> c12_inicio_enem
+@vai c12_inicio_mae
+
+=== c12_inicio_enem
+(A nota do ENEM veio boa. Pena que nota boa não paga aluguel. Vou trabalhar de dia e estudar de noite, que nem metade do Brasil.)
+@vai c12_inicio_mae
+
+=== c12_inicio_mae
+@som mensagem
+> O celular vibra. É a mãe, às 0h47, com a sutileza de sempre.
+@entra mae triste centro
+MAE: Já chegou? Não aceita bala de estranho. Não dá o CPF pra ninguém.
+MAE: E não fica mexendo no computador dos outros, que dá vírus na vista.
+(A estrada nem acabou de sair da cidade e ela já mandou três áudios.)
+? Como responder a Dona Rosilene?
+* "Tô bem, mãe. Te amo. Vai dormir." -> c12_mae_curta {rel_mae+1}
+* Mandar um áudio de quatro minutos chorando no banheiro do ônibus -> c12_mae_audio {rel_mae+2 saude-1}
+** Mandar a figurinha de "Bom dia, Deus abençoe" com rosa brilhando, às 0h48 -> c12_mae_figurinha {rel_mae+1 saude+1}
+
+=== c12_mae_curta
+MAE: Te amo também. Me manda foto quando chegar. Foto, não vídeo, que vídeo gasta crédito.
+@sai mae
+@vai c12_lembra_anuncio
+
+=== c12_mae_audio
+> O áudio sai entrecortado pelo barulho do motor e por uma descarga que alguém dá no meio da sua declaração de amor.
+MAE: Filha, não entendi nada, mas também tô chorando. Volta quando quiser. A casa é sua.
+@sai mae
+@vai c12_lembra_anuncio
+
+=== c12_mae_figurinha
+@expr mae feliz
+MAE: Kkkkkkk sua peste.
+MAE: Vou encaminhar pro grupo da família.
+(Pronto. Às seis da manhã a Tia Zilda vai responder "amém" sem ver a hora.)
+@sai mae
+@vai c12_lembra_anuncio
+
+=== c12_lembra_anuncio
+> Você abre a conversa que te trouxe até aqui. Duas semanas atrás, num grupo de "Moradia Capital", apareceu o anúncio.
+> Quarto mobiliado, perto do metrô, por menos que o carnê das Casas da sua mãe.
+> Desde então você conversa com um tal de Wellington, corretor. Ele manda bom dia todo dia. Ninguém em Pedra Lisa manda bom dia todo dia.
+@som mensagem
+> Mensagem nova: "Oi! Tem mais gente querendo o quarto. Se não fizer o Pix da caução até as 18h, vou ter que passar pra frente, tá?"
+@se marca:levou_calote -> c12_lembra_calote
+@vai c12_escolhe_anuncio
+
+=== c12_lembra_calote
+(Da última vez que alguém me apressou com dinheiro, eu levei calote e fiquei chupando o dedo. Lição número um do interior: quem tem pressa é o vendedor, não o comprador.)
+@vai c12_escolhe_anuncio
+
+=== c12_escolhe_anuncio
+? O Pix da caução é de R$ 400. Quase tudo o que você juntou.
+* Ler o anúncio e a conversa inteira de novo, com calma -> c12_analisa_anuncio
+* Pagar logo, antes que o quarto acabe -> c12_pagou_direto
+** Mandar áudio pro Wellington: "Me manda um vídeo seu dando bom dia na frente do quarto" -> c12_video_wellington {tecnica+1}
+
+=== c12_video_wellington
+> Cinco minutos depois, chega uma resposta.
+> "Kkkk não posso filmar porque o inquilino ainda tá lá, é chato invadir a privacidade dele né. Mas pode confiar!"
+(Ele tem tanto escrúpulo com a privacidade do inquilino. Que homem ético.)
+@vai c12_analisa_anuncio
+
+=== c12_analisa_anuncio
+> Você junta os prints do anúncio e da conversa e lê tudo como se fosse um vírus no PC do Tio Juca: devagar, procurando o que não encaixa.
+@desafio p3_anuncio_aluguel -> c12_anuncio_acerto | c12_anuncio_erro
+
+=== c12_pagou_direto
+> Você abre o aplicativo do banco. Chave Pix em nome de "Valéria". Você hesita um segundo.
+(Ele disse que é a cunhada. Família cuida da parte financeira. Normal. Né?)
+@som dinheiro
+> R$ 400 saem da sua conta como saem os sonhos num ônibus da madrugada: rápido e sem barulho.
+@muda grana-3
+@marca caiu_golpe_aluguel
+> Wellington responde com um joinha. Depois, nada.
+@vai c12_rodoviaria
+
+=== c12_anuncio_erro
+(É. Tá tudo bem estranho, mas e se for verdade? E se eu perder o quarto e tiver que dormir na rodoviária?)
+> O medo de ficar na rua grita mais alto que a desconfiança. Você paga.
+@som dinheiro
+@muda grana-3
+@marca caiu_golpe_aluguel
+> "Recebido! Segue o endereço, te espero lá", ele responde. Você manda "obrigada!!!" com três exclamações. A resposta seguinte nunca chega.
+@vai c12_rodoviaria
+
+=== c12_anuncio_acerto
+(Preço de outra década. Não pode visitar. Pressa. Pix na conta da "cunhada". Isso não é um quarto, é um bingo de golpe.)
+> Você pega uma das fotos do anúncio e faz uma busca reversa de imagem.
+> A mesma foto aparece num perfil de república de verdade: "República das Gerberas, vaga só com visita e contrato. Cuidado com anúncios falsos usando nossas fotos!"
+> Tem um número. Você liga às 2h da manhã, porque juízo é uma coisa e ansiedade é outra.
+@som notificacao
+> Atende uma voz de quem acabou de sair de um plantão.
+> "Se for sobre o Wellington, eu já sei. Você é a sexta essa semana. Pelo menos você não pagou."
+> A voz se chama Thaís. E, por milagre do Pix não feito, a república tem uma vaga de verdade.
+@muda tecnica+1 rel_thais+2
+@marca evitou_golpe_aluguel
+@vai c12_rodoviaria
+
+=== c12_rodoviaria
+@fundo rodoviaria
+@musica cidade
+@som porta
+> Seis da manhã. A rodoviária da capital é maior que Pedra Lisa inteira e tem mais gente que a festa do padroeiro.
+> Alto-falante anunciando plataformas, cheiro de pastel e café queimado, um homem gritando "táxi, táxi, táxi" como se fosse oração.
+(Ninguém aqui sabe meu nome. Isso é assustador. E um pouquinho libertador.)
+@roupa "Chegada na capital"
+> Você se olha no vidro de uma lanchonete. Cara amassada de doze horas de estrada, mas é a cara de quem chegou.
+? Primeira decisão na cidade grande
+* Pegar o metrô seguindo o mapa no celular, que está com 9% de bateria -> c12_metro {saude+0}
+* Pedir informação para o tiozinho da banca de jornal -> c12_tiozinho {saude+1}
+** Comprar um "carregador turbo original" de R$ 15 de um rapaz na saída -> c12_carregador {grana-1}
+
+=== c12_carregador
+> O rapaz jura que é original. A embalagem diz "Sansumg".
+> Você pluga no celular. O celular esquenta, pisca e desce de 9% para 7%.
+(Eu atravessei o estado pra ser enganada por um carregador. Bom começo.)
+@vai c12_metro
+
+=== c12_tiozinho
+> O tiozinho da banca desenha o caminho no verso de um panfleto de cartomante, com setas e o aviso "NÃO PEGA O VERMELHO".
+> É a melhor documentação técnica que você já recebeu.
+@vai c12_metro
+
+=== c12_metro
+@fundo metro_lotado
+> O metrô às sete da manhã é uma experiência de compressão de dados. Você é o arquivo.
+> Uma mulher dorme em pé encostada no seu ombro. Um rapaz assiste a um vídeo sem fone. A mochila com a marmita da vó vira escudo.
+(Em Pedra Lisa, aglomeração era fila de banco no dia do pagamento. Aqui é todo dia, às sete.)
+@se marca:caiu_golpe_aluguel -> c12_endereco_golpe
+@vai c12_endereco_certo
+
+=== c12_endereco_golpe
+@fundo capital_rua
+@musica tensao
+> O endereço que o Wellington mandou fica numa rua de prédios baixos. Você confere o número três vezes e toca o interfone.
+> Silêncio. Você toca de novo. Uma janela abre no segundo andar.
+@entra thais neutra centro
+THAIS: Deixa eu adivinhar. Wellington? Quarto mobiliado, R$ 350, perto do metrô?
+EU [surpresa]: Como você sabe?
+THAIS: Porque você é a quinta pessoa que aparece aqui com mala essa semana. As fotos são do meu quarto. O quarto não tá pra alugar.
+@expr eu triste
+(R$ 400. Três meses de bico consertando PC. Sumiram num joinha.)
+? O que você sente primeiro?
+* Sentar na calçada e chorar, porque não tem mais força -> c12_golpe_chora {saude-1 rel_thais+1}
+* Ficar com raiva e mandar vinte áudios xingando o Wellington -> c12_golpe_raiva {saude+0}
+* Respirar e perguntar o que dá pra fazer agora -> c12_golpe_acao {tecnica+1}
+
+=== c12_golpe_chora
+> A Thaís desce. De jaleco amassado, olheira de plantão e um copo de café na mão, ela senta do seu lado no meio-fio.
+@expr thais pensativa
+THAIS: Chora. Mas chora rápido, que a gente tem coisa pra resolver e eu durmo às dez.
+@vai c12_golpe_acao
+
+=== c12_golpe_raiva
+> Os áudios saem com um tique só. Depois, a foto do Wellington some. Você foi bloqueada.
+@expr thais brava
+THAIS: Ele já bloqueou, né? Sempre bloqueia. Vem, sobe. Xingar a gente xinga lá em cima, com café.
+@vai c12_golpe_acao
+
+=== c12_golpe_acao
+@fundo republica_cozinha
+@expr thais neutra
+THAIS: Primeiro: liga pro teu banco agora e fala que foi golpe. Tem um negócio chamado MED.
+EU: Med? Remédio?
+THAIS: Mecanismo Especial de Devolução. O teu banco avisa o banco do golpista, e se o dinheiro ainda estiver lá, eles bloqueiam.
+THAIS: Segundo: boletim de ocorrência. Dá pra fazer online. Terceiro: café.
+@anota p3_med_pix
+@anota p3_golpe_aluguel
+? Você está com vergonha, cansada e com 7% de bateria.
+* Ligar pro banco e fazer o BO agora, mesmo morrendo de vergonha -> c12_golpe_med {etica+1 saude+1}
+* Deixar pra lá. Foi burrice minha, ninguém precisa saber -> c12_golpe_vergonha {saude-1}
+
+=== c12_golpe_med
+> Quarenta minutos de música de espera e um atendente que te chama de "senhora" depois.
+> O banco abre a contestação. O BO online leva vinte minutos e pede até o nome da "cunhada".
+THAIS: Pode ser que volte, pode ser que não. Mas agora tá registrado, e cada registro ajuda a pegar a conta laranja dele.
+(Não é justiça. Mas é um começo de justiça.)
+@vai c12_vaga_thais
+
+=== c12_golpe_vergonha
+@expr thais brava
+THAIS: Burrice nada. Eu tô aqui há quatro anos e já recebi 30 mensagens do "filho com número novo". Golpista é profissional, a gente é amadora.
+THAIS: Vergonha é dele. Mas tudo bem, você decide.
+(Ela tem razão. Mas eu não tenho força hoje.)
+@vai c12_vaga_thais
+
+=== c12_vaga_thais
+THAIS: Olha, de verdade? Tem uma vaga aqui. A Pâmela foi embora mês passado. É R$ 500, com contrato, e a dona do apartamento existe. Juro que existe, ela é chata.
+EU [feliz]: Você tá me oferecendo um quarto de verdade?
+THAIS: Tô oferecendo uma cama, uma escala de louça e um Wi-Fi que cai quando chove. Pega ou larga.
+@muda rel_thais+1
+@vai c12_republica
+
+=== c12_endereco_certo
+@fundo capital_rua
+> A República das Gerberas fica num prédio sem elevador, com um vaso de planta morta na entrada e uma placa: "NÃO ALUGAMOS POR ZAP".
+@som porta
+@entra thais feliz centro
+THAIS: Você que é a menina que me ligou às duas da manhã? Que bom. As outras cinco ligaram depois de pagar.
+EU [envergonhada]: Desculpa a hora.
+THAIS: Eu tava saindo do plantão. Duas da manhã pra enfermeira é tipo meio-dia.
+@fundo republica_cozinha
+THAIS: Contrato tá aqui. Lê antes de assinar. Você parece do tipo que lê.
+(Ela me conhece há dez minutos e já me elogiou do jeito certo.)
+@anota p3_golpe_aluguel
+THAIS: E se um dia cair num golpe de Pix, corre no banco pedir o MED. Aprendi isso com paciente que chega na emergência com crise de ansiedade por causa de golpe.
+@anota p3_med_pix
+@vai c12_republica
+
+=== c12_republica
+@fundo republica_quarto
+@musica alegre
+> O quarto tem uma cama de solteiro, um guarda-roupa com uma porta que não fecha e uma janela que dá para outra janela.
+> É o lugar mais seu que você já teve.
+@entra thais neutra centro
+THAIS: Regras da casa. Geladeira: cada um põe o nome na comida com fita crepe. Iogurte sem nome é comunitário.
+THAIS: Louça: escala na porta. Banho: dez minutos, que a conta de luz é dividida por quatro.
+THAIS: Wi-Fi: "Republica_Gerberas", senha "republica123". Quem colocou foi o ex da Pâmela. A gente nunca trocou.
+(Senha de Wi-Fi que um ex colocou e ninguém trocou. Tem cheiro de lan house da Dona Cida.)
+@se marca:site_padaria -> c12_lembra_padaria
+@vai c12_wifi
+
+=== c12_lembra_padaria
+(Igual ao painel do site do Seu Valdir, que tinha "admin" de senha até eu trocar. O mundo inteiro é a padaria do Seu Valdir.)
+@vai c12_wifi
+
+=== c12_wifi
+? O que fazer com o Wi-Fi da república?
+* Oferecer para trocar a senha do Wi-Fi e a senha de administrador do roteador -> c12_wifi_troca {tecnica+1 rel_thais+1}
+* Não mexer em nada. Acabei de chegar, não quero ser a chata -> c12_wifi_nada
+** Às 2h da manhã, montar uma rede de visitante e dar uma palestra sobre firewall pra Thaís, que está dormindo em pé -> c12_wifi_palestra {tecnica+1 rel_thais-1}
+
+=== c12_wifi_troca
+> O roteador tem um adesivo embaixo com o usuário e a senha de fábrica. A senha de fábrica ainda é a senha.
+EU: Pronto. Senha nova, comprida, e o painel do roteador não está mais com a senha do adesivo.
+THAIS [surpresa]: Você fez em cinco minutos o que o ex da Pâmela não fez em dois anos. Fica com o quarto bom.
+EU: Esse é o único quarto.
+THAIS: Fica com ele bom, então.
+@sai thais
+@vai c12_noite
+
+=== c12_wifi_nada
+THAIS: Sábia. Na primeira semana, a regra é não mexer na comida dos outros nem no roteador.
+@sai thais
+@vai c12_noite
+
+=== c12_wifi_palestra
+> Você desenha num guardanapo a rede principal, a rede de visitante e uma muralha com a palavra FIREWALL em maiúsculas.
+@expr thais pensativa
+THAIS: Muito legal. Eu tô dormindo desde a palavra "roteador".
+THAIS: Amanhã você me explica de novo. Ou não. De preferência não.
+(Ela está certa. Mas a rede de visitante ficou linda.)
+@sai thais
+@vai c12_noite
+
+=== c12_noite
+@fundo quarto_madrugada
+@musica triste
+> Primeira noite na capital. Uma sirene ao longe, um vizinho ouvindo pagode, um cachorro que late em outro sotaque.
+> Você abre o aplicativo do banco para fazer a conta do mês.
+@se marca:caiu_golpe_aluguel -> c12_noite_golpe
+@vai c12_noite_sem_golpe
+
+=== c12_noite_golpe
+(Menos R$ 400. O aluguel de verdade vence em quinze dias. Ou eu arrumo emprego, ou eu volto de ônibus na poltrona do banheiro.)
+@muda saude-1
+@vai c12_noite_emprego
+
+=== c12_noite_sem_golpe
+(Dá pra um mês, se eu comer miojo de segunda a sábado e a farofa da vó no domingo.)
+@vai c12_noite_emprego
+
+=== c12_noite_emprego
+> No grupo de vagas, um anúncio pisca entre "renda extra com dropshipping" e "seja seu próprio patrão vendendo pano de prato":
+> "CONTRATA-SE operadora de telemarketing. Sem experiência. Início imediato. Vale-transporte e vale-refeição."
+(Não é segurança da informação. Mas é comida na mesa e passagem de metrô. E eu sei falar ao telefone. Eu falava com o modem discado, falar com gente vai ser fácil.)
+? Vai mandar o currículo?
+* Mandar agora, antes de pensar demais -> c12_fim {saude+1}
+* Mandar, mas chorar um pouquinho antes -> c12_fim {saude+0}
+
+=== c12_fim
+> Você manda o currículo às 3h12. A primeira linha diz "Experiência: assistência técnica de computadores (autônoma)". A segunda diz "Pedra Lisa do Norte".
+> Depois você dorme, abraçada na mochila, como se a capital fosse fugir.
+@vai c13_inicio

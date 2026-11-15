@@ -1,0 +1,213 @@
+# Capítulo 9: o concorrente, o calote e o falso cliente.
+# Regra: se ela aceita algo errado, acontece fora de cena, sem detalhe técnico.
+
+=== c09_inicio
+@cap 9 "O concorrente"
+@fundo feira_rua
+@musica trabalho
+> Pedra Lisa tem duas lojas de celular. Uma em cada ponta da mesma rua, como dois galos no mesmo quintal.
+> A Robson Celulares, com letreiro de LED que pisca em três cores. E a Gilmar Eletrônicos, aberta desde 1989, com um ventilador de teto e um gato.
+@se marca:site_padaria -> c09_robson_padaria
+@vai c09_robson_chega
+
+=== c09_robson_padaria
+> O Robson te encontra na saída da padaria do Seu Valdir, olhando o celular.
+@entra robson feliz centro
+ROBSON: Foi você que fez o site do Valdir? Ficou bom. Vendeu bolo até para Caiçara.
+@vai c09_robson_pedido
+
+=== c09_robson_chega
+> O Robson te para na rua, na frente da loja dele.
+@entra robson feliz centro
+ROBSON: Você é a menina do computador? Tenho um trabalho para você.
+@vai c09_robson_pedido
+
+=== c09_robson_pedido
+ROBSON [pensativa]: O problema é o Gilmar. Aquele velho tem cliente fiel. Os aposentados todos compram com ele.
+ROBSON: Ele fez um site agora. Com o neto. Tá aparecendo na frente do meu na busca.
+ROBSON [feliz]: Eu quero que o site dele saia do ar. Umas semanas. E umas avaliações ruins lá, dizendo que ele vende celular roubado. Coisa leve.
+(Coisa leve. Derrubar o sustento de um senhor de 70 anos e chamar ele de ladrão. Leve como bigorna.)
+ROBSON: Pago oitocentos.
+? O que você faz
+* Recusar e oferecer um trabalho honesto -> c09_robson_honesto {etica+2}
+* Recusar e ir embora -> c09_robson_recusa {etica+1}
+* Aceitar. Oitocentos reais pagam três contas de luz -> c09_robson_aceita {etica-3 grana+3 marca:aceitou_robson}
+** Propor um site para ele com música automática, pisca-pisca e o Robson dançando em GIF -> c09_robson_gif
+
+=== c09_robson_gif
+@som especial
+EU [feliz]: Seu Robson, tenho uma ideia melhor. Um site com música automática, letreiro piscando e um GIF do senhor dançando.
+ROBSON [surpresa]: Eu dançando?
+EU: O povo vai entrar só para ver. Ninguém esquece.
+ROBSON [pensativa]: Isso é sério?
+EU: Não. A música automática é a pior coisa da internet. Mas a ideia é: o senhor ganha cliente sendo melhor, não derrubando o outro.
+@vai c09_robson_honesto
+
+=== c09_robson_honesto
+EU: Seu Robson, eu não derrubo site de ninguém. Isso é crime e é concorrência desleal. O Gilmar processa e o senhor perde a loja.
+ROBSON [brava]: E eu vou fazer o quê? Perder cliente?
+EU: Eu faço um site bom para o senhor. Rápido, com foto boa dos celulares, preço e o zap da loja. E o senhor responde as avaliações com educação.
+ROBSON [pensativa]: E quanto custa isso?
+? Quanto cobrar do Robson
+* Um preço justo, com metade adiantada e tudo por escrito -> c09_robson_site {grana+2 reputacao+1}
+* Bem barato, para ele largar a ideia de vez -> c09_robson_site {grana+1}
+
+=== c09_robson_site
+ROBSON: Tá. Vai que dá certo.
+@sai robson
+> O site do Robson fica pronto em duas semanas. A primeira coisa que ele faz é tirar a foto do letreiro de LED, porque "dá dor de cabeça".
+> As vendas melhoram. Ele nunca admite que foi por causa do site.
+@anota p2_concorrencia
+@vai c09_gilmar
+
+=== c09_robson_recusa
+EU: Não, Seu Robson. Isso eu não faço.
+ROBSON [brava]: Então vou achar quem faça. Sempre tem.
+@sai robson
+@anota p2_concorrencia
+(Sempre tem. É verdade. Mas não vai ser eu.)
+@vai c09_gilmar
+
+=== c09_robson_aceita
+@musica triste
+EU: Tá bom.
+ROBSON [feliz]: Gostei de você.
+> O que acontece no fim de semana seguinte não sai da sua boca. O Robson paga oitocentos reais num envelope de banco.
+@sai robson
+@anota p2_concorrencia
+@vai c09_gilmar_ruim
+
+=== c09_gilmar_ruim
+@fundo feira_rua
+@entra valdir triste centro
+VALDIR: Você soube do Gilmar? O site dele sumiu e apareceu um monte de comentário dizendo que ele vende celular roubado.
+VALDIR [triste]: O neto dele chorou na padaria. O velho tá falando em fechar. Quarenta anos de loja.
+VALDIR [pensativa]: Quem faz uma coisa dessas, hein, menina?
+EU [envergonhada]: Não sei, Seu Valdir.
+(Eu sei. E o Robson sabe que eu sei. E agora ele tem uma coisa contra mim para sempre.)
+@sai valdir
+@muda saude-2 rel_valdir-1
+@vai c09_wanderson
+
+=== c09_gilmar
+@fundo feira_rua
+> Você passa na frente da Gilmar Eletrônicos. O velho Gilmar está na porta, com o gato no colo.
+> Ele acena. Você acena de volta. Ele não sabe de nada, e é bom que não precise saber.
+@vai c09_wanderson
+
+=== c09_wanderson
+@fundo quarto_adolescente
+@musica trabalho
+@som mensagem
+> Um cliente novo, de Caiçara. Wanderson, da "Wanderson Som Automotivo". Quer um logotipo e uma página simples.
+> Ele tem pressa. Muita pressa. Manda áudio de três minutos sobre "a visão da marca".
+? Antes de começar
+* Mandar por escrito o que vai ser feito, o preço, o prazo e pedir metade adiantada -> c09_combinado {tecnica+1 marca:combinou_pagamento}
+* Começar logo, ele parece gente boa -> c09_sem_combinado
+
+=== c09_combinado
+EU: Wanderson, te mandei o combinado. Logo e página, cento e vinte. Metade agora, metade na entrega.
+> Ele manda um "blz" e um emoji de joinha. E os sessenta chegam de verdade, você confere no app do banco da sua mãe.
+@anota p2_combinar_pagamento
+@vai c09_entrega
+
+=== c09_sem_combinado
+> Você começa no mesmo dia. Ele pede mudança de cor quatro vezes, de fonte seis vezes, e quer o logo "igual da Ferrari, mas diferente".
+@vai c09_entrega
+
+=== c09_entrega
+@som notificacao
+> Domingo, onze da noite, tudo pronto.
+> O Wanderson manda uma imagem: um comprovante de transferência com o logo do banco, o valor e um "PAGO" bem grande.
+> "Já paguei, manda os arquivos agora que eu preciso para amanhã cedo!!!"
+@desafio p2_comprovante -> c09_comprovante_acerto | c09_comprovante_erro
+
+=== c09_comprovante_acerto
+> Você abre o app do banco. Nada. Atualiza. Nada. Atualiza de novo, porque vai que é a internet de Pedra Lisa. Nada.
+EU: Wanderson, o dinheiro não caiu. Assim que aparecer no extrato, eu mando.
+> Ele demora quinze minutos. Depois manda: "deve ser o banco". E some.
+> Na terça, o dinheiro cai de verdade. Ele não pede desculpa, mas paga.
+@anota p2_comprovante_falso
+@muda tecnica+1 reputacao+1
+@vai c09_bia_calote
+
+=== c09_comprovante_erro
+> Você manda os arquivos. Ele responde "valeu, top". Depois, nunca mais.
+> Na segunda, você confere o extrato. Nada. O comprovante era uma imagem montada.
+> O número dele não recebe mais mensagem. O perfil sumiu.
+(Fui roubada por um logo igual da Ferrari, mas diferente.)
+@marca levou_calote
+@anota p2_comprovante_falso
+@se marca:combinou_pagamento -> c09_calote_metade
+@muda grana-1 saude-1
+@vai c09_bia_calote
+
+=== c09_calote_metade
+(Pelo menos os sessenta do sinal ficaram comigo. Combinado escrito serve para isso.)
+@muda saude-1
+@vai c09_bia_calote
+
+=== c09_bia_calote
+@entra bia brava direita
+BIA: Wanderson do Som Automotivo? Esse homem me deu calote também! Fiz escova na noiva dele e ele mandou comprovante falso!
+EU [surpresa]: Ele faz isso com a cidade inteira?
+BIA: Com a região inteira, amiga.
+? Fazer o quê com o Wanderson
+* Juntar as conversas e registrar boletim de ocorrência junto com a Bia -> c09_bo {etica+1 rel_bia+1}
+* Avisar no grupo de comerciantes da cidade, sem xingar, só os fatos -> c09_grupo {reputacao+1 rel_bia+1}
+
+=== c09_bo
+> Vocês duas vão à delegacia de Pedra Lisa, que é uma sala com um escrivão e um ventilador.
+> Ele anota tudo e diz que já tem outros três registros contra o mesmo Wanderson.
+BIA [feliz]: Quatro registros! Agora vira coisa séria.
+(Uma reclamação é chato. Quatro é padrão. Padrão a polícia enxerga.)
+@sai bia
+@vai c09_falso_cliente
+
+=== c09_grupo
+> Você escreve no grupo dos comerciantes: o nome, a data, o que aconteceu. Sem xingar. Com o print da conversa.
+> Em uma hora, mais quatro pessoas respondem: "comigo também".
+BIA [feliz]: Você é a fofoqueira mais técnica que eu já vi.
+EU: Não é fofoca. É alerta com prova.
+@sai bia
+@vai c09_falso_cliente
+
+=== c09_falso_cliente
+@fundo quarto_madrugada
+@musica misterio
+@som mensagem
+> Na quinta, um cliente novo. Foto de perfil de loja de roupas, nome bonito, mensagem educada.
+> Tão educada que dá até desconfiança.
+@desafio p2_falso_cliente -> c09_falso_acerto | c09_falso_erro
+
+=== c09_falso_acerto
+(RG com selfie, código do SMS, senha do e-mail e pressa. É o kit completo do golpe. Só faltou o "manda o CPF".)
+> Você não responde nada do que ele pediu. Só escreve: "Para orçamento, me manda o endereço da loja e o CNPJ. Eu confiro e te procuro."
+> Ele te bloqueia em trinta segundos.
+> Você procura a loja no endereço que ele deu. Do lado da farmácia de Caiçara tem uma oficina de bicicleta.
+@anota p2_falso_cliente
+@muda tecnica+1 reputacao+1
+@vai c09_fim
+
+=== c09_falso_erro
+> Você manda a foto do RG. Ele é tão educado. O código chega e você quase manda também.
+(Espera. Por que ele precisa de um código que chegou no MEU celular?)
+> Você não manda o código. Mas a foto do RG já foi.
+> Três semanas depois, chega um carnê das Casas no nome da sua mãe, que é a responsável pelo seu cadastro: uma geladeira de duas portas que ninguém comprou.
+@entra mae brava centro
+MAE: GELADEIRA DE DUAS PORTAS? {nome}, a gente nem tem lugar para geladeira de uma porta!
+> Leva um mês de ligação, boletim de ocorrência e protocolo para cancelar.
+@sai mae
+@anota p2_falso_cliente
+@muda saude-1 rel_mae-1 grana-1
+@vai c09_fim
+
+=== c09_fim
+@fundo quarto_adolescente
+@musica interior
+> Você abre o caderno e faz uma lista nova: "Clientes estranhos". Já tem cinco nomes.
+(Ninguém me avisou que trabalhar com computador era principalmente trabalhar com gente.)
+@som mensagem
+> Às duas da manhã, uma mensagem chega de um número com DDD da capital.
+> "Boa noite, senhorita {nome}. Tenho acompanhado o seu trabalho. Gostaria de conversar sobre uma oportunidade. Atenciosamente, Dr. Anselmo."
+@vai c10_inicio
