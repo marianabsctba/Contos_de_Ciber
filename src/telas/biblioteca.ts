@@ -34,7 +34,7 @@ export function capa(h: Historia, grande = false): HTMLElement {
 export function telaBiblioteca(): void {
   som.tocar('menu');
   const perfil = carregar();
-  const destaque = HISTORIAS[0];
+  const destaque = HISTORIAS[HISTORIAS.length - 1];
   const andamento = HISTORIAS.filter((h) => perfil.progresso[h.id] && !perfil.progresso[h.id].terminou);
 
   const tela = el(

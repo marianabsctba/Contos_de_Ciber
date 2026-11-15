@@ -23,6 +23,15 @@ export interface Estado {
   /** cópia do estado no começo do capítulo, para recomeçar */
   inicioCapitulo?: string;
   terminou?: string;
+  /** conversa aberta no celular e suas últimas mensagens */
+  zap?: string;
+  zapLog?: MensagemZap[];
+  zapUltima?: string;
+}
+
+export interface MensagemZap {
+  quem: string;
+  texto: string;
 }
 
 export type Evento =
@@ -43,7 +52,7 @@ export function novoEstado(h: Historia, nome: string, visual: Visual): Estado {
     historia: h.id,
     cena: h.inicio,
     pos: 0,
-    vars: { ...VARS_INICIAIS },
+    vars: { ...(h.varsIniciais ?? VARS_INICIAIS) },
     marcas: [],
     fundo: '',
     musica: 'nenhuma',
@@ -83,7 +92,8 @@ export function aplica(efs: Efeito[], e: Estado): void {
     }
     const v = e.vars[ef.nome] ?? 0;
     e.vars[ef.nome] = ef.op === '+' ? v + ef.valor : ef.op === '-' ? v - ef.valor : ef.valor;
-    if (ef.nome === 'saude') e.vars.saude = Math.max(0, Math.min(10, e.vars.saude));
+    if (ef.nome === 'saude' || ef.nome === 'paciencia') e.vars[ef.nome] = Math.max(0, Math.min(10, e.vars[ef.nome]));
+    if (ef.nome === 'minutos') e.vars.minutos = Math.max(0, e.vars.minutos);
   }
 }
 
@@ -114,7 +124,9 @@ export class Executor {
     for (let guarda = 0; guarda < 100000; guarda++) {
       const l = this.linha();
       switch (l.t) {
-        case 'narra': return { t: 'narra', texto: interpolar(l.texto, e) };
+        case 'narra':
+          this.registrarZap('', interpolar(l.texto, e));
+          return { t: 'narra', texto: interpolar(l.texto, e) };
         case 'pensa': return { t: 'pensa', texto: interpolar(l.texto, e) };
         case 'fala':
           if (l.expr) {
@@ -122,6 +134,7 @@ export class Executor {
             const p = e.palco.find((x) => x.id === l.quem);
             if (p) p.expr = l.expr;
           }
+          this.registrarZap(l.quem, interpolar(l.texto, e));
           return { t: 'fala', quem: l.quem, texto: interpolar(l.texto, e) };
         case 'cap': {
           e.capitulo = { numero: l.numero, titulo: l.titulo };
@@ -143,6 +156,11 @@ export class Executor {
         case 'anota':
           this.aoAnotar(l.id);
           return { t: 'anota', id: l.id };
+        case 'zap':
+          e.zap = l.grupo ?? undefined;
+          e.zapLog = [];
+          e.zapUltima = undefined;
+          break;
         case 'fundo': e.fundo = l.id; break;
         case 'musica': e.musica = l.id; break;
         case 'som': this.aoSom(l.id); break;
@@ -175,6 +193,16 @@ export class Executor {
       e.pos++;
     }
     throw new Error('laço infinito no roteiro');
+  }
+
+  /** guarda a mensagem no histórico da conversa, sem repetir ao recarregar */
+  private registrarZap(quem: string, texto: string): void {
+    const e = this.estado;
+    if (!e.zap) return;
+    const chave = `${e.cena}:${e.pos}`;
+    if (e.zapUltima === chave) return;
+    e.zapUltima = chave;
+    e.zapLog = [...(e.zapLog ?? []), { quem, texto }].slice(-40);
   }
 
   avancar(): Evento {

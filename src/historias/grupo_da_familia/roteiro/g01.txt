@@ -1,0 +1,315 @@
+=== g01_inicio
+@cap 1 "Juninho de número novo"
+@idade adulta
+@fundo escritorio_moderno
+@musica trabalho
+> Sexta-feira, 18h44. O escritório já tem aquele silêncio de quem foi embora mais cedo e deixou o ar-condicionado ligado.
+> Você passou a tarde explicando para o setor financeiro que "o computador está lento" não é um chamado, é um desabafo.
+(Mais três minutos e eu sou uma mulher livre. Fim de semana, almoço de 80 anos da Vó Dita no domingo e zero impressora.)
+> Você desliga o monitor, pega a bolsa e confere o reflexo na porta de vidro do elevador.
+@roupa "Saindo do trabalho"
+> 18h46. O elevador desce. O celular, no bolso, começa a vibrar.
+> Vibra de novo. E de novo. E não para.
+@som notificacao
+(Ninguém vibra assim numa sexta às sete da noite. Ou alguém morreu, ou alguém mandou corrente.)
+@vai g01_grupo
+
+=== g01_grupo
+@fundo capital_rua
+@musica alegre
+@zap "Família Reunida 🙏🌹"
+> 47 mensagens não lidas
+NEIDE: [figurinha] Bom dia, família abençoada 🌹✨
+TIO_BENE: [figurinha] Bom dia! Café com Jesus ☕
+KAKA: gente é 6h da manhã
+MAE: Bom dia! Lembrete: domingo é o almoço dos 80 anos da mãe. Cada um diz o que vai levar.
+TIO_BENE: Eu levo o pavê
+KAKA: não
+> 18h39
+NEIDE: Gente o Juninho trocou de número, salvem aí o novo dele 🙏
+NEIDE: [foto] Contato: Juninho Novo ❤️
+TIO_BENE: Salvo! Deus abençoe esse menino trabalhador
+KAKA: quem é esse número?
+NEIDE: Kaká é o Juninho, presta atenção
+NEIDE: Coitado do meu filho, o banco dele travou e o aluguel vence hoje, já mandei pra ele
+MAE: Neide, mandou quanto??
+NEIDE: 4.800, ele devolve segunda, é o filho mais responsável dessa família
+TIO: NEIDE NÃO FICA ESPALHANDO NOSSA VIDA FINANCEIRA NO GRUPO
+TIO: TEM GENTE QUE EU NEM CONHEÇO AQUI
+TIO_BENE: Eu sou o Benê, Edson
+KAKA: kkkkkk
+VO: [audio 0:07] O Juninho não tava de plantão hoje? Ele dorme no plantão de sexta. Eu sei porque ele me liga às cinco da manhã pra contar fofoca do hospital.
+> Tia Neide apagou esta mensagem
+NEIDE: Mãe a senhora não entende de tecnologia
+MAE: {nome}??? Você tá vendo isso???
+@musica tensao
+@som alarme
+> 18h47. O Pix saiu às 18h39. Oito minutos atrás.
+@muda minutos=40
+(O relógio começou. Quanto mais cedo o banco souber, maior a chance de o dinheiro ainda estar parado na conta do golpista. Cada minuto que eu gastar com bobagem é um minuto a favor dele.)
+? O grupo inteiro está esperando a "que mexe com computador".
+* Chamar a Tia Neide no privado e pedir os prints da conversa -> g01_privado_neide {minutos-3 rel_neide+1}
+* Responder no grupo, em maiúsculas: "TIA, ISSO É GOLPE" -> g01_grita_grupo {minutos-2 rel_neide-2 confianca-1 marca:expos_tia exposicoes+1}
+* Tentar ligar para o Juninho de verdade antes de qualquer coisa -> g01_liga_juninho_cedo {minutos-4}
+** Mandar no grupo um áudio de 6 minutos sobre a história do Pix no Brasil desde 2020 -> g01_audio_longo {minutos-8 paciencia+1}
+
+=== g01_grita_grupo
+EU: TIA NEIDE, ISSO É GOLPE. A SENHORA CAIU NO GOLPE DO FALSO FILHO. TODO MUNDO SABE DESSE GOLPE.
+> Quatro pessoas visualizaram. Ninguém respondeu por um minuto inteiro.
+NEIDE: Eu não caí em nada, {nome}.
+NEIDE: Eu tenho 61 anos e criei três filhos. Sei muito bem quem é meu filho.
+TIO: GOLPE É COISA DE GENTE BURRA. MINHA ESPOSA NÃO É BURRA
+KAKA: eita
+TIO_BENE: Calma gente, vamos orar
+MAE: Filha. No privado. Pelo amor de Deus.
+> Tia Neide removeu a reação ❤️ da sua mensagem de aniversário de 2023
+(Eu acabei de fazer o grupo inteiro olhar para ela. Agora ela vai defender o golpista só para não dar o braço a torcer. Parabéns, {nome}. Segurança nota dez, empatia nota zero.)
+@muda minutos-4 paciencia-1
+@vai g01_privado_neide
+
+=== g01_audio_longo
+EU: [audio 6:12] Então, gente, o Pix foi lançado em novembro de 2020 e ele é instantâneo, o que é ótimo, mas também significa que... não, espera, deixa eu começar de novo...
+> O áudio leva onze segundos só para carregar.
+KAKA: alguém transcreve pfv
+TIO_BENE: Não consegui ouvir, o meu celular só toca áudio de até 3 minutos
+VO: [audio 0:03] Resume, minha filha.
+NEIDE: Não precisa de aula, {nome}. Eu sei o que é Pix.
+(A Vó tem razão. Ninguém lê textão e ninguém escuta palestra. Eu preciso dos prints, não de plateia.)
+@vai g01_privado_neide
+
+=== g01_liga_juninho_cedo
+@zap fim
+> Você liga para o número antigo do Juninho, o de verdade, que está salvo como "Juninho Primo 💉".
+> Chama. Chama. Caixa postal: "Oi, aqui é o Juninho, se for do hospital, manda mensagem. Se for a minha mãe, eu tô bem, mãe."
+(Plantão de sexta. O celular deve estar no armário, junto com a marmita e o crocs.)
+> Você manda um "me liga assim que puder, urgente" e volta para o celular.
+@vai g01_privado_neide
+
+=== g01_privado_neide
+@zap "Tia Neide"
+EU: Tia, oi. Tudo bem? Me manda print da conversa com esse número novo?
+> Tia Neide está gravando um áudio...
+> Tia Neide está gravando um áudio...
+NEIDE: [audio 2:51] {nome}, minha filha, eu não sou criança, viu? Eu tô mandando porque você pediu com educação, não é porque eu acho que tem alguma coisa errada. O Juninho sempre foi assim, perde tudo, perdeu o celular no hospital, sabe Deus onde, a gente que é mãe já sabe. E outra coisa, você tá comendo direito? Sua mãe falou que você tá magrinha. Vou mandar os prints. Como é que tira print mesmo? Aperta o botão do volume? Espera aí.
+> Tia Neide enviou uma foto de dentro da bolsa
+> Tia Neide enviou uma foto do teto
+NEIDE: [foto] Print da conversa com Juninho Novo ❤️
+NEIDE: Pronto. Tá vendo? Normal.
+@vai g01_le_conversa
+
+=== g01_le_conversa
+@zap "Juninho Novo ❤️ (prints da Tia Neide)"
+> Hoje, 18h21
+GOLPISTA: Oi mãe tudo bem? Esse é meu número novo, salva aí e apaga o outro
+NEIDE: Juninho? Que número é esse filho?
+GOLPISTA: Meu celular caiu na privada lá no hospital kkk to usando um chip novo
+GOLPISTA: Mãe preciso de um favor urgente, meu banco travou pra Pix e o aluguel vence hoje
+GOLPISTA: Faz um Pix pra essa chave, é do meu colega Wanderson, segunda te devolvo
+GOLPISTA: Não liga não que eu to em reunião do plantão, não posso atender
+GOLPISTA: E não comenta com o pai, ele vai falar que eu sou irresponsável
+NEIDE: Mandei filho. Deus abençoe 🙏
+> Hoje, 18h44
+GOLPISTA: Obrigado mãe 🙏🙏 tu é a melhor
+GOLPISTA: Mãe consegue mandar mais 2 mil? Deu um problema no contrato
+> A última mensagem é de três minutos atrás. A Tia Neide ainda não respondeu.
+@zap fim
+(Ele está pedindo mais. Agora. Antes de qualquer coisa, eu preciso ter certeza de cada sinal, porque com a Tia Neide eu só tenho uma chance de explicar.)
+@desafio g1_sinais_falso_filho -> g01_sinais_acerto | g01_sinais_erro
+
+=== g01_sinais_acerto
+(Número novo do nada, pressa, "não liga", Pix para conta de outra pessoa, "não conta pro pai" e, de sobremesa, pedido de mais dinheiro. Não é um filho, é uma lista de verificação.)
+@muda minutos-2 tecnica+1
+@anota g1_falso_parente
+@vai g01_segundo_pix
+
+=== g01_sinais_erro
+(Eu li três vezes e só consegui reparar no "tu é a melhor". O Juninho fala "tu"? O Juninho é de Curitiba, ele fala "você". Isso conta?)
+> Você perde tempo relendo cada balão, até que a última mensagem pisca de novo: "Mãe?? Consegue?"
+(Pedido de mais dinheiro. Isso eu sei. Isso é sempre golpe.)
+@muda minutos-6
+@anota g1_falso_parente
+@vai g01_segundo_pix
+
+=== g01_segundo_pix
+@zap "Tia Neide"
+> Tia Neide está digitando...
+NEIDE: O Juninho tá pedindo mais um pouquinho, deu problema no contrato dele
+NEIDE: Vou mandar que ele tá desesperado
+@som alarme
+(Não. Não, não, não.)
+? A Tia Neide está com o aplicativo do banco aberto.
+* "Tia, antes de mandar qualquer coisa, liga a senhora mesma no número antigo do Juninho." -> g01_neide_liga {minutos-3 rel_neide+1 etica+1}
+* "Tia, a senhora já caiu num golpe. Não cai em dois, pelo amor de Deus." -> g01_neide_ofendida {minutos-5 rel_neide-1}
+* "Tia, pergunta pra ele uma coisa que só o Juninho de verdade sabe." -> g01_pergunta_secreta {minutos-2 tecnica+1}
+** Mandar a figurinha de rosa animada escrito "PARA TUDO" e depois explicar -> g01_figurinha_para {minutos-2 rel_neide+2}
+
+=== g01_figurinha_para
+EU: [figurinha] 🌹 PARA TUDO 🌹 Deus abençoe sua pausa
+> Tia Neide reagiu com 😂
+NEIDE: Onde você achou essa?? Vou salvar
+EU: Tia, guarda o dedo longe do Pix um minutinho. Liga no número antigo do Juninho. Se ele atender, a gente manda tudo que ele quiser.
+NEIDE: Tá bom, tá bom. Por causa da figurinha.
+(Eu fiz dois anos de faculdade de sistemas e o que funcionou foi uma rosa piscando.)
+@vai g01_neide_liga
+
+=== g01_neide_liga
+NEIDE: Liguei no número velho. Deu caixa postal.
+NEIDE: Ué. Mas o celular dele não tinha caído na privada?
+NEIDE: Se caiu na privada como é que dá caixa postal com a voz dele dizendo que tá bem?
+(Caixa postal funciona mesmo com o celular no armário. Mas ela começou a perguntar sozinha. Isso vale mais do que qualquer coisa que eu dissesse.)
+@anota g1_confirmar_outro_canal
+@vai g01_neide_duvida
+
+=== g01_neide_ofendida
+NEIDE: Eu não caí em golpe nenhum, {nome}.
+NEIDE: Você também acha que eu sou burra igual o seu tio acha que todo mundo é?
+> Tia Neide visualizou.
+> Dois minutos sem resposta.
+NEIDE: Não mandei os 2 mil. Satisfeita?
+NEIDE: Mas não é porque você falou. É porque o limite do Pix noturno não deixou.
+(O limite do Pix noturno salvou mais família brasileira do que eu.)
+@muda paciencia-1
+@vai g01_neide_duvida
+
+=== g01_pergunta_secreta
+EU: Pergunta pra ele qual era o nome do cachorro que vocês tinham quando ele era pequeno.
+NEIDE: O Biscoito? Que pergunta boba. Mas tá, vou perguntar.
+> Alguns segundos depois, chega um novo print.
+NEIDE: [foto] "Mãe que pergunta é essa, to sem tempo, manda logo que o dono do apartamento ta aqui"
+NEIDE: Ele não lembrou do Biscoito.
+NEIDE: O Juninho chorou três dias quando o Biscoito morreu. Ele tatuou o Biscoito no tornozelo.
+(Golpista não tem tornozelo tatuado com cachorro. Golpista tem pressa.)
+@anota g1_confirmar_outro_canal
+@vai g01_neide_duvida
+
+=== g01_neide_duvida
+NEIDE: Não vou mandar mais nada por enquanto.
+NEIDE: Mas eu não tô dizendo que é golpe, tá? Tô dizendo que tô desconfiada. É diferente.
+EU: É diferente, tia. Desconfiar é muito bom.
+@zap "Juninho Novo ❤️ (prints da Tia Neide)"
+GOLPISTA: Mãe??
+GOLPISTA: Mãe ta ai?
+GOLPISTA: Mãe responde, é urgente, o homem vai me despejar
+> Juninho Novo ❤️ apagou esta mensagem
+@zap fim
+@fundo carro_noite
+@musica tensao
+> Você entra no carro, joga a bolsa no banco do passageiro e não dá a partida. O celular fica no suporte, brilhando.
+(Agora eu preciso do Juninho de verdade. Ele é a única prova que a Tia Neide vai aceitar.)
+@se marca:expos_tia -> g01_neide_fria
+@vai g01_como_juninho
+
+=== g01_neide_fria
+> No grupo, a Tia Neide mudou a foto de perfil para uma imagem escrita "Eu não devo explicação a ninguém".
+(Recado recebido.)
+@muda rel_neide-1
+@vai g01_como_juninho
+
+=== g01_como_juninho
+? Como falar com um enfermeiro que está no meio do plantão?
+* Ligar para o hospital, pelo número do site oficial, e pedir para chamar o enfermeiro Juninho -> g01_hospital {minutos-4 tecnica+1}
+* Mandar mensagem no número antigo dele e esperar ele ver -> g01_espera_juninho {minutos-9}
+** Pedir para a Vó Dita, que tem o telefone da chefe de enfermagem "desde o batizado", resolver -> g01_vo_liga {minutos-2 rel_vo+2}
+
+=== g01_hospital
+> Você procura o número do hospital no site oficial, não no primeiro anúncio que aparece na busca. Atende uma moça da recepção, com barulho de corredor atrás.
+> Você explica que é prima do enfermeiro Juninho, que é urgente, que não é ninguém morrendo, mas que é golpe.
+> Ela suspira de um jeito que você reconhece: é o suspiro de quem já viu isso muitas vezes.
+> "Ah, de novo o do filho com número novo? Já é o terceiro esse mês. Vou chamar ele."
+@vai g01_juninho_fala
+
+=== g01_espera_juninho
+@zap "Juninho Primo 💉"
+EU: Ju, urgente. Tem alguém se passando por você pra sua mãe. Ela já mandou 4.800. Me liga.
+> Uma marquinha cinza. Só uma.
+> Cinco minutos. Dez minutos. A marquinha continua sozinha, como você no sábado à noite.
+> Mais cinco minutos. Duas marquinhas. Azuis.
+JUNINHO: o quê??? to ligando
+@zap fim
+(Dezoito minutos. Dezoito minutos que o golpista usou para respirar com calma.)
+@vai g01_juninho_fala
+
+=== g01_vo_liga
+@zap "Vó Dita 👵"
+EU: Vó, a senhora consegue falar com alguém do hospital do Juninho? Preciso dele agora.
+VO: [audio 0:22] Já tava fazendo isso, minha filha. Liguei pra Cida, a chefe das enfermeiras. Conheço a Cida desde o batizado dela, eu que fiz o vestido. Ela foi chamar o menino. Eu disse que era a avó dele com uma emergência. Não é mentira. Eu sou avó e isso é uma emergência.
+VO: [audio 0:05] E não fala pra Neide que fui eu. Ela fica brava.
+@zap fim
+(A Vó Dita resolveu em dois minutos o que eu ia levar dez. E ainda pediu sigilo de fonte.)
+@vai g01_juninho_fala
+
+=== g01_juninho_fala
+@som notificacao
+> O celular toca. Na tela: "Juninho Primo 💉". O de verdade.
+@entra juninho assustada centro
+JUNINHO: Prima? Que história é essa? Meu celular tava no armário, eu tô no plantão desde as sete.
+EU: Alguém criou um número novo com a sua foto e falou com a sua mãe. Ela mandou 4.800.
+JUNINHO [triste]: Ai, mãe. Eu falei pra ela. Eu falei no Natal, eu falei na Páscoa...
+JUNINHO: Eu não troquei de número. Eu nunca chamo ela de "mãe" por mensagem, eu chamo de "dona Neide". Desde os doze anos.
+EU: Ela tá desconfiada, mas ainda não admitiu. Ela precisa ouvir de você.
+JUNINHO: Eu vou mandar no grupo agora. E vou ligar pra ela. Mas, prima...
+JUNINHO [pensativa]: Não deixa ela se sentir burra, tá? Ela vai se fechar e aí ninguém tira ela do quarto.
+@marca juninho_avisado
+@muda rel_juninho+1
+@sai juninho
+@vai g01_fim
+
+=== g01_fim
+@zap "Família Reunida 🙏🌹"
+JUNINHO: Gente, aqui é o Juninho. O de verdade, do número de sempre.
+JUNINHO: Eu NÃO troquei de número. Esse "Juninho Novo" não sou eu. Não mandem nada pra ninguém.
+JUNINHO: Dona Neide, eu tô bem. Te ligo no intervalo. Te amo.
+KAKA: ele chamou de dona neide, é ele mesmo
+TIO_BENE: Então quem é que eu salvei??
+KAKA: kkkkkkkk tio
+TIO: EU SEMPRE DESCONFIEI DESSE NÚMERO
+KAKA: tio vc não desconfiou de nada vc mandou figurinha pra ele
+VO: [audio 0:04] Eu falei que ele tava no plantão. Ninguém escuta a velha.
+> Tia Neide está digitando...
+> Tia Neide parou de digitar.
+> Tia Neide está digitando...
+NEIDE: Vou ligar pro banco. Mas é só pra garantir.
+(Ela vai. Do jeito dela, mas vai. Agora é tudo questão de minuto.)
+? Antes de ir para a casa da Tia Neide, o grupo ainda está esperando uma palavra sua.
+* Escrever no grupo que a tia foi esperta de não mandar o segundo Pix -> g01_fim_elogio {confianca+1 rel_neide+1 minutos-1}
+* Mandar os prints da conversa no grupo "pra todo mundo aprender" -> g01_fim_prints {marca:expos_tia exposicoes+1 confianca-2 rel_neide-2 minutos-1}
+* Não falar nada no grupo e dar a partida no carro -> g01_fim_silencio
+** Responder a Vó Dita no privado: "Como a senhora sabia?" -> g01_fim_vo {rel_vo+1 minutos-1}
+
+=== g01_fim_elogio
+EU: A tia Neide desconfiou do segundo pedido e não mandou. Muita gente manda. Ela é mais esperta que o golpista 👏
+NEIDE: Obrigada, {nome}.
+NEIDE: Mas eu desconfiei desde o começo, viu.
+MAE: Orgulho da minha irmã ❤️
+(Ela não desconfiou desde o começo. Mas ela pode contar desse jeito pelo resto da vida, se isso fizer ela ligar para o banco agora.)
+@anota g1_sem_humilhar
+@vai g01_parte
+
+=== g01_fim_prints
+EU: [foto] Prints da conversa da tia com o golpista. Olhem os sinais: número novo, pressa, conta de terceiro...
+> Tia Neide visualizou.
+> Tia Neide saiu do grupo
+> Dona Selma adicionou Tia Neide
+MAE: Ela saiu sem querer. Não foi, Neide?
+NEIDE: Foi sem querer.
+(Não foi sem querer. Eu ensinei o grupo inteiro a reconhecer golpe usando a vergonha dela como exemplo. O grupo aprendeu. Ela só aprendeu que eu exponho.)
+@vai g01_parte
+
+=== g01_fim_silencio
+(Grupo de família não precisa de comunicado agora. Precisa de alguém dirigindo.)
+@vai g01_parte
+
+=== g01_fim_vo
+@zap "Vó Dita 👵"
+EU: Vó, como a senhora sabia?
+VO: [audio 0:41] Minha filha, eu tenho 80 anos. Eu já vi o golpe do bilhete premiado, o do terreno, o da carta do banco e o do sobrinho que ligava do orelhão. Muda a roupa, o golpe é o mesmo: alguém com pressa pedindo dinheiro e dizendo pra não contar pra ninguém. Ah, e o Juninho me chama de "Dita" desde pequeno, de pirraça. Esse aí chamou a Neide de "mãe" seis vezes. Eu contei.
+(Ela contou. A Vó Dita fez análise de frequência de palavras de cabeça.)
+@vai g01_parte
+
+=== g01_parte
+@zap fim
+@musica tensao
+> 19h02. Você dá a partida. A casa da Tia Neide fica a quinze minutos, se o trânsito de sexta deixar.
+> No sinal fechado, você olha o relógio do painel e faz a conta que o golpista também está fazendo.
+(O dinheiro saiu às 18h39. Se ele ainda estiver parado na conta do tal Wanderson, dá para bloquear. Se ele já pulou para outra conta, fica muito mais difícil.)
+@vai g02_inicio

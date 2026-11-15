@@ -1,0 +1,275 @@
+# Parte 2, capítulo 6: Tio Benê compartilhou (sábado à noite)
+
+=== g06_inicio
+@cap 6 "Tio Benê compartilhou"
+@fundo carro_noite
+@musica alegre
+> Sábado, 19h42. Carro da Dona Selma, a caminho da casa do Tio Benê, para buscar as cadeiras de plástico da festa. No grupo ele prometeu quatro. Na garagem dele tem vinte.
+> A sua mãe dirige a quarenta por hora numa avenida de sessenta, com as duas mãos no volante e o rádio na estação de flashback.
+@entra mae neutra centro
+MAE: Lê pra mim o que o Benê mandou. Eu não leio dirigindo.
+EU: A senhora não lê nem parada, mãe.
+MAE: Por isso mesmo. Lê.
+@sai mae
+@som mensagem
+@zap "Família Reunida 🙏🌹"
+TIO_BENE: URGENTE!!!!!! NÃO ATENDAM LIGAÇÃO DE NÚMERO DESCONHECIDO
+TIO_BENE: NOVO GOLPE: ELES LIGAM E SE VOCÊ FALAR "SIM" ELES GRAVAM SUA VOZ E ESVAZIAM SUA CONTA EM 3 MINUTOS
+TIO_BENE: A POLÍCIA FEDERAL CONFIRMOU!!! REPASSE PARA 10 GRUPOS SE VOCÊ AMA SUA FAMÍLIA
+TIO_BENE: [audio 5:12] Ó, família, quem me mandou isso foi o Jurandir lá da pelada, que o cunhado dele trabalha numa firma de segurança, não sei se é de computador ou de portaria, mas é segurança. Diz que a pessoa atendeu, falou "sim", e quando foi ver a conta estava zerada, zerada! Então ninguém fala "sim" mais. Fala "positivo". Fala "pode ser". Eu tô falando "talvez" pra tudo desde hoje de manhã.
+NEIDE: Amém 🙏
+NEIDE: Repassado
+TIO: ISSO É VERDADE. VI NO YOUTUBE UM CARA EXPLICANDO
+JUNINHO: kkkkkkkkk
+JUNINHO: tio falou talvez pro garçom?
+TIO_BENE: Falei. Veio a cerveja do mesmo jeito.
+TIO_BENE: [foto] CESTA BÁSICA DO GOVERNO 2026!!! Cadastre seu CPF e receba em casa. Vagas limitadas, só hoje
+TIO_BENE: Já fiz o meu e o da Cleide. Pedia o CPF e uma foto da identidade, e uma taxinha de entrega de 19,90. Coisa pouca
+TIO_BENE: Mandei pra 15 grupos. Ninguém fica sem
+VO: [audio 0:14] Benedito, eu tenho oitenta anos e nunca vi governo mandar cesta por link de foto. Nunca. Liga pra sua sobrinha.
+@zap fim
+(Dois problemas numa mensagem só. Uma corrente que assusta todo mundo à toa e um link que pegou o CPF, a identidade e o cartão do meu tio.)
+(E o Tio Benê é o homem mais bondoso desta família. Ele repassou porque quer proteger. E porque quer que todo mundo ganhe cesta.)
+? Como responder à corrente no grupo?
+* Mandar no grupo um print de site de checagem com "FALSO" em vermelho e "Tio, de novo??" -> g06_humilha {rel_tio_bene-2 confianca-1 paciencia-1}
+* Chamar o Tio Benê no privado, com carinho, antes de qualquer coisa -> g06_privado {rel_tio_bene+1}
+* Ignorar a corrente. É só mais uma, amanhã ninguém lembra -> g06_ignora {paciencia+1}
+** Mandar no grupo uma figurinha de pavê com a legenda "Talvez" -> g06_pave {rel_tio_bene+1 paciencia+1 confianca+1}
+
+=== g06_humilha
+@zap "Família Reunida 🙏🌹"
+EU: [foto] Print de site de checagem: "É FALSO que dizer 'sim' ao telefone esvazie sua conta"
+EU: Tio, de novo?? Toda semana é uma. Lê antes de repassar, pelo amor de Deus
+> Tio Benê visualizou.
+TIO_BENE: Desculpa. Eu só queria ajudar
+TIO_BENE: Vou ficar quieto então
+KAKA: prima... 😬
+@zap fim
+@entra mae brava centro
+MAE: Você mandou isso no grupo? Na frente da Cleide? O Benê é que nem criança grande, filha. Ele vai passar a semana sem mandar bom dia.
+@sai mae
+(E o pior: agora ele não vai me contar do link. Vai ficar com vergonha e esconder.)
+@vai g06_chegada
+
+=== g06_privado
+@zap "Tio Benê ⚽"
+EU: Oi tio! Tô indo aí buscar as cadeiras. Posso te mostrar uma coisa sobre essa mensagem do "sim"? Sem bronca, prometo
+TIO_BENE: Pode. É fake?
+EU: É sim. Opa. É talvez 😂
+TIO_BENE: KKKKKKKK
+TIO_BENE: Tá bom, vem que eu passo um café
+@zap fim
+(Começou rindo. Começou bem.)
+@vai g06_chegada
+
+=== g06_ignora
+> Você não responde. Em vinte minutos, a corrente aparece de novo, agora encaminhada pela Tia Neide para o grupo da igreja, que encaminha para o grupo do condomínio.
+> E três primos de segundo grau respondem que "já fizeram o cadastro da cesta".
+(Ignorar fake news não faz ela sumir. Faz ela viajar sem ninguém para dizer o contrário.)
+@muda confianca-1
+@vai g06_chegada
+
+=== g06_pave
+@zap "Família Reunida 🙏🌹"
+EU: [figurinha] Um pavê sorridente dizendo "Talvez"
+TIO_BENE: KKKKKKKKKKKKKKK
+JUNINHO: kkkkkkkkkkkk morri
+KAKA: a melhor figurinha do ano
+VO: [audio 0:03] Hahaha. É pavê ou pa comê?
+TIO_BENE: É PA COMÊ MÃE
+EU: Tio, tô chegando aí pras cadeiras. Quero te mostrar um negócio sobre essa corrente, tá?
+TIO_BENE: Vem sobrinha. Café tá passado
+@zap fim
+(Ninguém se defende de quem está rindo junto. Agora dá para conversar.)
+@vai g06_chegada
+
+=== g06_chegada
+@fundo sala_familia
+@musica alegre
+@som porta
+> A casa do Tio Benê tem uma bandeira de time na janela, um sofá com capa de crochê e vinte cadeiras de plástico empilhadas como um monumento.
+@entra tio_bene feliz centro
+TIO_BENE: Chegou a minha sobrinha da computação! Senta. Café ou café?
+EU: Café, tio.
+@se rel_tio_bene<0 -> g06_chegada_magoado
+TIO_BENE: Olha aqui, já te mostro: fiz o cadastro da cesta no celular. Bonitinho o site, com a bandeira e tudo.
+@vai g06_mostra_link
+
+=== g06_chegada_magoado
+@expr tio_bene triste
+TIO_BENE: Se veio dar bronca de novo, as cadeiras tão ali. Pode levar.
+EU: Tio, desculpa o print. Eu fui grossa. Eu fiquei com medo por causa da cesta.
+@expr tio_bene pensativa
+TIO_BENE: ...Tá. Eu também fiquei meio cabreiro com aquela taxinha. Olha aqui o site.
+@vai g06_mostra_link
+
+=== g06_mostra_link
+> Ele estende o celular. Na tela, a mensagem da cesta básica, que ele recebeu de um grupo da pelada e encaminhou para meio bairro.
+@desafio g2_cesta_link -> g06_link_acerto | g06_link_erro
+
+=== g06_link_acerto
+@muda tecnica+1 rel_tio_bene+1
+EU: Olha comigo, tio. O endereço termina em ".site" e só tem "gov" no meio, de enfeite. Site do governo termina em gov.br, e benefício de verdade aparece no aplicativo oficial ou no banco que paga.
+EU: E governo não cobra taxa de entrega. Quem cobra 19,90 quer o número do seu cartão.
+@expr tio_bene surpresa
+TIO_BENE: Então os 19,90...
+EU: ...foram pra eles, junto com o cartão. Mas a gente resolve.
+@anota g2_link_beneficio
+@vai g06_conserto
+
+=== g06_link_erro
+> Você fica tanto tempo explicando "domínio" e "subdomínio" que o café esfria e o Tio Benê começa a olhar para a televisão, onde o time dele perde de dois a zero.
+TIO_BENE: Sobrinha, eu entendi que é "ponto alguma coisa". Mas me fala em português: é golpe ou não é?
+EU: É golpe, tio. Governo não manda cesta por link nem cobra taxa. E pegaram o cartão do senhor.
+TIO_BENE: Por que não falou isso logo?
+@anota g2_link_beneficio
+@vai g06_conserto
+
+=== g06_conserto
+@musica misterio
+EU: Agora, o que fazer. O senhor colocou CPF, foto da identidade e o cartão para a taxa.
+TIO_BENE: E o da Cleide também.
+EU: E o da tia Cleide também.
+? Por onde começar o conserto?
+* Ligar agora para o banco pelo número atrás do cartão, bloquear o cartão e contestar os 19,90 -> g06_cartao {tecnica+1 rel_tio_bene+1}
+* Fazer um "post de desculpas" nos 15 grupos antes de tudo -> g06_desculpas_primeiro {paciencia-1}
+** Ligar para a Vó no viva-voz para ela dar a bronca e você não precisar dar -> g06_vo_bronca {rel_vo+1}
+
+=== g06_cartao
+> O Tio Benê liga para o número impresso no cartão, não para o número do site, como você pediu. A atendente bloqueia o cartão, abre a contestação e já avisa que vai mandar um novo.
+EU: E nos próximos meses o senhor fica de olho: no Registrato, do Banco Central, dá para ver se abriram conta ou empréstimo no seu CPF. E se aparecer qualquer cobrança estranha, boletim de ocorrência.
+TIO_BENE: Registrato. Parece nome de remédio.
+EU: É um remédio. Para CPF.
+@vai g06_noticia
+
+=== g06_desculpas_primeiro
+> Vocês passam quinze minutos escrevendo a mesma mensagem para quinze grupos, um por um, porque o Tio Benê não sabe encaminhar para vários de uma vez e não quer aprender agora.
+> Quando terminam, você lembra que o cartão ainda não foi bloqueado. Ele liga para o banco. A taxa de 19,90 já virou uma compra de R$ 640 numa loja de eletrônicos.
+TIO_BENE [assustada]: Seiscentos e quarenta?!
+EU: Contesta essa também, tio. Liga no número do cartão, fala que não reconhece. Primeiro o dinheiro, depois a vergonha.
+@vai g06_noticia
+
+=== g06_vo_bronca
+@zap "Vó Dita 👑"
+VO: [audio 1:40] Benedito. Benedito, presta atenção. Sua sobrinha vai te ensinar uma coisa e você vai escutar calado, que nem escutava o padre. Quando ela terminar, você liga pro banco no número do cartão. Não no do site. No do cartão. E depois você vem aqui que eu tenho bolo de fubá. Te amo, meu filho, mas você é muito mole pra corrente.
+@zap fim
+TIO_BENE [envergonhada]: Ela me chamou de Benedito duas vezes. Faz trinta anos que ela não faz isso.
+> Ele liga para o banco no número do cartão. Cartão bloqueado, taxa contestada.
+@vai g06_noticia
+
+=== g06_noticia
+@musica alegre
+TIO_BENE: E a outra? A do "sim"? Era mentira também?
+EU: A do "sim" é corrente antiga, tio. Falar "sim" no telefone não esvazia conta. Para mexer no seu dinheiro precisam da sua senha, do seu aplicativo, do seu código.
+EU: Mas tem um pedaço de verdade escondido: hoje dá para imitar voz de alguém a partir de áudio. Então o golpe é outro: alguém liga com a voz parecida com a minha pedindo dinheiro.
+TIO_BENE: E como eu sei que é você?
+? Como ensinar o Tio Benê a checar?
+* Checar juntos: copiar a frase da corrente, procurar num site de checagem e no site oficial da polícia, e ver o que dizem -> g06_checa_junto {tecnica+1 rel_tio_bene+1 marca:g6_checou}
+* Dar uma aula de vinte minutos sobre desinformação, algoritmo e bolha -> g06_aula {paciencia-1 rel_tio_bene-1}
+** Inventar com ele uma palavra secreta da família para quando alguém pedir dinheiro por voz ou mensagem -> g06_palavra {rel_tio_bene+1 confianca+1 marca:palavra_familia}
+
+=== g06_checa_junto
+> Vocês copiam "dizer sim ao telefone esvazia conta" e colam na busca. Três agências de checagem já desmentiram, uma delas em 2019. No site da Polícia Federal, nada.
+TIO_BENE: 2019! A corrente é mais velha que o meu carro.
+EU: Três perguntas antes de repassar, tio. Quem disse? Onde mais saiu? Está pedindo pressa ou medo?
+TIO_BENE: O cunhado do Jurandir. Em lugar nenhum. E pedia "repasse para 10 grupos se ama sua família".
+EU: Prontinho. Já sabe checar.
+@anota g2_fake_news_checar
+@vai g06_correcao
+
+=== g06_aula
+> Você fala de algoritmo, de bolha, de viés de confirmação. O Tio Benê balança a cabeça com cara de quem entendeu tudo e não entendeu nada.
+TIO_BENE: Lindo. Agora me fala o que eu faço quando chegar a próxima.
+EU: Pergunta quem disse, procura em outro lugar e desconfia de pressa.
+TIO_BENE: Viu? Isso cabia num bom dia.
+@anota g2_fake_news_checar
+@vai g06_correcao
+
+=== g06_palavra
+EU: A gente combina uma palavra que só a família sabe. Se alguém ligar com a minha voz, ou mandar mensagem de número novo pedindo dinheiro, o senhor pergunta a palavra.
+TIO_BENE: Pavê.
+EU: Todo mundo sabe que o senhor fala pavê, tio.
+TIO_BENE: Então... "Jurandir".
+EU [feliz]: Jurandir. Perfeito. Ninguém no mundo adivinharia Jurandir.
+> Vocês também checam juntos a frase da corrente: desmentida há anos por várias agências de checagem.
+@anota g2_voz_palavra_familia
+@anota g2_fake_news_checar
+@vai g06_correcao
+
+=== g06_correcao
+@se rel_tio_bene>=1 -> g06_entendeu
+@vai g06_meio_entendeu
+
+=== g06_entendeu
+@marca bene_entendeu
+@muda confianca+1
+@expr tio_bene feliz
+TIO_BENE: Agora me ajuda a escrever pros grupos. Eu errei, eu desfaço. Homem que é homem desmente corrente.
+@zap "Família Reunida 🙏🌹"
+TIO_BENE: FAMÍLIA, ERREI
+TIO_BENE: A corrente do "sim" é FALSA, eu chequei com a minha sobrinha. Pode falar sim, pode casar, pode responder garçom
+TIO_BENE: A CESTA BÁSICA É GOLPE. NÃO CADASTRA. Quem cadastrou, bloqueia o cartão no número do cartão e fala com a {nome}
+TIO_BENE: Desculpa família. Ainda amo vocês. Repassem ESSA
+NEIDE: Benê eu já tinha cadastrado a minha 😳
+EU: Tia, me liga quando puder. A gente resolve rapidinho, sem drama 💛
+NEIDE: Tá
+VO: [audio 0:05] Esse é o meu filho. Beijo.
+@zap fim
+@anota g2_conversar_sem_humilhar
+@vai g06_cadeiras
+
+=== g06_meio_entendeu
+@expr tio_bene pensativa
+TIO_BENE: Tá. Eu vou apagar a corrente. Mas pros grupos eu não escrevo nada não. Vou parecer bobo.
+EU: Tio, quem desmente o próprio erro parece corajoso, não bobo.
+TIO_BENE: Amanhã eu vejo.
+(Amanhã. Até amanhã, a cesta falsa já deu a volta no bairro.)
+@anota g2_conversar_sem_humilhar
+@vai g06_cadeiras
+
+=== g06_cadeiras
+@fundo carro_noite
+@musica alegre
+@sai todos
+> 21h30. Vinte cadeiras de plástico no porta-malas, cinco no banco de trás e uma no seu colo.
+@entra mae feliz centro
+MAE: E aí, o Benê aprendeu?
+EU: Aprendeu a dizer "talvez".
+MAE: Já é um começo.
+@sai mae
+@se marca:vo_aliada -> g06_fim
+@vai g06_vo_chama
+
+=== g06_vo_chama
+@som mensagem
+@zap "Vó Dita 👑"
+VO: [audio 0:48] Minha neta, é a vó. Escuta. Eu tô vendo tudo nesse grupo desde ontem. O Pix da Neide, o telefone que ligou de madrugada, a conta da Kaká, a cesta do Benedito. Eu tenho oitenta anos, não tenho oitenta parafusos soltos. Me conta o que tá acontecendo. Tudo. Que amanhã é o meu dia e eu tenho um plano.
+@zap fim
+? A Vó quer saber de tudo.
+* Contar tudo para a Vó, sem esconder nada, nem o que a família pediu para esconder -> g06_conta_vo {rel_vo+2 marca:vo_aliada}
+* "Não é nada, vó. Amanhã é o seu dia, não quero que a senhora se preocupe" -> g06_poupa_vo {rel_vo-1}
+
+=== g06_conta_vo
+@zap "Vó Dita 👑"
+EU: [audio 6:30] Vó, então, começou ontem às 18h47...
+VO: [audio 0:11] Eu sabia. Eu sabia que o "Juninho" não era o Juninho, ele nunca me chama de "vózinha" com Z. Amanhã você senta do meu lado. Boa noite, minha hacker.
+@zap fim
+(Minha hacker. Eu vou mandar emoldurar esse áudio.)
+@vai g06_fim
+
+=== g06_poupa_vo
+@zap "Vó Dita 👑"
+EU: Não é nada, vó. Tá tudo sob controle. Amanhã é o seu dia, descansa 💜
+VO: Tá bom.
+VO: Mentirosa igual sua mãe. Beijo.
+@zap fim
+@vai g06_fim
+
+=== g06_fim
+@som notificacao
+> 23h58. Uma última mensagem no grupo, do Tio Edson, em letras maiúsculas:
+@zap "Família Reunida 🙏🌹"
+TIO: AMANHÃ CEDO TENHO UMA SURPRESA PRA FAMÍLIA. VAMOS MULTIPLICAR O DINHEIRO DA FESTA. CONFIEM EM MIM. 🚀🚀🚀
+@zap fim
+(Três foguetes. Nunca na história da humanidade três foguetes significaram coisa boa.)
+@vai g07_inicio

@@ -6,6 +6,7 @@ export const FUNDOS = [
   'escritorio_moderno', 'sala_entrevista', 'videochamada', 'cafeteria', 'auditorio_evento', 'sala_ctf', 'soc_sala',
   'apartamento_capital', 'assistencia_tecnica', 'prefeitura_sala', 'cooperativa', 'delegacia', 'hospital_corredor',
   'palco_premiacao', 'aeroporto', 'quarto_madrugada',
+  'sala_familia', 'quintal_almoco', 'agencia_banco', 'carro_noite', 'quarto_tia',
 ];
 export const MUSICAS_IDS = [
   'infancia', 'interior', 'tensao', 'misterio', 'triste', 'alegre', 'romance', 'cidade', 'trabalho', 'hacker',

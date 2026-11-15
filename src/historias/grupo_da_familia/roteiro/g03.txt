@@ -1,0 +1,287 @@
+=== g03_inicio
+@cap 3 "A central que ligou"
+@fundo carro_noite
+@musica cidade
+> 21h03. Você está parada num semáforo que fica vermelho mais tempo do que fica verde, como a sua paciência.
+> No rádio, um locutor promete "o melhor do flashback". Toca a mesma música de sempre.
+@zap "Família Reunida 🙏🌹"
+TIO_BENE: [figurinha] Boa noite, família. Que os anjos guardem o seu sono 🌙
+KAKA: [foto] selfie com filtro de orelhinha. Legenda: "testando a luz pro conteúdo de amanhã 💅"
+MAE: Linda!
+TIO_BENE: Que bichinho é esse na sua cabeça, Kaká
+KAKA: é um filtro tio
+TIO_BENE: Cuidado que pega piolho
+@zap fim
+(Pronto. O grupo voltou ao normal. Talvez o fim de semana também volte.)
+@som notificacao
+> O celular vibra de novo. Não é o grupo. É o privado da Tia Neide.
+@vai g03_aviso
+
+=== g03_aviso
+@musica tensao
+@zap "Tia Neide"
+NEIDE: {nome}!!!! Me ligaram do banco!!!!
+NEIDE: Central de Segurança. Disseram que viram o meu caso e vão devolver hoje mesmo
+@se marca:dinheiro_bloqueado -> g03_aviso_bloqueado
+NEIDE: Disseram que o dinheiro que tinha sumido foi encontrado!!! Deus é bom 🙏
+@vai g03_aviso_teste
+
+=== g03_aviso_bloqueado
+NEIDE: Disseram que o bloqueio precisa ser confirmado senão o dinheiro vai pro golpista amanhã cedo
+@vai g03_aviso_teste
+
+=== g03_aviso_teste
+NEIDE: Só preciso fazer uma transferência de teste pra confirmar que a minha conta é minha
+NEIDE: O moço é muito educado, tô na linha com ele agora, ele tá esperando
+@som alarme
+@muda minutos=15
+(Banco nunca pede transferência de teste. Nunca. Nem para confirmar, nem para liberar, nem para estornar. Ela está do outro lado da cidade, com um golpista no ouvido, e eu tenho uns quinze minutos antes de ela abrir o aplicativo.)
+@se marca:expos_tia -> g03_aviso_frio
+@vai g03_reage
+
+=== g03_aviso_frio
+(E depois do que eu fiz no grupo, ela só me contou porque está empolgada. Se eu falar errado agora, ela para de me contar qualquer coisa.)
+@vai g03_reage
+
+=== g03_reage
+? Ela está na linha com eles agora.
+* Mandar um áudio curto: "Tia, desliga. Banco nunca pede transferência de teste." -> g03_audio_curto {minutos-1 tecnica+1}
+* Ligar para o celular do Tio Edson, que está do lado dela -> g03_liga_tio {minutos-3}
+* Escrever um textão explicando o golpe da falsa central, com três links de notícia -> g03_textao {minutos-5}
+** Mandar áudio para a Vó Dita: "Vó, pega esse telefone da mão da Neide." -> g03_vo_toma {minutos-2 rel_vo+1}
+
+=== g03_audio_curto
+EU: [audio 0:09] Tia, desliga agora. Banco nunca pede transferência de teste. Desliga e eu te explico.
+@se marca:expos_tia -> g03_audio_ignorado
+> Tia Neide ouviu o áudio
+NEIDE: Mas ele sabe tudo, {nome}. Sabe o valor, sabe a hora, sabe o meu nome inteiro
+NEIDE: Vou botar no viva-voz pra você ouvir. Vou te ligar por vídeo
+@vai g03_viva_voz
+
+=== g03_audio_ignorado
+> Tia Neide ouviu o áudio
+> Nenhuma resposta. Um minuto. Dois.
+(Ela ouviu e decidiu não me ouvir. Eu mereço. Mas o golpista não merece.)
+@muda minutos-3
+@vai g03_liga_tio
+
+=== g03_liga_tio
+@zap fim
+> Você liga para o Tio Edson. Chama quatro vezes.
+@entra tio neutra centro
+TIO: Alô? Quem fala?
+EU: Tio, sou eu. O senhor tá do lado da tia?
+TIO: Tô vendo o jogo. Ela tá no telefone com o banco, coisa boa, vão devolver.
+EU: Tio, põe o telefone dela no viva-voz e me põe na chamada de vídeo. Agora. Por favor.
+TIO: Pra quê?
+EU: Pra eu ver o golpista passando o senhor pra trás.
+TIO [brava]: NINGUÉM ME PASSA PRA TRÁS.
+> Em segundos, você está numa chamada de vídeo com a cara do Tio Edson muito perto da câmera e, ao fundo, a voz da "central" no viva-voz.
+@sai tio
+@vai g03_viva_voz
+
+=== g03_textao
+EU: Tia, isso que a senhora está vivendo tem nome: golpe da falsa central. Funciona assim: os criminosos conseguem dados da vítima, às vezes por vazamento, às vezes por conversa em grupo, ligam fingindo ser do banco, criam urgência, oferecem uma solução e pedem uma transferência. Leia esses links:
+EU: link 1
+EU: link 2
+EU: link 3
+> Tia Neide visualizou.
+NEIDE: Não abro link, {nome}. Você mesma me ensinou no Natal.
+(Eu sou derrotada pela minha própria palestra de Natal.)
+NEIDE: Mas tá bom, vou botar no viva-voz pra você ouvir esse moço educado
+@vai g03_viva_voz
+
+=== g03_vo_toma
+@zap "Vó Dita 👵"
+EU: [audio 0:06] Vó, pega esse telefone da mão da Neide. É golpe de novo.
+VO: [audio 0:04] Já tô de pé. Meu joelho é que não tá.
+> Um minuto depois, chega uma chamada de vídeo do celular da Vó Dita. A câmera está apontada para o teto, depois para o lustre, depois para a Tia Neide.
+VO: Neide, bota no viva-voz. A {nome} quer escutar o moço educado.
+@vai g03_viva_voz
+
+=== g03_viva_voz
+@zap fim
+@fundo videochamada
+@musica misterio
+> Na tela, a sala da Tia Neide, torta. No viva-voz, uma voz masculina calma, com música de espera de fundo, como se ele estivesse mesmo num escritório.
+@entra neide neutra esquerda
+@entra central neutra centro
+CENTRAL: Dona Neide, a senhora ainda está aí? Aqui é o Anderson, da Central de Segurança, setor de estornos.
+CENTRAL: Para sua tranquilidade, eu confirmo seus dados: Neide Albuquerque Pereira, final do cartão 4471, Pix de R$ 4.800 hoje às 18h39.
+CENTRAL: Para liberar o estorno, a senhora vai fazer uma transferência de teste de R$ 1.200 para a nossa conta de validação. Ela volta junto com o estorno em até duas horas.
+CENTRAL: É importante não desligar, senão o protocolo cai e o estorno é cancelado.
+CENTRAL: E por ser um procedimento sigiloso, não comente com familiares, tá bom?
+> Na tela, a Tia Neide olha para a câmera. O Tio Edson olha para você. A Vó Dita come uma bolacha.
+(Eu tenho poucos minutos e uma chance. Qual é a coisa certa a dizer agora?)
+@desafio g1_central_quiz -> g03_quiz_acerto | g03_quiz_erro
+
+=== g03_quiz_acerto
+EU: Tia, escuta. Banco não pede transferência de teste. E saber o seu nome e o final do cartão não prova nada: golpista compra dado vazado e lê o que a gente conta em grupo.
+EU: Desliga. A senhora mesma liga no número atrás do cartão. Se for verdade, o banco de verdade vai saber.
+@muda minutos-1
+@vai g03_convencer
+
+=== g03_quiz_erro
+EU: Tia, pergunta pra ele o número do protocolo e anota tudo.
+CENTRAL: Claro, senhora. Protocolo 2026-1115-88341-A. Pode anotar com calma.
+> A Tia Neide anota com calma. Com muita calma. Pede para ele repetir. Ele repete, educadíssimo.
+(Ele tem protocolo, música de espera e educação. Golpista profissional tem tudo isso. Protocolo inventado não prova nada. Eu estou perdendo tempo validando o crime.)
+@muda minutos-5
+EU: Tia, esquece o protocolo. Banco nunca pede transferência de teste. Desliga.
+@vai g03_convencer
+
+=== g03_convencer
+CENTRAL: Dona Neide, eu escutei uma voz aí. Tem alguém aí com a senhora? Lembra que é sigiloso. Se a senhora desligar, o estorno é cancelado.
+> A Tia Neide está com o aplicativo do banco aberto na outra mão. O dedo dela treme em cima de "Transferir".
+NEIDE: Mas e se ele for do banco mesmo e eu perder o dinheiro?
+? O dedo dela está a dois centímetros do botão.
+* "Tia, desliga e liga no número atrás do cartão. Se for verdade, eles vão saber. Se for mentira, a senhora não perdeu nada." -> g03_cartao {minutos-2 rel_neide+1 tecnica+1}
+* Gritar "GOLPISTA!" bem alto no viva-voz -> g03_grita {minutos-3 rel_neide-1}
+* Pedir para a central dizer o nome do gerente da agência da tia -> g03_pergunta_gerente {minutos-4}
+** "Tio Edson, esse moço tá chamando o senhor de burro." -> g03_tio_ofendido {minutos-1 rel_tio+1}
+
+=== g03_cartao
+NEIDE: Moço, eu vou desligar e ligar de volta no número do cartão.
+CENTRAL: Senhora, não faça isso, o sistema...
+> Tu, tu, tu. A Tia Neide desligou no meio da frase. Ela olha para o celular como quem olha para um cachorro que acabou de morder.
+NEIDE: Ele ficou nervoso. Banco não fica nervoso.
+(Ela percebeu sozinha. De novo. Ela é melhor nisso do que acha.)
+@vai g03_resultado
+
+=== g03_grita
+EU: GOLPISTA! VOCÊ É UM GOLPISTA!
+@expr central brava
+CENTRAL: Senhora, quem é essa pessoa? Ela pode estar tentando aplicar um golpe na senhora. Desligue a chamada de vídeo e continue comigo.
+@expr neide assustada
+NEIDE: Ai, meu Deus. E agora? Quem é o golpista?
+(Ótimo. Agora o golpista está me chamando de golpista e a tia está no meio, assustada. Gritar não convenceu ninguém. Só fez barulho.)
+@muda minutos-2
+EU: Tia, sou eu. A {nome}. A que comeu a sua sopa. Desliga ele e liga no número atrás do cartão.
+NEIDE: Tá. Tá bom. Desliguei.
+@vai g03_resultado
+
+=== g03_pergunta_gerente
+EU: Moço, qual é o nome do gerente da agência da minha tia?
+CENTRAL: Senhora, eu sou da central, não tenho acesso à agência. Mas posso transferir para o gerente após o teste.
+> Ele não hesita. Ele tem resposta para tudo. Ele tem resposta para tudo porque ele faz isso o dia inteiro.
+(Perguntinha esperta não derruba golpista profissional. Ele sempre tem uma saída. O único teste que funciona é desligar e ligar para o número oficial.)
+@muda minutos-2
+EU: Tia, desliga. Agora.
+NEIDE: Tá bom, tá bom.
+@vai g03_resultado
+
+=== g03_tio_ofendido
+@entra tio brava direita
+TIO: O QUÊ?
+> O Tio Edson pega o celular da mão da Tia Neide como se fosse um controle remoto na hora do pênalti.
+TIO: ESCUTA AQUI, Ô ANDERSON. AQUI NÃO TEM BURRO. AQUI É EDSON PEREIRA, TRINTA ANOS DE CONTABILIDADE.
+CENTRAL: Senhor, ninguém o chamou de...
+> Tu, tu, tu. O Tio Edson desligou na cara do golpista e está vermelho de orgulho.
+TIO: Golpe é coisa de gente burra. E aqui não tem burro.
+(É a primeira vez que essa frase dele protege alguém. Vou aceitar.)
+@sai tio
+@vai g03_resultado
+
+=== g03_resultado
+@sai central
+@se minutos<=2 -> g03_caiu
+@vai g03_salvou
+
+=== g03_caiu
+@musica triste
+@som dinheiro
+> A Tia Neide desliga. E aí você vê, no canto da tela, o comprovante ainda aberto no celular dela.
+NEIDE: {nome}... eu já tinha mandado. Enquanto você falava. Ele disse que era só um teste e que voltava...
+> R$ 1.200. Transferência de teste para a "conta de validação".
+@expr neide triste
+NEIDE: Eu sou burra. O Edson tem razão. Eu sou burra.
+@marca neide_caiu_central
+@muda rel_neide-1 paciencia-1
+(Não é burrice. É um homem treinado contra uma senhora de 61 anos com o coração na mão. Mas eu demorei demais, e agora são dois golpes na mesma noite.)
+EU: Tia, a senhora não é burra. A gente vai ligar de novo no número atrás do cartão e pedir a contestação desse também. Agora.
+> Mais quinze minutos de menu, outra contestação, outro protocolo no bloquinho da farmácia. A Rosângela não está mais de plantão. O atendente novo é gentil e repete o que a Rosângela disse.
+@vai g03_depois
+
+=== g03_salvou
+@musica alegre
+> A Tia Neide liga no número atrás do cartão. Três minutos de menu e uma atendente confirma: ninguém do banco ligou para ela hoje, e o banco não pede transferência de teste.
+@expr neide surpresa
+NEIDE: Ninguém ligou? Então era outro golpista? No mesmo dia?
+EU: Às vezes é o mesmo, tia. Eles sabiam do Pix.
+@som acerto
+@muda confianca+1 rel_neide+1
+(Segundo golpe barrado. E dessa vez ela desligou na cara dele. Eu quase choro dentro do carro.)
+@vai g03_depois
+
+=== g03_depois
+@sai todos
+@anota g1_falsa_central
+@zap "Vó Dita 👵"
+VO: [audio 1:12] Minha filha, escuta o que eu pensei aqui comendo bolacha. Como é que esse moço sabia do Pix, da hora e do valor? Eu te digo como. A Neide escreveu tudinho no grupo. Quatro mil e oitocentos, a hora, que o banco do menino travou. E aquele grupo tem quarenta e três pessoas. Eu conheço vinte. Os outros vinte e três são gente que alguém adicionou num aniversário e nunca mais saiu. Tem até um número de Portugal. Quem é de Portugal nessa família? Ninguém.
+(A Vó Dita acabou de explicar vazamento de informação melhor do que a palestra obrigatória da empresa.)
+@anota g1_grupo_exposto
+? O que fazer com o que a Vó descobriu?
+* Combinar com a Vó: ela fica de olho no celular da Neide hoje e me avisa de qualquer ligação estranha -> g03_vo_pacto {rel_vo+2 marca:vo_aliada}
+* Pedir para a Tia Neide te passar a senha do celular para você vigiar as mensagens dela -> g03_senha_neide {etica-1 rel_neide-2}
+* Ensinar a regra de ouro para a tia: banco ligou? Desliga e liga você, no número do cartão -> g03_regra {rel_neide+1 confianca+1 tecnica+1}
+
+=== g03_vo_pacto
+EU: Vó, a senhora fica de olho? Se a tia receber ligação de "banco", de "central", de "advogado", qualquer coisa, a senhora me manda um áudio.
+VO: [audio 0:15] Minha filha, eu fico de olho nessa menina desde 1965. Não vou parar agora. E vou ver quem é esse número de Portugal.
+VO: [audio 0:03] E não conta pra Neide. Ela fica brava.
+(Eu acabei de recrutar a analista mais experiente da família. Ela tem oitenta anos e trabalha de graça.)
+@vai g03_fim
+
+=== g03_senha_neide
+@zap "Tia Neide"
+EU: Tia, me passa a senha do seu celular? Aí eu fico de olho nas suas mensagens.
+NEIDE: Não.
+NEIDE: Não passo senha pra ninguém. Nem pra filho. Você me ensinou isso no Natal.
+NEIDE: E você ia ler as minhas conversas com a Zuleica.
+(Ela está certa duas vezes. Senha é pessoal, mesmo na família. E ninguém quer a sobrinha lendo a fofoca da igreja.)
+EU: Tem razão, tia. Desculpa. Esquece.
+@vai g03_fim
+
+=== g03_regra
+@zap "Tia Neide"
+EU: Tia, uma regra só, pra guardar: ligou dizendo que é do banco? A senhora desliga e liga você mesma no número atrás do cartão.
+EU: Se for verdade, o banco de verdade sabe. Se for mentira, a senhora não perdeu nada.
+NEIDE: Desliga e liga. Tá.
+NEIDE: Vou escrever no papelzinho da geladeira, do lado do telefone do gás
+NEIDE: [foto] Ímã de geladeira de pizzaria segurando um papel: "BANCO LIGOU? DESLIGA E LIGA VOCÊ. 💳"
+(Ela escreveu. Com emoji. Num papel. Isso é política de segurança implantada.)
+@vai g03_fim
+
+=== g03_fim
+@zap fim
+@fundo carro_noite
+@musica triste
+> 22h10. Você ainda está no carro, parada na frente do seu prédio, sem coragem de subir.
+> Foram duas horas e vinte minutos que pareceram um mês. E ainda falta o sábado. E o domingo. E o almoço.
+? Antes de subir, uma decisão sobre essa noite.
+* Voltar para a casa da Tia Neide e dormir no sofá, para ficar perto -> g03_volta {rel_neide+1 rel_vo+1 paciencia-1}
+* Subir, tomar banho e dormir. Amanhã é outro dia -> g03_dorme {paciencia+2}
+** Desligar as notificações do grupo da família até amanhã de manhã -> g03_silencia {paciencia+3 confianca-1}
+
+=== g03_volta
+@fundo sala_familia
+> Você volta. A Tia Neide abre a porta de camisola de oncinha e não pergunta nada. Só traz um travesseiro e um cobertor com cheiro de amaciante.
+NEIDE: O sofá afunda do lado esquerdo. Dorme do direito.
+(Ela não disse obrigada. Mas trouxe o cobertor bom, o das visitas.)
+@vai g03_noite_fim
+
+=== g03_dorme
+@fundo quarto_madrugada
+> Você sobe, toma o banho mais longo da sua vida e cai na cama sem tirar o relógio.
+(Amanhã eu acordo cedo e passo lá. Hoje eu já fiz o que dava.)
+@vai g03_noite_fim
+
+=== g03_silencia
+@fundo quarto_madrugada
+> Você silencia o grupo "até amanhã às 8h". O celular, pela primeira vez desde as 18h46, fica quieto.
+(Paz. Que paz. Que paz suspeita.)
+@vai g03_noite_fim
+
+=== g03_noite_fim
+> O sono vem rápido. Os sonhos vêm com música de espera de banco e um galo de cerâmica que diz "para sua segurança, não desligue".
+@vai g04_inicio

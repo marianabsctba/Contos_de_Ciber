@@ -1,0 +1,395 @@
+# Parte 2, capítulo 8: Oitenta anos da Vó Dita (domingo, almoço)
+
+=== g08_inicio
+@cap 8 "Oitenta anos da Vó Dita"
+@fundo quintal_almoco
+@musica festa
+> Domingo, 11h50. Quintal da Vó Dita.
+> Debaixo da mangueira, três mesas emendadas com toalhas que não combinam. O painel "80 ANOS DA RAINHA" ficou torto, mas ninguém tem coragem de mexer. A caixa de som toca Roberto Carlos e, de vez em quando, um aviso de "bateria fraca".
+(Depois de um fim de semana inteiro apagando incêndio, eu mereço pelo menos chegar bonita.)
+@roupa "O look do almoço de 80 anos"
+@som mensagem
+@zap "Família Reunida 🙏🌹"
+KAKA: [foto] Chegando!!! 💅
+TIO_BENE: [foto] O pavê chegou. Ele é o convidado de honra
+JUNINHO: saí do plantão agora, tô indo direto. guardem farofa
+NEIDE: [foto] Salpicão pronto. Ninguém mexe antes da hora
+MAE: Quem tá com o gelo???
+TIO: EU
+MAE: Edson você não está aqui
+TIO: O GELO TAMBÉM NÃO
+VO: [audio 0:06] Tô de batom. Cheguem logo, que velha de batom não espera.
+@zap fim
+@se marca:kaka_recuperada -> g08_kaka_ok
+@se marca:kaka_perdeu_conta -> g08_kaka_perdeu
+@vai g08_juninho
+
+=== g08_kaka_ok
+@entra kaka feliz direita
+KAKA: Prima! Ganhei duzentos seguidores ontem. O post do "fui hackeada" bombou mais que qualquer look.
+KAKA: E uma marca DE VERDADE me chamou. Com e-mail da empresa, contrato e tudo. Nenhum código.
+EU [feliz]: Marca de verdade manda contrato. Golpista manda pressa.
+@vai g08_live
+
+=== g08_kaka_perdeu
+@entra kaka neutra direita
+KAKA: Conta nova, zero seguidores ontem, cento e oitenta hoje. Metade é da família, a outra metade é da Bia pedindo para os outros me seguirem.
+KAKA: O pedido de recuperação da conta antiga ainda está aberto. E a falsa já foi derrubada por denúncia. Pelo menos isso.
+EU: E a nova?
+KAKA: Verificação em duas etapas desde o minuto zero. Prima chata ensinou.
+@vai g08_live
+
+=== g08_live
+KAKA: Vou fazer uma live do niver! "Ao vivo da casa da vó, Rua das Hortênsias, 214, portão azul. A vó mora sozinha e eu venho toda terça visitar!"
+(Endereço, portão, uma senhora de 80 anos que mora sozinha e a rotina da semana. Tudo num story aberto para quem quiser ver.)
+? O que dizer para a Kaká?
+* Pedir para não dizer endereço nem rotina, e postar as fotos depois da festa, sem a fachada -> g08_live_cuidado {rel_kaka+1 tecnica+1}
+* Deixar. É festa, todo mundo posta -> g08_live_deixa {paciencia+1}
+** Sugerir postar só para a lista de "melhores amigos" e deixar a própria Vó escolher a foto que vai -> g08_live_vo {rel_kaka+1 rel_vo+1 confianca+1}
+
+=== g08_live_cuidado
+EU: Posta a festa, prima. Só não posta o mapa. Sem número da casa, sem "ela mora sozinha", sem "toda terça". E manda as fotos quando a gente já tiver ido embora.
+KAKA: Nossa. Eu nunca tinha pensado que story é tipo um outdoor.
+EU: É um outdoor que fica vinte e quatro horas na frente da casa da vó.
+@anota g2_privacidade_foto_contatos
+@vai g08_juninho
+
+=== g08_live_deixa
+> A Kaká faz a live. Quarenta e duas pessoas assistem. Uma delas, um perfil sem foto, pergunta "que horas a vó fica sozinha?".
+KAKA [assustada]: Prima. Quem pergunta isso?
+EU: Ninguém que deveria saber. Apaga a live e bloqueia esse perfil. E daqui pra frente, sem endereço e sem rotina.
+@anota g2_privacidade_foto_contatos
+@vai g08_juninho
+
+=== g08_live_vo
+@entra vo feliz centro
+> A Kaká mostra as fotos para a Vó, uma por uma. A Vó veta seis, aprova duas e exige uma retocada no queixo.
+VO: Esta pode. Esta não, que aparece o número da casa. Esta não, que eu tô de boca aberta.
+KAKA: Vó, a senhora é mais rigorosa que a marca.
+VO: Eu sou a marca, minha filha.
+@sai vo
+@anota g2_privacidade_foto_contatos
+@vai g08_juninho
+
+=== g08_juninho
+@sai todos
+@som porta
+@entra juninho feliz esquerda
+> O Juninho chega de jaleco dobrado debaixo do braço, olheira de dezesseis horas de plantão e um pote de farofa que ninguém sabe de onde saiu.
+JUNINHO: Prima. Antes de tudo: obrigado. Minha mãe me contou tudo. Bom, quase tudo. A versão dela tem ela como heroína.
+@se marca:juninho_avisado -> g08_juninho_avisado
+@vai g08_dinheiro
+
+=== g08_juninho_avisado
+JUNINHO: E valeu por me avisar na sexta. Se você não tivesse mandado mensagem no plantão, eu ia acordar com a minha mãe me chamando de golpista.
+@muda rel_juninho+1
+@vai g08_dinheiro
+
+=== g08_dinheiro
+@se marca:dinheiro_bloqueado -> g08_dinheiro_volta
+@se marca:dinheiro_sumiu -> g08_dinheiro_foi
+@vai g08_bene_chega
+
+=== g08_dinheiro_volta
+JUNINHO: E o banco ligou hoje de manhã. O dinheiro que ficou bloqueado volta para a conta dela. Os R$ 4.800.
+EU [feliz]: Volta?!
+JUNINHO: Volta. Ela chorou no telefone com a atendente. Depois disse para a atendente que "já sabia".
+(Valeu cada minuto daquele relógio.)
+@muda confianca+1
+@vai g08_bo
+
+=== g08_dinheiro_foi
+@expr juninho triste
+JUNINHO: Do dinheiro, nada. O banco disse que já tinha saído da conta de destino quando o pedido chegou.
+JUNINHO: Mas sabe o que mais doeu nela? Achar que todo mundo ia rir. Ninguém riu. Você não deixou.
+@vai g08_bo
+
+=== g08_bo
+@se marca:fez_bo -> g08_bo_feito
+@vai g08_bene_chega
+
+=== g08_bo_feito
+@som notificacao
+@zap "Delegacia de Crimes Cibernéticos"
+DELEGADA: Boa tarde. Sou a Delegada Márcia, responsável pela ocorrência registrada online na sexta, do Pix para o falso "Juninho".
+DELEGADA: A conta de destino apareceu em outras doze ocorrências. Juntamos tudo num inquérito só. Obrigada pelos prints organizados: com horário, valor e número, a gente trabalha.
+DELEGADA: Feliz aniversário para a sua avó.
+EU: Como a senhora sabe do aniversário?
+DELEGADA: Está no histórico do boletim. "Precisamos resolver antes do almoço de 80 anos." Foi a primeira vez que eu ri lendo um BO.
+@zap fim
+(Doze. A Tia Neide não foi a única. E agora, juntas, as doze viraram um caso.)
+@vai g08_bene_chega
+
+=== g08_bene_chega
+@sai todos
+@entra tio_bene feliz centro
+> O Tio Benê entra pelo portão carregando o pavê como quem carrega uma taça de campeonato.
+@se marca:bene_entendeu -> g08_bene_bem
+TIO_BENE: Cheguei! E não repassei nada hoje. Nem bom dia. Tô de quarentena.
+@vai g08_tio
+
+=== g08_bene_bem
+TIO_BENE: Sobrinha! Hoje de manhã chegou outra corrente, de que o PIX vai ser taxado. Sabe o que eu fiz?
+EU: O que o senhor fez, tio?
+TIO_BENE: Copiei, colei, procurei. FALSO. Não repassei. Respondi o Jurandir com o link da checagem. Ele me bloqueou.
+EU [feliz]: Orgulho, tio.
+TIO_BENE: E a palavra da família continua sendo...
+EU: Shhh! Não fala em voz alta!
+@vai g08_tio
+
+=== g08_tio
+@sai todos
+@se marca:tio_investiu -> g08_tio_investiu
+@entra tio feliz centro
+TIO: Trouxe o gelo. E trouxe o dinheiro do bolo intacto. A Dona Zezé fez três andares, com flor de açúcar.
+@entra neide feliz esquerda
+NEIDE: E ele tirou o tal do Wellington de todos os grupos. Ontem ele era Ouro. Hoje é só o Edson.
+TIO: Só o Edson é melhor que Ouro.
+@vai g08_neide
+
+=== g08_tio_investiu
+@entra tio pensativa centro
+> O Tio Edson chega por último, sem o gelo, olhando para o celular como quem olha um exame.
+TIO: Sobrinha. Vem cá. Só uma coisinha.
+> O painel da CryptoGold mostra "Saldo: R$ 4.144,00". E, embaixo, em vermelho: "Saque disponível mediante taxa de liberação de 30%".
+TIO: Ontem a taxa era vinte. Hoje é trinta. É normal?
+EU: Não, tio. É o dinheiro dizendo tchau. Não paga a taxa. Amanhã cedo a gente faz o boletim de ocorrência e a denúncia na CVM.
+TIO: E o bolo?
+> No canto da mesa, um bolo de padaria de um andar só. Alguém escreveu "80" com confeito colorido.
+@vai g08_neide
+
+=== g08_neide
+@sai todos
+@entra neide neutra centro
+> A Tia Neide aparece com o salpicão nos braços e uma frase pronta.
+NEIDE: Olha só quem chegou. A {nome} passou o fim de semana inteiro no celular. Nem ajudou no salpicão.
+(Eu passei o fim de semana inteiro no celular POR CAUSA de você, tia.)
+? Como responder?
+* Rir junto: "Tia, eu ajudei no salpicão digital. Sem uva-passa e sem golpe" -> g08_neide_ri {paciencia+1 rel_neide+1}
+* Responder atravessado: "Se não fosse eu, a senhora tava pagando salpicão para golpista" -> g08_neide_atravessa {paciencia-1 rel_neide-1}
+* Contar para a mesa inteira, em voz alta, toda a história do Pix da Neide, "para todo mundo aprender" -> g08_neide_expoe {confianca-3 rel_neide-2 marca:expos_tia exposicoes+1} [se marca:expos_tia]
+** Abrir o celular e sair do grupo da família, ali mesmo, na frente do salpicão -> g08_sai_grupo {marca:saiu_grupo} [se paciencia<=2]
+
+=== g08_neide_ri
+@expr neide feliz
+NEIDE: Sem uva-passa. Viu? Essa menina me entende.
+> Ela te puxa pelo braço para dentro da cozinha, longe da mesa.
+@vai g08_cozinha
+
+=== g08_neide_atravessa
+@expr neide brava
+NEIDE: Pronto. Lá vem. A dona da razão.
+@entra mae brava esquerda
+MAE: As duas. Hoje não. Hoje é da mãe.
+@sai mae
+(Não é a frase da tia que me cansa. É o fim de semana inteiro pesando nas costas.)
+@vai g08_cozinha
+
+=== g08_neide_expoe
+@expr neide triste
+> Você conta tudo. O Juninho de número novo, os R$ 4.800, a hora exata. A mesa fica em silêncio. Alguém ri baixinho e para.
+> A Tia Neide põe o salpicão na mesa, devagar, e vai para dentro sem dizer nada.
+@entra mae brava esquerda
+MAE: Duas vezes, filha. Duas vezes você fez isso com ela.
+@sai mae
+(Eu queria que todo mundo aprendesse. Ninguém aprendeu nada. Só aprenderam que, se errarem perto de mim, vão virar exemplo.)
+@sai neide
+@vai g08_vo_discurso
+
+=== g08_sai_grupo
+@musica triste
+@zap "Família Reunida 🙏🌹"
+> Você saiu do grupo.
+@zap fim
+@expr neide surpresa
+NEIDE: Ué. Ela saiu do grupo?
+> Você guarda o celular na bolsa. Pela primeira vez desde sexta, ele fica quieto.
+(Não é raiva. É cansaço. Eu amo essa gente. Só não consigo ser o suporte técnico de quarenta pessoas e ainda gostar delas.)
+@sai neide
+@vai g08_vo_discurso
+
+=== g08_cozinha
+@fundo casa_cozinha
+@musica alegre
+@se marca:expos_tia -> g08_cozinha_fria
+@se marca:vo_aliada -> g08_cozinha_bilhete
+@vai g08_cozinha_conversa
+
+=== g08_cozinha_bilhete
+> Na porta da geladeira, preso com um ímã de Aparecida, um bilhete com a letra torta da Vó: "BANCO LIGOU? DESLIGA E LIGA VOCÊ".
+(A Vó transformou a geladeira num manual de segurança. Melhor que muito treinamento de empresa.)
+@vai g08_cozinha_conversa
+
+=== g08_cozinha_conversa
+@entra neide pensativa centro
+NEIDE: Eu não sou de falar isso. Obrigada. Mas...
+> Ela para. Respira. Recomeça.
+NEIDE: Obrigada. Sem "mas". Pronto, falei.
+NEIDE: Eu fiquei com tanta vergonha na sexta que eu queria sumir. E você não me fez sentir burra. Nem quando eu fui.
+EU: A senhora não foi burra, tia. Foi enganada por quem faz isso o dia inteiro.
+NEIDE: Me ensina a ligar aquele negócio das duas etapas? Mas aqui, escondido. Não quero o Edson achando que eu preciso de ajuda.
+@muda rel_neide+1 confianca+1
+@vai g08_vo_discurso_volta
+
+=== g08_cozinha_fria
+@expr neide brava
+NEIDE: Não precisa me ajudar com nada não. Já ajudou bastante na sexta, na frente de todo mundo.
+(Eu tenho o conhecimento técnico. Perdi a única coisa que faz alguém usar ele: a confiança.)
+@vai g08_vo_discurso_volta
+
+=== g08_vo_discurso_volta
+@fundo quintal_almoco
+@musica festa
+@vai g08_vo_discurso
+
+=== g08_vo_discurso
+@sai todos
+@entra vo feliz centro
+> A Vó Dita bate o garfo na garrafa de guaraná três vezes. O quintal inteiro para. Até a caixa de som para, por falta de bateria.
+VO: Oitenta anos. Eu tenho uma coisa pra dizer, e vou dizer antes do bolo, porque depois do bolo ninguém escuta velho.
+VO: Eu sei de tudo. Do Pix na sexta. Da ligação da "central" de madrugada. Do doutor que recupera dinheiro. Da conta da Kaká. Da cesta do Benedito. Do Wellington do Edson.
+@expr vo pensativa
+VO: Vocês acham que eu não leio o grupo porque eu só mando áudio. Eu leio tudo. Eu só não respondo, que resposta escrita cansa a vista.
+@se marca:vo_aliada -> g08_vo_aliada
+@vai g08_vo_plano
+
+=== g08_vo_aliada
+VO: E o que eu não li, a minha neta me contou. Ela não esconde nada da avó. Puxou a mim.
+> Ela pisca para você por cima dos óculos redondos.
+@muda rel_vo+1
+@vai g08_vo_plano
+
+=== g08_vo_plano
+@expr vo feliz
+VO: Então eu tenho um plano. Presente de oitenta anos que eu quero: ninguém come bolo antes de ligar aquele negócio de duas etapas no zap. Eu quero ver o celular de um por um.
+VO: O meu já tá ligado desde ontem. Fui a primeira da família. E, mexendo nisso, eu descobri que aquele número de Portugal no grupo é a Rosinha, que mudou pra lá e nunca disse oi.
+> Lá do fundo da mesa, no telão improvisado, o porta-retrato digital passa pela décima vez a foto do cruzeiro de 2019.
+TIO_BENE: Mãe, mas e o pavê?
+VO: O pavê espera, Benedito. O pavê sempre espera.
+@se marca:saiu_grupo -> g08_vo_saiu
+? Como fazer a família inteira ligar a verificação em duas etapas?
+* Mutirão de mesa em mesa, com paciência, celular por celular -> g08_mutirao {paciencia-1 confianca+1}
+* Mandar um vídeo tutorial no grupo e deixar cada um fazer do seu jeito -> g08_tutorial
+** Deixar a Vó comandar o mutirão, e você só de assistente técnica -> g08_vo_comanda {rel_vo+1 confianca+1} [se marca:vo_aliada]
+
+=== g08_vo_saiu
+VO: E você, {nome}, que saiu do grupo. Eu vi. Eu vejo tudo.
+VO: Tá certa. Você precisava de paz. Mas me ajuda a fazer esse último mutirão antes de sumir?
+EU: Ajudo, vó. Pela senhora, eu ajudo.
+@vai g08_mutirao
+
+=== g08_mutirao
+> Você passa de cadeira em cadeira. Celular da Kaká, já feito. Celular do Tio Benê, com capinha do time. Celular da Dona Selma, com a fonte no tamanho máximo.
+> Configurações. Conta. Confirmação em duas etapas. Criar um PIN de seis números. Colocar um e-mail de recuperação.
+TIO_BENE: E se eu esquecer o PIN?
+EU: Por isso tem o e-mail, tio. E o PIN não é o aniversário, nem 123456, nem o número da camisa do time.
+TIO_BENE: ...vou ter que trocar.
+> No meio do mutirão, a Vó decide fazer uma prova surpresa. Para todo mundo. Inclusive para você.
+@desafio g2_quiz_duas_etapas -> g08_quiz_acerto | g08_quiz_erro
+
+=== g08_quiz_acerto
+@muda tecnica+1 confianca+1
+@marca familia_2fa
+VO: Acertou. E todo mundo aqui ouviu a resposta. Agora não tem desculpa.
+> Treze celulares, treze PINs, treze e-mails de recuperação. O último é o do Tio Edson, que resiste até a Vó olhar para ele por cima dos óculos.
+@anota g2_dois_fatores
+@vai g08_grupo_alerta
+
+=== g08_quiz_erro
+> Você hesita na resposta. O Tio Edson aproveita para dizer que "se nem ela sabe, ninguém precisa".
+@se confianca>=3 -> g08_quiz_erro_salva
+> Metade da mesa guarda o celular. O Tio Edson e o Tio Benê ficam sem ligar. "Depois a gente faz."
+(Depois. A palavra preferida de golpista, de novo.)
+@anota g2_dois_fatores
+@vai g08_grupo_alerta
+
+=== g08_quiz_erro_salva
+VO: Errou, mas sabe consertar. Isso é que é saber. Todo mundo, celular na mão. Agora.
+> E todo mundo obedece, porque a família confia em você mesmo quando você erra.
+@marca familia_2fa
+@anota g2_dois_fatores
+@vai g08_grupo_alerta
+
+=== g08_tutorial
+> Você manda no grupo um vídeo de dois minutos, bem explicado.
+@se confianca>=5 -> g08_tutorial_ok
+> Duas visualizações. Um "kkkkk" do Juninho. Uma figurinha de "amém" da Tia Neide, que não abriu o vídeo.
+(Tutorial no grupo é igual bula de remédio. Todo mundo recebe, ninguém lê.)
+@vai g08_mutirao
+
+=== g08_tutorial_ok
+> Em dez minutos, chegam os prints. Um por um, todo mundo manda a tela de "confirmação em duas etapas ativada". Até o Tio Edson, de cara fechada.
+(Eles fizeram sozinhos. Porque fui eu que pedi. Isso é confiança.)
+@marca familia_2fa
+@anota g2_dois_fatores
+@vai g08_grupo_alerta
+
+=== g08_vo_comanda
+VO: Fila! Por idade. Do mais novo pro mais velho, que os velhos são lentos e os novos são teimosos.
+> A Vó comanda a fila como um general. Você só confere cada tela. Em vinte minutos, a família inteira está protegida, inclusive o Tio Edson, que tentou fugir para o banheiro.
+VO: Edson. Volta aqui com esse celular.
+@marca familia_2fa
+@anota g2_dois_fatores
+@vai g08_grupo_alerta
+
+=== g08_grupo_alerta
+@sai todos
+@entra vo feliz centro
+VO: E agora a segunda parte do plano. Eu quero um grupo novo. Só para avisar de golpe. Sem bom dia, sem corrente, sem figurinha de rosa.
+@entra neide surpresa esquerda
+NEIDE: Sem figurinha de rosa, mãe?
+VO: Uma por semana, Neide. Só no domingo.
+? Como montar o grupo de alerta?
+* Criar o "Alerta de Golpe da Família" com a Vó de administradora -> g08_alerta_vo {rel_vo+1 marca:grupo_alerta}
+* Criar o grupo e ficar você mesma de administradora -> g08_alerta_eu {marca:grupo_alerta paciencia-1}
+* Convidar a Tia Neide para ser a primeira moderadora, ao lado da Vó -> g08_alerta_neide {rel_neide+2 confianca+1 marca:grupo_alerta} [se rel_neide>=1 e !marca:expos_tia]
+* Dizer que a família já tem grupo demais e o principal resolve -> g08_sem_alerta
+
+=== g08_alerta_vo
+@zap "Alerta de Golpe da Família 🚨"
+> Vó Dita criou o grupo "Alerta de Golpe da Família 🚨".
+> Vó Dita mudou a descrição: "Regra 1: pediu dinheiro, liga para a pessoa. Regra 2: código não se passa. Regra 3: corrente é crime contra a paciência da avó."
+VO: [audio 0:20] Bem-vindos. Aqui é sério. Quem mandar bom dia sai. Quem avisar de golpe ganha pavê.
+TIO_BENE: 🙋‍♂️ aviso: chegou mensagem de "cesta de Natal do governo". É golpe
+VO: Benedito ganha pavê.
+@zap fim
+@anota g2_grupo_alerta
+@vai g08_bolo
+
+=== g08_alerta_eu
+@zap "Alerta de Golpe da Família 🚨"
+> Você criou o grupo "Alerta de Golpe da Família 🚨".
+EU: Regras: 1) pediu dinheiro, liga para a pessoa. 2) código não se passa. 3) aqui não tem bom dia
+NEIDE: [figurinha] Bom dia, família abençoada
+EU: Tia.
+NEIDE: Foi sem querer
+@zap fim
+(Mais um grupo para eu moderar. Mas pelo menos esse tem regra.)
+@anota g2_grupo_alerta
+@vai g08_bolo
+
+=== g08_alerta_neide
+@expr neide feliz
+NEIDE: Eu? Moderadora? Depois de tudo?
+EU: Principalmente depois de tudo, tia. Ninguém reconhece um golpe melhor do que quem já viu um de perto.
+@zap "Alerta de Golpe da Família 🚨"
+> Vó Dita criou o grupo "Alerta de Golpe da Família 🚨".
+> Vó Dita tornou Tia Neide administradora.
+NEIDE: Família, primeira regra: se chegar mensagem de filho com número novo, LIGA PRO NÚMERO ANTIGO
+NEIDE: Eu sei do que tô falando. 🌹
+@zap fim
+@anota g2_grupo_alerta
+@vai g08_bolo
+
+=== g08_sem_alerta
+VO: Tá bom. Então o grupo principal vira grupo de alerta também. Vai ser uma bagunça. Mas é a nossa bagunça.
+@vai g08_bolo
+
+=== g08_bolo
+@sai todos
+@musica festa
+> 15h. O bolo chega à mesa. Oitenta velinhas não cabem, então são duas: um oito e um zero, que a Kaká fotografa de doze ângulos sem mostrar o portão.
+> A família canta parabéns desafinada, cada um num tom. O Tio Benê grita "É PIQUE, É PIQUE". A Vó assopra as velas de primeira.
+@entra vo feliz centro
+VO: Agora sim. Pode comer.
+@vai fim_escolha

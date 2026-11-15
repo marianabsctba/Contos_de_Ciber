@@ -38,6 +38,7 @@ export type Linha =
   | { t: 'desafio'; id: string; acerto: string; erro: string }
   | { t: 'anota'; id: string }
   | { t: 'final'; id: string }
+  | { t: 'zap'; grupo: string | null }
   | { t: 'escolha'; pergunta?: string; opcoes: Opcao[] };
 
 export interface Cena {
@@ -141,4 +142,10 @@ export interface Historia {
   notas: Nota[];
   finais: Final[];
   fontes: Record<string, string>;
+  /** atributos iniciais (padrão: tecnica, etica, grana, reputacao 0 e saude 5) */
+  varsIniciais?: Record<string, number>;
+  /** nomes dos atributos mostrados no menu e nos avisos */
+  atributos?: Record<string, string>;
+  /** atributos sempre visíveis no topo da leitura */
+  hud?: { var: string; icone: string; sufixo?: string }[];
 }

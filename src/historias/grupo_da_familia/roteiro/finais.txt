@@ -1,0 +1,350 @@
+# Parte 2, finais. A ordem dos @se define a prioridade.
+
+=== fim_escolha
+@se exposicoes>=3 -> fim_bloqueada
+@se marca:expos_tia e confianca<=-2 -> fim_bloqueada
+@se marca:saiu_grupo -> fim_saiu
+@se marca:neide_caiu_central e marca:neide_caiu_recuperacao -> fim_cadeia
+@se marca:tio_investiu -> fim_tio
+@se marca:familia_2fa e marca:bene_entendeu e !marca:expos_tia -> fim_blindada
+@se marca:dinheiro_bloqueado e confianca>=6 -> fim_heroina
+@se marca:vo_aliada e marca:grupo_alerta -> fim_vo_hacker
+@se marca:dinheiro_bloqueado -> fim_heroina
+@vai fim_dinheiro_foi
+
+# ===================== HEROÍNA DO ALMOÇO =====================
+
+=== fim_heroina
+@musica final_bom
+@fundo quintal_almoco
+@sai todos
+@entra vo feliz centro
+> A Vó Dita levanta o copo de guaraná. A família inteira levanta junto, inclusive o Tio Benê, que levanta o pavê.
+VO: Um brinde à minha neta. Que passou o fim de semana no celular. Por nós.
+@entra neide feliz esquerda
+NEIDE: Eu quase descobri sozinha, tá? Mas ela ajudou.
+@entra juninho feliz direita
+JUNINHO: Mãe.
+NEIDE: Ajudou muito. Pronto.
+@se !marca:familia_2fa -> fim_heroina_2fa
+@vai fim_heroina_brinde
+
+=== fim_heroina_2fa
+VO: E antes do segundo pedaço de bolo, todo mundo me mostra a tela das duas etapas ligada. Quem não ligou, não repete.
+> Em cinco minutos, treze celulares estão protegidos. Nada motiva mais uma família brasileira do que a ameaça de ficar sem bolo.
+@vai fim_heroina_brinde
+
+=== fim_heroina_brinde
+> Os R$ 4.800 voltam para a conta da Tia Neide na terça. Ela compra um celular novo para a Vó com uma parte e coloca, ela mesma, a verificação em duas etapas.
+@se marca:kaka_recuperada -> fim_heroina_kaka
+@vai fim_heroina_ultima
+
+=== fim_heroina_kaka
+> A Kaká grava um vídeo chamado "Como minha prima salvou minha conta e o Pix da minha tia no mesmo fim de semana". Passa de dez mil visualizações. A marca de verdade manda um kit de presente. Para você.
+@vai fim_heroina_ultima
+
+=== fim_heroina_ultima
+@zap "Família Reunida 🙏🌹"
+VO: [audio 0:12] Obrigada, família. Foi o melhor aniversário da minha vida. E o mais seguro.
+NEIDE: [figurinha] Boa noite, família protegida 🌹🔒
+TIO_BENE: Boa noite. Pavê acabou. Golpe também
+? Antes de dormir, uma última mensagem.
+* "Amo vocês. Na dúvida, liguem para mim. Na certeza, também." -> fim_heroina_fim
+** "Tia, a figurinha nova ficou linda." -> fim_heroina_fim {rel_neide+1} [se rel_neide>=1]
+
+=== fim_heroina_fim
+EU: Amo vocês. Liguem antes de clicar 💛
+@zap fim
+(Tem gente que acha que segurança é firewall. Pra mim, foi um almoço de domingo com quarenta pessoas que agora atendem o telefone e perguntam: "é você mesma?".)
+@final heroina_do_almoco
+
+# ===================== VÓ HACKER =====================
+
+=== fim_vo_hacker
+@musica final_bom
+@fundo sala_familia
+@sai todos
+> Três meses depois.
+> A sala da Vó Dita tem um porta-retrato novo: um print do grupo "Alerta de Golpe da Família 🚨", com 41 membros e uma descrição que é quase uma política de segurança.
+@entra vo feliz centro
+VO: Hoje teve três. Um falso boleto de luz, um "seu CPF vai ser cancelado" e um primo de segundo grau oferecendo vaga de emprego por cinquenta reais de taxa.
+EU: E a senhora fez o quê?
+VO: Mandei a figurinha.
+> A figurinha é uma foto da Vó de óculos escuros, braços cruzados, com a legenda "GOLPE AQUI NÃO". A Kaká fez. Virou figurinha de três bairros.
+@se marca:familia_2fa -> fim_vo_2fa
+VO: E todo domingo eu pergunto quem ainda não ligou as duas etapas. Hoje só falta o Edson. Domingo que vem ele não come.
+@vai fim_vo_grupo
+
+=== fim_vo_2fa
+VO: E a família inteira tem as duas etapas ligadas. Eu confiro de mês em mês. Por amostragem, que nem auditoria.
+EU: Vó, onde a senhora aprendeu "amostragem"?
+VO: No seu caderno. Você esquece aberto.
+@vai fim_vo_grupo
+
+=== fim_vo_grupo
+@zap "Alerta de Golpe da Família 🚨"
+NEIDE: Mãe chegou mensagem do "Juninho" de número novo de novo kkkkk
+NEIDE: Liguei pro número antigo. Ele tava dormindo no plantão. Bloqueei o novo
+VO: [audio 0:04] Neide ganha pavê.
+TIO_BENE: Vou levar quarta
+@se marca:tio_desistiu -> fim_vo_tio
+@vai fim_vo_ultima
+
+=== fim_vo_tio
+TIO: CHEGOU CONVITE PRA OUTRA PIRÂMIDE. RENDE 5% AO DIA. DENUNCIEI NA CVM
+VO: [audio 0:03] Edson ganha meio pavê. Ainda tá escrevendo gritando.
+@vai fim_vo_ultima
+
+=== fim_vo_ultima
+@zap fim
+> Você é só membro do grupo. Não é administradora. Pela primeira vez na vida, quem cuida da segurança da família não é você.
+(E é a melhor analista que eu já vi. Oitenta anos, três meses de experiência e zero falso positivo.)
+@final vo_hacker
+
+# ===================== FAMÍLIA BLINDADA =====================
+
+=== fim_blindada
+@musica final_bom
+@fundo sala_familia
+@sai todos
+> Dezembro. Quase Natal. Época de golpe de presente, de frete, de amigo secreto falso.
+@som mensagem
+@zap "Família Reunida 🙏🌹"
+NEIDE: [figurinha] Bom dia, família abençoada 🌹
+NEIDE: ATENÇÃO: tá chegando mensagem de "entrega retida, pague a taxa". É golpe. Ninguém paga
+NEIDE: Eu conferi no site dos Correios digitando o código lá, não clicando no link
+TIO_BENE: Chequei também. FALSO. Não repassei
+KAKA: tia virou a CISO da família kkkkk
+NEIDE: Não sei o que é isso mas aceito
+@zap fim
+(A Tia Neide é a primeira a avisar. Sempre. Ela ainda manda rosa animada de bom dia. Mas agora pergunta antes de clicar.)
+@se marca:dinheiro_bloqueado -> fim_blindada_dinheiro
+@vai fim_blindada_ceia
+
+=== fim_blindada_dinheiro
+> Com os R$ 4.800 de volta, ela fez uma coisa que ninguém esperava: pagou um curso de informática para a terceira idade na paróquia. E se matriculou junto.
+@vai fim_blindada_ceia
+
+=== fim_blindada_ceia
+@fundo quintal_almoco
+@musica festa
+@entra neide feliz centro
+NEIDE: Ensina de novo aquele negócio de ver os aparelhos conectados? Eu quero mostrar para as meninas do curso.
+EU [feliz]: Ensino, tia.
+NEIDE: E não conta pra ninguém que eu caí naquele golpe da sexta.
+EU: Tia, a senhora conta pra todo mundo. Na aula.
+NEIDE: É diferente. Na aula eu sou a professora.
+? O que responder?
+* "A senhora é a melhor professora que esse golpe poderia ter." -> fim_blindada_fim {rel_neide+1}
+** "Posso assistir a sua aula?" -> fim_blindada_fim {rel_neide+2} [se rel_neide>=2]
+
+=== fim_blindada_fim
+NEIDE: Pode. Mas senta lá no fundo e não corrige.
+@final familia_blindada
+
+# ===================== O DINHEIRO FOI, A FAMÍLIA FICOU =====================
+
+=== fim_dinheiro_foi
+@musica triste
+@fundo quintal_almoco
+@sai todos
+> 17h. O quintal esvazia devagar. Sobram copos, um pedaço de pavê e a Tia Neide lavando louça que ninguém pediu para lavar.
+@entra neide triste centro
+NEIDE: Os quatro mil e oitocentos não voltam, né?
+@se marca:dinheiro_sumiu -> fim_dinheiro_foi_resposta
+EU: Ainda não sei, tia. Mas a gente fez o que dava.
+@vai fim_dinheiro_foi_bo
+
+=== fim_dinheiro_foi_resposta
+EU: Provavelmente não, tia. Saiu da conta antes do bloqueio chegar.
+NEIDE: Era o dinheiro da reforma do banheiro.
+EU: O banheiro espera. A senhora tá aqui. Ninguém mais caiu. Isso não tem preço.
+@vai fim_dinheiro_foi_bo
+
+=== fim_dinheiro_foi_bo
+@se marca:fez_bo -> fim_dinheiro_foi_inquerito
+@vai fim_dinheiro_foi_abraco
+
+=== fim_dinheiro_foi_inquerito
+> Em março, chega uma notificação: a conta de destino foi bloqueada de vez e o dono, um "laranja" de outro estado, foi identificado. O dinheiro não volta. Mas o BO da Tia Neide foi uma das peças.
+@vai fim_dinheiro_foi_abraco
+
+=== fim_dinheiro_foi_abraco
+@expr neide pensativa
+NEIDE: Obrigada.
+> Você espera o "mas". O "mas" não vem.
+@expr neide feliz
+NEIDE: Só obrigada. Sem nada depois.
+@entra vo feliz direita
+VO: Ouviu? Anota a data. Quarenta anos que eu espero a Neide falar "obrigada" sem "mas".
+@se paciencia<=2 -> fim_dinheiro_foi_cansada
+@vai fim_dinheiro_foi_fim
+
+=== fim_dinheiro_foi_cansada
+(Eu tô exausta. Briguei, perdi a paciência, quase saí do grupo. Mas fiquei. E ela me abraçou com cheiro de detergente.)
+@vai fim_dinheiro_foi_fim
+
+=== fim_dinheiro_foi_fim
+> O dinheiro foi. A família ficou. No grupo, à noite, a Tia Neide manda a rosa animada de sempre, com uma legenda nova: "Liguem antes de mandar Pix 🌹".
+@final dinheiro_foi_familia_ficou
+
+# ===================== SAIU DO GRUPO =====================
+
+=== fim_saiu
+@musica triste
+@fundo carro_noite
+@sai todos
+> 18h. Você volta para casa de carona com a sua mãe. O celular, no seu colo, está estranhamente silencioso.
+@entra mae pensativa centro
+MAE: Você saiu mesmo do grupo?
+EU: Saí, mãe. Eu precisava de um domingo em que ninguém me mandasse áudio de cinco minutos.
+MAE: Eu entendo. Eu saí do grupo da escola em 2014 e nunca fui tão feliz.
+@sai mae
+(Eu não deixei de amar ninguém. Só deixei de ser a central de atendimento vinte e quatro horas de quarenta pessoas.)
+? Mas eles ainda vão receber golpe amanhã. E depois de amanhã.
+* Criar um canal só de avisos, onde só você escreve e ninguém responde -> fim_saiu_canal
+** Criar o canal e pôr a Vó como única outra administradora -> fim_saiu_canal_vo {rel_vo+1} [se marca:vo_aliada]
+
+=== fim_saiu_canal
+@zap "Avisos de Golpe 🔒"
+> Você criou o canal "Avisos de Golpe 🔒".
+EU: Aqui só tem aviso de golpe. Sem bom dia, sem resposta, sem corrente. Na dúvida, me liga.
+> 9 inscritos.
+> 6 visualizações.
+@zap fim
+@vai fim_saiu_fim
+
+=== fim_saiu_canal_vo
+@zap "Avisos de Golpe 🔒"
+> Você criou o canal "Avisos de Golpe 🔒". Vó Dita agora é administradora.
+EU: Aqui só tem aviso de golpe. Na dúvida, me liga. Ou liga pra Vó.
+VO: [audio 0:05] Liga pra Vó que é mais rápido.
+> 9 inscritos.
+> 6 visualizações. Uma delas, a Vó, que lê duas vezes.
+@zap fim
+@vai fim_saiu_fim
+
+=== fim_saiu_fim
+> Na segunda, a Tia Neide te manda uma mensagem no privado. Só uma. Um print de um "boleto de IPVA atrasado" e a pergunta: "isso é golpe?".
+EU: É, tia. Não paga. Boa semana 💛
+NEIDE: Obrigada. Sem mas.
+(Às vezes proteger a família é ficar um passo do lado de fora do grupo. Mas com a porta aberta.)
+@final saiu_do_grupo
+
+# ===================== GOLPE EM CADEIA =====================
+
+=== fim_cadeia
+@musica final_ruim
+@fundo quintal_almoco
+@sai todos
+> 16h. O bolo está pela metade. A família, também.
+> Alguém comentou, alto demais, que a Neide "caiu de novo" na central falsa. Depois alguém lembrou do doutor que recupera dinheiro. Depois o Tio Edson disse que "isso é coisa de gente burra", e a Neide jogou o guardanapo nele.
+@entra neide triste esquerda
+NEIDE: Três vezes. Em dois dias. Vocês acham que eu não sei?
+@entra tio brava direita
+TIO: Eu falei que era pra deixar o dinheiro quieto!
+NEIDE: E você com aquela pirâmide, Edson? Quem é burro agora?
+@sai tio
+@sai neide
+> Cada um vai para um canto do quintal. A Kaká, para o portão. O Benê, para o pavê. A sua mãe, para a louça.
+@entra vo triste centro
+VO: Golpista não tira só dinheiro, minha neta. Tira a vontade de contar o próximo erro.
+@se marca:fez_bo -> fim_cadeia_bo
+@vai fim_cadeia_fim
+
+=== fim_cadeia_bo
+VO: Pelo menos tem boletim de tudo. Um dia alguém vai juntar os papéis desse homem. E vai ter o nome da sua tia lá, como quem ajudou a pegar.
+@vai fim_cadeia_fim
+
+=== fim_cadeia_fim
+? O que fazer agora, no meio do quintal partido?
+* Sentar do lado da Tia Neide e não dizer nada, só ficar -> fim_cadeia_ultima {rel_neide+1}
+* Voltar para casa mais cedo -> fim_cadeia_ultima
+
+=== fim_cadeia_ultima
+> Falso filho, falsa central, falso advogado. Em um fim de semana, a Tia Neide caiu três vezes.
+> O almoço de 80 anos termina às 17h, com cada um num canto. A Vó apaga as velas sozinha.
+(Da próxima vez, eu chego antes. Antes do primeiro golpe, não depois do terceiro.)
+@final golpe_em_cadeia
+
+# ===================== RENDEU 3% AO DIA =====================
+
+=== fim_tio
+@musica final_ruim
+@fundo sala_familia
+@sai todos
+> Quinta-feira, quatro dias depois.
+@som notificacao
+@zap "Família Reunida 🙏🌹"
+TIO: GENTE
+TIO: O SITE DA CRYPTOGOLD SAIU DO AR
+TIO: O WELLINGTON ME BLOQUEOU
+TIO: O SALDO TAVA 4.500
+KAKA: tio... 😔
+NEIDE: Os 3.200 da festa, Edson
+TIO_BENE: Tô levando pavê aí
+@zap fim
+@entra tio triste centro
+> O Tio Edson está na sala, sentado no sofá, olhando para o porta-retrato digital, que passa o cruzeiro de 2019 como quem passa um filme de outra vida.
+TIO: Rendeu. Rendeu certinho. Três por cento por dia. Por quatro dias.
+EU: Eles sempre deixam render, tio. Até a hora que não deixam sair.
+TIO: Eu falei que golpe era coisa de gente burra.
+EU: E eu falei que era coisa de gente que confia.
+? O que fazer com o Tio Edson agora?
+* Ajudar ele a fazer o boletim de ocorrência online e a denúncia na CVM, com os prints e o comprovante -> fim_tio_bo {rel_tio+1}
+* Lembrar que avisou, com todas as letras -> fim_tio_avisou {rel_tio-1}
+
+=== fim_tio_bo
+> Vocês juntam tudo: o comprovante do Pix, o nome da empresa, os prints do Wellington Diamante, o endereço do site. O BO leva vinte minutos. A denúncia na CVM, dez.
+EU: E ninguém aparece oferecendo recuperar esse dinheiro mediante taxa. Se aparecer, é o mesmo golpe com outro terno.
+TIO: Eu sei. A Neide me contou do doutor.
+@vai fim_tio_fim
+
+=== fim_tio_avisou
+TIO: Eu sei que você avisou. Eu sei. Não precisa repetir.
+> Ele não fala mais nada pelo resto da tarde.
+(Eu estava certa. E estar certa não devolveu um real do bolo.)
+@vai fim_tio_fim
+
+=== fim_tio_fim
+> No almoço de domingo, a festa da Vó já tinha sido com bolo de padaria, de um andar só, com "80" de confeito colorido.
+@entra vo neutra esquerda
+VO: O bolo da padaria tava bom, Edson. Mas o da Dona Zezé ia ser melhor.
+@final tio_rendeu_3_por_cento
+
+# ===================== BLOQUEADA PELA TIA =====================
+
+=== fim_bloqueada
+@musica final_ruim
+@fundo quarto_madrugada
+@sai todos
+> Domingo, 23h. Você está deitada no seu quarto, olhando para o celular.
+> A foto de perfil da Tia Neide sumiu. A última vez online também. Ela te bloqueou.
+@zap "Família Reunida 🙏🌹"
+NEIDE: [figurinha] Boa noite, família 🌹
+TIO: BOA NOITE. AMANHÃ VOU VER AQUELE INVESTIMENTO DE NOVO
+TIO_BENE: [foto] Corrente nova: "Pix vai ser taxado em janeiro"
+EU: Tio, isso é falso. Posso mostrar?
+> Ninguém responde.
+@zap fim
+(Na sexta, eu era a que mexe com computador. Hoje, eu sou a que expôs a tia. E quem expõe não é escutada.)
+@se marca:kaka_recuperada -> fim_bloqueada_kaka
+@vai fim_bloqueada_fim
+
+=== fim_bloqueada_kaka
+@zap "Kaká 💅"
+KAKA: prima, eu ainda te escuto, tá? só não fala nada no grupo por um tempo
+KAKA: a tia tá magoada de verdade
+@zap fim
+@vai fim_bloqueada_fim
+
+=== fim_bloqueada_fim
+? Uma última tentativa?
+* Mandar para a Tia Neide, pelo celular da sua mãe, um pedido de desculpas sem "mas" -> fim_bloqueada_ultima {etica+1}
+* Deixar como está -> fim_bloqueada_ultima
+
+=== fim_bloqueada_ultima
+> A mensagem, se chegou, ficou com um tique só.
+> Na terça, o Tio Benê repassa a corrente da taxa do Pix para quinze grupos. Na quinta, a Tia Neide recebe uma ligação da "central de segurança do banco". Ninguém pergunta a sua opinião.
+(Eu sabia tudo de golpe. Esqueci a parte mais importante: segurança sem empatia não protege ninguém.)
+@final bloqueada_pela_tia

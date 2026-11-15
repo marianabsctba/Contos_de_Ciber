@@ -1,0 +1,290 @@
+# Parte 2, capítulo 7: Investimento garantido (domingo cedo)
+
+=== g07_inicio
+@cap 7 "Investimento garantido"
+@fundo quarto_tia
+@musica alegre
+> Domingo, 7h05. Você dormiu no quarto de hóspedes da casa da Tia Neide, porque a sua mãe achou "mais prático para a festa".
+> O quarto tem um crucifixo, uma máquina de costura e uma foto do Juninho de formatura olhando para você com cara de "eu avisei".
+@som mensagem
+@zap "Família Reunida 🙏🌹"
+NEIDE: [figurinha] Bom dia, família abençoada. Hoje é dia da RAINHA 👑🌹
+TIO_BENE: Bom dia. Hoje eu falo SIM pra tudo
+TIO: BOM DIA FAMÍLIA. CHEGOU A HORA DA SURPRESA
+TIO: COMO VOCÊS SABEM EU SOU O TESOUREIRO DA FESTA. TENHO NA MINHA CONTA OS 3.200 DA VAQUINHA
+TIO: VOU APLICAR NA CRYPTOGOLD. RENDE 3% AO DIA. GARANTIDO
+TIO: E TEM WHITEPAPER. QUEM TEM WHITEPAPER É SÉRIO
+TIO: [foto] Print do painel: "Saldo: R$ 560,00. Rendimento de hoje: +R$ 16,80. Nível: OURO"
+TIO: COMECEI COM 500 SEMANA PASSADA. JÁ SAQUEI 60 DE LUCRO. É REAL GENTE
+TIO: SE EU COLOCAR OS 3.200 ATÉ AS 9H EU ENTRO NO LOTE DIAMANTE E O BOLO DA MÃE SAI DE GRAÇA COM O RENDIMENTO
+KAKA: tio isso é pirâmide 😐
+TIO: PIRÂMIDE É NO EGITO KAKÁ. ISSO É TECNOLOGIA
+NEIDE: Edson, é o dinheiro do bolo
+TIO: E O BOLO VAI DOBRAR NEIDE
+MAE: Edson pelo amor de Deus
+@zap fim
+@musica tensao
+@som alarme
+(Pirâmide financeira com nome de remédio para calvície. Três por cento ao dia. Lote que fecha às nove. Ele já sacou um pouquinho, para acreditar.)
+(E ele está dois cômodos de distância, de pijama, com o celular na mão e o dedo no Pix.)
+@muda minutos=20
+? Como entrar nessa conversa?
+* Responder no grupo, com calma: "Tio, antes de aplicar, me deixa ver com o senhor? Tô aqui do lado" -> g07_pede_calma {minutos-1 rel_tio+1}
+* Escrever no grupo, em maiúsculas: "TIO ISSO É PIRÂMIDE E O SENHOR VAI PERDER TUDO" -> g07_maiusculas {minutos-2 rel_tio-1 paciencia-1}
+* Levantar da cama e ir direto até a cozinha falar com ele cara a cara -> g07_cozinha {minutos-1}
+** Responder: "Tio, que incrível! Antes de pôr mais, saca tudo agora só pra testar se sai?" -> g07_teste_saque {minutos-2 tecnica+1 marca:g7_saque}
+
+=== g07_pede_calma
+@zap "Família Reunida 🙏🌹"
+EU: Tio, bom dia! Antes de aplicar, me deixa ver com o senhor? Tô aqui no quarto do lado
+TIO: PODE VIR. VOU TE MOSTRAR COMO SE GANHA DINHEIRO
+NEIDE: Vai lá filha. Ele me escuta menos que você
+@zap fim
+(Ele me escuta menos que você. Vindo da Tia Neide, é quase um prêmio.)
+@vai g07_cozinha
+
+=== g07_maiusculas
+@zap "Família Reunida 🙏🌹"
+EU: TIO ISSO É PIRÂMIDE E O SENHOR VAI PERDER TUDO
+TIO: ESSA GERAÇÃO NÃO ACREDITA EM NADA
+TIO: VOCÊ É IGUAL A KAKÁ. ACHA QUE SABE TUDO PORQUE TEM CELULAR
+KAKA: tia me inclui fora dessa
+JUNINHO: kkkkkk "tia"
+@zap fim
+(Gritar em maiúsculas com um homem que só escreve em maiúsculas. Grande estratégia, {nome}.)
+@vai g07_cozinha
+
+=== g07_teste_saque
+@zap "Família Reunida 🙏🌹"
+EU: Tio, que incrível! Antes de pôr mais, saca tudo agora só pra testar se sai? Aí a gente aplica com segurança
+TIO: BOA IDEIA. VOU SACAR OS 560 E COLOCAR DE VOLTA COM OS 3.200
+> 7h14. O Tio Edson está digitando...
+> 7h16. O Tio Edson está digitando...
+TIO: DEU UM ERRO
+TIO: DIZ QUE PRA SACAR ACIMA DE 100 TEM QUE PAGAR TAXA DE LIBERAÇÃO DE 20%
+TIO: É NORMAL NÉ? IMPOSTO
+@zap fim
+(Não é imposto. É o sinal mais velho do mundo: o dinheiro entra fácil e não sai.)
+@vai g07_cozinha
+
+=== g07_cozinha
+@fundo sala_familia
+@entra tio feliz centro
+> O Tio Edson está na mesa da cozinha, de pijama listrado, com o celular apoiado no açucareiro e uma folha de papel cheia de contas.
+TIO: Senta, sobrinha. Você que é das tecnologias vai entender. Isso aqui é o futuro.
+> Ele mostra a mensagem do "consultor" que o colocou na CryptoGold, um tal de Wellington Diamante, com foto de perfil num carro esportivo.
+TIO: O Wellington me explicou tudo. Lê aqui.
+@desafio g2_sinais_piramide -> g07_sinais_acerto | g07_sinais_erro
+
+=== g07_sinais_acerto
+@muda minutos-2 tecnica+1
+@marca g7_sinais
+EU: Tio, olha só. "Rendimento garantido": ninguém pode garantir rendimento em investimento de risco, e cripto é risco puro.
+EU: "Ganhe mais indicando amigos": o dinheiro dos novos paga os antigos. Quando param de entrar novos, acaba.
+EU: "Lote fecha às 9h": pressa. Investimento sério não tem contagem regressiva.
+@expr tio pensativa
+TIO: O Wellington tem um carro bonito.
+EU: Com o dinheiro de quem, tio?
+@anota g2_piramide
+@vai g07_discussao
+
+=== g07_sinais_erro
+@muda minutos-4
+> Você começa a explicar blockchain, depois volatilidade, depois o que é uma corretora, e o Tio Edson olha para você com a paciência de quem espera o micro-ondas.
+TIO: Sobrinha, você falou um monte de palavra em inglês e nenhuma sobre o meu dinheiro.
+EU: Tá. Resumindo: rende demais, garante demais e pede pressa demais. Isso é pirâmide.
+TIO: Isso é a sua opinião.
+@anota g2_piramide
+@vai g07_discussao
+
+=== g07_discussao
+@se minutos<=0 -> g07_investiu
+@entra neide neutra esquerda
+> A Tia Neide aparece na porta da cozinha, de roupão, segurando a xícara com as duas mãos.
+NEIDE: Edson, escuta a menina.
+@se marca:expos_tia -> g07_neide_fria
+@vai g07_argumentos
+
+=== g07_neide_fria
+@expr neide brava
+NEIDE: ...Ou não. Ela é ótima pra falar dos erros dos outros na frente de todo mundo.
+(Eu mereço essa. Mas o Tio Edson ouviu também, e agora ele tem munição.)
+@muda rel_tio-1
+@vai g07_argumentos
+
+=== g07_argumentos
+@se minutos<=0 -> g07_investiu
+TIO: Me dá um motivo. Um só. Que não seja "a internet disse".
+? Qual argumento usar com o Tio Edson?
+* Fazer a conta com ele no papel: 3% ao dia durante um ano -> g07_conta {minutos-3 marca:g7_conta}
+* Mostrar como consultar se a empresa é autorizada e se tem alerta da CVM -> g07_cvm {minutos-4 tecnica+1 marca:g7_cvm}
+* Pedir para ele tentar sacar o que já tem antes de pôr mais -> g07_saque_agora {minutos-3 marca:g7_saque} [se !marca:g7_saque]
+* Dizer que ele está sendo burro, igualzinho ao que ele falou da Neide na sexta -> g07_burro {minutos-2 rel_tio-2 rel_neide+1 paciencia-1}
+** Ligar para a Vó Dita e colocar no viva-voz -> g07_vo {minutos-2 marca:g7_vo} [se marca:vo_aliada]
+
+=== g07_conta
+> Você pega o lápis. R$ 3.200 vezes 1,03. Vezes 1,03. Vezes 1,03. Trezentas e sessenta e cinco vezes. A calculadora do celular solta o número.
+EU: Tio, se rendesse mesmo 3% ao dia, os 3.200 da festa virariam uns 155 milhões de reais em um ano.
+TIO: ...
+EU: O senhor seria o homem mais rico do bairro em fevereiro. E do Brasil em dezembro.
+TIO: O Wellington não falou isso.
+EU: Porque o Wellington sabe que não fecha. Ninguém no mundo paga isso. Nem banco, nem bolsa, nem bicheiro.
+@expr tio surpresa
+@anota g2_rendimento_garantido
+@vai g07_pesa
+
+=== g07_cvm
+> Vocês abrem juntos o site oficial da CVM, que fiscaliza quem pode oferecer investimento no Brasil. Busca: "CryptoGold".
+> Nada no cadastro de quem é autorizado. Mas tem outra coisa: um alerta da própria CVM sobre uma empresa com nome parecido, "Crypto Gold Brasil", oferecendo investimento sem autorização.
+TIO: Com espaço. E com Brasil. A minha é sem espaço.
+EU: Tio. Eles tiraram um espaço e uma palavra. É o mesmo cardápio com outro nome na porta.
+TIO: Mas tem whitepaper!
+EU: Whitepaper é um PDF, tio. Qualquer um escreve um PDF. Autorização da CVM ninguém escreve sozinho.
+TIO: ...o Wellington disse que eles estavam "mudando de marca".
+@anota g2_rendimento_garantido
+@vai g07_pesa
+
+=== g07_saque_agora
+> Ele tenta sacar os 560 na sua frente. A tela gira, gira, e aparece a mensagem: "Para saques acima de R$ 100, pague a taxa de liberação de 20%".
+EU: O senhor vai pagar para tirar o próprio dinheiro?
+TIO: É imposto, ué.
+EU: Imposto quem cobra é a Receita, não um site. Isso é o golpe dizendo que o dinheiro não sai mais.
+@vai g07_pesa
+
+=== g07_burro
+@expr tio brava
+TIO: Ah, agora eu sou burro? Na sexta eu tava certo e hoje eu tô burro?
+EU: Na sexta o senhor também estava errado, tio. Golpe não é coisa de gente burra. É coisa de gente que confia.
+@expr neide surpresa
+NEIDE: Hm. Repete essa parte pra ele, filha.
+TIO: Não precisa repetir. Eu ouvi. E não gostei.
+@anota g2_conversar_sem_humilhar
+@vai g07_pesa
+
+=== g07_vo
+@zap "Vó Dita 👑"
+VO: [audio 2:02] Edson. É a sua sogra. Escuta bem. Eu enterrei um marido que pôs a poupança inteira num negócio de gado que "rendia todo mês". O gado nunca existiu, Edson. Era só um homem de chapéu. Esse seu Wellington é o homem de chapéu de agora. Você não mexe no dinheiro do meu bolo. E se mexer, você não come o bolo. Te amo. Beijo.
+@zap fim
+@expr tio envergonhada
+TIO: ...ela nunca tinha me contado do gado.
+NEIDE: Nem pra mim, Edson.
+@vai g07_pesa
+
+=== g07_pesa
+@se minutos<=0 -> g07_investiu
+@se marca:g7_vo -> g07_desistiu
+@se marca:g7_saque e marca:g7_conta -> g07_desistiu
+@se marca:g7_saque e marca:g7_cvm -> g07_desistiu
+@se marca:g7_conta e marca:g7_cvm -> g07_desistiu
+@se marca:g7_sinais e marca:g7_saque -> g07_desistiu
+@expr tio pensativa
+TIO: Tá. Pode ser. Mas o Wellington tem uns depoimentos de gente que ganhou...
+(Ainda não convenci. Falta pouco. E o relógio da tela dele diz que o "lote diamante" fecha em breve.)
+? O tio ainda está em dúvida.
+* Usar mais um argumento -> g07_argumentos {minutos-1}
+* Desistir. Ele é adulto e o dinheiro está na conta dele -> g07_investiu {paciencia+1}
+
+=== g07_investiu
+@musica triste
+@marca tio_investiu
+@som dinheiro
+> 8h59. O Tio Edson aperta o botão. R$ 3.200 saem da conta da vaquinha para uma conta de nome "Solucoes Digitais Prime LTDA".
+> Na tela, o painel novo brilha: "Bem-vindo ao Lote DIAMANTE 💎. Saldo: R$ 3.760,00".
+@expr tio feliz
+TIO: Pronto! Daqui a uma semana o bolo dobra. Vocês vão ver.
+@se marca:g7_conta -> g07_investiu_conta
+@vai g07_investiu_resto
+
+=== g07_investiu_conta
+@entra neide triste esquerda
+NEIDE: E daqui a um ano a gente tem 155 milhões, né, Edson?
+TIO: Viu? Até a Neide entendeu.
+(Não, tio. Ela entendeu o contrário.)
+@vai g07_investiu_resto
+
+=== g07_investiu_resto
+EU: Tio, só me promete uma coisa: se o senhor tentar sacar e pedir taxa, não paga. Me chama, e a gente faz boletim de ocorrência e denuncia para a CVM.
+TIO: Não vai precisar.
+@sai tio
+@entra neide triste esquerda
+NEIDE: O bolo da mãe era encomendado na Dona Zezé. Três andares, com flor de açúcar.
+EU: A gente dá um jeito, tia.
+@sai neide
+(Às vezes a gente não consegue tirar ninguém da beira do penhasco. Só consegue ficar do lado quando ele cai, sem dizer "eu avisei".)
+@anota g2_rendimento_garantido
+@vai g07_fim
+
+=== g07_desistiu
+@musica alegre
+@marca tio_desistiu
+@expr tio triste
+> O Tio Edson fica muito tempo olhando para o painel com o saldo de R$ 560 que não sai.
+TIO: Então os 60 que eu saquei...
+EU: Eram isca, tio. Eles deixam sair um pouquinho para a pessoa confiar e colocar mais.
+TIO: Eu falei pra Neide na sexta que golpe era coisa de gente burra.
+EU: Eu lembro.
+TIO: Eu sou o quê, então?
+EU: O senhor é um homem que confiou. Que nem ela. Que nem a Kaká. Que nem todo mundo, um dia.
+@expr neide feliz
+NEIDE: Bem-vindo ao clube, Edson.
+> Ele ri. Primeiro de nervoso, depois de verdade. Depois abraça a Neide de pijama no meio da cozinha.
+TIO: Os 500 eu perdi. Os 3.200 do bolo ficam onde estão. E eu vou denunciar esse Wellington.
+EU: Denúncia na CVM e boletim de ocorrência online. Eu ajudo. E o senhor sai de todo grupo do "Lote Diamante".
+@muda rel_tio+2 confianca+1 rel_neide+1
+@anota g2_denunciar_piramide
+@vai g07_fim
+
+=== g07_fim
+@sai todos
+@fundo quarto_tia
+> 9h40. Você toma banho em três minutos, que a casa da Neide tem um chuveiro que só esquenta em sonho.
+@som mensagem
+@zap "Juninho 🩺"
+JUNINHO: prima, saindo do plantão agora. como tá aí em casa? meu pai aprontou alguma?
+JUNINHO: ele mandou 3 foguetes no grupo ontem à noite e eu fiquei com medo
+@zap fim
+? O que contar para o Juninho?
+* Contar a verdade, com calma, e pedir que ele não brigue com o pai no almoço -> g07_juninho_calmo {rel_juninho+1 rel_tio+1}
+* Responder com uma piada: "Seu pai tentou ficar milionário antes do café" -> g07_juninho_piada {paciencia+1}
+** Mandar para o Juninho a conta dos 155 milhões e deixar que ele mesmo explique para o pai -> g07_juninho_conta {rel_juninho+1 tecnica+1} [se marca:g7_conta]
+
+=== g07_juninho_calmo
+@zap "Juninho 🩺"
+EU: Ele quis pôr o dinheiro da festa numa pirâmide de cripto. Chega com carinho, tá? Ele tá com vergonha.
+JUNINHO: entendi. vergonha eu sei tratar, é metade do meu plantão
+@zap fim
+@vai g07_fim_grupo
+
+=== g07_juninho_piada
+@zap "Juninho 🩺"
+EU: Seu pai tentou ficar milionário antes do café
+JUNINHO: kkkkkkk conseguiu?
+EU: Pergunta pra ele no almoço
+@zap fim
+@vai g07_fim_grupo
+
+=== g07_juninho_conta
+@zap "Juninho 🩺"
+EU: [foto] Conta no papel: R$ 3.200 a 3% ao dia por um ano = uns 155 milhões
+JUNINHO: kkkkkkkk vou imprimir e dar de presente pra ele no natal
+@zap fim
+@vai g07_fim_grupo
+
+=== g07_fim_grupo
+@zap "Família Reunida 🙏🌹"
+MAE: Bom dia família!! Almoço às 12h no quintal da Vó. Ninguém atrasa
+MAE: Edson, tudo certo com o dinheiro do bolo?
+@se marca:tio_investiu -> g07_fim_investiu
+TIO: TUDO CERTO SELMA. O DINHEIRO DO BOLO TÁ ONDE SEMPRE ESTEVE. NA CONTA. GRAÇAS A DEUS E A {nome}
+MAE: ??? o que aconteceu
+NEIDE: Depois a gente conta. No almoço. Com bolo 🎂
+@zap fim
+@vai g08_inicio
+
+=== g07_fim_investiu
+TIO: TUDO CERTO SELMA. O DINHEIRO DO BOLO TÁ RENDENDO 💎
+MAE: Rendendo onde Edson
+TIO: NO FUTURO
+MAE: Edson
+@zap fim
+@vai g08_inicio

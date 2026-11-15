@@ -72,3 +72,32 @@ describe('medidor de senha', () => {
     expect(bitsSenha('pamonha-quente-na-caixa-dagua').bits).toBeGreaterThan(80);
   });
 });
+
+describe('modo conversa', () => {
+  const zap = `
+=== a
+@muda minutos=40
+@zap "Família Reunida"
+NEIDE: [audio 1:02] oi gente
+> Tia Neide apagou esta mensagem
+EU: Tia, não manda mais nada!
+@muda minutos-5
+@zap fim
+@final fim
+`;
+  it('guarda as mensagens sem repetir ao recarregar e fecha o celular', () => {
+    const r = lerRoteiro({ 'z.txt': zap });
+    const ex = new Executor(r, novoEstado(h, 'Ana', h.protagonistaPadrao.visual));
+    ex.executar();
+    expect(ex.estado.zap).toBe('Família Reunida');
+    const copia = new Executor(r, JSON.parse(JSON.stringify(ex.estado)));
+    copia.executar();
+    expect(copia.estado.zapLog).toHaveLength(1);
+    ex.avancar();
+    ex.avancar();
+    expect(ex.estado.zapLog?.map((m) => m.quem)).toEqual(['neide', '', 'eu']);
+    expect(ex.avancar()).toEqual({ t: 'final', id: 'fim' });
+    expect(ex.estado.zap).toBeUndefined();
+    expect(ex.estado.vars.minutos).toBe(35);
+  });
+});

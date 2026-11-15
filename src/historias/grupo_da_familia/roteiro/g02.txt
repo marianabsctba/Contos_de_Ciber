@@ -1,0 +1,339 @@
+=== g02_inicio
+@cap 2 "Aperte o botão certo"
+@fundo sala_familia
+@musica tensao
+> 19h18. A casa da Tia Neide tem cheiro de café requentado, lustra-móveis e novela das sete.
+> Na estante, a foto do Juninho de formatura, um galo de cerâmica e um porta-retrato digital que passa fotos do cruzeiro de 2019 em loop.
+@som porta
+@entra neide brava esquerda
+@entra vo neutra centro
+@entra tio brava direita
+NEIDE: Você não precisava ter vindo, {nome}. Eu ia ligar pro banco. Depois da novela.
+VO: Ela ia ligar depois da novela, do jornal e do programa de culinária.
+NEIDE: Mãe!
+TIO: Eu já disse e vou repetir: isso de golpe é coisa de gente burra. Ninguém nessa casa é burro.
+TIO: O que aconteceu foi um mal-entendido bancário.
+(Um mal-entendido bancário de R$ 4.800 com um homem chamado Wanderson.)
+@se marca:expos_tia -> g02_inicio_frio
+@vai g02_resistencia
+
+=== g02_inicio_frio
+@expr neide triste
+NEIDE: E não precisava ter falado daquele jeito no grupo. A Zuleica da igreja tá no grupo. Amanhã a cidade inteira sabe.
+(Ela tem razão. E agora ela vai demorar o dobro para me escutar.)
+@muda minutos-2 rel_neide-1
+@vai g02_resistencia
+
+=== g02_resistencia
+> A Tia Neide cruza os braços e senta no sofá, bem na frente da televisão, como quem se senta numa trincheira.
+NEIDE: Eu não vou ligar pra banco nenhum pra ouvir moça de 20 anos me tratar como velha caduca.
+? Ela está com o celular na mão, o cartão na bolsa e o orgulho no teto.
+* Sentar do lado dela e dizer que golpista é profissional, e que cair não tem nada a ver com inteligência -> g02_empatia {minutos-3 rel_neide+2 confianca+1 etica+1}
+* "Tia, cada minuto de birra é um minuto que o dinheiro anda." -> g02_dura {minutos-1 rel_neide-1 paciencia-1}
+* Discutir com o Tio Edson sobre quem, afinal, é burro nessa casa -> g02_briga_tio {minutos-6 rel_tio-1 paciencia-2}
+** Pedir para a Vó Dita contar da vez em que ela quase comprou um terreno na Lua em 1987 -> g02_vo_lua {minutos-4 rel_vo+1 rel_neide+1 confianca+1}
+
+=== g02_empatia
+@expr neide pensativa
+EU: Tia, o pessoal que faz isso trabalha o dia inteiro nisso. Tem roteiro, tem foto do Juninho que eles pegaram da rede social, tem hora certa pra mandar. É gente profissional.
+EU: Cai médico, cai advogado, cai gente que trabalha em banco. Eu trabalho com computador e já cliquei em coisa que não devia.
+NEIDE: Você já caiu?
+EU: Num boleto falso de internet, em 2022. Paguei R$ 89 pra um provedor que não existia.
+NEIDE: Ah, que bom.
+NEIDE: Quer dizer, que pena. Mas que bom.
+@expr neide neutra
+@anota g1_sem_humilhar
+@vai g02_lista
+
+=== g02_dura
+@expr neide brava
+NEIDE: Birra? Eu não tenho birra. Eu tenho sessenta e um anos.
+VO: Ela tem birra desde os quatro, minha filha. Eu que pari.
+NEIDE: MÃE.
+> Mas a Tia Neide tira o cartão da bolsa e coloca em cima da mesa, com força, como quem bate uma carta de truco.
+(Funcionou. Doeu, mas funcionou.)
+@vai g02_lista
+
+=== g02_briga_tio
+@expr tio brava
+EU: Tio, se golpe fosse coisa de gente burra, ninguém precisava de alarme, cadeado nem senha.
+TIO: Cadeado é pra ladrão. Golpe é pra trouxa.
+EU: E o senhor, com aquela moeda digital que rende 3% ao dia?
+TIO: AQUILO É INVESTIMENTO. TEM WHITEPAPER.
+EU: O senhor sabe o que é whitepaper?
+TIO: É UM PAPEL BRANCO, {nome}, E O MEU TEM LOGO DOURADO.
+> Seis minutos depois, a discussão chegou ao Plano Collor e ninguém mais lembra por que começou.
+VO: Acabaram? Porque o dinheiro não ficou esperando vocês.
+(A Vó tem razão. Eu briguei com o tio e quem ganhou foi o Wanderson.)
+@vai g02_lista
+
+=== g02_vo_lua
+@expr vo feliz
+VO: Ah, a Lua. Foi um moço na rádio. Vendia lote na Lua, com escritura e tudo. Era só mandar um vale postal.
+VO: Eu já tava com o envelope na mão. Seu avô, Deus o tenha, perguntou: "Dita, e como é que a gente vai pra Lua visitar o lote?"
+VO: E eu falei: "Igual a gente vai pra Bahia, Zé. De ônibus." E aí eu ouvi o que eu tinha falado.
+@expr neide feliz
+NEIDE: A senhora quase comprou um terreno na Lua?
+VO: Quase. E você quase não ligou pro banco hoje. Cada um com a sua Lua, Neide.
+@expr neide neutra
+(A Vó Dita acabou de fazer em dois minutos uma campanha de conscientização melhor que a de muita empresa.)
+@anota g1_sem_humilhar
+@vai g02_lista
+
+=== g02_lista
+> Na mesa da sala, você pega um bloquinho da farmácia e uma caneta da paróquia.
+EU: Tia, vamos fazer do jeito certo. Primeiro uma lista, rapidinho, porque cada coisa tem que vir na ordem que ajuda o dinheiro a voltar.
+(Se eu errar a ordem, a gente passa meia hora fazendo o que dava para fazer amanhã, enquanto o que não podia esperar fica esperando.)
+@desafio g1_ordem_primeiros_passos -> g02_lista_acerto | g02_lista_erro
+
+=== g02_lista_acerto
+(Primeiro o banco, porque o banco é o único que consegue segurar o dinheiro. Depois o resto, com calma.)
+@muda minutos-1 tecnica+1
+@anota g1_med_pix
+@vai g02_tio_atrapalha
+
+=== g02_lista_erro
+> Você começa pelo boletim de ocorrência. A página da delegacia virtual pede CPF, endereço, nome da mãe, descrição dos fatos e um campo chamado "histórico", que a Tia Neide quer preencher desde o casamento dela.
+> No meio do formulário, você para.
+(Espera. O BO é importante, mas quem bloqueia o dinheiro é o banco. O BO fica pronto amanhã também. O dinheiro não.)
+@muda minutos-6
+@anota g1_med_pix
+@vai g02_tio_atrapalha
+
+=== g02_tio_atrapalha
+@expr tio feliz
+TIO: Pronto, deixa comigo. Já achei o telefone do banco na internet.
+> Ele vira a tela para você. É o primeiro resultado da busca, com uma etiqueta pequena escrita "Patrocinado": "0800 Central Recupera Pix 24h, Atendimento Imediato!"
+TIO: Tá até escrito "imediato". Banco sério.
+? O Tio Edson já está com o dedo em cima do botão verde.
+* Pegar o celular da mão dele com jeitinho e virar o cartão da Tia Neide: o número certo está atrás dele -> g02_cartao {minutos-2 tecnica+1 rel_tio-1}
+* Deixar ele ligar. Vai que é do banco mesmo -> g02_anuncio_falso {minutos-6 rel_tio+1}
+* Abrir o aplicativo oficial do banco no celular da Tia Neide e procurar a opção de contestar o Pix -> g02_app {minutos-1 tecnica+1}
+** Dizer ao Tio Edson que o anúncio é "coisa de gente burra" -> g02_tio_ego {minutos-1 rel_tio-1 paciencia+1}
+
+=== g02_tio_ego
+@expr tio surpresa
+TIO: Como assim, coisa de gente burra?
+EU: Anúncio patrocinado de "recupera Pix" é golpe, tio. Banco não compra anúncio pra atender golpe. O número do banco tá atrás do cartão.
+> O Tio Edson desliga o celular devagar, como quem guarda uma arma que nunca disparou.
+TIO: Eu sabia. Tava testando você.
+(Claro, tio.)
+@vai g02_cartao
+
+=== g02_anuncio_falso
+> O Tio Edson liga no viva-voz. Atende uma música de espera animada demais para um banco.
+> "Central Recupera Pix, boa noite! Para agilizar o seu estorno, me informe a senha do cartão e o código que vai chegar por SMS."
+TIO: Pois não, a senha é...
+EU: TIO, NÃO.
+> Você desliga. A sala inteira fica em silêncio. O galo de cerâmica parece julgar o Tio Edson.
+EU: Banco nenhum pede senha. Banco nenhum pede código de SMS. Nunca. Nem quando é verdade.
+TIO [envergonhada]: Eu só ia falar os quatro primeiros números.
+VO: A senha só tem quatro números, Edson.
+(Quase foi um golpe dentro do golpe. Agora vamos pelo único caminho que não tem anúncio: o cartão.)
+@anota g1_canal_oficial
+@vai g02_cartao
+
+=== g02_cartao
+> Você vira o cartão da Tia Neide. Lá atrás, em letra miudinha, está o número da central do banco.
+EU: Esse é o número de verdade. Tá impresso no cartão, ninguém consegue trocar.
+@anota g1_canal_oficial
+> A Tia Neide liga no viva-voz. A gravação começa.
+> "Para cartões, digite 1. Para investimentos, digite 2. Para ouvir as opções novamente..."
+@muda minutos-5
+(Cinco minutos de menu. O golpista recebeu o Pix em um segundo e o banco me faz escolher entre doze opções. É o Brasil.)
+@vai g02_ligacao
+
+=== g02_app
+> Você abre o aplicativo do banco no celular da Tia Neide. Ela digita a senha virando a tela para a parede, e você aprova.
+EU: Isso, tia. Nem eu preciso ver a senha.
+> No extrato, o Pix de R$ 4.800 para "Wanderson S." aparece ali, às 18h39. Tem um botão: "Contestar esta transação". E outro: "Falar com o banco".
+@anota g1_canal_oficial
+> Você toca em "Falar com o banco" e pede atendimento humano por telefone dentro do próprio aplicativo.
+@muda minutos-2
+(Pelo app é mais rápido e não tem como cair num número falso.)
+@vai g02_ligacao
+
+=== g02_ligacao
+@sai tio
+@entra atendente neutra direita
+ATENDENTE: Boa noite, meu nome é Rosângela. Para sua segurança, eu não vou pedir senha nem código em nenhum momento, tá bom? Com quem eu falo?
+> A voz é cansada. É a voz de quem está no oitavo golpe do falso filho da noite e ainda vai ter mais seis.
+ATENDENTE: Eu preciso falar com a titular da conta, por favor.
+@expr neide assustada
+> A Tia Neide olha para o celular como se ele fosse uma prova oral.
+? A atendente está esperando a titular.
+* Segurar a mão da tia e deixar ela falar, só soprando os dados -> g02_neide_fala {minutos-3 rel_neide+2 confianca+1}
+* Pegar o telefone e falar como se você fosse a Tia Neide -> g02_finge_tia {minutos-5 etica-1}
+** Pedir para a Vó Dita ditar a hora, o valor e a chave do Pix de cabeça -> g02_vo_dita {minutos-2 rel_vo+1}
+
+=== g02_neide_fala
+NEIDE: É a Neide. Neide Albuquerque Pereira. Eu... eu acho que fiz um Pix pra um golpista.
+> A voz dela falha no "golpista". É a primeira vez que ela fala a palavra.
+ATENDENTE: Tudo bem, dona Neide. A senhora fez muito bem em ligar rápido. Isso acontece com muita gente, viu?
+@expr neide triste
+NEIDE: Acontece?
+ATENDENTE: Hoje? A senhora é a oitava. E a única que ligou na primeira hora.
+@expr neide neutra
+(Obrigada, Rosângela. Você acabou de fazer o que eu tento fazer há uma hora.)
+@vai g02_med_pedido
+
+=== g02_finge_tia
+EU: É a Neide. Neide Albuquerque Pereira.
+ATENDENTE: Senhora, a sua voz está bem jovem para a data de nascimento do cadastro.
+EU: Eu uso muito protetor solar.
+ATENDENTE: Vou precisar falar com a titular, por favor. É para a segurança dela.
+> Você passa o celular para a Tia Neide. Ela fala tudo de novo, devagar, enquanto a atendente confirma os dados.
+(Óbvio que não ia funcionar. E se funcionasse seria pior: banco que aceita qualquer voz é banco que aceita a voz do golpista também.)
+@vai g02_med_pedido
+
+=== g02_vo_dita
+@expr vo feliz
+VO: Pix de quatro mil e oitocentos, hoje, dezoito e trinta e nove, para Wanderson S., chave aleatória que começa com "7f3a". O golpista escreveu "segunda te devolvo" às dezoito e vinte e quatro.
+ATENDENTE: A senhora é da família?
+VO: Sou a mãe. E a memória dessa família.
+ATENDENTE: Nossa, a senhora ajudou muito. Agora só preciso que a titular confirme.
+NEIDE: Confirmo. É isso tudo aí que a minha mãe falou.
+(A Vó Dita leu os prints uma vez, de longe, sem óculos.)
+@vai g02_med_pedido
+
+=== g02_med_pedido
+ATENDENTE: Dona Neide, eu vou registrar a contestação do Pix pelo MED, o Mecanismo Especial de Devolução. Eu comunico agora o banco que recebeu o dinheiro.
+ATENDENTE: Se o valor ainda estiver na conta de destino, ele pode ser bloqueado enquanto os bancos analisam. Anota o protocolo, por favor.
+> A Tia Neide anota o protocolo no bloquinho da farmácia, número por número, e sublinha duas vezes.
+ATENDENTE: Só um momento, estou com o retorno do banco de destino...
+@musica misterio
+> A linha fica muda. O porta-retrato digital passa uma foto do cruzeiro. Depois outra. Ninguém respira.
+@se minutos<=0 -> g02_sumiu
+@vai g02_bloqueado
+
+=== g02_bloqueado
+@musica alegre
+@som acerto
+ATENDENTE: Dona Neide, boa notícia. O valor ainda estava na conta de destino e foi bloqueado de forma preventiva.
+ATENDENTE: Agora os bancos analisam o caso. Isso pode levar alguns dias. Se ficar confirmado que foi golpe, o dinheiro volta para a sua conta.
+@expr neide feliz
+NEIDE: Bloqueou? O dinheiro não foi?
+ATENDENTE: Ficou parado no meio do caminho. A senhora agiu rápido.
+@expr vo feliz
+VO: Ela agiu. Com uma ajudinha.
+@marca dinheiro_bloqueado
+@muda confianca+1 rel_neide+1
+(Ainda não voltou. Mas parou. E parado é muito melhor do que sumido.)
+@vai g02_bo
+
+=== g02_sumiu
+@musica triste
+ATENDENTE: Dona Neide, eu sinto muito. O banco de destino informou que o valor já tinha sido transferido para outras contas antes da contestação.
+ATENDENTE: A contestação continua registrada. Se entrar dinheiro naquela conta, ainda pode haver devolução parcial. E o registro ajuda a bloquear a conta usada no golpe.
+@expr neide triste
+NEIDE: Então foi?
+ATENDENTE: Foi, senhora. Esse pessoal espalha o dinheiro muito rápido. Mas a senhora fez a coisa certa em ligar. Faça o boletim de ocorrência também, tá?
+@marca dinheiro_sumiu
+> A Tia Neide desliga. Fica olhando para o celular apagado.
+(Eu demorei. Eu discuti, eu li devagar, eu deixei o tempo escorrer. Não fui eu que roubei, mas eu sei exatamente quais minutos eu desperdicei.)
+@muda paciencia-1
+@vai g02_bo
+
+=== g02_bo
+@sai atendente
+@musica trabalho
+> Você abre a página da delegacia virtual do estado no celular, pelo endereço oficial do governo.
+EU: Agora o boletim de ocorrência. Dá pra fazer online, daqui do sofá.
+@anota g1_bo_online
+@entra tio neutra direita
+TIO: Boletim pra quê? A polícia não vai atrás de Wanderson.
+EU: Às vezes o banco pede. E cada BO ajuda a ligar a mesma conta a outros golpes. Quanto mais gente registra, mais fácil pegar o laranja.
+? A Tia Neide boceja. O Tio Edson boceja. A Vó Dita está no terceiro café.
+* Fazer o BO online agora, juntando os prints e o comprovante do Pix -> g02_bo_agora {etica+1 rel_neide+1 marca:fez_bo}
+* Deixar para segunda-feira. Todo mundo está cansado -> g02_bo_depois {paciencia+1}
+** Deixar o Tio Edson preencher o "histórico" do BO, para ele se sentir útil -> g02_bo_tio {rel_tio+2 marca:fez_bo}
+
+=== g02_bo_agora
+> Vinte minutos. Nome, CPF, data, hora, valor, chave, o nome "Wanderson S." e os prints anexados um por um.
+> No campo "relato", a Tia Neide dita e você digita: "Recebi mensagem de um número desconhecido se passando pelo meu filho, que pediu dinheiro com urgência."
+NEIDE: Coloca que ele tinha a foto do Juninho de formatura. Que eu paguei aquela foto, foi caríssima.
+> O sistema gera o número do boletim. Você manda para o e-mail da tia, para o seu e para o Juninho.
+(Registrado. Isso não traz o dinheiro de volta sozinho, mas transforma "a tia caiu" em "a tia denunciou".)
+@vai g02_fim
+
+=== g02_bo_depois
+EU: Amanhã ou segunda a gente faz, tia. Com calma.
+NEIDE: Segunda eu tenho hidroginástica.
+VO: Na terça você tem a novena. Na quarta, o bazar. Na quinta, você já esqueceu o nome do Wanderson.
+(A Vó tem razão. Mas eu estou com a paciência no fim e ainda é sexta.)
+@vai g02_fim
+
+=== g02_bo_tio
+@expr tio feliz
+> O Tio Edson pega o celular com as duas mãos, liga a lanterna sem querer, desliga, e começa a digitar com um dedo só.
+TIO: "HISTÓRICO: MINHA ESPOSA FOI VÍTIMA DE UMA QUADRILHA INTERNACIONAL ALTAMENTE ESPECIALIZADA"
+EU: Tio, não precisa ser maiúscula.
+TIO: PRECISA SIM. É POLÍCIA.
+> Você corrige com jeito, ele aceita metade das correções, e o boletim sai. Com um "ALTAMENTE" que você não conseguiu tirar.
+NEIDE: Obrigada, Edson.
+TIO: Eu disse que ia resolver.
+(Ele não resolveu nada. Mas ele vai defender esse BO na frente de qualquer um, e isso vale ouro.)
+@vai g02_fim
+
+=== g02_fim
+@sai todos
+@zap "Família Reunida 🙏🌹"
+KAKA: e aí???????
+TIO_BENE: Notícias??? Tô orando aqui
+MAE: Neide? {nome}?
+KAKA: gente eu tô nervosa e eu nem tenho dinheiro
+? O grupo quer saber o que aconteceu.
+* Deixar a própria Tia Neide contar, do jeito dela -> g02_neide_conta {confianca+1 rel_neide+1}
+* Contar tudo você mesma, com valor, horário e o nome do golpista -> g02_voce_conta {marca:expos_tia exposicoes+1 confianca-1 rel_neide-2}
+
+=== g02_neide_conta
+NEIDE: Gente, liguei pro banco e fiz tudo certinho. A moça disse que eu fui a única que ligou rápido.
+NEIDE: Não mandem dinheiro pra número novo. Liguem antes pro número velho. Nem que seja do filho.
+@se marca:dinheiro_bloqueado -> g02_neide_conta_bom
+NEIDE: O dinheiro já tinha ido. Mas fica registrado.
+TIO_BENE: Força, Neide. Deus devolve em dobro
+KAKA: tia vc foi mto corajosa de contar ❤️
+@vai g02_noite
+
+=== g02_neide_conta_bom
+NEIDE: O dinheiro ficou bloqueado!!! 🙏🌹
+TIO_BENE: GLÓRIA
+KAKA: TIA ARRASOU
+MAE: ❤️❤️❤️
+@vai g02_noite
+
+=== g02_voce_conta
+EU: Resumo: a tia mandou R$ 4.800 às 18h39 para um golpista chamado Wanderson S. A conversa tinha todos os sinais clássicos e ela não percebeu. Fiquem atentos.
+> Tia Neide visualizou.
+> Tia Neide mudou o nome do grupo de "Família Reunida 🙏🌹" para "Família Reunida 🙏"
+MAE: Tiraram a rosa?
+KAKA: tiraram a rosa 😬
+(Tudo o que eu escrevi é verdade. E eu escrevi de um jeito que faz ela parecer a burra que o Tio Edson diz que ninguém é.)
+@vai g02_noite
+
+=== g02_noite
+@zap fim
+@fundo sala_familia
+@entra neide neutra esquerda
+@entra vo neutra direita
+> 20h40. A novela já acabou. A Tia Neide esquenta uma sopa que ninguém pediu e coloca um prato na sua frente.
+NEIDE: Come. Você tá magrinha.
+@se marca:expos_tia -> g02_noite_fria
+NEIDE: Obrigada, {nome}.
+NEIDE: Mas eu ia ligar, viu.
+(Obrigada, mas. Já é um começo.)
+@vai g02_saida
+
+=== g02_noite_fria
+> Ela não fala mais nada. A sopa está ótima. O silêncio está gelado.
+@muda rel_neide-1
+@vai g02_saida
+
+=== g02_saida
+@expr vo pensativa
+VO: Neide, vai deitar. E deixa o celular na cozinha.
+NEIDE: Por quê?
+VO: Porque golpista também trabalha de noite. E ele sabe o seu número.
+(A Vó Dita disse isso como quem fala da chuva. Eu queria que ela estivesse errada.)
+@sai todos
+@vai g03_inicio

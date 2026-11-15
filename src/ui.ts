@@ -47,14 +47,21 @@ export function trocarTela(conteudo: HTMLElement): void {
 export function modal(conteudo: HTMLElement, aoFechar?: () => void): () => void {
   const app = document.getElementById('app')!;
   const fundo = el('div', { class: 'modal-fundo' });
-  const caixa = el('div', { class: 'modal' }, conteudo);
+  const caixa = el('div', { class: 'modal' });
+  const tecla = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') fechar();
+  };
   const fechar = () => {
+    window.removeEventListener('keydown', tecla);
+    if (!fundo.isConnected) return;
     fundo.remove();
     aoFechar?.();
   };
+  caixa.append(el('button', { class: 'modal-fechar', 'aria-label': 'Fechar', onclick: () => fechar() }, '✕'), conteudo);
   fundo.addEventListener('click', (e) => {
     if (e.target === fundo) fechar();
   });
+  window.addEventListener('keydown', tecla);
   fundo.append(caixa);
   app.append(fundo);
   return fechar;

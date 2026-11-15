@@ -2601,6 +2601,391 @@ function quartoMadrugada(): string {
   return c.fim(corpo, true);
 }
 
+// --- Grupo da Família ------------------------------------------------------
+
+function croche(cx: number, y: number, w: number, cor = "#fbf8f0"): string {
+  // toalhinha de crochê com bicos
+  let s = ret(cx - w / 2, y, w, 18, cor);
+  const n = Math.floor(w / 28);
+  for (let i = 0; i < n; i++) {
+    const x = cx - w / 2 + 14 + i * 28;
+    s += cam(`M${x - 14},${y + 16} L${x},${y + 44} L${x + 14},${y + 16} Z`, cor) + circ(x, y + 26, 4, "none", `stroke="#d8cfbd" stroke-width="2"`);
+  }
+  return s;
+}
+
+function portaRetrato(x: number, y: number, w: number, h: number, moldura: string, fundo: string, gente: number): string {
+  let s = ret(x + 4, y + 5, w, h, "#000", `opacity="0.2"`) + ret(x, y, w, h, moldura) + ret(x + 6, y + 6, w - 12, h - 12, fundo);
+  const peles = ["#c48b63", "#8a5a3c", "#e0b48c", "#5e3a26"];
+  for (let i = 0; i < gente; i++) {
+    const px = x + 6 + ((w - 12) / (gente + 1)) * (i + 1);
+    s += elip(px, y + h * 0.5, w * 0.07, h * 0.1, peles[i % 4]) + elip(px, y + h - 10, w * 0.11, h * 0.2, ["#c0392b", "#2f6f95", "#f0a020", "#3a8a4a"][i % 4]);
+  }
+  return s;
+}
+
+function salaFamilia(): string {
+  const c = new Cena("sala_familia");
+  semear(4141);
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#f2dcc0"], [1, "#e2c4a0"]])) +
+    // papel de parede com listrinhas
+    ret(0, 0, 1080, 1360, c.padrao(60, 60, ret(0, 0, 60, 60, "none") + ret(26, 0, 8, 60, "#c9a27a", `opacity="0.18"`))) +
+    ret(0, 0, 1080, 90, "#f8efe2") +
+    ret(0, 86, 1080, 12, "#d8bf9a") +
+    ventiladorTeto(c, 540, 40, 0.9) +
+    lampadaPendente(c, 860, 0, 110, "#ffe0a0", 0.25) +
+    // quadro da Santa Ceia (silhuetas, sem rostos)
+    quadro(330, 200, 420, 210, "#b8893a",
+      ret(346, 216, 388, 178, c.lin([[0, "#c9a46a"], [1, "#7a5a32"]])) +
+        ret(360, 320, 360, 40, "#6a4a2a") +
+        (() => {
+          let s = "";
+          for (let i = 0; i < 13; i++) s += elip(372 + i * 28, 300, 11, 13, "#4a3020") + elip(372 + i * 28, 330, 14, 24, i === 6 ? "#a83a2a" : "#5a3a24");
+          return s + c.brilho(540, 300, 60, "#fff3c0", 0.6);
+        })()) +
+    // relógio de parede com nome de loja
+    relogio(150, 280, 60, 8, 50, "#7a5235") +
+    txt(150, 380, "Móveis Esperança", 18, "#7a5235", { fonte: MAO }) +
+    // estante com TV, toalhinha, porta-retratos e santinho
+    ret(220, 520, 640, 640, "#6a4428") +
+    ret(240, 540, 600, 600, "#4a2e1a") +
+    ret(240, 760, 600, 16, "#6a4428") +
+    ret(240, 960, 600, 16, "#6a4428") +
+    // TV de tela plana com toalhinha por cima (sim)
+    rr(380, 600, 320, 160, 6, "#141414") +
+    ret(392, 612, 296, 136, c.lin([[0, "#3a6a9a"], [1, "#1a2a4a"]])) +
+    txt(540, 700, "PLANTÃO", 30, "#ffd23f", { peso: "bold" }) +
+    croche(540, 588, 330) +
+    portaRetrato(260, 640, 100, 120, "#d6a63a", "#9ac0d8", 3) +
+    portaRetrato(720, 650, 100, 110, "#f2efe6", "#e6d0a0", 2) +
+    portaRetrato(270, 830, 120, 130, "#c0c0c0", "#b8d8a0", 4) +
+    // santinho com velinha
+    rr(450, 840, 80, 120, 40, "#f6f0e0") +
+    elip(490, 880, 14, 16, "#e0b48c") +
+    cam(`M470,960 Q490,890 510,960 Z`, "#3a6ab0") +
+    circ(490, 878, 24, "none", `stroke="#f6d65a" stroke-width="4"`) +
+    ret(560, 920, 16, 40, "#fbf8f0") +
+    elip(568, 912, 5, 9, "#ffb000") +
+    c.brilho(568, 912, 50, "#ffc766", 0.6) +
+    // bibelôs: elefante de costas pra porta, galo de Portugal genérico
+    elip(660, 935, 40, 25, "#9aa0a6") +
+    circ(630, 920, 18, "#9aa0a6") +
+    ret(700, 900, 30, 60, "#2a4a8a") +
+    circ(715, 895, 14, "#c0392b") +
+    // livros e enciclopédia
+    (() => {
+      let s = "";
+      for (let i = 0; i < 12; i++) s += ret(260 + i * 22, 1040, 18, 90, ["#7a1f1f", "#1f3a6a", "#2a5a2a"][i % 3]);
+      return s;
+    })() +
+    rr(560, 1050, 120, 80, 6, "#3a3a3a") +
+    txt(620, 1100, "DVD", 18, "#aaa") +
+    // vaso com flor de plástico
+    vaso(960, 1000, 0.9, "#c0392b", "#e8e1d0") +
+    ret(900, 1000, 120, 160, "#7a5235") +
+    // janela lateral com cortina rendada
+    janela(c, 40, 470, 140, 400, { ceu: [[0, "#9fd0f0"], [1, "#e9f6ff"]], moldura: "#f2efe6", div: 1, vidro: true }) +
+    ret(20, 450, 180, 460, c.padrao(24, 24, circ(12, 12, 7, "none", `stroke="#fff" stroke-width="2"`)), `opacity="0.7"`) +
+    // sofá de couro gasto com capa
+    rr(60, 1150, 960, 210, 40, "#5a3a24") +
+    rr(90, 1080, 900, 140, 50, c.lin([[0, "#6a4428"], [1, "#4a2e1a"]])) +
+    rr(140, 1100, 380, 180, 40, "#e9dcc0", `opacity="0.92"`) +
+    rr(560, 1100, 380, 180, 40, "#e9dcc0", `opacity="0.92"`) +
+    cam(`M200,1110 C240,1150 220,1200 260,1240`, "none", `stroke="#cbb994" stroke-width="4"`) +
+    cam(`M700,1110 C680,1160 720,1210 690,1250`, "none", `stroke="#cbb994" stroke-width="4"`) +
+    elip(330, 1150, 40, 20, "#3a2416", `opacity="0.4"`) +
+    // controle remoto no plástico
+    g(rr(820, 1130, 50, 120, 10, "#222") + rr(814, 1124, 62, 132, 14, "#e8f4fa", `opacity="0.45" stroke="#fff" stroke-width="2"`) + circ(845, 1150, 6, "#e63946"), `transform="rotate(-20 845 1190)"`) +
+    rr(400, 1110, 120, 90, 20, chita(c), `transform="rotate(-8 460 1155)"`) +
+    piso(c, 1360, "#c9a77a", "#9a7a52", "#8a6a44") +
+    elip(540, 1560, 420, 110, "#8a3a2a", `opacity="0.35"`);
+  return c.fim(corpo);
+}
+
+function quintalAlmoco(): string {
+  const c = new Cena("quintal_almoco");
+  semear(4242);
+  const baloes = (x0: number, y0: number) => {
+    let s = "";
+    const cores = ["#e63946", "#f1c40f", "#2a9d8f", "#3a86ff", "#ff7ad8", "#ff9f1c"];
+    for (let i = 0; i < 6; i++) {
+      const x = x0 + entre(-50, 50);
+      const y = y0 + entre(-40, 50);
+      const cor = cores[i % cores.length];
+      s += linha(x, y + 46, x0, y0 + 160, "#777", 1.5) + elip(x, y, 34, 42, cor) + elip(x - 10, y - 14, 8, 12, "#fff", `opacity="0.4"`);
+    }
+    return s;
+  };
+  let cadeiras = "";
+  for (let i = 0; i < 6; i++) cadeiras += cadeiraPlastico(140 + i * 160, 1290, 0.85, i % 2 ? "#e8e6e0" : "#d9302c");
+  let pratos = "";
+  for (let i = 0; i < 7; i++) pratos += elip(130 + i * 140, 1130, 44, 12, "#fbfbf7", `stroke="#ccc"`);
+  const corpo =
+    ret(0, 0, 1080, 1400, c.lin([[0, "#55aef0"], [0.7, "#bfe6fb"], [1, "#f4ecd6"]])) +
+    nuvem(860, 140, 0.9, "#fff", 0.9, c.blur(2)) +
+    // casa vizinha e laje com caixa d'água
+    g(ret(700, 330, 380, 420, "#e9c08a") + ret(760, 400, 100, 90, "#5a8ab0") + ret(900, 260, 140, 80, "#3a8ad0") + ret(890, 250, 160, 16, "#2a6aa0"), c.blur(2.5)) +
+    ret(0, 380, 700, 420, "#f2e2c8") +
+    ret(0, 360, 720, 30, "#9a9a92") +
+    (() => {
+      let s = "";
+      for (let x = 10; x < 700; x += 70) s += ret(x, 300, 8, 64, "#7a7a72");
+      return s;
+    })() +
+    ret(80, 470, 140, 140, "#5a8ab0") +
+    rr(330, 520, 120, 280, 4, "#7a5235") +
+    // varal ao fundo
+    `<path d="M20,560 Q350,640 690,560" stroke="#555" stroke-width="3" fill="none"/>` +
+    ret(80, 580, 70, 90, "#2a9d8f", `transform="rotate(4 115 580)"`) +
+    ret(480, 600, 80, 60, "#f1c40f") +
+    ret(590, 585, 60, 100, "#fff") +
+    ret(180, 595, 50, 50, "#ff7ad8") +
+    // faixa
+    `<path d="M40,180 Q540,250 1040,180 L1040,300 Q540,370 40,300 Z" fill="#fff8e8" stroke="#e63946" stroke-width="8"/>` +
+    txt(540, 290, "80 ANOS VÓ DITA", 70, "#e63946", { peso: "bold", fonte: MAO }) +
+    txt(900, 330, "te amamos!", 26, "#2a6aa0", { fonte: MAO, rot: -6 }) +
+    bandeirinhas(-20, 1100, 110, 30, 22, ["#e63946", "#f1c40f", "#2a9d8f", "#3a86ff", "#ff7ad8"], 0.9) +
+    baloes(80, 360) +
+    baloes(1000, 380) +
+    // churrasqueira de tijolo com fumaça
+    ret(760, 640, 260, 360, c.padrao(60, 30, ret(0, 0, 60, 30, "#a8553a") + ret(1, 1, 28, 13, "#c0683f") + ret(31, 1, 28, 13, "#b85e3a") + ret(16, 16, 28, 13, "#c0683f") + ret(-14, 16, 28, 13, "#b85e3a") + ret(46, 16, 28, 13, "#b85e3a"))) +
+    cam(`M740,640 L1040,640 L960,520 L820,520 Z`, "#8a4a32") +
+    ret(860, 420, 60, 110, "#8a4a32") +
+    ret(790, 760, 200, 100, "#2a1a14") +
+    c.brilho(890, 840, 120, "#ff8a2a", 0.6) +
+    ret(800, 800, 180, 6, "#999") +
+    elip(850, 795, 26, 10, "#8a3a2a") +
+    elip(920, 795, 26, 10, "#a84a2a") +
+    g(`<path d="M890,410 C860,350 930,320 890,260 C860,220 920,180 900,130" stroke="#eee" stroke-width="30" fill="none" opacity="0.45" stroke-linecap="round"/>`, c.blur(10)) +
+    placa(780, 900, 220, 70, "#fff", [{ t: "NÃO MEXE NA", tam: 18 }, { t: "PICANHA - TIO NEL", tam: 18, cor: "#c0392b" }], { rot: 3 }) +
+    // caixa de som de festa
+    rr(40, 860, 120, 180, 10, "#1a1a1a") +
+    circ(100, 920, 30, "#333") +
+    circ(100, 1000, 20, "#333") +
+    c.brilho(100, 920, 80, "#ff5fd2", 0.3) +
+    // mesa comprida com toalha xadrez
+    ret(0, 1090, 1080, 40, c.padrao(40, 40, ret(0, 0, 40, 40, "#fff") + ret(0, 0, 20, 40, "#e63946", `opacity="0.6"`) + ret(0, 0, 40, 20, "#e63946", `opacity="0.6"`))) +
+    cam(`M0,1128 L1080,1128 L1080,1190 Q1000,1210 940,1190 Q860,1210 780,1190 Q700,1210 620,1190 Q540,1210 460,1190 Q380,1210 300,1190 Q220,1210 140,1190 Q70,1210 0,1190 Z`, c.padrao(40, 40, ret(0, 0, 40, 40, "#fff") + ret(0, 0, 20, 40, "#e63946", `opacity="0.6"`) + ret(0, 0, 40, 20, "#e63946", `opacity="0.6"`))) +
+    pratos +
+    // bolo, farofa, vinagrete, refri sem marca
+    rr(470, 1000, 140, 90, 10, "#fff0f6") +
+    rr(480, 960, 120, 50, 8, "#ff9ac2") +
+    ret(536, 920, 8, 40, "#f6d65a") +
+    elip(540, 914, 6, 10, "#ffb000") +
+    txt(540, 1060, "80", 34, "#e63946", { peso: "bold" }) +
+    elip(250, 1080, 60, 18, "#e8c080") +
+    elip(380, 1078, 50, 16, "#c0392b") +
+    elip(380, 1074, 30, 8, "#3a8a4a") +
+    rr(700, 980, 36, 110, 8, "#3a1a10", `opacity="0.85"`) +
+    rr(760, 1000, 34, 90, 8, "#2a8a3a", `opacity="0.85"`) +
+    rr(150, 1020, 50, 70, 6, "#f2f2ee") +
+    cadeiras +
+    piso(c, 1340, "#bdb5a6", "#8f877a") +
+    confete(60, 0, 1080, 400, 1300, ["#e63946", "#f1c40f", "#2a9d8f", "#3a86ff"]);
+  return c.fim(corpo);
+}
+
+function agenciaBanco(): string {
+  const c = new Cena("agencia_banco");
+  semear(4343);
+  let cadeiras = "";
+  for (let r = 0; r < 2; r++) for (let i = 0; i < 6; i++) cadeiras += rr(80 + i * 150 + r * 40, 1080 + r * 120, 120, 70, 14, "#2a3a5a") + rr(80 + i * 150 + r * 40, 1140 + r * 120, 120, 26, 8, "#223050") + ret(110 + i * 150 + r * 40, 1166 + r * 120, 8, 40, "#888");
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#eef1f4"], [1, "#d6dce2"]])) +
+    ret(0, 0, 1080, 130, "#fafbfc") +
+    fluorescente(c, 120, 100, 300, 0.45) +
+    fluorescente(c, 660, 100, 300, 0.45) +
+    // faixa institucional sem marca
+    ret(0, 150, 1080, 90, "#1d4a7a") +
+    txt(540, 210, "AGÊNCIA CENTRO  •  ATENDIMENTO", 34, "#fff", { peso: "bold" }) +
+    // painel de senhas
+    rr(620, 280, 400, 230, 10, "#0d1117") +
+    txt(820, 330, "SENHA", 30, "#9ab", { fonte: MONO }) +
+    txt(820, 420, "P047", 86, "#ff4d4d", { fonte: MONO, peso: "bold" }) +
+    txt(820, 485, "GUICHÊ 3", 32, "#4cff6a", { fonte: MONO }) +
+    c.brilho(820, 400, 260, "#ff4d4d", 0.12) +
+    // cartaz
+    placa(60, 280, 500, 300, "#fff7d6", [
+      { t: "O BANCO NUNCA", tam: 38, cor: "#c0392b" },
+      { t: "PEDE SUA SENHA", tam: 38, cor: "#c0392b" },
+      { t: "POR TELEFONE", tam: 38, cor: "#c0392b" },
+      { t: "(nem por áudio da \"gerente\")", tam: 22, cor: "#555" },
+    ], { fonte: SANS, borda: "#c0392b" }) +
+    placa(640, 540, 360, 90, "#fff", [{ t: "Prioridade: idosos,", tam: 22 }, { t: "gestantes, PcD", tam: 22 }], { fonte: SANS }) +
+    // guichês com vidro
+    ret(0, 680, 1080, 300, "#c9d2da") +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 4; i++) {
+        const x = 30 + i * 265;
+        s += ret(x, 690, 240, 200, "#dfefff", `opacity="0.55"`) + ret(x, 690, 240, 200, "none", `stroke="#8a96a2" stroke-width="6"`) + rr(x + 80, 640, 80, 40, 6, "#1d4a7a") + txt(x + 120, 670, `${i + 1}`, 28, "#fff", { peso: "bold" });
+        s += g(pessoa(x + 120, 890, 0.8, ["#2f6f95", "#555", "#8a3a5a", "#3a7a5a"][i], ["#c48b63", "#8a5a3c", "#e0b48c", "#5e3a26"][i]), c.blur(1.5));
+        if (i === 2) s += placa(x + 30, 760, 180, 50, "#fff", [{ t: "Sistema fora", tam: 18, cor: "#c0392b" }], { rot: -3 });
+      }
+      return s;
+    })() +
+    ret(0, 890, 1080, 90, "#6a7682") +
+    ret(0, 880, 1080, 14, "#a8b2bc") +
+    // fila com fita retrátil
+    (() => {
+      let s = "";
+      for (let i = 0; i < 4; i++) s += ret(120 + i * 250, 990, 10, 80, "#9aa4ad") + elip(125 + i * 250, 1070, 22, 6, "#666");
+      for (let i = 0; i < 3; i++) s += `<path d="M130,${1000} Q${250 + i * 250},1020 ${370 + i * 250},1000" stroke="#c0392b" stroke-width="6" fill="none"/>`.replace("M130", `M${130 + i * 250}`);
+      return s;
+    })() +
+    multidao(5, 160, 900, 1060, 0.85, ["#3a3a5a", "#5a2a3a", "#2a4a3a", "#7a5a3a"], c.blur(2.5)) +
+    cadeiras +
+    vaso(1030, 1060, 1, "#3e8a4f", "#e8e8e8") +
+    piso(c, 1360, "#cfd4d8", "#a2a8ae", "#8a9096");
+  return c.fim(corpo);
+}
+
+function carroNoite(): string {
+  const c = new Cena("carro_noite");
+  semear(4444);
+  let bokeh = "";
+  for (let i = 0; i < 45; i++) {
+    const cor = escolhe(["#ffb347", "#ff4d4d", "#fff1c0", "#7af0ff", "#ffd23f"]);
+    bokeh += circ(entre(80, 1000), entre(380, 820), entre(10, 34), cor, `opacity="${entre(0.25, 0.7).toFixed(2)}"`);
+  }
+  const corpo =
+    ret(0, 0, 1080, 1920, "#05060c") +
+    // para-brisa com cidade borrada
+    cam(`M90,330 Q540,250 990,330 L1060,900 Q540,860 20,900 Z`, c.lin([[0, "#0a0e2a"], [0.6, "#1a1640"], [1, "#2a1a3a"]])) +
+    g(predios(c, 40, 1060, 860, 150, 380, "#120e28", "#ffcf6a", 0.25) + bokeh, `${c.blur(7)} ${c.clip(`<path d="M90,330 Q540,250 990,330 L1060,900 Q540,860 20,900 Z"/>`)}`) +
+    // gotas no vidro
+    (() => {
+      let s = "";
+      for (let i = 0; i < 40; i++) s += circ(entre(120, 960), entre(340, 860), entre(2, 5), "#cfe8ff", `opacity="${entre(0.2, 0.5).toFixed(2)}"`);
+      return s;
+    })() +
+    // reflexo no vidro
+    cam(`M140,340 L320,320 L180,880 L60,890 Z`, "#fff", `opacity="0.04"`) +
+    // colunas e teto
+    cam(`M0,0 L1080,0 L1080,340 Q540,240 0,340 Z`, "#0e0f16") +
+    cam(`M0,300 L100,330 L30,920 L0,940 Z`, "#14151e") +
+    cam(`M1080,300 L980,330 L1050,920 L1080,940 Z`, "#14151e") +
+    // retrovisor com terço pendurado
+    rr(440, 290, 200, 60, 16, "#1a1b24") +
+    rr(452, 300, 176, 40, 12, "#2a2d40") +
+    `<path d="M520,350 Q510,420 540,470 Q570,420 560,350" stroke="#c9a46a" stroke-width="3" fill="none" stroke-dasharray="4 4"/>` +
+    linha(540, 470, 540, 500, "#c9a46a", 3) +
+    linha(530, 485, 550, 485, "#c9a46a", 3) +
+    // cheirinho de pinheiro
+    cam(`M600,350 L640,420 L620,420 L650,470 L590,470 L610,420 L590,420 Z`, "#2a8a4a", `opacity="0.85"`) +
+    // painel
+    cam(`M0,900 Q540,840 1080,900 L1080,1250 L0,1250 Z`, c.lin([[0, "#1c1d26"], [1, "#0c0d12"]])) +
+    // volante
+    circ(300, 1180, 220, "none", `stroke="#0a0a0e" stroke-width="44"`) +
+    circ(300, 1180, 70, "#121218") +
+    rr(220, 1020, 160, 40, 16, "#0a0a0e") +
+    // instrumentos iluminados
+    elip(300, 990, 120, 60, "#06070c") +
+    circ(250, 990, 40, "none", `stroke="#ff8a2a" stroke-width="4" opacity="0.8"`) +
+    circ(350, 990, 40, "none", `stroke="#ff8a2a" stroke-width="4" opacity="0.8"`) +
+    linha(250, 990, 225, 965, "#ff4d4d", 3) +
+    linha(350, 990, 370, 960, "#ff4d4d", 3) +
+    c.brilho(300, 990, 140, "#ff8a2a", 0.2) +
+    circ(300, 1030, 6, "#ffd23f") +
+    // rádio
+    rr(470, 940, 180, 70, 8, "#0a0a10") +
+    txt(560, 985, "FM 98,7", 26, "#7af0ff", { fonte: MONO }) +
+    c.brilho(560, 975, 120, "#7af0ff", 0.25) +
+    // celular no suporte iluminando
+    linha(800, 1000, 800, 1060, "#222", 10) +
+    rr(740, 820, 120, 200, 16, "#0a0a0a") +
+    rr(748, 830, 104, 180, 10, c.lin([[0, "#e8f4ff"], [1, "#9ad0ff"]])) +
+    ret(748, 830, 104, 26, "#2a9d8f") +
+    txt(800, 849, "Família", 13, "#fff") +
+    rr(756, 866, 70, 22, 8, "#fff") +
+    rr(772, 896, 72, 22, 8, "#d6f5c0") +
+    rr(756, 926, 80, 22, 8, "#fff") +
+    rr(770, 956, 74, 30, 8, "#d6f5c0") +
+    txt(800, 1000, "47 novas", 12, "#c0392b", { peso: "bold" }) +
+    c.brilho(800, 920, 340, "#9ad0ff", 0.4, 300) +
+    // console e banco
+    cam(`M440,1250 L700,1250 L760,1920 L380,1920 Z`, "#101118") +
+    rr(510, 1300, 120, 90, 10, "#1a1b24") +
+    piso(c, 1250, "#0d0e14", "#050508");
+  return c.fim(corpo, true);
+}
+
+function quartoTia(): string {
+  const c = new Cena("quarto_tia");
+  semear(4545);
+  const chenille = c.padrao(50, 50, ret(0, 0, 50, 50, "#f0a8b8") + circ(25, 25, 10, "#f7c8d4") + circ(0, 0, 6, "#e88aa0") + circ(50, 0, 6, "#e88aa0") + circ(0, 50, 6, "#e88aa0") + circ(50, 50, 6, "#e88aa0"));
+  let perfumes = "";
+  const cores = ["#f6d65a", "#ff9ac2", "#9ad0ff", "#c9a0ff", "#a0e0b0", "#ffb070"];
+  for (let i = 0; i < 6; i++) {
+    const x = 650 + i * 52;
+    const h = entre(50, 90);
+    perfumes += rr(x, 980 - h, 36, h, 8, cores[i], `opacity="0.85"`) + rr(x + 10, 980 - h - 18, 16, 18, 3, "#d6a63a") + elip(x + 12, 980 - h + 14, 5, 12, "#fff", `opacity="0.5"`);
+  }
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#f6e2e6"], [1, "#e8c8d0"]])) +
+    ret(0, 0, 1080, 1360, c.padrao(90, 90, ret(0, 0, 90, 90, "none") + circ(45, 45, 6, "#d88aa0", `opacity="0.25"`) + circ(0, 0, 4, "#d88aa0", `opacity="0.2"`))) +
+    lampadaPendente(c, 540, 0, 90, "#ffe0b0", 0.35) +
+    // quadro de flores
+    quadro(80, 180, 340, 260, "#c9a46a",
+      ret(96, 196, 308, 228, "#f4ecd8") +
+        (() => {
+          let s = "";
+          for (let i = 0; i < 8; i++) {
+            const x = 140 + entre(0, 230);
+            const y = 260 + entre(0, 90);
+            s += circ(x, y, entre(16, 30), escolhe(["#e63946", "#ff9ac2", "#f6d65a", "#ffffff", "#c9a0ff"]));
+          }
+          return cam(`M220,420 L250,320 L280,420 Z`, "#7aa0c0") + s;
+        })()) +
+    // janela com cortina de renda
+    janela(c, 520, 180, 260, 300, { ceu: [[0, "#f6b26b"], [1, "#ffe1b0"]], moldura: "#f2efe6", cortina: "#fbf6ee" }) +
+    // calendário de santo e terço na parede
+    calendario(860, 200, 170, "FARMÁCIA", "Saúde e fé", "2027  Peça desconto") +
+    // penteadeira com espelho
+    elip(800, 680, 170, 200, "#c9a46a") +
+    elip(800, 680, 150, 180, c.lin([[0, "#dfeef6"], [1, "#a8c4d4"]], 0, 0, 1, 1)) +
+    cam(`M700,560 L760,540 L690,700 Z`, "#fff", `opacity="0.35"`) +
+    bilhete(860, 560, 120, 70, ["NÃO", "clica link"], 16, 6, "#fdf6b2", "#c0392b") +
+    ret(580, 980, 440, 30, "#c9a46a") +
+    ret(600, 1010, 400, 350, "#b8935a") +
+    ret(620, 1040, 170, 120, "#a8834a") +
+    ret(810, 1040, 170, 120, "#a8834a") +
+    circ(705, 1100, 7, "#f6d65a") +
+    circ(895, 1100, 7, "#f6d65a") +
+    croche(800, 980, 380) +
+    perfumes +
+    // terço sobre a penteadeira
+    `<path d="M600,975 Q630,940 660,975" stroke="#8a5a3a" stroke-width="4" fill="none" stroke-dasharray="3 5"/>` +
+    linha(630, 975, 630, 995, "#8a5a3a", 3) +
+    linha(622, 985, 638, 985, "#8a5a3a", 3) +
+    // celular carregando no benjamim
+    rr(600, 1180, 60, 90, 6, "#f2f2f2", `stroke="#999"`) +
+    circ(620, 1210, 4, "#333") +
+    circ(640, 1210, 4, "#333") +
+    rr(580, 1220, 54, 50, 6, "#fff", `stroke="#aaa" transform="rotate(-12 607 1245)"`) +
+    rr(630, 1240, 40, 40, 6, "#fff", `stroke="#aaa" transform="rotate(20 650 1260)"`) +
+    `<path d="M600,1250 C540,1260 520,1200 500,1150" stroke="#222" stroke-width="3" fill="none"/>` +
+    `<path d="M650,1270 C700,1300 760,1290 820,1320" stroke="#222" stroke-width="3" fill="none"/>` +
+    rr(470, 1080, 60, 100, 8, "#222", `transform="rotate(-10 500 1130)"`) +
+    rr(476, 1088, 48, 82, 6, "#7ab8ff", `transform="rotate(-10 500 1130)"`) +
+    c.brilho(500, 1130, 90, "#7ab8ff", 0.4) +
+    // cama com colcha de chenille
+    rr(0, 760, 80, 600, 8, "#8a5a36") +
+    rr(-20, 1040, 470, 320, 30, chenille) +
+    cam(`M-20,1340 Q100,1380 200,1350 Q320,1390 450,1350 L450,1360 L-20,1360 Z`, "#e88aa0") +
+    rr(20, 980, 200, 80, 30, "#fbf6ee") +
+    rr(40, 1000, 160, 50, 20, c.padrao(16, 16, ret(0, 0, 16, 16, "#fbf6ee") + circ(8, 8, 3, "#e8b8c4")), `opacity="0.8"`) +
+    // gato de pelúcia de vigia
+    elip(320, 1030, 50, 40, "#f2efe6") +
+    circ(320, 990, 30, "#f2efe6") +
+    cam(`M296,970 L300,945 L314,965 Z`, "#f2efe6") +
+    cam(`M344,970 L340,945 L326,965 Z`, "#f2efe6") +
+    piso(c, 1360, "#c49a7a", "#8e6a50", "#7a5a40") +
+    elip(560, 1560, 320, 80, "#c96a8a", `opacity="0.35"`);
+  return c.fim(corpo);
+}
+
 // ---------------------------------------------------------------------------
 // Registro
 // ---------------------------------------------------------------------------
@@ -2641,6 +3026,11 @@ function montar(): Record<string, Cenario> {
     ["palco_premiacao", "Palco da premiação", palcoPremiacao, true],
     ["aeroporto", "Aeroporto", aeroporto],
     ["quarto_madrugada", "Quarto de madrugada", quartoMadrugada, true],
+    ["sala_familia", "Sala da família", salaFamilia],
+    ["quintal_almoco", "Almoço no quintal", quintalAlmoco],
+    ["agencia_banco", "Agência bancária", agenciaBanco],
+    ["carro_noite", "Carro à noite", carroNoite, true],
+    ["quarto_tia", "Quarto da tia", quartoTia],
   ];
   const out: Record<string, Cenario> = {};
   for (const [id, nome, fn, noite] of lista) {

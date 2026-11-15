@@ -198,6 +198,12 @@ function lerComando(l: string, erro: (m: string) => never): Linha {
       const mr = args.match(/^"(.+)"$/);
       return { t: 'roupa', titulo: mr ? mr[1] : 'Escolha o visual' };
     }
+    case 'zap': {
+      if (args === 'fim') return { t: 'zap', grupo: null };
+      const mz = args.match(/^"(.+)"$/);
+      if (!mz) erro('use @zap "Nome do grupo" ou @zap fim');
+      return { t: 'zap', grupo: mz![1] };
+    }
     case 'desafio': {
       const md = args.match(/^([a-z0-9_]+)\s*->\s*([a-z0-9_]+)\s*\|\s*([a-z0-9_]+)$/);
       if (!md) erro('use @desafio id -> acerto | erro');

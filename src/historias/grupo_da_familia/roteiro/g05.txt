@@ -1,0 +1,327 @@
+# Parte 2, capítulo 5: Kaká foi clonada (sábado à tarde)
+
+=== g05_inicio
+@cap 5 "Kaká foi clonada"
+@fundo sala_familia
+@musica alegre
+> Sábado, 15h12. Casa da Dona Selma.
+> A sala virou almoxarifado de festa: oitenta bexigas cor de rosa, um painel de TNT escrito "80 ANOS DA RAINHA" e uma caixa de copinhos que a sua mãe jura que é "só pra emergência".
+@entra mae feliz centro
+MAE: Enche mais dez. A Vó falou que bexiga murcha dá azar.
+EU: Mãe, ninguém falou isso. A senhora inventou agora.
+MAE: Inventei, mas pode ser verdade. Enche.
+@se marca:dinheiro_bloqueado -> g05_recap_bloqueado
+@se marca:dinheiro_sumiu -> g05_recap_sumiu
+@vai g05_recap_neutro
+
+=== g05_recap_bloqueado
+@expr mae pensativa
+MAE: A Neide me ligou na hora do almoço. Disse que o banco segurou o dinheiro. Disse também que "ela já tinha desconfiado".
+EU [feliz]: Claro que tinha.
+(Eu fiquei quarenta minutos no telefone com ela ontem. Mas tudo bem. O que importa é que o dinheiro ficou parado na conta do golpista em vez de sair dela.)
+@vai g05_grupo
+
+=== g05_recap_sumiu
+@expr mae triste
+MAE: A Neide não quer falar do dinheiro. Disse que "Deus dá e Deus tira".
+EU: Deus não tem chave Pix, mãe. Quem tirou foi o golpista.
+MAE: Fala isso pra ela não, viu? Deixa ela sarar.
+(Os R$ 4.800 saíram da conta de destino antes de o bloqueio chegar. O pedido de devolução está aberto, mas eu sei como isso costuma terminar.)
+@vai g05_grupo
+
+=== g05_recap_neutro
+@expr mae pensativa
+MAE: Depois de ontem eu fico com medo de abrir o celular. Parece que cada mensagem é uma bomba.
+EU: É só olhar antes de clicar, mãe. E desconfiar de pressa.
+@vai g05_grupo
+
+=== g05_grupo
+@sai mae
+@som mensagem
+@zap "Família Reunida 🙏🌹"
+KAKA: gravei o conteúdo!!! 3.087 seguidores, faltam 13 pra meta
+KAKA: [foto] Look pro niver da vó, aprovam??? 💅✨
+TIO_BENE: LINDA
+TIO_BENE: Puxou o tio
+NEIDE: [figurinha] Boa tarde, família abençoada
+NEIDE: Kaká que vestido curto
+KAKA: tia é midi
+NEIDE: Midi pra quem
+KAKA: GENTE NOVIDADE
+KAKA: fechei parceria com uma marca de skincare!!!!! 😭😭😭
+KAKA: eles me acharam pelo insta, falaram que meu engajamento é "orgânico e autêntico"
+JUNINHO: parabéns prima
+KAKA: só precisei mandar pra eles um código que chegou no meu celular pra confirmar o selo de parceira oficial
+(Um código. Que chegou no celular dela. Que ela mandou para alguém.)
+(Meu estômago fez o mesmo barulho que fez ontem às 18h47.)
+TIO: ISSO AÍ KAKÁ. TEM QUE APROVEITAR AS OPORTUNIDADES
+> 15h21. Kaká saiu do grupo.
+> 15h21. Kaká entrou no grupo.
+KAKA: gente
+KAKA: não consigo entrar no insta
+KAKA: diz que a senha tá errada e o email não é mais o meu????
+NEIDE: Kaká tá vendendo iPhone pela metade do preço no story?? Quero um pro Edson
+NEIDE: Mandei mensagem lá, a moça respondeu rapidinho
+(A moça respondeu rapidinho porque a moça não é a Kaká.)
+@zap fim
+@musica tensao
+@som alarme
+> A conta da Kaká foi tomada. E quem tomou já está usando a cara dela para pedir Pix para três mil seguidores e para a família inteira.
+@muda minutos=15
+(Quinze minutos. É o tempo antes de alguém da lista dela achar que um iPhone a R$ 1.200 é sorte.)
+? O que você faz primeiro?
+* Ligar para a Kaká agora, por voz, e pedir que ela venha para cá -> g05_liga {minutos-2 rel_kaka+1}
+* Avisar no grupo, em letras grandes, que a conta foi invadida e ninguém deve pagar nada -> g05_aviso_grupo {minutos-1 confianca+1 marca:g5_avisou}
+* Mandar mensagem escrita para a Kaká perguntando, com calma, o que aconteceu -> g05_privado_lento {minutos-4}
+** Responder a Tia Neide: "Tia, a senhora já mandou Pix pra golpista ontem. Vai mandar de novo?" -> g05_expoe_tia {minutos-2 marca:expos_tia exposicoes+1 confianca-2 rel_neide-2}
+
+=== g05_liga
+> Ela atende no primeiro toque. Do outro lado, um choro misturado com barulho de rua.
+KAKA: Prima, eu tô no Uber, eu tô indo aí, eu tô tremendo, a minha conta, os meus três mil...
+EU: Respira. Desce aqui em casa. E no caminho não responde ninguém que diz ser da marca.
+KAKA: Eles me mandaram mensagem AGORA dizendo que devolvem se eu pagar quinhentos reais.
+EU: Não paga. Vem pra cá.
+@vai g05_kaka_chega
+
+=== g05_aviso_grupo
+@zap "Família Reunida 🙏🌹"
+EU: ATENÇÃO FAMÍLIA: o Instagram da Kaká foi invadido.
+EU: Não é ela que está vendendo nada nem pedindo dinheiro. NÃO mandem Pix, não cliquem em link que vier de lá.
+EU: Tia Neide, não paga o iPhone. Por favor. 🙏
+NEIDE: Eu não ia pagar
+NEIDE: Ia só perguntar o preço
+TIO_BENE: Vou repassar pros outros grupos
+EU: Isso, tio. Esse pode repassar.
+VO: [audio 0:09] Ninguém manda nada pra ninguém. Ouviram? Ninguém. Beijo.
+@zap fim
+(Até a Vó entendeu em nove segundos. Agora falta a Kaká.)
+@vai g05_kaka_chega
+
+=== g05_privado_lento
+@zap "Kaká 💅"
+EU: Oi prima, tudo bem? Aconteceu alguma coisa com a sua conta? Me explica com calma o que você fez, passo a passo, pra eu entender
+> Kaká está gravando áudio...
+> Kaká está gravando áudio...
+> Kaká está gravando áudio...
+KAKA: [audio 3:48] Então prima, começou quinta, não, quarta, porque quarta eu postei aquele vídeo da maquiagem de festa junina, lembra? Que deu dois mil views? Aí uma moça comentou, depois chamou no direct dizendo que era de uma marca, eu fui olhar o perfil e tinha selinho, quer dizer, tinha um emoji de selinho no nome, e aí...
+(Três minutos e quarenta e oito segundos. Enquanto ela conta a história, o golpista posta mais um story.)
+@zap fim
+@vai g05_kaka_chega
+
+=== g05_expoe_tia
+@zap "Família Reunida 🙏🌹"
+EU: Tia, a senhora já mandou Pix pra golpista ontem. Vai mandar de novo?
+> Tia Neide visualizou.
+> Tia Neide está digitando...
+> Tia Neide parou de digitar.
+JUNINHO: prima pegou pesado
+TIO: RESPEITA A TUA TIA
+NEIDE: Tá bom. Já entendi que eu sou a burra da família.
+> Tia Neide saiu do grupo.
+MAE: Larga esse celular e vem aqui na cozinha AGORA
+@zap fim
+@entra mae brava centro
+MAE: Você tá certa no conteúdo e errada no jeito. Ela tá morrendo de vergonha desde ontem.
+EU [envergonhada]: Eu sei. Escapou.
+MAE: Escapou na frente de quarenta pessoas. Agora quem vai ouvir aviso teu?
+@sai mae
+(Ela tem razão. Aviso de segurança que humilha não protege ninguém, só faz a pessoa esconder o próximo erro.)
+@vai g05_kaka_chega
+
+=== g05_kaka_chega
+@som porta
+@entra kaka assustada centro
+> A Kaká entra com o celular na mão, o rímel escorrendo e a bolsa aberta.
+KAKA: Eu sou muito burra. Eu sou a pessoa mais burra da internet.
+EU: Não é. Golpista que pede código é profissional. Ele treina isso o dia inteiro. Você só queria uma parceria.
+KAKA: Era a minha primeira parceria...
+EU: Me mostra a conversa com a "marca". Do começo.
+> Ela abre o e-mail e os prints que tirou do direct antes de perder a conta. Ainda bem que ela printa tudo.
+@desafio g2_dm_parceria -> g05_dm_acerto | g05_dm_erro
+
+=== g05_dm_acerto
+@muda minutos-1 tecnica+1
+EU: Olha aqui. Perfil criado há duas semanas, selinho de emoji no nome, pressa, e o pedido do código. O código era a chave da sua conta.
+@expr kaka pensativa
+KAKA: Mas a mensagem dizia "código de confirmação de parceria".
+EU: A mensagem dizia. O SMS que chegou no seu celular dizia outra coisa, olha: "Não compartilhe este código com ninguém".
+KAKA: ...eu não li o SMS. Eu só copiei o número.
+@anota g2_codigo_verificacao
+@vai g05_plano
+
+=== g05_dm_erro
+@muda minutos-3
+> Você lê, relê, se perde nos emojis de brilho e na palavra "collab" escrita de quatro jeitos diferentes.
+EU: Tá, não importa como eles te enrolaram. Importa que você mandou o código que chegou no seu celular.
+KAKA: Era o código da parceria.
+EU: Não existe código de parceria. Código que chega por SMS é a chave da porta da sua conta. Quem pede ele quer entrar.
+@anota g2_codigo_verificacao
+@vai g05_plano
+
+=== g05_plano
+@se minutos<=0 -> g05_perdeu
+@expr kaka triste
+> O celular da Kaká vibra. Uma amiga dela: "Kaká é vc mesmo vendendo esse iPhone? Mandei 300 de sinal".
+KAKA: Prima. Gente já está pagando.
+(Duas frentes: avisar quem ainda não pagou e tirar a conta da mão do golpista. Por onde começar?)
+? O que fazer agora?
+* Avisar seguidores e amigas por outros canais: WhatsApp, a conta reserva, o perfil da melhor amiga -> g05_avisar {minutos-2 rel_kaka+1 marca:g5_avisou}
+* Ir direto para a recuperação pelo caminho oficial do aplicativo -> g05_recuperar {minutos-1}
+* Mandar mensagem para o golpista pedindo, com jeitinho, que ele devolva a conta -> g05_negocia {minutos-3 paciencia-1}
+* Pagar os quinhentos reais que o golpista pediu para "devolver" a conta -> g05_resgate {minutos-3 etica-1}
+
+=== g05_avisar
+> Vocês dividem o trabalho. A Kaká grava um vídeo curto no perfil da melhor amiga, a Bia, com a cara inchada de choro e tudo.
+KAKA: Gente, meu Instagram foi invadido. Não sou eu vendendo iPhone. Não mandem Pix. Se já mandaram, falem com o banco de vocês agora e peçam a devolução.
+> Você manda a mesma coisa nos grupos da faculdade dela e no status do WhatsApp dela.
+EU: E quem pagou tem que avisar o próprio banco hoje, pelo aplicativo ou pelo número do cartão. Quanto antes, maior a chance de o dinheiro ainda estar parado lá.
+@anota g2_perfil_pede_pix
+(É o mesmo conselho que eu dei ontem para a Tia Neide. Quem dera alguém tivesse avisado antes.)
+@vai g05_recuperar
+
+=== g05_negocia
+@zap "Kaká 💅"
+> Mensagem enviada pelo celular da Bia para o perfil invadido.
+EU: Oi. Sei que você está com a conta da minha prima. Devolve, por favor. Ela é só uma menina de 22 anos.
+> Visualizado.
+> O perfil invadido mandou um adesivo de risada.
+> O perfil invadido postou mais um story: "SÓ HOJE: AIRPODS R$ 199".
+@zap fim
+(Óbvio. Golpista não tem pena. Tem meta.)
+KAKA [brava]: Ele tá rindo da minha cara. Na minha conta. Com a minha foto.
+@vai g05_recuperar
+
+=== g05_resgate
+@expr kaka assustada
+KAKA: Eu pago, eu pago. São só quinhentos, eu tenho do job do mês passado.
+EU: Kaká, espera. Pensa comigo: quem tem a sua conta e o seu dinheiro devolve a conta por quê?
+KAKA: Porque ele prometeu?
+EU: Ele prometeu também que era uma marca de skincare.
+> Ela já tinha copiado a chave. Você segura a mão dela no ar, a um toque do botão.
+KAKA [envergonhada]: Tá. Não paguei. Mas foi por pouco.
+(Pagar resgate só ensina o golpista que aquela família paga. E ele volta.)
+@vai g05_recuperar
+
+=== g05_recuperar
+@se minutos<=0 -> g05_perdeu
+@musica misterio
+> Vocês sentam no sofá, cercadas de bexigas. O celular da Kaká na mesa de centro, como se fosse um paciente.
+EU: Nada de link que chegar por mensagem dizendo que recupera conta. A gente vai pelo aplicativo oficial, na tela de login. E pelo e-mail dela de verdade.
+KAKA: Chegou um e-mail do Instagram dizendo que o meu e-mail foi trocado. Tem um botão "não fui eu".
+EU: Esse é do aplicativo mesmo? Olha o remetente e não clica com pressa. Melhor: abre o aplicativo e pede ajuda por lá.
+? Antes de começar, confira a ordem do resgate.
+* Montar a ordem com a Kaká -> g05_ordem
+** Ligar para o Juninho, que acabou de acordar do plantão, para segurar a mão da Kaká enquanto você mexe -> g05_juninho_ajuda {rel_juninho+1 minutos-1}
+
+=== g05_juninho_ajuda
+@zap "Juninho 🩺"
+> Chamada de vídeo. O Juninho aparece de touca, olheira de plantão e caneca de café.
+JUNINHO: Fala, prima. Eu vi o grupo. Kaká, ó: eu já caí em coisa pior. Comprei um tênis que nunca chegou. Ninguém morreu.
+KAKA: Mas você não tem três mil seguidores!
+JUNINHO: Tenho trezentos e doze e metade é paciente. Respira e faz o que ela mandar.
+@zap fim
+(Juninho de verdade, no número de sempre. Depois de ontem, eu confiro até o dele.)
+@muda rel_kaka+1
+@vai g05_ordem
+
+=== g05_ordem
+@desafio g2_recuperar_conta -> g05_ordem_acerto | g05_ordem_erro
+
+=== g05_ordem_acerto
+@muda minutos-2 tecnica+1
+> Tela de login. "Precisa de ajuda?". "Minha conta foi invadida". O aplicativo manda um código para o e-mail antigo dela, o de verdade, porque ainda lembra quem era a dona.
+> Depois pede uma selfie em vídeo, virando o rosto devagar para os lados.
+KAKA: Eu faço isso todo dia de graça. Agora é pra salvar a minha vida.
+> Senha nova, longa, que ela nunca usou em lugar nenhum. Sessões desconhecidas: um celular "em outra cidade". Remover. E-mail do golpista: apagar.
+@anota g2_clonagem_recuperar
+@vai g05_duas_etapas
+
+=== g05_ordem_erro
+@muda minutos-6
+> Vocês trocam a senha do e-mail antes, depois tentam entrar no aplicativo, depois esquecem a senha nova, depois a Kaká digita o código errado duas vezes e o aplicativo pede para esperar.
+KAKA: Ele falou "tente novamente mais tarde". Mais tarde quando? Mais tarde é quando eu estiver velha!
+EU: Calma. A gente vai de novo, na ordem certa. Pela tela de login, "minha conta foi invadida", e o caminho que o próprio aplicativo der.
+> Na segunda tentativa, vai. Mas o relógio não volta.
+@anota g2_clonagem_recuperar
+@vai g05_duas_etapas
+
+=== g05_duas_etapas
+@se minutos<=0 -> g05_perdeu
+EU: Última coisa, e é a mais importante: a verificação em duas etapas. Sem ela, quem conseguir um código seu entra de novo amanhã.
+? Como ligar a verificação em duas etapas?
+* Com um aplicativo autenticador e guardar os códigos de reserva num lugar seguro, fora do celular -> g05_2fa_app {minutos-2 tecnica+2 marca:kaka_2fa}
+* Por SMS mesmo, que é mais rápido agora e melhor que nada -> g05_2fa_sms {minutos-1 tecnica+1 marca:kaka_2fa}
+* Depois a gente liga. Ela precisa postar o look da festa antes que a luz da tarde acabe -> g05_2fa_depois {rel_kaka+1}
+
+=== g05_2fa_app
+> Um aplicativo autenticador gera um número novo a cada trinta segundos. A Kaká anota os códigos de reserva num papel e esconde dentro da capinha de outro celular, o velho, que fica na gaveta.
+KAKA: Então mesmo se alguém tiver a minha senha...
+EU: ...vai precisar do número que só aparece no seu celular. E esse número você não passa nem para mim.
+@anota g2_dois_fatores
+@vai g05_desfecho
+
+=== g05_2fa_sms
+> O SMS chega na hora. Dessa vez a Kaká lê a mensagem inteira, em voz alta, inclusive o "não compartilhe".
+KAKA: "Não compartilhe este código com ninguém." Que mensagem antipática. E certíssima.
+EU: Depois, com calma, troca para o aplicativo autenticador. Mas já é outra conta.
+@anota g2_dois_fatores
+@vai g05_desfecho
+
+=== g05_2fa_depois
+KAKA: Depois do look eu ligo. Prometo. Juro pelo meu ring light.
+(Já vi esse filme. "Depois" é a palavra preferida de golpista.)
+@vai g05_desfecho
+
+=== g05_desfecho
+@se minutos<=0 -> g05_perdeu
+@vai g05_recuperada
+
+=== g05_recuperada
+@musica alegre
+@marca kaka_recuperada
+@muda rel_kaka+2 confianca+1
+> 15h58. A foto de perfil da Kaká volta a ser a Kaká, de batom vermelho e cara de quem já viu coisa.
+> Os stories do iPhone e do AirPods somem. O primeiro post dela, de volta à própria conta, é um fundo preto com letras brancas.
+@expr kaka feliz
+KAKA: "Fui hackeada. Ninguém mandou código nenhum de parceria pra ninguém aqui, nunca mais. Se você pagou alguma coisa, fala com o seu banco hoje e faz boletim de ocorrência. Desculpa, gente. Agora eu tenho verificação em duas etapas e uma prima chata."
+EU: "Chata" não precisava.
+KAKA: Precisava sim. É carinho.
+@se !marca:g5_avisou -> g05_recuperada_sem_aviso
+> Nas mensagens, as amigas mandam corações. Ninguém da família pagou nada. Uma seguidora pagou R$ 300, mas já ligou para o banco.
+@vai g05_fim
+
+=== g05_recuperada_sem_aviso
+@expr kaka triste
+> Mas, enquanto vocês recuperavam a conta, ninguém avisou os seguidores. Três pessoas pagaram o "sinal do iPhone". Uma delas foi a Bia, a melhor amiga.
+KAKA: A Bia mandou quatrocentos. Por mim.
+EU: Pede pra ela ligar para o banco agora e pedir a devolução pelo MED. E fazer o boletim online. Hoje ainda.
+(Recuperar a conta é só metade. A outra metade é avisar antes que alguém pague.)
+@muda confianca-1
+@vai g05_fim
+
+=== g05_perdeu
+@musica triste
+@marca kaka_perdeu_conta
+> 16h03. O aplicativo responde: "Não conseguimos confirmar sua identidade. Tente novamente em 24 horas."
+> O golpista trocou o e-mail, o telefone e o nome do perfil. A conta agora se chama "kaka.ofertas.oficial" e tem um iPhone na foto.
+@expr kaka triste
+KAKA: Três anos. Três anos de foto, de amiga, de comentário da vó com coraçãozinho.
+EU: A gente não desiste. Fica registrado o pedido de recuperação, você denuncia o perfil como "fingindo ser eu" pelo aplicativo, pede para as amigas denunciarem também, e faz o boletim de ocorrência online hoje.
+EU: E avisa todo mundo que essa conta não é você. Essa parte a gente ainda consegue ganhar.
+KAKA: E a minha conta nova? Vai ter verificação em duas etapas desde o primeiro minuto?
+EU [feliz]: Desde antes do primeiro post.
+@muda rel_kaka+1
+@vai g05_fim
+
+=== g05_fim
+@sai kaka
+@entra mae neutra centro
+@musica alegre
+MAE: Acabou o incêndio? Então enche as bexigas que faltam. A festa não se organiza sozinha.
+EU: Mãe, eu salvei uma conta.
+MAE: E eu fiz quarenta salgadinhos. Cada uma com o seu talento.
+@sai mae
+@som notificacao
+> 19h40. No grupo, o Tio Benê acabou de mandar um áudio de cinco minutos e uma foto de uma cesta básica.
+(Ah, não.)
+@vai g06_inicio

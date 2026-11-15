@@ -46,6 +46,7 @@ Toda cena termina com `@vai`, um bloco de escolhas, `@desafio` ou `@final`. Cena
 | `@desafio id -> cena_acerto \| cena_erro` | minijogo técnico |
 | `@anota id` | libera página do caderno |
 | `@final id` | fim da história |
+| `@zap "Nome do grupo"` | abre o celular com a conversa; falas e narração viram mensagens até `@zap fim` |
 
 ## Escolhas
 
@@ -67,3 +68,13 @@ Toda cena termina com `@vai`, um bloco de escolhas, `@desafio` ou `@final`. Cena
 ## Expressões
 
 `neutra`, `feliz`, `triste`, `brava`, `surpresa`, `pensativa`, `envergonhada`, `assustada`.
+
+## Modo conversa
+
+Com o celular aberto (`@zap "Família Reunida 🙏🌹"`), `EU:` aparece à direita e os outros à esquerda com o nome colorido. Narração vira aviso do sistema. Pensamentos continuam no balão normal. Prefixos especiais na fala:
+
+- `[audio 3:12] transcrição` mensagem de áudio
+- `[foto] legenda` foto
+- `[figurinha] texto` figurinha de bom dia
+
+Atributos próprios da história e o relógio no topo são definidos em `historia.ts` (`varsIniciais`, `atributos`, `hud`).

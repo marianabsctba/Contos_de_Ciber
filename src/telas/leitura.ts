@@ -39,6 +39,7 @@ export function telaLeitura(h: Historia): void {
   if (!estado) return telaDetalhe(h);
   const ex = new Executor(roteiro, estado);
   const pers = new Map(h.personagens.map((p) => [p.id, p]));
+  const ATRIB = h.atributos ?? NOMES_ATRIB;
 
   const fundoA = el('div', { class: 'fundo-cena' });
   const fundoB = el('div', { class: 'fundo-cena' });
@@ -48,6 +49,8 @@ export function telaLeitura(h: Historia): void {
   const fala = el('div', { class: 'caixa-fala' });
   const escolhas = el('div', { class: 'escolhas' });
   const tituloCap = el('span', { class: 'titulo-cap' });
+  const hud = el('div', { class: 'hud' });
+  const celular = el('div', { class: 'celular' });
   const camadaToque = el('div', { class: 'toque' });
   const tela = el(
     'div',
@@ -55,11 +58,13 @@ export function telaLeitura(h: Historia): void {
     fundoA,
     fundoB,
     palco,
+    celular,
     el(
       'header',
       { class: 'topo topo-leitura' },
       el('button', { class: 'icone', 'aria-label': 'Sair', onclick: () => sair() }, '✕'),
       tituloCap,
+      hud,
       el('button', { class: 'icone', 'aria-label': 'Caderno', onclick: () => abrirCaderno(h) }, '📓'),
       el('button', { class: 'icone', 'aria-label': 'Menu', onclick: () => menu() }, '☰'),
     ),
@@ -95,7 +100,7 @@ export function telaLeitura(h: Historia): void {
         'div',
         { class: 'menu-leitura' },
         el('h3', {}, `Capítulo ${ex.estado.capitulo.numero}: ${ex.estado.capitulo.titulo}`),
-        el('div', { class: 'atributos' }, ...Object.entries(NOMES_ATRIB).map(([k, n]) => el('div', {}, el('span', {}, n), el('b', {}, String(ex.estado.vars[k] ?? 0))))),
+        el('div', { class: 'atributos' }, ...Object.entries(ATRIB).map(([k, n]) => el('div', {}, el('span', {}, n), el('b', {}, String(ex.estado.vars[k] ?? 0))))),
         el(
           'div',
           { class: 'botoes coluna' },
@@ -197,7 +202,95 @@ export function telaLeitura(h: Historia): void {
     digitando = { fim };
   }
 
+  function pintarHud() {
+    const itens = (h.hud ?? []).filter((x) => ex.estado.vars[x.var] !== undefined);
+    hud.replaceChildren(
+      ...itens.map((x) => {
+        const v = ex.estado.vars[x.var];
+        return el('span', { class: `hud-item ${x.var === 'minutos' && v <= 10 ? 'urgente' : ''}` }, `${x.icone} ${v}${x.sufixo ?? ''}`);
+      }),
+    );
+  }
+
+  function pintarCelular(animarUltima: boolean) {
+    const e = ex.estado;
+    if (!e.zap) {
+      celular.classList.remove('aberto');
+      return;
+    }
+    const log = e.zapLog ?? [];
+    const membros = [...new Set(log.map((m) => m.quem).filter((q) => q && q !== 'eu'))]
+      .map((q) => pers.get(q)?.nome.split(' ').slice(-1)[0] ?? q)
+      .slice(0, 5);
+    const lista = el('div', { class: 'zap-lista' });
+    log.forEach((m, i) => {
+      const nova = animarUltima && i === log.length - 1;
+      lista.append(balaoZap(m.quem, m.texto, nova));
+    });
+    celular.replaceChildren(
+      el(
+        'div',
+        { class: 'zap-topo' },
+        el('span', { class: 'zap-avatar' }, '👪'),
+        el('div', {}, el('strong', {}, e.zap), el('small', {}, membros.length ? `${membros.join(', ')}, você` : 'toque para ver os participantes')),
+      ),
+      lista,
+    );
+    celular.classList.add('aberto');
+    lista.scrollTop = lista.scrollHeight;
+  }
+
+  function balaoZap(quem: string, texto: string, nova: boolean): HTMLElement {
+    if (!quem) return el('div', { class: `zap-sistema ${nova ? 'nova' : ''}` }, texto);
+    const eu = quem === 'eu';
+    const per = pers.get(quem);
+    const cor = per?.cor ?? '#888';
+    let corpo: HTMLElement;
+    const mAudio = texto.match(/^\[audio ([\d:]+)\]\s*(.*)$/);
+    const mFoto = texto.match(/^\[foto\]\s*(.*)$/);
+    const mFig = texto.match(/^\[figurinha\]\s*(.*)$/);
+    if (mAudio) {
+      corpo = el(
+        'div',
+        { class: 'zap-audio' },
+        el('span', { class: 'play' }, '▶'),
+        el('span', { class: 'onda' }, ...Array.from({ length: 22 }, (_, i) => el('i', { style: `height:${4 + ((i * 7 + texto.length) % 13)}px` }))),
+        el('small', {}, mAudio[1]),
+        mAudio[2] ? el('em', {}, `Transcrição: ${mAudio[2]}`) : null,
+      );
+    } else if (mFoto) {
+      corpo = el('div', { class: 'zap-foto' }, el('div', { class: 'foto' }, '📷'), mFoto[1] ? el('span', {}, mFoto[1]) : null);
+    } else if (mFig) {
+      corpo = el('div', { class: 'zap-figurinha' }, el('span', {}, '🌹✨'), el('b', {}, mFig[1]));
+    } else {
+      corpo = el('span', {}, texto);
+    }
+    return el(
+      'div',
+      { class: `zap-msg ${eu ? 'minha' : ''} ${nova ? 'nova' : ''} ${mFig ? 'sem-balao' : ''}` },
+      !eu ? el('b', { class: 'zap-nome', style: `color:${cor}` }, per?.nome ?? quem) : null,
+      corpo,
+      el('small', { class: 'zap-hora' }, eu ? '✓✓' : ''),
+    );
+  }
+
   function mostrarFala(ev: Extract<Evento, { t: 'narra' | 'pensa' | 'fala' }>) {
+    if (ex.estado.zap && ev.t !== 'pensa') {
+      pintarPalco(null);
+      fala.className = 'caixa-fala';
+      escolhas.replaceChildren();
+      if (ev.t === 'fala' && ev.quem !== 'eu') {
+        som.efeito('mensagem');
+        celular.classList.add('digitando');
+        ocupado = true;
+        setTimeout(() => {
+          celular.classList.remove('digitando');
+          ocupado = false;
+          pintarCelular(true);
+        }, 380);
+      } else pintarCelular(true);
+      return;
+    }
     fala.className = 'caixa-fala visivel';
     escolhas.replaceChildren();
     const textoEl = el('p', { class: 'texto' });
@@ -257,7 +350,7 @@ export function telaLeitura(h: Historia): void {
 
   function requisito(conds: { tipo: string; nome: string; op?: string; valor?: number; negada?: boolean }[]): string {
     return conds
-      .map((c) => (c.tipo === 'var' ? `${NOMES_ATRIB[c.nome] ?? nomeRel(c.nome)} ${c.op} ${c.valor}` : 'depende do que você fez antes'))
+      .map((c) => (c.tipo === 'var' ? `${ATRIB[c.nome] ?? nomeRel(c.nome)} ${c.op} ${c.valor}` : 'depende do que você fez antes'))
       .join(' e ');
   }
 
@@ -270,7 +363,7 @@ export function telaLeitura(h: Historia): void {
     for (const [k, v] of Object.entries(ex.estado.vars)) {
       const d = v - (antes[k] ?? 0);
       if (!d) continue;
-      const nome = NOMES_ATRIB[k] ?? nomeRel(k);
+      const nome = ATRIB[k] ?? nomeRel(k);
       toast(`${d > 0 ? '▲' : '▼'} ${nome} ${d > 0 ? '+' : ''}${d}`, d > 0 ? 'mais' : 'menos');
     }
   }
@@ -320,7 +413,7 @@ export function telaLeitura(h: Historia): void {
         el('h1', {}, f?.titulo ?? id),
         svg(desenharPersonagem({ ...e.visual, idade: e.idade }, f?.tipo === 'ruim' ? 'triste' : 'feliz'), 'final-retrato'),
         el('p', {}, (f?.texto ?? '').replace(/\{nome\}/g, e.nome)),
-        el('div', { class: 'atributos' }, ...Object.entries(NOMES_ATRIB).map(([k, n]) => el('div', {}, el('span', {}, n), el('b', {}, String(e.vars[k] ?? 0))))),
+        el('div', { class: 'atributos' }, ...Object.entries(ATRIB).map(([k, n]) => el('div', {}, el('span', {}, n), el('b', {}, String(e.vars[k] ?? 0))))),
         el('p', { class: 'dica' }, `Você descobriu ${vistos} de ${h.finais.length} finais.`),
         el(
           'div',
@@ -341,6 +434,9 @@ export function telaLeitura(h: Historia): void {
 
   function mostrar(ev: Evento) {
     pintarFundo();
+    pintarHud();
+    if (!ex.estado.zap) celular.classList.remove('aberto');
+    else if (!celular.classList.contains('aberto')) pintarCelular(false);
     som.tocar(ex.estado.musica);
     salvar();
     switch (ev.t) {

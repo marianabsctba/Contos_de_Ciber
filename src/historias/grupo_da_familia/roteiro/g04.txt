@@ -1,0 +1,348 @@
+=== g04_inicio
+@cap 4 "Doutor Fausto recupera seu dinheiro"
+@fundo quarto_madrugada
+@musica alegre
+> Sábado, 7h58. O sol entra pela fresta da cortina com a delicadeza de um despertador de obra.
+@zap "Família Reunida 🙏🌹"
+> 31 mensagens não lidas
+NEIDE: [figurinha] Bom dia, família abençoada 🌹 Que o sábado seja de vitórias
+TIO_BENE: [figurinha] Bom dia! Sábado é dia de churrasco e de Deus 🍖🙏
+KAKA: gente pq vcs acordam 6h no sábado
+MAE: Bom dia! Amanhã é o almoço da mãe. Lista: eu faço o arroz e a maionese. Neide faz a lasanha. Benê...
+TIO_BENE: Pavê
+KAKA: NÃO
+MAE: Benê traz refrigerante.
+TIO_BENE: E um pavezinho pequeno
+VO: [audio 0:12] Eu quero o pavê do Benê. É meu aniversário. Quem não quiser come a maionese da Selma, que tem uva passa.
+MAE: Não tem uva passa, mãe!
+KAKA: tem sim tia
+> 7h41
+NEIDE: Gente olha que benção que eu achei 🙏
+NEIDE: [foto] Anúncio: "DR. FAUSTO RECUPERA ⚖️ Advogado especialista em golpes de Pix. Recuperação GARANTIDA em 24h. 98% de sucesso. Fale agora no zap!"
+NEIDE: Já falei com ele. Muito educado. Igual o moço de ontem, mas esse é advogado de verdade, tem foto de terno
+TIO_BENE: Glória! Compartilhei no grupo da igreja
+@zap fim
+(Não. Não, não, não. Sábado de manhã, eu ainda nem escovei o dente.)
+@se marca:dinheiro_bloqueado -> g04_inicio_bloqueado
+@vai g04_inicio_sumiu
+
+=== g04_inicio_bloqueado
+@zap "Tia Neide"
+NEIDE: O banco disse que tem que esperar a análise. Eu não aguento esperar dias, {nome}
+NEIDE: O doutor disse que consegue liberar hoje mesmo, antes do almoço da mãe
+@vai g04_relogio
+
+=== g04_inicio_sumiu
+@zap "Tia Neide"
+NEIDE: O banco disse que o dinheiro foi embora. Mas o doutor disse que consegue rastrear e trazer de volta
+NEIDE: Ele disse que já recuperou de gente que perdeu muito mais
+@vai g04_relogio
+
+=== g04_relogio
+@muda minutos=15
+@se marca:neide_caiu_central -> g04_relogio_central
+NEIDE: Ele pediu uma taxinha pra começar. Tem que pagar até as 10h senão perde o prazo
+@vai g04_relogio_conta
+
+=== g04_relogio_central
+NEIDE: E ele recupera os dois! O do Juninho falso e o do moço do banco falso. Os dois de uma vez, pela mesma taxa
+(Ela quer tanto apagar os dois prejuízos que vai pagar qualquer coisa que prometa isso. Golpista sabe disso melhor do que eu.)
+@muda minutos-2
+NEIDE: Tem que pagar até as 10h senão perde o prazo
+@vai g04_relogio_conta
+
+=== g04_relogio_conta
+@musica tensao
+@som alarme
+(Ela vai pagar quando o "doutor" mandar a chave Pix. Eu tenho que chegar antes da chave. Tempo de escovar o dente, vestir uma calça e atravessar meio bairro.)
+@zap fim
+? Primeiro movimento do sábado.
+* Pedir no privado para a tia te mostrar a conversa com o doutor antes de pagar -> g04_conversa {minutos-2 rel_neide+1}
+* Responder no grupo: "Tia, isso também é golpe, a senhora não aprende?" -> g04_grupo_expoe {minutos-4 confianca-2 rel_neide-2}
+* Pesquisar o tal "Dr. Fausto" antes de falar qualquer coisa -> g04_pesquisa {minutos-3 tecnica+1}
+** Fingir ser uma vítima nova e conversar com o Dr. Fausto você mesma -> g04_fausto_eu {minutos-5 tecnica+1}
+
+=== g04_grupo_expoe
+@muda exposicoes+1
+@se marca:expos_tia -> g04_grupo_expoe_de_novo
+@marca expos_tia
+@zap "Família Reunida 🙏🌹"
+EU: Tia, isso também é golpe. A senhora não aprende?
+> Tia Neide visualizou.
+TIO_BENE: Nossa {nome} que grosseria com a sua tia
+MAE: Filha!!!
+KAKA: 😬😬😬
+NEIDE: Aprendo sim. Aprendi quem eu posso contar as coisas.
+> Tia Neide saiu do grupo
+@zap fim
+(Ela saiu. E quem saiu não lê os avisos. Eu acabei de tirar do grupo justamente a pessoa que mais precisa dele.)
+@vai g04_conversa
+
+=== g04_grupo_expoe_de_novo
+@zap "Família Reunida 🙏🌹"
+EU: Tia, isso também é golpe. A senhora não aprende?
+> Tia Neide visualizou.
+MAE: {nome}. De novo, não.
+TIO: QUE FALTA DE RESPEITO
+KAKA: prima... de novo? 😬
+> Tia Neide saiu do grupo
+> Tia Neide bloqueou você
+@zap fim
+(Ela me bloqueou. Duas vezes eu escolhi ter razão em público. Duas vezes ela pagou o preço.)
+@muda confianca-1 paciencia-1
+@vai g04_corre
+
+=== g04_corre
+@fundo capital_rua
+> Sem conseguir falar com ela, só resta ir até lá. Você chama um carro, atravessa o bairro e liga para a Vó Dita no caminho.
+@zap "Vó Dita 👵"
+VO: [audio 0:20] Ela tá aqui no quarto, chorando de raiva com o celular na mão. Raiva de você, viu? Mas tá aqui. Vem logo. Eu seguro.
+@zap fim
+@muda minutos-2
+@vai g04_conversa
+
+=== g04_conversa
+@fundo quarto_tia
+@musica tensao
+> 8h31. O quarto da Tia Neide tem colcha de crochê, santinho na cabeceira e uma pilha de revistas de 2014 que ela ainda vai ler.
+@entra neide neutra esquerda
+NEIDE: Olha aqui, ó. Ele é educadíssimo. Me chama de "senhora" e manda bom dia com emoji.
+> Ela vira o celular para você.
+@vai g04_le_fausto
+
+=== g04_pesquisa
+> Você abre o navegador, ainda de pijama, e procura.
+> O perfil do "Dr. Fausto Recupera" tem 2.300 seguidores, foi criado há seis semanas e só posta depoimentos de "clientes" com fotos que parecem de banco de imagens.
+> O número de inscrição na Ordem dos Advogados que ele mostra no perfil não aparece no cadastro nacional de advogados, a consulta oficial e pública da OAB.
+> E os comentários estão fechados.
+(Foto de terno, perfil novo, número de OAB que não existe e comentários fechados. Advogado de verdade tem inscrição que qualquer um confere.)
+@anota g1_checar_advogado
+@marca viu_oab
+@fundo quarto_tia
+@entra neide neutra esquerda
+> Você chega na casa da tia às 8h40, com o cabelo preso de qualquer jeito.
+NEIDE: Ah, você veio. Olha a conversa com o doutor, ó, ele é educadíssimo.
+@vai g04_le_fausto
+
+=== g04_fausto_eu
+@zap "Dr. Fausto Recupera ⚖️"
+EU: Bom dia, doutor. Eu caí num golpe do Pix ontem, perdi R$ 2.000. O senhor consegue recuperar?
+FAUSTO: Bom dia! Que bom que a senhora chegou até nós 🙏 Aqui recuperamos 98% dos casos.
+FAUSTO: Já vou adiantar: localizei a conta do golpista no sistema. Precisamos só da taxa de liberação.
+EU: Mas o senhor ainda nem sabe qual é o meu banco.
+FAUSTO: Nosso sistema é integrado a todos os bancos, senhora. Taxa de R$ 680, hoje até as 10h.
+EU: Engraçado. Pra minha tia o senhor falou o mesmo valor e o mesmo horário.
+> Dr. Fausto Recupera ⚖️ bloqueou você
+@zap fim
+(Ele não sabia meu banco, nem meu nome, nem o meu golpe. Mas sabia a taxa e a hora. O roteiro é o mesmo pra todo mundo.)
+@fundo quarto_tia
+@entra neide neutra esquerda
+> Você chega na casa da tia às 8h45 com o print do bloqueio na mão.
+NEIDE: Bloqueou você? Mas comigo ele é tão educado.
+@vai g04_le_fausto
+
+=== g04_le_fausto
+@zap "Dr. Fausto Recupera ⚖️ (celular da Tia Neide)"
+FAUSTO: Bom dia, Dona Neide! Recebi seu contato pela nossa página 🙏
+FAUSTO: Sou o Dr. Fausto, advogado especialista em recuperação de Pix. Recuperação garantida em 24h, 98% de sucesso.
+FAUSTO: Já localizei a conta do golpista no sistema do Banco Central. O dinheiro está lá, só precisa ser liberado.
+FAUSTO: Para iniciar, a senhora paga uma taxa de liberação de R$ 680, por Pix, para a minha assistente.
+FAUSTO: Precisa ser hoje até as 10h, senão o processo prescreve e a senhora perde tudo.
+FAUSTO: Também vou precisar de uma foto do seu documento e do código que vai chegar por SMS, para eu acessar o processo no seu nome.
+FAUSTO: Fique tranquila, a senhora está em boas mãos ⚖️
+@zap fim
+(Eu preciso mostrar para ela, ponto por ponto, sem fazer ela se sentir burra. Primeiro eu mesma tenho que enxergar todos.)
+@desafio g1_recuperacao -> g04_acerto | g04_erro
+
+=== g04_acerto
+(Garantia de resultado, acesso a "sistema do Banco Central", taxa antecipada para conta de terceiro, prazo que "prescreve" até as 10h e pedido de documento e código de SMS. Ele não recupera dinheiro, ele recupera vítima.)
+@muda minutos-1
+@anota g1_golpe_recuperacao
+@vai g04_convence
+
+=== g04_erro
+(Ele parece tão profissional. Tem até a balancinha da justiça no nome. Será que eu estou exagerando?)
+> Você relê tudo devagar enquanto a tia procura os óculos para abrir o aplicativo do banco.
+> Até que o seu olho para no "código que vai chegar por SMS".
+(Código de SMS. Ninguém de verdade pede isso. Nunca. Agora o resto todo faz sentido.)
+@muda minutos-5
+@anota g1_golpe_recuperacao
+@vai g04_convence
+
+=== g04_convence
+@expr neide pensativa
+NEIDE: Mas ele tem foto de terno, {nome}. E tem dois mil seguidores. E a balancinha.
+> A Tia Neide já está com o aplicativo do banco aberto, na tela do Pix, esperando a chave da "assistente".
+@som mensagem
+> Chega a mensagem: "Dona Neide, segue a chave da minha assistente. Aguardo o comprovante 🙏"
+? O dedo dela está no campo da chave.
+* Mostrar, na tela, que o número de OAB dele não existe na consulta oficial de advogados -> g04_oab {minutos-2 tecnica+1 rel_neide+1}
+* Lembrar que o banco já está cuidando do caso pelo MED, de graça, e que ninguém recupera Pix cobrando taxa -> g04_med_lembra {minutos-3 confianca+1}
+* Tirar o celular da mão dela -> g04_toma {minutos-6 rel_neide-2 paciencia-1}
+** Chamar o Tio Edson para perguntar ao Dr. Fausto se ele aceita pagamento na moeda digital da pirâmide -> g04_cripto {minutos-3 rel_tio+1}
+
+=== g04_oab
+@se marca:viu_oab -> g04_oab_rapido
+> Você abre a consulta oficial de advogados da OAB e digita o número que aparece no perfil dele.
+> "Nenhum registro encontrado."
+@vai g04_oab_mostra
+
+=== g04_oab_rapido
+> Você já tinha a consulta aberta desde a pesquisa. É só virar a tela.
+@muda minutos+1
+@vai g04_oab_mostra
+
+=== g04_oab_mostra
+EU: Olha, tia. Todo advogado tem inscrição na OAB, e qualquer pessoa pode conferir aqui, de graça. O número dele não existe.
+@expr neide surpresa
+NEIDE: Não existe? Mas tá escrito no perfil dele. Com a balancinha.
+EU: Qualquer um escreve qualquer coisa em perfil, tia. Até eu posso escrever que sou astronauta.
+NEIDE: Você seria uma ótima astronauta.
+NEIDE: ...Ele é golpista também, né?
+EU: É, tia. E advogado de verdade não promete resultado garantido. É proibido.
+@anota g1_checar_advogado
+@vai g04_resultado
+
+=== g04_med_lembra
+EU: Tia, o banco já abriu a contestação pelo MED ontem. Isso é de graça. Ninguém precisa pagar nada para pedir o dinheiro de volta.
+EU: E ninguém, nem advogado, nem polícia, nem banco, "libera" Pix cobrando taxa antes. Quem cobra para recuperar é o mesmo tipo de gente que roubou.
+NEIDE: Mas e se o banco demorar?
+EU: Aí a gente liga de novo pro banco, pelo número do cartão. E o BO ajuda. Nada disso custa um real.
+@expr neide pensativa
+NEIDE: Tá. Então não vou pagar.
+NEIDE: Mas vou mandar uma mensagem dizendo que ele é um sem-vergonha.
+EU: Melhor só bloquear e denunciar o perfil, tia.
+NEIDE: Vou bloquear, denunciar E mandar a mensagem.
+@vai g04_resultado
+
+=== g04_toma
+> Você pega o celular da mão dela. Ela pega de volta. Você pega de novo. Ela se tranca no banheiro com o celular.
+NEIDE: EU SOU ADULTA, {nome}. O DINHEIRO É MEU.
+> Atrás da porta, você escuta o barulhinho do teclado do celular.
+@entra vo neutra direita
+VO: Muito bem. Agora ela tá trancada com o golpista e você tá aqui fora comigo.
+(A Vó tem razão. Eu transformei uma conversa numa briga, e na briga a tia escolhe o lado contrário ao meu, só por orgulho.)
+EU: Tia, desculpa. A senhora é adulta e o dinheiro é seu. Só me deixa mostrar uma coisa antes de pagar. Uma só.
+> A porta abre devagar.
+@sai vo
+@vai g04_resultado
+
+=== g04_cripto
+@entra tio feliz direita
+TIO: Doutor, o senhor aceita pagamento em CryptoGold? É uma moeda nova que rende 3% ao dia.
+> Ele digita no celular da Tia Neide, em maiúsculas, claro. A resposta chega em dez segundos.
+NEIDE: Ele respondeu: "Aceitamos sim! Inclusive tenho uma oportunidade de investimento exclusiva para clientes, rende 5% ao dia."
+@expr tio surpresa
+TIO: 5%? Ao dia? Isso é impossível. Isso só pode ser golpe.
+EU: E 3% ao dia, tio?
+TIO: Isso é diferente. O meu tem whitepaper.
+@expr neide pensativa
+NEIDE: Se até o Edson achou que é golpe...
+(Eu salvei a tia usando a pirâmide do tio. Isso vai me assombrar no domingo, mas hoje funcionou.)
+@sai tio
+@vai g04_resultado
+
+=== g04_resultado
+@se minutos<=3 -> g04_caiu
+@vai g04_salvou
+
+=== g04_caiu
+@musica triste
+@som dinheiro
+@expr neide triste
+NEIDE: {nome}... eu já tinha mandado. Mandei antes de você chegar no quarto. Ele disse que o prazo ia prescrever.
+> No celular dela, o comprovante de R$ 680 para "Assistente Jurídica Priscila M.". E logo embaixo, uma mensagem nova do "doutor":
+> "Taxa recebida! Agora, para custas processuais, precisamos de mais R$ 1.500 até as 12h 🙏"
+NEIDE: Mais? Ele quer mais?
+@marca neide_caiu_recuperacao
+@muda rel_neide-1 paciencia-1
+(Golpe da recuperação nunca acaba na primeira taxa. Sempre tem mais uma. E ela está sentada na cama de crochê, com a mão no peito, contando mentalmente quanto já perdeu.)
+EU: Tia, não manda mais nada. A gente bloqueia ele, liga pro banco e pede a contestação desse também. E coloca no BO.
+NEIDE: Eu não quero que ninguém saiba, {nome}. Ninguém. Nem a sua mãe.
+@vai g04_depois
+
+=== g04_salvou
+@musica alegre
+@som acerto
+> A Tia Neide fecha o aplicativo do banco. Depois abre a conversa com o "doutor", toca no nome dele e aperta "Bloquear" e "Denunciar".
+@expr neide feliz
+NEIDE: Pronto. Bloqueado. Ele que vá recuperar a vergonha na cara.
+@muda confianca+1 rel_neide+1
+(Terceiro golpe em menos de um dia. E o terceiro ela barrou com o próprio dedo.)
+@vai g04_depois
+
+=== g04_depois
+@entra vo neutra direita
+VO: Acabou o Fausto?
+EU: Acabou, Vó.
+VO: Que pena. Eu tinha salvado o número dele como "Fausto Golpe" pra avisar o pessoal da hidroginástica.
+@expr vo pensativa
+VO: Escuta, minha filha. Ontem foi o falso filho. De noite foi o falso banco. Hoje o falso advogado. Isso não para no sábado. Amanhã é o meu aniversário e vai ter quarenta pessoas no quintal, todas com celular.
+@se marca:vo_aliada -> g04_vo_ja_aliada
+? A Vó Dita olha para você por cima dos óculos redondos.
+* Pedir ajuda da Vó Dita para cuidar da família até o almoço -> g04_vo_alianca {marca:vo_aliada rel_vo+1}
+* Dizer que você dá conta sozinha -> g04_sozinha {paciencia-1}
+* Abraçar a Tia Neide e prometer que ninguém precisa saber dos detalhes -> g04_abraco {rel_neide+2 confianca+1}
+
+=== g04_vo_ja_aliada
+VO: E como a gente combinou ontem, eu continuo de olho. Já descobri quem é o número de Portugal.
+EU: Quem é?
+VO: É a Rosinha, filha da comadre Lurdes, que foi morar em Coimbra. Ela é de confiança. Mas ninguém tinha avisado.
+(A Vó Dita fez a revisão de membros do grupo. Sozinha. Com 80 anos. Eu fico emocionada e um pouco ameaçada profissionalmente.)
+@muda rel_vo+1
+? E a Tia Neide, que ainda está ali do lado?
+* Abraçar a Tia Neide e dizer que ela foi corajosa hoje -> g04_abraco {rel_neide+2 confianca+1}
+* Planejar com a Vó como avisar a família inteira sem expor ninguém -> g04_plano_vo {confianca+1 rel_vo+1}
+
+=== g04_vo_alianca
+EU: Vó, a senhora me ajuda? A senhora percebe as coisas antes de todo mundo.
+VO: Ajudo. Mas com uma condição.
+EU: Qual?
+VO: Você me ensina a fazer aquele negócio que trava a conta com duas senhas. Eu quero ser a primeira da família.
+EU: A verificação em duas etapas?
+VO: Isso. Duas etapas. Eu subo escada até hoje, minha filha, duas etapas eu tiro de letra.
+(Acabei de ganhar uma aliada. E ela acabou de se candidatar a primeira usuária.)
+@vai g04_fim
+
+=== g04_sozinha
+EU: Pode deixar, Vó. Eu dou conta.
+VO: Dá. Dá sim. Até não dar.
+> Ela volta para a cozinha, devagar. Você fica com a sensação de que acabou de recusar a ajuda de quem mais sabia.
+@vai g04_fim
+
+=== g04_abraco
+> Você senta na cama de crochê e abraça a Tia Neide. Ela fica dura por dois segundos, depois desmonta.
+@expr neide triste
+NEIDE: Eu me sinto tão boba.
+EU: A senhora não é boba, tia. A senhora é mãe. Eles mexem justo no que a senhora tem de melhor.
+@expr neide neutra
+NEIDE: Não conta os detalhes pra ninguém, tá? Nem pro Benê. Principalmente pro Benê. Ele compartilha.
+EU: Só se a senhora quiser contar.
+@anota g1_sem_humilhar
+@vai g04_fim
+
+=== g04_plano_vo
+VO: Eu falo no almoço. Velha falando no aniversário ninguém interrompe. Você me dá as palavras, eu dou a voz.
+EU: Sem nome de ninguém?
+VO: Sem nome de ninguém. A gente fala do golpe, não de quem caiu.
+@vai g04_fim
+
+=== g04_fim
+@sai todos
+@fundo sala_familia
+@musica alegre
+> 11h20. Da cozinha vem cheiro de molho de lasanha. Na sala, o porta-retrato digital continua passando o cruzeiro de 2019.
+@zap "Família Reunida 🙏🌹"
+MAE: Lembrete: amanhã 12h, almoço da mãe. Quem vai levar cadeira?
+TIO_BENE: Eu levo 4 cadeiras e o pavê
+KAKA: gente vou gravar conteúdo à tarde pro meu perfil, não me liguem 💅📸
+KAKA: 3 mil seguidores, quase 3.100, me ajudem a bater a meta
+TIO_BENE: Já compartilhei seu perfil no grupo da igreja Kaká
+KAKA: tio o grupo da igreja tem média de idade 70 anos
+TIO_BENE: Seguidor é seguidor
+VO: [audio 0:06] Eu sigo a Kaká. Ela posta muito a cara e pouco o juízo.
+KAKA: VÓ 😭
+@zap fim
+(Uma hora e meia de paz. A maior desde sexta-feira. Eu não confio.)
+> O sábado mal passou do meio-dia.
+@vai g05_inicio
