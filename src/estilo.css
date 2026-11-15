@@ -15,7 +15,10 @@
   --corpo: 'Nunito', system-ui, sans-serif;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #ffffff30 transparent; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #ffffff30; border-radius: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
 html, body { margin: 0; height: 100%; background: #0b0918; color: var(--texto); font-family: var(--corpo); -webkit-tap-highlight-color: transparent; }
 body { overflow: hidden; }
 button { font: inherit; color: inherit; cursor: pointer; }
@@ -85,22 +88,26 @@ a { color: var(--ciano); }
 .sinopse { line-height: 1.5; }
 
 /* criação */
-.criacao .fundo-cena { opacity: .45; position: fixed; }
-.criacao-previa { position: relative; height: 42%; display: flex; justify-content: center; }
+.criacao { overflow: hidden; }
+.criacao .fundo-cena { opacity: .5; pointer-events: none; }
+.criacao .rolagem { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; }
+.criacao .topo { background: linear-gradient(#14102af2 60%, #14102a00); }
+.criacao-previa { position: relative; flex: none; height: max(240px, 40dvh); display: flex; justify-content: center; pointer-events: none; }
 .criacao-previa svg { height: 100%; filter: drop-shadow(0 10px 30px #000a); }
-.painel-criacao { position: relative; background: linear-gradient(#14102ae0, #14102a); border-radius: 24px 24px 0 0; padding: 16px 16px 40px; display: flex; flex-direction: column; gap: 12px; }
+.painel-criacao { position: relative; flex: 1 0 auto; background: linear-gradient(#14102ae8, #14102a 120px); border-radius: 24px 24px 0 0; padding: 16px 16px 0; display: flex; flex-direction: column; gap: 14px; }
+.painel-criacao > .botao { position: sticky; bottom: 0; margin: 4px -16px 0; width: calc(100% + 32px); border-radius: 0; padding: 18px; flex: none; }
 .rotulo-nome { display: flex; flex-direction: column; gap: 6px; font-weight: 800; }
 .campo-nome, .campo-senha, .codigo { background: #ffffff14; border: 1px solid #ffffff33; border-radius: 14px; padding: 12px; color: var(--texto); font: inherit; font-size: 16px; width: 100%; }
 .grupo-visual h4 { margin: 0 0 6px; font-size: 14px; color: var(--texto-2); }
-.opcoes-visual { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.opcoes-visual { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { flex: none; background: #ffffff14; border: 2px solid transparent; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 700; white-space: nowrap; }
 .chip.ativo { border-color: var(--rosa); background: #ff4f8b33; }
 .chip-cor { width: 34px; height: 34px; padding: 0; background: var(--c); border-color: #ffffff44; }
-.chip-cor.ativo { border-color: #fff; box-shadow: 0 0 0 3px var(--rosa); }
+.chip-cor.ativo { background: var(--c); border-color: #fff; box-shadow: 0 0 0 3px var(--rosa); }
 
 /* leitura */
 .leitura { overflow: hidden; }
-.fundo-cena { position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; }
+.fundo-cena { position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; pointer-events: none; }
 .fundo-cena.visivel { opacity: 1; }
 .fundo-cena svg { width: 100%; height: 100%; display: block; }
 .topo-leitura { position: absolute; left: 0; right: 0; background: linear-gradient(#000a, #0000); }

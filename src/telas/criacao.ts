@@ -59,6 +59,9 @@ export function telaCriacao(h: Historia): void {
       { class: 'tela criacao' },
       svg(CENARIOS['casa_quarto_infancia']?.svg ?? '', 'fundo-cena'),
       el(
+        'div',
+        { class: 'rolagem' },
+      el(
         'header',
         { class: 'topo' },
         el('button', { class: 'icone', 'aria-label': 'Voltar', onclick: () => telaDetalhe(h) }, '←'),
@@ -86,6 +89,7 @@ export function telaCriacao(h: Historia): void {
           },
           'Começar a história',
         ),
+      ),
       ),
     ),
   );
