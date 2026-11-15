@@ -1,0 +1,319 @@
+# Parte 2, capítulo 5. Aviso aos titulares, Bruna e a propaganda, Dona Cleide no balcão.
+
+=== d05_inicio
+@cap 5 "Querido paciente"
+@idade adulta
+@fundo sala_dpo
+@musica trabalho
+> 8h31. Sala da encarregada, que até semana passada era o depósito de pastas do convênio.
+> Ainda tem uma caixa escrita "GUIAS 2019 NÃO MEXER" fazendo as vezes de mesa de apoio. Em cima dela, a garrafa térmica de café, já na segunda rodada.
+(A ANPD é a parte assustadora. Os pacientes são a parte difícil: explicar para 1.847 pessoas, em português de gente, o que a gente fez com os dados delas.)
+@se !marca:comunicou_anpd e marca:ajudou_esconder -> d05_sem_anpd
+@se !marca:comunicou_anpd e !marca:perdeu_prazo -> d05_sem_anpd
+@vai d05_prazo_titulares
+
+=== d05_sem_anpd
+@entra helena pensativa direita
+HELENA: Antes de qualquer aviso aos pacientes, uma pergunta que eu não quero fazer.
+HELENA: A comunicação à ANPD saiu?
+@se marca:ajudou_esconder -> d05_sem_anpd_escondeu
+EU [envergonhada]: Não saiu. O Dr. Romeu segurou.
+@vai d05_sem_anpd_escolha
+
+=== d05_sem_anpd_escondeu
+EU [envergonhada]: Não saiu. E eu ajudei a segurar.
+> A Dra. Helena tira os óculos e limpa a lente na barra do jaleco. É o gesto que ela faz quando está contando até dez.
+HELENA: Ajudar a errar não é o mesmo que ser obrigada a continuar errando.
+@vai d05_sem_anpd_escolha
+
+=== d05_sem_anpd_escolha
+HELENA: O aviso aos pacientes vai dizer o quê? "Comunicamos a autoridade", sem ter comunicado?
+(O regulamento diz que, se eu não tenho todas as informações, comunico o que tenho e complemento depois. Não diz em lugar nenhum que dá para não comunicar.)
+? A comunicação à ANPD não saiu.
+* Comunicar agora pelo formulário oficial no site da ANPD, explicando os motivos da demora -> d05_comunica_tarde {etica+1 credibilidade+1 risco-1}
+* Deixar como está: a decisão é do controlador, e o controlador é o Dr. Romeu -> d05_deixa_estar {etica-1 risco+1}
+** Pedir para a Dra. Helena assinar junto a orientação por escrito e comunicar em seguida -> d05_comunica_tarde {marca:orientou_por_escrito rel_helena+1 credibilidade+2 risco-1}
+
+=== d05_comunica_tarde
+> Você abre o formulário oficial no site da ANPD. O campo dos motivos da demora fica piscando, como quem sabe de tudo.
+EU: Motivo da demora: hesitação interna da direção sobre a necessidade de comunicar. Já superada.
+HELENA: Honesto. Dói, mas é honesto.
+@marca comunicou_anpd
+@desmarca ajudou_esconder
+@se prazo<=0 -> d05_comunica_tarde_fora
+> Ainda dentro do prazo. Por pouco, por um café e por uma Dra. Helena.
+@vai d05_prazo_titulares
+
+=== d05_comunica_tarde_fora
+> Fora do prazo. Mas comunicado, com os motivos, com o que se sabia e com a promessa de complementar.
+@marca perdeu_prazo
+(Atrasado é ruim. Nunca é pior.)
+@vai d05_prazo_titulares
+
+=== d05_deixa_estar
+> Você fecha o navegador. A Dra. Helena fica parada na porta mais tempo do que precisava.
+HELENA: Então registra que você orientou. Pelo menos isso.
+@sai helena
+> O prazo passa com você olhando para ele.
+@marca nunca_comunicou
+@marca perdeu_prazo
+@vai d05_prazo_titulares
+
+=== d05_prazo_titulares
+@sai todos
+> Pelo regulamento da ANPD, os titulares também precisam ser avisados em até três dias úteis, em linguagem simples.
+@se prazo<=0 -> d05_titulares_atrasado
+> O relógio do topo ainda tem fôlego. Pouco, mas tem.
+@vai d05_bruna_chega
+
+=== d05_titulares_atrasado
+> O relógio do topo já zerou. Os pacientes estão atrasados também. Cada hora agora conta contra.
+@muda risco+1
+@vai d05_bruna_chega
+
+=== d05_bruna_chega
+@som porta
+@entra bruna feliz direita
+BRUNA: Bom diaaaa! Já fiz o aviso! Pode agradecer depois.
+EU: Você fez o aviso?
+BRUNA: Fiz, porque a gente precisa pensar a crise como oportunidade. Sinergia! Olha que lindo.
+> Ela vira o notebook. Fundo verde menta, coraçãozinho, fonte cursiva, a foto do Dr. Romeu sorrindo de jaleco.
+@zap "Diretoria Bem Viver"
+BRUNA: [foto] Querido paciente 💚 A Bem Viver cuida de você até quando acontece um pequeno imprevisto! Aproveite e agende seu check-up com 20% OFF usando o cupom CUIDADO20 🩺✨
+ROMEU: Ficou bonito. Tem que dizer que a culpa não foi da clínica
+WESLEY: [audio 1:48] Show, Bruna. Só não põe o link encurtado que dá problema no antivírus de uns pacientes, aí eles acham que é vírus, e às vezes é, mas não esse, esse é nosso, entendeu? Manda sem link. Ou com link. Tanto faz.
+HELENA: Cupom? Num aviso de incidente?
+BRUNA: É pra converter a dor em relacionamento 💚
+@zap fim
+(Converter a dor. Ela disse converter a dor.)
+? A Bruna está esperando um "aprovado".
+* Explicar que aviso de incidente não é peça de marketing e reescrever do zero -> d05_reescreve {etica+1 rel_bruna-1}
+* Aceitar o texto da Bruna, só tirando o cupom -> d05_aceita_bruna {rel_bruna+1 risco+1}
+* Deixar a Bruna terminar e revisar a parte jurídica amanhã cedo -> d05_amanha {paciencia+1 prazo-1 risco+1}
+** "Bruna, e se o seu talento fosse usado para deixar o aviso claro, e não bonito?" -> d05_bruna_aliada {rel_bruna+1 credibilidade+1}
+
+=== d05_reescreve
+EU: Bruna, esse aviso existe porque a gente expôs o diagnóstico de 1.847 pessoas. Não dá para colocar cupom do lado de diagnóstico.
+BRUNA: Mas não é melhor a pessoa sair com uma coisa boa?
+EU: A coisa boa é ela entender o que aconteceu e saber se proteger. Transparência não é tom de voz. É informação.
+@expr bruna triste
+BRUNA: Tá. Mas a fonte cursiva eu defendo até o fim.
+EU: A fonte cursiva pode ficar no seu coração.
+@sai bruna
+@vai d05_formulario
+
+=== d05_aceita_bruna
+> Você apaga o cupom. Sobra o resto: "pequeno imprevisto", coraçãozinho, foto do Dr. Romeu e um "agende já" no rodapé.
+@marca aviso_virou_propaganda
+BRUNA: Ficou até mais elegante sem o cupom. Menos é mais.
+(Menos é mais, mas "pequeno imprevisto" para diagnóstico vazado é menos que nada.)
+@sai bruna
+@vai d05_formulario
+
+=== d05_amanha
+> Você vai almoçar, responde quarenta e dois e-mails, participa de uma reunião que poderia ter sido um e-mail e esquece o aviso aberto em outra aba.
+> Dia seguinte. 7h40.
+> A Bruna, eficiente, já tinha mandado o texto dela para a gráfica imprimir em cartaz. O cartaz tem o cupom.
+@marca aviso_virou_propaganda
+EU: Bruna. O cartaz.
+BRUNA: Ficou lindo, né?
+(Ficou. Ficou lindo e errado, que é o pior tipo de errado.)
+@sai bruna
+@vai d05_formulario
+
+=== d05_bruna_aliada
+@expr bruna surpresa
+BRUNA: Claro... e bonito?
+EU: Claro é o novo bonito. Frase curta. Nada de "imprevisto". Diz o que aconteceu, que dado foi, o que a pessoa pode fazer. Você é ótima com frase curta.
+BRUNA: Eu sou ótima com frase curta.
+> Pela primeira vez na semana, a Bruna abre um documento sem emoji no título.
+@sai bruna
+@vai d05_formulario
+
+=== d05_formulario
+> O documento em branco se chama "AVISO_PACIENTES_v1". Você jura para si mesma que não vai existir v3_agora_vai.
+(Linguagem simples. O que aconteceu, que dados, quais riscos, o que a clínica fez, o que a pessoa pode fazer e como falar comigo. Campo a campo.)
+@desafio d2_aviso_titulares -> d05_aviso_acerto | d05_aviso_erro
+
+=== d05_aviso_acerto
+> O texto cabe em uma tela de celular. Uma senhora de 80 anos entende. Um advogado também. Ninguém precisa de dicionário.
+(Sem "incidente de segurança da informação envolvendo ativos". Sem "pequeno imprevisto". Só a verdade, com contato embaixo.)
+@muda tecnica+1 risco-1
+@anota d2_aviso_titulares
+@se marca:aviso_virou_propaganda -> d05_aviso_corrige
+@vai d05_como_enviar
+
+=== d05_aviso_corrige
+> Com o texto certo pronto, você manda um recado para a Bruna: o cartaz vai para a gaveta, e o aviso sai como está.
+BRUNA: Mas a gráfica já cobrou!
+EU: Vira bloquinho de recado. A gente é uma clínica, sempre falta bloquinho.
+@desmarca aviso_virou_propaganda
+@vai d05_como_enviar
+
+=== d05_aviso_erro
+@entra helena pensativa direita
+> A Dra. Helena lê o rascunho em voz alta, que é a forma mais cruel de revisão.
+HELENA: "Os dados de alguns pacientes podem ter sido eventualmente acessados." Quantos é alguns? Que dados? Acessados por quem?
+EU [envergonhada]: Por umas senhoras do pilates.
+HELENA: Então escreve isso. Com essas palavras. Menos a parte das senhoras.
+> Vocês refazem juntas. Leva o dobro do tempo. Sai certo.
+@sai helena
+@muda paciencia-1
+@anota d2_aviso_titulares
+@vai d05_como_enviar
+
+=== d05_como_enviar
+@entra wesley feliz esquerda
+WESLEY: [audio 0:41] Fala, chefe. Pensei aqui: cria um grupo com os 1.847 pacientes e manda lá, todo mundo recebe de uma vez. Eficiência, né?
+(Ele quer resolver um vazamento por grupo de mensagem criando um grupo de mensagem com todo mundo dentro.)
+? Como o aviso chega a cada paciente?
+* Mandar o aviso individualmente, por mensagem e por e-mail, e colocar o mesmo texto no site -> d05_envio_individual {risco-1 tecnica+1}
+* Aceitar a ideia do Wesley e criar o grupo com os 1.847 -> d05_grupo_wesley {paciencia-1}
+* Pôr só um aviso no site e esperar quem entrar ler -> d05_so_site {risco+1}
+** Ligar pessoalmente para os pacientes mais idosos, além do envio individual -> d05_envio_individual {rel_cleide+1 paciencia-1 risco-1 etica+1}
+
+=== d05_grupo_wesley
+> Você abre o aplicativo, toca em "novo grupo" e começa a selecionar contatos. No décimo, para.
+EU: Wesley. Num grupo, cada paciente vê o número dos outros 1.846.
+WESLEY: [audio 0:09] Ih. É mesmo. Mas aí a gente avisa no grupo que vazou o número também.
+EU: Não.
+> Você cancela o grupo. O Wesley manda um áudio de dois segundos que é só um suspiro.
+@vai d05_envio_individual
+
+=== d05_so_site
+> Você publica o aviso numa página do site. A página tem seis visitas no primeiro dia. Quatro são suas.
+WESLEY: [audio 0:15] Bombou não, hein.
+(A gente tem o telefone e o e-mail de cada um. Foi assim que o problema começou. O aviso tem que chegar na pessoa, não ficar esperando ela achar.)
+> Dia seguinte. 7h40.
+@muda prazo-1
+@vai d05_envio_individual
+
+=== d05_envio_individual
+@sai wesley
+@som mensagem
+> O envio sai em lotes, um paciente por mensagem, sem lista com cópia aberta, sem planilha anexada. Você confere três vezes. O Wesley confere uma, o que é um recorde.
+@marca avisou_titulares
+> Em vinte minutos, o telefone da recepção começa a tocar. E não para.
+@vai d05_balcao
+
+=== d05_balcao
+@fundo clinica_recepcao
+@musica tensao
+> 10h52. Recepção. Cheiro de álcool em gel e de café requentado.
+@entra rosangela assustada esquerda
+@entra cleide brava direita
+CLEIDE: EU QUERO FALAR COM A RESPONSÁVEL PELOS DADOS.
+ROSANGELA: Dona Cleide, a senhora quer uma água?
+CLEIDE: Eu quero a minha dignidade, Rosângela! A Marlene do pilates me perguntou do meu hipotireoidismo na frente da Profe Kelly! NA FRENTE DA PROFE KELLY!
+> Na sala de espera, três pacientes fingem ler uma revista de 2021 sobre colesterol.
+EU: Dona Cleide, a responsável sou eu. {nome}, encarregada de dados da clínica.
+CLEIDE: Então é você que eu xingo.
+(O art. 41 diz que eu aceito reclamações dos titulares. Não diz que eu preciso gostar.)
+@se marca:culpou_rosangela -> d05_balcao_culpou
+@vai d05_balcao_escolha
+
+=== d05_balcao_culpou
+> A Rosângela não levanta o olhar do teclado. Desde a reunião em que o nome dela foi o primeiro da lista de culpados, ela fala baixinho.
+@expr rosangela triste
+@vai d05_balcao_escolha
+
+=== d05_balcao_escolha
+? Dona Cleide está de pé no meio da recepção.
+* Levar Dona Cleide para a sua sala, ouvir tudo, pedir desculpas e explicar o que foi feito -> d05_cleide_ouve {rel_cleide+2 paciencia-1}
+* Dizer que "foi um compartilhamento, não um vazamento", como o Dr. Romeu fala -> d05_cleide_explode {rel_cleide-2 credibilidade-1}
+* Pedir que ela mande a reclamação por escrito para o e-mail da encarregada -> d05_cleide_email {rel_cleide-1 paciencia+1}
+** Deixar a Rosângela pedir desculpas pessoalmente, com você do lado -> d05_rosangela_pede {rel_cleide+1 rel_rosangela+2} [se !marca:culpou_rosangela]
+
+=== d05_cleide_ouve
+@fundo sala_dpo
+@sai rosangela
+> Na sua sala, Dona Cleide senta na cadeira boa. Você senta na caixa "GUIAS 2019".
+EU: A senhora tem toda razão de estar brava. A clínica errou. A planilha nunca devia ter saído daqui, muito menos por aplicativo de conversa.
+CLEIDE: E o que vocês fizeram?
+EU: Pedimos para quem recebeu apagar, avisamos cada paciente e estamos mudando quem pode mexer nesse tipo de arquivo.
+@expr cleide pensativa
+CLEIDE: Hm. Pelo menos você fala olhando no olho.
+@vai d05_cleide_direitos
+
+=== d05_cleide_explode
+EU: Dona Cleide, tecnicamente não foi um vazamento, foi um compartilhamento.
+@expr cleide brava
+CLEIDE: COMPARTILHAMENTO É BOLO DE CENOURA, MINHA FILHA.
+> Os três pacientes da sala de espera largam a revista. Um deles aplaude baixinho.
+(Eu repeti a frase do Romeu e ela soou exatamente tão ruim quanto soa quando ele fala.)
+EU: Desculpa. A senhora tem razão. Foi um vazamento, a clínica errou, e eu vou explicar o que fizemos.
+@vai d05_cleide_direitos
+
+=== d05_cleide_email
+EU: Dona Cleide, para registrar direitinho, a senhora pode mandar a reclamação para o e-mail da encarregada que está no aviso?
+CLEIDE: Eu tenho 72 anos. Eu reclamo ao vivo. E-mail é para quem tem paciência.
+> Ela tira da bolsa um caderninho e uma caneta de propaganda de farmácia.
+CLEIDE: Eu falo, você escreve. Pronto, tá registrado.
+(Justo. O canal é para ela, não para mim.)
+@vai d05_cleide_direitos
+
+=== d05_rosangela_pede
+@expr rosangela envergonhada
+ROSANGELA: Dona Cleide, fui eu. Fui eu que mandei no grupo errado. Eu estava com os dois grupos abertos e... foi eu.
+> Silêncio. Dona Cleide olha para a Rosângela de cima a baixo. Dezenove anos de "bom dia, Dona Cleide, quer um cafezinho?".
+CLEIDE: Rosângela. Você me deu o remédio do enjoo quando eu desmaiei na sala de espera em 2015.
+ROSANGELA: Eu lembro.
+CLEIDE: Não vou te perdoar hoje. Mas amanhã talvez.
+EU: E a clínica vai mudar o jeito de trabalhar para isso não depender só de alguém nunca errar.
+@vai d05_cleide_direitos
+
+=== d05_cleide_direitos
+CLEIDE: Agora eu quero saber tudo o que vocês têm sobre mim. Tudo. Até o que eu não sei que vocês têm.
+EU: É direito da senhora. A LGPD garante confirmar que a clínica trata seus dados e ter acesso a eles. Eu mesma cuido do pedido.
+CLEIDE: Direito, é? Vou contar para as meninas do pilates.
+(Ótimo. O grupo de pilates agora vai virar um grupo de estudos de LGPD. Ou de vingança. Ou dos dois.)
+@sai todos
+@vai d05_noite
+
+=== d05_noite
+@fundo home_office_noite
+@musica triste
+> 21h17. Sua casa. A caixa de entrada tem 214 e-mails de pacientes. A janta é um pão de queijo de ontem.
+> Uns agradecem a sinceridade. Uns querem saber se vão ser indenizados. Um pergunta se o aviso é golpe, o que, sinceramente, é uma ótima pergunta.
+@se marca:aviso_virou_propaganda -> d05_noite_cupom
+@vai d05_noite_escolha
+
+=== d05_noite_cupom
+> Onze pacientes tentaram usar o cupom CUIDADO20. Um deles escreveu: "Vazaram meu diagnóstico e me deram 20%. Quanto é com 40?"
+@muda credibilidade-1 paciencia-1
+@vai d05_noite_escolha
+
+=== d05_noite_escolha
+@anota d2_aviso_nao_e_propaganda
+? Ainda tem 214 e-mails.
+* Responder um por um até meia-noite -> d05_fim_madrugada {paciencia-2 rel_cleide+1 tecnica+1}
+* Fechar o notebook e montar amanhã uma resposta padrão, com os pontos do aviso -> d05_fim_descansa {paciencia+1}
+** Ligar para a Rosângela para saber como ela está -> d05_fim_rosangela {rel_rosangela+2}
+
+=== d05_fim_madrugada
+> 0h04. O último e-mail respondido é de um senhor que só queria saber o horário da fisioterapia. Você responde também.
+(Encarregada, advogada, ouvidora e agenda da fisioterapia. Três dias de cargo e já sou um departamento.)
+@vai d05_fim
+
+=== d05_fim_descansa
+> Você fecha o notebook. A resposta padrão fica rascunhada em post-it: o que houve, que dados, o que fizemos, o que você pode fazer, meu contato.
+(Ninguém protege dado de ninguém dormindo duas horas por noite.)
+@vai d05_fim
+
+=== d05_fim_rosangela
+> A Rosângela atende no terceiro toque. Ao fundo, novela e panela de pressão.
+ROSANGELA: Eu não consigo parar de pensar nisso, {nome}. Dezenove anos sem um erro e agora eu sou a mulher da planilha.
+EU: Você é a mulher que contou na hora o que aconteceu. Sem isso, a gente estaria muito pior.
+ROSANGELA: Promete que eu não vou ser demitida?
+EU: Prometo que eu vou dizer a verdade sobre o que aconteceu. E a verdade é que o processo estava errado antes de você clicar.
+@vai d05_fim
+
+=== d05_fim
+@sai todos
+> O celular vibra uma última vez antes de você dormir.
+@zap "Dona Cleide"
+CLEIDE: Recebi uma ligação estranha da clínica. E uma mensagem. Amanhã eu passo aí
+@zap fim
+(Ligação da clínica? Ninguém da clínica ligou para ela hoje.)
+@som alarme
+@vai d06_inicio

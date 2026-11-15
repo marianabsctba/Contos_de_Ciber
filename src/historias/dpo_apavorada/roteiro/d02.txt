@@ -1,0 +1,244 @@
+=== d02_inicio
+@cap 2 "Gabinete de crise"
+@fundo sala_reuniao
+@musica trabalho
+> A sala de reunião da Bem Viver tem uma mesa oval, oito cadeiras de alturas diferentes e um projetor que só liga se alguém segurar o cabo.
+> No centro da mesa, a garrafa térmica de café. Do lado, um pacote de bolacha de maisena aberto desde a última reunião.
+@entra romeu brava esquerda
+@entra helena pensativa centro
+@entra wesley neutra direita
+ROMEU: Vamos ser práticos, doutora. Eu tenho paciente às três.
+HELENA: Romeu, a {nome} trouxe um resumo. Lê primeiro.
+> O Dr. Romeu lê o resumo inteiro segurando a folha longe do rosto, porque os óculos ficaram no consultório.
+ROMEU: Isso não vazou. Foi compartilhado. Com senhoras. De pilates.
+EU: Doutor, foi compartilhado com 63 pessoas que não tinham nenhum motivo para ver aquilo. E depois encaminhado para outro grupo. Para a lei, isso é um incidente de segurança.
+ROMEU: No meu tempo, o prontuário ficava numa gaveta com chave. Ninguém mandava gaveta por celular.
+(Ele tem razão sobre a gaveta. Só esqueceu que foi ele quem pediu a lista por mensagem.)
+> O Wesley levanta o dedo. Ele está na sala, a um metro de você, e mesmo assim o seu celular vibra.
+@zap "Diretoria Bem Viver"
+WESLEY: [audio 2:07] Pessoal, só pra adiantar aqui enquanto a doutora fala: o plano é o seguinte. Eu apago a mensagem de todo mundo, apago a planilha do servidor, limpo o histórico do computador da recepção e o log de acesso. Some tudo. Ninguém prova nada. É só dar um F5 na LGPD.
+@zap fim
+WESLEY: Mandei no grupo, doutora. Fica registrado.
+(Ele acabou de mandar por escrito, quer dizer, por áudio, um plano para destruir evidência. Na minha frente.)
+? O Wesley está com o notebook aberto e o dedo no "excluir".
+* "Wesley, apagar as cópias nos grupos, sim. A planilha original e os logs, não: restringe o acesso e preserva. É o que mostra o que aconteceu e quem acessou." -> d02_wesley_preserva {tecnica+1 risco-1 rel_wesley+1}
+* "Pode apagar tudo. Quanto menos sobrar, melhor." -> d02_wesley_apaga {risco+1 tecnica-1}
+** "Wesley, me explica esse plano por escrito. Escrito, com letras." -> d02_wesley_escrito {paciencia+1 tecnica+1}
+
+=== d02_wesley_escrito
+WESLEY [surpresa]: Por escrito? Tipo... digitando?
+EU: Tipo digitando.
+> O Wesley digita com dois dedos durante um minuto inteiro. Ele vira a tela para você: "apagar tudo do servidor e os log".
+WESLEY: Escrito assim parece pior, né?
+EU: Parece. Porque é. A planilha original é registro da clínica e o log é o que mostra quem gerou, quem abriu e quando. Apagar isso agora é apagar a prova de que a gente agiu direito.
+WESLEY [pensativa]: Então eu só restrinjo o acesso da pasta e guardo os logs numa cópia separada?
+EU: Isso. E me manda a lista de quem tem acesso à pasta hoje.
+WESLEY: Hoje? Todo mundo. A senha é bemviver123.
+(Tem coisa que a gente descobre numa crise que não descobriria nem em seis meses de mapeamento.)
+@vai d02_wesley_preserva
+
+=== d02_wesley_preserva
+> O Wesley fecha o notebook com a cara de quem perdeu a chance de apertar um botão grande e vermelho.
+EU: Wesley, três coisas. Restringe a pasta para quem precisa trabalhar com ela. Troca a senha compartilhada. E guarda uma cópia dos logs fora do alcance de qualquer um aqui, inclusive de você.
+WESLEY: Inclusive de mim? Fiquei até ofendido. Mas faz sentido.
+HELENA: Isso é o que a lei chama de medida de segurança, Romeu. Não é frescura.
+@anota d1_contencao_tecnica
+@vai d02_romeu
+
+=== d02_wesley_apaga
+> O Wesley apaga a planilha do servidor, o histórico da recepção e o log de acesso com a felicidade de quem esvazia a lixeira do computador.
+WESLEY [feliz]: Pronto. Limpinho. Como se nunca tivesse existido.
+HELENA [brava]: Wesley, e se a ANPD perguntar quem acessou essa planilha nos últimos meses?
+WESLEY: Aí a gente diz que... não sabe?
+(Apagar a prova não apaga o incidente. A planilha continua nos celulares do pilates. O que sumiu foi só a nossa capacidade de explicar o que aconteceu.)
+EU: Wesley, a partir de agora ninguém apaga mais nada sem me avisar. E restringe o acesso da pasta.
+@anota d1_contencao_tecnica
+@vai d02_romeu
+
+=== d02_romeu
+@musica tensao
+ROMEU: Doutora, eu vou ser franco. Ninguém precisa saber disso.
+ROMEU: As meninas do pilates são de confiança. A Rosângela conhece todas. A gente pede para apagarem, elas apagam, e pronto. Comunicar para governo é chamar fiscal para dentro de casa.
+@marca romeu_quis_esconder
+HELENA: Romeu...
+ROMEU: Helena, eu construí essa clínica em 1991. Não vou ver ela fechar por causa de uma planilha.
+(É medo. Não é maldade. Mas medo também toma decisão errada.)
+? O dono da clínica quer esconder o incidente.
+* Explicar com calma: a decisão é da clínica, mas a lei manda comunicar quando pode haver risco ou dano relevante, e esconder pesa contra. E registrar essa orientação por escrito. -> d02_orienta {etica+1 credibilidade+1 rel_romeu-1 marca:orientou_por_escrito}
+* "Vamos pensar com calma e decidir amanhã." -> d02_amanha {prazo-1 paciencia+1}
+* "Tudo bem, doutor. A gente segura isso entre nós." -> d02_esconde {etica-2 risco+1 rel_romeu+2 marca:ajudou_esconder}
+** Pedir para a Dra. Helena fazer a conta em voz alta: quanto custa esconder e aparecer depois -> d02_helena_conta {credibilidade+2 rel_helena+1 marca:orientou_por_escrito}
+
+=== d02_helena_conta
+HELENA: Romeu, vamos fazer a conta de padaria.
+HELENA: Opção um: a gente comunica, mostra que agiu rápido, cooperou e corrigiu. Isso conta a nosso favor.
+HELENA: Opção dois: a gente esconde. Daqui a um mês a Zuleica conta pra alguém, essa pessoa conta pro Fala Cidade, e aí a manchete é "clínica escondeu vazamento de diagnóstico de pacientes".
+ROMEU [pensativa]: A Zuleica conta tudo pra todo mundo. Ela contou da minha catarata pra cidade inteira.
+HELENA: Ela é a sua paciente desde 1994. Pois é.
+(Às vezes a melhor argumentação jurídica é uma sócia com uma calculadora imaginária.)
+EU: E eu vou registrar por escrito a minha orientação, doutor. Não é contra o senhor. É para a clínica ter prova de que decidiu com informação.
+@vai d02_orienta_fecho
+
+=== d02_orienta
+EU: Doutor, quem decide é a clínica. O senhor é a clínica. Eu sou a encarregada: oriento, sou o canal com a ANPD e com os pacientes, e registro.
+EU: A LGPD manda comunicar à ANPD e aos titulares o incidente que possa causar risco ou dano relevante. Pelo que eu já vi, esse pode. Isso eu confirmo na avaliação de risco.
+EU: E se a clínica esconder e aparecer depois, a lei olha boa-fé, cooperação e a rapidez das medidas na hora de decidir uma sanção. Esconder joga tudo isso contra nós.
+ROMEU: E se eu disser que não?
+EU: Aí eu registro que orientei, por escrito, e registro a decisão do senhor. A responsabilidade da decisão é do controlador. Mas eu espero que o senhor não precise disso.
+@vai d02_orienta_fecho
+
+=== d02_orienta_fecho
+> Você abre o e-mail ali mesmo e escreve para a diretoria: o que aconteceu, a recomendação de avaliar o risco hoje e de preparar a comunicação no prazo legal.
+> Assunto: "Orientação da encarregada: incidente de 8h12". Enviar.
+ROMEU: Está bem. Avalia o risco. Mas eu quero ver antes de qualquer coisa sair daqui.
+EU: Vai ver. Tudo passa pelo senhor.
+@anota d1_quem_decide
+@vai d02_registro
+
+=== d02_amanha
+ROMEU: Ótimo. Amanhã, com a cabeça fria.
+> Dia seguinte, 9h. A cabeça do Dr. Romeu continua quente. O prazo, por outro lado, continua andando.
+@fundo sala_reuniao
+ROMEU: Pensei a noite toda. Continuo achando que não precisa contar para ninguém.
+(Eu dei um dia para ele pensar e ele usou o dia para se convencer. Agora não tem mais como empurrar.)
+EU: Doutor, eu vou registrar por escrito a minha orientação: avaliar o risco hoje e comunicar no prazo se houver risco relevante. A decisão é sua, mas ela precisa ser tomada com informação.
+ROMEU: Faça. Mas eu quero ler tudo antes.
+@marca orientou_por_escrito
+@anota d1_quem_decide
+@vai d02_registro
+
+=== d02_esconde
+ROMEU [feliz]: Até que enfim alguém sensato nesta clínica.
+HELENA [brava]: {nome}, você é a encarregada. Se nem você...
+@expr helena triste
+> A Dra. Helena fecha a agenda devagar. Não diz mais nada. Isso é pior do que se dissesse.
+(Eu acabei de virar a pessoa que ajudou a esconder. Com três dias de cargo. E o problema continua no celular de 63 senhoras, sem pedir licença a ninguém.)
+@muda rel_helena-2
+@vai d02_registro
+
+=== d02_registro
+@musica trabalho
+EU: Independente do que se decida sobre comunicar, eu preciso abrir o registro do incidente hoje.
+WESLEY: Registro tipo... um print?
+EU: Registro tipo um documento: o que aconteceu, quando a clínica soube, quais dados, quantas pessoas, o que foi feito e o que foi decidido.
+ROMEU: E se a gente decidir não comunicar, para que registrar?
+(Pergunta justa. Resposta precisa ser certa.)
+@desafio d1_registro_incidente -> d02_registro_acerto | d02_registro_erro
+
+=== d02_registro_acerto
+EU: Porque o registro é obrigatório mesmo para incidente que não é comunicado, doutor. A clínica guarda por pelo menos cinco anos. Se um dia alguém perguntar, a gente mostra o que sabia e o que fez.
+HELENA: Então o registro protege a clínica.
+EU: Protege a clínica e mostra que a gente levou a sério.
+> Você cria o documento oficial: "Registro de Incidente 001/2026". Os prints e a lista de participantes viram anexos.
+@marca registrou_incidente
+@muda tecnica+1 credibilidade+1
+@anota d1_registro
+@vai d02_plano
+
+=== d02_registro_erro
+EU: Bom, se não for comunicar, o registro pode esperar. Eu faço depois, com calma.
+HELENA: Tem certeza? Eu li em algum lugar que tem que guardar mesmo o que não é comunicado.
+> Você abre o regulamento da ANPD no celular. A Dra. Helena tinha razão: o registro vale também para os incidentes não comunicados.
+(Eu quase deixei o documento mais importante da semana para "depois, com calma". Vou fazer à noite, correndo.)
+@muda credibilidade-1 paciencia-1
+@anota d1_registro
+@vai d02_plano
+
+=== d02_plano
+> Antes de sair da sala, você escreve no quadro branco, com o único pincel que ainda tem tinta, quem faz o quê.
+> Wesley: acesso da pasta, senha compartilhada, cópia dos logs que restaram.
+> Helena: falar com a equipe.
+> Encarregada: registro, avaliação de risco, comunicação.
+> Dr. Romeu: decidir. E ler tudo.
+ROMEU: E a Rosângela?
+@vai d02_rosangela
+
+=== d02_rosangela
+@entra rosangela envergonhada centro
+> A Rosângela entra com os olhos vermelhos e um pacote de lenço de papel já pela metade.
+ROSANGELA: Dr. Romeu, eu peço desculpa. Eu entendo se o senhor quiser me mandar embora.
+ROMEU: Justa causa, Rosângela. Dezenove anos e você faz uma dessas.
+(Ela errou. Mas a planilha inteira, com diagnóstico, não devia estar circulando por aplicativo de conversa para confirmar consulta. Isso não é erro de uma pessoa. É de um processo.)
+? A sala inteira olha para você.
+* "Doutor, o erro foi de processo: ninguém precisava da planilha inteira, com diagnóstico, para confirmar consulta. E a Rosângela agiu rápido para conter. Ela é parte da solução." -> d02_protege {etica+1 rel_rosangela+2 rel_romeu-1 marca:protegeu_rosangela}
+* "No registro, a causa vai ser: falha humana da recepcionista." -> d02_culpa {etica-1 rel_rosangela-3 rel_romeu+1 marca:culpou_rosangela}
+* "Isso é assunto de RH. Eu cuido de dados." -> d02_rh {rel_rosangela-1}
+** Pedir para a Rosângela contar, ela mesma, como a planilha chegou até ela -> d02_rosangela_conta {credibilidade+1 rel_rosangela+2 marca:protegeu_rosangela}
+
+=== d02_rosangela_conta
+ROSANGELA: Na sexta o Dr. Romeu mandou um áudio pedindo a lista da semana. Eu não sei filtrar. Aí eu peguei a planilha que o Wesley deixa na pasta, a FINAL_v3, porque tinha FINAL no nome.
+WESLEY: Eu deixo FINAL_v3 porque a FINAL_v2 deu problema.
+ROSANGELA: E eu mando tudo pelo celular porque o computador da recepção não abre o e-mail desde março.
+> Silêncio na sala. O Dr. Romeu olha para o próprio celular, onde está o áudio de sexta.
+ROMEU [envergonhada]: Eu pedi por áudio.
+HELENA: Pediu.
+(Ninguém precisou acusar ninguém. O processo se acusou sozinho.)
+@vai d02_protege
+
+=== d02_protege
+EU: Doutor, se a gente demitir a pessoa que errou e não mudar nada, a próxima vai ter medo de avisar. E o próximo incidente a gente descobre pelo jornal.
+HELENA: E ela avisou em dezenove minutos. Tem empresa que leva meses.
+ROMEU: ...Está bem. Ninguém vai ser demitido hoje.
+ROSANGELA [triste]: Obrigada, Dra.
+(No registro, a causa vai como deve ir: envio por aplicativo de conversa de uma planilha com dados demais, sem controle de acesso. O nome dela não precisa ser a manchete.)
+@anota d1_cultura_sem_culpa
+@sai rosangela
+@vai d02_interno
+
+=== d02_culpa
+ROMEU: Exatamente. Falha humana.
+> A Rosângela não chora. Ela só abaixa a cabeça e sai da sala, com o lenço na mão.
+@sai rosangela
+HELENA: {nome}, a planilha com 1.847 diagnósticos estava numa pasta que a recepção inteira abria com a mesma senha, e foi pedida por áudio. O erro humano foi o último de uma fila.
+(Ela tem razão. E eu acabei de ensinar a equipe inteira que quem avisa um erro vira culpada.)
+@anota d1_cultura_sem_culpa
+@vai d02_interno
+
+=== d02_rh
+ROMEU: Então eu decido. Advertência por escrito.
+> A Rosângela assente, sem olhar para você.
+@sai rosangela
+(Fiquei em cima do muro. E o muro, nessa clínica, é bem alto.)
+@vai d02_interno
+
+=== d02_interno
+@sai todos
+@fundo sala_dpo
+> De volta à sala, a Dra. Helena te manda uma mensagem: "Me ajuda com o comunicado para a equipe? Não quero falar besteira."
+? O que vai no comunicado interno?
+* "Houve um incidente. Não comentem com ninguém de fora, não apaguem nada dos sistemas e encaminhem qualquer paciente que perguntar para a encarregada." -> d02_interno_bom {credibilidade+1 risco-1}
+* "Proibido falar sobre isso. Quem falar será advertido." -> d02_interno_mordaca {rel_helena-1}
+** Um comunicado e uma regra nova: nenhuma planilha de paciente circula por aplicativo de conversa, a partir de hoje -> d02_interno_regra {tecnica+1 risco-1 credibilidade+1}
+
+=== d02_interno_bom
+@zap "Equipe Bem Viver"
+HELENA: Equipe, bom dia. Tivemos um incidente com dados de pacientes. Por favor: não comentem fora da clínica, não apaguem nada dos sistemas e, se algum paciente perguntar, encaminhem para a nossa encarregada, Dra. {nome}. Obrigada.
+> Leitura confirmada por 22 pessoas.
+@zap fim
+(Ninguém precisa esconder nada. Só precisa saber para onde mandar a pergunta.)
+@vai d02_fim
+
+=== d02_interno_mordaca
+@zap "Equipe Bem Viver"
+HELENA: Equipe. Está proibido falar sobre o ocorrido. Quem falar será advertido.
+> Fábio da Farmácia: "que ocorrido?"
+> Débora da Coleta: "o do pilates?"
+> Fábio da Farmácia: "que pilates??"
+@zap fim
+(Em dez segundos, a mensagem que proibia falar fez todo mundo falar. Comunicado interno não é mordaça: é orientação.)
+@vai d02_fim
+
+=== d02_interno_regra
+@zap "Equipe Bem Viver"
+HELENA: Equipe, bom dia. Tivemos um incidente com dados de pacientes. Não comentem fora da clínica, não apaguem nada dos sistemas e encaminhem perguntas de pacientes para a nossa encarregada, Dra. {nome}.
+HELENA: E a partir de hoje: nenhuma planilha de paciente circula por aplicativo de conversa. Para confirmar consulta, só nome e horário, pelo sistema.
+> Leitura confirmada por 22 pessoas. Fábio da Farmácia reagiu com 👏.
+@zap fim
+(Só nome e horário. A recepção nunca precisou do diagnóstico para confirmar consulta. Isso é necessidade, um dos princípios da lei, explicado sem eu precisar dizer a palavra "princípio".)
+@vai d02_fim
+
+=== d02_fim
+@musica tensao
+> Você abre a planilha de controle do incidente. Na aba "pendências", uma linha só, em vermelho: "Avaliar risco: isso é dado sensível?".
+(É. Mas eu preciso mostrar por quê, campo por campo. O Dr. Romeu vai ler tudo.)
+@vai d03_inicio

@@ -1,0 +1,202 @@
+=== d03_inicio
+@cap 3 "Isso é dado sensível?"
+@fundo sala_dpo
+@musica misterio
+> A sala da encarregada tem agora três xícaras de café frio, um bloco de post-it rosa e um papel colado na parede: "NÃO ENTRE SEM BATER (POR FAVOR) (OBRIGADA)".
+> Na tela, um documento em branco com um título: "Avaliação de risco do Incidente 001/2026".
+(Para avaliar o risco, eu preciso saber exatamente o que tinha na planilha. E sem criar um segundo incidente no caminho.)
+? Como você confere o conteúdo da planilha?
+* Abrir a planilha original no servidor da clínica, só para leitura, sem baixar nem copiar -> d03_abre_servidor {tecnica+1}
+* Pedir para a Rosângela te mandar o arquivo pelo celular, que é mais rápido -> d03_pede_zap {tecnica-1 paciencia-1}
+** Pedir ao Wesley só os nomes das colunas e a contagem de linhas, sem abrir nenhum diagnóstico -> d03_so_colunas {tecnica+2 etica+1}
+
+=== d03_pede_zap
+@zap "Rosângela Recepção 💐"
+EU: Rosângela, me manda a planilha aqui, por favor?
+ROSANGELA: Dra.
+ROSANGELA: Pelo celular?
+ROSANGELA: De novo??
+@zap fim
+(A recepcionista que causou o incidente acabou de impedir a encarregada de causar outro. Que vergonha. Que orgulho.)
+> Você vai até o servidor e abre a planilha original, só para leitura.
+@vai d03_conteudo
+
+=== d03_abre_servidor
+> Você abre a planilha no servidor, no modo só leitura. O Wesley, por áudio, avisa que "o modo só leitura é tipo um vidro de aquário: dá pra ver o peixe, mas não dá pra pegar".
+(Nunca uma metáfora do Wesley foi tão precisa.)
+@vai d03_conteudo
+
+=== d03_so_colunas
+@zap "Wesley TI 🖥️"
+WESLEY: [audio 0:38] Doutora, olha só, mandei o print só do cabeçalho. Tem as colunas e o total de linhas. Não abri nenhum paciente, viu? Tô aprendendo. Essa coisa de ver só o que precisa é bonito, hein. Tem nome isso?
+EU: Tem. Necessidade. Usar só o mínimo de dados para o que a gente precisa fazer.
+WESLEY: [audio 0:06] Ah, tipo meu salário.
+@zap fim
+(Para avaliar o risco eu não preciso saber o diagnóstico da Vera da padaria. Preciso saber que existe uma coluna de diagnóstico.)
+@anota d1_minimizacao
+@vai d03_conteudo
+
+=== d03_conteudo
+> Colunas: Nome. CPF. Telefone. Convênio. Número da carteirinha. Diagnóstico. E uma última, sem título, com anotações da recepção.
+> Linhas: 1.847, fora o cabeçalho.
+> Abas: "Planilha1", "Planilha1 (2)", "NÃO MEXER" e "MEXER AQUI". A aba "NÃO MEXER" foi editada ontem.
+> Na coluna sem título, entre outras coisas: "só atende de manhã", "não gosta de esperar", "prefere a Dra. Helena", "não gosta da Dra. Helena".
+(Diagnóstico ao lado de CPF e telefone. Isso identifica a pessoa e diz uma coisa sobre a saúde dela. E a coluna de fofoca da recepção eu vou anotar como achado para o plano de adequação.)
+@vai d03_romeu
+
+=== d03_romeu
+@entra romeu neutra esquerda
+> O Dr. Romeu entra sem bater, apesar do papel na porta. Ele lê o papel depois de entrar.
+ROMEU: Doutora, só para alinhar. Diagnóstico é dado médico. Não é "dado sensível". Sensível é senha de banco, cartão de crédito.
+ROMEU: E as senhoras do pilates não vão fazer nada com isso. São pessoas de bem.
+ROMEU: A Zuleica, por exemplo, é minha paciente desde 1994. Uma santa.
+(A santa que encaminhou a planilha para o grupo da Hidro "pra ver se alguém conhece".)
+? O Dr. Romeu acha que diagnóstico não é dado sensível.
+* Explicar: a LGPD diz que dado referente à saúde é dado pessoal sensível. A clínica pode tratar para cuidar da saúde do paciente, mas isso não autoriza o dado a ir parar no pilates. -> d03_explica {tecnica+1 credibilidade+1}
+* Ler para ele o art. 5º inteiro, inciso por inciso -> d03_aula {paciencia-1}
+** "Doutor, o senhor contaria o diagnóstico do Seu Arlindo na aula de pilates?" -> d03_arlindo {credibilidade+1 rel_romeu+1}
+
+=== d03_explica
+EU: Doutor, a lei separa os dados pessoais comuns dos sensíveis. Dado referente à saúde está na lista dos sensíveis, no art. 5º, II.
+EU: A clínica pode tratar esse dado, claro. Uma das bases do art. 11 é justamente a tutela da saúde, por profissionais e serviços de saúde. Para atender, para cuidar.
+EU: Mas essa base cobre o atendimento. Não cobre o grupo do pilates.
+ROMEU [pensativa]: Então o mesmo dado é certo no prontuário e errado no celular da Zuleica.
+EU: Exatamente.
+ROMEU: E o sigilo médico? Isso não é coisa do Conselho, separado da LGPD?
+EU: O sigilo médico continua valendo, doutor. A LGPD não substitui. Ela soma. Aqui as duas apontam para o mesmo lado.
+ROMEU: Para o lado de eu não dormir hoje.
+(Eu também não, doutor. Eu também não.)
+@vai d03_sensivel_fecho
+
+=== d03_aula
+> "Art. 5º Para os fins desta Lei, considera-se: inciso I..."
+> No inciso IV, o Dr. Romeu olha o relógio. No inciso IX, ele confere o celular. No inciso XII, ele boceja sem disfarçar.
+ROMEU: Doutora, resume.
+EU: Dado de saúde é dado sensível. Inciso II.
+ROMEU: Por que não começou pelo inciso II?
+(Porque eu fiquei nervosa e virei uma apostila. Anotado: próxima vez, começar pelo que importa.)
+@vai d03_sensivel_fecho
+
+=== d03_arlindo
+ROMEU [surpresa]: Claro que não! Isso é sigilo médico. Eu nunca contaria.
+EU: A planilha contou. Para 63 pessoas. E o Seu Arlindo nem sabe ainda.
+> O Dr. Romeu senta na cadeira que range. Ela range.
+ROMEU: Eu atendo o Arlindo desde 1998. Ele me traz goiabada.
+EU: Por isso, doutor. A lei chama isso de dado sensível porque, quando vaza, quem paga é uma pessoa de verdade. Que traz goiabada.
+@vai d03_sensivel_fecho
+
+=== d03_sensivel_fecho
+(Saúde é dado sensível, art. 5º, II. Base legal de atendimento, art. 11. Sigilo médico por cima de tudo. Agora falta o principal: isso pode causar dano relevante?)
+@anota d1_dado_sensivel
+@sai romeu
+@vai d03_wesley
+
+=== d03_wesley
+@zap "Wesley TI 🖥️"
+WESLEY: [audio 1:44] Doutora, tive uma ideia. Antes de você fechar essa avaliação, deixa eu descobrir exatamente quantas pessoas baixaram o arquivo. Eu tenho um primo que tem um programa que rastreia o WhatsApp. Me dá uns dois dias que eu te trago o número certinho.
+@zap fim
+(Primeiro: ninguém vai instalar programa de primo para rastrear celular de senhora do pilates. Segundo: eu não preciso do número exato de downloads para saber que a confidencialidade foi perdida.)
+? O Wesley quer mais tempo para "o número certinho".
+* Avaliar com o que já se sabe: o arquivo chegou a 63 pessoas e foi encaminhado. Se aparecer informação nova, atualizo. -> d03_avalia_ja {tecnica+1}
+* Esperar o Wesley e o primo -> d03_espera_wesley {prazo-1}
+
+=== d03_espera_wesley
+> Dia seguinte, 10h15.
+@zap "Wesley TI 🖥️"
+WESLEY: [audio 0:52] Doutora, então, o programa do primo era um vírus. O computador dele agora só abre em chinês. Número certinho não tem. Mas eu chuto que uns 40 baixaram.
+@zap fim
+(Um dia útil a menos, um computador em chinês e um chute. A informação de que eu precisava eu já tinha ontem.)
+@muda paciencia-1
+@vai d03_avalia_ja
+
+=== d03_avalia_ja
+@musica trabalho
+@entra helena pensativa centro
+> A Dra. Helena aparece na porta com duas xícaras da garrafa térmica dela. Uma é para você. Isso, na Bem Viver, é quase uma condecoração.
+HELENA: Antes de você preencher, uma dúvida de quem não é da área. E se ninguém tiver aberto o arquivo? Aí não teve dano, certo?
+EU: A avaliação não pergunta só se o dano aconteceu, Dra. Pergunta se ele pode acontecer. O arquivo chegou a 63 pessoas e foi encaminhado. Pelo menos três já comentaram o que leram.
+HELENA: A Tereza, a Zuleica e a Marlene.
+EU: E o Seu Arlindo já entrou na oração do grupo.
+HELENA [triste]: Pobre Arlindo. Ele nem sabe que está sendo rezado.
+HELENA: E se fosse só nome e telefone? Sem diagnóstico?
+EU: Aí a avaliação seria outra, talvez com outra conclusão. É por isso que se avalia caso a caso, e não no chute.
+HELENA: Então preenche. Eu fico aqui olhando, que eu aprendo.
+@sai helena
+> Você abre o modelo de avaliação de risco, aquele que veio na pasta "LGPD (ver depois)". É hora de ver agora.
+(Tipo de dado, quantidade de titulares, o que se perdeu, o dano possível e a conclusão. Campo por campo.)
+@desafio d1_avaliacao_risco -> d03_avalia_acerto | d03_avalia_erro
+
+=== d03_avalia_acerto
+> A conclusão sai em uma página: dado pessoal sensível de saúde, junto com CPF e telefone, de 1.847 titulares, exposto a pessoas sem autorização, com possibilidade de discriminação, constrangimento e golpe.
+> Conclusão: incidente que pode acarretar risco ou dano relevante. Comunicação à ANPD e aos titulares.
+(Clara, curta, fundamentada. Se alguém ler daqui a cinco anos, vai entender por que a gente decidiu o que decidiu.)
+@muda tecnica+1 credibilidade+1
+@anota d1_dano_relevante
+@vai d03_bruna
+
+=== d03_avalia_erro
+> Você relê o que escreveu e para no meio. "Volume: 63 titulares."
+(Não. 63 é quem recebeu. Titular é o dono do dado. Os titulares são os 1.847 pacientes da planilha.)
+> Você refaz a avaliação, mais devagar, e chega à conclusão certa: pode haver dano relevante, e precisa comunicar.
+(Certo no fim, mas mais lento do que devia. Na comunicação à ANPD, esses números não podem trocar de lugar.)
+@muda paciencia-1
+@anota d1_dano_relevante
+@vai d03_bruna
+
+=== d03_bruna
+@entra bruna feliz direita
+> A Bruna, do marketing, aparece na porta com um copo de café gelado com chantili e um caderno escrito "IDEIAS DISRUPTIVAS".
+BRUNA: Oi, {nome}! Rapidinho, sem querer atrapalhar. Essa planilha que foi para o pilates... ela é a mais atualizada da clínica?
+EU: Por quê, Bruna?
+BRUNA: Porque eu tô montando uma campanha de check-up e a nossa base de marketing tá toda desatualizada. Se essa tá completinha, com diagnóstico e tudo, dá pra segmentar! Tipo, quem tem pressão alta recebe campanha de cardio. Sinergia total.
+(Eu estou no meio de avaliar um incidente com essa planilha e alguém quer reaproveitar a planilha.)
+? A Bruna quer usar a base para campanha.
+* "Não, Bruna. Esses dados foram coletados para atender os pacientes, não para campanha. Usar para outra finalidade é outro problema." -> d03_bruna_nao {etica+1 rel_bruna-1}
+* "Depois a gente conversa sobre isso." -> d03_bruna_depois
+** Colar um post-it rosa escrito "FINALIDADE" no copo de café da Bruna -> d03_bruna_postit {paciencia+1 rel_bruna+1}
+
+=== d03_bruna_nao
+BRUNA [triste]: Nem um pouquinho? Nem só os de pressão alta?
+EU: Nem os de pressão alta. A lei tem um princípio chamado finalidade: o dado é usado para o propósito que foi informado ao paciente. Atendimento não vira campanha porque a planilha estava à mão.
+BRUNA: Tá. Mas eu vou voltar com uma proposta melhor.
+BRUNA: Com pesquisa de satisfação. E um QR code. Todo mundo ama QR code.
+(Ela vai. Eu sei que vai.)
+@anota d1_finalidade
+@sai bruna
+@vai d03_fim
+
+=== d03_bruna_depois
+BRUNA [feliz]: Combinado! Vou deixar uma reunião marcada na sua agenda. Coloquei o título "Sinergia de dados 🚀".
+(Eu acabei de deixar a porta entreaberta para alguém que entra até por fresta.)
+@sai bruna
+@vai d03_fim
+
+=== d03_bruna_postit
+BRUNA [surpresa]: "Finalidade"? É um nome de campanha?
+EU: É um princípio da LGPD. O dado de paciente foi coletado para atender. Não para campanha. Toda vez que você olhar para esse copo, lembra.
+BRUNA: Eu vou tomar o café inteiro olhando para essa palavra.
+BRUNA: ...Posso tirar foto pro story? Ficou estético.
+EU: Pode. Do post-it. Só do post-it.
+@anota d1_finalidade
+@sai bruna
+@vai d03_fim
+
+=== d03_fim
+@entra romeu neutra centro
+> O Dr. Romeu volta à sala e lê a avaliação de pé, segurando o papel longe dos olhos.
+ROMEU: Então pela sua avaliação tem que comunicar.
+EU: Tem, doutor. À ANPD e aos pacientes. No prazo.
+@se marca:ajudou_esconder -> d03_fim_esconde
+ROMEU: Quanto tempo a gente tem?
+EU: Três dias úteis contados de quando a clínica soube. E já estamos contando.
+ROMEU: Então comece. Mas eu quero ver cada palavra.
+@sai romeu
+@vai d04_inicio
+
+=== d03_fim_esconde
+ROMEU: Mas a gente combinou que isso ficava entre nós.
+EU: Combinamos, doutor. E eu não devia ter combinado.
+ROMEU [brava]: Agora que a senhora escreveu tudo isso num papel?
+(Eu escrevi o papel que mostra o tamanho do erro. Inclusive o meu. A pergunta é o que eu vou fazer com ele.)
+@sai romeu
+@vai d04_inicio

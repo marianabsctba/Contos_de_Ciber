@@ -1,0 +1,319 @@
+=== d01_inicio
+@cap 1 "Terceiro dia"
+@idade adulta
+@fundo apartamento_capital
+@musica alegre
+> Segunda-feira, 8h12. O despertador tocou três vezes. Você apertou "soneca" três vezes, com a precisão de quem tem diploma.
+> Terceiro dia como encarregada pelo tratamento de dados pessoais da Clínica Bem Viver. Na sexta, você ganhou um crachá, uma cadeira que range e uma pasta escrita à mão: "LGPD (ver depois)".
+(Hoje eu começo o mapeamento de dados. Com calma. Com planilha. Com café.)
+> Na cozinha, a cafeteira faz o barulho de sempre, de avião decolando sem sair do lugar.
+@roupa "Terceiro dia de DPO"
+> 8h31. Você está com uma meia de cada cor quando o celular começa a vibrar em cima da pia.
+@som notificacao
+@vai d01_rosangela_zap
+
+=== d01_rosangela_zap
+@zap "Rosângela Recepção 💐"
+ROSANGELA: Dra. {nome} bom dia
+ROSANGELA: Dra eu fiz uma coisa
+ROSANGELA: [audio 0:48] Dra., pelo amor de Deus. O Dr. Romeu pediu na sexta a lista dos pacientes da semana pra recepção confirmar consulta, aí hoje cedo eu fui mandar no grupo da recepção, só que eu mandei no grupo errado. Mandei no grupo do pilates. Das minhas amigas. Tem sessenta e poucas pessoas lá. Eu tô tremendo, Dra. Eu tô tremendo inteira.
+EU: Rosângela, respira. Que lista?
+ROSANGELA: [foto] PACIENTES_2026_FINAL_v3.xlsx
+ROSANGELA: Não é a da semana Dra. Eu peguei a errada. É a de todo mundo
+ROSANGELA: Nome, CPF, telefone, convênio e o diagnóstico
+ROSANGELA: 1.847 linhas
+ROSANGELA: Mandei 8h12
+@zap fim
+@musica tensao
+@som alarme
+(Dado de saúde. Com CPF. Com telefone. Num grupo de pilates. No meu terceiro dia.)
+> A clínica acaba de saber que um incidente de segurança afetou dados pessoais. E isso liga um relógio.
+@muda prazo=3
+(Três dias úteis para comunicar à ANPD, contados de quando a clínica tomou conhecimento. O relógio não vai esperar eu achar a outra meia.)
+? Você ainda está na cozinha, com o celular numa mão e a caneca na outra.
+* "Rosângela, antes de apagar, tira print do grupo mostrando a mensagem, a hora e a lista de participantes. Depois apaga para todos." -> d01_print_primeiro {tecnica+1 risco-1 marca:preservou_evidencia}
+* "Apaga agora! Apaga para todos, rápido, já!" -> d01_apaga_ja {risco-1 marca:apagou_sem_print}
+* "Não mexe em nada. Eu chego em vinte minutos." -> d01_caminho_calma {rel_rosangela+1}
+** Sair de casa assim mesmo, com uma meia de cada cor -> d01_meias {paciencia+1}
+
+=== d01_print_primeiro
+@zap "Rosângela Recepção 💐"
+ROSANGELA: Print?? Dra eu tô nervosa
+EU: Eu sei. Print da tela com a mensagem e o horário. Depois abre "dados do grupo" e tira print da lista de participantes. Me manda tudo. Aí você apaga para todos.
+> Rosângela está digitando...
+ROSANGELA: [foto] Print do grupo, 8h12, a planilha aparecendo
+ROSANGELA: [foto] Participantes (63)
+ROSANGELA: [foto] Participantes, segunda parte
+ROSANGELA: Apaguei pra todos. Apareceu "você apagou esta mensagem"
+ROSANGELA: Dra mas antes de eu apagar umas 14 pessoas já tinham visualizado
+EU: Tudo bem. Agora a gente sabe disso. E sabe porque você tirou o print.
+@zap fim
+(Print com data e hora antes de apagar. Se eu apago primeiro, depois ninguém consegue provar quando foi, para quem foi e o que tinha. Nem eu.)
+@anota d1_preservar_evidencia
+@vai d01_chega
+
+=== d01_apaga_ja
+@zap "Rosângela Recepção 💐"
+ROSANGELA: Apaguei!!! Apaguei pra todos
+ROSANGELA: Graças a Deus. Sumiu
+EU: Tirou print antes?
+ROSANGELA: Print de quê, Dra?
+EU: Da mensagem. Do horário. Da lista de quem estava no grupo.
+ROSANGELA: Ai meu Deus. Não. A senhora falou pra apagar rápido
+@zap fim
+(Falei. A mensagem sumiu mais rápido, e isso é bom. Mas junto foi a prova de quando, para quem e o que exatamente foi enviado. Agora eu vou ter que reconstruir o incidente pelos prints dos outros.)
+@muda tecnica-1
+@vai d01_chega
+
+=== d01_meias
+> Uma meia de bolinha, uma meia listrada. Ninguém vai ver. Ninguém vai olhar para o seu pé numa crise de proteção de dados.
+> No elevador, você liga para a Rosângela. Ela atende chorando.
+EU: Rosângela, escuta. Não apaga nada ainda. Primeiro você tira print do grupo, com a hora da mensagem e a lista de participantes. Depois apaga para todos.
+ROSANGELA: Print primeiro, apaga depois. Print primeiro, apaga depois. Tá. Tá bom.
+@marca preservou_evidencia
+@muda tecnica+1
+@anota d1_preservar_evidencia
+@vai d01_chega
+
+=== d01_caminho_calma
+@fundo capital_rua
+> Você dirige até a clínica com o celular no viva-voz e a Rosângela respirando fundo do outro lado, em contagem de quatro.
+ROSANGELA: Inspira... segura... Dra., e se alguém já baixou?
+> Vinte e dois minutos de trânsito. Vinte e dois minutos com a planilha no grupo.
+@vai d01_chega
+
+=== d01_chega
+@fundo clinica_recepcao
+@musica trabalho
+> A Clínica Bem Viver tem cheiro de álcool em gel e de café coado às sete. Na parede, um quadro de "Colaborador do Mês" de 2019 com a foto da Rosângela.
+@entra rosangela envergonhada centro
+ROSANGELA: Dra. {nome}. Eu tenho dezenove anos de casa. Dezenove. Eu nunca errei uma guia de convênio.
+(Ela está com o celular apertado contra o peito, como se ele fosse morder.)
+@se !marca:preservou_evidencia e !marca:apagou_sem_print -> d01_decide_ali
+@vai d01_grupo
+
+=== d01_decide_ali
+EU: A mensagem ainda está lá?
+ROSANGELA: Tá. A senhora mandou não mexer.
+? A planilha continua no grupo, agora com mais gente vendo.
+* "Me dá o celular. Primeiro print da mensagem e da lista de participantes, depois apagamos para todos." -> d01_print_ali {tecnica+1 risco-1 marca:preservou_evidencia}
+* "Apaga agora, depois a gente vê o resto." -> d01_apaga_ali {marca:apagou_sem_print}
+
+=== d01_print_ali
+> Você tira os prints com as mãos da Rosângela ainda tremendo ao lado: a mensagem com o horário 8h12, a lista com 63 participantes, as visualizações.
+> Depois, "apagar para todos".
+(Primeiro a prova, depois a faxina. Nessa ordem, e só nessa.)
+@anota d1_preservar_evidencia
+@vai d01_grupo
+
+=== d01_apaga_ali
+> A Rosângela aperta "apagar para todos" antes de você terminar a frase.
+(Rápido. Rápido demais para eu registrar o que havia ali.)
+@muda tecnica-1
+@vai d01_grupo
+
+=== d01_grupo
+EU: Me mostra o que já aconteceu no grupo.
+@expr rosangela triste
+@zap "Pilates das Amigas 🧘‍♀️"
+> Segunda-feira
+KELLY: [figurinha] Bom dia alunas lindas! Hoje tem aula 19h, tragam a garrafinha 🧘‍♀️
+> 8h12
+@se marca:apagou_sem_print -> d01_grupo_apagada
+ROSANGELA: [foto] PACIENTES_2026_FINAL_v3.xlsx
+ROSANGELA: Bom dia meninas segue a lista pra confirmar 🙏
+@vai d01_grupo_fofoca
+
+=== d01_grupo_apagada
+> Esta mensagem foi apagada
+@vai d01_grupo_fofoca
+
+=== d01_grupo_fofoca
+ZULEICA: Rosângela que lista é essa?
+TEREZA: Abri aqui. Tem o nome da Vera da padaria 😳
+ZULEICA: E o que tá escrito do lado do nome dela??
+MARLENE: Gente não fica abrindo isso
+MARLENE: Abri. A minha vizinha tá aqui. A Cleide. Do 302
+TEREZA: Eu não sabia que o Seu Arlindo tinha isso 🙏 vou incluir ele na oração
+ZULEICA: [audio 5:14] Gente, eu vou falar uma coisa e não quero que ninguém leve a mal. Eu não sabia nada disso da Vera, mas faz sentido, porque ela anda cansada, e o Arlindo eu já desconfiava, ele não sobe mais a escada da igreja, e outra coisa, a planilha tem a coluna do convênio, e a Marta que diz que tem plano bom tá lá no plano básico, eu não tô julgando, eu só tô falando. E quem é essa Rosângela, gente? É da turma de quinta?
+TEREZA: A Rosângela é a da recepção da clínica, a do cabelinho cacheado
+KELLY: Meninas o grupo é para assuntos da aula 🙏🙏
+ZULEICA: Encaminhei pro grupo da Hidro pra ver se alguém conhece
+@zap fim
+@som alarme
+(Encaminhou. Para outro grupo. Com "pra ver se alguém conhece". O incidente acaba de ganhar uma filial.)
+EU: Rosângela, a Zuleica encaminhou a planilha?
+ROSANGELA [envergonhada]:Encaminhou, Dra. A Zuleica encaminha até bom dia de outro grupo.
+@vai d01_quiz
+
+=== d01_quiz
+ROSANGELA: Mas Dra., se eu já apaguei para todos, então resolveu, né?
+(A pergunta que todo mundo vai me fazer esta semana. Melhor eu ter certeza da resposta.)
+@desafio d1_apagar_resolve -> d01_quiz_acerto | d01_quiz_erro
+
+=== d01_quiz_acerto
+EU: Apagar para todos ajudou, Rosângela. Mas quem baixou o arquivo ficou com ele no celular. E quem encaminhou levou para outro grupo. O incidente continua. A gente só parou de piorar.
+ROSANGELA: Então não acabou.
+EU: Não acabou. Mas começou direito.
+@muda tecnica+1
+@anota d1_incidente
+@vai d01_mensagem_grupo
+
+=== d01_quiz_erro
+EU: Resolveu, sim. Sumiu.
+> No mesmo instante, chega no celular da Rosângela uma mensagem da Tereza.
+@zap "Tereza Pilates"
+TEREZA: Rosângela, apagou do grupo mas eu já tinha salvado no celular, quer que eu apague daqui também? Ou você precisa dela?
+@zap fim
+(Não resolveu. Apagar a mensagem não apaga o arquivo que já desceu para o celular de ninguém.)
+@muda paciencia-1
+@anota d1_incidente
+@vai d01_mensagem_grupo
+
+=== d01_mensagem_grupo
+? O que você pede para a Rosângela escrever no grupo do pilates?
+* Curto e firme: "Mandei por engano um arquivo com dados de pacientes, protegidos por sigilo. Peço que não abram, não encaminhem e apaguem do celular. Quem encaminhou, por favor me avise para onde." -> d01_msg_firme {risco-1 rel_rosangela+1}
+* Um texto jurídico com o art. 52 da LGPD e a multa de até 50 milhões de reais -> d01_msg_juridiques {paciencia-1}
+* Nada. Quanto menos falar, menos gente presta atenção -> d01_msg_nada {paciencia-1}
+** Pedir para a Profe Kelly, administradora, deixar só administradores mandarem mensagem e ajudar a apagar as cópias -> d01_msg_kelly {risco-1 tecnica+1}
+
+=== d01_msg_firme
+@zap "Pilates das Amigas 🧘‍♀️"
+ROSANGELA: Meninas, mandei por engano um arquivo da clínica com dados de pacientes, que são protegidos por sigilo. Peço por favor que não abram, não encaminhem e apaguem do celular. Quem encaminhou, me avise pra onde. Me desculpem 🙏
+TEREZA: Apagado, Rosângela. Fica tranquila querida
+MARLENE: Apaguei. Não vou falar pra ninguém
+ZULEICA: Apaguei do grupo da Hidro também. Mas lá a Neusa já tinha visto
+@zap fim
+(Ninguém foi ameaçado, ninguém foi exposto e eu descobri que existe uma Neusa.)
+@vai d01_identifica
+
+=== d01_msg_juridiques
+@zap "Pilates das Amigas 🧘‍♀️"
+ROSANGELA: Prezadas, nos termos da Lei 13.709/2018, art. 52, as sanções podem chegar a multa de até 2% do faturamento, limitada a R$ 50.000.000,00 por infração...
+ZULEICA: Rosângela?? Você tá sendo sequestrada?
+TEREZA: Eu vou ser presa por ter aberto um arquivo??
+MARLENE: Eu tenho 71 anos, eu não tenho 50 milhões
+ZULEICA: Vou sair do grupo pra não me complicar
+> Zuleica saiu do grupo
+@zap fim
+(Ótimo. A pessoa que encaminhou saiu do grupo sem me dizer para onde encaminhou. E a multa do art. 52 é sanção para quem trata os dados, a clínica, não para senhora que abriu arquivo no pilates.)
+> A Rosângela passa quinze minutos ligando para a Zuleica até ela atender e confessar o grupo da Hidro.
+@vai d01_identifica
+
+=== d01_msg_nada
+> Silêncio no grupo. Por uns quatro minutos.
+@zap "Pilates das Amigas 🧘‍♀️"
+TEREZA: Rosângela apagou por quê? Era pra gente ver?
+ZULEICA: Eu salvei, se alguém quiser eu mando
+MARLENE: Manda no privado
+@zap fim
+(Silêncio, num grupo de pilates, é um convite.)
+EU: Rosângela, escreve agora: foi engano, não abram, não encaminhem, apaguem do celular.
+@vai d01_identifica
+
+=== d01_msg_kelly
+@zap "Profe Kelly Pilates"
+ROSANGELA: Kelly, você que é a administradora, consegue deixar só administradores mandarem mensagem por enquanto? E pedir pras meninas apagarem o arquivo do celular?
+KELLY: Consigo! Fiz um curso de gestão de comunidades, sabia que ia servir 💪
+KELLY: Pronto, fechei o grupo. Mandei um áudio pedindo pra apagar. E falei com a Zuleica, ela tirou do grupo da Hidro
+@zap fim
+(A professora de pilates fez contenção de incidente melhor que muita empresa. Vou lembrar disso no treinamento.)
+@vai d01_identifica
+
+=== d01_identifica
+@musica tensao
+(Agora: quem recebeu, quem abriu, quem baixou, quem encaminhou. Se eu não sei para onde a planilha foi, eu não sei o tamanho do problema.)
+? Como você organiza quem teve acesso?
+* Montar uma lista com os 63 participantes, quem respondeu que apagou e o grupo da Hidro, com horários -> d01_lista {tecnica+1 risco-1}
+* Pedir para a Rosângela "ir lembrando" quem estava lá -> d01_lista_memoria
+* Ligar para cada uma das 63 senhoras agora, pessoalmente -> d01_lista_ligacoes {paciencia-1 rel_rosangela+1}
+
+=== d01_lista
+> Você abre um documento novo. Nome: "INCIDENTE_PILATES_registro.docx". Nada de FINAL, nada de v3.
+> Participantes do grupo, horário do envio, horário em que apagou, quem confirmou que apagou, o grupo da Hidroginástica, a tal Neusa.
+@se marca:apagou_sem_print -> d01_lista_sem_print
+(Os prints da Rosângela viram o anexo um. A lista de participantes, o anexo dois. Isso é o começo do registro do incidente.)
+@vai d01_avisa
+
+=== d01_lista_sem_print
+(Sem o print original, eu reconstruo pelo que a Tereza salvou e pelo que a Zuleica encaminhou. Dá. Mas é como montar quebra-cabeça com a caixa perdida.)
+@vai d01_avisa
+
+=== d01_lista_memoria
+ROSANGELA: Tinha a Tereza, a Zuleica, a Marlene, a Kelly, a outra Tereza...
+EU: Quantas Terezas tem nesse grupo?
+ROSANGELA: Umas seis, Dra.
+(Memória não é registro. Vou exportar a lista de participantes do próprio grupo e anotar tudo com horário.)
+@vai d01_avisa
+
+=== d01_lista_ligacoes
+> Você liga para quatro senhoras. A primeira quer saber se você é solteira. A segunda passa a receita do bolo de fubá. A terceira não sabia de nada e agora sabe. A quarta pergunta se é da clínica e se dá para remarcar a consulta.
+(Ligar uma por uma é gentil, mas lento e espalha a história. Lista primeiro, contato com quem importa depois.)
+> Você volta para a mesa e monta a lista de participantes com horário, do jeito certo.
+@vai d01_avisa
+
+=== d01_avisa
+@sai rosangela
+@fundo sala_dpo
+> Sua sala é uma ex-sala de arquivo. Tem uma janela que dá para o muro e uma impressora que só funciona com um tapa do lado esquerdo.
+(A clínica é a controladora. Quem decide é a diretoria. Eu oriento e comunico, mas eles precisam saber agora, com fatos, não com fofoca de corredor.)
+? Como você avisa a diretoria?
+* Mensagem objetiva no grupo da diretoria: o que aconteceu, quando, quais dados, o que já foi feito, e um pedido de reunião hoje -> d01_diretoria {credibilidade+1}
+* Esperar o fim do dia e levar amanhã cedo, com tudo levantado, para causar boa impressão -> d01_espera {prazo-1 risco+1}
+** Ir até a copa, onde a Dra. Helena toma café da garrafa térmica, e contar ao vivo -> d01_copa {rel_helena+2 credibilidade+1}
+
+=== d01_copa
+@fundo clinica_recepcao
+@entra helena neutra direita
+> A Dra. Helena, sócia minoritária, está na copa servindo café de uma garrafa térmica com adesivo "NÃO É DA CLÍNICA, É DA HELENA".
+HELENA: Bom dia, {nome}. Pela sua cara, isso não é sobre o café.
+EU: Não é. A Rosângela mandou a planilha de pacientes, com diagnóstico, num grupo de pilates. 63 pessoas. Uma encaminhou para outro grupo.
+HELENA [surpresa]: Com diagnóstico.
+EU: Com diagnóstico, CPF e telefone. Já preservamos a evidência possível e pedimos para apagar. Precisamos de reunião hoje.
+HELENA: Eu mando no grupo da diretoria. Você escreve o resumo, eu assino embaixo.
+@sai helena
+@vai d01_diretoria
+
+=== d01_espera
+> Você passa o resto do dia arrumando a planilha de controle, as cores, as bordas, a fonte. A planilha fica linda.
+> Dia seguinte, 7h40.
+@fundo sala_dpo
+(Linda e um dia útil mais curta. Enquanto eu caprichava na formatação, o prazo não caprichou em esperar.)
+@vai d01_diretoria_ontem
+
+=== d01_diretoria_ontem
+@zap "Diretoria Bem Viver"
+EU: Bom dia. Incidente de segurança com dados pessoais: ontem às 8h12 a planilha de pacientes (1.847 pessoas, com nome, CPF, telefone, convênio e diagnóstico) foi enviada por engano a um grupo externo com 63 participantes e encaminhada a outro grupo. A mensagem foi apagada e pedimos a exclusão das cópias. Preciso de reunião hoje.
+HELENA: Ontem?? E a gente só fica sabendo agora?
+HELENA: Sala de reunião, 10h.
+@muda credibilidade-1
+@vai d01_diretoria_resto
+
+=== d01_diretoria
+@zap "Diretoria Bem Viver"
+EU: Bom dia. Incidente de segurança com dados pessoais: hoje às 8h12 a planilha de pacientes (1.847 pessoas, com nome, CPF, telefone, convênio e diagnóstico) foi enviada por engano a um grupo externo com 63 participantes e encaminhada a outro grupo. A mensagem foi apagada e pedimos a exclusão das cópias. Preciso de reunião hoje para decidirmos os próximos passos.
+HELENA: Ciente. Sala de reunião, 14h.
+@vai d01_diretoria_resto
+
+=== d01_diretoria_resto
+WESLEY: [audio 1:52] Bom dia, pessoal, Wesley aqui. Então, olha, isso aí é tranquilo, viu? É só apagar a mensagem. Apagou, sumiu. É tipo dar um F5 na LGPD. Eu passo aí antes da reunião e a gente apaga tudo, até o histórico, não fica rastro nenhum.
+BRUNA: Gente, bom dia ✨ Será que dá pra transformar essa crise em sinergia? Tipo uma campanha de transparência?
+ROMEU: Bom dia. Estou em consulta.
+ROMEU: Isso não vazou. Foi compartilhado. Com conhecidas.
+ROMEU: No meu tempo não tinha isso.
+ROMEU: Estarei lá.
+@zap fim
+(Um quer apagar até o rastro, outra quer fazer campanha e o dono acha que compartilhar é diferente de vazar. Eu tenho até a reunião para chegar com o incidente organizado.)
+@anota d1_encarregada
+@vai d01_fim
+
+=== d01_fim
+@musica tensao
+> A impressora engasga no resumo do incidente. Tapa do lado esquerdo. Funciona.
+@se marca:preservou_evidencia -> d01_fim_print
+(Eu não tenho o print original. Tenho o que sobrou nos celulares das outras. Vou ter que explicar isso no registro, com honestidade.)
+@vai d02_inicio
+
+=== d01_fim_print
+(Prints, lista de participantes, horários. Quando alguém disser que não aconteceu, o papel diz que aconteceu.)
+@vai d02_inicio

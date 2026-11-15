@@ -1,0 +1,264 @@
+# Parte 2, capítulo 8. O ofício da ANPD e a reunião final com a diretoria.
+
+=== d08_inicio
+@cap 8 "O ofício"
+@fundo sala_dpo
+@musica misterio
+> 7h15. Você chegou antes da Rosângela, antes do café e antes da impressora acordar.
+> O ofício da ANPD está aberto na tela. Endereçado à encarregada, que é o canal entre a clínica e a autoridade, como manda o art. 41.
+@se marca:nunca_comunicou -> d08_oficio_sem_comunicacao
+> É um pedido de informações complementares sobre o incidente comunicado: como a planilha saiu, quantas pessoas receberam, quais medidas foram adotadas, como os titulares foram avisados e o que mudou desde então. Com prazo para responder, dado pelo próprio ofício.
+(Não é multa. Não é processo. É uma pergunta educada que pode virar as duas coisas, dependendo da resposta.)
+@vai d08_romeu_liga
+
+=== d08_oficio_sem_comunicacao
+> O ofício não pede complemento de nada, porque não havia nada para complementar. A autoridade soube do incidente por outros caminhos e quer saber por que a clínica não comunicou.
+@muda risco+1
+(É o pior jeito de começar uma conversa com a ANPD: ela falando primeiro.)
+@vai d08_romeu_liga
+
+=== d08_romeu_liga
+@zap "Diretoria Bem Viver"
+ROMEU: Vi o ofício. Responde o mínimo. Uns poucos pacientes, erro pontual, já resolvido. Não fala do golpe que isso complica
+BRUNA: Concordo, menos é mais 💚
+WESLEY: [audio 0:19] Se quiser eu apago os prints do golpe do servidor, aí não tem o que falar, né. Brincadeira. Mas se quiser.
+HELENA: Reunião às 10h. Todo mundo. Presencial. Sem áudio, Wesley.
+WESLEY: [audio 0:02] Ok.
+@zap fim
+(Reunião às 10h. A reunião que decide se esta clínica aprendeu alguma coisa.)
+@vai d08_espelho
+
+=== d08_espelho
+@fundo home_office_noite
+@musica trabalho
+> Você volta em casa rapidinho para trocar de roupa. A blusa de ontem tem uma mancha de café em formato do estado de Goiás.
+@roupa "Reunião final com a diretoria"
+> Você olha no espelho. Três dias de cargo viraram três semanas de crise. Mas está de pé.
+@se paciencia<=2 -> d08_espelho_cansada
+@vai d08_reuniao
+
+=== d08_espelho_cansada
+(As olheiras chegaram antes de mim. Elas têm crachá próprio.)
+@vai d08_reuniao
+
+=== d08_reuniao
+@fundo sala_reuniao
+@musica tensao
+> 10h. Sala de reunião. Uma mesa grande demais, um projetor que mostra tudo azulado e uma garrafa térmica de café que, todo mundo sabe, é de ontem.
+@entra romeu neutra esquerda
+@entra helena pensativa direita
+@entra bruna neutra centro
+ROMEU: Vamos ser objetivos. Responde o mínimo, a ANPD arquiva, a gente volta a atender paciente.
+@anota d2_sancoes
+(O art. 52 tem advertência, multa de até 2% do faturamento no Brasil, limitada a cinquenta milhões por infração, publicização, bloqueio, eliminação. E o § 1º diz que boa-fé, cooperação e medidas corretivas contam. "O mínimo" é o oposto de cooperação.)
+? O Dr. Romeu quer tirar o golpe e o número exato de pacientes da resposta.
+* Ceder: tirar do texto o golpe e o número exato, "pra não complicar" -> d08_cede {risco+2 etica-2 rel_romeu+1}
+* Argumentar com o art. 52, § 1º: boa-fé, cooperação e medidas corretivas pesam a favor da clínica -> d08_argumenta {tecnica+1 credibilidade+1} [se credibilidade>=2]
+* Bater de frente: "Eu não omito nada. Minha orientação fica registrada por escrito." -> d08_frente {etica+2 rel_romeu-2}
+** Pedir à Dra. Helena que leia em voz alta o registro do incidente -> d08_helena_le {credibilidade+2 rel_helena+1} [se marca:registrou_incidente]
+
+=== d08_cede
+EU: Tá. Tira o golpe. Põe "alguns pacientes".
+> A Dra. Helena fecha o notebook devagar.
+HELENA: Fica registrado que eu discordei.
+@marca ajudou_esconder
+(Eu sei o que eu acabei de fazer. O registro do incidente sabe também. Ele não esquece, mesmo quando eu queria que esquecesse.)
+@vai d08_plano
+
+=== d08_argumenta
+EU: Doutor, foram 1.847 pacientes. Está no registro, no aviso, no jornal e no celular de 63 pessoas do pilates. Se a resposta disser "alguns", parece que a gente está escondendo, porque estaria. E quando ela olha a sanção, ela olha a boa-fé, a cooperação e se a clínica corrigiu rápido.
+EU: O golpe é a prova de que a gente agiu: avisamos, registramos, orientamos. Tirar isso é tirar o nosso melhor argumento.
+@expr romeu pensativa
+ROMEU: Então o golpe ajuda?
+EU: O golpe não ajuda. O que a gente fez com ele, ajuda.
+ROMEU: Manda completo.
+@marca comunicacao_completa
+@desmarca ajudou_esconder
+@vai d08_plano
+
+=== d08_frente
+EU: Doutor, eu não vou mandar resposta incompleta para a autoridade. A decisão é da clínica, e o senhor é a clínica. Mas a minha orientação vai por escrito, com data, e a resposta completa está pronta.
+@expr romeu brava
+ROMEU: Você está me ameaçando?
+EU: Estou fazendo o meu trabalho. É para isso que o senhor me contratou. Há três semanas.
+> Silêncio. A Bruna finge anotar alguma coisa. Anota "socorro".
+HELENA: Romeu, ela está certa. E eu assino junto.
+ROMEU: Manda. Mas a gente vai conversar.
+@marca bateu_de_frente
+@marca orientou_por_escrito
+@marca comunicacao_completa
+@desmarca ajudou_esconder
+@vai d08_plano
+
+=== d08_helena_le
+> A Dra. Helena lê. Data, hora, quem recebeu, quando pediu exclusão, o aviso aos pacientes, os relatos do golpe, o boletim, a orientação da recepção. Leva sete minutos. Ninguém interrompe.
+HELENA: Romeu, isso aqui é a melhor coisa que a clínica produziu este ano. E a gente vai esconder?
+ROMEU: Eu não sabia que estava tudo escrito.
+EU: Está. Tudo. É por isso que a gente pode responder completo sem medo.
+ROMEU: Então manda completo. E manda com essa organização.
+@marca comunicacao_completa
+@desmarca ajudou_esconder
+@vai d08_plano
+
+=== d08_plano
+@entra wesley neutra centro
+> O Wesley chega com dez minutos de atraso, um energético e um pedaço de pão de queijo no canto da boca.
+WESLEY: Perdi alguma coisa?
+HELENA: Você vai ganhar uma coisa. Um contrato.
+(Agora vem a parte que decide se isso acontece de novo. O que foi respondido é o passado. O plano é o futuro.)
+> Você conecta o notebook no projetor. Tudo fica azulado. Você apresenta mesmo assim.
+@desafio d2_plano_adequacao -> d08_plano_acerto | d08_plano_erro
+
+=== d08_plano_acerto
+> A ordem faz sentido até para o Dr. Romeu: saber o que tem, fechar a porta, amarrar quem trabalha junto, ensinar a equipe e conferir de tempos em tempos.
+@muda tecnica+1 credibilidade+1
+@anota d2_plano_adequacao
+@vai d08_aprova
+
+=== d08_plano_erro
+> Você começa pelo treinamento, pula para o contrato, volta para o inventário. O Dr. Romeu olha o relógio duas vezes.
+ROMEU: Isso tudo custa quanto?
+(Se nem eu sei por onde começar, ele também não vai saber por onde pagar.)
+@muda paciencia-1
+@anota d2_plano_adequacao
+@vai d08_aprova
+
+=== d08_aprova
+ROMEU: Eu aprovo uma coisa agora. Uma. O resto a gente vê no semestre que vem.
+? O que você defende primeiro?
+* O plano de adequação: inventário dos dados, controle de acesso e fim das planilhas em aplicativo de conversa -> d08_aprova_plano {risco-1}
+* O treinamento da equipe, começando pela recepção -> d08_aprova_treino {rel_rosangela+1}
+* O contrato com o operador de TI, com instruções e responsabilidades por escrito -> d08_aprova_contrato {tecnica+1}
+* Deixar a diretoria escolher -> d08_diretoria_escolhe {paciencia+1}
+** Apresentar os três como um pacote, com o custo por paciente ao lado do custo de uma sanção -> d08_pacote {credibilidade+1} [se credibilidade>=5]
+
+=== d08_aprova_plano
+@marca plano_adequacao
+EU: Primeiro a gente descobre onde estão os dados, quem acessa e por quê. Sem isso, todo o resto é chute.
+@vai d08_segunda
+
+=== d08_aprova_treino
+@marca treinamento
+EU: O erro começou num clique. Ferramenta nenhuma substitui a pessoa sabendo o que não clicar.
+@vai d08_segunda
+
+=== d08_aprova_contrato
+@marca contrato_operador
+EU: O Wesley trata dados em nome da clínica. Pelo art. 39, o operador segue as instruções do controlador. Hoje as instruções são áudios de dois minutos. Precisam ser contrato.
+WESLEY: Eu ganho crachá?
+@vai d08_segunda
+
+=== d08_diretoria_escolhe
+ROMEU: Então o do Wesley, que é o mais barato. Ele já está aqui mesmo.
+@marca contrato_operador
+(Escolheram pelo preço. Pelo menos escolheram.)
+@vai d08_segunda
+
+=== d08_pacote
+EU: Plano, treinamento e contrato custam menos, por paciente, do que uma consulta. Uma sanção, uma matéria no jornal e um pedido de indenização custam muito mais. E o art. 50 fala de boas práticas e governança exatamente para isso.
+> A Dra. Helena empurra uma folha para o Dr. Romeu. Já está com a conta feita. Ela sempre está com a conta feita.
+ROMEU: Aprovado. Os três. Antes que eu mude de ideia.
+@marca plano_adequacao
+@marca treinamento
+@marca contrato_operador
+@anota d2_contrato_operador
+@vai d08_rosangela
+
+=== d08_segunda
+@se credibilidade>=3 -> d08_segunda_rodada
+> O Dr. Romeu fecha a pasta. Uma coisa aprovada. As outras ficam no "semestre que vem", que em clínica pequena é um lugar mítico, tipo Nárnia.
+@anota d2_contrato_operador
+@vai d08_rosangela
+
+=== d08_segunda_rodada
+HELENA: Romeu, ela acertou em tudo até agora. Aprova mais uma.
+ROMEU: Mais uma. Só uma.
+? Qual a segunda?
+* O plano de adequação -> d08_segunda_fim {marca:plano_adequacao}
+* O treinamento da equipe -> d08_segunda_fim {marca:treinamento}
+* O contrato com o operador de TI -> d08_segunda_fim {marca:contrato_operador}
+
+=== d08_segunda_fim
+> Duas coisas aprovadas. Numa clínica onde a impressora espera conserto desde 2022, isso é revolução.
+@anota d2_contrato_operador
+@vai d08_rosangela
+
+=== d08_rosangela
+@expr romeu pensativa
+ROMEU: Falta a Rosângela.
+BRUNA: Eu acho que, para a imagem, a gente devia mostrar que tomou uma atitude. Desligar ela.
+@se marca:culpou_rosangela -> d08_rosangela_culpada
+@vai d08_rosangela_escolha
+
+=== d08_rosangela_culpada
+ROMEU: Você mesma disse, lá no começo, que foi ela.
+(Eu disse. Eu disse por medo, e a frase ficou andando pela clínica sem mim.)
+@vai d08_rosangela_escolha
+
+=== d08_rosangela_escolha
+? O destino da Rosângela está na mesa.
+* Defender: o erro foi humano, num processo ruim; ela pode virar a campeã de privacidade da equipe -> d08_rosangela_fica {rel_rosangela+2 etica+1}
+* "Isso é com o RH, não comigo" -> d08_rosangela_rh {paciencia+1}
+* Concordar com a demissão "para dar exemplo" -> d08_rosangela_demite {rel_rosangela-3 etica-2}
+** Chamar a própria Rosângela para falar -> d08_rosangela_fala {rel_rosangela+1 credibilidade+1} [se rel_rosangela>=2]
+
+=== d08_rosangela_fica
+EU: Demitir a Rosângela não muda o processo que deixou uma planilha de 1.847 pacientes no celular da recepção. Se a gente demite, o próximo erro vai ser escondido. Quem errou e contou na hora é exatamente quem eu quero ensinando os outros.
+HELENA: Concordo.
+ROMEU: Dezenove anos. Ela nunca faltou. Fica.
+@marca protegeu_rosangela
+@vai d08_romeu_final
+
+=== d08_rosangela_rh
+> O assunto vai para o RH, que na Bem Viver é uma pasta na gaveta da Dra. Helena.
+HELENA: Eu resolvo. E eu não vou demitir ninguém por um processo que eu também deixei errado.
+@vai d08_romeu_final
+
+=== d08_rosangela_demite
+> A Rosângela é desligada na sexta. Ela devolve o crachá e deixa no balcão um bilhete escrito "desculpa" em caneta rosa.
+@desmarca protegeu_rosangela
+(A planilha continua no mesmo lugar. Só quem errou foi embora.)
+@vai d08_romeu_final
+
+=== d08_rosangela_fala
+@som porta
+@entra rosangela envergonhada centro
+ROSANGELA: Fui eu que mandei. Eu estava com dois grupos abertos e uma planilha que eu nem precisava ter. Eu errei. Mas eu contei na hora.
+ROSANGELA: Se eu ficar, eu quero ser a primeira a fazer o treinamento. E depois, se deixarem, eu quero dar.
+> O Dr. Romeu tira os óculos. A Dra. Helena sorri. A Bruna, pela primeira vez na história da clínica, fica sem slide.
+ROMEU: Fica, Rosângela.
+@marca protegeu_rosangela
+@vai d08_romeu_final
+
+=== d08_romeu_final
+@sai todos
+@entra romeu neutra centro
+> A reunião acaba. Todos saem, menos o Dr. Romeu, que fica olhando a garrafa térmica como quem olha o mar.
+ROMEU: No meu tempo não tinha nada disso. A gente cuidava do paciente e pronto.
+? O Dr. Romeu está esperando uma resposta.
+* "No seu tempo também tinha sigilo médico, doutor. A LGPD só deu nome, regra e prazo." -> d08_fim {rel_romeu+1}
+* Pedir mais estrutura para o cargo: horas, orçamento e acesso direto à diretoria -> d08_fim {credibilidade+1 paciencia+1}
+* Sair calada. Não sobrou energia nem para responder -> d08_fim {paciencia-1}
+** Agradecer por ele ter ouvido, mesmo resmungando -> d08_fim {rel_romeu+2} [se rel_romeu>=1]
+
+=== d08_fim
+@sai todos
+> O e-mail para a ANPD sai às 17h58, dentro do prazo do ofício, assinado pela encarregada em nome da clínica.
+@se marca:comunicacao_completa -> d08_fim_completo
+> A resposta é curta. Curta demais. Você sabe disso enquanto clica em enviar.
+@vai d08_fim_cansaco
+
+=== d08_fim_completo
+> A resposta é completa: os números exatos, a linha do tempo, o aviso aos pacientes, o golpe e o que foi feito, e o plano aprovado.
+@vai d08_fim_cansaco
+
+=== d08_fim_cansaco
+@se paciencia<=1 -> d08_fim_exausta
+@vai fim_escolha
+
+=== d08_fim_exausta
+@fundo home_office_noite
+@musica triste
+> 23h. Você está no chão da sala, encostada no sofá, com o notebook fechado no colo. Não lembra quando almoçou. Não lembra quando dormiu oito horas.
+(Eu cuidei de 1.847 titulares. De mim, ninguém cuidou. Nem eu.)
+@vai fim_escolha

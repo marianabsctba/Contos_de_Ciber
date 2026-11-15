@@ -1,0 +1,262 @@
+# Parte 2, capítulo 7. Pedido de acesso do Dr. Jorge, campanha da Bruna e a imprensa.
+
+=== d07_inicio
+@cap 7 "Titular tem direitos"
+@fundo sala_dpo
+@musica trabalho
+> 9h02. Você ainda não respondeu a Nayara. A caixa de entrada responde por você: chegou um e-mail com três procurações em anexo.
+@som notificacao
+@entra jorge neutra direita
+> Dez minutos depois, o remetente está na sua porta. Terno impecável, pasta de couro, a calma de quem nunca levou um susto na vida.
+JORGE: Bom dia. Jorge, advogado. Represento três pacientes da clínica. Vim protocolar pessoalmente, porque gosto de ver o rosto de quem vai me responder.
+JORGE: Meus clientes querem a confirmação de que a clínica trata os dados deles e acesso a esses dados. Todos. Inclusive os que estavam naquela planilha.
+(Art. 18: confirmação da existência de tratamento, acesso aos dados. Art. 19: formato simplificado na hora, ou declaração clara e completa em até 15 dias do requerimento. E a própria LGPD admite o pedido por representante legalmente constituído.)
+EU: Recebido, Dr. Jorge. Hoje, 9h12. O prazo começa a contar agora.
+JORGE: Que bom que a senhora sabe. A maioria me olha como se eu tivesse pedido um rim.
+@muda prazo_titular=15
+> O relógio do topo agora conta os 15 dias do art. 19, a partir do requerimento.
+@anota d2_direitos_titular
+? Como você começa?
+* Conferir as procurações e registrar o pedido com data e hora -> d07_confere {tecnica+1}
+* Pedir ao Wesley para exportar tudo hoje e mandar por e-mail sem conferir nada -> d07_manda_tudo {risco+1 etica-1}
+* Deixar na pilha: 15 dias é muito tempo -> d07_pilha {prazo_titular-10 paciencia+1}
+** Responder na hora, em formato simplificado, e avisar que a declaração completa vem no prazo -> d07_simplificado {tecnica+2 credibilidade+1 rel_jorge+1}
+
+=== d07_confere
+> Três procurações. Duas com firma e poderes específicos. A terceira tem a assinatura do paciente e, no campo "outorgado", alguém escreveu "Jorginho".
+EU: Dr. Jorge, essa aqui está meio informal.
+JORGE: Ah. Essa é da minha tia. Vou trazer outra.
+(Entregar prontuário para quem não comprova que representa o paciente seria um segundo incidente. Com o mesmo diagnóstico, para piorar.)
+@sai jorge
+@vai d07_quiz
+
+=== d07_manda_tudo
+@entra wesley feliz esquerda
+WESLEY: [audio 0:31] Exportei! Mandei pro e-mail do doutor. Era jorge.adv arroba alguma coisa, né? Tinha dois Jorge no sistema, mandei pro primeiro.
+EU: WESLEY.
+> O primeiro Jorge do sistema é um paciente da cardiologia que mora em Joinville.
+WESLEY: [audio 0:08] Eu peço pra ele apagar?
+(Pedir para apagar. De novo. A mesma frase da segunda-feira, com outro Jorge.)
+> Você liga para o Jorge de Joinville, explica, pede para ele apagar sem abrir, e anota tudo no registro. Ele foi gentil. A sorte foi gentil.
+@muda paciencia-2
+@sai wesley
+@sai jorge
+@vai d07_quiz
+
+=== d07_pilha
+> O pedido do Dr. Jorge vai para a pasta "URGENTE", que já tem 31 itens urgentes.
+> Os dias passam no ritmo de clínica: uma reunião sobre a reunião, a impressora em greve, a Bruna com um novo slide.
+@sai jorge
+@vai d07_quiz
+
+=== d07_simplificado
+EU: Dr. Jorge, posso confirmar agora, em formato simplificado: sim, a clínica trata dados dos três. Cadastro, convênio, agenda e prontuário. A declaração completa vai por escrito, no prazo.
+@expr jorge surpresa
+JORGE: Na hora. A senhora respondeu na hora.
+EU: É o que o art. 19 permite. O resto vem com calma, mas vem.
+JORGE: Vou contar essa para os colegas. Eles não vão acreditar.
+@sai jorge
+@vai d07_quiz
+
+=== d07_quiz
+(A declaração completa. O que tem que estar nela? Se eu errar aqui, o Dr. Jorge vai citar meu erro em petição com nota de rodapé.)
+@desafio d2_resposta_titular -> d07_quiz_acerto | d07_quiz_erro
+
+=== d07_quiz_acerto
+> Você monta o modelo da resposta: origem dos dados, critérios, finalidade, e o que for de prontuário entregue ao próprio titular ou ao representante com poderes.
+@muda tecnica+1
+@vai d07_campanha
+
+=== d07_quiz_erro
+@entra helena pensativa direita
+HELENA: "Os dados de saúde não podem ser entregues por sigilo médico." Para o próprio paciente?
+EU [envergonhada]: Fica estranho quando a senhora lê.
+HELENA: Sigilo é para proteger o paciente dos outros. Não do próprio paciente.
+> Você apaga o parágrafo e recomeça com origem, critérios e finalidade.
+@sai helena
+@muda prazo_titular-2
+@vai d07_campanha
+
+=== d07_campanha
+@zap "Diretoria Bem Viver"
+BRUNA: Pessoal, insight 💡 O momento é PERFEITO para a campanha de check-up com a base inteira
+BRUNA: Os pacientes estão engajados, abriram o aviso, abriram o alerta do golpe. Taxa de abertura de 94% 🚀
+BRUNA: A gente manda "Você merece se cuidar: check-up com desconto" pros 1.847. Sinergia total
+ROMEU: Gostei. Tem que entrar dinheiro, o advogado de pacientes está aí
+WESLEY: [audio 0:14] Consigo disparar hoje à tarde. Uso a planilha mesmo, a do pilates. Brincadeira. Ou não. Qual planilha?
+HELENA: {nome}?
+@zap fim
+(A base de pacientes de uma clínica tem dado de saúde. Dado sensível. A base legal para tratar foi a tutela da saúde, não "a Bruna precisa bater meta".)
+? A diretoria está esperando você no grupo.
+* Recusar e explicar por escrito: finalidade, dado sensível e o pior momento possível -> d07_recusa {etica+1 rel_bruna-1 credibilidade+1}
+* Aceitar, "desde que tenha botão de descadastrar" -> d07_aceita {risco+2 rel_bruna+2 etica-2 rel_romeu+1}
+* Deixar a Bruna e o Dr. Romeu decidirem sozinhos -> d07_omite {paciencia+1}
+** Propor uma campanha aberta ao público, sem usar a base, com cadastro só de quem quiser receber -> d07_alternativa {rel_bruna+1 credibilidade+1 etica+1}
+
+=== d07_recusa
+@zap "Diretoria Bem Viver"
+EU: Não. Os dados foram coletados para cuidar da saúde dos pacientes, não para vender check-up. Isso é desvio de finalidade, com dado sensível
+EU: Para marketing com dado de saúde, a base de tutela da saúde não serve. Teria que ser consentimento específico e destacado, pedido antes. E não é agora, uma semana depois de vazar a base
+EU: Se a ANPD pergunta o que mudou, a resposta não pode ser "mandamos promoção para os titulares afetados"
+BRUNA: 😐
+HELENA: Assino embaixo.
+ROMEU: No meu tempo a gente mandava cartão de Natal para todo paciente
+EU: E o senhor tinha consentimento da caneta, doutor. Era outro tempo.
+@zap fim
+@marca recusou_campanha
+@anota d2_campanha_base
+@vai d07_nayara
+
+=== d07_aceita
+> Às 15h, 1.847 pacientes recebem "Você merece se cuidar 💚". Alguns respondem com o print do aviso de incidente. Um responde só "sério?".
+@marca aceitou_campanha
+@zap "Dona Cleide"
+CLEIDE: Vocês vazaram o meu exame e agora querem que eu faça outro? Com desconto?
+@zap fim
+(Botão de descadastrar não transforma desvio de finalidade em finalidade.)
+@anota d2_campanha_base
+@vai d07_nayara
+
+=== d07_omite
+> Você não responde. Às vezes o silêncio da encarregada vira um "sim" no grupo da diretoria.
+@se credibilidade>=3 -> d07_omite_helena
+> Às 15h, a campanha dispara. Com a base inteira.
+@marca aceitou_campanha
+@muda risco+2
+@anota d2_campanha_base
+@vai d07_nayara
+
+=== d07_omite_helena
+@zap "Diretoria Bem Viver"
+HELENA: Antes de disparar: {nome}, você não disse nada. Isso pode?
+EU: Não pode. Desvio de finalidade com dado sensível, na pior semana possível
+ROMEU: Então não manda, Bruna. Se ela diz que não, é não
+BRUNA: 😔
+@zap fim
+(Ele disse "se ela diz que não, é não". Três dias de cargo, uma semana de crise e o Dr. Romeu me ouviu sem eu levantar a voz.)
+@marca recusou_campanha
+@anota d2_campanha_base
+@vai d07_nayara
+
+=== d07_alternativa
+@zap "Diretoria Bem Viver"
+EU: Proposta: campanha aberta de check-up, em rede social e cartaz, para qualquer pessoa da cidade. Quem quiser receber novidades se cadastra, sabendo para quê
+EU: A base de pacientes fica fora. Ela existe para cuidar deles, não para vender para eles
+BRUNA: Opt-in! Eu amo opt-in. Dá para fazer uma landing page linda
+ROMEU: O que é landing page?
+HELENA: É um cartaz que mora na internet, Romeu
+@zap fim
+@marca recusou_campanha
+@anota d2_campanha_base
+@vai d07_nayara
+
+=== d07_nayara
+@sai todos
+@fundo sala_dpo
+@musica misterio
+> 16h20. O celular toca. Número desconhecido. Você já sabe quem é.
+@entra nayara neutra direita
+NAYARA: {nome}? Nayara, do Fala Cidade. Eu tenho prints do grupo de pilates, tenho um relato da "Central Bem Viver" e tenho uma senhora de 72 anos que me ligou dizendo que quer dar entrevista. O nome dela é Cleide.
+(Claro que é.)
+NAYARA: A matéria sai amanhã. Com ou sem a clínica. Prefiro com.
+? O que você diz para a jornalista?
+* Dizer a verdade, numa nota curta: o que houve, o que foi feito e como o paciente se protege -> d07_nayara_verdade {credibilidade+1}
+* "A clínica não vai comentar." -> d07_nayara_sem {risco+1}
+* "Não houve vazamento nenhum. É boato de grupo de pilates." -> d07_nayara_nega {risco+1 etica-2 credibilidade-1}
+** Aproveitar a matéria para alertar a cidade sobre a falsa central -> d07_nayara_golpe {credibilidade+2 risco-1} [se marca:alertou_golpe]
+
+=== d07_nayara_verdade
+EU: Uma planilha com dados de pacientes foi enviada por engano a um grupo de mensagens. A clínica pediu a exclusão, avisou os pacientes, está tratando o caso com a autoridade de proteção de dados e revisou quem acessa esses arquivos. Quem receber cobrança em nome da clínica: é golpe.
+NAYARA: E a funcionária?
+EU: O erro foi de processo, não de uma pessoa só. E não vou expor ninguém da equipe.
+@expr nayara feliz
+NAYARA: É a primeira nota de clínica que eu recebo sem "a empresa preza pela segurança dos seus clientes".
+@marca falou_com_imprensa
+@anota d2_imprensa_verdade
+@vai d07_prazo_jorge
+
+=== d07_nayara_sem
+NAYARA: Tudo bem. Vai sair "procurada, a clínica não quis se manifestar".
+(A frase mais culpada do jornalismo brasileiro.)
+@anota d2_imprensa_verdade
+@vai d07_prazo_jorge
+
+=== d07_nayara_nega
+NAYARA: Nenhum? Eu tenho o print da planilha, com o nome do arquivo. "PACIENTES_2026_FINAL_v3".
+> Silêncio.
+NAYARA: Vou colocar que a clínica negou. E o print do lado.
+@marca negou_imprensa
+@muda paciencia-1
+(Mentir para jornalista que tem print é como apagar mensagem de grupo com 63 pessoas: só funciona na sua cabeça.)
+@anota d2_imprensa_verdade
+@vai d07_prazo_jorge
+
+=== d07_nayara_golpe
+EU: Nayara, a matéria vai ajudar mais se tiver isso em destaque: a Clínica Bem Viver não cobra por Pix para liberar exame. Quem receber essa cobrança, não pague e ligue no fixo. Já registramos e avisamos todos os pacientes.
+NAYARA: Isso eu coloco no título. Serviço público é o que mais tem leitura.
+> No dia seguinte, a manchete é "Golpistas usam dados vazados de clínica; saiba como se proteger". A primeira linha é o seu alerta.
+@marca falou_com_imprensa
+@anota d2_imprensa_verdade
+@vai d07_prazo_jorge
+
+=== d07_prazo_jorge
+@sai todos
+@fundo sala_dpo
+@musica tensao
+> Dias depois. O pedido do Dr. Jorge te olha de dentro da pasta.
+@entra wesley neutra esquerda
+WESLEY: [audio 0:27] Chefe, se você esperar eu termino de exportar o histórico completo do sistema antigo, tem coisa de 2011 lá, mas o servidor é lento, ele tem a idade do meu sobrinho, uns dez dias aí.
+? A declaração completa precisa sair.
+* Enviar agora a declaração com o que existe no sistema atual e informar que os registros antigos seguem em levantamento -> d07_envia {tecnica+1}
+* Esperar o Wesley terminar a exportação completa -> d07_espera_wesley {prazo_titular-10}
+** Enviar agora e marcar uma conversa com o Dr. Jorge para explicar o que vem depois -> d07_envia {credibilidade+1 rel_jorge+1}
+
+=== d07_espera_wesley
+> O servidor de 2011 trava duas vezes. Na segunda, o Wesley descobre que o HD tinha uma etiqueta "NÃO DESLIGAR" e que alguém desligou.
+@muda paciencia-1
+@se prazo_titular<=0 -> d07_atrasou
+@vai d07_envia
+
+=== d07_envia
+@se prazo_titular<=0 -> d07_atrasou
+> A declaração sai dentro do prazo: origem dos dados, critérios, finalidade, e o acesso aos dados de cada paciente por canal seguro, para quem comprovou poderes.
+@marca respondeu_titular
+@entra jorge neutra direita
+JORGE: Recebi. Completa, clara e no prazo. Não sabia que isso existia em clínica.
+JORGE: Meus clientes vão continuar avaliando os danos do vazamento, que fique claro. Mas o pedido de acesso não vai ser problema.
+(Ele não desistiu. Mas também não ganhou munição nova. Às vezes o melhor resultado jurídico é o processo ficar do tamanho que ele já tinha.)
+@vai d07_fim
+
+=== d07_atrasou
+> O prazo de 15 dias passou. O e-mail do Dr. Jorge chega educado e implacável, como ele.
+@entra jorge neutra direita
+JORGE: Lamento informar que meus clientes vão levar o não atendimento à ANPD. Além do vazamento, agora tem isso.
+@muda risco+1 credibilidade-1
+(Um pedido de acesso respondido fora do prazo vira, de presente, uma reclamação nova.)
+> Você manda a declaração no mesmo dia. Atrasada, completa. Fica registrado o atraso também.
+@vai d07_fim
+
+=== d07_fim
+@sai todos
+@fundo home_office_noite
+@musica triste
+> 23h12. Você abre o portal Fala Cidade. A matéria está lá.
+@se marca:negou_imprensa -> d07_fim_negou
+@se marca:falou_com_imprensa -> d07_fim_falou
+> "Procurada, a clínica não quis se manifestar." Logo abaixo, uma foto da fachada da Bem Viver com o letreiro faltando o V.
+@vai d07_fim_ultima
+
+=== d07_fim_negou
+> "A clínica negou o vazamento." Logo abaixo, o print da planilha. Os comentários estão em chamas.
+@muda risco+1
+@vai d07_fim_ultima
+
+=== d07_fim_falou
+> A matéria tem a sua nota inteira. Nos comentários, alguém escreveu: "Pelo menos assumiram". Para internet, isso é quase um abraço.
+@vai d07_fim_ultima
+
+=== d07_fim_ultima
+@som notificacao
+> 23h40. Um e-mail novo, de um endereço oficial, com o assunto "Ofício".
+(Ah. Chegou a minha vez.)
+@vai d08_inicio

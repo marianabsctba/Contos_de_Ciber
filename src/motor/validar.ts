@@ -46,6 +46,23 @@ export function validar(h: Historia, rec: Recursos, partidas = 4000): Relatorio 
   let palavras = 0;
 
   if (!r.cenas.has(h.inicio)) erros.push(`cena inicial ${h.inicio} não existe`);
+  for (const d of h.desafios) {
+    const onde = `desafio ${d.id}`;
+    if (!d.explicacao?.trim()) erros.push(`${onde}: sem explicação`);
+    if (d.tipo === 'quiz' && !(d.certa >= 0 && d.certa < d.opcoes.length)) erros.push(`${onde}: resposta certa fora das opções`);
+    if (d.tipo === 'achar') {
+      const n = d.trechos.filter((t) => t.suspeito).length;
+      if (d.minimo < 1 || d.minimo > n) erros.push(`${onde}: mínimo ${d.minimo} com ${n} trechos suspeitos`);
+    }
+    if (d.tipo === 'ordenar' && d.passos.length < 3) erros.push(`${onde}: poucos passos para ordenar`);
+    if (d.tipo === 'formulario') {
+      d.campos.forEach((c, i) => {
+        if (!(c.certa >= 0 && c.certa < c.opcoes.length)) erros.push(`${onde}: campo ${i + 1} com resposta certa fora das opções`);
+        if (!c.porque?.trim()) erros.push(`${onde}: campo ${i + 1} sem porquê`);
+      });
+      if (d.minimo < 1 || d.minimo > d.campos.length) erros.push(`${onde}: mínimo impossível`);
+    }
+  }
   for (const id of [...desafios]) if (h.desafios.filter((d) => d.id === id).length > 1) erros.push(`desafio repetido: ${id}`);
   for (const id of [...notas]) if (h.notas.filter((d) => d.id === id).length > 1) erros.push(`nota repetida: ${id}`);
 

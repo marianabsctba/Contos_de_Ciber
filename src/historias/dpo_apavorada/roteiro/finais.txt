@@ -1,0 +1,279 @@
+# Parte 2, finais. A ordem dos @se define a prioridade.
+
+=== fim_escolha
+@se marca:ajudou_esconder -> dfim_cumplice
+@se marca:bateu_de_frente e credibilidade<=2 -> dfim_demitida
+@se marca:bateu_de_frente e rel_romeu<=-3 -> dfim_demitida
+@se marca:perdeu_prazo -> dfim_sancionada
+@se risco>=8 e !marca:plano_adequacao -> dfim_sancionada
+@se marca:aceitou_campanha -> dfim_vazou
+@se !marca:treinamento e !marca:plano_adequacao -> dfim_vazou
+@se paciencia<=1 -> dfim_burnout
+@se marca:comunicou_anpd e marca:comunicacao_completa e marca:plano_adequacao e marca:treinamento e credibilidade>=3 -> dfim_respeitada
+@se marca:protegeu_rosangela e marca:treinamento -> dfim_rosangela
+@se marca:comunicou_anpd e marca:comunicacao_completa e marca:plano_adequacao -> dfim_arquivado
+@vai dfim_respeitada
+
+# ===================== CÚMPLICE =====================
+
+=== dfim_cumplice
+@musica final_ruim
+@fundo sala_reuniao
+@sai todos
+> Dois meses depois.
+> O que estava escondido apareceu do jeito de sempre: um print. Desta vez, do grupo "Diretoria Bem Viver", encaminhado por alguém que saiu brigado da clínica.
+> No print, a frase do Dr. Romeu, "responde o mínimo", e logo abaixo a sua, concordando.
+@entra helena triste direita
+HELENA: Eu falei que discordava. Está escrito. O seu nome está escrito do outro lado.
+@se marca:romeu_quis_esconder -> dfim_cumplice_romeu
+@vai dfim_cumplice_fim
+
+=== dfim_cumplice_romeu
+> O Dr. Romeu quis esconder desde a segunda-feira. Isso ficou claro. O que também ficou claro é que a encarregada, que devia orientar, ajudou.
+@vai dfim_cumplice_fim
+
+=== dfim_cumplice_fim
+(A decisão era do controlador. Eu sabia. Mas eu tinha um registro, uma voz e uma caneta. E usei as três para o lado errado.)
+? Na saída da reunião, o que sobra para fazer?
+* Escrever, enfim, o relatório completo do que aconteceu, mesmo tarde -> dfim_cumplice_ultima {etica+1}
+* Ir embora sem olhar para trás -> dfim_cumplice_ultima
+
+=== dfim_cumplice_ultima
+> A fiscalização não perdoa o que ficou escondido, e a confiança dos pacientes, menos ainda. A Dona Cleide trocou de clínica. A Marlene do pilates também.
+(Esconder não fez o incidente sumir. Só tirou de mim a parte em que eu poderia ter ajudado.)
+@final cumplice
+
+# ===================== DEMITIDA COM DIGNIDADE =====================
+
+=== dfim_demitida
+@musica triste
+@fundo sala_dpo
+@sai todos
+> Duas semanas depois da reunião.
+@entra romeu neutra centro
+ROMEU: Eu vou ser direto, que eu sou médico. Não está dando certo. Você atrapalha.
+EU: Atrapalho o quê, doutor?
+ROMEU: Tudo que eu quero fazer, você diz que não pode.
+EU: Eu digo o que a lei diz. E deixo por escrito. É para isso que o cargo existe.
+ROMEU: Eu sei. Por isso mesmo.
+@sai romeu
+> Você guarda as suas coisas numa caixa. Por ironia, é uma caixa escrita "GUIAS 2019 NÃO MEXER".
+@se marca:protegeu_rosangela -> dfim_demitida_rosangela
+@vai dfim_demitida_saida
+
+=== dfim_demitida_rosangela
+@entra rosangela triste centro
+ROSANGELA: Não é justo. Você me defendeu e agora é você que vai embora.
+EU: Você fica. Isso já é justo o suficiente para mim. E faz o treinamento, viu? Com coração rosa.
+@sai rosangela
+@vai dfim_demitida_saida
+
+=== dfim_demitida_saida
+@fundo cafeteria
+@musica alegre
+> Seis meses depois. Uma cafeteria com tomada em todas as mesas, que é o seu escritório agora.
+> Na porta do seu e-mail: onze clínicas, dois laboratórios e uma academia de pilates, que pediu, com todas as letras, "um treinamento para não mandar coisa no grupo errado".
+? A primeira frase da sua apresentação comercial:
+* "Encarregada não é enfeite. É quem escreve o que ninguém quer ouvir." -> dfim_demitida_fim
+** "Fui demitida por fazer o certo. Imagina o que eu faço por quem me deixa trabalhar." -> dfim_demitida_fim {credibilidade+1}
+
+=== dfim_demitida_fim
+(Saí com o registro do incidente em ordem e a consciência limpa. Ele ficou com uma clínica que vai precisar de mim de novo. Mas eu já não atendo pelo grupo da diretoria.)
+@final demitida_com_dignidade
+
+# ===================== CLÍNICA SANCIONADA =====================
+
+=== dfim_sancionada
+@musica final_ruim
+@fundo sala_reuniao
+@sai todos
+> Quatro meses depois.
+> O envelope chega com timbre oficial. Não é mais um pedido de informação. É a notícia de um processo sancionador.
+@entra romeu assustada esquerda
+@entra helena triste direita
+ROMEU: Processo? A gente respondeu tudo!
+HELENA: A gente respondeu. Tarde, ou pela metade, ou sem ter mudado o que precisava mudar.
+@se marca:perdeu_prazo -> dfim_sancionada_prazo
+@vai dfim_sancionada_risco
+
+=== dfim_sancionada_prazo
+(Três dias úteis. Parecia tanto tempo na segunda-feira às 8h12.)
+@vai dfim_sancionada_jornal
+
+=== dfim_sancionada_risco
+(O risco subiu, subiu e ninguém mexeu no que fazia ele subir. Uma hora alguém de fora repara.)
+@vai dfim_sancionada_jornal
+
+=== dfim_sancionada_jornal
+> No mesmo dia, o Fala Cidade publica: "Clínica que vazou dados de pacientes responde a processo". A matéria fica em primeiro lugar no buscador por meses, logo acima do horário de funcionamento.
+@se marca:negou_imprensa -> dfim_sancionada_negou
+@vai dfim_sancionada_fim
+
+=== dfim_sancionada_negou
+> A matéria relembra, com destaque, que a clínica tinha negado o vazamento. Com o print do lado. De novo.
+@vai dfim_sancionada_fim
+
+=== dfim_sancionada_fim
+? O Dr. Romeu olha para você pela primeira vez sem pressa.
+* "Agora é cooperar em tudo, doutor. Boa-fé e medida corretiva ainda contam, até no processo." -> dfim_sancionada_ultima {etica+1}
+* Ficar em silêncio -> dfim_sancionada_ultima
+
+=== dfim_sancionada_ultima
+> A clínica responde ao processo. Você monta a defesa com o que tem: o que foi feito, quando, e o que deveria ter sido feito antes.
+(Toda vez que eu contar essa história, vou começar pelo relógio. Porque foi ele que ganhou.)
+@final clinica_sancionada
+
+# ===================== VAZOU DE NOVO =====================
+
+=== dfim_vazou
+@musica final_ruim
+@fundo sala_dpo
+@sai todos
+> Três meses depois. Segunda-feira, 8h12. Você reconhece o horário antes de reconhecer o problema.
+@som notificacao
+@zap "Diretoria Bem Viver"
+BRUNA: Gente, fechei com uma agência incrível de remarketing 🚀 mandei a base pra eles fazerem a segmentação
+HELENA: Que base, Bruna?
+BRUNA: A dos pacientes, ué. A completa, com convênio, pra segmentar por perfil 💚
+HELENA: Tem contrato com essa agência?
+BRUNA: Tem um áudio deles dizendo que é tudo seguro
+WESLEY: [audio 0:06] É só pedir pra eles apagarem.
+@zap fim
+@se marca:aceitou_campanha -> dfim_vazou_campanha
+@vai dfim_vazou_fim
+
+=== dfim_vazou_campanha
+(A campanha de check-up abriu a porta. Se a base serviu uma vez para vender, por que não serviria de novo?)
+@vai dfim_vazou_fim
+
+=== dfim_vazou_fim
+> Sem plano, sem treinamento, sem contrato com quem recebe dado. A mesma planilha, um nome novo: "PACIENTES_SEGMENTADOS_FINAL_v4".
+? Você abre o formulário oficial no site da ANPD. De novo.
+* Começar a comunicação, campo a campo, como da primeira vez -> dfim_vazou_ultima {etica+1}
+* Encostar a cabeça na mesa por um minuto antes -> dfim_vazou_ultima {paciencia-1}
+
+=== dfim_vazou_ultima
+(Incidente não é só o clique errado. É tudo o que deixou o clique errado continuar possível.)
+@final vazou_de_novo
+
+# ===================== BURNOUT =====================
+
+=== dfim_burnout
+@musica triste
+@fundo home_office_noite
+@sai todos
+> Um mês depois.
+> O plano anda. O registro está em dia. A clínica está melhor do que nunca. Você não.
+> Você acorda às 4h com o barulho de uma notificação que não existe. Sonha com planilha. Responde e-mail de paciente no semáforo.
+@entra helena pensativa centro
+HELENA: {nome}, você está cuidando da privacidade de 1.847 pessoas. Quem está cuidando de você?
+EU [triste]: A garrafa térmica.
+HELENA: Tira férias. Ou sai. Mas para de se apagar para manter os outros acesos.
+@sai helena
+? A carta está escrita no notebook.
+* Pedir afastamento e deixar o cargo bem documentado para quem vier -> dfim_burnout_ultima {etica+1}
+** Indicar a Dra. Helena para cobrir e deixar um manual de três páginas, sem nenhum "FINAL_v3" -> dfim_burnout_ultima {rel_helena+1} [se rel_helena>=1]
+* Sair sem olhar para trás -> dfim_burnout_ultima
+
+=== dfim_burnout_ultima
+@fundo studio_pilates
+@musica alegre
+> Dois meses depois. Uma aula experimental de pilates. A Profe Kelly pede para todo mundo respirar fundo.
+> No aparelho do lado, uma senhora te reconhece.
+@entra cleide feliz direita
+CLEIDE: Você não é a moça dos dados? Saiu de lá?
+EU: Saí para respirar, Dona Cleide.
+CLEIDE: Fez bem. E aqui ninguém manda planilha. Eu proibi.
+(Privacidade começa pela minha.)
+@final burnout_dpo
+
+# ===================== ROSÂNGELA CAMPEÃ =====================
+
+=== dfim_rosangela
+@musica final_bom
+@fundo sala_reuniao
+@sai todos
+> Dois meses depois. Sala de reunião, agora com um projetor novo que mostra as cores certas.
+> Na frente, de crachá novo escrito "Campeã de Privacidade", a Rosângela segura um passador de slides como quem segura um buquê.
+@entra rosangela feliz centro
+ROSANGELA: Bom dia, gente. Eu sou a Rosângela, e eu mandei a planilha de 1.847 pacientes no grupo do pilates.
+> Silêncio. Depois, riso. Depois, aplauso.
+ROSANGELA: Errar acontece. Esconder é que não pode. Hoje a gente vai aprender o que não se manda por aplicativo de conversa, quem pode abrir qual arquivo e o que fazer quando der errado.
+@se marca:alertou_golpe -> dfim_rosangela_golpe
+@vai dfim_rosangela_plateia
+
+=== dfim_rosangela_golpe
+ROSANGELA: E se alguém ligar pedindo Pix para liberar exame?
+> A sala inteira, em coro: "É GOLPE!"
+@vai dfim_rosangela_plateia
+
+=== dfim_rosangela_plateia
+> Na plateia, o Dr. Romeu anota. A Bruna anota. O Wesley grava um áudio para si mesmo com o resumo.
+@entra romeu feliz esquerda
+ROMEU: No meu tempo não tinha isso.
+ROSANGELA: No seu tempo não tinha eu dando aula, doutor.
+? No fim, a Rosângela olha para você.
+* Fazer um joinha da última fileira -> dfim_rosangela_fim
+** Levantar e puxar o aplauso -> dfim_rosangela_fim {rel_rosangela+1}
+
+=== dfim_rosangela_fim
+(Ela era a mulher da planilha. Agora é a mulher que ensina a clínica inteira a não precisar de herói. Nem de mim.)
+@final rosangela_campea
+
+# ===================== ARQUIVADO =====================
+
+=== dfim_arquivado
+@musica final_bom
+@fundo sala_dpo
+@sai todos
+> Cinco meses depois.
+> O e-mail oficial chega numa quinta-feira, sem alarde. A fiscalização sobre o incidente foi encerrada. Sem sanção.
+@entra helena feliz direita
+HELENA: Comunicação no prazo, resposta completa, medidas adotadas. Está tudo aqui, em linguagem de ofício.
+EU [feliz]: Em português de gente: deu certo.
+@se marca:fez_bo -> dfim_arquivado_bo
+@vai dfim_arquivado_parede
+
+=== dfim_arquivado_bo
+> No mesmo mês, a polícia chega a uma quadrilha que aplicava o golpe da falsa central em três cidades. O boletim da Bem Viver foi um dos primeiros da pilha.
+@vai dfim_arquivado_parede
+
+=== dfim_arquivado_parede
+? O que fazer com o e-mail?
+* Imprimir e colar na parede, do lado da planilha que começou tudo -> dfim_arquivado_fim
+** Imprimir e dar de presente para o Dr. Romeu, com moldura -> dfim_arquivado_fim {rel_romeu+1}
+
+=== dfim_arquivado_fim
+> A impressora engasga. Você dá um tapa no lado esquerdo. Sai.
+(Ninguém arquiva um caso porque deu sorte. Arquiva porque a gente fez o que tinha que fazer, no tempo que tinha que fazer, e deixou tudo escrito.)
+@final processo_arquivado
+
+# ===================== DPO RESPEITADA =====================
+
+=== dfim_respeitada
+@musica final_bom
+@fundo clinica_recepcao
+@sai todos
+> Seis meses depois.
+> Na recepção, um quadro novo: "Seus dados aqui são tratados com cuidado. Dúvidas? Fale com a nossa encarregada." Com o seu nome e o seu e-mail. Com a moldura que a Bruna escolheu, que tem, discretamente, um coraçãozinho.
+@entra romeu feliz esquerda
+ROMEU: Ligou a clínica do Dr. Paulo. Querem saber como a gente fez. Eu dei o seu contato. Disse "fala com a nossa encarregada".
+@se marca:falou_com_imprensa -> dfim_respeitada_imprensa
+@vai dfim_respeitada_cleide
+
+=== dfim_respeitada_imprensa
+> O Fala Cidade publicou uma segunda matéria: "Depois do vazamento, clínica vira exemplo de transparência". A Nayara mandou o link com um "te devia essa".
+@vai dfim_respeitada_cleide
+
+=== dfim_respeitada_cleide
+@entra cleide feliz direita
+CLEIDE: Bom dia, moça dos dados. Hoje eu vim só consultar. Sem reclamação.
+EU: Que milagre, Dona Cleide.
+CLEIDE: Mas se precisar, eu sei onde fica o canal.
+? Antes de voltar para a sua sala:
+* Agradecer à Dona Cleide por ter reclamado alto -> dfim_respeitada_fim {rel_cleide+1}
+** Convidar a Dona Cleide para falar no próximo treinamento da equipe -> dfim_respeitada_fim {rel_cleide+2} [se rel_cleide>=2]
+
+=== dfim_respeitada_fim
+(Três dias de cargo, três dias úteis de prazo. Parecia o fim. Foi só o começo de uma clínica que cuida de dado como cuida de gente.)
+@final dpo_respeitada

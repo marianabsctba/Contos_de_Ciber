@@ -203,11 +203,11 @@ export function telaLeitura(h: Historia): void {
   }
 
   function pintarHud() {
-    const itens = (h.hud ?? []).filter((x) => ex.estado.vars[x.var] !== undefined);
+    const itens = (h.hud ?? []).filter((x) => ex.estado.vars[x.var] !== undefined && !(x.esconderCom ?? []).some((m) => ex.estado.marcas.includes(m)));
     hud.replaceChildren(
       ...itens.map((x) => {
         const v = ex.estado.vars[x.var];
-        return el('span', { class: `hud-item ${x.var === 'minutos' && v <= 10 ? 'urgente' : ''}` }, `${x.icone} ${v}${x.sufixo ?? ''}`);
+        return el('span', { class: `hud-item ${(x.var === 'minutos' && v <= 10) || (x.var === 'prazo' && v <= 1) || (x.var === 'risco' && v >= 8) ? 'urgente' : ''}` }, `${x.icone} ${v}${x.sufixo ?? ''}`);
       }),
     );
   }

@@ -92,7 +92,7 @@ export function aplica(efs: Efeito[], e: Estado): void {
     }
     const v = e.vars[ef.nome] ?? 0;
     e.vars[ef.nome] = ef.op === '+' ? v + ef.valor : ef.op === '-' ? v - ef.valor : ef.valor;
-    if (ef.nome === 'saude' || ef.nome === 'paciencia') e.vars[ef.nome] = Math.max(0, Math.min(10, e.vars[ef.nome]));
+    if (ef.nome === 'saude' || ef.nome === 'paciencia' || ef.nome === 'risco') e.vars[ef.nome] = Math.max(0, Math.min(10, e.vars[ef.nome]));
     if (ef.nome === 'minutos') e.vars.minutos = Math.max(0, e.vars.minutos);
   }
 }

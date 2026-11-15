@@ -1,0 +1,226 @@
+# Parte 2, capítulo 6. Golpistas usando os dados vazados em nome da clínica.
+
+=== d06_inicio
+@cap 6 "Golpe em nome da clínica"
+@fundo clinica_recepcao
+@musica tensao
+> 7h58. A clínica ainda nem abriu e já tem fila. Não de pacientes. De telefone.
+@entra rosangela assustada esquerda
+ROSANGELA: {nome}, é o sétimo que liga perguntando se pode pagar o Pix do exame pelo cartão.
+EU: Que Pix do exame?
+ROSANGELA: É o que eu perguntei! Eles dizem que a "Central Bem Viver" ligou cobrando taxa para liberar resultado.
+(A gente não tem central. A gente tem a Rosângela, um telefone de 2009 e uma impressora que só funciona com tapa.)
+@som porta
+@entra cleide brava direita
+CLEIDE: Olha aqui. Olha o que chegou.
+> Dona Cleide estende o celular como quem entrega a prova de um crime. É exatamente isso.
+@vai d06_mensagem
+
+=== d06_mensagem
+@zap "Central Bem Viver ✅"
+> Ontem, 18h02
+GOLPISTA: Olá, Sra. Cleide! Aqui é da Central Bem Viver ✅
+GOLPISTA: Seu resultado de exame de tireoide (convênio VidaPlena) já está disponível.
+GOLPISTA: Por uma atualização do sistema do convênio, é necessária uma taxa de liberação de R$ 89,90.
+GOLPISTA: Pagamento via Pix para a chave CPF em nome de Marcos A. S., responsável pelo financeiro.
+GOLPISTA: O link de pagamento expira em 2 horas. Após esse prazo o exame será descartado.
+GOLPISTA: Não é necessário ligar na clínica, a recepção está sobrecarregada.
+GOLPISTA: Qualquer dúvida estamos à disposição 🙏
+> Ontem, 18h40
+CLEIDE: Vou pagar amanhã cedo na clínica mesmo
+GOLPISTA: Sra. Cleide o prazo é hoje. Senão perde o exame
+@zap fim
+(Exame de tireoide. Convênio VidaPlena. Nome completo. Tudo o que estava na planilha. Eles estão usando o nosso vazamento como roteiro.)
+@desafio d2_golpe_central -> d06_sinais_acerto | d06_sinais_erro
+
+=== d06_sinais_acerto
+(Selo escrito no nome, os dados da planilha para parecer de casa, taxa que nunca existiu, Pix para pessoa física, pressa e "não liga na clínica". É um golpe com todos os acessórios.)
+@muda tecnica+1
+@anota d2_golpe_dados_vazados
+@vai d06_cleide_salva
+
+=== d06_sinais_erro
+(Eu fiquei olhando o "estamos à disposição" como se fosse a pista principal. A pista principal é que a gente não cobra para liberar exame. Nunca cobrou.)
+> Enquanto você relê, mais duas pacientes chegam ao balcão com a mesma mensagem no celular.
+@muda risco+1
+@anota d2_golpe_dados_vazados
+@vai d06_cleide_salva
+
+=== d06_cleide_salva
+EU: Dona Cleide, a senhora pagou?
+CLEIDE: Não. Porque a minha vizinha, aquela do pilates, disse que a clínica avisou que não cobra nada por Pix.
+@se marca:avisou_titulares -> d06_cleide_aviso
+@vai d06_cleide_sorte
+
+=== d06_cleide_aviso
+CLEIDE: Estava no aviso de vocês. "A clínica não pede pagamento por Pix para liberar exame." Eu li. A Marlene leu. Até a Profe Kelly leu.
+(O aviso funcionou. O aviso que eu escrevi às onze da noite funcionou.)
+@muda risco-1 rel_cleide+1
+@vai d06_vitima
+
+=== d06_cleide_sorte
+CLEIDE: A Marlene disse que a sobrinha dela trabalha num banco e que é sempre golpe. Sorte minha que eu tenho a Marlene.
+(Sorte. A proteção dos nossos pacientes agora depende da sobrinha da Marlene.)
+@vai d06_vitima
+
+=== d06_vitima
+@sai cleide
+> 8h20. A Rosângela desliga o telefone com a mão tremendo.
+@expr rosangela triste
+ROSANGELA: O Seu Arlindo pagou. Oitenta e nove e noventa. Ele tem 81 anos, {nome}. Ele pagou porque acreditou que era a gente.
+@sai rosangela
+@zap "Diretoria Bem Viver"
+ROMEU: Agora é golpista também? Isso é culpa dessa tal de LGPD
+HELENA: Romeu, a LGPD não mandou a planilha para o pilates
+BRUNA: Gente, e se a gente fizer um post "Bem Viver contra o golpe" 💪💚 engajamento lá em cima
+WESLEY: [audio 0:22] Já sei o que fazer, é só bloquear o número do golpista no WhatsApp da clínica. Bloqueou, sumiu. Simples. É tipo dar F5.
+@zap fim
+? O golpe está acontecendo agora, com o nome da clínica e os dados da planilha.
+* Montar o alerta aos pacientes agora: mensagem individual, aviso fixo no site e nas redes -> d06_alerta {risco-1 tecnica+1}
+* Deixar o Wesley bloquear o número e seguir o dia -> d06_wesley_bloqueia {risco+1 paciencia-1}
+* Esperar até amanhã para ver se é caso isolado -> d06_espera {risco+2}
+** Pedir para a Rosângela gravar um áudio curto de alerta, com a voz que os pacientes conhecem há 19 anos -> d06_audio_rosangela {risco-2 rel_rosangela+1} [se rel_rosangela>=1]
+
+=== d06_alerta
+> Você escreve rápido, mas não com pressa. São coisas diferentes, e você aprendeu isso esta semana.
+EU: Atenção: a Clínica Bem Viver NÃO cobra taxa para liberar resultado de exame e NÃO pede Pix por mensagem ou telefone. Recebeu esse contato? Não pague, não clique e fale com a gente pelo telefone fixo da clínica.
+> O texto vai para cada paciente, um por um, sem lista aberta. Vai para o site, fixo no topo. Vai para as redes, onde a Bruna, contrariada, aceita não colocar o emoji de músculo.
+@marca alertou_golpe
+@vai d06_bo
+
+=== d06_audio_rosangela
+@fundo sala_dpo
+@entra rosangela envergonhada centro
+ROSANGELA: Eu? Gravar? Depois do que eu fiz?
+EU: Exatamente por isso. Você é a voz que eles conhecem. Eles vão acreditar em você mais do que em qualquer texto.
+> A Rosângela pigarreia, segura o celular com as duas mãos e grava.
+ROSANGELA: [audio 0:38] Oi, aqui é a Rosângela da recepção da Bem Viver. A clínica não cobra nada por Pix para liberar exame. Se alguém ligar pedindo, é golpe. Não paga, desliga e liga pra mim aqui no fixo. Um beijo, se cuidem.
+> O áudio vai para cada paciente, junto com o texto escrito, e fica no site.
+@expr rosangela feliz
+ROSANGELA: Eu falei "um beijo". Pode ter "um beijo" num aviso oficial?
+EU: Pode. Hoje pode.
+@marca alertou_golpe
+@sai rosangela
+@vai d06_bo
+
+=== d06_wesley_bloqueia
+> O Wesley bloqueia o número. Em quarenta minutos, chega a mesma mensagem de outro número. E de outro. A "Central Bem Viver" agora tem cinco telefones e você tem um Wesley.
+WESLEY: [audio 0:12] Ele tá criando número novo mais rápido do que eu bloqueio. Que absurdo, isso devia ser proibido.
+EU: Wesley. É proibido.
+(Bloquear não avisa ninguém. Quem precisa saber do golpe não é o nosso WhatsApp, são os pacientes.)
+? E agora?
+* Montar o alerta aos pacientes, ainda hoje -> d06_alerta {paciencia-1}
+* Continuar bloqueando um por um -> d06_bo {risco+1}
+
+=== d06_espera
+> Dia seguinte. 7h40.
+> Mais onze pacientes ligaram. Dois pagaram. Um deles pagou duas vezes, porque o golpista disse que o primeiro Pix "não caiu".
+@muda paciencia-1
+(Esperar para ver se é caso isolado é a maneira mais cara de descobrir que não era.)
+@vai d06_alerta
+
+=== d06_bo
+@sai todos
+@fundo sala_dpo
+@entra helena pensativa direita
+HELENA: Os pacientes que pagaram vão precisar de orientação. E a clínica? O nome da clínica está sendo usado num crime.
+? E o boletim de ocorrência?
+* Ir à delegacia registrar o boletim de ocorrência pelo uso do nome da clínica, com os prints e os números -> d06_delegacia {tecnica+1}
+* Orientar os pacientes que pagaram a falar com o banco o quanto antes e a registrar o próprio boletim -> d06_orienta_vitimas {rel_cleide+1 etica+1}
+* "BO é para quem perdeu dinheiro. A clínica não perdeu nada." -> d06_sem_bo {credibilidade-1}
+** Fazer as duas coisas: registrar o da clínica e montar um passo a passo para os pacientes -> d06_delegacia {etica+1 paciencia-1 marca:orientou_vitimas}
+
+=== d06_orienta_vitimas
+> Você liga para o Seu Arlindo. Ele atende no primeiro toque, como quem esperava a bronca.
+EU: Seu Arlindo, a culpa não é do senhor. O golpista usou dados que saíram daqui. Liga para o seu banco pelo número do cartão e conta que foi golpe. E registra um boletim, que eu ajudo pelo telefone.
+> Ele pede para você repetir devagar. Você repete. Duas vezes.
+@marca orientou_vitimas
+@vai d06_recepcao
+
+=== d06_delegacia
+@fundo delegacia
+@musica cidade
+> 14h10. Delegacia. Uma televisão no canto passa um programa de culinária no mudo. Um homem de bermuda tenta registrar o furto de uma bicicleta que, pelo que você ouve, é do cunhado.
+> Você leva tudo organizado: os prints das mensagens, os números usados pela "Central Bem Viver", a chave Pix, o horário dos contatos e a lista dos pacientes que relataram o golpe, só com o necessário.
+(Minimização vale até para provar crime. Ninguém precisa da planilha inteira para registrar um golpe que nasceu da planilha inteira.)
+> O escrivão lê, digita, lê de novo.
+> Escrivão: Golpe com dado de clínica. Terceiro essa semana na cidade. Vocês são os primeiros que vieram registrar.
+@marca fez_bo
+@anota d2_boletim_ocorrencia
+@vai d06_recepcao
+
+=== d06_sem_bo
+> Você não registra. Na sexta, um repórter pergunta à delegacia se a clínica fez alguma queixa. A resposta é não.
+(Não registrar não protege a clínica. Só faz parecer que a clínica não se importou.)
+@vai d06_recepcao
+
+=== d06_recepcao
+@sai todos
+@fundo clinica_recepcao
+@musica trabalho
+@entra rosangela neutra esquerda
+> 16h30. O telefone da recepção continua tocando, mas agora a Rosângela não treme ao atender.
+ROSANGELA: O que eu falo quando ligarem?
+? Que orientação a recepção recebe?
+* Um roteiro curto: a clínica não cobra por Pix, não pede senha nem código; anotar nome, horário e número do contato e passar para a encarregada -> d06_roteiro {risco-1 tecnica+1}
+* "Diz que é golpe e desliga" -> d06_roteiro_curto {}
+* "Não fala nada sobre o vazamento, só diz que está tudo bem" -> d06_roteiro_mudo {risco+1 etica-1}
+** Deixar a Rosângela criar a plaquinha "AQUI NINGUÉM PEDE PIX POR EXAME" para o balcão -> d06_plaquinha {rel_rosangela+1 risco-1}
+
+=== d06_roteiro
+> Você imprime o roteiro. A impressora engasga. A Rosângela dá um tapa no lado esquerdo, o certo. Sai.
+ROSANGELA: "Anotar nome, horário e número." Igual eu faço com recado do Dr. Romeu.
+EU: Igualzinho. Só que agora o recado vira registro do incidente.
+@anota d2_roteiro_recepcao
+@vai d06_registro
+
+=== d06_roteiro_curto
+ROSANGELA: "É golpe, tchau." Tá.
+> Na primeira ligação, ela diz "é golpe, tchau" para um paciente que só queria remarcar a ultrassonografia.
+(Talvez um roteiro um pouquinho mais longo que duas palavras.)
+@muda paciencia-1
+@anota d2_roteiro_recepcao
+@vai d06_registro
+
+=== d06_roteiro_mudo
+ROSANGELA: Mas {nome}... e se a pessoa já pagou? Eu falo que está tudo bem?
+(Ela tem razão. Esconder do paciente que ligou com medo é só um jeito educado de deixar o golpe continuar.)
+EU: Não. Esquece o que eu disse. Fala a verdade: é golpe, a clínica não cobra, e passa o contato para mim.
+@anota d2_roteiro_recepcao
+@vai d06_registro
+
+=== d06_plaquinha
+> Em quinze minutos, a Rosângela volta com uma folha A4 plastificada com fita durex, letras em vermelho e um coração em cada canto.
+> "AQUI NINGUÉM PEDE PIX POR EXAME. SE PEDIREM, É GOLPE. FALE COM A GENTE. 💗"
+ROSANGELA: Coração vermelho é alerta. Coração rosa é carinho. Botei rosa.
+EU: Ficou perfeito.
+(A Bruna passou uma semana falando em comunicação. A Rosângela resolveu em quinze minutos com durex.)
+@anota d2_roteiro_recepcao
+@vai d06_registro
+
+=== d06_registro
+@sai todos
+@fundo sala_dpo
+@musica misterio
+> 18h45. O dia termina com 23 relatos de contato da falsa central, quatro pagamentos e uma Dona Cleide que agora fala "engenharia social" com sotaque.
+(Isso é consequência do incidente. O risco que a gente avaliou como possível virou real. Isso precisa ficar escrito.)
+? O que fazer com o que aconteceu hoje?
+* Atualizar o registro do incidente e preparar o fato novo como informação complementar para a ANPD -> d06_registro_feito {tecnica+1 credibilidade+1}
+* Deixar para depois: hoje já foi demais -> d06_fim {paciencia+1 risco+1}
+** Atualizar o registro e mandar um resumo de uma página para a diretoria, com o que aconteceu, o que foi feito e quanto custou -> d06_registro_feito {credibilidade+2 paciencia-1}
+
+=== d06_registro_feito
+> Data, hora, número de relatos, números usados pelos golpistas, medidas tomadas. O registro do incidente fica mais grosso, e mais útil.
+@marca registrou_incidente
+(Se a ANPD perguntar o que aconteceu depois, a resposta já existe. Escrita por mim, num dia qualquer, às sete da noite.)
+@vai d06_fim
+
+=== d06_fim
+@fundo home_office_noite
+@musica triste
+> 22h. Você está em casa com o celular na mão. Chega uma mensagem de número desconhecido.
+@zap "+55 41 9xxxx-1207"
+NAYARA: Oi, {nome}! Aqui é a Nayara, do portal Fala Cidade. Recebi uns prints de um grupo de pilates e de uma "Central Bem Viver". Podemos conversar amanhã?
+@zap fim
+(Pilates. Central falsa. Jornalista. Esta semana já tem mais temporadas que novela turca.)
+@vai d07_inicio

@@ -2986,6 +2986,363 @@ function quartoTia(): string {
   return c.fim(corpo);
 }
 
+// --- A DPO Apavorada --------------------------------------------------------
+
+function clinicaRecepcao(): string {
+  const c = new Cena("clinica_recepcao");
+  semear(5151);
+  let cadeiras = "";
+  for (let i = 0; i < 5; i++) cadeiras += rr(40 + i * 120, 1180, 100, 110, 16, "#4aa0a0") + rr(40 + i * 120, 1270, 100, 30, 10, "#3a8a8a") + ret(85 + i * 120, 1300, 10, 50, "#8a9096");
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#eef7f6"], [1, "#d8ebe8"]])) +
+    ret(0, 0, 1080, 120, "#fafdfc") +
+    fluorescente(c, 100, 90, 300, 0.45) +
+    fluorescente(c, 680, 90, 300, 0.45) +
+    // faixa com nome da clínica
+    ret(0, 140, 1080, 110, c.lin([[0, "#2aa08a"], [1, "#1f7a6a"]], 0, 0, 1, 0)) +
+    circ(120, 195, 38, "#fff") +
+    ret(108, 172, 24, 46, "#2aa08a") +
+    ret(97, 183, 46, 24, "#2aa08a") +
+    txt(580, 212, "CLÍNICA BEM VIVER", 46, "#fff", { peso: "bold" }) +
+    // TV com programa matinal
+    rr(620, 290, 400, 240, 8, "#111") +
+    ret(634, 304, 372, 212, c.lin([[0, "#ffcf6a"], [1, "#ff8a5a"]])) +
+    elip(720, 470, 40, 60, "#c0392b") +
+    circ(720, 395, 26, "#e0b48c") +
+    elip(900, 480, 46, 50, "#2a6aa0") +
+    circ(900, 410, 26, "#8a5a3c") +
+    ret(634, 470, 372, 46, "#c0001a") +
+    txt(820, 502, "RECEITA DE BOLO DE FUBÁ", 22, "#fff", { peso: "bold" }) +
+    rr(950, 312, 46, 24, 4, "#fff") +
+    txt(973, 330, "AO VIVO", 11, "#c0001a", { peso: "bold" }) +
+    linha(820, 530, 820, 560, "#555", 8) +
+    // painel de senhas
+    rr(620, 580, 400, 140, 8, "#0d1117") +
+    txt(720, 625, "SENHA", 22, "#9ab", { fonte: MONO }) +
+    txt(720, 690, "C023", 54, "#4cff6a", { fonte: MONO, peso: "bold" }) +
+    txt(920, 625, "GUICHÊ", 22, "#9ab", { fonte: MONO }) +
+    txt(920, 690, "2", 54, "#ffd23f", { fonte: MONO, peso: "bold" }) +
+    // cartazes
+    placa(60, 300, 260, 160, "#fff", [{ t: "SORRIA,", tam: 30, cor: "#1a3ea8" }, { t: "você está sendo", tam: 22 }, { t: "filmado", tam: 22 }], { fonte: SANS, borda: "#1a3ea8" }) +
+    g(placa(340, 300, 250, 190, "#eaffef", [{ t: "Seus dados são", tam: 24, cor: "#1d6a3a" }, { t: "protegidos", tam: 30, cor: "#1d6a3a" }, { t: "pela LGPD", tam: 30, cor: "#1d6a3a" }, { t: "(novo!)", tam: 18, cor: "#c0392b" }], { fonte: SANS, rot: -7, borda: "#2aa08a" }) + fita(380, 290, -30) + fita(560, 300, 20)) +
+    placa(60, 490, 240, 110, "#fff7d6", [{ t: "Não aceitamos", tam: 20 }, { t: "cheque", tam: 26, cor: "#c0392b" }], { rot: 2 }) +
+    // câmera no canto
+    rr(20, 100, 70, 40, 8, "#e8e8e8") +
+    circ(40, 120, 12, "#222") +
+    circ(40, 120, 4, "#ff3b3b") +
+    relogio(520, 580, 40, 7, 55, "#2aa08a") +
+    // balcão de recepção
+    ret(330, 760, 720, 60, "#f6f2ea") +
+    ret(340, 820, 700, 520, c.lin([[0, "#2aa08a"], [1, "#1a6a5a"]])) +
+    ret(340, 820, 700, 16, "#000", `opacity="0.15"`) +
+    ret(340, 1000, 700, 8, "#fff", `opacity="0.2"`) +
+    txt(690, 960, "RECEPÇÃO", 48, "#fff", { peso: "bold", op: 0.9 }) +
+    // monitor, papelada, pote de canetas, sino
+    rr(420, 640, 180, 120, 8, "#1a1a1a") +
+    ret(430, 650, 160, 100, "#d8e8f4") +
+    ret(440, 660, 140, 12, "#2aa08a") +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 5; i++) s += ret(440, 680 + i * 13, 140, 8, i === 2 ? "#ffd23f" : "#fff");
+      return s;
+    })() +
+    ret(500, 750, 20, 12, "#333") +
+    ret(640, 730, 120, 30, "#f2f2ee", `stroke="#ccc"`) +
+    ret(650, 716, 110, 16, "#e8f4fa", `stroke="#ccc"`) +
+    rr(800, 710, 40, 50, 4, "#c0392b") +
+    linha(808, 710, 800, 680, "#1a3ea8", 4) +
+    linha(820, 710, 826, 676, "#222", 4) +
+    elip(900, 755, 30, 8, "#888") +
+    cam(`M875,752 Q900,710 925,752 Z`, "#d6a63a") +
+    bilhete(860, 790, 150, 90, ["Wi-Fi pacientes:", "saude2019"], 16, 3) +
+    // bebedouro
+    rr(60, 860, 110, 260, 10, "#e8ecef") +
+    rr(70, 700, 90, 170, 30, "#9ad0f0", `opacity="0.85"`) +
+    rr(90, 690, 50, 20, 4, "#3a86ff") +
+    elip(100, 760, 12, 30, "#fff", `opacity="0.45"`) +
+    rr(80, 900, 90, 30, 4, "#cfd4d8") +
+    circ(100, 960, 8, "#3a86ff") +
+    circ(130, 960, 8, "#e63946") +
+    ret(180, 900, 30, 40, "#fff", `opacity="0.85" stroke="#ccc"`) +
+    // planta de plástico
+    vaso(250, 1110, 1.1, "#4cc06a", "#f2efe6") +
+    // revisteiro
+    ret(800, 1130, 220, 20, "#c9a77a") +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 5; i++) s += ret(810 + i * 42, 1060, 36, 72, ["#e63946", "#3a86ff", "#f1c40f", "#9b5de5", "#2a9d8f"][i], `transform="rotate(${-8 + i * 4} ${828 + i * 42} 1130)"`);
+      return s;
+    })() +
+    g(cadeiras, c.blur(0.6)) +
+    piso(c, 1350, "#e8eeec", "#bccac6", "#a8b8b4") +
+    g(ret(0, 1350, 1080, 300, c.lin([[0, "#fff", 0.4], [1, "#fff", 0]])), c.blur(6));
+  return c.fim(corpo);
+}
+
+function salaReuniao(): string {
+  const c = new Cena("sala_reuniao");
+  semear(5252);
+  let cadeiras = "";
+  for (let i = 0; i < 5; i++) {
+    const x = 170 + i * 185;
+    cadeiras += rr(x - 60, 900, 120, 180, 30, "#2a2a34") + rr(x - 50, 910, 100, 30, 14, "#3a3a46");
+  }
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#e9e4dc"], [1, "#d4ccc0"]])) +
+    ret(0, 0, 1080, 110, "#f6f3ee") +
+    lampadaPendente(c, 540, 0, 80, "#ffe8c0", 0.3) +
+    // tela de projeção com slide
+    linha(220, 110, 220, 140, "#555", 4) +
+    linha(860, 110, 860, 140, "#555", 4) +
+    ret(190, 140, 700, 28, "#bbb") +
+    ret(210, 168, 660, 420, "#fbfbf9") +
+    c.brilho(540, 380, 420, "#ffffff", 0.3, 260) +
+    ret(240, 200, 600, 60, "#1f4e79") +
+    txt(540, 244, "REUNIÃO EXTRAORDINÁRIA", 30, "#fff", { peso: "bold" }) +
+    txt(540, 420, "CRISE?", 130, "#c0392b", { peso: "bold" }) +
+    txt(540, 500, "(é só um incidente, gente)", 28, "#555", { fonte: MAO }) +
+    txt(840, 570, "1/37", 18, "#888") +
+    // quadro branco com rabiscos
+    ret(900, 200, 170, 420, "#fafafa", `stroke="#aaa" stroke-width="6"`) +
+    txt(985, 260, "PLANO", 24, "#1a3ea8", { fonte: MAO }) +
+    txt(985, 300, "1. calma", 20, "#1a3ea8", { fonte: MAO }) +
+    txt(985, 340, "2. ????", 20, "#c0392b", { fonte: MAO }) +
+    txt(985, 380, "3. lucro", 20, "#1a3ea8", { fonte: MAO, op: 0.4 }) +
+    linha(925, 372, 1045, 372, "#c0392b", 3) +
+    `<path d="M930,440 C960,400 990,480 1030,430 M940,520 L1040,470 M950,560 Q990,520 1030,580" stroke="#2a8a4a" stroke-width="3" fill="none"/>` +
+    txt(985, 600, "ANPD??", 22, "#c0392b", { fonte: MAO, rot: -8 }) +
+    // quadro do fundador e flip chart
+    quadro(20, 230, 150, 190, "#c9a46a", ret(32, 242, 126, 166, "#d8d0c0") + pessoa(95, 408, 0.6, "#1a1a2a", "#e0b48c")) +
+    txt(95, 450, "Dr. Fundador", 16, "#6a5a4a", { fonte: MAO }) +
+    // janela com persiana
+    ret(20, 500, 160, 300, "#a8c8e0") +
+    (() => {
+      let s = "";
+      for (let y = 505; y < 800; y += 16) s += ret(20, y, 160, 10, "#eceae4");
+      return s;
+    })() +
+    // mesa oval
+    cadeiras +
+    elip(540, 1090, 520, 130, "#3a2418") +
+    elip(540, 1075, 510, 120, c.lin([[0, "#8a5a3a"], [1, "#5a3a24"]])) +
+    elip(540, 1050, 380, 60, "#fff", `opacity="0.06"`) +
+    // projetor com feixe
+    holofote(c, 540, 1010, 540, 380, 300, "#fffbe0", 0.12) +
+    rr(490, 990, 100, 44, 8, "#e8e8e8") +
+    circ(540, 1010, 14, "#333") +
+    // garrafa térmica e xícaras
+    rr(260, 940, 60, 110, 14, "#c0392b") +
+    rr(272, 920, 36, 24, 6, "#222") +
+    txt(290, 1000, "CAFÉ", 14, "#fff", { peso: "bold" }) +
+    ret(340, 1030, 30, 26, "#fff") +
+    ret(380, 1035, 30, 26, "#fff") +
+    // papéis, celulares virados, pote de biscoito
+    ret(640, 1040, 90, 60, "#fff", `transform="rotate(10 685 1070)"`) +
+    ret(720, 1020, 90, 60, "#f6f3ee", `transform="rotate(-6 765 1050)"`) +
+    rr(820, 1050, 40, 70, 6, "#222", `transform="rotate(30 840 1085)"`) +
+    rr(420, 1060, 40, 70, 6, "#222", `transform="rotate(-20 440 1095)"`) +
+    rr(150, 1040, 70, 50, 10, "#e8d8b0") +
+    piso(c, 1360, "#5a5a64", "#3a3a44") +
+    elip(540, 1550, 480, 120, "#000", `opacity="0.15"`);
+  return c.fim(corpo);
+}
+
+function salaDpo(): string {
+  const c = new Cena("sala_dpo");
+  semear(5353);
+  const caixa = (x: number, y: number, w: number, h: number, rot: string) =>
+    ret(x, y, w, h, "#c9a26a", `stroke="#9a7a4a" stroke-width="3"`) + ret(x + w * 0.3, y + h * 0.3, w * 0.4, h * 0.28, "#fff") + txt(x + w / 2, y + h * 0.5, rot, Math.min(18, w * 0.13), "#333", { fonte: MAO });
+  let postits = "";
+  const textos = [["RIPD", "!!!"], ["base", "legal?"], ["cookie", "banner"], ["ligar p/", "TI"], ["DPA", "fornec."], ["titular", "pediu"], ["prazo", "15 dias"], ["respira"]];
+  textos.forEach((t, i) => {
+    postits += bilhete(320 + (i % 4) * 110, 250 + Math.floor(i / 4) * 110, 96, 86, t, 15, entre(-8, 8), escolhe(["#fdf6b2", "#ffd0e0", "#bfe6ff", "#d6f5c0"]));
+  });
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#dcd8cc"], [1, "#c4bfb0"]])) +
+    // marca de prateleira antiga e placa improvisada
+    ret(0, 0, 1080, 80, "#bdb8aa") +
+    fluorescente(c, 380, 40, 300, 0.35) +
+    placa(40, 110, 240, 80, "#fff", [{ t: "ENCARREGADA", tam: 22, cor: "#1a3ea8" }, { t: "(ex-almoxarifado)", tam: 16 }], { rot: -2 }) +
+    // janelinha alta
+    janela(c, 820, 150, 180, 120, { ceu: [[0, "#8fc9f0"], [1, "#d9f0ff"]], moldura: "#e8e4d8", div: 1 }) +
+    postits +
+    // calendário e certificado
+    calendario(830, 340, 170, "CLÍNICA", "Prazo ANPD", "agosto") +
+    quadro(40, 240, 240, 170, "#2a2a2a", ret(52, 252, 216, 146, "#fbf8ef") + txt(160, 300, "CERTIFICADO", 18, "#7a5a2a", { peso: "bold" }) + txt(160, 335, "Privacidade e", 15, "#555") + txt(160, 355, "Proteção de Dados", 15, "#555") + circ(230, 380, 12, "#d6a63a")) +
+    // estante de aço com caixas de arquivo
+    ret(20, 450, 280, 900, "#8e989e") +
+    ret(20, 640, 280, 12, "#6a747a") +
+    ret(20, 840, 280, 12, "#6a747a") +
+    ret(20, 1040, 280, 12, "#6a747a") +
+    caixa(34, 520, 120, 120, "2017") +
+    caixa(160, 540, 126, 100, "2018") +
+    caixa(34, 712, 126, 128, "não abrir") +
+    caixa(166, 730, 120, 110, "fichas") +
+    caixa(34, 920, 250, 120, "ARQUIVO MORTO") +
+    caixa(50, 1110, 220, 120, "???") +
+    // pilha de caixas no chão
+    caixa(880, 1100, 180, 140, "prontuários") +
+    caixa(900, 980, 150, 120, "papel") +
+    caixa(910, 870, 130, 110, "RH") +
+    // mesa apertada
+    ret(310, 940, 560, 36, "#7a5a3a") +
+    ret(320, 976, 24, 380, "#5a3d27") +
+    ret(836, 976, 24, 380, "#5a3d27") +
+    // vade-mécum gigante
+    ret(340, 800, 230, 140, "#7a1f1f") +
+    ret(340, 800, 230, 20, "#5a1414") +
+    ret(560, 806, 16, 130, "#f2ead8") +
+    txt(455, 880, "VADE MÉCUM", 26, "#f6d65a", { peso: "bold" }) +
+    txt(455, 912, "2027 (6 kg)", 18, "#f6d65a") +
+    // notebook
+    notebook(c, 700, 940, 0.62, "#e8f0f6", (() => {
+      let s = "";
+      for (let i = 0; i < 6; i++) s += ret(620, 845 + i * 12, 160 - (i % 3) * 30, 6, "#4a6a8a", `opacity="0.7"`);
+      return s;
+    })()) +
+    // caneca "Não sou TI"
+    rr(590, 860, 70, 80, 8, "#fff", `stroke="#ccc" stroke-width="2"`) +
+    `<path d="M660,876 Q690,900 660,924" stroke="#fff" stroke-width="10" fill="none"/>` +
+    txt(625, 895, "NÃO", 15, "#c0392b", { peso: "bold" }) +
+    txt(625, 915, "SOU TI", 15, "#c0392b", { peso: "bold" }) +
+    // planta resistente (espada-de-são-jorge)
+    (() => {
+      let s = "";
+      const angs = [-18, -8, 0, 8, 16, -26, 24];
+      angs.forEach((a, i) => (s += cam(`M${790 + i * 3},940 Q${780 + i * 4},${820 - (i % 3) * 30} ${790 + i * 4},${760 - (i % 3) * 40} Q${806 + i * 3},${820} ${802 + i * 3},940 Z`, i % 2 ? "#3a7a3a" : "#5a9a3a", `transform="rotate(${a} 796 940)"`)));
+      return s;
+    })() +
+    rr(760, 900, 80, 50, 6, "#b5653e") +
+    piso(c, 1350, "#9a958a", "#6e6a60");
+  return c.fim(corpo);
+}
+
+function studioPilates(): string {
+  const c = new Cena("studio_pilates");
+  semear(5454);
+  const reformer = (x: number, y: number, s: number) =>
+    rr(x, y - 40 * s, 420 * s, 40 * s, 10 * s, "#d9c4a0") +
+    rr(x + 90 * s, y - 64 * s, 200 * s, 30 * s, 10 * s, "#3a3a46") +
+    rr(x + 20 * s, y - 70 * s, 60 * s, 34 * s, 10 * s, "#3a3a46") +
+    ret(x + 390 * s, y - 120 * s, 16 * s, 90 * s, "#c9ced2") +
+    linha(x + 400 * s, y - 110 * s, x + 300 * s, y - 60 * s, "#555", 3 * s) +
+    ret(x + 10 * s, y, 14 * s, 50 * s, "#c9ced2") +
+    ret(x + 396 * s, y, 14 * s, 50 * s, "#c9ced2");
+  let mural = "";
+  const aniv = [["Dona Cida", "03"], ["Dona Lurdes", "11"], ["Dona Zezé", "19"], ["Seu Arnaldo", "27"]];
+  aniv.forEach(([n, d], i) => {
+    mural += bilhete(670 + (i % 2) * 170, 380 + Math.floor(i / 2) * 120, 150, 90, [n, `dia ${d}`], 18, entre(-5, 5), escolhe(["#ffd0e0", "#fdf6b2", "#d6f5c0", "#bfe6ff"]));
+  });
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#f6f0e8"], [1, "#eadfd0"]])) +
+    // espelho grande com reflexo do estúdio
+    ret(30, 220, 600, 760, "#c9ced2") +
+    ret(42, 232, 576, 736, c.lin([[0, "#e6eef2"], [1, "#c6d4dc"]], 0, 0, 1, 1)) +
+    g(
+      ret(42, 700, 576, 268, "#c8b090", `opacity="0.5"`) +
+        multidao(4, 100, 580, 900, 0.9, ["#ff9ac2", "#9ad0ff", "#c9a0ff", "#a0e0b0"]) +
+        circ(500, 860, 60, "#7ab8ff", `opacity="0.6"`),
+      `${c.blur(3)} ${c.clip(`<rect x="42" y="232" width="576" height="736"/>`)}`,
+    ) +
+    cam(`M60,240 L260,240 L60,700 Z`, "#fff", `opacity="0.3"`) +
+    cam(`M300,240 L360,240 L120,960 L60,960 Z`, "#fff", `opacity="0.15"`) +
+    // letreiro e frase
+    txt(540, 140, "Studio Equilíbrio", 64, "#b0607a", { fonte: MAO }) +
+    txt(540, 190, "pilates • alongamento • fofoca", 24, "#8a7a6a") +
+    // mural de aniversariantes
+    ret(650, 300, 380, 360, "#c9a77a") +
+    ret(664, 314, 352, 332, "#e8d4b0") +
+    txt(840, 360, "ANIVERSARIANTES", 24, "#b0607a", { peso: "bold" }) +
+    mural +
+    // prateleira com garrafinhas e toalhas
+    ret(660, 720, 380, 16, "#c9a77a") +
+    (() => {
+      let s = "";
+      const cores = ["#ff9ac2", "#7ab8ff", "#a0e0b0", "#f6d65a", "#c9a0ff", "#ff9f6a"];
+      for (let i = 0; i < 6; i++) s += rr(680 + i * 58, 640, 36, 80, 10, cores[i], `opacity="0.85"`) + rr(688 + i * 58, 628, 20, 16, 4, "#fff");
+      return s;
+    })() +
+    ret(660, 860, 380, 16, "#c9a77a") +
+    rr(680, 800, 100, 60, 14, "#9ad0ff") +
+    rr(790, 800, 100, 60, 14, "#ffd0e0") +
+    rr(900, 800, 100, 60, 14, "#d6f5c0") +
+    // bolas suíças
+    circ(940, 1060, 110, c.rad([[0, "#9ad0ff"], [1, "#3a86ff"]], 0.35, 0.3, 0.7)) +
+    circ(790, 1110, 80, c.rad([[0, "#ffc0d8"], [1, "#e0608a"]], 0.35, 0.3, 0.7)) +
+    // plantas
+    vaso(640, 1100, 1.1, "#4a9a5a", "#f2efe6") +
+    // reformers
+    reformer(60, 1180, 1.1) +
+    reformer(560, 1260, 1.0) +
+    // caixa de som e ar
+    rr(820, 30, 220, 70, 8, "#f6f6f4") +
+    ret(840, 80, 180, 6, "#ccc") +
+    ventiladorTeto(c, 300, 20, 0.6) +
+    piso(c, 1350, "#d8c09a", "#a88a62", "#9a7a52");
+  return c.fim(corpo);
+}
+
+function homeOfficeNoite(): string {
+  const c = new Cena("home_office_noite");
+  semear(5555);
+  let planilha = "";
+  for (let r = 0; r < 9; r++) {
+    for (let k = 0; k < 5; k++) {
+      const vermelho = rnd() < 0.12;
+      planilha += ret(422 + k * 50, 686 + r * 18, 48, 16, r === 0 ? "#2a8a4a" : vermelho ? "#ffb0b0" : k === 0 ? "#e6f0e0" : "#ffffff", `stroke="#b8c8b8" stroke-width="1"`);
+    }
+  }
+  const corpo =
+    ret(0, 0, 1080, 1920, c.lin([[0, "#121428"], [1, "#0a0b18"]])) +
+    // janela com lua e prédios
+    janela(c, 640, 160, 360, 400, { ceu: [[0, "#0a0e2a"], [1, "#2a2050"]], paisagem: estrelas(30, 640, 1000, 160, 500) + circ(920, 250, 34, "#f2eed8") + predios(c, 640, 1000, 560, 60, 200, "#0c0a20", "#ffd27a", 0.15), moldura: "#2a2a3a", cortina: "#3a3050" }) +
+    // estante escura com livros
+    g(estante(40, 160, 340, 600, 4, "#2a2018", 0.9), `opacity="0.55"`) +
+    // luz da luminária e da tela
+    c.brilho(260, 900, 520, "#ffc070", 0.4, 380) +
+    c.brilho(540, 760, 400, "#bcd8ff", 0.35, 300) +
+    // luminária articulada
+    linha(200, 1000, 230, 780, "#2a2a2a", 10) +
+    linha(230, 780, 330, 720, "#2a2a2a", 10) +
+    cam(`M300,700 L380,730 L350,790 L280,760 Z`, "#d6a63a") +
+    c.brilho(340, 780, 120, "#fff3c0", 0.6) +
+    elip(200, 1000, 50, 12, "#2a2a2a") +
+    // mesa
+    ret(0, 1000, 1080, 40, "#4a3424") +
+    ret(0, 1040, 1080, 300, "#2e2016") +
+    // notebook com planilha
+    cam(`M380,640 L700,640 L710,960 L370,960 Z`, "#2a2e36") +
+    ret(400, 660, 290, 290, "#f4f6f4") +
+    ret(400, 660, 290, 20, "#2a8a4a") +
+    txt(410, 675, "titulares_v7_FINAL_agora_vai.xlsx", 11, "#fff", { ancora: "start" }) +
+    planilha +
+    cam(`M340,1000 L740,1000 L710,960 L370,960 Z`, "#4a4f58") +
+    // gato dormindo sobre papéis
+    ret(720, 960, 200, 40, "#f2f2ee", `transform="rotate(-6 820 980)"`) +
+    ret(740, 950, 200, 40, "#e8e4d8", `transform="rotate(4 840 970)"`) +
+    elip(830, 950, 110, 50, "#e08a3a") +
+    circ(920, 930, 38, "#e08a3a") +
+    cam(`M898,904 L904,872 L922,898 Z`, "#e08a3a") +
+    cam(`M938,898 L950,870 L956,904 Z`, "#e08a3a") +
+    `<path d="M904,934 Q912,940 920,934 M926,934 Q934,940 942,934" stroke="#5a2a10" stroke-width="3" fill="none"/>` +
+    `<path d="M730,960 Q690,980 720,1000" stroke="#e08a3a" stroke-width="18" fill="none" stroke-linecap="round"/>` +
+    `<path d="M780,920 Q800,910 820,920 M840,915 Q860,905 880,918" stroke="#b86a2a" stroke-width="5" fill="none"/>` +
+    txt(990, 880, "z", 30, "#cfe8ff", { fonte: MAO, op: 0.7 }) +
+    txt(1020, 840, "z", 40, "#cfe8ff", { fonte: MAO, op: 0.5 }) +
+    // xícara de chá com fumaça
+    rr(220, 920, 70, 80, 10, "#f2efe6") +
+    `<path d="M290,940 Q320,960 290,980" stroke="#f2efe6" stroke-width="10" fill="none"/>` +
+    linha(250, 920, 250, 880, "#ddd", 2) +
+    ret(240, 880, 20, 22, "#f6d65a") +
+    g(`<path d="M255,910 C240,870 280,850 260,810" stroke="#fff" stroke-width="8" fill="none" opacity="0.3"/>`, c.blur(4)) +
+    // post-its e celular
+    bilhete(560, 520, 110, 80, ["dormir?", "depois"], 15, -5) +
+    rr(110, 960, 60, 36, 6, "#111") +
+    ret(116, 964, 48, 28, "#2a4a7a") +
+    piso(c, 1340, "#14121e", "#06050c");
+  return c.fim(corpo, true);
+}
+
 // ---------------------------------------------------------------------------
 // Registro
 // ---------------------------------------------------------------------------
@@ -3031,6 +3388,11 @@ function montar(): Record<string, Cenario> {
     ["agencia_banco", "Agência bancária", agenciaBanco],
     ["carro_noite", "Carro à noite", carroNoite, true],
     ["quarto_tia", "Quarto da tia", quartoTia],
+    ["clinica_recepcao", "Recepção da clínica", clinicaRecepcao],
+    ["sala_reuniao", "Sala de reunião", salaReuniao],
+    ["sala_dpo", "Sala da encarregada", salaDpo],
+    ["studio_pilates", "Estúdio de pilates", studioPilates],
+    ["home_office_noite", "Home office à noite", homeOfficeNoite, true],
   ];
   const out: Record<string, Cenario> = {};
   for (const [id, nome, fn, noite] of lista) {

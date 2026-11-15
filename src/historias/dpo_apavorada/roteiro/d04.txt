@@ -1,0 +1,231 @@
+=== d04_inicio
+@cap 4 "Três dias úteis"
+@fundo sala_dpo
+@musica tensao
+> No monitor, um post-it novo: "PRAZO". Embaixo, alguém, provavelmente o Wesley, desenhou uma caveira com óculos escuros.
+(Três dias úteis contados de quando a clínica soube que o incidente afetou dados pessoais. Esse relógio não para para reunião, nem para goiabada.)
+@se prazo<=0 -> d04_ja_atrasada
+@se marca:ajudou_esconder -> d04_esconde
+@vai d04_rascunho
+
+=== d04_ja_atrasada
+@musica triste
+> Você olha o calendário duas vezes, depois uma terceira, como se o número fosse mudar por educação.
+(Passou. Entre esperar a diretoria, esperar a cabeça fria e esperar o primo do Wesley, o prazo de três dias úteis acabou.)
+@marca perdeu_prazo
+@muda paciencia-1
+(Perder o prazo não tira a obrigação. Comunicar atrasado é ruim. Não comunicar é muito pior. E a comunicação vai ter que explicar o motivo da demora.)
+@se marca:ajudou_esconder -> d04_esconde
+@vai d04_rascunho
+
+=== d04_esconde
+@entra romeu neutra esquerda
+ROMEU: Doutora, a avaliação ficou muito bem escrita. Agora guarda na gaveta. A gente combinou.
+(A gente combinou. Eu combinei. E cada dia que esse papel fica na gaveta é um dia a mais de 1.847 pessoas sem saber que o diagnóstico delas está no celular de alguém.)
+? O Dr. Romeu espera que você cumpra o combinado.
+* Voltar atrás: dizer que errou ao concordar, orientar por escrito a comunicação e chamar a Dra. Helena -> d04_volta_atras {etica+2 rel_romeu-2 rel_helena+2 marca:orientou_por_escrito}
+* Guardar a avaliação na gaveta, como combinado -> d04_gaveta {etica-2}
+
+=== d04_volta_atras
+EU: Doutor, eu errei quando concordei em esconder. Eu sou a encarregada. Meu trabalho é orientar a clínica a fazer o certo, não a fazer o confortável.
+@entra helena pensativa direita
+HELENA: Até que enfim.
+EU: Eu vou mandar por e-mail, agora, a minha orientação: comunicar à ANPD e aos pacientes. A decisão é da clínica. Mas a orientação vai estar registrada.
+ROMEU [brava]: Isso é uma ameaça?
+HELENA: Não, Romeu. É ela fazendo o trabalho que a gente contratou.
+> Um silêncio comprido. O Dr. Romeu tira os óculos que não estão no rosto, por hábito.
+ROMEU: Faça. Mas faça direito.
+@desmarca ajudou_esconder
+@sai helena
+@sai romeu
+@vai d04_rascunho
+
+=== d04_gaveta
+> A avaliação vai para a gaveta da sua mesa, em cima do carregador quebrado e de um manual de impressora de 2014.
+> Dia seguinte. E o outro. E o outro.
+@muda prazo=0
+@sai romeu
+@marca perdeu_prazo
+@muda risco+1
+@musica triste
+@fundo home_office_noite
+> Sexta-feira, 23h10. Você não dorme. O celular está na mesa de cabeceira, de cabeça para baixo, como se isso o impedisse de tocar.
+(O prazo passou. A ANPD não sabe. Os pacientes não sabem. As senhoras do pilates sabem. Essa é a pior ordem possível.)
+@anota d1_prazo_anpd
+@vai d04_fim_gaveta
+
+=== d04_fim_gaveta
+(Eu não sou a culpada pela decisão da clínica. Mas eu concordei com ela. E concordar, nesse cargo, é quase o mesmo que decidir.)
+> Na segunda-feira seguinte, às 8h03, o telefone da recepção toca. Do outro lado, uma senhora que diz que a vizinha do pilates "contou uma coisa".
+@vai d05_inicio
+
+=== d04_rascunho
+@fundo sala_dpo
+@musica trabalho
+> Você abre o formulário oficial de comunicação de incidente no site da ANPD e, do lado, o registro do incidente.
+@se !marca:registrou_incidente -> d04_registro_tarde
+@vai d04_romeu_numero
+
+=== d04_registro_tarde
+(Antes do formulário, o registro. Se eu vou dizer à autoridade o que aconteceu, preciso ter guardado o que aconteceu.)
+> Você monta o registro em quarenta minutos: linha do tempo, dados, titulares, destinatários, medidas, decisões. Os prints, quando existem, viram anexos.
+@marca registrou_incidente
+@anota d1_registro
+@vai d04_romeu_numero
+
+=== d04_romeu_numero
+@entra romeu pensativa esquerda
+ROMEU: Doutora, uma sugestão. Esse número aí, 1.847. É muito número.
+ROMEU: Coloca 63. Foi quem recebeu. O resto nem ficou sabendo.
+(O resto nem ficou sabendo. É exatamente esse o problema.)
+? O Dr. Romeu quer diminuir o número de titulares.
+* "Doutor, titular é o dono do dado. São 1.847 pacientes. Os 63 são os destinatários e também vão na comunicação. Diminuir o número é informar errado à autoridade." -> d04_numero_certo {etica+1 credibilidade+1 marca:orientou_por_escrito}
+* "Coloco 63, doutor. Ninguém vai contar." -> d04_numero_63 {etica-2 risco+1 rel_romeu+1 marca:ajudou_esconder}
+** Mostrar ao Dr. Romeu a linha 1.203 da planilha: a ficha dele mesmo -> d04_linha_romeu {credibilidade+1 rel_romeu+1 marca:orientou_por_escrito}
+
+=== d04_linha_romeu
+> Linha 1.203. Romeu Tavares. Convênio: o mais caro. Na coluna sem título, a anotação da recepção: "só atende se for com ele mesmo".
+ROMEU [surpresa]: Eu estou nessa planilha?
+EU: O senhor é paciente da sua própria clínica, doutor. Desde 2011.
+ROMEU: E o meu diagnóstico estava no celular da Zuleica.
+EU: Estava. O senhor é um dos 1.847.
+> O Dr. Romeu fica um tempo olhando para a própria linha.
+ROMEU [envergonhada]: Coloca 1.847. E coloca os 63 também. Tudo certinho.
+@vai d04_numero_fecho
+
+=== d04_numero_certo
+ROMEU: Mas 1.847 parece tão pior.
+EU: Parece porque é, doutor. E se a gente informa menos e depois descobrem, a clínica perde a melhor coisa que ela tem agora: a boa-fé.
+ROMEU: Está bem. Está bem. Os dois números.
+@vai d04_numero_fecho
+
+=== d04_numero_63
+> Você digita 63 no rascunho. O cursor fica piscando do lado, como quem pergunta "tem certeza?".
+@entra helena brava direita
+HELENA: {nome}, isso é informação falsa para a autoridade. Os titulares são os pacientes da planilha. Eu não assino.
+(Ela tem razão. E eu sei que ela tem razão. Eu só queria que o Romeu parasse de olhar para mim desse jeito.)
+> Você apaga o 63 e escreve 1.847. Mas a Dra. Helena viu. O Dr. Romeu viu. Você também viu.
+@muda credibilidade-1 rel_helena-1
+@sai helena
+@vai d04_numero_fecho
+
+=== d04_numero_fecho
+@sai romeu
+@vai d04_esperar
+
+=== d04_esperar
+@zap "Diretoria Bem Viver"
+WESLEY: [audio 1:15] Doutora, antes de mandar, não é melhor esperar? Ainda não sei se o grupo da Hidro apagou, nem se alguém mandou pra frente. Manda tudo de uma vez, completinho, daqui uns dias.
+HELENA: Tem coisa que ainda não sabemos mesmo. Vale esperar?
+@zap fim
+(Se eu esperar ter tudo, eu perco o prazo. O regulamento deixa comunicar o que se tem e complementar depois.)
+? Ainda faltam informações.
+* Comunicar agora o que já se sabe, dizer o que ainda está sendo apurado e complementar depois -> d04_manda_ja {tecnica+1 risco-1}
+* Esperar até ter tudo, completinho -> d04_espera {prazo-1} [se !marca:perdeu_prazo]
+** Ligar para a Profe Kelly e para a Zuleica, confirmar o que der em dez minutos, e depois enviar -> d04_liga_kelly {tecnica+1 risco-1 rel_rosangela+1}
+
+=== d04_liga_kelly
+> A Profe Kelly atende no segundo toque, com música de aula de fundo.
+> Ela confirma: o grupo do pilates está fechado só para administradores e 51 alunas responderam que apagaram. A Zuleica, chorando um pouco, garante que a administradora do grupo da Hidro também apagou.
+(Dez minutos, duas ligações, três fatos novos para o formulário. O resto, eu complemento depois.)
+@vai d04_manda_ja
+
+=== d04_espera
+> Você espera. O Wesley não responde. O grupo da Hidro não responde. A Neusa, que ninguém sabe quem é, também não responde.
+> Mais um dia útil se vai.
+@se prazo<=0 -> d04_espera_estourou
+(Esperar não trouxe nenhuma informação nova. Só levou um dia. Vou mandar o que tenho.)
+@vai d04_manda_ja
+
+=== d04_espera_estourou
+@musica triste
+(E foi o último. Eu esperei o "completinho" e perdi o prazo inteiro.)
+@marca perdeu_prazo
+@muda paciencia-1
+@vai d04_manda_ja
+
+=== d04_manda_ja
+@fundo home_office_noite
+@musica tensao
+> 21h40. A mesa da cozinha virou escritório: notebook, registro do incidente, avaliação de risco, a xícara com a frase "Sou DPO, não sou mágica".
+> O formulário oficial da ANPD está aberto. Campo por campo.
+@desafio d1_comunicacao_anpd -> d04_form_acerto | d04_form_erro
+
+=== d04_form_acerto
+(Natureza dos dados, titulares, medidas de segurança, riscos, medidas para mitigar, o que ainda está sendo apurado. Tudo o que a gente sabe, do jeito que a gente sabe.)
+@anota d1_conteudo_comunicacao
+@se marca:perdeu_prazo -> d04_envia_atrasada
+@marca comunicou_anpd
+@marca comunicacao_completa
+@muda credibilidade+1 risco-1
+@vai d04_enviada
+
+=== d04_form_erro
+(Relendo antes de enviar, ficou vago: "dados cadastrais", sem dizer com todas as letras que tinha diagnóstico. Não dá tempo de reescrever tudo. Envio e complemento.)
+> Você anota no registro: "Complementar a comunicação com a natureza exata dos dados e as medidas adotadas."
+@anota d1_conteudo_comunicacao
+@se marca:perdeu_prazo -> d04_envia_atrasada
+@marca comunicou_anpd
+@vai d04_enviada
+
+=== d04_envia_atrasada
+> No campo dos motivos da demora, você escreve a verdade, sem enfeite: a demora em levar o caso à diretoria, a espera por informações que não vieram, a decisão de comunicar mesmo assim.
+> Enviar.
+(Atrasada. Mas enviada, e com a verdade no campo da demora. Daqui para frente, cooperar é o que sobra a favor da clínica, e não é pouco.)
+@anota d1_sancoes
+@vai d04_pos_envio
+
+=== d04_enviada
+> Enviar. A tela mostra a confirmação de recebimento. Você salva o comprovante em três lugares diferentes, porque você é você.
+(Dentro do prazo. A clínica fez o que a lei pede e agora tem um registro de boa-fé, de cooperação e de medida rápida. É isso que pesa se um dia alguém falar em sanção.)
+@anota d1_prazo_anpd
+@anota d1_sancoes
+@vai d04_pos_envio
+
+=== d04_pos_envio
+@musica trabalho
+@zap "Diretoria Bem Viver"
+EU: Comunicação de incidente enviada à ANPD pelo formulário oficial. Comprovante anexado ao registro. Informações ainda em apuração serão complementadas.
+HELENA: Obrigada, {nome}. De verdade.
+WESLEY: [audio 0:09] Ufa. Então agora pode apagar tudo, né?
+EU: Não, Wesley.
+BRUNA: Agora que a ANPD já sabe, posso usar a planilha pra campanha? 🚀
+EU: Também não, Bruna.
+ROMEU: Recebido.
+ROMEU: Boa noite, doutora.
+@zap fim
+(Do Dr. Romeu, "boa noite, doutora" é praticamente um abraço.)
+? Antes de dormir, uma última mensagem.
+* Avisar a Rosângela que a comunicação foi feita e que ela ajudou -> d04_rosangela {rel_rosangela+1}
+* Fechar o notebook e não falar com mais ninguém hoje -> d04_dormir {paciencia+1}
+** Mandar para a Rosângela uma figurinha de "bom dia" às 22h, porque é a única que você tem salva -> d04_figurinha {rel_rosangela+2 paciencia+1}
+
+=== d04_rosangela
+@zap "Rosângela Recepção 💐"
+EU: Rosângela, a comunicação à ANPD foi feita. Seus prints e a sua lista ajudaram muito.
+ROSANGELA: Dra. eu chorei de novo mas agora foi de alívio
+ROSANGELA: Amanhã eu levo bolo
+@zap fim
+@vai d04_fim
+
+=== d04_figurinha
+@zap "Rosângela Recepção 💐"
+EU: [figurinha] Bom dia, flor do dia 🌻
+ROSANGELA: Dra são 22h 😂
+EU: Foi a única que eu tinha. A comunicação foi feita. Obrigada por ter avisado rápido.
+ROSANGELA: [figurinha] Boa noite com Deus 🌙
+ROSANGELA: Agora a senhora tem duas
+@zap fim
+@vai d04_fim
+
+=== d04_dormir
+> Você fecha o notebook. A geladeira faz um barulho. Você escolhe interpretar como aplauso.
+@vai d04_fim
+
+=== d04_fim
+@fundo home_office_noite
+@musica tensao
+> Você está quase dormindo quando lembra de uma coisa e senta na cama de uma vez.
+(A ANPD foi a primeira. Mas a lei manda comunicar também os titulares. Os 1.847. Em linguagem simples. E o prazo é o mesmo.)
+> No celular, a primeira mensagem do dia seguinte já chegou, de um número desconhecido: "Bom dia. Aqui é a Cleide, vizinha da Marlene. Ela me contou uma coisa sobre a clínica. É verdade?"
+@vai d05_inicio

@@ -190,6 +190,61 @@ export function abrirDesafio(app: HTMLElement, d: Desafio, fim: (acertou: boolea
     );
   }
 
+  if (d.tipo === 'formulario') {
+    const escolhidas: (number | null)[] = d.campos.map(() => null);
+    const blocos = d.campos.map((c, ci) => {
+      const ordem = embaralhar(c.opcoes.map((_, i) => i));
+      const linha = el('div', { class: 'form-opcoes' });
+      ordem.forEach((oi) => {
+        const b = el(
+          'button',
+          {
+            class: 'form-opcao',
+            onclick: () => {
+              escolhidas[ci] = oi;
+              linha.querySelectorAll('.form-opcao').forEach((x) => x.classList.remove('marcada'));
+              b.classList.add('marcada');
+              som.efeito('clique');
+            },
+          },
+          c.opcoes[oi],
+        );
+        b.dataset.oi = String(oi);
+        linha.append(b);
+      });
+      return el('fieldset', { class: 'form-campo' }, el('legend', {}, `${ci + 1}. ${c.rotulo}`), linha);
+    });
+    corpo.append(el('div', { class: 'formulario-doc' }, ...blocos));
+    rodape.append(
+      el(
+        'button',
+        {
+          class: 'botao',
+          onclick: () => {
+            if (escolhidas.some((x) => x === null)) {
+              rodape.querySelector('.dica')?.remove();
+              rodape.prepend(el('p', { class: 'dica' }, 'Preencha todos os campos antes de enviar.'));
+              return;
+            }
+            let certos = 0;
+            const erros: string[] = [];
+            d.campos.forEach((c, ci) => {
+              const ok = escolhidas[ci] === c.certa;
+              if (ok) certos++;
+              else erros.push(`${c.rotulo}: ${c.porque}`);
+              blocos[ci].querySelectorAll<HTMLElement>('.form-opcao').forEach((b) => {
+                if (Number(b.dataset.oi) === c.certa) b.classList.add('certa');
+                else if (b.classList.contains('marcada')) b.classList.add('errada');
+              });
+            });
+            concluir(certos >= d.minimo, `${certos} de ${d.campos.length} campos certos. ${erros.join(' ')}`);
+          },
+        },
+        'Enviar',
+      ),
+    );
+  }
+
   if (d.tipo === 'senha') {
     const medidor = el('div', { class: 'medidor' }, el('div', { class: 'barra' }));
     const info = el('p', { class: 'dica' });

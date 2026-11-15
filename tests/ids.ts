@@ -7,6 +7,7 @@ export const FUNDOS = [
   'apartamento_capital', 'assistencia_tecnica', 'prefeitura_sala', 'cooperativa', 'delegacia', 'hospital_corredor',
   'palco_premiacao', 'aeroporto', 'quarto_madrugada',
   'sala_familia', 'quintal_almoco', 'agencia_banco', 'carro_noite', 'quarto_tia',
+  'clinica_recepcao', 'sala_reuniao', 'sala_dpo', 'studio_pilates', 'home_office_noite',
 ];
 export const MUSICAS_IDS = [
   'infancia', 'interior', 'tensao', 'misterio', 'triste', 'alegre', 'romance', 'cidade', 'trabalho', 'hacker',

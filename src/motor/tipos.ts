@@ -105,6 +105,17 @@ export type Desafio =
     }
   | {
       id: string;
+      tipo: 'formulario';
+      titulo: string;
+      enunciado: string;
+      /** cada campo tem opções e uma certa; o jogo embaralha as opções */
+      campos: { rotulo: string; opcoes: string[]; certa: number; porque: string }[];
+      /** acertos mínimos para passar */
+      minimo: number;
+      explicacao: string;
+    }
+  | {
+      id: string;
       tipo: 'senha';
       titulo: string;
       enunciado: string;
@@ -147,5 +158,5 @@ export interface Historia {
   /** nomes dos atributos mostrados no menu e nos avisos */
   atributos?: Record<string, string>;
   /** atributos sempre visíveis no topo da leitura */
-  hud?: { var: string; icone: string; sufixo?: string }[];
+  hud?: { var: string; icone: string; sufixo?: string; esconderCom?: string[] }[];
 }
