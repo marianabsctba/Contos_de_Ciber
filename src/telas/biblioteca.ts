@@ -98,6 +98,7 @@ export function telaBiblioteca(): void {
     el(
       'footer',
       { class: 'rodape' },
+      el('p', { class: 'assinatura' }, 'Powered by ', el('strong', {}, 'Mariana BS')),
       el('p', {}, 'Histórias de ficção. Nomes, cidades e empresas são inventados. A técnica é de verdade.'),
       el('p', {}, el('a', { href: 'https://github.com/marianabsctba/Contos_de_Ciber', target: '_blank', rel: 'noopener' }, 'Código aberto no GitHub')),
     ),
