@@ -1,0 +1,223 @@
+=== b06_inicio
+@cap 6 "Falamos com você no privado"
+@fundo quarto_madrugada
+@musica misterio
+> Domingo, 9h30. Você voltou para a cama, de banho tomado e paciência curta, com o celular na cara.
+> A MegaLar, a loja grande de verdade, mandou ontem um e-mail: "CUPOM BF50: R$ 50 de desconto em TVs". Você colocou o cupom no carrinho do site oficial. "Cupom inválido para este produto". Três vezes.
+@se marca:caiu_site_clone -> b06_motivo_clone
+@se marca:fechou_fora_plataforma -> b06_motivo_vendedor
+(Cupom que não aplica. A tradição mais antiga da Black Friday, depois do preço que sobe na quinta para cair na sexta.)
+@vai b06_post
+
+=== b06_motivo_clone
+(E ainda tem a TV de R$ 899, daquela loja com o nome da MegaLar, que não chegou e nunca vai chegar. Eu preciso desabafar com alguém.)
+@marca reclamou_tv_clone
+@vai b06_post
+
+=== b06_motivo_vendedor
+(E ainda tem o "Vendedor Top 5 Estrelas", que parou de responder desde que eu paguei fora do marketplace. Eu preciso desabafar com alguém.)
+@vai b06_post
+
+=== b06_post
+? A rede social está aberta. O dedo coça.
+* Escrever uma reclamação pública marcando o perfil da MegaLar -> b06_reclama
+* Fechar a rede social e procurar o atendimento pelo site oficial da loja -> b06_site_oficial {paciencia+1 tecnica+1}
+** Escrever a reclamação em letras maiúsculas com sete emojis de raiva -> b06_reclama {paciencia-1}
+
+=== b06_reclama
+> Você escreve: "@MegaLar o cupom de vocês não aplica, que palhaçada! Black Fraude!! Alguém me responde?"
+> Publica. Bloqueia a tela. Desbloqueia a tela.
+@som notificacao
+> Quarenta segundos depois, uma resposta pública no seu post:
+@zap "Rede social: comentários"
+SAC_FALSO: Olá! Aqui é o Atendimento Oficial MegaLar ✔ Sentimos muito pelo ocorrido 😔
+SAC_FALSO: Para sua segurança, chame nosso time no PRIVADO e vamos resolver na hora com ESTORNO em dobro do valor do cupom 💙
+@zap fim
+(Quarenta segundos. A MegaLar de verdade demorou três dias para responder o e-mail do meu cadastro.)
+@muda minutos=10
+@vai b06_privado
+
+=== b06_privado
+@musica tensao
+@som mensagem
+@zap "Atendimento Oficial MegaLar ✔"
+SAC_FALSO: Oi, {nome}! Tudo bem? Aqui é a Jéssica do Atendimento Oficial 💙
+SAC_FALSO: Seu caso foi classificado como PRIORIDADE BLACK FRIDAY. O estorno precisa ser feito em até 10 minutos, depois o sistema encerra o protocolo.
+SAC_FALSO: Para localizar sua compra, preciso de: nome completo, CPF, número do cartão, validade e os 3 números de trás.
+@zap fim
+? A tal Jéssica está "digitando...". O protocolo, segundo ela, expira em dez minutos.
+* Abrir o perfil de quem está falando com você antes de responder -> b06_perfil {minutos-3}
+* Mandar os dados, porque o estorno em dobro é tentador -> b06_dados
+** Perguntar à Jéssica qual é o time do coração dela, só para ganhar tempo -> b06_enrola {paciencia+1 minutos-2}
+
+=== b06_enrola
+@zap "Atendimento Oficial MegaLar ✔"
+EU: Jéssica, antes, uma pergunta: qual é o seu time?
+SAC_FALSO: Somos neutros, senhora. O protocolo expira em 8 minutos.
+EU: Neutro na final? Isso já é suspeito.
+SAC_FALSO: Por favor, envie os dados do cartão para seguir com o estorno.
+@zap fim
+(Ela não tem time, não tem sobrenome e tem muita pressa. Vou olhar esse perfil.)
+@vai b06_perfil
+
+=== b06_perfil
+@musica misterio
+> Você toca na foto do perfil. A página abre.
+@desafio b6_perfil_falso -> b06_perfil_acerto | b06_perfil_erro
+
+=== b06_perfil_acerto
+(Nome quase igual, selo azul desenhado dentro da foto, perfil criado este mês, quase nenhum seguidor, link para um site que não é o da loja e "atendimento só pelo privado". Isso não é a MegaLar. É alguém vestido de MegaLar.)
+@muda tecnica+1 paciencia+1
+@anota b6_selo_desenhado
+@vai b06_decide
+
+=== b06_perfil_erro
+(O nome é MegaLar, tem selo, tem a logo, tem até um coraçãozinho azul. Que mais um perfil oficial precisaria ter?)
+@anota b6_selo_desenhado
+@vai b06_decide_apressada
+
+=== b06_decide_apressada
+? Faltam poucos minutos para o "protocolo" expirar.
+* Mandar os dados do cartão para garantir o estorno -> b06_dados
+* Antes, procurar o perfil oficial pelo site da loja, digitando o endereço -> b06_site_oficial {minutos-4}
+* Ligar para a Paty, que trabalha no atendimento de uma loja grande -> b06_paty {minutos-3}
+
+=== b06_decide
+? A Jéssica mandou mais três mensagens: "Senhora?", "O protocolo vai expirar", "Última chance de estorno".
+* Bloquear e denunciar o perfil na própria rede social -> b06_denuncia {etica+1}
+* Ligar para a Paty e contar o que está acontecendo -> b06_paty
+** Mostrar para o Kevin, que tem 800 seguidores e uma vontade enorme de ter razão -> b06_kevin {rel_kevin+1}
+
+=== b06_dados
+@musica tensao
+> Você digita: nome, CPF, número do cartão, validade e os três números de trás. Envia.
+@marca passou_dados_sac_falso
+@zap "Atendimento Oficial MegaLar ✔"
+SAC_FALSO: Perfeito! Seu estorno está em processamento 💙
+SAC_FALSO: Agora vai chegar um CÓDIGO por SMS no seu celular. Me passe o código para eu CONFIRMAR o estorno no sistema.
+@zap fim
+@som notificacao
+> Chega um SMS do banco, de verdade, do número que o banco sempre usa: "Código de verificação: 482913. Não compartilhe este código com ninguém."
+@desafio b6_codigo_sms -> b06_codigo_acerto | b06_codigo_erro
+
+=== b06_codigo_acerto
+(O próprio SMS diz: não compartilhe com ninguém. "Ninguém" inclui a Jéssica. Inclui principalmente a Jéssica. Estorno não precisa de código meu. Quem precisa do meu código é quem quer fazer alguma coisa no meu nome.)
+@muda tecnica+1
+@anota b6_empresa_nao_pede
+? A Jéssica insiste: "O código, senhora. O sistema vai encerrar."
+* Não passar o código, bloquear o perfil e ligar para o banco agora -> b06_banco {tecnica+1}
+* Não passar o código e esperar para ver o que acontece -> b06_espera
+
+=== b06_codigo_erro
+(É o código para confirmar o estorno. Ela disse.)
+> Você manda o código. A Jéssica responde com um coraçãozinho azul. E some.
+> O perfil "Atendimento Oficial MegaLar ✔" não existe mais.
+@marca passou_codigo_sac_falso
+@muda paciencia-1
+@anota b6_empresa_nao_pede
+? O silêncio do celular agora é pior do que a pressa de antes.
+* Ligar para o banco agora, pelo número do verso do cartão -> b06_banco {tecnica+1}
+* Ligar para a Paty, que sabe como funciona do outro lado -> b06_paty_tarde
+
+=== b06_espera
+> Você fecha a conversa. Dez minutos depois, a "Jéssica" apaga o perfil.
+(Os dados do cartão ficaram com ela. O código, não. Mas o número, a validade e os três números de trás já estão lá.)
+@vai b06_paty_tarde
+
+=== b06_banco
+@musica misterio
+> Você liga para o número do verso do cartão. Explica: perfil falso, dados do cartão, um código que você recebeu.
+> A atendente bloqueia o cartão físico na hora e avisa que as compras que não forem suas podem ser contestadas.
+@se marca:passou_codigo_sac_falso -> b06_banco_codigo
+> Ela diz que, como o cartão foi bloqueado antes de qualquer compra, as chances de dor de cabeça diminuíram muito. Um cartão novo, com outro número, chega em alguns dias.
+(Bloquear rápido é a melhor coisa que eu podia ter feito depois da pior coisa que eu podia ter feito.)
+@marca bloqueou_cartao
+@vai b06_paty_tarde
+
+=== b06_banco_codigo
+> Ela confere e avisa: já tem uma tentativa de cadastrar o seu cartão num aparelho que não é o seu. O banco cancelou. Mas pode ter mais coisa chegando.
+> O cartão físico está bloqueado. Um cartão novo, com outro número, chega em alguns dias. Qualquer compra estranha na fatura, você contesta.
+(O código abriu uma porta. O bloqueio fechou a casa inteira. Antes tarde.)
+@marca bloqueou_cartao
+@vai b06_paty_tarde
+
+=== b06_site_oficial
+@musica misterio
+> Você abre o navegador e digita, letra por letra: www.megalar.com.br.
+> No rodapé do site oficial, a seção "Canais oficiais" lista o perfil verdadeiro da loja na rede social, o telefone do atendimento e o chat do próprio site.
+> Embaixo, em negrito: "A MegaLar NUNCA pede senha, código de verificação ou dados completos do cartão por mensagem na rede social."
+(Pelo site eu acho o perfil de verdade. Pela rede social, eu acho quem quer que eu ache.)
+@anota b6_empresa_nao_pede
+@vai b06_chat_oficial
+
+=== b06_chat_oficial
+> No chat do site oficial, uma atendente de verdade responde em quatro minutos, que é o tempo de quem atende mil pessoas num domingo de Black Friday.
+> Ela explica que o cupom BF50 vale só para TVs acima de R$ 2.000 e só até hoje à meia-noite. Pede o número do pedido, quando houver. Nada de cartão.
+@se marca:reclamou_tv_clone -> b06_chat_clone
+@vai b06_paty
+
+=== b06_chat_clone
+> Você conta da TV de R$ 899. A atendente suspira do outro lado do chat, se é que chat suspira.
+> "Esse site não é nosso. Estamos recebendo muitos relatos. O nosso único endereço é www.megalar.com.br. Recomendo procurar o seu banco e registrar um boletim de ocorrência."
+@vai b06_paty
+
+=== b06_denuncia
+> Você bloqueia o perfil e usa a opção de denúncia da rede social: "Está se passando por outra pessoa ou empresa".
+> Depois, comenta no seu próprio post: "Cuidado: o perfil que respondeu aqui é FALSO. A loja não pede dados do cartão no privado."
+@som notificacao
+> Em meia hora, o seu comentário tem mais curtidas que a sua foto de formatura.
+@anota b6_empresa_nao_pede
+@vai b06_paty
+
+=== b06_kevin
+@entra kevin surpresa direita
+KEVIN: Peraí. Esse perfil aí é falso? Tipo, falso de verdade?
+EU: Olha: criado este mês, 312 seguidores, selo desenhado na foto. E pediu os três números de trás do cartão.
+KEVIN: Mano. Eu ia passar o meu. Eu reclamei do cupom ontem e uma "Jéssica" me chamou também.
+KEVIN [pensativa]: Se eu fizer um vídeo mostrando isso... sem link de oferta nenhum... será que alguém assiste?
+EU: Só tem um jeito de saber.
+@marca kevin_viu_perfil_falso
+@anota b6_empresa_nao_pede
+@sai kevin
+@vai b06_paty
+
+=== b06_paty_tarde
+@musica triste
+@entra paty pensativa direita
+> Você liga para a Paty. Ela atende no segundo toque, com barulho de supermercado atrás.
+PATY: Amiga. Respira. Você ligou para o banco pelo número do verso?
+@se marca:bloqueou_cartao -> b06_paty_tarde_sim
+EU: Ainda não.
+PATY: Então liga agora, e depois a gente conversa. Bloqueia o cartão. Se aparecer compra que não é sua, contesta. E guarda o print da conversa com a tal Jéssica, que vai servir no boletim.
+> Você liga. O cartão é bloqueado. O atendente avisa que, se aparecerem compras, você deve contestar cada uma.
+@marca bloqueou_cartao
+@vai b06_paty_almoco
+
+=== b06_paty_tarde_sim
+EU: Liguei. Bloqueei.
+PATY [feliz]: Isso. Fez o mais importante. Agora guarda os prints da conversa, que vão servir no boletim.
+@vai b06_paty_almoco
+
+=== b06_paty
+@entra paty feliz direita
+> Você liga para a Paty. Ela atende no segundo toque, com barulho de supermercado atrás.
+PATY: Atendimento Oficial no privado? Amiga, eu trabalho no atendimento de uma loja grande há seis anos. A gente responde no público e manda a pessoa para o canal oficial.
+PATY: A gente nunca, nunca, pede o número completo do cartão, os três números de trás, senha ou código por mensagem. Nem para estornar. Estorno a gente faz no pedido, no sistema da loja.
+EU: E o selo azul?
+PATY: Selo dentro da foto é desenho. Selo de verdade a rede social coloca do lado do nome. E mesmo assim, o que vale é o perfil que está listado no site da loja.
+@muda rel_paty+1
+@vai b06_paty_almoco
+
+=== b06_paty_almoco
+PATY: Escuta. Eu estou de folga hoje. Que tal eu ir aí no almoço, e a gente compra essa TV do jeito certo? Endereço digitado, CNPJ conferido, cartão virtual. Do jeito chato.
+? A Paty ofereceu o domingo dela para te ajudar.
+* Aceitar e prometer uma lasanha -> b06_fim {rel_paty+1}
+* Aceitar, mas avisar que a lasanha é congelada -> b06_fim {rel_paty+1 paciencia+1}
+** Aceitar e chamar o Kevin para aprender junto -> b06_fim {rel_paty+1 rel_kevin+1 marca:kevin_vai_aprender}
+
+=== b06_fim
+@sai todos
+@musica misterio
+> 10h40. A notificação da reclamação pública ainda está lá, com dezenas de comentários. No meio deles, mais dois perfis novos de "Atendimento Oficial", cada um com um selo desenhado diferente.
+(Quanto mais alto eu grito na rede social, mais rápido aparece quem finge que vai me ouvir.)
+@vai b07_inicio

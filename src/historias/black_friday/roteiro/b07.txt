@@ -1,0 +1,320 @@
+=== b07_inicio
+@cap 7 "A loja de verdade"
+@fundo casa_cozinha
+@musica alegre
+> Domingo, 12h. A Paty chega com uma sacola de pão, um pote de vinagrete e o crachá do trabalho ainda pendurado no pescoço, de puro costume.
+@entra paty feliz direita
+PATY: Cadê a lasanha?
+EU: No forno. Congelada há três semanas. Do jeito que a Black Friday gosta.
+@se marca:kevin_vai_aprender -> b07_kevin_chega
+@vai b07_triagem
+
+=== b07_kevin_chega
+@entra kevin neutra esquerda
+KEVIN: Cheguei. Trouxe caderno. Ninguém fala para os meus seguidores que eu trouxe caderno.
+PATY: Senta aí, influenciador. Hoje a aula é do jeito chato.
+@muda rel_kevin+1
+@vai b07_triagem
+
+=== b07_triagem
+PATY: Antes de comprar qualquer coisa: o fim de semana deixou algum estrago?
+@se marca:caiu_site_clone -> b07_socorro
+@se marca:pagou_pix_desconhecido -> b07_socorro
+@se marca:caiu_boleto -> b07_socorro
+@se marca:dados_cartao_expostos -> b07_socorro
+@se marca:passou_dados_sac_falso -> b07_socorro
+@se marca:fechou_fora_plataforma -> b07_socorro
+@se marca:pagou_taxa_reentrega -> b07_socorro
+EU [feliz]: Nenhum. Eu desconfiei de tudo. Até da lasanha.
+PATY: Então você está pronta para a parte boa.
+@muda paciencia+1
+@vai b07_compra
+
+=== b07_socorro
+@musica misterio
+EU [envergonhada]: Deixou. Bastante.
+> Você conta tudo. A Paty escuta sem interromper, o que, para quem trabalha com atendimento, é uma prova de amor.
+PATY: Primeira coisa: ninguém aqui vai ter vergonha. Vergonha atrasa. Quem cai e age rápido tem mais chance de reaver alguma coisa.
+PATY: Me diz na ordem: o que a gente faz agora?
+@desafio b7_quando_cai -> b07_ordem_acerto | b07_ordem_erro
+
+=== b07_ordem_acerto
+(Banco pelo canal oficial, contestação e devolução, provas guardadas, boletim e denúncia. Na ordem, sem pular, sem vergonha.)
+@muda tecnica+1 paciencia+1
+@anota b7_caiu_e_agora
+@vai b07_cartao_check
+
+=== b07_ordem_erro
+PATY: Quase. O banco vem primeiro, sempre. Cada hora conta. Depois a gente junta prova e faz boletim.
+@anota b7_caiu_e_agora
+@vai b07_cartao_check
+
+=== b07_cartao_check
+@se marca:dados_cartao_expostos -> b07_fatura
+@se marca:passou_dados_sac_falso -> b07_fatura
+@vai b07_pix_check
+
+=== b07_fatura
+@musica tensao
+@som notificacao
+> Enquanto a Paty fala, o aplicativo do banco apita. E apita de novo.
+@se marca:bloqueou_cartao -> b07_fatura_bloqueado
+@se marca:bloqueou_cartao_cupom -> b07_fatura_bloqueado
+> "Compra aprovada: R$ 389,00, loja de jogos online." "Compra aprovada: R$ 791,00, passagem aérea." Você não joga. Você não viaja.
+@muda economia-1180
+@marca perdeu_1180
+(Mil cento e oitenta reais. Em dois minutos. Do cartão que eu digitei na página do cupom ou passei para a Jéssica.)
+@vai b07_contesta_decide
+
+=== b07_fatura_bloqueado
+> "Compra recusada: cartão bloqueado." "Compra recusada: cartão bloqueado." E uma que passou antes do bloqueio, de madrugada: R$ 389,00 numa loja de jogos online.
+@muda economia-389
+(O bloqueio segurou o resto. Mas uma passou.)
+@vai b07_contesta_decide
+
+=== b07_contesta_decide
+? A Paty empurra o celular de volta para você.
+* Contestar cada compra que não é sua, pelo aplicativo e pela central do verso do cartão -> b07_contesta {tecnica+1}
+* Deixar para ver isso quando a fatura fechar -> b07_nao_contesta {paciencia-1}
+** Pedir para a Paty ficar do lado enquanto você liga, para não esquecer nada -> b07_contesta {tecnica+1 rel_paty+1}
+
+=== b07_contesta
+@musica misterio
+@entra gerente neutra esquerda
+> Do outro lado da linha, depois de dois atendentes, atende a gerente de plantão. Ela tem a voz de quem já ouviu essa história quatrocentas vezes desde sexta.
+GERENTE: A senhora reconhece estas compras?
+EU: Nenhuma.
+GERENTE: Vou registrar a contestação de cada uma. Elas ficam em análise e não entram na fatura enquanto a gente analisa. Se o cartão ainda não estiver bloqueado, eu bloqueio agora e a senhora recebe outro, com outro número.
+GERENTE: E faça o boletim de ocorrência. Ajuda na análise.
+@marca contestou_cartao
+@marca bloqueou_cartao
+@se marca:perdeu_1180 -> b07_contesta_volta
+> A compra de R$ 389 fica em análise. A gerente avisa que a resposta sai em alguns dias.
+@vai b07_pix_check
+
+=== b07_contesta_volta
+@muda economia+389
+> A loja de jogos cancela a compra de R$ 389 assim que o banco avisa. A passagem de R$ 791 fica em análise.
+GERENTE: Uma já voltou. A outra depende da análise.
+@vai b07_pix_check
+
+=== b07_nao_contesta
+(Depois eu vejo. Domingo, a fatura nem fechou ainda.)
+PATY [brava]: Amiga, contestação tem prazo e quanto antes melhor. "Depois eu vejo" é a frase preferida de quem cobra.
+EU: Depois eu vejo, Paty.
+@vai b07_pix_check
+
+=== b07_pix_check
+@se marca:pediu_devolucao_pix -> b07_pix_ja
+@se marca:caiu_site_clone -> b07_pix
+@se marca:pagou_pix_desconhecido -> b07_pix
+@se marca:fechou_fora_plataforma -> b07_pix
+@se marca:pagou_taxa_reentrega -> b07_pix
+@vai b07_boleto_check
+
+=== b07_pix_ja
+PATY: E o Pix?
+EU: Já pedi a devolução hoje cedo, no banco. Tenho o protocolo.
+PATY [feliz]: Olha ela. Guardou protocolo e tudo.
+@vai b07_boleto_check
+
+=== b07_pix
+PATY: E o Pix? Pix para desconhecido é o mais difícil de reaver. Mas existe um caminho: pedir ao seu banco a devolução pelo Mecanismo Especial de Devolução. O seu banco avisa o banco de quem recebeu, que pode bloquear o que ainda estiver na conta.
+EU: E se já tiverem tirado tudo?
+PATY: Aí volta pouco ou nada. Por isso é rápido. Hoje, não amanhã.
+? O aplicativo do banco tem a opção de contestar o Pix, e a central atende no domingo.
+* Pedir a devolução do Pix agora, pelo aplicativo ou pela central do banco -> b07_pix_pede {tecnica+1}
+* Deixar quieto, dezenove ou oitocentos reais, o que foi, foi -> b07_boleto_check {paciencia-1}
+
+=== b07_pix_pede
+> Você abre o aplicativo do banco, procura o Pix, toca em "contestar" e escolhe "golpe". Escreve o que aconteceu, com data, hora e valor.
+> O aplicativo gera um protocolo. Você tira print do protocolo, porque agora você tira print de tudo.
+@marca pediu_devolucao_pix
+@anota b5_devolucao_pix
+@vai b07_boleto_check
+
+=== b07_boleto_check
+@se marca:caiu_boleto -> b07_boleto
+@vai b07_bo
+
+=== b07_boleto
+PATY: E o boleto com desconto do Kevin?
+@se marca:kevin_vai_aprender -> b07_boleto_kevin
+EU: Paguei. O beneficiário era uma empresa que não tinha nada a ver com a loja.
+PATY: Boleto pago é difícil de voltar. Mas avisa o banco do mesmo jeito, com o comprovante e o nome do beneficiário. E põe tudo no boletim.
+@vai b07_bo
+
+=== b07_boleto_kevin
+KEVIN [envergonhada]: Fui eu que mandei aquele link. Foi mal, de verdade.
+PATY: Boleto pago é difícil de voltar. Mas avisa o banco do mesmo jeito, com o comprovante e o nome do beneficiário. E põe tudo no boletim.
+EU: Kevin. Tá tudo bem. Da próxima vez, confere o beneficiário antes de mandar para a família.
+@muda rel_kevin+1
+@vai b07_bo
+
+=== b07_bo
+@sai gerente
+PATY: Agora o boletim de ocorrência. Dá para fazer pela delegacia online, de casa. Leva meia hora.
+? Os prints, os comprovantes e os protocolos estão numa pasta do celular chamada "VERGONHA".
+* Fazer o boletim online agora, com todos os prints -> b07_bo_faz {etica+1}
+* Deixar o boletim para amanhã, depois do jogo -> b07_bo_depois
+** Fazer o boletim e ainda denunciar a página e o anúncio onde tudo começou -> b07_bo_denuncia {etica+1 tecnica+1}
+
+=== b07_bo_faz
+> Você abre a delegacia online do seu estado e preenche: o que aconteceu, quando, quanto, para quem foi o dinheiro, o endereço do site, o número do celular, o perfil falso.
+> Anexa os prints. Envia. Um número de protocolo aparece. Print.
+(Um boletim sozinho é um papel. Muitos boletins iguais mostram que é a mesma gente. E o banco também pede.)
+@marca fez_bo
+@vai b07_compra
+
+=== b07_bo_denuncia
+> Você faz o boletim online, com todos os prints. Depois denuncia o anúncio na própria plataforma onde ele apareceu, a página falsa no canal de denúncia do navegador e o perfil falso na rede social.
+PATY: Cada denúncia tira o golpe do ar um pouco mais cedo. Pode ser a TV da mãe de alguém.
+@marca fez_bo
+@marca denunciou_pagina
+@vai b07_compra
+
+=== b07_bo_depois
+(Amanhã. Depois do jogo. Depois da ressaca do jogo.)
+PATY [pensativa]: Amanhã você vai estar com vergonha de novo. Hoje você está com raiva. Raiva preenche formulário mais rápido.
+@vai b07_compra
+
+=== b07_compra
+@musica alegre
+@fundo casa_cozinha
+> 12h50. A lasanha está quase pronta. A Paty puxa o notebook para o meio da mesa como quem abre um caderno de receitas.
+PATY: Agora, a compra. Do jeito chato. Antes de tudo: o que a gente confere?
+@desafio b7_antes_de_comprar -> b07_confere_acerto | b07_confere_erro
+
+=== b07_confere_acerto
+(Endereço digitado, preço que faz sentido, CNPJ que bate com quem recebe, cartão virtual, nota fiscal e sete dias para me arrepender. É chato. É ótimo.)
+@muda tecnica+1
+@anota b7_cartao_virtual
+@vai b07_site
+
+=== b07_confere_erro
+PATY: Errou algumas, mas tudo bem. É por isso que a gente faz junto.
+@anota b7_cartao_virtual
+@vai b07_site
+
+=== b07_site
+> Você digita na barra de endereço, letra por letra: www.megalar.com.br. Nada de anúncio, nada de link do Kevin, nada de SMS.
+> A página abre. TV de 65 polegadas, 4K, marca conhecida: de R$ 2.999 por R$ 2.199. A TV de 50 polegadas: R$ 1.499.
+PATY: Repara no preço. É um desconto bom, mas é um desconto de gente. Em outras lojas grandes está parecido. Ninguém vende uma TV de três mil por oitocentos e noventa e nove.
+> No rodapé: razão social, CNPJ e endereço da sede. A Paty copia o CNPJ e confere na consulta pública: empresa ativa, mesmo nome, há mais de vinte anos. Num site de reclamações, a loja tem muita reclamação, como toda loja grande, e responde quase todas.
+PATY: Loja de verdade tem reclamação. O que não tem é resposta nenhuma ou nome nenhum.
+@muda minutos=10
+> No topo do site, uma faixa vermelha pisca: "OFERTA RELÂMPAGO: TV 75 polegadas por R$ 3.899. Termina em 10 minutos!"
+EU: Paty, até a loja de verdade tem contador!
+PATY: Tem. Contador sozinho não é golpe. Mas pressa é sempre pressa. Quem decide a compra é você, não o contador.
+@vai b07_pagamento
+
+=== b07_pagamento
+PATY: Agora o pagamento. Abre o aplicativo do seu banco e gera um cartão virtual.
+> Você toca em "cartão virtual". O aplicativo cria um número novo, com validade e código próprios, que só existe para isso. O seu banco deixa criar um virtual novo mesmo quando o físico está bloqueado.
+PATY: Se esse número vazar, você apaga o cartão virtual no aplicativo e o físico continua inteiro. E é crédito: se der problema com a compra, dá para contestar.
+EU: E o Pix com desconto?
+PATY: Pix para a própria loja grande, conferindo o nome de quem recebe, até vai. Mas cartão te dá mais proteção. Num fim de semana como esse, eu fico com a proteção.
+@anota b7_cartao_virtual
+@vai b07_escolhe
+
+=== b07_escolhe
+@se economia<1499 -> b07_sem_dinheiro
+? A economia está na tela do banco. O carrinho está aberto. O contador da oferta relâmpago pisca lá em cima.
+* Comprar a TV de 65 polegadas por R$ 2.199, no cartão virtual, com entrega hoje -> b07_compra_65 [se economia>=2199]
+* Comprar a TV de 50 polegadas por R$ 1.499, no cartão virtual, com entrega hoje -> b07_compra_50 [se economia>=1499]
+* Não comprar hoje e conversar com o pai primeiro -> b07_desiste
+** Comprar AGORA a de 75 polegadas da oferta relâmpago, antes que o contador zere -> b07_75 {paciencia-1}
+
+=== b07_75
+@musica tensao
+> O seu dedo vai em direção ao botão vermelho. A Paty segura o seu pulso, com a delicadeza de quem segura um cliente no telefone.
+PATY: R$ 3.899. Amiga, você tem esse dinheiro?
+EU: Não.
+PATY: Então o contador não é problema seu. Deixa ele contar sozinho.
+@muda minutos=0
+(O contador zerou. A TV de 75 continuou no site, pelo mesmo preço, com um contador novo. Ninguém morreu.)
+@vai b07_escolhe_calma
+
+=== b07_escolhe_calma
+@musica alegre
+@se economia<1499 -> b07_sem_dinheiro
+? Sem contador, a decisão fica mais leve.
+* Comprar a TV de 65 polegadas por R$ 2.199, no cartão virtual, com entrega hoje -> b07_compra_65 [se economia>=2199]
+* Comprar a TV de 50 polegadas por R$ 1.499, no cartão virtual, com entrega hoje -> b07_compra_50 [se economia>=1499]
+* Não comprar hoje e conversar com o pai primeiro -> b07_desiste
+
+=== b07_sem_dinheiro
+@musica triste
+> A tela do banco mostra o que sobrou da economia de dez meses. Não dá para a TV de 65. Não dá nem para a de 50.
+(Dez meses de marmita. Um fim de semana de pressa.)
+PATY: Ei. Olha para mim. A TV pode esperar. O seu pai não vai te amar menos por causa de polegada.
+? A Paty fecha o notebook devagar.
+* Desistir da TV por agora e conversar com o pai -> b07_desiste
+* Ficar quieta e ver o jogo na TV de tubo mesmo -> b07_fim_sem
+
+=== b07_compra_65
+@som dinheiro
+@muda economia-2199
+@marca comprou_na_megalar
+@marca usou_cartao_virtual
+> Carrinho, endereço, cartão virtual. Antes de confirmar, a Paty aponta: "Vendido e entregue por MegaLar". O nome na tela de pagamento é a mesma razão social do rodapé.
+> Pedido confirmado. Entrega hoje, até as 15h, para a sua região. O código de rastreio aparece no aplicativo da MegaLar e no e-mail.
+@vai b07_nota
+
+=== b07_compra_50
+@som dinheiro
+@muda economia-1499
+@marca comprou_na_megalar
+@marca usou_cartao_virtual
+@marca tv_de_50
+> Carrinho, endereço, cartão virtual. Antes de confirmar, a Paty aponta: "Vendido e entregue por MegaLar". O nome na tela de pagamento é a mesma razão social do rodapé.
+> Pedido confirmado. Entrega hoje, até as 15h. O código de rastreio aparece no aplicativo da MegaLar e no e-mail.
+(Cinquenta polegadas. Para quem assistia numa de vinte e nove com palha de aço, isso é cinema.)
+@vai b07_nota
+
+=== b07_nota
+PATY: Agora guarda: o e-mail do pedido, a nota fiscal que vai chegar e o termo de garantia. Sem nota, garantia vira discussão.
+PATY: E tem mais uma coisa. Comprou pela internet, fora da loja física? Você tem sete dias para se arrepender, contados de quando a TV chegar. É o Código de Defesa do Consumidor, artigo 49. Devolve e recebe o dinheiro de volta.
+EU: Mesmo se a TV não tiver defeito nenhum?
+PATY: Mesmo assim. Se o seu pai olhar para ela e disser que a de tubo é melhor, você ainda tem uma semana.
+@anota b7_arrependimento
+? A lasanha apita. O pedido está confirmado.
+* Contar para a Paty que agora está com medo de o pai não gostar -> b07_fim_compra {rel_paty+1 marca:medo_do_pai}
+* Comemorar com a lasanha queimada nas bordas -> b07_fim_compra
+** Mandar no grupo da família só "surpresa às 15h" e desligar o celular -> b07_fim_compra {rel_kevin+1 paciencia+1}
+
+=== b07_fim_compra
+@sai todos
+> 13h30. A lasanha estava queimada nas bordas e congelada no meio. Ninguém reclamou.
+> No aplicativo da MegaLar, o pedido muda para "Saiu para entrega".
+(Essa é a única mensagem de entrega do fim de semana que veio do lugar certo.)
+@vai b08_inicio
+
+=== b07_desiste
+@musica alegre
+@marca desistiu_da_tv
+EU: Paty, e se eu não comprar hoje?
+PATY [surpresa]: Na Black Friday? Com o carrinho aberto?
+EU: Eu passei o fim de semana correndo atrás de uma TV que ele nunca pediu. Talvez eu devesse perguntar primeiro.
+PATY [feliz]: Essa é a compra mais segura do fim de semana: a que você não faz com pressa.
+@anota b7_arrependimento
+? A Paty sorri e rouba um pedaço da borda queimada da lasanha.
+* Ir até a sala conversar com o pai agora -> b07_conversa_pai {rel_pai+1}
+* Deixar a conversa para o intervalo do jogo -> b07_fim_sem
+
+=== b07_conversa_pai
+@fundo sala_tv_velha
+@entra pai neutra direita
+EU: Pai, posso te perguntar uma coisa? Se o senhor pudesse ganhar qualquer presente hoje, qual seria?
+PAI: Que vocês assistissem o jogo comigo. Inteiro. Sem celular. O Kevin principalmente.
+(Eu juntei dois mil e quatrocentos reais. Ele queria noventa minutos.)
+@muda rel_pai+1
+@vai b07_fim_sem
+
+=== b07_fim_sem
+@sai todos
+@fundo casa_cozinha
+> 13h30. A lasanha estava queimada nas bordas e congelada no meio. Ninguém reclamou.
+> Na sala, a TV de tubo continua no programa de esporte, com a palha de aço reluzindo.
+(Faltam duas horas e meia para a final.)
+@vai b08_inicio

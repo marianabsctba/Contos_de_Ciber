@@ -1,0 +1,284 @@
+=== b04_inicio
+@cap 4 "Vendedor Top 5 Estrelas"
+@fundo sala_familia
+@musica alegre
+> Sábado, 15h10. A sala tem o silêncio pesado de almoço de sábado. O Seu Ademar cochila no sofá de napa com o rádio no peito, que sobe e desce junto com a respiração.
+> O Kevin está deitado no tapete, de barriga para cima, com o celular a um palmo da cara.
+@entra kevin neutra esquerda
+@se marca:kevin_viu_boleto -> b04_kevin_cauteloso
+@se marca:kevin_viu_sms -> b04_kevin_cauteloso
+KEVIN: Mana. Agora é sério. Agora é no marketplace de verdade, aquele grandão. Não é site estranho.
+@vai b04_anuncio
+
+=== b04_kevin_cauteloso
+KEVIN: Mana. Antes de você brigar comigo: eu conferi o endereço. É o marketplace de verdade, aquele grandão. Eu digitei.
+EU: Você digitou?
+KEVIN [feliz]: Letra por letra. Igual você faz. Doeu, mas eu fiz.
+@muda rel_kevin+1
+@vai b04_anuncio
+
+=== b04_anuncio
+KEVIN: TV de 65, nova, na caixa, R$ 1.890. O vendedor tem cinco estrelas. Cinco! Chama "Vendedor Top 5 Estrelas".
+(O nome do vendedor é a nota do vendedor. Isso é como eu me chamar "Funcionária do Mês".)
+> Você pega o celular dele. O anúncio está no marketplace oficial, com o endereço certo na barra, o carrinho, o botão de comprar, as perguntas de outros clientes.
+@muda minutos=30
+> Na foto principal, uma faixa colada por cima: "SÓ HOJE ATÉ 16H".
+@desafio b4_anuncio_vendedor -> b04_anuncio_acerto | b04_anuncio_erro
+
+=== b04_anuncio_acerto
+@som acerto
+(O site é o certo. Mas quem está vendendo dentro dele, não. Conta criada há poucos dias, três avaliações, preço muito abaixo da loja, e um telefone escondido na descrição para a gente sair daqui. O marketplace é de verdade. O vendedor, não necessariamente.)
+@muda tecnica+1
+@anota b4_perfil_vendedor
+EU: Kevin, o site é o certo. O vendedor é que eu não sei. Vou perguntar uma coisa pelo chat do próprio anúncio.
+@vai b04_chat
+
+=== b04_anuncio_erro
+@som erro
+(É o marketplace de verdade. Eu conferi a barra. Se está aqui dentro, alguém já conferiu esse vendedor por mim. Né?)
+@anota b4_perfil_vendedor
+EU: Vou só perguntar se ele entrega até amanhã.
+@vai b04_chat
+
+=== b04_chat
+@musica tensao
+@zap "Vendedor Top 5 Estrelas"
+> Chat do anúncio
+EU: Boa tarde! A TV de 65 ainda está disponível? Entrega até amanhã?
+VENDEDOR: Boa tarde, querida!! Disponível sim 😊 últimas 2
+VENDEDOR: Olha, vou ser sincero com vc pq vc parece gente boa
+VENDEDOR: Aqui pelo site a taxa come todo o meu lucro
+VENDEDOR: Me chama no aplicativo de conversa que eu faço por 1.590 e entrego hoje mesmo à noite
+VENDEDOR: Meu número tá na descrição. Só um sinal de 300 no Pix pra reservar e o resto vc paga na entrega
+VENDEDOR: Mas tem que ser até as 16h que tem outro cliente querendo 🙏
+@zap fim
+KEVIN [surpresa]: Mil quinhentos e noventa! Entrega hoje! Mana, é o plano!
+(Trezentos reais por uma reserva. Mil e quinhentos na entrega. E, fora daqui, nenhuma plataforma para me proteger se a entrega não chegar.)
+? O relógio do Kevin marca 15h31.
+* Chamar o vendedor no aplicativo de conversa e pagar o sinal de R$ 300 -> b04_sai_plataforma {minutos-3}
+* Responder que só compra pela plataforma, com o pagamento feito aqui dentro -> b04_so_plataforma {tecnica+1}
+* Denunciar o anúncio para o marketplace -> b04_denuncia {etica+1 minutos-4}
+** Perguntar ao vendedor: "Se você é tão honesto, por que não pode ser pela plataforma?" -> b04_pergunta {paciencia+1}
+
+=== b04_pergunta
+@zap "Vendedor Top 5 Estrelas"
+EU: Se você é tão honesto, por que não pode ser pela plataforma? Eu pago o preço daqui, sem problema.
+VENDEDOR: querida é que aqui eles seguram o dinheiro até vc receber
+VENDEDOR: eu preciso do dinheiro na hora pra pagar o frete
+VENDEDOR: pode confiar, olha meus 5 estrelas
+VENDEDOR: [foto] uma foto de várias caixas de TV empilhadas num galpão
+VENDEDOR: 15h40 já hein 👀
+@zap fim
+(Ele mesmo disse. Aqui eles seguram o dinheiro até eu receber. Isso não é defeito da plataforma. É exatamente o motivo para ficar nela.)
+@muda tecnica+1
+@vai b04_so_plataforma
+
+=== b04_so_plataforma
+@zap "Vendedor Top 5 Estrelas"
+EU: Só compro pela plataforma. Se quiser, eu pago o preço do anúncio aqui mesmo.
+VENDEDOR: aí não dá querida
+VENDEDOR: vc que sabe, depois não reclama que perdeu
+VENDEDOR: ...
+> Este vendedor não está mais disponível.
+@zap fim
+> Você atualiza a página. O anúncio sumiu. O "Vendedor Top 5 Estrelas" também.
+(Cinco estrelas e nenhuma TV. Sumiu na hora em que eu disse que pagaria do jeito que me protege.)
+@muda tecnica+1
+@anota b4_fora_da_plataforma
+@vai b04_paty
+
+=== b04_denuncia
+> No anúncio, você toca em "Denunciar" e escolhe "Vendedor pede para negociar fora da plataforma". Anexa o print da conversa.
+> Uma mensagem automática responde: "Obrigado. Nunca faça pagamentos fora do nosso site e aplicativo. Compras fora da plataforma não têm a nossa garantia."
+KEVIN: Até o robô deles sabe.
+EU: O robô sabe. O vendedor também sabe. É por isso que ele quer sair daqui.
+> Vinte minutos depois, o anúncio some.
+@muda etica+1
+@anota b4_fora_da_plataforma
+@vai b04_paty
+
+=== b04_sai_plataforma
+@zap "Vendedor Top 5 Estrelas"
+> Aplicativo de conversa
+EU: Oi, é sobre a TV de 65. Pode ser por 1.590?
+VENDEDOR: Pode sim querida!! 🙏 Manda o sinal nessa chave que eu já separo a sua
+VENDEDOR: [foto] chave Pix em nome de L. F. MOREIRA
+VENDEDOR: Assim que cair eu te mando o código de rastreio
+@zap fim
+(L. F. Moreira. Não é "Vendedor Top 5 Estrelas", não é empresa, não é a plataforma. É um nome.)
+? Trezentos reais. O Kevin já está comemorando.
+* Mandar o Pix do sinal -> b04_pagou_sinal {economia-300 marca:fechou_fora_plataforma marca:pagou_pix_desconhecido}
+* Desistir e voltar para a plataforma -> b04_volta_plataforma {tecnica+1 paciencia+1}
+
+=== b04_volta_plataforma
+EU: Desculpa, eu só compro pela plataforma.
+> Ele não responde. Dois minutos depois, a sua mensagem tem só um tique cinza. Você foi bloqueada.
+(Vendedor honesto que perde uma venda diz "que pena". Esse aí me bloqueou em dois minutos.)
+@anota b4_fora_da_plataforma
+@vai b04_paty
+
+=== b04_pagou_sinal
+@som dinheiro
+> Pix enviado. R$ 300,00 para L. F. MOREIRA.
+@zap "Vendedor Top 5 Estrelas"
+VENDEDOR: Recebido!! Obrigado querida 😊
+VENDEDOR: Hoje à noite chega, fica de olho
+@zap fim
+> 16h02. Você volta ao marketplace para guardar o anúncio. "Este anúncio não está mais disponível."
+> 16h05. No aplicativo de conversa, a foto de perfil do vendedor some. A sua mensagem "Que horas chega?" fica com um tique cinza só.
+(A plataforma seguraria o dinheiro até eu receber a TV. Eu tirei o dinheiro da plataforma com as minhas próprias mãos e entreguei para um nome.)
+@anota b4_fora_da_plataforma
+@vai b04_paty
+
+=== b04_paty
+@sai kevin
+@som porta
+@entra paty feliz direita
+> 17h20. A Paty chega direto do turno, ainda com o crachá pendurado e um açaí de meio litro em cada mão.
+PATY: Um para mim, um para você, o Kevin que lute.
+EU: Paty, me explica uma coisa do seu lado do balcão. Por que todo vendedor ruim quer sair da plataforma?
+PATY: Porque, lá dentro, quase tudo fica registrado. A conversa, o pagamento, a entrega. Em geral, o dinheiro fica com a plataforma até você confirmar que recebeu.
+PATY: Se não chega, você abre a reclamação lá dentro e tem alguém para mediar. Fora dela, é você, o celular e um nome numa chave Pix.
+EU: E o "desconto"?
+PATY [pensativa]: O desconto é a isca. Ninguém tira o próprio lucro para te agradar. Ele quer é tirar a proteção do meio do caminho.
+@se marca:fechou_fora_plataforma -> b04_paty_sinal
+@vai b04_kevin_conversa
+
+=== b04_paty_sinal
+EU: Eu mandei trezentos de sinal.
+PATY: Ai, amiga. Avisa o banco o quanto antes, diz que foi golpe e pede a devolução do Pix. Guarda o print da conversa, a chave, o horário. E denuncia o vendedor no marketplace, mesmo que o anúncio já tenha sumido.
+(Ela não perguntou como eu pude. Ela perguntou o que eu ia fazer agora. Por isso ela é minha melhor amiga.)
+@muda rel_paty+1
+@vai b04_kevin_conversa
+
+=== b04_kevin_conversa
+@sai paty
+@entra kevin envergonhada esquerda
+> 18h. A Paty foi embora. O Kevin volta para a sala com o açaí que sobrou e senta no braço do sofá, sem o celular na mão. É a primeira vez no fim de semana.
+KEVIN: Mana. A TV de ontem, o boleto, o cupom, o vendedor. Tudo veio de mim, né?
+(Não tudo. Mas quase tudo passou pelo dedo dele antes de chegar em mim.)
+? O Kevin olha para você esperando a bronca.
+* Dar a bronca: "Quatro links, quatro golpes, Kevin" -> b04_bronca {rel_kevin-1}
+* Explicar, com calma, o que conferir antes de mandar qualquer link -> b04_explica_kevin {rel_kevin+1 marca:kevin_parou_de_mandar_link}
+* Dizer que tudo bem e mudar de assunto -> b04_tudo_bem
+** Propor um trato: ele só manda link depois de achar sozinho três defeitos na oferta, e se achar, não manda -> b04_trato_kevin {rel_kevin+2 marca:kevin_parou_de_mandar_link} [se rel_kevin>=1]
+
+=== b04_bronca
+EU: Quatro links, quatro golpes, Kevin. Você tem oitocentos seguidores. Quantos caíram?
+KEVIN [triste]: Sei lá. Ninguém me conta quando cai. Só quando ganha.
+(Ele não está errado. Ninguém posta "perdi novecentos reais hoje". Por isso todo mundo acha que só os outros caem.)
+@vai b04_pai
+
+=== b04_tudo_bem
+EU: Tudo bem, Kevin. Esquece.
+KEVIN: Sério? Tá. Achei mais um cupom de pizza, quer ver?
+(Eu disse que estava tudo bem. Agora ele acha que está tudo bem.)
+@vai b04_pai
+
+=== b04_explica_kevin
+EU: Não é culpa sua, Kevin. Mas é você quem aperta "encaminhar". Antes de apertar, confere três coisas.
+EU: O endereço, letra por letra. O preço, comparado com a loja de verdade. E quem recebe o dinheiro, que tem que ser a própria loja, pelo jeito que protege a gente.
+KEVIN [pensativa]: E se eu não souber conferir?
+EU: Aí não manda. Link que você não conferiu não é ajuda. É só pressa passando adiante.
+KEVIN: Tá. Vou parar de mandar link. Pelo menos até aprender.
+@anota b4_conferir_antes_de_mandar
+@vai b04_pai
+
+=== b04_trato_kevin
+EU: Trato. Antes de mandar qualquer oferta, você tem que achar sozinho três defeitos nela. Endereço, preço, quem recebe, prazo apertado, vendedor novo.
+EU: Se achar três, você não manda. Se não achar nenhum, me mostra antes.
+KEVIN: E se eu achar três em todas?
+EU: Aí você vai ter descoberto o que é a Black Friday.
+KEVIN [feliz]: Mano. Isso dá conteúdo. "Achei três defeitos." Isso é um quadro.
+(Ele já está pensando em vídeo. Pelo menos agora o vídeo é sobre o defeito, não sobre a oferta.)
+@anota b4_conferir_antes_de_mandar
+@vai b04_pai
+
+=== b04_pai
+@sai kevin
+@entra pai neutra direita
+@musica triste
+> 19h30. O Seu Ademar acorda do cochilo, que já virou soneca, que já virou sono. Ele olha para você, sentada no chão da sala com o celular apagado no colo.
+PAI: Filha. Desde ontem você tá com essa cara. Vai me contar ou eu vou ter que adivinhar igual pênalti?
+@se marca:caiu_site_clone -> b04_pai_pesado
+@se marca:caiu_boleto -> b04_pai_pesado
+@se marca:fechou_fora_plataforma -> b04_pai_pesado
+? O pai espera, com a paciência de quem esperou trinta anos em ponto final.
+* Contar tudo: a caixinha, os dez meses, a TV que você queria dar -> b04_conta_pai {rel_pai+2 marca:contou_pro_pai}
+* Dizer que é cansaço do trabalho -> b04_segredo {rel_pai-1}
+** Antes de contar qualquer coisa, perguntar o que ele quer de verdade para a final -> b04_pergunta_pai {rel_pai+2 marca:contou_pro_pai}
+
+=== b04_pai_pesado
+? O pai espera. Você sabe quanto falta na caixinha, e ele não.
+* Contar tudo: a caixinha, a TV, e o dinheiro que foi embora -> b04_conta_pai {rel_pai+2 marca:contou_pro_pai}
+* Dizer que é cansaço do trabalho -> b04_segredo {rel_pai-1}
+** Antes de contar qualquer coisa, perguntar o que ele quer de verdade para a final -> b04_pergunta_pai {rel_pai+2 marca:contou_pro_pai}
+
+=== b04_conta_pai
+EU: Pai, eu juntei dinheiro dez meses para te dar uma TV nova antes da final.
+@se marca:caiu_site_clone -> b04_conta_perdeu
+@se marca:caiu_boleto -> b04_conta_perdeu
+@se marca:fechou_fora_plataforma -> b04_conta_perdeu
+PAI [surpresa]: Dez meses? Para mim? Para uma TV?
+EU: E o fim de semana inteiro foi gente tentando me vender TV que não existe.
+PAI: E você não caiu.
+EU: Quase. Umas três vezes.
+PAI [feliz]: Quase não conta, filha. No futebol, bola na trave é zero a zero.
+@vai b04_fim
+
+=== b04_conta_perdeu
+EU: E eu caí, pai. Paguei por TV que não existe. Uma parte do dinheiro foi embora.
+> Ele fica em silêncio. Depois senta no chão do seu lado, devagar, porque o joelho já não é o de 98.
+PAI: Já avisou o banco?
+EU: Abri o aplicativo. Tem fila.
+PAI: Então fica na fila. Motorista que bate o ônibus não espera o dia seguinte para avisar a garagem.
+PAI: E outra coisa. Dinheiro vai e volta, ou não volta. Filha eu não troco por TV nenhuma.
+(Eu queria dar uma TV para ele. Ele acabou de me dar uma coisa melhor, e de graça.)
+@vai b04_fim
+
+=== b04_segredo
+EU: Cansaço, pai. Semana puxada.
+PAI [pensativa]: Sei. Cansaço que olha o celular de cinco em cinco minutos.
+PAI: Tá bom. Quando quiser contar, eu tô aqui. Eu sempre tô aqui. Aqui é a sala.
+(Ele sabe que não é cansaço. E eu sei que ele sabe. A gente vai fingir até domingo.)
+@vai b04_fim
+
+=== b04_pergunta_pai
+EU: Pai, antes de tudo. O que o senhor quer de verdade para a final de amanhã?
+PAI [pensativa]: De verdade?
+PAI: Quero vocês dois aqui. Você e o Kevin. Sem celular na mão no hino. Bolo da Nice. Grito no gol.
+PAI: A TV eu nem olho direito, filha. Eu olho é para quem está do lado.
+EU: Eu juntei dinheiro para te dar uma TV nova.
+PAI [feliz]: Então guarda, e a gente compra com calma. Depois da final. Junto.
+@marca pai_quer_companhia
+@vai b04_fim
+
+=== b04_fim
+@musica cidade
+@sai todos
+@fundo sala_tv_velha
+> 21h. Na sala, a TV de tubo ainda mostra o canal de esportes, com fantasma e chuvisco. "Amanhã, 16h, a grande final."
+@se marca:kevin_parou_de_mandar_link -> b04_fim_kevin
+@zap "Família Ademar ⚽📺"
+KEVIN: gente achei um site de tv de 65 por 1.200 com frete grátis
+DONA_NICE: Kevin pelo amor de Deus
+@zap fim
+(Ele voltou. O Kevin sempre volta.)
+@vai b04_fim_noite
+
+=== b04_fim_kevin
+@zap "Família Ademar ⚽📺"
+KEVIN: gente achei um site de tv de 65 por 1.200
+KEVIN: endereço termina em ponto online, cnpj aberto mês passado, só pix
+KEVIN: três defeitos. não vou mandar o link
+DONA_NICE: Kevin quem te sequestrou
+PAI: Orgulho do pai.
+@zap fim
+(Três defeitos achados sozinho. Pela primeira vez no fim de semana, o link que não foi mandado foi o melhor link do grupo.)
+@vai b04_fim_noite
+
+=== b04_fim_noite
+@fundo quarto_madrugada
+> Você deita olhando para o teto. Na caixinha "TV DO PAI 📺", o número que sobrou do sábado.
+(Faltam menos de vinte horas para a final. O relógio agora não é de promoção. É de verdade.)
+@vai b05_inicio

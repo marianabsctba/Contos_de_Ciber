@@ -1,0 +1,251 @@
+=== b05_inicio
+@cap 5 "Taxa de reentrega"
+@fundo casa_cozinha
+@musica alegre
+> Domingo, 7h. O cheiro de café passado no coador de pano atravessa a casa inteira.
+> Na sala, a TV de tubo já está ligada no programa de esporte. A palha de aço na ponta da antena brilha como uma coroa.
+@entra pai feliz direita
+PAI: Bom dia, filha. Olha que imagem. Dá para ver até o suor do comentarista.
+EU: Pai, aquilo é chuvisco.
+PAI: É suor. Eu conheço suor de comentarista.
+@se marca:contou_pro_pai -> b05_pai_sabe
+@vai b05_cafe
+
+=== b05_pai_sabe
+PAI [pensativa]: E essa história de loja na internet, já sossegou? Eu fiquei pensando em você a noite toda.
+EU: Mais ou menos, pai. Estou tentando ter calma.
+PAI: Calma é bom. Em trinta anos de ônibus, quem tinha pressa era quem batia no poste.
+@muda rel_pai+1
+@vai b05_cafe
+
+=== b05_cafe
+? Ele serve duas xícaras e senta do seu lado, olhando para a TV como quem olha para um quadro.
+* Perguntar o que ele mais gosta de fazer no dia da final -> b05_cafe_conversa {rel_pai+1}
+* Pegar o celular e ver as notificações -> b05_sms
+** Dizer que vai ter uma surpresa para ele hoje -> b05_cafe_surpresa {rel_pai+1 paciencia-1}
+
+=== b05_cafe_conversa
+EU: Pai, o que o senhor mais gosta no dia da final?
+PAI: Do barulho. A casa cheia, o Kevin gritando errado, a Dona Nice opinando do portão. Eu e a sua mãe assistíamos à final juntos todo ano.
+(Ele não falou da imagem. Nem do tamanho da tela. Falou do barulho.)
+@vai b05_sms
+
+=== b05_cafe_surpresa
+EU: Pai, hoje vai ter surpresa para o senhor.
+PAI [surpresa]: Surpresa? Se for TV, eu já falei. A minha é ótima.
+EU: Não falei que é TV.
+PAI: Você olhou para a TV quando falou.
+@vai b05_sms
+
+=== b05_sms
+@som notificacao
+> 7h12. O celular vibra em cima da mesa. Uma mensagem de texto, de um número com onze dígitos que você nunca viu.
+@zap "SMS"
+ENTREGADOR: TRANSPORTADORA: Sua entrega NAO FOI CONCLUIDA por endereço incompleto.
+ENTREGADOR: Para reagendar, pague a taxa de reentrega de R$ 19,00 em ate 30 min. Apos o prazo o objeto sera devolvido ao remetente.
+ENTREGADOR: Acesse: encurta.li/rEntr3g4
+@zap fim
+@musica tensao
+@muda minutos=30
+@se marca:caiu_site_clone -> b05_sms_esperanca
+@se marca:fechou_fora_plataforma -> b05_sms_esperanca
+@vai b05_sms_nada
+
+=== b05_sms_esperanca
+(A TV! Deve ser a TV! Ela existe! Eu sabia!)
+(Calma. Eu também sabia que o preço era bom demais. E olha onde eu estou.)
+@muda paciencia-1
+@vai b05_sms_escolha
+
+=== b05_sms_nada
+(Entrega? Eu nem comprei nada ainda. Ou comprei? Depois desse fim de semana, eu já não sei nem o meu CEP.)
+@vai b05_sms_escolha
+
+=== b05_sms_escolha
+? Trinta minutos. Dezenove reais. Parece pouco. Parece mesmo.
+* Ler a mensagem de novo, devagar, antes de qualquer coisa -> b05_sms_ler {minutos-3}
+* Tocar no link só para ver do que se trata -> b05_link {minutos-1}
+** Pagar logo os R$ 19, é menos que um pastel com caldo de cana -> b05_link_pressa {paciencia-1}
+
+=== b05_sms_ler
+(Vamos com calma. Uma coisa de cada vez.)
+@desafio b5_sms_reentrega -> b05_sms_acerto | b05_sms_erro
+
+=== b05_sms_acerto
+(Número qualquer, transportadora sem nome, nenhum código de rastreio, nenhuma loja, prazo de meia hora e um link encurtado. Se fosse uma entrega de verdade, eles saberiam o que estão entregando.)
+@muda tecnica+1 paciencia+1
+@anota b5_taxa_falsa
+@vai b05_conferir
+
+=== b05_sms_erro
+(Eu li três vezes e só consegui ver "devolvido ao remetente". Se for a TV, eu não posso perder a TV.)
+@muda paciencia-1
+@anota b5_taxa_falsa
+@vai b05_conferir
+
+=== b05_conferir
+? O relógio do micro-ondas marca 7h20. A cafeteira faz aquele barulho de fim de coada.
+* Abrir o aplicativo e o e-mail da compra real e procurar o código de rastreio -> b05_rastreio_real {minutos-5 tecnica+1}
+* Tocar no link, porque dezenove reais não é nada -> b05_link
+* Mandar print no grupo da família e perguntar se alguém recebeu igual -> b05_grupo {minutos-4}
+
+=== b05_rastreio_real
+@musica misterio
+@se marca:caiu_site_clone -> b05_rastreio_clone
+@se marca:fechou_fora_plataforma -> b05_rastreio_vendedor
+> Você abre o e-mail. Abre o aplicativo do Vitrinão. Abre até a caixa de spam, onde moram três carrinhos abandonados chorando por você.
+> Nenhuma compra. Nenhum pedido. Nenhum código.
+(Ninguém entrega o que ninguém comprou. A transportadora de verdade não sabe nem que eu existo.)
+@anota b5_rastreio_oficial
+@vai b05_grupo
+
+=== b05_rastreio_clone
+> O e-mail da loja da TV de R$ 899 tem um "número do pedido" e nenhum código de rastreio. O site da loja, desde ontem, mostra uma página em branco.
+> E a mensagem de agora não fala em pedido nenhum, nem em loja nenhuma.
+(Uma loja que sumiu do ar não despacha TV. E uma transportadora de verdade diria de qual pedido está falando.)
+@anota b5_rastreio_oficial
+@vai b05_grupo
+
+=== b05_rastreio_vendedor
+> A conversa com o "Vendedor Top 5 Estrelas" no aplicativo de mensagens termina num "já despachei, confia". No Vitrinão, como a compra foi fechada fora, não existe pedido nenhum.
+(Sem pedido na plataforma, sem rastreio na plataforma. Quem vai me dizer onde está a TV é quem não tem interesse nenhum em dizer a verdade.)
+@anota b5_rastreio_oficial
+@vai b05_grupo
+
+=== b05_link_pressa
+> Você toca no link antes de terminar de pensar. O dedo foi mais rápido que a cabeça. O dedo sempre é.
+@vai b05_link
+
+=== b05_link
+@musica tensao
+> Abre uma página amarela, com um caminhãozinho animado e a palavra "RASTREIO" bem grande.
+@desafio b5_pagina_rastreio -> b05_link_acerto | b05_link_erro
+
+=== b05_link_acerto
+(Endereço que não é de transportadora nenhuma, "seu objeto" sem dizer qual, um CPF pedido para "liberar", um Pix para pessoa física e um contador. Fechei a aba. Dezenove reais não é nada. Os meus dados são outra coisa.)
+@muda tecnica+1
+@anota b5_rastreio_oficial
+@vai b05_grupo
+
+=== b05_link_erro
+(Tem o caminhãozinho, tem a palavra "rastreio", tem o cadeado. Deve ser de verdade.)
+@vai b05_pagar
+
+=== b05_pagar
+? A página pede o CPF e mostra um Pix copia e cola. Restam poucos minutos no contador da página.
+* Fechar a aba e ir conferir com calma no aplicativo de quem vendeu -> b05_rastreio_real {minutos-5 paciencia+1}
+* Pagar os R$ 19 no Pix e acabar logo com isso -> b05_pagou
+** Pagar e ainda colocar o endereço completo, para a entrega não falhar de novo -> b05_pagou {paciencia-1 marca:deu_endereco_taxa}
+
+=== b05_pagou
+@som dinheiro
+@muda economia-19
+@marca pagou_taxa_reentrega
+> Você cola o código no aplicativo do banco. O nome de quem recebe aparece pequenininho: um nome de pessoa, com sobrenome comprido. Nada de transportadora.
+> Você confirma mesmo assim. Dezenove reais.
+@som notificacao
+> Dois minutos depois, outra mensagem do mesmo número.
+@zap "SMS"
+ENTREGADOR: TRANSPORTADORA: Pagamento recebido. Identificamos pendencia de TAXA DE ARMAZENAGEM de R$ 147,00 por atraso na retirada.
+ENTREGADOR: Regularize em 15 min para evitar a DEVOLUCAO do objeto: encurta.li/rEntr3g4
+@zap fim
+@muda minutos=15
+(Primeiro dezenove. Agora cento e quarenta e sete. Golpe de taxa é escada: cada degrau parece pequeno.)
+? O contador recomeçou.
+* Parar aqui. Não pagar mais nada e ligar para o banco -> b05_banco_ja {tecnica+1}
+* Pagar a armazenagem também, já que pagou a primeira -> b05_pagou_dois
+* Parar de pagar, mas deixar para resolver depois, porque é domingo -> b05_grupo {paciencia-1}
+
+=== b05_pagou_dois
+@som dinheiro
+@muda economia-147 paciencia-1
+> Você paga. O mesmo nome de pessoa com sobrenome comprido.
+> Cinco minutos depois: "Taxa de desembaraço: R$ 289,00".
+(Desembaraço. Eu estou é embaraçada. Não pago mais nem um centavo.)
+@vai b05_banco_decide
+
+=== b05_banco_decide
+? O celular continua tremendo com mensagens do mesmo número.
+* Ligar agora para o banco, pelo número do verso do cartão -> b05_banco_ja {tecnica+1}
+* Bloquear o número e resolver depois -> b05_grupo
+
+=== b05_banco_ja
+@musica misterio
+> Você liga para o número impresso no verso do cartão. Não o número da mensagem. Não o número de nenhum site. O do verso.
+> Depois de uma musiquinha de espera que parece tocar desde 2015, uma atendente cansada atende.
+EU: Eu fiz um Pix para um golpe agora há pouco. Uma taxa de entrega falsa.
+> A atendente registra a contestação do Pix e explica que o banco aciona o banco de quem recebeu para tentar bloquear o valor. Não é garantia, mas quanto mais rápido, melhor.
+(Avisei o banco pelo canal oficial, pedi a devolução e guardei o número do protocolo. Agora é torcer e não pagar mais nada.)
+@marca pediu_devolucao_pix
+@anota b5_devolucao_pix
+@vai b05_grupo
+
+=== b05_grupo
+@musica alegre
+@som mensagem
+@zap "Família Ademar ⚽📺"
+EU: [foto] print da mensagem da transportadora
+EU: alguém recebeu isso? taxa de reentrega
+DONA_NICE: Recebi ontem minha filha!!! Paguei na hora
+DONA_NICE: Tô esperando um jogo de panelas que vi na TV. Antiaderente de verdade
+PAI: Eu recebi também. Não comprei nada. Achei que era multa do ônibus
+KEVIN: kkkkkk pai o senhor aposentou faz 4 anos
+@se marca:kevin_parou_de_mandar_link -> b05_grupo_kevin_novo
+KEVIN: eu paguei a minha tbm, é só 19 conto
+KEVIN: aproveitando: link de fone sem fio a 9,90 👇👇👇
+@zap fim
+(O Kevin pagou. A Dona Nice pagou. O pai achou que era multa de um ônibus que ele não dirige desde 2022.)
+@muda rel_kevin-1
+@vai b05_dona_nice
+
+=== b05_grupo_kevin_novo
+KEVIN: não paga isso não, é golpe
+KEVIN: entrega de verdade tem código de rastreio da compra, a gente confere no app da loja
+KEVIN: aprendi esse fim de semana com uma pessoa aí 👀
+@zap fim
+(Quem diria. O Kevin, que mandava quarenta links por dia, agora manda aviso.)
+@muda rel_kevin+1
+@vai b05_dona_nice
+
+=== b05_dona_nice
+@fundo sala_familia
+@som porta
+> 7h50. Alguém bate palma no portão. Bate palma do jeito que só vizinha de trinta anos bate: três vezes, rápido, e já entrando.
+@entra dona_nice assustada esquerda
+DONA_NICE: Menina! Eu paguei aquela taxa ontem no cartão. Hoje de manhã chegou uma compra de R$ 37 numa farmácia de outro estado. Eu não fui a farmácia nenhuma de outro estado. Eu mal vou à daqui!
+@se marca:pagou_taxa_reentrega -> b05_dona_nice_junto
+? A Dona Nice está com o celular numa mão e o cartão na outra, tremendo.
+* Ajudar a Dona Nice a bloquear o cartão pelo aplicativo e ligar para o banco dela no número do verso -> b05_nice_ajuda {etica+1 rel_dona_nice+2}
+* Dizer que ela devia ter conferido antes de pagar -> b05_nice_bronca {rel_dona_nice-1}
+** Pedir ao pai para fazer um café para ela enquanto você ajuda -> b05_nice_ajuda {etica+1 rel_dona_nice+2 rel_pai+1}
+
+=== b05_dona_nice_junto
+EU [envergonhada]: Dona Nice, eu também paguei. Hoje cedo.
+DONA_NICE: Você também? Você que trabalha com atendimento?
+EU: Pois é. Golpe não escolhe currículo.
+? Ela solta uma gargalhada nervosa e se senta no sofá.
+* Ajudar a Dona Nice a bloquear o cartão e, juntas, ligar para os bancos -> b05_nice_ajuda {etica+1 rel_dona_nice+2}
+* Deixar ela resolver sozinha e cuidar do seu -> b05_nice_bronca
+
+=== b05_nice_ajuda
+> Você senta do lado dela. Primeiro, o cartão é bloqueado pelo aplicativo do banco, que ela tinha instalado e nunca tinha aberto.
+> Depois, a ligação para o número do verso do cartão. Ela conta tudo: a mensagem, o link, a compra da farmácia.
+> O atendente bloqueia o cartão de vez, abre a contestação da compra de R$ 37 e avisa que um cartão novo chega em alguns dias.
+DONA_NICE [feliz]: Ele disse que eu fiz certo de ligar logo. Ele disse "a senhora foi rápida". Eu! Rápida!
+(Se ela tivesse esperado a fatura, seriam dez farmácias de dez estados.)
+@vai b05_fim
+
+=== b05_nice_bronca
+DONA_NICE [brava]: Menina, eu tenho setenta e um anos. Conferir eu confiro o troco da padaria. Isso aqui eu não sei conferir.
+> Ela vai embora pisando firme. Da janela, você vê o Seu Ademar indo atrás dela com o celular na mão, para ajudar.
+(Ninguém nasce sabendo conferir mensagem. Eu mesma não sabia anteontem.)
+@vai b05_fim
+
+=== b05_fim
+@fundo casa_cozinha
+@musica misterio
+> 8h10. O café esfriou. O contador da mensagem chegou a zero e nada aconteceu. Nenhum objeto foi devolvido a remetente nenhum. Não existia objeto.
+@muda minutos=0
+(A transportadora de verdade avisa pelo aplicativo ou pelo site de quem vendeu, com o código de rastreio da compra. Se eu quiser saber de uma entrega, eu vou lá. Eu não vou pelo link.)
+@sai todos
+@vai b06_inicio

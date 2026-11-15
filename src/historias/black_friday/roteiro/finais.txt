@@ -1,0 +1,166 @@
+# Parte 2, finais. A ordem dos @se define a prioridade.
+
+=== fim_escolha
+@se !marca:comprou_na_megalar e economia<=600 -> fim_limpou
+@se marca:caiu_site_clone e !marca:pediu_devolucao_pix e !marca:contestou_cartao -> fim_site_clone
+@se marca:dados_cartao_expostos e !marca:contestou_cartao -> fim_cartao
+@se marca:passou_dados_sac_falso e !marca:contestou_cartao -> fim_cartao
+@se marca:contestou_cartao e marca:fez_bo -> fim_metade
+@se marca:pediu_devolucao_pix e marca:fez_bo e marca:caiu_site_clone -> fim_metade
+@se marca:pediu_devolucao_pix e marca:fez_bo e marca:pagou_pix_desconhecido -> fim_metade
+@se marca:pediu_devolucao_pix e marca:fez_bo e marca:fechou_fora_plataforma -> fim_metade
+@vai fim_decisao
+
+=== fim_decisao
+@fundo casa_cozinha
+@musica alegre
+> Segunda-feira, 7h. O despertador toca. A Black Friday acabou. Começou a Cyber Monday, que é a mesma coisa com outro nome e mais e-mails.
+? O fim de semana mais longo do comércio eletrônico ficou para trás. O que fica dele?
+* A TV nova na parede e o dinheiro onde devia estar -> fim_tv_nova [se marca:comprou_na_megalar e !marca:caiu_site_clone e !marca:pagou_pix_desconhecido e !marca:caiu_boleto e !marca:dados_cartao_expostos e !marca:passou_dados_sac_falso e !marca:fechou_fora_plataforma]
+* O vídeo do Kevin, que não para de tocar no celular -> fim_kevin [se marca:kevin_video_anti_golpe]
+* A conversa com o pai, no sofá, depois do apito final -> fim_presente [se marca:desistiu_da_tv e rel_pai>=2]
+* O bolo de fubá e as opiniões da Dona Nice -> fim_nice [se marca:assistiu_na_dona_nice]
+* Guardar o celular na gaveta e ir trabalhar -> fim_padrao
+
+=== fim_padrao
+@se marca:assistiu_na_dona_nice -> fim_nice
+@se marca:comprou_na_megalar e marca:contestou_cartao -> fim_metade
+@se marca:comprou_na_megalar e marca:pediu_devolucao_pix e marca:fez_bo -> fim_metade
+@se marca:comprou_na_megalar -> fim_tv_nova
+@vai fim_presente
+
+# ===================== TV NOVA E DINHEIRO SALVO =====================
+
+=== fim_tv_nova
+@musica final_bom
+@fundo sala_familia
+@sai todos
+> Uma semana depois.
+> A TV nova está na parede da sala. A de tubo foi para o quarto do Seu Ademar, com a palha de aço e tudo, "para os jogos da segunda divisão".
+@entra pai feliz direita
+PAI: Filha, essa TV tem um negócio de aplicativo. Apareceu uma mensagem dizendo que eu ganhei um prêmio.
+EU: E o senhor fez o quê?
+PAI: Desliguei e fui ver no site da loja, digitando. Não tinha prêmio nenhum. Você me ensinou.
+> No e-mail, a nota fiscal, o pedido e o termo de garantia, numa pasta chamada "TV DO PAI". O prazo de sete dias para se arrepender passou sem ninguém se arrepender.
+@entra paty feliz esquerda
+PATY: E a fatura?
+EU: Uma compra só. A minha. No cartão virtual, que eu já apaguei.
+(O preço que fazia sentido, a loja que tinha nome e CNPJ, o endereço que eu digitei. Chato. Lindo.)
+@final tv_nova_e_dinheiro_salvo
+
+# ===================== KEVIN, CAÇADOR DE GOLPES =====================
+
+=== fim_kevin
+@musica final_bom
+@fundo sala_familia
+@sai todos
+> Três meses depois.
+> O perfil do Kevin não tem mais link de oferta. Tem vídeo de um minuto, com a camisa do time, desmontando golpe do lado de quem se defende: o site com endereço parecido, o boleto com beneficiário estranho, a taxa de entrega, o "Atendimento Oficial" no privado.
+@entra kevin feliz centro
+KEVIN: Mana. Doze mil seguidores. Doze mil!
+EU: E quantos links de cupom?
+KEVIN: Zero. Agora quando alguém me manda link, eu confiro o endereço letra por letra. Ao vivo. A galera ama.
+@som notificacao
+> Um comentário no vídeo mais recente: "Meu avô ia pagar a taxa de reentrega. Mostrei seu vídeo. Ele ligou no banco." O Kevin lê em voz alta três vezes.
+KEVIN [pensativa]: O primeiro vídeo foi sobre a loja que quase pegou você. Você é a minha história preferida.
+(Ele mandava quarenta links por dia. Agora manda um aviso por dia. E o aviso viaja mais longe que o link.)
+@final kevin_virou_caca_golpe
+
+# ===================== O PRESENTE ERA OUTRO =====================
+
+=== fim_presente
+@musica final_bom
+@fundo sala_tv_velha
+@sai todos
+> Duas semanas depois, num sábado sem promoção nenhuma.
+> Você e o Seu Ademar vão juntos até a loja da MegaLar no shopping. Ele mexe em cada TV como quem escolhe melancia na feira.
+@entra pai feliz direita
+PAI: Essa aqui. Não é a maior. Mas tem o vermelho do time mais vermelho.
+> Preço normal, sem contador, sem cupom, no cartão. A nota fiscal ele mesmo guarda, dobrada na carteira, junto com a foto da sua mãe.
+> A TV de tubo vai para a casa de praia de um primo, com a palha de aço embrulhada em jornal. Aposentadoria digna.
+PAI: Sabe o que foi o melhor presente, filha? Aquela final. Você do lado, o Kevin gritando errado.
+EU: O senhor disse isso umas dez vezes.
+PAI: E vou dizer mais dez.
+(Eu passei um fim de semana procurando o presente com pressa. O presente estava no sofá, com calma.)
+@final o_presente_era_outro
+
+# ===================== NA SALA DA DONA NICE =====================
+
+=== fim_nice
+@musica alegre
+@fundo sala_familia
+@sai todos
+> Segunda-feira, 19h.
+> Não teve TV nova. A final foi na sala da Dona Nice, com toalha de crochê, o gato Galvão e bolo de fubá. E foi uma das melhores finais da sua vida.
+@entra dona_nice feliz esquerda
+DONA_NICE: Menina, vem cá. Apareceu no programa de vendas uma panela que frita sem óleo e ainda canta.
+EU: A senhora vai comprar?
+DONA_NICE: Vou ligar no número que eu achar no site da loja, digitando. E vou pagar no cartão. E se não cantar, eu tenho sete dias.
+> Ela perdeu a voz no segundo gol e ainda não recuperou. Fala sussurrando, o que não diminuiu a quantidade de opiniões.
+(Ninguém perdeu dinheiro nessa sala. A economia continua lá, esperando com calma uma TV que vai vir no tempo certo.)
+@final tv_da_dona_nice
+
+# ===================== METADE DE VOLTA =====================
+
+=== fim_metade
+@musica alegre
+@fundo agencia_banco
+@sai todos
+> Duas semanas depois.
+> A agência está cheia de gente com a mesma cara que você tinha no domingo. Você está do outro lado: veio buscar a resposta.
+@entra gerente feliz centro
+GERENTE: A senhora fez o que dava para fazer: avisou rápido, contestou, guardou tudo e fez o boletim. Uma parte voltou. A outra, infelizmente, não.
+EU: Metade, mais ou menos.
+GERENTE: Metade é muito, na Black Friday. A maioria chega aqui um mês depois, sem print e sem boletim.
+> Na saída, a Paty espera com dois cafés.
+@entra paty feliz direita
+PATY: E a TV?
+EU: Fica para o Natal. No site digitado, com CNPJ conferido e cartão virtual. Sem contador.
+(Eu caí. E depois eu agi. Golpe não pega gente burra. Pega gente com pressa. E quem tem pressa para pedir ajuda, recupera mais.)
+@final recuperou_metade
+
+# ===================== A TV QUE NUNCA EXISTIU =====================
+
+=== fim_site_clone
+@musica final_ruim
+@fundo quarto_madrugada
+@sai todos
+> Segunda-feira, 9h.
+> O site da TV de R$ 899 não abre mais. No lugar, uma página de erro. O número do pedido não leva a lugar nenhum. O e-mail volta.
+> Você nunca pediu a devolução do Pix. Achou que ia dar vergonha. Achou que não adiantava. Agora já faz tempo demais.
+@som notificacao
+> No grupo da família, a Dona Nice manda o link de uma "TV 75 polegadas por R$ 999, só hoje".
+(O contador regressivo estava certo: a oferta acabava mesmo. A loja também.)
+(Se eu tivesse ligado para o banco no domingo, talvez alguma coisa tivesse voltado. Talvez não. Agora eu nunca vou saber.)
+@final caiu_no_site_clone
+
+# ===================== DEZ MESES EM UM FIM DE SEMANA =====================
+
+=== fim_limpou
+@musica final_ruim
+@fundo casa_cozinha
+@sai todos
+> Segunda-feira, 7h. Você abre o aplicativo do banco antes de abrir o olho direito.
+> A economia de dez meses está ali, ou o que restou dela. Um Pix aqui, um boleto ali, uma taxa, uma oferta, uma compra que não era sua.
+> Nenhum parecia grande sozinho. Todos eram urgentes.
+@entra pai triste direita
+PAI: Filha, você está com uma cara...
+EU: Pai, eu perdi o dinheiro da sua TV.
+PAI: Que TV? A minha é ótima.
+> Ele senta do seu lado e não fala mais nada. Às vezes, não falar nada é o que um pai sabe fazer de melhor.
+(Golpe não pega gente burra. Pega gente com pressa. E eu tive pressa o fim de semana inteiro.)
+@final limpou_a_economia
+
+# ===================== FATURA DE SURPRESA =====================
+
+=== fim_cartao
+@musica final_ruim
+@fundo quarto_madrugada
+@sai todos
+> Terça-feira, 3h12.
+@som notificacao
+> "Compra aprovada: R$ 89,90." 3h40: "Compra aprovada: R$ 212,00." 4h05: "Compra aprovada: R$ 47,50." Uma de cada loja, uma de cada cidade.
+> Os dados do cartão foram para quem não devia: a página do cupom, a Jéssica do privado. E você deixou para ver depois.
+> Quando você finalmente liga para o número do verso do cartão, a fatura já tem uma página inteira de compras que não são suas. Algumas ainda dá para contestar. Outras, você vai ter que explicar com calma, uma por uma.
+(Empresa de verdade não pede o número, a validade, os três números de trás nem o código. Quem pede é quem vai usar.)
+@final cartao_clonado

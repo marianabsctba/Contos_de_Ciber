@@ -1,0 +1,234 @@
+=== b03_inicio
+@cap 3 "Seu cupom expira hoje"
+@fundo ponto_onibus
+@musica cidade
+> Sábado, 10h52. Ponto de ônibus, sol de rachar e uma senhora que conta para ninguém em especial que o ônibus "passou adiantado só de ruindade".
+> O plano de hoje é simples: ir ao shopping, ver as TVs com os próprios olhos, apertar o controle, perguntar preço para um ser humano.
+(Chega de anúncio. Chega de link. Hoje eu quero uma TV que eu possa chutar de leve, se precisar.)
+@se marca:caiu_boleto -> b03_inicio_pesado
+@se marca:caiu_site_clone -> b03_inicio_pesado
+@vai b03_sms
+
+=== b03_inicio_pesado
+(E quero entender quanto sobrou para o plano. Porque, do jeito que vai, o plano está virando um rádio de pilha.)
+@vai b03_sms
+
+=== b03_sms
+@som notificacao
+@zap "Mensagens"
+> 10h54
+> MEGALAR: {nome}, voce foi selecionada! Cupom de R$500 em TVs para clientes especiais. Expira HOJE. Resgate: curt.ink/MgL500
+> Responda SAIR para nao receber
+@zap fim
+@musica tensao
+(Meu nome. A MegaLar. Quinhentos reais. Em TV. Hoje. É como se o universo tivesse lido o meu histórico de busca.)
+(Ou como se alguém tivesse.)
+@desafio b3_sms_cupom -> b03_sms_acerto | b03_sms_erro
+
+=== b03_sms_acerto
+@som acerto
+(Link encurtado que esconde para onde vai. Cupom gigante para "cliente especial". Pressa de "expira hoje". E o meu nome, que está em vazamento de dados desde que eu me cadastrei na promoção do iogurte em 2017. Nome no SMS não prova nada.)
+@muda tecnica+1
+@anota b3_sms_cupom
+? O ônibus aparece no fim da avenida.
+* Abrir o aplicativo oficial da MegaLar e procurar o cupom lá dentro -> b03_app_oficial {tecnica+1}
+* Apagar o SMS e bloquear o número -> b03_apaga {paciencia+1}
+* Encaminhar para o Kevin com um aviso, antes que ele ache sozinho -> b03_avisa_kevin {rel_kevin+1}
+** Mostrar o SMS para a senhora do ponto, que claramente tem opinião sobre tudo -> b03_senhora {paciencia+1 etica+1}
+
+=== b03_sms_erro
+@som erro
+(É a MegaLar. Tem o meu nome. Eu tenho cadastro lá. Cupom para cliente especial existe, né? Eu sou cliente. Eu sou especial. Minha mãe sempre disse.)
+@muda minutos=15
+> Você toca no link sem querer e com querer ao mesmo tempo. A página abre antes do ônibus chegar.
+@vai b03_pagina
+
+=== b03_senhora
+> Você mostra a tela. A senhora tira os óculos do decote, põe na ponta do nariz e lê em voz alta, para o ponto inteiro.
+> "Cupom de quinhentos reais. Expira hoje." Ela devolve o celular.
+> "Minha filha, ninguém dá quinhentos reais para ninguém. Nem mãe. Quem dá é porque vai tirar mil."
+(Eu devia contratar essa senhora para a seguradora.)
+@vai b03_app_oficial
+
+=== b03_apaga
+> Você bloqueia o número e apaga a mensagem. Na hora, chega outra, de outro número, com o mesmo texto e um link diferente.
+(Eles têm mais número do que eu tenho paciência. Mas eu não vou clicar em nenhum.)
+@vai b03_app_oficial
+
+=== b03_avisa_kevin
+@zap "Kevin 🧢"
+EU: [foto] print do SMS do cupom de R$ 500
+EU: Se chegar isso pra você, não clica. É golpe. A MegaLar não manda cupom com link encurtado.
+KEVIN: chegou pra mim 3 vezes
+KEVIN: eu ia postar como "cupom secreto da madrugada"
+KEVIN: tá, não vou
+KEVIN: mas e se fosse verdade
+EU: Se fosse verdade, estaria no aplicativo da loja. Vou olhar lá agora.
+@zap fim
+@marca kevin_viu_sms
+@vai b03_app_oficial
+
+=== b03_app_oficial
+@musica cidade
+> No ônibus, sentada no banco de trás, aquele em cima do motor que esquenta igual chapa, você abre o aplicativo da MegaLar que você mesma instalou pela loja oficial de aplicativos.
+> Área "Meus cupons": um cupom de frete grátis acima de R$ 199 e um de 5% em pequenos eletrodomésticos.
+> Nenhum cupom de R$ 500. Nenhuma "cliente especial". Só a air fryer de sempre, sorrindo para você na página inicial.
+(Se a loja quisesse me dar um cupom, ela me dava aqui dentro. É de graça para ela. Ela não precisa de link encurtado para isso.)
+@muda tecnica+1
+@anota b3_entrar_pelo_oficial
+@vai b03_shopping
+
+=== b03_pagina
+@fundo ponto_onibus
+> A página parece a MegaLar. Mesmo vermelho, mesma moça sorrindo com sacola.
+> "PARABÉNS! Seu cupom de R$ 500 está reservado. Faça login para resgatar." Embaixo, um relógio: 14:59, 14:58...
+(Login. Tudo bem, eu tenho login na MegaLar. É só e-mail e senha. E depois...)
+@desafio b3_pagina_cupom -> b03_pagina_acerto | b03_pagina_erro
+
+=== b03_pagina_acerto
+@som acerto
+@marca clicou_cupom
+(O endereço não é megalar.com.br. A página quer minha senha da loja. Depois quer o número do cartão, a validade e o código de trás, "só para validar". Ninguém precisa do código de segurança para me dar um cupom.)
+> Você fecha a aba sem digitar nada.
+@muda tecnica+1
+@anota b3_sms_cupom
+@anota b3_dados_do_cartao
+? O ônibus encosta no ponto com um chiado de freio.
+* Abrir o aplicativo oficial da MegaLar e conferir se existe algum cupom de verdade -> b03_app_oficial
+* Denunciar o SMS e a página antes de subir no ônibus -> b03_denuncia_pagina {etica+1 minutos-2}
+
+=== b03_denuncia_pagina
+> No celular, você usa a opção de denunciar o número como spam e, no navegador, informa a página como enganosa.
+> No site oficial da MegaLar, na área de segurança, há um aviso fixo: "A MegaLar não envia cupons por SMS com links encurtados e nunca pede senha ou dados do cartão fora do nosso site e aplicativo."
+(Estava escrito. Lá dentro do site de verdade. Só que ninguém lê a área de segurança antes de cair.)
+@muda etica+1
+@vai b03_app_oficial
+
+=== b03_pagina_erro
+@som erro
+> Você digita o e-mail e a senha da MegaLar. A página agradece: "Login confirmado, {nome}!"
+> Depois, uma segunda tela: "Para liberar o cupom, valide a titularidade do cartão. Nenhum valor será cobrado."
+> Número do cartão. Validade. Código de segurança.
+@marca clicou_cupom
+? O relógio marca 09:12. O ônibus está virando a esquina.
+* Preencher o cartão e resgatar o cupom -> b03_preencheu {marca:dados_cartao_expostos paciencia-1}
+* Parar. Por que um cupom precisaria do código de trás do cartão? -> b03_para_no_cartao {tecnica+1 paciencia+1}
+** Resgatar AGORA, antes que o ônibus chegue e o cupom suma -> b03_preencheu {marca:dados_cartao_expostos minutos-1}
+
+=== b03_para_no_cartao
+(Um cupom é desconto. Desconto se dá. Não se valida com o código de trás do cartão. E eu acabei de dar a minha senha da MegaLar para uma página que não é a MegaLar.)
+> Você fecha a aba sem preencher o cartão.
+> E, no ônibus, abre o site oficial digitando o endereço, entra na sua conta e troca a senha. Liga a verificação em duas etapas, que estava desligada desde sempre.
+@muda tecnica+1
+@marca trocou_senha_megalar
+@anota b3_dados_do_cartao
+@anota b3_entrar_pelo_oficial
+@vai b03_shopping
+
+=== b03_preencheu
+> Você digita os dezesseis números de cor. A validade. Os três números de trás.
+> A página pensa. Pensa. "Erro no resgate. Tente novamente mais tarde."
+@som erro
+(Erro. Tudo bem, é Black Friday, o site deve estar cheio. Mas o cupom... e o meu cartão... e a minha senha...)
+> O ônibus para. Você sobe com o celular quente na mão.
+? No banco de trás, você olha de novo o endereço da página. Não termina em megalar.com.br.
+* Bloquear o cartão agora pelo aplicativo do banco e trocar a senha da MegaLar no site oficial -> b03_bloqueia {tecnica+2}
+* Deixar para lá. Deu erro, então não deve ter ido nada -> b03_deixa {paciencia-1}
+
+=== b03_bloqueia
+> No aplicativo do banco, você toca em "Cartões", escolhe o cartão e aperta o cadeado. "Cartão bloqueado."
+> Depois pede um cartão novo, com outro número, pelo próprio aplicativo. E, no site oficial da MegaLar, digitado, troca a senha e liga a verificação em duas etapas.
+(Os números que eu digitei naquela página agora são de um cartão morto. O golpista pode guardar de lembrança.)
+@desmarca dados_cartao_expostos
+@marca bloqueou_cartao_cupom
+@marca trocou_senha_megalar
+@muda tecnica+1
+@anota b3_dados_do_cartao
+@vai b03_shopping
+
+=== b03_deixa
+(Deu erro. Erro é erro. Ninguém rouba com erro.)
+(Né?)
+@anota b3_sms_cupom
+@vai b03_shopping
+
+=== b03_shopping
+@fundo shopping_corredor
+@musica alegre
+> 11h40. O shopping está lotado de gente com sacola, criança com balão e um Papai Noel tomando café gelado de canudinho.
+> Cartazes de "BLACK FRIDAY" em cada vitrine. Uma loja de colchões promete "até 70% de desconto" num colchão que, ontem, custava o dobro.
+(Até setenta por cento de quê? De um preço que alguém inventou na quarta-feira?)
+@vai b03_loja
+
+=== b03_loja
+@fundo loja_eletronicos
+> Na loja de eletrônicos, uma parede inteira de TVs mostra o mesmo vídeo de peixes coloridos. Os peixes são mais nítidos que o pai.
+> As etiquetas contam outra história: TV de 65 polegadas, R$ 3.899 a R$ 4.599. TV de 55, R$ 2.699. TV de 50, R$ 2.199.
+> Um vendedor de colete, com cara de quem já ouviu "mas na internet tá oitocentos" umas quarenta vezes hoje, se aproxima.
+(Oitocentos e noventa e nove. Quatro mil. Nenhuma loja do mundo perde três mil reais por TV para me fazer feliz.)
+@se marca:dados_cartao_expostos -> b03_loja_cartao
+@vai b03_loja_escolha
+
+=== b03_loja_cartao
+@som notificacao
+> O celular vibra. Mensagem do banco: "Tentativa de compra de R$ 12,90 em loja online. Não reconhece? Fale conosco pelo aplicativo."
+(Doze e noventa. Eu não comprei nada de doze e noventa. Alguém está testando se o meu cartão funciona.)
+? O coração dispara no meio da parede de TVs.
+* Abrir o aplicativo do banco agora, bloquear o cartão e avisar que não reconhece a compra -> b03_bloqueia_loja {tecnica+1}
+* Ignorar. Doze e noventa não é nada -> b03_loja_escolha {paciencia-1}
+
+=== b03_bloqueia_loja
+> Você abre o aplicativo do banco pelo ícone do celular, não pelo link de mensagem nenhuma. Bloqueia o cartão, marca a compra como não reconhecida e pede um cartão novo.
+(Compra pequena primeiro, para ver se passa. Depois vem a grande. Ainda bem que eu cortei no começo.)
+@desmarca dados_cartao_expostos
+@marca bloqueou_cartao_cupom
+@anota b3_dados_do_cartao
+@vai b03_loja_escolha
+
+=== b03_loja_escolha
+? O vendedor espera, com um sorriso profissional que já viu de tudo.
+* Perguntar quanto ele faz a TV de 65 à vista -> b03_vendedor_loja {paciencia+1}
+* Anotar os modelos e os preços para comparar depois, com calma -> b03_anota_precos {tecnica+1}
+* Contar para ele do SMS do cupom de R$ 500 -> b03_conta_vendedor {etica+1}
+** Sentar no sofá de demonstração, olhar a TV de 65 com os peixes e imaginar o pai na frente dela -> b03_sofa {rel_pai+1 paciencia+1}
+
+=== b03_vendedor_loja
+> "À vista, no Pix ou no débito, eu chego em R$ 3.799. Parcelado no cartão, fica no preço da etiqueta."
+> Ele baixa a voz: "E, moça, se alguém te oferecer essa TV por menos de três mil, não é promoção. É problema."
+(Até o vendedor sabe. Só o anúncio não sabe.)
+@vai b03_fim
+
+=== b03_anota_precos
+> No bloco de notas do celular, você faz uma tabela torta: modelo, polegadas, preço, se tem garantia, se o controle tem botão de futebol.
+> Embaixo, em maiúsculas: "PREÇO REAL DE TV DE 65: UNS QUATRO MIL. QUALQUER COISA MUITO MENOS É CONVERSA."
+@muda tecnica+1
+@marca anotou_precos
+@vai b03_fim
+
+=== b03_conta_vendedor
+> O vendedor ri, mas é riso cansado. "Hoje já vieram três pessoas aqui com esse cupom. Uma tinha passado o cartão. A gente manda ligar para o banco na hora, pelo aplicativo."
+> Ele aponta para um cartaz no caixa: "Não enviamos cupons por SMS. Desconfie."
+(O cartaz está ali o ano inteiro. A gente só lê quando quase cai.)
+@vai b03_fim
+
+=== b03_sofa
+> O sofá de demonstração é mais macio que o de casa e não gruda na perna.
+> Na TV de 65, os peixes nadam em tamanho real. Você imagina o pai ali, de camisa do time, narrando junto com o narrador.
+(Ele ia ficar tão perto da tela que ia ver o poro do goleiro. E ia dizer que a TV dele era ótima, só para não dar o braço a torcer.)
+@vai b03_fim
+
+=== b03_fim
+@fundo shopping_corredor
+@musica cidade
+@som mensagem
+> 12h30. Um e-mail chega. Assunto: "{nome}, você esqueceu algo no carrinho 😢".
+> É da MegaLar de verdade. Uma air fryer que você colocou no carrinho em agosto e abandonou. O e-mail diz: "Ela ainda está esperando por você."
+(Até a air fryer está carente. É o fim de semana mais emocional do comércio eletrônico.)
+@se marca:dados_cartao_expostos -> b03_fim_cartao
+(Um SMS com o meu nome, um cupom que não existe e uma página que queria o código de trás do meu cartão. Quanto mais pessoal parece, mais desconfiada eu tenho que ficar.)
+@vai b04_inicio
+
+=== b03_fim_cartao
+(Deu erro na página, e eu fiquei tranquila. Mas o erro não era da página. O erro era eu ter digitado.)
+> O cartão continua ativo no bolso. Você ainda não sabe, mas os números dele já estão em outro lugar.
+@vai b04_inicio

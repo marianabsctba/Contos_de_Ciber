@@ -10,6 +10,7 @@ Jogue em: https://marianabsctba.github.io/Contos_de_Ciber/
 - **Grupo da Família**: sexta, 18h47, a Tia Neide mandou R$ 4.800 para o "Juninho de número novo". Com o relógio correndo e boa parte da história dentro do celular, no grupo da família, você enfrenta oito golpes em um fim de semana até o almoço de 80 anos da Vó Dita. Oito finais.
 - **A DPO Apavorada**: a recepcionista da clínica mandou a planilha de pacientes no grupo do pilates. Você é a encarregada de dados há três dias, com prazo de três dias úteis para comunicar a ANPD e os titulares. Oito finais.
 - **Maquininha**: o motoboy das flores com "taxa de R$ 5,99" e visor rachado é só o começo. Um mês de golpes no balcão de uma pastelaria: comprovante falso, QR code colado por cima, falso técnico, boleto adulterado, compra por telefone e conta do delivery invadida. Oito finais.
+- **Black Friday do Desespero**: TV de 65 polegadas por R$ 899, só até meia-noite. Site clonado, boleto com desconto, cupom por SMS, vendedor que quer fechar pelo aplicativo de conversa e falso atendimento na rede social, com um navegador falso na tela para inspecionar cada página. Oito finais.
 
 ## Como funciona
 

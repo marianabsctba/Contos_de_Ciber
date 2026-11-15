@@ -1,0 +1,297 @@
+=== b08_inicio
+@cap 8 "A final do campeonato"
+@fundo sala_familia
+@musica festa
+> Domingo, 14h30. Faltam noventa minutos para a final do campeonato.
+> Da janela, a rua inteira já está vestida: bandeira na grade, foguete guardado para o primeiro gol, o vizinho da esquina testando a corneta desde as onze.
+(Dez meses de marmita, um fim de semana de pressa. Hoje é dia de vestir a camisa.)
+@roupa "A final do campeonato"
+@entra pai feliz direita
+PAI: Olha só. Vestiu a camisa. A sua mãe usava essa mesma, dois números maior, por cima da blusa de frio.
+@se marca:comprou_na_megalar -> b08_espera_tv
+@se marca:desistiu_da_tv -> b08_tubo_juntos
+@vai b08_tubo_falha
+
+=== b08_espera_tv
+@musica tensao
+> 14h50. Você abre o aplicativo da MegaLar pela décima vez. "Saiu para entrega". O mapinha mostra o caminhão a três ruas.
+@som porta
+> Um caminhão de verdade, com o nome da MegaLar pintado de verdade, para na frente do portão. O entregador confere o seu nome e o número do pedido que está no aplicativo. Ninguém pede taxa nenhuma.
+(Entrega de verdade: eu sei o que comprei, de quem comprei, e acompanhei pelo aplicativo da loja. Nenhum link. Nenhum Pix.)
+> Você confere a caixa antes de assinar: lacrada, sem amassado, modelo igual ao do pedido. A nota fiscal está colada do lado de fora, num envelope plástico.
+@anota b8_entrega_de_verdade
+PAI [surpresa]: Que caixa é essa? Filha. O que é isso?
+? O Seu Ademar olha para a caixa como quem olha para um ônibus novo no primeiro dia de linha.
+* Dizer a verdade: dez meses de marmita, para ele -> b08_pai_verdade {rel_pai+1}
+* Dizer que foi promoção, que estava baratinho -> b08_pai_promocao
+** Dizer que a TV de tubo pediu aposentadoria -> b08_pai_aposentadoria {rel_pai+1 paciencia+1}
+
+=== b08_pai_verdade
+EU: Dez meses, pai. Eu guardei um pouco todo mês. Era para hoje.
+> Ele não fala nada. Passa a mão na caixa. Tira os óculos, limpa na camisa, põe de volta.
+PAI: Você podia ter comprado uma coisa para você.
+EU: Eu comprei. Eu comprei o senhor reclamando que a imagem nova é "clara demais".
+@vai b08_instala
+
+=== b08_pai_promocao
+EU: Foi promoção, pai. Baratinho.
+PAI [pensativa]: Baratinho, essa caixa? Filha, eu dirigi ônibus trinta anos. Eu sei quando um passageiro está mentindo sobre o troco.
+EU: Tá. Foram dez meses de marmita.
+PAI: Agora sim.
+@vai b08_instala
+
+=== b08_pai_aposentadoria
+EU: A TV de tubo pediu aposentadoria, pai. Trinta anos de serviço. Igual ao senhor.
+PAI [feliz]: Ela merece. Mas ela vai ficar no quarto. Aposentado não vai para o lixo.
+@vai b08_instala
+
+=== b08_instala
+@fundo sala_familia
+@entra kevin feliz esquerda
+KEVIN: Deixa que eu instalo. Eu sou da internet.
+> Quarenta minutos, dois tutoriais, um parafuso que sobrou e ninguém sabe de onde, e a TV nova acende na parede da sala.
+@se marca:tv_de_50 -> b08_instala_50
+> Sessenta e cinco polegadas. O comentarista aparece do tamanho de um comentarista de verdade.
+PAI: Meu Deus. Dá para ver o suor dele.
+EU: Agora dá, pai.
+@vai b08_banco
+
+=== b08_instala_50
+> Cinquenta polegadas. O comentarista aparece maior do que o Seu Ademar jamais viu um comentarista.
+PAI: Meu Deus. Dá para ver o suor dele.
+EU: Agora dá, pai.
+@vai b08_banco
+
+=== b08_tubo_juntos
+@fundo sala_tv_velha
+@musica alegre
+> Na sala, a TV de tubo está ligada, com a palha de aço novinha na antena. O Kevin trocou hoje de manhã. Ele diz que é "atualização de firmware".
+EU: Pai, não tem TV nova. Eu desisti de comprar hoje.
+PAI [surpresa]: Desistiu? Graças a Deus. Eu estava com medo de você gastar o seu dinheiro comigo.
+EU: Eu quero comprar. Mas com calma, quando o senhor quiser e escolher junto comigo.
+PAI [feliz]: Então combinado. Hoje a gente vê nessa. Ela aguenta mais uma final. Ela é guerreira.
+@muda rel_pai+1
+@vai b08_nice_convite
+
+=== b08_tubo_falha
+@fundo sala_tv_velha
+@musica tensao
+> 15h40. Vinte minutos para o jogo. A TV de tubo, que aguentou três Copas e duas mudanças, escolhe este momento para virar uma tempestade de chuvisco.
+PAI: Calma. É a palha.
+> Ele ajeita a palha de aço. O chuvisco vira chuvisco com som.
+PAI [pensativa]: É o tempo. Está nublado.
+EU: Pai, o céu está azul.
+PAI: Nublado lá no estádio.
+@vai b08_nice_convite
+
+=== b08_nice_convite
+@som porta
+> Três palmas no portão, rápidas, já entrando.
+@entra dona_nice feliz esquerda
+@se rel_dona_nice>=2 -> b08_nice_grata
+DONA_NICE: Ademar! A sua TV está chiando de lá de casa. Vem todo mundo ver na minha. É de cinquenta e cinco, comprei num programa de vendas. Tem bolo.
+@vai b08_nice_decide
+
+=== b08_nice_grata
+DONA_NICE: Ademar! Vem todo mundo ver o jogo lá em casa. A menina me ajudou hoje cedo com o cartão, eu fiz bolo de fubá em agradecimento. E a minha TV é de cinquenta e cinco.
+EU: A senhora não precisava, Dona Nice.
+DONA_NICE: Precisava. O moço do banco disse que eu fui rápida. Eu nunca fui rápida em nada na vida.
+@vai b08_nice_decide
+
+=== b08_nice_decide
+? O pai olha para a TV de tubo. Depois para o portão. Depois para você.
+* Aceitar e levar todo mundo para a sala da Dona Nice -> b08_na_nice {rel_dona_nice+1}
+* Agradecer e ficar com a TV de tubo, do jeito que o pai gosta -> b08_fica_tubo {rel_pai+1}
+** Pedir ao pai para dar o famoso tapa de lado na TV, do jeito que ele ensinou -> b08_tapa {paciencia+1}
+
+=== b08_tapa
+PAI: Isso aqui é técnica, filha. Não é força. É respeito.
+> Ele dá um tapa seco na lateral da TV. A imagem volta, nítida, como se nunca tivesse saído.
+PAI [feliz]: Trinta anos. Trinta anos de técnica.
+DONA_NICE: Então eu trago o bolo para cá.
+@vai b08_banco
+
+=== b08_fica_tubo
+EU: Obrigada, Dona Nice. Acho que hoje o pai quer a TV dele.
+DONA_NICE: Então eu trago o bolo para cá. E a minha opinião.
+> A imagem continua com chuvisco. Ninguém liga muito.
+@vai b08_banco
+
+=== b08_na_nice
+@marca assistiu_na_dona_nice
+@fundo sala_familia
+@musica festa
+> A sala da Dona Nice tem toalha de crochê em cima da TV, um gato que se chama Galvão e uma mesa com bolo de fubá, café e pão de queijo.
+> A TV de cinquenta e cinco brilha. O Seu Ademar senta na poltrona da frente e não admite em voz alta que a imagem é melhor.
+PAI: A minha tem mais personalidade.
+DONA_NICE: A sua tem palha de aço, Ademar.
+@vai b08_banco
+
+=== b08_banco
+@musica misterio
+@se marca:pediu_devolucao_pix -> b08_pix_volta
+@vai b08_cartao_check
+
+=== b08_pix_volta
+@som notificacao
+> 15h55. Uma notificação do aplicativo do banco, o de verdade, com o protocolo que você guardou: "Atualização da sua contestação de Pix".
+@se marca:caiu_site_clone -> b08_pix_metade
+@se marca:pagou_pix_desconhecido -> b08_pix_metade
+@se marca:fechou_fora_plataforma -> b08_pix_metade
+> O banco de quem recebeu conseguiu bloquear os dezenove reais da primeira taxa. Eles voltam para a sua conta.
+@muda economia+19
+(Dezenove reais. Não paga uma pizza. Mas é a prova de que pedir rápido funciona.)
+@vai b08_cartao_check
+
+=== b08_pix_metade
+> O banco de quem recebeu conseguiu bloquear parte do que ainda estava na conta. R$ 450 voltam para você. O resto já tinha saído.
+@muda economia+450
+(Metade. Porque eu pedi no mesmo dia. Se eu pedisse na semana que vem, talvez não sobrasse nada.)
+@vai b08_cartao_check
+
+=== b08_cartao_check
+@se marca:contestou_cartao -> b08_jogo
+@se marca:dados_cartao_expostos -> b08_fatura_pinga
+@se marca:passou_dados_sac_falso -> b08_fatura_pinga
+@vai b08_jogo
+
+=== b08_fatura_pinga
+@musica tensao
+@som notificacao
+> O aplicativo do banco apita de novo. "Compra aprovada: R$ 297,00, loja de eletrônicos online." Depois outra, de R$ 64, numa plataforma de música.
+@muda economia-361
+(Mais uma. E mais uma. Eu deixei para ver depois, e o depois chegou antes do jogo.)
+@vai b08_jogo
+
+=== b08_jogo
+@musica festa
+@sai dona_nice
+> 16h. O hino. A família toda de pé, mão no peito. O Kevin errando a letra com toda a convicção do mundo.
+@se marca:comprou_na_megalar -> b08_hino_tv_nova
+@vai b08_primeiro_tempo
+
+=== b08_hino_tv_nova
+> Na tela nova, dá para ver a bandeira tremendo e o rosto de cada jogador. O Seu Ademar canta baixinho. No último verso, a voz dele falha.
+PAI: É a cebola. Do vinagrete da Paty.
+EU: Pai, o vinagrete está na cozinha.
+PAI: É uma cebola forte.
+@vai b08_primeiro_tempo
+
+=== b08_primeiro_tempo
+> Primeiro tempo: um gol para cada lado, um pênalti não marcado e a opinião da Dona Nice sobre o corte de cabelo de cada atacante, transmitida pelo grupo da família.
+@zap "Família Ademar ⚽📺"
+DONA_NICE: Esse camisa 9 precisa de um pente urgente
+PAI: Nice o juiz roubou e a senhora falando de pente
+DONA_NICE: Uma coisa não impede a outra Ademar
+@se marca:kevin_parou_de_mandar_link -> b08_zap_sem_link
+KEVIN: CUPOM DE INTERVALO 🔥🔥 camisa oficial a 29,90 👇
+KEVIN: encurta.li/c4m1s4
+@zap fim
+(Camisa oficial a vinte e nove e noventa. Link encurtado. Intervalo de jogo. Kevin.)
+@vai b08_intervalo
+
+=== b08_zap_sem_link
+KEVIN: hoje não tem link 🙏 só torcida
+@zap fim
+@vai b08_intervalo
+
+=== b08_intervalo
+@musica alegre
+@entra kevin pensativa esquerda
+> Intervalo. O Kevin senta do seu lado com o celular na mão e uma cara que você conhece desde que ele tinha cinco anos: a cara de quem quer pedir uma coisa.
+KEVIN: Mana. Os meus 800 seguidores só recebem link de oferta. Metade dos links era golpe, né?
+EU: Não sei se metade. Mas vários.
+KEVIN: E se eu fizer um vídeo contando tudo o que aconteceu com você esse fim de semana? Sem link. Só aviso.
+? O Seu Ademar está na cozinha, buscando mais café. O segundo tempo começa em doze minutos.
+* Ajudar o Kevin a gravar o vídeo agora, rápido, antes do segundo tempo -> b08_video
+* Pedir para o Kevin largar o celular e ficar com o pai no segundo tempo -> b08_sem_celular {rel_pai+1}
+** Deixar o Kevin postar o quadragésimo primeiro link de cupom do dia -> b08_link41 {rel_kevin-1}
+
+=== b08_video
+@musica misterio
+KEVIN: Beleza. Qual é a primeira dica? Eu ia falar do cadeado.
+@desafio b8_roteiro_kevin -> b08_video_acerto | b08_video_erro
+
+=== b08_video_acerto
+EU: Cadeado no navegador só quer dizer que a conexão é cifrada. O site do golpe também tinha cadeado. O que vale é o endereço, letra por letra, digitado por você.
+KEVIN: Mano. Isso é melhor que cupom.
+@muda tecnica+1 rel_kevin+1
+@vai b08_video_grava
+
+=== b08_video_erro
+KEVIN: Então eu falo que cadeado é garantia?
+EU: Não, peraí. Eu errei. O site falso também tinha cadeado. Cadeado só diz que a conversa entre o celular e o site é cifrada. Não diz quem está do outro lado.
+KEVIN: Ainda bem que a gente conferiu antes de postar.
+@vai b08_video_grava
+
+=== b08_video_grava
+@marca kevin_video_anti_golpe
+> Vocês gravam um vídeo de um minuto, no corredor, com a camisa do time e a TV ao fundo. Endereço digitado, preço que faz sentido, cartão virtual, taxa de entrega se confere no aplicativo da loja, atendimento de verdade não pede código, e quando cair: banco, contestação, boletim.
+@som notificacao
+> O Kevin posta. Antes do segundo tempo, o vídeo tem mais visualizações que o Kevin tem seguidores.
+KEVIN [feliz]: Mana. Comentaram: "minha mãe ia pagar a taxa de entrega agora". Agora!
+@anota b8_avisar_os_outros
+@vai b08_segundo_tempo
+
+=== b08_sem_celular
+EU: Kevin. Larga isso. O pai quer a gente no sofá.
+KEVIN: Mas o vídeo...
+EU: O vídeo fica para amanhã. A final é hoje.
+> O Kevin guarda o celular no bolso. Depois tira. Depois guarda de novo, com um suspiro de quem doou um rim.
+@anota b8_avisar_os_outros
+@vai b08_segundo_tempo
+
+=== b08_link41
+> O Kevin posta: "CAMISA OFICIAL A 29,90, CORRE". Em cinco minutos, três seguidores perguntam se é confiável. Ele responde "confia".
+(Eu devia ter falado alguma coisa. Mas era intervalo, e eu estava cansada.)
+@muda etica-1
+@vai b08_segundo_tempo
+
+=== b08_segundo_tempo
+@musica festa
+@sai kevin
+> Segundo tempo. Quarenta minutos de unha roída. Aos quarenta e três, o gol.
+@som alarme
+> A rua explode. Foguete, corneta, panela. O Seu Ademar pula do sofá com uma agilidade que não demonstrava desde a década de noventa.
+@musica vitoria
+> Apito final. Campeão.
+PAI [feliz]: Campeão! Campeão, minha filha!
+> Ele te abraça forte, com a camisa suada e o cheiro de café.
+@vai b08_pai_conversa
+
+=== b08_pai_conversa
+@musica alegre
+> 18h. A rua ainda canta. Na sala, só você e o Seu Ademar, com as xícaras vazias.
+PAI: Filha. Esse fim de semana você ficou grudada nesse celular. Aconteceu alguma coisa?
+? Ele pergunta do jeito dele: olhando para a TV, para não pesar.
+* Contar tudo, os golpes, os quase golpes e o que você aprendeu -> b08_conta_tudo {rel_pai+1}
+* Dizer que foi só trabalho -> b08_so_trabalho
+** Perguntar a ele o que ele queria de presente de verdade -> b08_presente {rel_pai+1}
+
+=== b08_conta_tudo
+EU: Pai, eu quase caí em tudo que é golpe. Em alguns eu caí mesmo. Eu queria tanto te dar uma TV que eu esqueci de conferir as coisas.
+PAI [pensativa]: E agora você confere?
+EU: Agora eu confiro até a lasanha.
+PAI: Então valeu. Na minha época de ônibus, quem tinha pressa batia no poste. Quem batia uma vez, aprendia a frear.
+@vai b08_fim
+
+=== b08_so_trabalho
+EU: Foi só trabalho, pai.
+PAI: Hum. Trabalho que fez a Dona Nice vir aqui duas vezes e a Paty trazer vinagrete.
+(Ele sabe. Ele sempre sabe. Ele só espera eu contar.)
+@vai b08_fim
+
+=== b08_presente
+EU: Pai, o que o senhor queria de presente? De verdade.
+PAI: Isso aqui, filha. Vocês dois no sofá, o Kevin gritando errado, a Dona Nice opinando. Igual quando a sua mãe estava aqui.
+PAI: TV é bom. Mas eu queria era companhia para gritar gol.
+(Eu passei o fim de semana procurando o presente nas lojas. Estava no sofá.)
+@vai b08_fim
+
+=== b08_fim
+@sai todos
+@musica nenhuma
+> 22h. A casa está quieta. Na mesa da cozinha, a camisa do time, uma xícara e o celular, virado para baixo.
+> Três dias. Um anúncio, um boleto, um cupom, um vendedor cinco estrelas, uma taxa, uma Jéssica e uma final.
+(E agora, {nome}? O que fica desse fim de semana?)
+@vai fim_escolha

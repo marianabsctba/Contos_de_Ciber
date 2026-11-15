@@ -1,0 +1,320 @@
+=== b01_inicio
+@cap 1 "Faltam 20 minutos"
+@idade adulta
+@fundo ponto_onibus
+@musica cidade
+> Sexta-feira, 23h02. Ponto de ônibus da avenida, a última linha que passa no seu bairro antes de a cidade virar abóbora.
+> Você passou nove horas no atendimento da seguradora explicando que "o poste entrou na frente do carro" não é uma causa aceita pelo sistema.
+(Fim de semana. Final do campeonato no domingo. E o meu plano secreto, que já tem dez meses.)
+> No aplicativo do banco, uma caixinha com nome de projeto: "TV DO PAI 📺".
+@muda economia=2400
+@som dinheiro
+> R$ 2.400,00. Dez meses de marmita, de "não, obrigada, eu trouxe café de casa", de ônibus em vez de carro de aplicativo.
+(Domingo, quando o hino começar, o Seu Ademar vai estar na frente de uma TV de gente. Esse é o plano.)
+@vai b01_casa
+
+=== b01_casa
+@fundo sala_tv_velha
+@musica alegre
+> 23h21. Em casa. A sala cheira a pipoca de panela e a pomada de cânfora.
+@roupa "Chegando do trabalho"
+@entra pai feliz direita
+> No rack, ela reina: a TV de tubo de 29 polegadas, funda como uma geladeira, com uma antena de coelho enfeitada com palha de aço nas pontas.
+PAI: Chegou na hora, filha! Reprise do jogo de 98. Olha essa imagem!
+> Na tela, um borrão verde corre atrás de um borrão branco. Cada jogador tem um fantasma meio passo atrás.
+EU: Pai, tem dois de cada jogador.
+PAI: É replay ao vivo. TV moderna não faz isso.
+(Ele chama de "replay ao vivo". O moço da assistência chama de "sinal fantasma". Eu chamo de motivo para ter juntado dinheiro por dez meses.)
+PAI: E domingo, a final. A Dona Nice vem com o bolo. O Kevin traz o refrigerante, se lembrar.
+? O pai bate de leve no tampo da TV, como quem faz carinho num cavalo velho.
+* Dizer que a TV dele merece aposentadoria -> b01_pai_aposenta {rel_pai-1}
+* Elogiar o replay ao vivo e guardar o segredo -> b01_pai_segredo {rel_pai+1}
+* Perguntar, de leve, se ele não queria uma TV maior -> b01_pai_pergunta {paciencia+1}
+** Sentar do lado dele e assistir ao gol de 98 inteiro, com fantasma e tudo -> b01_pai_assiste {rel_pai+2}
+
+=== b01_pai_aposenta
+EU: Pai, essa TV já viu três Copas e duas moedas diferentes. Ela merece aposentadoria.
+PAI [brava]: Aposentado sou eu, e eu tô ótimo. Ela também.
+PAI: Trinta anos dirigindo ônibus, filha. Eu sei reconhecer quem ainda aguenta o tranco.
+(Ótimo. Ofendi o pai e a TV de uma vez só.)
+@vai b01_quarto
+
+=== b01_pai_segredo
+EU: Replay ao vivo. Tecnologia de ponta, pai.
+PAI [feliz]: Né? O Kevin fica falando de "quatro cá". Quatro o quê? Aqui são dois jogadores pelo preço de um.
+(Ele vai chorar quando vir a TV nova. Ou vai brigar comigo. Provavelmente os dois, nessa ordem.)
+@vai b01_quarto
+
+=== b01_pai_pergunta
+EU: Pai, e se fosse uma TV maior? Só para imaginar.
+PAI [pensativa]: Maior para quê? Para ver o juiz roubar em tamanho grande?
+PAI: Eu não preciso de nada, filha. Guarda o seu dinheiro.
+(Pai brasileiro: não quer presente, não quer festa, não quer que gaste. Depois mostra para a rua inteira.)
+@vai b01_quarto
+
+=== b01_pai_assiste
+> Você senta no sofá de napa, aquele que gruda na perna no verão. O pai aumenta o volume girando o botão, porque controle remoto é coisa de quem não confia nas próprias pernas.
+> O gol de 98 sai em câmera lenta, com chuvisco. O pai narra junto com o narrador, palavra por palavra.
+PAI [feliz]: Eu tava no ônibus nesse dia. Parei a linha para ouvir no rádio. Os passageiros desceram para comemorar comigo.
+(A TV é ruim. O que ele vê nela é ótimo.)
+@vai b01_quarto
+
+=== b01_quarto
+@sai pai
+@fundo quarto_madrugada
+@musica cidade
+> 23h38. Seu quarto. Pijama, cabelo preso com uma caneta, celular a três centímetros do nariz.
+> Você rola a rede social: bolo de caneca, vídeo de gato, "dez sinais de que você é rica de espírito", outro gato.
+@som notificacao
+> 23h40. Entre um gato e outro, um anúncio patrocinado.
+@musica tensao
+@muda minutos=20
+> "🔥 BLACK FRIDAY MEGALAR 🔥 Smart TV 65 polegadas 4K por R$ 899. SÓ ATÉ MEIA-NOITE. Restam 3 unidades."
+> Embaixo, a logo vermelha da MegaLar, igualzinha à do caminhão de entrega que passa na sua rua toda terça.
+(Oitocentos e noventa e nove. Uma TV de 65 pelo preço de uma air fryer das boas. Sobrava dinheiro para a air fryer.)
+@som mensagem
+@zap "Família Ademar ⚽📺"
+KEVIN: MANO
+KEVIN: MANO MANO MANO
+KEVIN: [foto] print do mesmo anúncio, com três setas vermelhas e um emoji de fogo
+KEVIN: TV 65 POR 899 NA MEGALAR CORRE QUE É BUG
+KEVIN: já mandei pros meus 800 seguidores, vcs são família mas meus seguidores vêm antes
+DONA_NICE: Kevin meu filho isso é verdade?
+DONA_NICE: Eu comprei uma panela que canta pela televisão, chegou ótima, só não canta
+PAI: Eu não preciso de televisão. A minha é ótima.
+KEVIN: pai ninguém falou em vc kkkkk
+@zap fim
+(O Kevin não sabe do plano. Ninguém sabe do plano. E o plano acabou de aparecer na minha tela com setinha vermelha.)
+> O contador do anúncio pisca. Faltam 20 minutos.
+? O dedo já está em cima do anúncio.
+* Tocar no anúncio e ver a oferta -> b01_site {minutos-1}
+* Fechar o anúncio e digitar www.megalar.com.br no navegador -> b01_oficial_primeiro {minutos-3 tecnica+1}
+* Mandar o print para a Paty, que trabalha no atendimento de uma loja grande -> b01_paty_cedo {minutos-4 rel_paty+1}
+** Comprar AGORA antes que acabe: tocar no botão "COMPRAR JÁ" e ir direto para o pagamento -> b01_compra_ja {minutos-1 paciencia-1}
+
+=== b01_compra_ja
+> Um toque. Nenhuma página de produto, nenhuma foto, nenhuma pergunta. Direto para uma tela vermelha: "PAGUE COM PIX E GARANTA A SUA TV".
+> No meio, um código Pix copia e cola e um relógio grandão: 00:18:40.
+(Eu nem vi o modelo da TV. Eu nem sei se tem controle remoto. Mas tem relógio, e o relógio está andando.)
+@vai b01_pix_tela
+
+=== b01_oficial_primeiro
+> Você fecha o anúncio e digita, letra por letra: w, w, w, ponto, m, e, g, a, l, a, r, ponto, com, ponto, b, r.
+> O site oficial da MegaLar abre. A mesma logo vermelha. A mesma TV de 65 polegadas.
+> Preço: R$ 4.299,00. Ou em 10 vezes no cartão. Na faixa de cima, "Black Friday: até 15% de desconto em TVs". Nenhum contador. Nenhum "restam 3 unidades".
+(Quatro mil duzentos e noventa e nove na loja. Oitocentos e noventa e nove no anúncio. A mesma loja não briga consigo mesma por três mil e quatrocentos reais.)
+@marca viu_preco_oficial
+> Por curiosidade, você volta ao anúncio e abre a oferta em outra aba, para comparar lado a lado.
+@vai b01_site
+
+=== b01_paty_cedo
+@zap "Paty 💜"
+EU: [foto] print do anúncio da TV de 65 por R$ 899
+EU: Paty, você que trabalha em loja grande. Isso existe?
+PATY: amiga
+PATY: oitocentos?
+PATY: isso é preço de Black Fraude
+PATY: tô no turno da madrugada, hoje já atendi umas dez pessoas que pagaram essa tv
+PATY: nenhuma delas comprou com a gente. elas compraram com o anúncio
+EU: Mas tem a logo, tem tudo.
+PATY: logo é imagem, qualquer um copia. abre a página e olha o endereço lá em cima, letra por letra
+PATY: e olha a forma de pagamento. loja grande aceita cartão
+@zap fim
+@marca paty_avisou_cedo
+(Ela está atendendo gente que caiu às onze e quarenta da noite. Eu vou abrir a página, mas com a lupa na mão.)
+@vai b01_site
+
+=== b01_site
+@fundo quarto_madrugada
+> A página carrega rápida. Linda. A mesma logo vermelha, o mesmo menu, a mesma fonte, a mesma moça sorrindo com uma sacola na mão.
+> No alto, um relógio vermelho corre em segundos. Embaixo, o botão verde de pagar. É idêntico até demais.
+@desafio b1_site_clone -> b01_site_acerto | b01_site_erro
+
+=== b01_site_acerto
+@som acerto
+(O endereço não é www.megalar.com.br. O preço é de outro planeta. O relógio está ali para eu não pensar. O "100% seguro" é uma figurinha que qualquer um cola. E só aceita Pix: dinheiro que sai em segundos, para quem eu nem sei quem é.)
+@muda tecnica+1
+@anota b1_anuncio_patrocinado
+@anota b1_cadeado
+> O contador continua correndo. Alguém, em algum lugar, está pagando agora.
+? A oferta é falsa. Mas ainda faltam uns minutos.
+* Denunciar o anúncio na rede social e a página como golpe -> b01_denuncia {minutos-3 etica+1}
+* Avisar o grupo da família antes que o Kevin espalhe mais -> b01_avisa_grupo {minutos-2}
+* Digitar o site oficial para ver o preço de verdade -> b01_compara {minutos-3} [se !marca:viu_preco_oficial]
+** Ficar olhando o contador até meia-noite, só para ver o que ele faz -> b01_espera_relogio {paciencia+2}
+
+=== b01_site_erro
+@som erro
+(Tem a logo, tem o cadeado, tem o selo de "Site 100% seguro". Tem até avaliação de cliente. Parece tudo em ordem.)
+> No botão de pagar, uma linha pequena: "Pagamento exclusivo via Pix. 5% de desconto adicional."
+@anota b1_cadeado
+? O relógio marca 00:13 e alguma coisa.
+* Pagar o Pix de R$ 899 antes que acabe -> b01_pix_tela {minutos-1}
+* Procurar a opção de cartão de crédito, que dá para contestar -> b01_sem_cartao {minutos-2 tecnica+1}
+* Copiar o nome da loja e pesquisar a reputação dela -> b01_reputacao {minutos-5 tecnica+1}
+* Ligar para a Paty, que deve estar acordada no turno -> b01_liga_paty {minutos-4 rel_paty+1} [se !marca:paty_avisou_cedo]
+
+=== b01_sem_cartao
+> Você procura. Rola a página. Abre o carrinho. Tenta "outras formas de pagamento".
+> Nada. Só Pix. Embaixo, um aviso em letra miúda: "Cartão indisponível na Black Friday por instabilidade do sistema".
+(A maior loja do país, numa sexta de Black Friday, sem aceitar cartão. Isso não é instabilidade. É escolha.)
+(Pix para loja que eu não conheço é dinheiro que sai em segundos e quase nunca volta sozinho. Cartão, pelo menos, eu posso contestar.)
+@muda paciencia+1
+@anota b1_pagamento_seguro
+@vai b01_desconfia
+
+=== b01_reputacao
+> Você copia "MegaLar Ofertas" e pesquisa.
+> Os primeiros resultados são do site oficial da MegaLar, com outro endereço. Mais embaixo, num site de reclamações de consumidores, uma página criada há dois dias: "Paguei a TV de 899 e o site sumiu". Já são 214 reclamações. Nenhuma resposta.
+(Duzentas e catorze pessoas com pressa. Eu quase fui a duzentas e quinze.)
+@muda tecnica+1
+@anota b1_pagamento_seguro
+@vai b01_desconfia
+
+=== b01_liga_paty
+> Ela atende no segundo toque, com o fone do trabalho ainda na cabeça.
+@entra paty pensativa direita
+PATY: Deixa eu adivinhar. TV de 65 por oitocentos e noventa e nove.
+EU: Como você sabe?
+PATY: Porque hoje eu já falei essa frase umas dez vezes. Olha o endereço lá em cima. Letra por letra.
+EU: megalar, traço, ofertas, ponto shop.
+PATY [brava]: A gente é ponto com ponto br, amiga. Desde sempre. Fecha isso.
+@sai paty
+@marca paty_avisou_cedo
+@vai b01_desconfia
+
+=== b01_desconfia
+(O relógio quer que eu pague. O site quer que eu pague. Ninguém quer que eu confira. Isso já diz muita coisa.)
+@anota b1_anuncio_patrocinado
+> Você fecha a aba do pagamento.
+@muda minutos-3 etica+1
+@vai b01_denuncia
+
+=== b01_compara
+> Você digita www.megalar.com.br. O site oficial mostra a mesma TV por R$ 4.299,00. Nenhum contador, nenhum "restam 3 unidades".
+(A loja de verdade não tem pressa. Quem tem pressa é quem precisa que eu pague antes de perceber.)
+@marca viu_preco_oficial
+@vai b01_denuncia
+
+=== b01_denuncia
+> No anúncio, você toca nos três pontinhos: "Denunciar anúncio", "Golpe ou fraude". Na página, usa a opção do navegador de informar site enganoso.
+(Não sei se vão tirar do ar hoje. Mas, se ninguém denuncia, o anúncio fica lá a noite inteira pescando gente.)
+@muda etica+1
+@anota b1_anuncio_patrocinado
+@vai b01_avisa_grupo
+
+=== b01_avisa_grupo
+@zap "Família Ademar ⚽📺"
+EU: Gente, não comprem essa TV de 899. O site não é da MegaLar.
+EU: O endereço é megalar-ofertas.shop. O oficial é megalar.com.br. Lá a mesma TV custa 4.299.
+KEVIN: mano tu é muito negativa
+KEVIN: é BLACK FRIDAY. o nome já diz, é preto, é escuro, é mistério
+DONA_NICE: Kevin preto é a cor do luto meu filho
+EU: Kevin, apaga o post antes que algum seguidor seu pague.
+KEVIN: já apaguei
+KEVIN: apaguei porque 3 seguidores me mandaram msg perguntando cadê a tv, não por sua causa
+PAI: O que é ponto shop?
+@zap fim
+@muda rel_kevin+1
+@vai b01_espera_relogio
+
+=== b01_espera_relogio
+> Você deixa a aba aberta, como quem fica de olho numa panela de pressão.
+> 23h57. 23h58. 23h59. No contador: 00:00:03. 00:00:02. 00:00:01.
+@vai b01_meia_noite
+
+=== b01_pix_tela
+@musica tensao
+> Você copia o código Pix e abre o aplicativo do banco. Toca em "Pix copia e cola". Cola.
+> O aplicativo mostra a tela de confirmação, aquela que todo mundo pula.
+> Valor: R$ 899,00. Recebedor: RM SOLUÇÕES DIGITAIS. Instituição: 999 BANCO DIGITAL S.A.
+(RM Soluções Digitais. Não é MegaLar. Mas vai ver é o nome da empresa que recebe para eles. Vai ver é assim mesmo. Vai ver...)
+? O dedo está em cima do botão "Confirmar".
+* Confirmar. Deve ser a empresa que recebe pela loja -> b01_pagou {economia-899 marca:caiu_site_clone marca:pagou_pix_desconhecido}
+* Cancelar. Quem recebe não é a loja -> b01_cancela_pix {tecnica+1 paciencia+1}
+
+=== b01_cancela_pix
+@som clique
+> Você toca em "Cancelar". O aplicativo pergunta se tem certeza. Você tem.
+(Quem recebe o dinheiro é quem aparece nessa tela. Não é o logo, não é o site, não é o anúncio. Se o nome não é da loja, o dinheiro não vai para a loja.)
+@anota b1_pagamento_seguro
+@vai b01_desconfia
+
+=== b01_pagou
+@som dinheiro
+> Pix enviado. R$ 899,00. A caixinha "TV DO PAI 📺" emagrece na hora.
+> Na página, confetes animados: "PEDIDO CONFIRMADO! Prazo de entrega: 15 a 30 dias úteis. Você receberá um e-mail."
+(Quinze a trinta dias úteis. A final é domingo.)
+@anota b1_pagamento_seguro
+> Você espera o e-mail. Atualiza a caixa de entrada. Atualiza de novo. Nada, nem no spam.
+@vai b01_espera_relogio
+
+=== b01_meia_noite
+@som alarme
+> 00h00. O contador chega a zero.
+> E volta para 00:20:00. Igualzinho. Embaixo, sem nenhuma vergonha: "Restam 3 unidades".
+@muda minutos=0
+@anota b1_contador
+@se marca:caiu_site_clone -> b01_meia_noite_pagou
+(Ele reiniciou. A oferta que acabava à meia-noite começou de novo à meia-noite. Não era um relógio. Era um empurrão.)
+@vai b01_fim
+
+=== b01_meia_noite_pagou
+@musica triste
+(Ele reiniciou. A oferta que acabava à meia-noite começou de novo. E o e-mail de confirmação não chegou.)
+(Eu paguei oitocentos e noventa e nove reais para um relógio.)
+> Você olha para a tela de confirmação do Pix, salva no celular. RM SOLUÇÕES DIGITAIS. 23h51.
+(Amanhã cedo eu vejo isso direito. Talvez seja demora do e-mail. Talvez a loja seja só bagunçada.)
+@vai b01_fim
+
+=== b01_fim
+@musica cidade
+@som mensagem
+@zap "Família Ademar ⚽📺"
+KEVIN: gente a tv acabou mas eu achei OUTRA loja
+KEVIN: amanhã eu mando, tem boleto com desconto
+DONA_NICE: Kevin vai dormir
+PAI: Boa noite. A minha TV continua ótima.
+@zap fim
+? 00h04. O grupo ainda pisca. O Kevin já está digitando outra coisa.
+* Responder o Kevin no grupo: "Kevin, para de mandar link" -> b01_fim_bronca {rel_kevin-1}
+* Chamar o Kevin no privado para conversar amanhã -> b01_fim_privado {rel_kevin+1 paciencia+1}
+** Silenciar o grupo por oito horas e dormir abraçada no travesseiro -> b01_fim_dorme {paciencia+1}
+
+=== b01_fim_bronca
+@zap "Família Ademar ⚽📺"
+EU: Kevin, para de mandar link. Por favor.
+KEVIN: nossa
+KEVIN: o povo pede cupom pra mim, eu ajudo, e ainda levo bronca
+KEVIN: amanhã eu mando o link só no meu perfil então
+@zap fim
+(Ótimo. Agora ele vai mandar para oitocentos desconhecidos em vez de quatro parentes.)
+@vai b01_fim_noite
+
+=== b01_fim_privado
+@zap "Kevin 🧢"
+EU: Ei. Amanhã toma café comigo antes de mandar qualquer link? Quero te mostrar uma coisa.
+KEVIN: é sobre a tv de 899?
+EU: É sobre a tv de 899.
+KEVIN: tá. mas se for palestra eu durmo
+@zap fim
+@marca combinou_cafe_kevin
+@vai b01_fim_noite
+
+=== b01_fim_dorme
+> Grupo silenciado. Celular virado para baixo. Ventilador no três.
+(Amanhã eu resolvo o Kevin. Hoje eu resolvo só o meu sono.)
+@vai b01_fim_noite
+
+=== b01_fim_noite
+@fundo quarto_madrugada
+@musica cidade
+> Da sala vem o som abafado da TV de tubo, ainda ligada no canal de esportes, e o ronco do Seu Ademar no sofá de napa.
+@se marca:caiu_site_clone -> b01_fim_noite_pagou
+(Faltavam vinte minutos. Agora faltam dois dias para a final. E a pressa continua sendo a arma de quem quer o meu dinheiro.)
+@vai b02_inicio
+
+=== b01_fim_noite_pagou
+> Na caixinha do banco, R$ 1.501,00.
+(Dois dias para a final. Mil quinhentos e um reais. E uma TV que talvez nunca saia de lugar nenhum.)
+@vai b02_inicio

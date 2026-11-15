@@ -90,7 +90,7 @@ export type Desafio =
       titulo: string;
       enunciado: string;
       /** moldura onde os trechos aparecem (padrão: mensagem) */
-      visual?: 'mensagem' | 'maquininha' | 'comprovante' | 'boleto' | 'email';
+      visual?: 'mensagem' | 'maquininha' | 'comprovante' | 'boleto' | 'email' | 'navegador';
       /** mensagem montada em trechos; os suspeitos precisam ser marcados */
       trechos: { texto: string; suspeito?: boolean; porque?: string }[];
       minimo: number;

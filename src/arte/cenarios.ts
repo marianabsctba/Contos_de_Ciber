@@ -3756,6 +3756,293 @@ function cozinhaPastelaria(): string {
   return c.fim(corpo);
 }
 
+// --- Black Friday do Desespero ----------------------------------------------
+
+function gramado(c: Cena, x: number, y: number, w: number, h: number): string {
+  let faixas = "";
+  for (let i = 0; i < 6; i++) faixas += ret(x + (w / 6) * i, y, w / 6, h, i % 2 ? "#2f9a3a" : "#38aa44");
+  return (
+    faixas +
+    ret(x, y, w, h * 0.12, "#1a2a3a", `opacity="0.7"`) +
+    ret(x + w * 0.5 - 1, y + h * 0.12, 2, h * 0.88, "#fff", `opacity="0.8"`) +
+    circ(x + w * 0.5, y + h * 0.56, h * 0.18, "none", `stroke="#fff" stroke-width="2" opacity="0.8"`) +
+    circ(x + w * 0.62, y + h * 0.7, Math.max(2, h * 0.04), "#fff") +
+    c.brilho(x + w / 2, y + h / 2, w * 0.6, "#bfffc0", 0.15)
+  );
+}
+
+function salaTvVelha(): string {
+  const c = new Cena("sala_tv_velha");
+  semear(7171);
+  const manta = c.padrao(60, 60, ret(0, 0, 60, 60, "#c0392b") + ret(0, 0, 60, 10, "#f1c40f") + ret(0, 30, 60, 6, "#2a6aa0") + ret(0, 46, 60, 4, "#fff"));
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#cfe0c8"], [1, "#b4ccaa"]])) +
+    ret(0, 800, 1080, 560, "#9ab890") +
+    ret(0, 792, 1080, 12, "#7a9a70") +
+    cam(`M860,0 C840,90 900,140 870,240`, "none", `stroke="#8a9a80" stroke-width="3" opacity="0.6"`) +
+    lampadaPendente(c, 540, 0, 90, "#fff3c4", 0.3) +
+    // flâmula de time inventado
+    linha(110, 170, 340, 170, "#7a5235", 6) +
+    cam(`M120,175 L330,175 L225,420 Z`, "#1a3a8a") +
+    cam(`M140,190 L310,190 L300,214 L150,214 Z`, "#fff") +
+    circ(225, 270, 40, "#fff") +
+    cam(`M225,240 L240,268 L270,270 L246,288 L254,316 L225,300 L196,316 L204,288 L180,270 L210,268 Z`, "#f1c40f") +
+    txt(225, 208, "TUPINAMBÁ F.C.", 18, "#1a3a8a", { peso: "bold" }) +
+    txt(225, 350, "CAMPEÃO 1994", 14, "#fff", { peso: "bold" }) +
+    // quadro com foto do pai com a taça (silhueta)
+    quadro(820, 200, 200, 240, "#c9a46a", ret(834, 214, 172, 212, "#9ac0d8") + pessoa(920, 426, 0.7, "#1a3a8a", "#8a5a3c") + cam(`M950,300 L990,300 L980,340 L960,340 Z`, "#f6d65a")) +
+    // calendário de mercadinho
+    calendario(420, 200, 150, "AÇOUGUE", "Boi Gordo", "2027") +
+    // relógio na parede
+    relogio(660, 320, 46, 3, 55) +
+    // rack
+    ret(220, 1000, 640, 40, "#6a4428") +
+    ret(240, 1040, 600, 300, "#5a3a20") +
+    ret(260, 1060, 270, 120, "#4a2e1a") +
+    ret(550, 1060, 270, 120, "#4a2e1a") +
+    // DVD velho e enfeites
+    rr(280, 1100, 220, 50, 6, "#2a2a2a") +
+    ret(300, 1118, 80, 10, "#4cff6a", `opacity="0.7"`) +
+    elip(680, 1150, 60, 20, "#9aa0a6") +
+    // TV de tubo enorme
+    rr(250, 600, 580, 420, 30, c.lin([[0, "#5a5a5e"], [1, "#2e2e32"]])) +
+    cam(`M300,600 L780,600 L740,520 L340,520 Z`, "#3e3e42") +
+    rr(280, 630, 440, 350, 40, "#111") +
+    rr(296, 646, 408, 318, 50, c.rad([[0, "#3a7a4a"], [0.8, "#1a4a2a"], [1, "#0a1a10"]])) +
+    // chuvisco + jogo
+    gramado(c, 330, 690, 340, 230) +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 90; i++) s += ret(entre(310, 690), entre(660, 950), entre(4, 10), 2, "#fff", `opacity="${entre(0.15, 0.5).toFixed(2)}"`);
+      return s;
+    })() +
+    rr(296, 646, 408, 318, 50, "#fff", `opacity="0.06"`) +
+    cam(`M320,670 L480,660 L330,820 Z`, "#fff", `opacity="0.1"`) +
+    // painel lateral da TV
+    ret(740, 660, 70, 300, "#3a3a3e") +
+    circ(775, 700, 14, "#222") +
+    circ(775, 750, 14, "#222") +
+    circ(775, 900, 6, "#ff3b3b") +
+    (() => {
+      let s = "";
+      for (let y = 790; y < 870; y += 12) s += ret(752, y, 46, 5, "#222");
+      return s;
+    })() +
+    // antena com palha de aço e fita
+    linha(480, 520, 400, 380, "#888", 5) +
+    linha(600, 520, 690, 360, "#888", 5) +
+    circ(400, 374, 22, "#cfd2d4", `stroke="#999" stroke-dasharray="3 3"`) +
+    circ(690, 354, 22, "#cfd2d4", `stroke="#999" stroke-dasharray="3 3"`) +
+    ret(520, 506, 40, 18, "#d8cfa0", `opacity="0.9"`) +
+    // toalhinha de crochê e bibelô sobre a TV
+    croche(540, 515, 260) +
+    elip(620, 505, 30, 14, "#f6d65a") +
+    // sofá com manta
+    rr(0, 1140, 220, 220, 30, "#7a5a3a") +
+    rr(0, 1100, 200, 120, 30, manta) +
+    rr(860, 1140, 220, 220, 30, "#7a5a3a") +
+    rr(880, 1090, 200, 130, 30, manta, `transform="rotate(4 980 1150)"`) +
+    // controle com fita durex
+    g(rr(900, 1060, 44, 110, 8, "#1a1a1a") + ret(894, 1100, 56, 20, "#f2ecc0", `opacity="0.75"`) + circ(922, 1078, 6, "#e63946"), `transform="rotate(20 922 1115)"`) +
+    // ventilador
+    ventiladorMesa(110, 1080, 0.55) +
+    piso(c, 1360, "#a8a090", "#78705e") +
+    ret(0, 1360, 1080, 560, ladrilho(c, "#b8a888", "#a09070", 80), `opacity="0.18"`) +
+    // chinelo largado
+    elip(420, 1560, 44, 18, "#2a6aa0", `transform="rotate(-20 420 1560)"`) +
+    elip(500, 1580, 44, 18, "#2a6aa0", `transform="rotate(14 500 1580)"`) +
+    `<path d="M405,1550 L430,1568 L420,1548" stroke="#fff" stroke-width="5" fill="none"/>`;
+  return c.fim(corpo);
+}
+
+function lojaEletronicos(): string {
+  const c = new Cena("loja_eletronicos");
+  semear(7272);
+  let paredeTv = "";
+  for (let r = 0; r < 3; r++) {
+    for (let k = 0; k < 4; k++) {
+      const w = 220;
+      const h = 130;
+      const x = 60 + k * 245;
+      const y = 300 + r * 160;
+      paredeTv += rr(x - 8, y - 8, w + 16, h + 16, 6, "#0a0a0c") + gramado(c, x, y, w, h);
+    }
+  }
+  const etiqueta = (x: number, y: number, de: string, por: string) =>
+    g(
+      cam(`M${x},${y} L${x + 150},${y} L${x + 150},${y + 90} L${x},${y + 90} L${x - 20},${y + 45} Z`, "#fff200") +
+        circ(x - 4, y + 45, 6, "#222") +
+        txt(x + 75, y + 30, `de ${de}`, 16, "#555", { extra: `text-decoration="line-through"` }) +
+        txt(x + 75, y + 68, `por ${por}`, 26, "#c0001a", { peso: "bold" }),
+      `transform="rotate(-6 ${x + 65} ${y + 45})"`,
+    );
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#e8ecf0"], [1, "#cfd6dc"]])) +
+    ret(0, 0, 1080, 90, "#f6f8fa") +
+    fluorescente(c, 80, 60, 260, 0.5) +
+    fluorescente(c, 410, 60, 260, 0.5) +
+    fluorescente(c, 740, 60, 260, 0.5) +
+    // letreiro da loja
+    ret(0, 110, 1080, 140, "#1a3a8a") +
+    txt(540, 205, "MEGALAR", 86, "#ffd23f", { peso: "bold" }) +
+    // parede de TVs
+    ret(30, 270, 1020, 510, "#1a1c22") +
+    c.brilho(540, 520, 600, "#7aff8a", 0.15, 300) +
+    paredeTv +
+    // faixa black friday
+    cam(`M-20,760 L1100,700 L1100,820 L-20,880 Z`, "#111") +
+    cam(`M-20,770 L1100,710 L1100,718 L-20,778 Z`, "#ffd23f") +
+    cam(`M-20,862 L1100,802 L1100,810 L-20,870 Z`, "#ffd23f") +
+    txt(540, 812, "BLACK FRIDAY", 76, "#ffd23f", { peso: "bold", rot: -3 }) +
+    // balcão expositor com TVs grandes
+    ret(0, 980, 1080, 380, "#2a2c34") +
+    ret(0, 970, 1080, 16, "#4a4c56") +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 3; i++) {
+        const x = 70 + i * 340;
+        s += ret(x + 130, 930, 20, 50, "#222") + ret(x + 80, 966, 120, 10, "#222") + rr(x, 830, 280, 110, 6, "#0a0a0c") + gramado(c, x + 8, 838, 264, 94);
+      }
+      return s;
+    })() +
+    etiqueta(110, 1010, "R$ 3.999", "R$ 2.499") +
+    etiqueta(450, 1020, "R$ 5.499", "R$ 3.799") +
+    etiqueta(790, 1010, "R$ 2.299", "R$ 1.799") +
+    placa(400, 1150, 280, 80, "#fff", [{ t: "12x sem juros*", tam: 26, cor: "#1a3a8a" }, { t: "*com juros", tam: 14, cor: "#888" }], { fonte: SANS }) +
+    // vendedor silhueta ao fundo (na lateral)
+    g(pessoa(990, 980, 1.05, "#c0001a", "#8a5a3c") + ret(960, 860, 60, 20, "#fff"), c.blur(1.5)) +
+    g(multidao(3, 40, 300, 980, 0.9, ["#3a3a5a", "#5a3a2a", "#2a4a3a"]), c.blur(3)) +
+    piso(c, 1360, "#e0e4e8", "#a8b0b8") +
+    g(ret(0, 1360, 1080, 300, c.lin([[0, "#fff", 0.45], [1, "#fff", 0]])), c.blur(6));
+  return c.fim(corpo);
+}
+
+function pontoOnibus(): string {
+  const c = new Cena("ponto_onibus");
+  semear(7373);
+  const corpo =
+    ret(0, 0, 1080, 1400, c.lin([[0, "#3a4a8a"], [0.45, "#d88aa0"], [0.75, "#ffc48a"], [1, "#ffe8c0"]])) +
+    estrelas(20, 0, 1080, 0, 260) +
+    circ(380, 820, 70, "#fff2c8") +
+    c.brilho(380, 820, 380, "#ffd09a", 0.55) +
+    nuvem(250, 420, 1, "#ffd0d8", 0.6, c.blur(4)) +
+    nuvem(780, 560, 0.8, "#ffe0c8", 0.6, c.blur(4)) +
+    // casario e morro ao fundo
+    g(morro(0, 1080, 850, 1000, 50, 5, "#6a5a8a") + predios(c, 0, 1080, 1000, 80, 220, "#5a4a6a", "#ffd27a", 0.12), c.blur(3)) +
+    // abrigo do ponto
+    ret(160, 560, 760, 30, "#3a4a5a") +
+    cam(`M140,560 L940,560 L920,520 L160,520 Z`, "#4a5a6a") +
+    ret(180, 590, 14, 640, "#4a5a6a") +
+    ret(886, 590, 14, 640, "#4a5a6a") +
+    // painel de vidro e cartaz rasgado
+    ret(200, 620, 330, 520, "#cfe8f4", `opacity="0.3"`) +
+    ret(200, 620, 330, 520, "none", `stroke="#4a5a6a" stroke-width="6"`) +
+    ret(560, 620, 310, 460, "#f6f0e0") +
+    cam(`M560,620 L870,620 L870,760 L760,780 L700,740 L620,790 L560,760 Z`, "#e63946") +
+    txt(715, 690, "ATÉ 70% OFF", 36, "#fff", { peso: "bold" }) +
+    txt(715, 740, "SÓ HOJ", 30, "#ffd23f", { peso: "bold" }) +
+    cam(`M560,760 L620,790 L700,740 L760,780 L870,760 L870,1080 L560,1080 Z`, "#fbf6ea") +
+    txt(715, 850, "TV 50\" R$ 1.4", 28, "#333") +
+    cam(`M800,800 L870,790 L870,960 L840,940 L820,980 Z`, "#9a948a", `opacity="0.5"`) +
+    txt(715, 940, "Procura-se", 22, "#555", { fonte: MAO }) +
+    txt(715, 970, "gato Pipoca", 22, "#555", { fonte: MAO }) +
+    ret(590, 990, 240, 70, "#fff", `stroke="#ccc"`) +
+    txt(710, 1035, "aulas de violão", 18, "#1a3ea8", { fonte: MAO }) +
+    // placa de ponto e linhas
+    ret(990, 420, 10, 820, "#555") +
+    rr(940, 420, 110, 120, 8, "#1a6a3a") +
+    txt(995, 470, "ÔNIBUS", 20, "#fff", { peso: "bold" }) +
+    txt(995, 500, "102 • 340", 16, "#fff") +
+    txt(995, 525, "Centro", 14, "#cfe") +
+    // banco
+    ret(220, 1080, 300, 24, "#7a5a3a") +
+    ret(240, 1104, 14, 100, "#4a5a6a") +
+    ret(486, 1104, 14, 100, "#4a5a6a") +
+    // lixeira e copinho de café
+    rr(60, 1080, 80, 120, 8, "#e67e22") +
+    ret(56, 1074, 88, 14, "#c0651a") +
+    rr(300, 1050, 22, 30, 3, "#fff") +
+    // poste com luz ainda acesa
+    poste(c, 40, 1240, 900, true, "#ffd27a") +
+    fios([[48, 340], [1080, 300]], "#2a2a3a", 2) +
+    piso(c, 1230, "#8a8288", "#4a4248") +
+    ret(0, 1230, 1080, 16, "#b0a8a0") +
+    linha(0, 1600, 1080, 1600, "#f2c12e", 8, `opacity="0.35" stroke-dasharray="80 60"`);
+  return c.fim(corpo);
+}
+
+function shoppingCorredor(): string {
+  const c = new Cena("shopping_corredor");
+  semear(7474);
+  const vitrine = (x: number, w: number, cor: string, nome: string, oferta: string, lado: number) =>
+    ret(x, 520, w, 520, "#f6f2ea") +
+    ret(x, 520, w, 90, cor) +
+    txt(x + w / 2, 580, nome, 30, "#fff", { peso: "bold" }) +
+    ret(x + 16, 626, w - 32, 400, c.lin([[0, "#fff", 0.6], [1, cor, 0.25]])) +
+    // manequins
+    elip(x + w * 0.35, 720, 18, 22, "#e8e4dc") +
+    rr(x + w * 0.35 - 30, 744, 60, 140, 20, lado ? "#e63946" : "#2a6aa0") +
+    elip(x + w * 0.68, 730, 18, 22, "#e8e4dc") +
+    rr(x + w * 0.68 - 30, 754, 60, 130, 20, "#f1c40f") +
+    placa(x + 30, 900, w - 60, 100, "#c0001a", [{ t: oferta, tam: 34, cor: "#fff" }], { fonte: SANS, rot: lado ? 3 : -3 }) +
+    cam(`M${x + 20},630 L${x + 90},630 L${x + 20},780 Z`, "#fff", `opacity="0.35"`);
+  const corpo =
+    ret(0, 0, 1080, 1400, c.lin([[0, "#f4f0ea"], [1, "#e4dcd0"]])) +
+    // claraboia
+    ret(0, 0, 1080, 180, c.lin([[0, "#9ad0f0"], [1, "#d8eef8"]])) +
+    (() => {
+      let s = "";
+      for (let x = 0; x <= 1080; x += 120) s += ret(x - 4, 0, 8, 180, "#9aa4ad");
+      return s + ret(0, 176, 1080, 12, "#9aa4ad");
+    })() +
+    c.brilho(540, 300, 600, "#ffffff", 0.35, 200) +
+    // piso superior com guarda-corpo e faixas penduradas
+    ret(0, 300, 1080, 60, "#d8d0c4") +
+    ret(0, 300, 1080, 12, "#bfb5a6") +
+    ret(0, 250, 1080, 50, "#cfe8f4", `opacity="0.5"`) +
+    g(multidao(9, 20, 1060, 300, 0.45, ["#c0392b", "#2f6f95", "#f0a020", "#3a8a4a", "#6d4c8d", "#222"]), c.blur(2.5)) +
+    cam(`M260,360 L260,480 L300,460 L340,480 L340,360 Z`, "#111") +
+    txt(300, 420, "BF", 26, "#ffd23f", { peso: "bold" }) +
+    cam(`M740,360 L740,480 L780,460 L820,480 L820,360 Z`, "#111") +
+    txt(780, 420, "OFF", 22, "#ffd23f", { peso: "bold" }) +
+    // vitrines
+    vitrine(20, 320, "#e14f7a", "MODA LUZ", "ATÉ 80% OFF", 0) +
+    vitrine(740, 320, "#2a9d8f", "PÉ NA ESTRADA", "LEVE 3 PAGUE 2", 1) +
+    // escada rolante no centro ao fundo
+    cam(`M400,1040 L680,1040 L620,560 L460,560 Z`, "#9aa4ad") +
+    cam(`M430,1040 L650,1040 L600,580 L480,580 Z`, "#5a646c") +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 14; i++) {
+        const t = i / 14;
+        const y = 1030 - t * 440;
+        const hw = 110 - t * 50;
+        s += ret(540 - hw, y, hw * 2, 4, "#8a949c");
+      }
+      return s;
+    })() +
+    linha(400, 1040, 460, 560, "#2a2a2a", 10) +
+    linha(680, 1040, 620, 560, "#2a2a2a", 10) +
+    g(pessoa(520, 820, 0.6, "#c0392b", "#c48b63") + pessoa(560, 700, 0.5, "#2f6f95", "#8a5a3c"), c.blur(1.5)) +
+    // multidão desfocada no corredor com sacolas
+    g(
+      multidao(10, 0, 1080, 1180, 1.15, ["#3a3a5a", "#7a2a3a", "#2a5a4a", "#5a4a2a", "#222", "#6d4c8d"]) +
+        (() => {
+          let s = "";
+          for (let i = 0; i < 9; i++) {
+            const x = entre(40, 1040);
+            s += rr(x, 1110, 60, 70, 4, escolhe(["#e14f7a", "#ffd23f", "#2a9d8f", "#fff", "#e67e22"])) + `<path d="M${x + 15},1110 Q${x + 30},1085 ${x + 45},1110" stroke="#333" stroke-width="3" fill="none"/>`;
+          }
+          return s;
+        })(),
+      c.blur(6),
+    ) +
+    piso(c, 1260, "#ece6dc", "#bfb5a6") +
+    g(ret(300, 1260, 480, 400, "#fff", `opacity="0.3"`), c.blur(20)) +
+    confete(40, 0, 1080, 200, 1200, ["#ffd23f", "#e14f7a", "#fff"]);
+  return c.fim(corpo);
+}
+
 // ---------------------------------------------------------------------------
 // Registro
 // ---------------------------------------------------------------------------
@@ -3811,6 +4098,10 @@ function montar(): Record<string, Cenario> {
     ["portao_noite", "Portão à noite", portaoNoite, true],
     ["associacao_comerciantes", "Associação dos comerciantes", associacaoComerciantes],
     ["cozinha_pastelaria", "Cozinha da pastelaria", cozinhaPastelaria],
+    ["sala_tv_velha", "Sala com TV velha", salaTvVelha],
+    ["loja_eletronicos", "Loja de eletrônicos", lojaEletronicos],
+    ["ponto_onibus", "Ponto de ônibus", pontoOnibus],
+    ["shopping_corredor", "Corredor do shopping", shoppingCorredor],
   ];
   const out: Record<string, Cenario> = {};
   for (const [id, nome, fn, noite] of lista) {

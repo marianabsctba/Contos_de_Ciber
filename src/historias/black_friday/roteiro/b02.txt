@@ -1,0 +1,234 @@
+=== b02_inicio
+@cap 2 "Boleto com desconto"
+@fundo casa_cozinha
+@musica alegre
+> Sábado, 7h58. A cozinha da casa tem um rádio de pilha ligado no programa de esportes e uma garrafa térmica que já viu dias melhores.
+@entra pai feliz direita
+> O Seu Ademar coa o café no coador de pano, com a concentração de quem desarma bomba.
+PAI: Café de verdade, filha. Não é essa cápsula que o Kevin quer comprar. Cápsula é café de astronauta.
+EU: Bom dia, pai.
+PAI: Bom dia. Dormiu mal? Tá com cara de quem viu o juiz anular gol.
+@se marca:caiu_site_clone -> b02_pedido
+@vai b02_kevin_chega
+
+=== b02_pedido
+> Você abre a página de ontem no celular, debaixo da mesa. Ela ainda está no ar. "Status do pedido: em separação 📦".
+> Nenhum e-mail. Nenhum código de rastreio. Nenhum telefone. Só um chat que responde "Aguarde, você será atendido" desde as 6h.
+(Em separação. Separação de quem? De mim e dos meus oitocentos e noventa e nove reais?)
+PAI [pensativa]: Que foi, filha?
+EU: Nada, pai. Coisa do trabalho.
+(Coisa do trabalho. Eu trabalho com seguro. Eu devia saber que o pior sinistro é o que a gente esconde.)
+@vai b02_kevin_chega
+
+=== b02_kevin_chega
+@entra kevin feliz esquerda
+> 8h03. O Kevin aparece de moletom, boné virado para trás e o celular já na mão, como se tivesse nascido segurando.
+KEVIN: Bom dia, família. Bom dia, café. Bom dia, ofertas.
+PAI: Bom dia, filho. Lava a mão antes de pegar o pão.
+KEVIN: Pai, eu tô com o celular na mão, lavar a mão é risco de queda.
+@se marca:combinou_cafe_kevin -> b02_cafe_combinado
+@vai b02_link
+
+=== b02_cafe_combinado
+EU: Você lembrou do café.
+KEVIN: Lembrei. Você falou que ia me mostrar uma coisa. Se for palestra, eu tenho dois minutos de bateria emocional.
+> Você mostra o anúncio de ontem e, do lado, o site oficial com a mesma TV por R$ 4.299,00.
+KEVIN [surpresa]: Tá, mas... três mil e quatrocentos de diferença?
+EU: Três mil e quatrocentos. E o endereço tinha um "ponto shop" no fim.
+KEVIN: Eu mandei isso pra oitocentas pessoas.
+(Ele ficou quieto. O Kevin quieto é um evento astronômico.)
+@muda rel_kevin+1
+@vai b02_link
+
+=== b02_link
+KEVIN: Mas olha, essa agora é outra coisa. Achei num grupo de promoção. Loja diferente, a TV de 65 por R$ 1.400.
+KEVIN: E no boleto tem mais 15% de desconto. Dá R$ 1.190. Só que o boleto vence em uma hora.
+@som notificacao
+> Ele vira a tela para você. "OutletTech Brasil: o outlet das grandes marcas". Uma TV de 65, as mesmas fotos de catálogo, e uma faixa amarela: "BOLETO COM 15% OFF. VÁLIDO POR 60 MINUTOS APÓS A EMISSÃO."
+@musica tensao
+@muda minutos=60
+PAI: Que TV, gente? Quem vai comprar TV?
+KEVIN: Ninguém, pai. É pesquisa de mercado.
+(Mil cento e noventa. Bem menos que na MegaLar. Bem mais que ontem. É o tipo de preço que parece um bom negócio em vez de um milagre. Isso me assusta mais.)
+? O Kevin balança o celular na sua frente como se fosse um pêndulo de hipnose.
+* Pegar o celular do Kevin e gerar o boleto para ver -> b02_gera_boleto {minutos-2}
+* Pesquisar a loja antes: CNPJ, reputação, reclamações -> b02_pesquisa {minutos-15 tecnica+1}
+* Perguntar ao Kevin de onde veio esse link -> b02_kevin_explica {minutos-5 rel_kevin+1}
+** "Kevin, se é tão bom, paga você, que eu te devolvo depois" -> b02_kevin_paga {rel_kevin+1}
+
+=== b02_kevin_paga
+KEVIN: Eu tenho trinta e sete reais e um vale-refeição vencido.
+EU: Então você acha bom com o meu dinheiro.
+KEVIN [envergonhada]: É que com o seu dinheiro é mais fácil achar bom.
+PAI: Isso aí é o Brasil inteiro, filho.
+(Ele riu. Eu ri. A pressa diminuiu um pouco. Rir também gasta minuto, mas é minuto bem gasto.)
+@muda paciencia+1 minutos-3
+@vai b02_kevin_explica
+
+=== b02_kevin_explica
+EU: Kevin, de onde veio esse link?
+KEVIN: Do grupo "Promo Insana 🔥🔥". Tem duas mil pessoas. Alguém postou às seis da manhã.
+EU: Quem?
+KEVIN: Um perfil chamado "Achadinhos Oficial". Sem foto. Mas tem "oficial" no nome.
+(Oficial no nome. Eu posso me chamar Rainha da Inglaterra Oficial e continuar pegando o mesmo ônibus.)
+@vai b02_dona_nice
+
+=== b02_pesquisa
+> Você abre o rodapé da OutletTech. Lá embaixo, em letra cinza: "OutletTech Comércio Eletrônico Ltda.", um CNPJ e um endereço numa cidade do interior de outro estado.
+> Você pesquisa o CNPJ num site de consulta pública. A empresa existe. Foi aberta há três semanas. Atividade principal: "serviços de cabeleireiro".
+> No site de reclamações de consumidores, o nome da loja tem 47 queixas desde quinta-feira. Todas iguais: "paguei o boleto e não recebi".
+(Salão de beleza de três semanas vendendo TV de 65 polegadas. Deve ser escova progressiva de tela.)
+@muda tecnica+1
+@marca pesquisou_outlet
+@anota b2_reputacao_cnpj
+@vai b02_dona_nice
+
+=== b02_dona_nice
+@som porta
+@entra dona_nice feliz centro
+> A porta da cozinha abre sem ninguém bater. Só uma pessoa no bairro entra assim.
+DONA_NICE: Bom dia, gente! Trouxe bolo de fubá. Ademar, seu café tá com cheiro de meia.
+PAI: É coador de pano, Nice. Tem alma.
+DONA_NICE: Tem alma e tem meia. Que foi, menina? Tá com cara de quem viu preço de tomate.
+KEVIN: Ela tá vendo TV com boleto com desconto.
+DONA_NICE: Boleto é o mais seguro, menina! Não tem cartão, ninguém clona nada. Eu só pago tudo no boleto.
+(Ela não está de todo errada sobre o cartão. Mas está errada sobre o boleto. Boleto pago vai para quem está escrito nele, e não tem botão de desfazer.)
+@se marca:pesquisou_outlet -> b02_ja_sabe
+@vai b02_gera_boleto
+
+=== b02_ja_sabe
+EU: Dona Nice, essa loja foi aberta há três semanas como salão de beleza e já tem 47 reclamações de boleto pago e TV que não chegou.
+DONA_NICE [surpresa]: Salão de beleza? E eles fazem unha?
+EU: Eles fazem a gente de boba.
+KEVIN: Eu ia mandar pro grupo da faculdade.
+@muda rel_kevin+1 etica+1
+> Mesmo assim, você gera o boleto pelo celular do Kevin, só para ver quem ia receber o dinheiro.
+@vai b02_gera_boleto
+
+=== b02_gera_boleto
+> "Gerar boleto". A página pensa por três segundos, mostra uma animação de foguete e cospe o documento na tela.
+> Em vermelho, em cima: "ATENÇÃO: o desconto de 15% vale por 60 minutos. Após o prazo, o pedido será cancelado."
+(Sessenta minutos. Ontem eram vinte. A pressa só muda de tamanho.)
+@desafio b2_boleto_desconto -> b02_boleto_acerto | b02_boleto_erro
+
+=== b02_boleto_acerto
+@som acerto
+(A loja se chama OutletTech, mas quem recebe é uma pessoa física que ninguém conhece, num banco que ninguém citou. O desconto só vale se eu não tiver tempo de pensar. E boleto pago para desconhecido não volta com um telefonema.)
+@muda tecnica+1
+@anota b2_boleto_beneficiario
+@anota b2_boleto_nao_volta
+EU: Kevin, olha o beneficiário. Não é a loja.
+KEVIN: Como assim não é a loja?
+EU: Quem recebe o dinheiro é quem está escrito aqui. Se fosse a loja, estaria o nome da loja e o CNPJ dela.
+@vai b02_decide
+
+=== b02_boleto_erro
+@som erro
+(É um boleto. Tem código de barras, tem banco, tem vencimento, tem até a logo da loja num cantinho. Boleto é boleto.)
+DONA_NICE: Viu? Boleto. Seguro. Paga logo que esfria o café.
+@anota b2_boleto_nao_volta
+? O aplicativo do banco está aberto, com a câmera apontada para o código de barras.
+* Escanear e pagar antes que o desconto acabe -> b02_tela_banco {minutos-2}
+* Ler devagar quem é o beneficiário antes de qualquer coisa -> b02_le_beneficiario {minutos-4 paciencia+1}
+
+=== b02_le_beneficiario
+> Você aproxima o celular do rosto, como a Dona Nice faz com bula de remédio.
+> Beneficiário: J. C. SANTOS PAGAMENTOS. CPF parcialmente escondido. Banco 998.
+(J. C. Santos. A loja não chama J. C. Santos. A loja chama OutletTech. Quem é J. C. Santos, e por que é ele quem fica com o dinheiro da minha TV?)
+@muda tecnica+1
+@anota b2_boleto_beneficiario
+@vai b02_decide
+
+=== b02_tela_banco
+> O aplicativo lê o código e abre a tela de confirmação.
+> Valor: R$ 1.190,00. Vencimento: hoje. Beneficiário: J. C. SANTOS PAGAMENTOS.
+> O botão "Pagar" brilha em verde. Atrás de você, a Dona Nice diz "vai, vai, vai" como se fosse pênalti.
+? Última tela antes do dinheiro sair.
+* Pagar. Boleto é boleto -> b02_pagou {economia-1190 marca:caiu_boleto}
+* Parar. O beneficiário não é a loja -> b02_le_beneficiario {paciencia+1}
+
+=== b02_pagou
+@som dinheiro
+> Pagamento realizado. O aplicativo mostra um comprovante com um código comprido e uma frase simpática: "Obrigado por usar o nosso banco".
+@se marca:caiu_site_clone -> b02_pagou_duas
+> Na caixinha "TV DO PAI 📺": R$ 1.210,00.
+KEVIN [feliz]: Garantiu! Viu como eu ajudo?
+(Eu garanti. Agora a OutletTech tem uma hora a menos de pressa e mil cento e noventa reais a mais.)
+@vai b02_pos_pagamento
+
+=== b02_pagou_duas
+> Na caixinha "TV DO PAI 📺": R$ 311,00.
+(Duas TVs pagas. Nenhuma TV em casa. Eu tô colecionando comprovante.)
+KEVIN [feliz]: Garantiu! Agora a gente tem duas TVs!
+(A gente não tem nenhuma.)
+@vai b02_pos_pagamento
+
+=== b02_pos_pagamento
+> Na página, "Pagamento em processamento. Boletos podem levar até 3 dias úteis para compensar."
+> No mesmo instante, a faixa amarela da página volta a piscar para outra pessoa: "BOLETO COM 15% OFF. VÁLIDO POR 60 MINUTOS."
+(Três dias úteis. A final é amanhã. E eu nem perguntei como a TV chegaria antes de segunda.)
+@sai dona_nice
+@vai b02_fim
+
+=== b02_decide
+@musica misterio
+> O cronômetro da página continua descendo. A Dona Nice morde o bolo em silêncio, o que é raríssimo.
+? O boleto está na tela. O café está esfriando.
+* Fechar a página e explicar para a Dona Nice por que boleto não é garantia -> b02_explica_nice {minutos-5 rel_dona_nice+1}
+* Denunciar a loja no site de reclamações e o perfil "Achadinhos Oficial" no grupo -> b02_denuncia {minutos-6 etica+1}
+* Mostrar ao Kevin, com calma, cada coisa errada do boleto -> b02_ensina_kevin {minutos-8 rel_kevin+1}
+** Deixar o cronômetro zerar enquanto o pai conta, pela quarta vez, a história do ônibus em 98 -> b02_historia_pai {rel_pai+2 paciencia+1}
+
+=== b02_explica_nice
+EU: Dona Nice, boleto não tem cartão, é verdade. Mas, se a loja for falsa, o dinheiro vai direto para quem está no boleto. Não tem como contestar igual cartão.
+DONA_NICE [pensativa]: E se eu ligar pro banco?
+EU: Pode avisar o banco, sim, e tem que avisar rápido. Mas boleto pago é muito difícil de reaver. O melhor é conferir antes de pagar: o nome de quem recebe tem que ser a própria loja.
+DONA_NICE: Então aquela panela que não canta...
+EU: A panela chegou, Dona Nice. Ela só não canta.
+DONA_NICE [feliz]: Ainda bem. Eu já tô velha pra perder panela.
+@muda rel_dona_nice+1
+@anota b2_boleto_nao_volta
+@vai b02_fim
+
+=== b02_denuncia
+> No site de reclamações, você escreve: "Boleto com beneficiário pessoa física, loja aberta há poucas semanas, desconto que vence em uma hora. Não paguem." Anexa o print do boleto, com o código coberto.
+> No "Promo Insana 🔥🔥", o Kevin, meio sem graça, denuncia a postagem do "Achadinhos Oficial" para o administrador.
+KEVIN: O adm respondeu "valeu, mano, removido". Removeu. Eu tenho poder.
+(Não é poder. É só a primeira vez que ele avisa alguém antes de passar o link adiante.)
+@muda etica+1 rel_kevin+1
+@vai b02_fim
+
+=== b02_ensina_kevin
+EU: Olha aqui. A loja chama OutletTech. Quem recebe é um tal de J. C. Santos. Isso, sozinho, já basta para não pagar.
+KEVIN: Mas às vezes a loja usa outra empresa pra receber, não?
+EU: Até pode existir intermediador de pagamento. Mas aí é uma empresa, com CNPJ, com nome que dá para conferir. Aqui é uma pessoa qualquer, com desconto que acaba em uma hora.
+KEVIN [pensativa]: E se eu já tivesse mandado pro grupo?
+EU: Aí você apagava e avisava. É o que dá para fazer.
+@muda rel_kevin+1 tecnica+1
+@marca kevin_viu_boleto
+@vai b02_fim
+
+=== b02_historia_pai
+PAI: ... e aí eu parei o ônibus, filha. Parei mesmo. Na subida da avenida. O cobrador ligou o rádio no máximo.
+DONA_NICE: Ademar, você conta essa desde 98.
+PAI [feliz]: E vou contar até 2098.
+> O cronômetro da página chega a zero sem ninguém olhar para ele.
+> Você atualiza a página. O boleto some. No lugar, um novo, com um novo prazo: "VÁLIDO POR 60 MINUTOS".
+@muda minutos=0
+(Ele recomeçou. Igual ao de ontem. A pressa deles não tem fim, porque quem tem pressa de verdade sou eu, e eles sabem.)
+@anota b2_boleto_nao_volta
+@vai b02_fim
+
+=== b02_fim
+@musica alegre
+@sai todos
+> 9h20. A Dona Nice vai embora levando metade do bolo de volta, "porque ninguém aqui merece".
+> O pai lava as xícaras cantarolando o hino do time. O rádio anuncia: "amanhã, a grande final".
+@se marca:caiu_boleto -> b02_fim_pagou
+(Ontem um relógio de vinte minutos. Hoje um boleto de sessenta. A loja muda, o prazo muda, o truque é o mesmo: não me deixar pensar.)
+@vai b03_inicio
+
+=== b02_fim_pagou
+(Ontem um relógio de vinte minutos. Hoje um boleto de sessenta. Eu paguei para alguém chamado J. C. Santos, e eu nem sei se J. C. Santos gosta de futebol.)
+> Você guarda o comprovante numa pasta nova no celular. O nome que vem à cabeça é "provas".
+@vai b03_inicio
