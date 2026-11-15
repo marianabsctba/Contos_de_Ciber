@@ -1,0 +1,319 @@
+=== h01_inicio
+@cap 1 "23% de bateria"
+@idade adulta
+@fundo escola_laboratorio
+@musica trabalho
+> Terça-feira, 14h20. Laboratório de informática da escola. Trinta computadores, vinte e nove funcionando e um que só liga se alguém der um tapinha do lado esquerdo.
+> Você passou a manhã tirando figurinha de anime do papel de parede de onze máquinas e explicando para o sétimo ano que "baixar memória RAM" não existe.
+> O seu celular vibra em cima da mesa. Na tela: "Mãe".
+(A mãe não liga em horário de trabalho. A mãe manda áudio. Áudio de quatro minutos, mas manda.)
+@som notificacao
+@musica nenhuma
+> Você atende.
+LUCIA: Filha.
+> Só isso. E um silêncio comprido do outro lado, de alguém que está procurando a próxima palavra e não acha.
+LUCIA: É o teu pai. Ele passou mal na oficina do vizinho. A gente está no hospital. Vem.
+EU: Tô indo, mãe. Tô indo agora.
+> Você não lembra de desligar. Lembra da chave do carro na mão e do crachá da escola ainda pendurado no pescoço.
+@roupa "Do jeito que você estava"
+@vai h01_hospital
+
+=== h01_hospital
+@fundo hospital_corredor
+@musica triste
+> 15h05. O corredor tem aquele cheiro de álcool e de café requentado. As cadeiras são de plástico azul, todas presas umas nas outras.
+@entra taina triste esquerda
+> A Tainá está sentada na ponta, de moletom, abraçada nos joelhos. Ela levanta quando te vê e não diz nada.
+@entra lucia triste direita
+> A sua mãe está de pé, perto da janela. Ela segura a bolsa com as duas mãos, como se a bolsa pudesse cair sozinha.
+> Uma médica de voz baixa vem até vocês. Fala devagar. Fala o nome do seu pai inteiro, Valter Aparecido. Diz que foi de repente, do coração, que fizeram tudo o que dava.
+> Você ouve as palavras e elas não entram. Ficam paradas no ar, do lado de fora.
+(Ontem ele me mandou foto de pôr do sol. Ontem.)
+> A Tainá chora sem barulho. A sua mãe não chora. Ainda não.
+? Ninguém sabe o que fazer com as mãos.
+* Abraçar a Tainá, que tem dezenove anos e parece ter nove agora -> h01_abraco_taina {rel_taina+1}
+* Sentar do lado da sua mãe e não dizer nada, só ficar -> h01_lado_mae {rel_lucia+1 paciencia+1}
+* Sair para o fim do corredor e ligar para o Rodrigo -> h01_liga_rodrigo {rel_rodrigo+1}
+
+=== h01_abraco_taina
+> Você abraça a Tainá. Ela encosta a cabeça no seu ombro, do mesmo jeito que fazia quando tinha medo de trovão.
+TAINA: Ele ia me buscar na faculdade hoje. Ele falou "às seis, no portão de sempre".
+EU: Eu sei.
+TAINA: Quem vai me buscar no portão de sempre?
+> Você não responde. Não tem resposta. Você só aperta mais.
+@vai h01_saquinho
+
+=== h01_lado_mae
+> Você senta do lado da sua mãe. Ela não olha para você, mas a mão dela procura a sua e acha.
+LUCIA: Quarenta e um anos, filha.
+EU: Eu sei, mãe.
+LUCIA: Quarenta e um anos e ele nunca trocou a resistência do chuveiro sem me dar choque de propósito, pra me ver gritar.
+> Ela quase ri. Depois não ri. Depois aperta a sua mão com uma força que você não sabia que ela tinha.
+@vai h01_saquinho
+
+=== h01_liga_rodrigo
+@sai todos
+> No fim do corredor, perto do bebedouro, você liga para o Rodrigo. Ele mora a dois estados de distância e atende no segundo toque, com barulho de reunião atrás.
+@entra rodrigo assustada centro
+RODRIGO: Fala, Rê. Tô numa call, é rápido?
+EU: Rodrigo. O pai.
+> Silêncio. O barulho da reunião some. Ele saiu da sala.
+RODRIGO [triste]: Tô comprando passagem. Agora. Amanhã de manhã eu tô aí.
+@sai rodrigo
+@entra taina triste esquerda
+@entra lucia triste direita
+@vai h01_saquinho
+
+=== h01_saquinho
+> Uma enfermeira traz um saquinho plástico transparente, com fecho, e o nome do seu pai escrito de caneta na etiqueta.
+> Dentro: a carteira gasta de couro, o relógio que ele ganhou na aposentadoria, um alicate pequeno (claro que ele tinha um alicate no bolso) e o celular.
+> A tela do celular está trincada num canto, numa teia fina. Está assim há dois anos. Ele dizia que "ainda funciona, filha, pra que trocar?".
+LUCIA: Pega o aparelho do teu pai. Eu não consigo.
+> Você pega. O celular acende sozinho na sua mão, com uma notificação.
+> Na tela de bloqueio, por trás da teia de vidro, a foto de fundo: vocês cinco na praia, em 2009, o Rodrigo de aparelho nos dentes, a Tainá de boia de patinho.
+@muda bateria=23
+> No canto de cima: 23%.
+> A notificação diz: "Churrasco do Valter 🔥. Tainá: pai cadê vc, já tô no portão".
+@expr taina triste
+(Ela mandou antes. Antes de saber.)
+> Embaixo da foto, o cadeado. Ninguém aqui sabe a senha.
+@vai h01_volta
+
+=== h01_volta
+@sai todos
+@fundo carro_noite
+@musica triste
+> 19h40. Você dirige de volta. A sua mãe no banco do passageiro, olhando a rua. A Tainá atrás, de fone, sem música tocando.
+> O celular do seu pai está no seu colo, dentro do saquinho. Ele vibra. Vibra de novo. A tela acende através do plástico.
+(Tem gente mandando mensagem para ele. Tem gente que ainda não sabe.)
+? O celular acende de novo, iluminando o saquinho.
+* Olhar as notificações na tela de bloqueio, sem destravar nada -> h01_notificacoes {bateria-3}
+* Virar a tela para baixo e dirigir. Hoje, não. -> h01_tela_baixo {paciencia+1}
+
+=== h01_notificacoes
+> No sinal vermelho, você olha a tela sem tirar do saquinho. As notificações mostram só o começo de cada mensagem.
+> Zé Carlos (Futebol): Valtão, sábado tem churrasco ou não tem? Tô com a picanha separada
+> Banco: Seu extrato mensal está disponível
+> Jogo de Paciência Premium: Seu desafio diário está esperando! 🃏
+> Dirce Irmã: Valter me liga
+(A Tia Dirce já sabe. Ela está mandando mensagem para ele mesmo assim.)
+@vai h01_casa
+
+=== h01_tela_baixo
+> Você vira o saquinho. A luz some contra a sua calça jeans.
+> Ele continua vibrando o caminho inteiro. Você conta, sem querer: onze vezes até chegar em casa.
+(Onze pessoas. Eu respondo amanhã. Ou alguém responde. Amanhã.)
+@vai h01_casa
+
+=== h01_casa
+@fundo sala_familia
+@musica triste
+@entra lucia triste direita
+@entra taina triste esquerda
+> 20h15. A casa está do jeito que ele deixou hoje de manhã. A caneca com resto de café na pia. O chinelo virado perto do sofá. A furadeira em cima da mesa, porque ele ia "só dar uma olhadinha" na tomada do vizinho.
+> A sua mãe senta no sofá. Do lado dela, o lugar dele, com a almofada ainda afundada.
+LUCIA: Ninguém senta aí hoje.
+> Ninguém senta.
+> O seu próprio celular, no seu bolso, vibra sem parar. Não é o do seu pai. É o seu. É o grupo da família.
+@vai h01_grupo
+
+=== h01_grupo
+@zap "Churrasco do Valter 🔥"
+> 112 mensagens não lidas
+> Dirce Irmã enviou uma figurinha de rosa com luzinha piscando
+TIO_NELSON: Meus sentimentos a todos. Estou indo para aí. Levo pão.
+> Cleiton Primo: alguém sabe o horário do velório? quero me organizar
+> Dirce Irmã: Cleiton vc só aparece em velório
+> Cleiton Primo: e em casamento tia
+> Dirce Irmã: casamento vc não vem
+RODRIGO: Chego amanhã 7h. Alguém me busca no aeroporto?
+TIO_NELSON: Eu busco. Rodrigo, traz casaco, a capela é fria.
+> Dirce Irmã: [foto] Valter no churrasco de 2019 segurando a linguiça como microfone
+> Dirce Irmã: meu irmão era assim gente 😭
+TAINA: tia para
+TAINA: não para. manda mais
+> Dirce Irmã alterou o nome do grupo de "Churrasco do Valter 🔥" para "Família Valter 🕊️"
+@zap "Família Valter 🕊️"
+> Cleiton Primo: tia por que mudou
+> Dirce Irmã: porque não tem mais churrasco
+TIO_NELSON: Vai ter churrasco, Dirce. Ele ia querer churrasco.
+> 23 pessoas estão perguntando a mesma coisa: horário, endereço, se é para levar coroa.
+? O grupo inteiro espera alguém dizer o horário do velório.
+* Mandar uma mensagem curta, com horário, endereço da capela e um pedido de oração -> h01_grupo_curta {uniao+1}
+* Silenciar o grupo por oito horas. Você não aguenta mais. -> h01_grupo_silencio {paciencia+1}
+* Pedir ao Tio Nelson, no privado, que cuide do grupo hoje -> h01_grupo_tio {rel_tio_nelson+1}
+
+=== h01_grupo_curta
+EU: Velório amanhã, quarta, a partir das 9h, na capela do bairro. Enterro às 16h. Quem puder, reze por ele. Quem não puder, conte uma história dele aqui.
+> Dirce Irmã: amém 🙏
+TIO_NELSON: Uma história: em 1987 ele consertou a fiação da igreja inteira e não cobrou. Disse que era pra ter crédito lá em cima.
+@zap fim
+@vai h01_rodrigo
+
+=== h01_grupo_silencio
+> Você aperta "silenciar por 8 horas". O celular para de vibrar no bolso. Agora só o do seu pai vibra, no saquinho, em cima da mesa.
+@zap fim
+> Meia hora depois, a Tainá mostra o celular dela: o Tio Nelson já mandou horário, endereço e um pedido para ninguém levar coroa com o nome errado.
+TAINA: Na do vô escreveram "Saudades eternas, Osvaldo". O vô se chamava Oswaldo, com W.
+(Ele ia rir disso. Ele riu disso, em 2015, no velório do vô.)
+@vai h01_rodrigo
+
+=== h01_grupo_tio
+@zap "Tio Nelson"
+EU: Tio, o senhor consegue cuidar do grupo hoje? Eu não dou conta.
+TIO_NELSON: Deixa comigo, minha filha. Contador aposentado sabe fazer duas coisas: planilha e grupo de família.
+TIO_NELSON: Vou pedir para ninguém mandar coroa com nome errado. Lembra a do seu avô?
+EU: "Osvaldo" com V.
+TIO_NELSON: Seu pai riu tanto que o padre teve que parar a missa.
+@zap fim
+@vai h01_rodrigo
+
+=== h01_rodrigo
+@fundo videochamada
+@entra rodrigo neutra centro
+> 21h30. O Rodrigo liga por vídeo. Ele está num quarto de hotel perto do aeroporto, de camisa social ainda, com a gravata no ombro.
+RODRIGO: Seguinte. Eu tenho até domingo. Eu fiz uma lista.
+RODRIGO: Funerária, cartório, banco, celular do pai, as contas, o carro. Em dois dias a gente resolve tudo.
+RODRIGO: O celular eu já pensei. A gente leva numa assistência e manda resetar. Aí vira um aparelho normal e a mãe usa.
+(Resetar apaga tudo. As fotos de trinta anos. As conversas. E tudo o que estiver só nele.)
+? O Rodrigo está esperando você concordar.
+* "Rodrigo, hoje não. Amanhã, depois do velório, a gente divide a lista." -> h01_rodrigo_hoje_nao {uniao+1 rel_rodrigo+1}
+* "Você nem está aqui e já quer apagar o pai do celular?" -> h01_rodrigo_briga {uniao-1 rel_rodrigo-1 marca:rodrigo_impaciente}
+* "Tudo bem, faz a lista. Mas o celular ninguém reseta." -> h01_rodrigo_lista {tecnica+1}
+
+=== h01_rodrigo_hoje_nao
+RODRIGO: Tá. Tá bom.
+RODRIGO [triste]: É que se eu não fizer lista eu vou ter que pensar, Rê.
+EU: Eu sei. Amanhã você faz a lista e eu penso junto.
+@vai h01_decisao
+
+=== h01_rodrigo_briga
+RODRIGO [brava]: Eu tô a dois estados de distância, {nome}! O que você quer que eu faça daqui, chore no hotel?
+EU: Eu quero que você não apague o pai antes do velório.
+RODRIGO: Ninguém vai apagar ninguém. Eu só quero resolver. Alguém tem que resolver.
+> Ele desliga sem dizer tchau. Um minuto depois, uma mensagem: "desculpa. amanhã 7h."
+(Ele também perdeu o pai hoje. Do jeito dele, com lista.)
+@vai h01_decisao
+
+=== h01_rodrigo_lista
+RODRIGO: Por que não?
+EU: Porque resetar apaga tudo o que está só no aparelho. E ainda não sei o que está só nele. Primeiro a gente descobre, depois decide.
+RODRIGO [pensativa]: Tá. Coloco "celular: não mexer" na lista.
+@vai h01_decisao
+
+=== h01_decisao
+@sai todos
+@fundo sala_familia
+@entra taina triste esquerda
+@entra lucia neutra direita
+> 22h. O celular do seu pai está em cima da mesa, ao lado da furadeira. Os dois objetos dele que ninguém tem coragem de guardar.
+TAINA: A senha é o aniversário da mãe. Certeza. Ou o meu. Ou o ano que ele casou. Deixa eu tentar.
+LUCIA: Teu pai nunca me disse a senha. Dizia que era "segredo de eletricista".
+> A Tainá já está com o celular na mão.
+(Calma. Antes de alguém sair chutando número, eu preciso pensar no que esse aparelho é agora.)
+@desafio h1_celular_do_pai -> h01_desafio_acerto | h01_desafio_erro
+
+=== h01_desafio_acerto
+EU: Tai, espera. Não chuta a senha.
+TAINA: Por quê? É só tentar.
+EU: Porque a cada erro ele trava por mais tempo. Em alguns aparelhos, depois de muitas tentativas, ele pode até apagar tudo. E aí as fotos do pai vão junto.
+> A Tainá larga o celular na mesa devagar, como se ele estivesse quente.
+TAINA: Então ninguém consegue entrar?
+EU: Talvez não. E tudo bem. A gente não precisa entrar no celular para cuidar das coisas dele. Muita coisa a gente resolve pelo caminho oficial de cada serviço, com a certidão de óbito.
+@muda tecnica+1
+@anota h1_celular_bloqueado
+@vai h01_guardar
+
+=== h01_desafio_erro
+> Antes de você dizer qualquer coisa, a Tainá digita o aniversário da sua mãe.
+> Senha incorreta.
+> O aniversário dela.
+> Senha incorreta.
+> O ano do casamento.
+> Senha incorreta. Tente novamente em 1 minuto.
+TAINA: Não. Não, não.
+EU: Tai. Para. Cada erro trava por mais tempo, e em alguns aparelhos muita tentativa errada pode apagar tudo.
+> A Tainá solta o celular como se tivesse levado choque.
+TAINA [assustada]: Eu apaguei as fotos do pai?
+EU: Não. Travou só por um minuto. Mas a gente não tenta mais, combinado? A gente não precisa entrar nele para cuidar das coisas dele.
+@muda bateria-3 rel_taina-1
+@anota h1_celular_bloqueado
+@vai h01_guardar
+
+=== h01_guardar
+? E agora, onde fica o celular do seu pai esta noite?
+* Na gaveta do criado-mudo dele, no quarto, ligado e sem ninguém mexer -> h01_gaveta {tecnica+1 rel_lucia+1}
+* Com a Tainá, embaixo do travesseiro dela, porque ela pediu -> h01_com_taina {rel_taina+2 bateria-6}
+* No seu bolso, para ver qualquer mensagem importante que chegar -> h01_no_bolso {bateria-4 paciencia-1}
+
+=== h01_gaveta
+@fundo quarto_do_pai
+> O quarto dos seus pais tem o cheiro dele: graxa leve, sabonete de coco e o perfume de domingo que ele usava todo dia.
+> Você abre a gaveta do criado-mudo. Lá dentro: fita isolante, três canetas, um terço, um manual de chuveiro de 1998 e um carregador com o fio remendado.
+> Você testa. O fio está partido por dentro. A luzinha do celular pisca uma vez e desiste.
+(Claro. Ele consertava tudo de todo mundo e deixava o dele para depois.)
+> Você deixa o celular na gaveta, ligado, com a tela para baixo.
+@vai h01_ultima
+
+=== h01_com_taina
+@fundo quarto_madrugada
+> A Tainá deita com o celular do pai debaixo do travesseiro, do jeito que dormia com o radinho dele quando era pequena.
+> De madrugada, você passa no corredor e vê a luz azul por baixo da porta. Ela acende a tela só para ver a foto da praia. Acende de novo. E de novo.
+(Cada vez que ela acende, a bateria desce. Cada vez que ela acende, ela vê ele. Eu não vou pedir para ela parar hoje.)
+@vai h01_ultima
+
+=== h01_no_bolso
+> Você deixa o celular do seu pai no bolso de trás. Cada vibração te faz pegar e olhar. "Seu extrato está disponível." "Promoção de rodízio." "Valtão, e o churrasco?"
+(Eu estou de plantão de um celular que não é meu, para uma pessoa que não vai responder.)
+@vai h01_ultima
+
+=== h01_ultima
+@fundo sala_familia
+@musica triste
+@entra lucia triste direita
+@entra taina triste esquerda
+> 23h40. Ninguém consegue dormir. Vocês três estão na sala, com o lugar dele vazio no sofá.
+> No seu celular, o grupo "Família Valter 🕊️" finalmente ficou quieto. Você rola para cima, para antes de tudo. Para ontem.
+> A última mensagem do seu pai no grupo é de ontem, 18h02.
+? A última mensagem dele está ali, na sua tela.
+* Guardar o celular e deixar a noite em silêncio -> h01_silencio
+** Ler em voz alta a última mensagem que ele mandou no grupo -> h01_le_mensagem {rel_lucia+1 rel_taina+1 uniao+1}
+
+=== h01_le_mensagem
+EU: Ele mandou uma foto de pôr do sol ontem. E escreveu uma coisa.
+LUCIA: Lê, filha.
+@zap "Churrasco do Valter 🔥"
+> Ontem, 18h02
+> Valter: [foto] Pôr do sol de hoje lá do terreno do Nelson
+> Valter: Bom dia pra quem é de bom dia, boa noite pra quem é de churrasco. Domingo tem. Amo vocês, até o Cleiton
+@zap fim
+@musica alegre
+> A Tainá ri primeiro. Um riso molhado, que vira choro e volta a ser riso.
+TAINA: "Até o Cleiton."
+LUCIA: Ele tinha quatro mil fotos de pôr do sol, filha. Quatro mil. Todas iguais.
+EU: Quatro mil trezentas e doze. Eu vi na nuvem quando ajudei ele a liberar espaço.
+LUCIA: Todas iguais. E ele achava cada uma mais bonita que a outra.
+> E então a sua mãe chora. Pela primeira vez no dia. Você e a Tainá ficam uma de cada lado, e ninguém diz nada por muito tempo.
+@anota h1_heranca_digital
+@vai h01_fim
+
+=== h01_silencio
+> Você bloqueia o seu celular e deixa ele virado no braço do sofá.
+> A sua mãe olha para o lugar vazio. A Tainá olha para a sua mãe. Você olha para as duas.
+LUCIA: Ele tinha quatro mil fotos de pôr do sol. Todas iguais.
+EU: Quatro mil trezentas e doze, mãe.
+LUCIA: E tudo dentro daquele aparelho.
+@anota h1_heranca_digital
+@vai h01_fim
+
+=== h01_fim
+@musica triste
+> No quarto, na gaveta, no bolso ou debaixo de um travesseiro, o celular do Seu Valter continua recebendo mensagens de quem ainda não sabe.
+@se bateria<=10 -> h01_fim_pouca
+(Amanhã é o velório. E esse celular não vai durar até o enterro se ninguém achar um carregador que sirva.)
+@vai h02_inicio
+
+=== h01_fim_pouca
+> A bateria já está em um dígito. A tela acende uma última vez antes de você ir dormir, pedindo para ligar o modo de economia.
+(Amanhã é o velório. E esse celular não passa da manhã se ninguém achar um carregador que sirva.)
+@vai h02_inicio

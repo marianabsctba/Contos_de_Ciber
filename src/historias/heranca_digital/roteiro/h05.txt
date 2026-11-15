@@ -1,0 +1,297 @@
+# Parte 2, capítulo 5: O banco (segunda)
+
+=== h05_inicio
+@cap 5 "O banco"
+@fundo casa_cozinha
+@musica triste
+> Segunda-feira, 7h40. Seis dias sem o Seu Valter.
+> A Dona Lúcia já está sentada à mesa da cozinha, de bolsa no colo, como quem espera ônibus. Dentro da bolsa, numa pasta de plástico com elástico, a mesma das contas de luz, a certidão de óbito.
+@entra lucia neutra centro
+LUCIA: Eu passei café. Ninguém bebeu o de ontem, mas eu passei.
+EU: A senhora dormiu, mãe?
+LUCIA: Dormi do lado dele. Do lado onde ele ficava. Não é a mesma coisa.
+(Na mesa, entre o açucareiro e a garrafa térmica, o aparelho do pai. Tela trincada, capinha de couro descascando, um adesivo do time no verso.)
+@se marca:celular_apagou -> h05_lembra_apagou
+@vai h05_com_carregador
+
+=== h05_lembra_apagou
+(Desde o dia em que ele passou apagado e a gente perdeu metade das mensagens, eu não deixo mais esse aparelho longe da tomada.)
+@vai h05_com_carregador
+
+=== h05_com_carregador
+> O celular passou a noite no carregador. A luzinha verde acendeu às três da manhã, e você sabe porque estava acordada olhando para ela.
+@muda bateria=100
+(Cem por cento. É estranho. O aparelho está mais inteiro do que qualquer um nesta casa.)
+@vai h05_rodrigo_chega
+
+=== h05_rodrigo_chega
+@entra rodrigo pensativa esquerda
+> O Rodrigo desce de camisa social, com o celular dele numa mão e uma folha impressa na outra. O voo de volta é na outra segunda. Ele fala como quem tem uma semana para consertar trinta anos.
+RODRIGO: Bom dia. Eu fiz as contas. A funerária mandou o boleto do que o plano não cobriu: nove mil e oitocentos.
+LUCIA: Seu pai pagava aquele plano há vinte anos.
+RODRIGO: E o plano cobriu o básico, mãe. A coroa de flores, a capela maior, o translado da tia de Ponta Grossa, isso tudo foi por fora.
+@se marca:rodrigo_impaciente -> h05_rodrigo_pressa
+@vai h05_rodrigo_plano
+
+=== h05_rodrigo_pressa
+@expr rodrigo brava
+RODRIGO: E eu sei que vocês acham que eu tô com pressa. Eu tô. Eu tenho filho pequeno em casa e eu não aguento mais ver a mãe chorando em cima de boleto.
+(Ele não está errado sobre a mãe. Está errado sobre o resto. Mas eu entendo de onde vem.)
+@vai h05_rodrigo_plano
+
+=== h05_rodrigo_plano
+@expr rodrigo neutra
+RODRIGO: Então é simples. A mãe sabe a senha do aplicativo do banco dele, é a data do casamento. Eu instalo no meu celular, entro como ele, faço um Pix da conta dele direto pra funerária e pronto. O dinheiro é dele, a despesa é dele. Ninguém sai prejudicado.
+LUCIA: Eu sei a senha, sim. Ele me falava pra eu decorar. "Se um dia eu não estiver, Lúcia."
+> O silêncio fica um tempo em cima da mesa, junto com o café frio.
+(É exatamente o tipo de coisa que parece amor e vira processo.)
+? O que você responde?
+* "Não dá, Rodrigo. Depois que ele morreu, o dinheiro da conta é herança. Não é mais dele, nem nosso ainda." -> h05_explica {etica+1 rel_rodrigo-1}
+* "Antes de qualquer coisa, vamos ligar para o Tio Nelson. Ele entende disso." -> h05_tio {uniao+1 paciencia+1}
+* "É pro enterro, todo mundo concorda. Faz." -> h05_pix {marca:pix_conta_do_pai etica-2 rel_rodrigo+1}
+** Segurar a mão da mãe e perguntar o que ela quer -> h05_mae {rel_lucia+2 uniao+1}
+
+=== h05_explica
+EU: Pensa comigo. Ele morreu na terça. A partir daí, o que estava na conta dele faz parte da herança, e herança se divide no inventário. Com advogado, judicial ou em cartório.
+RODRIGO: E até lá a funerária espera? A mãe paga com o quê?
+EU: Existem caminhos pra despesa de funeral e pra valor pequeno. Mas quem diz qual é o nosso caso é um advogado que a gente escolher. Não a senha do aplicativo.
+@expr rodrigo brava
+RODRIGO: É o mesmo dinheiro, {nome}. Ia pra funerária de qualquer jeito.
+EU: Ia. Mas se sai da conta com a senha dele, depois da morte, sem ninguém autorizar, fica parecendo que um de nós mexeu. E daqui a um ano, se alguém brigar, quem fez o Pix foi você.
+(Ele fica quieto. O Rodrigo fica quieto quando sabe que vai perder a discussão e ainda não decidiu se aceita.)
+@anota h5_conta_do_falecido
+@vai h05_sem_pix
+
+=== h05_tio
+@zap "Tio Nelson"
+EU: Tio, o Rodrigo quer fazer Pix da conta do pai pra pagar a funerária. Com a senha que a mãe sabe.
+> Tio Nelson está gravando áudio...
+TIO_NELSON: [audio 1:14] Ninguém mexe nessa conta. Fala pro teu irmão que eu fui contador trinta e dois anos e vi mais família brigar por Pix do que por casa. O dinheiro do falecido entra no inventário. Pra despesa de enterro tem jeito certo, o advogado de vocês orienta. Eu passo aí às dez e vou junto no banco. E guarda a nota da funerária.
+@zap fim
+@expr rodrigo pensativa
+RODRIGO: Trinta e dois anos ele fala toda vez.
+EU: E toda vez tá certo.
+RODRIGO: Tá. Tá bom. A gente vai no banco.
+@anota h5_conta_do_falecido
+@vai h05_sem_pix
+
+=== h05_mae
+> Você puxa a cadeira para perto. A mão da sua mãe está fria, apesar da xícara.
+EU: Mãe. Sem pensar no boleto. O que a senhora quer?
+@expr lucia triste
+LUCIA: Eu quero que ninguém brigue por causa do dinheiro do teu pai. Ele trabalhou a vida inteira de escada em escada pra vocês três não brigarem por nada.
+LUCIA: Eu decorei a senha porque ele pediu. Mas ele pediu pra eu cuidar, não pra eu mexer escondido.
+@expr rodrigo envergonhada
+RODRIGO: Ninguém ia fazer escondido, mãe.
+LUCIA: Sem avisar a Tainá é escondido, Rodrigo.
+> O Rodrigo guarda a folha impressa no bolso, dobrada em quatro.
+RODRIGO: Tá. Banco. Do jeito certo.
+@anota h5_conta_do_falecido
+@vai h05_sem_pix
+
+=== h05_pix
+@expr rodrigo feliz
+RODRIGO: Obrigado. Alguém nesta casa pensa prático.
+> Ele instala o aplicativo no celular dele. Digita o CPF do pai. Digita a data do casamento.
+@som notificacao
+> No celular do pai, em cima da mesa, a tela acende sozinha: "Código de acesso: 482913. Não compartilhe."
+@muda bateria-3
+(O código chegou no aparelho dele. Claro que chegou. O celular do pai é a chave de tudo.)
+RODRIGO: Lê pra mim?
+> Você lê. Ele digita. Nove mil e oitocentos reais saem da conta de Valter Aparecido para a Funerária Bom Descanso Ltda.
+@som dinheiro
+@expr lucia pensativa
+LUCIA: A Tainá sabe disso?
+RODRIGO: Depois eu conto. É pro enterro, mãe. Ela vai entender.
+@vai h05_agencia
+
+=== h05_sem_pix
+> A folha da funerária fica presa na geladeira com o ímã de uma pizzaria que fechou em 2015. Vai esperar o jeito certo.
+@vai h05_agencia
+
+=== h05_agencia
+@sai todos
+@fundo agencia_banco
+@musica nenhuma
+> 10h15. Agência do bairro. Ar-condicionado gelado, cadeira de plástico azul, senha 047 no papelzinho térmico.
+@entra lucia neutra esquerda
+LUCIA: Ele vinha aqui toda primeira segunda do mês. Tirava o extrato impresso. Dizia que aplicativo podia mentir e papel não.
+> Painel: "047, guichê 3".
+@vai h05_atendente
+
+=== h05_atendente
+@musica triste
+@entra atendente_banco neutra direita
+ATENDENTE_BANCO: Bom dia. Pois não?
+> A sua mãe abre a pasta de plástico. A mão dela treme um pouco no elástico.
+LUCIA: Meu marido faleceu. Na terça. Ele era cliente aqui.
+@expr atendente_banco triste
+ATENDENTE_BANCO: Eu sinto muito, senhora. De verdade. Vou fazer com calma, tá? A senhora não precisa ter pressa aqui.
+(É a primeira pessoa em seis dias que não pediu nada pra gente. Só ofereceu tempo.)
+ATENDENTE_BANCO: Pra registrar o falecimento eu preciso da certidão de óbito e de um documento seu. Vamos por partes.
+> Ela vira a tela do computador um pouco, para que vocês vejam que ela não está escondendo nada.
+@desafio h5_agencia -> h05_agencia_acerto | h05_agencia_erro
+
+=== h05_agencia_acerto
+@muda tecnica+1 paciencia+1
+@marca foi_ao_banco_certo
+EU: Antes de sair, deixa eu conferir a lista: óbito registrado, cartões e acesso ao aplicativo bloqueados, lista dos débitos automáticos e dos produtos que ele tinha, e o que o banco vai pedir para o inventário. Com protocolo.
+ATENDENTE_BANCO: Você fez a minha lista melhor do que eu.
+> Ela imprime o protocolo. A sua mãe guarda na pasta, junto da certidão, com o cuidado de quem guarda santinho.
+@anota h5_banco_obito
+@vai h05_debitos
+
+=== h05_agencia_erro
+@muda paciencia-1
+> Você registra o óbito, pede o bloqueio do cartão de débito e quase levanta. A atendente segura a pasta com dois dedos.
+ATENDENTE_BANCO: Só um minuto. Vocês não querem ver os débitos automáticos? E os produtos? Muita família descobre seguro e consórcio só depois.
+EU [envergonhada]: Quero. Desculpa. Eu tô fazendo lista de cabeça e a minha cabeça tá meio...
+ATENDENTE_BANCO: Tá tudo bem. Ninguém faz isso bem na primeira vez. Ninguém devia ter que fazer.
+@marca h5_lista_pela_metade
+@anota h5_banco_obito
+@vai h05_debitos
+
+=== h05_debitos
+> A atendente lê a lista em voz alta, devagar.
+ATENDENTE_BANCO: Débito automático da conta de luz da casa. Débito da conta de água. Um seguro residencial. E um consórcio de uma moto, com três parcelas pagas.
+@expr lucia surpresa
+LUCIA: Moto?
+RODRIGO: Que moto?
+> Silêncio de agência.
+LUCIA: Esse homem. Sessenta e oito anos. Comprando moto escondido.
+EU: Mãe, a senhora tá rindo?
+LUCIA [feliz]: Um pouquinho. Ele ia chegar aqui um dia de capacete e eu ia matar ele.
+> Ela ri e chora ao mesmo tempo, que é uma coisa que só mãe sabe fazer sem derramar o café.
+ATENDENTE_BANCO: A luz e a água estão no nome dele. Com a conta bloqueada, o débito para. O ideal é a senhora pedir a troca de titularidade na companhia de luz e na de água, com a certidão, pra não ter susto com corte.
+@anota h5_debitos_automaticos
+@se marca:pix_conta_do_pai -> h05_atendente_pix
+@vai h05_atendente_cartao
+
+=== h05_atendente_pix
+@expr atendente_banco pensativa
+ATENDENTE_BANCO: Senhora, aparece aqui uma transferência hoje de manhã, às 8h02. Pix de nove mil e oitocentos reais. Depois da data do óbito.
+> O Rodrigo endireita as costas na cadeira de plástico.
+RODRIGO: Fui eu. Pra funerária. É despesa dele.
+ATENDENTE_BANCO: Eu entendo. Eu só preciso dizer que isso fica registrado. Movimentação feita depois do falecimento, com a senha do titular, costuma ter que ser explicada no inventário. Guardem a nota da funerária e falem com o advogado da família.
+@expr lucia triste
+(Ela falou sem julgar ninguém. Mesmo assim, pareceu que alguém tinha acendido a luz numa sala onde a gente achava que estava sozinho.)
+@muda rel_rodrigo-1 uniao-1
+@vai h05_atendente_cartao
+
+=== h05_atendente_cartao
+ATENDENTE_BANCO: O cartão de crédito que ele usava não é nosso, é de outra instituição. Esse vocês precisam comunicar lá também, pelo canal oficial.
+EU: O de capa preta, do aplicativo?
+LUCIA: Aquele que ele chamava de "o moderno".
+ATENDENTE_BANCO: E uma coisa que eu falo pra todo mundo, mesmo sem perguntarem: nesses dias chega muita mensagem falsa. "Banco bloqueou", "seguro liberado", "atualize o cadastro". O banco não manda link pedindo senha. Na dúvida, venham aqui ou liguem no número do verso do cartão.
+@sai atendente_banco
+@vai h05_saida
+
+=== h05_saida
+@fundo sala_familia
+@musica misterio
+@sai todos
+> 13h. De volta em casa. O celular do pai está carregando na tomada da sala quando a tela acende.
+@som notificacao
+@muda bateria-3
+> Na tela de bloqueio, uma mensagem de um número que você não conhece:
+> "BANCO INFORMA: identificamos o falecimento do titular. Para liberar o saldo aos herdeiros, atualize o cadastro em até 2 horas: bit.ly/heranca-libera"
+(Duas horas depois de a gente sair da agência. Golpista lê obituário. E agora lê fila de banco também.)
+? E agora?
+* Não clicar, mostrar para a mãe e para o Rodrigo como reconhecer, e apagar -> h05_sms_mostra {tecnica+1 uniao+1}
+* Ver o que tem no link, só pra saber -> h05_sms_link {tecnica-1 bateria-5}
+
+=== h05_sms_mostra
+@entra lucia pensativa esquerda
+@entra rodrigo pensativa direita
+EU: Olha. A atendente falou duas horas atrás: banco não manda link. Prazo curto, link encurtado, "liberar saldo". Saldo de herança não se libera por link. Se libera no inventário.
+LUCIA: Então eu não clico em nada que chegar nesse aparelho.
+EU: A senhora não clica em nada que chegar em aparelho nenhum, mãe. Nem no seu.
+RODRIGO: Eu ia clicar. Sério. Se chegasse no meu, eu ia clicar.
+EU [feliz]: Eu sei. Por isso eu mostrei.
+@vai h05_ricardo_volta
+
+=== h05_sms_link
+> Você abre o link no seu próprio celular, "só pra ver". Uma página com o logotipo do banco meio esticado, pedindo CPF do falecido, CPF do herdeiro, agência, conta e senha.
+> Você fecha. O coração fica batendo mais rápido do que devia.
+(Eu não digitei nada. Mas o site agora sabe que alguém deste número abriu o link. E eu sei que fiz uma coisa que passei dez anos mandando a escola inteira não fazer.)
+@muda paciencia-1
+@vai h05_ricardo_volta
+
+=== h05_ricardo_volta
+@se marca:pagou_taxa_advogado -> h05_ricardo_sumiu
+@vai h05_ricardo_mensagem
+
+=== h05_ricardo_sumiu
+@musica triste
+@entra lucia triste centro
+LUCIA: Eu liguei pro doutor Ricardo hoje. Pra contar que a gente foi no banco. Eu sei que ele não é doutor. Liguei assim mesmo.
+EU: E aí, mãe?
+LUCIA: "Este número não existe." A moça da gravação falou duas vezes, pra eu entender.
+> Ela dobra o papel com o número dele e guarda na pasta. Não joga fora. Ainda não.
+(Golpista não some porque terminou. Some porque já recebeu.)
+@vai h05_noite
+
+=== h05_ricardo_mensagem
+@som mensagem
+@entra rodrigo pensativa centro
+RODRIGO: {nome}. Olha quem voltou.
+@zap "Dr. Ricardo Inventários ⚖️"
+FALSO_ADVOGADO: Boa tarde, Sr. Rodrigo. Soube que a família esteve no banco hoje. Meus sentimentos novamente.
+FALSO_ADVOGADO: Como o senhor deve ter percebido, o banco BLOQUEOU a conta do seu pai. Isso pode levar ANOS.
+FALSO_ADVOGADO: Tenho um contato interno que libera em 48h. Taxa única de R$ 1.900, via Pix. Vagas limitadas esta semana.
+@zap fim
+RODRIGO: Ele não desiste. A gente já conferiu que esse homem não existe no cadastro da OAB e ele continua mandando.
+(Ele nem sabe se a gente foi ao banco. Chuta, porque toda família vai ao banco na segunda depois do enterro.)
+? O que fazer com ele, desta vez?
+* Bloquear, denunciar o número no aplicativo e avisar o grupo da família -> h05_ricardo_bloqueia {etica+1 uniao+1}
+* Pedir, por escrito, o nome completo e o número de inscrição na OAB -> h05_ricardo_oab {tecnica+1}
+** Deixar o Rodrigo responder do jeito dele -> h05_ricardo_rodrigo {rel_rodrigo+1 uniao+1}
+
+=== h05_ricardo_oab
+@zap "Dr. Ricardo Inventários ⚖️"
+RODRIGO: Qual o seu nome completo e o número da sua inscrição na OAB?
+FALSO_ADVOGADO: Por questão de sigilo não informamos.
+@zap fim
+EU: Advogado de verdade te dá o número na primeira frase. E ninguém libera herança mediante taxa por mensagem.
+> O Rodrigo bloqueia e denuncia.
+@vai h05_noite
+
+=== h05_ricardo_bloqueia
+> O Rodrigo bloqueia e denuncia. Você manda no grupo da família: "Se ligar ou escrever um Dr. Ricardo, é golpe. Não respondam."
+> Você liga para a sua mãe, na cozinha, a três metros, porque ela só presta atenção quando o telefone toca.
+LUCIA: Mas ele era tão educado.
+EU: Golpista é sempre educado, mãe.
+@vai h05_noite
+
+=== h05_ricardo_rodrigo
+@zap "Dr. Ricardo Inventários ⚖️"
+RODRIGO: Doutor, o senhor aceita pagamento em sonho de creme? É o que eu tenho aqui.
+RODRIGO: E manda lembrança pro pessoal da OAB, que nunca ouviu falar do senhor.
+> O contato bloqueou você.
+@zap fim
+RODRIGO [feliz]: Ele me bloqueou. Eu fui bloqueado por um golpista. Melhor coisa da semana.
+> Você ri. É a primeira vez em seis dias que os dois riem da mesma coisa.
+@vai h05_noite
+
+=== h05_noite
+@fundo quintal_almoco
+@musica triste
+@sai todos
+> 21h. O quintal está escuro, só a lâmpada da área de serviço acesa. A churrasqueira, fria há uma semana, tem ainda um pouco de carvão do último domingo.
+@entra rodrigo triste centro
+> O Rodrigo está sentado no banquinho de plástico, aquele que só o pai usava porque "aguentava o peso de um eletricista".
+RODRIGO: Ele me ensinou a trocar resistência de chuveiro aqui. Eu tinha nove anos. Levei um choque e ele disse: "agora você nunca mais esquece de desligar o disjuntor".
+EU: Ele falou isso pra mim também. Eu tinha sete. E não levei choque.
+RODRIGO: Porque você sempre foi a que ouvia.
+? Você senta do lado dele?
+* Sentar e não dizer nada. Só ficar -> h05_fim {uniao+1 rel_rodrigo+1}
+* "Você também ouvia. Você só morava longe." -> h05_fim {uniao+1 rel_rodrigo+2}
+* Entrar e ir dormir. Amanhã tem mais -> h05_fim {paciencia+1}
+
+=== h05_fim
+@som notificacao
+> Lá dentro, na tomada da sala, o celular do pai acende de novo.
+@muda bateria-3
+> "Compra aprovada: Revista Pesca & Cia, R$ 29,90. Cartão final 7731."
+(O cartão moderno. Continua pagando a vida que ele tinha.)
+@vai h06_inicio

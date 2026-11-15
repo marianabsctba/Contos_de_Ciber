@@ -214,7 +214,7 @@ export function abrirDesafio(app: HTMLElement, d: Desafio, fim: (acertou: boolea
       });
       return el('fieldset', { class: 'form-campo' }, el('legend', {}, `${ci + 1}. ${c.rotulo}`), linha);
     });
-    corpo.append(el('div', { class: 'formulario-doc' }, ...blocos));
+    corpo.append(el('div', { class: `formulario-doc form-${d.visual ?? 'documento'}` }, ...blocos));
     rodape.append(
       el(
         'button',

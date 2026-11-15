@@ -1,0 +1,210 @@
+# Parte 2, capítulo 8: Sétimo dia (domingo)
+
+=== h08_inicio
+@cap 8 "Sétimo dia"
+@fundo quarto_madrugada
+@musica triste
+> Domingo, 8h. Doze dias, na verdade. A paróquia só tinha horário hoje, e o Padre Jonas disse ao telefone que Deus não conta os dias tão certinho assim.
+> Você abre o armário do seu antigo quarto. A sua mãe deixou ali, passada, a blusa que você usou no velório, e do lado uma outra, de cor.
+(Ela não disse nada. Só deixou as duas. Ela é assim.)
+@roupa "Missa de sétimo dia"
+> Na cozinha, a Dona Lúcia ajeita o broche de girassol na gola. É o broche que ele deu no aniversário de quarenta anos de casados.
+@entra lucia neutra centro
+LUCIA: O aparelho do teu pai vai junto?
+EU: A senhora quer que vá?
+LUCIA: Quero. Desligado não. No silencioso. Pra ele ouvir.
+@sai lucia
+@vai h08_igreja
+
+=== h08_igreja
+@fundo igreja_missa
+@musica nenhuma
+> 10h. Igreja cheia. O pessoal do futebol de terno emprestado, as vizinhas da rua, os clientes de trinta anos de fiação. O primo Marcelo, que só aparece em velório e missa, já na segunda fila, com óculos escuros dentro da igreja.
+@entra padre feliz centro
+PADRE: Bom dia, irmãos. Antes de começar, um pedido: celulares no silencioso.
+PADRE: Não desliguem, porque a Dona Cida nunca acha o botão de ligar de novo. Silencioso. A tecla do lado, de baixo. Isso, Dona Cida. Essa.
+> A igreja ri baixinho. A Dona Cida, a tia do bolo, levanta o polegar.
+(Ele explicou melhor que o manual do celular.)
+@musica triste
+PADRE: Nós estamos aqui pelo Valter. Que consertou a fiação desta igreja três vezes e cobrou uma. E a uma, ele doou de volta no dízimo.
+> A sua mãe aperta a sua mão. O celular do pai, na bolsa dela, vibra uma vez e para.
+PADRE: Antes da bênção final, alguém da família quer dizer uma palavra?
+? O que você faz?
+* Levantar e falar do pai, do jeito que sair -> h08_palavra_eu {rel_lucia+1}
+* Chamar o Rodrigo e a Tainá para falarem junto com você -> h08_palavra_tres {uniao+2} [se marca:irmaos_reconciliados]
+* Fazer que não com a cabeça e deixar o silêncio falar -> h08_palavra_silencio {paciencia+1}
+** Ler em voz alta a última mensagem que ele mandou no grupo da família -> h08_palavra_grupo {rel_lucia+1 rel_taina+1 uniao+1}
+
+=== h08_palavra_eu
+EU: Meu pai não falava muito. Ele consertava. Se alguém estava triste, ele aparecia com uma extensão e perguntava onde estava faltando tomada.
+EU: Essa semana eu fiquei consertando as coisas dele. E eu entendi que era o jeito dele de dizer que amava a gente. Agora é o meu.
+> Ninguém aplaude, porque é igreja. Mas o Seu Juarez, da obra de 2004, assoa o nariz tão alto que parece aplauso.
+@vai h08_padre
+
+=== h08_palavra_tres
+> Vocês três sobem juntos. O Rodrigo segura o papel, a Tainá segura o Rodrigo, você segura o microfone.
+RODRIGO: Ele ensinou a gente a desligar o disjuntor antes de mexer.
+TAINA: E a ligar de novo depois.
+EU: Então é isso que a gente vai fazer. Desligar um pouco. E ligar de novo. Juntos.
+> A Dona Lúcia chora com a mão no broche. O Tio Nelson chora sem disfarçar, que é como contador aposentado chora.
+@vai h08_padre
+
+=== h08_palavra_silencio
+> Você faz que não com a cabeça. O Padre Jonas entende e deixa um minuto inteiro de silêncio, que numa igreja cheia é muito tempo.
+> Dá pra ouvir o ventilador de teto. Ele instalou aquele ventilador.
+@vai h08_padre
+
+=== h08_palavra_grupo
+@musica alegre
+> Você abre o seu celular, no grupo que um dia se chamou "Churrasco do Valter 🔥". Rola até a última mensagem dele, de uma segunda-feira, às 18h03.
+EU: A última mensagem que o meu pai mandou no grupo da família foi esta:
+EU: "Domingo tem? Eu levo o carvão. A Lúcia leva a paciência. O Rodrigo liga por vídeo. A {nome} conserta o wi-fi. A Tainá traz o namorado que ela acha que eu não sei que existe."
+> A igreja inteira ri. A Tainá fica vermelha até as orelhas. O Padre Jonas ri tanto que tem que se segurar no altar.
+TAINA: Ele sabia?
+LUCIA: Ele sempre soube, minha filha.
+@musica triste
+@vai h08_padre
+
+=== h08_padre
+@fundo igreja_missa
+@sai todos
+@entra padre neutra centro
+> Depois da missa, na porta da sacristia, o Padre Jonas guarda a estola e tira do bolso um celular com capinha de São Francisco.
+PADRE: Posso te dar um conselho que não é de padre?
+EU: Pode.
+PADRE: Toda semana uma viúva me conta que, depois da missa de sétimo dia, ligou um advogado, um cartório, um seguro. O nome sai no mural, no site da paróquia, no obituário. Golpista lê tudo.
+PADRE: Por isso, a paróquia não publica mais o nome completo no site. E eu falo pra família não atender ninguém que oferece dinheiro.
+EU: O senhor entende disso, padre.
+@anota h8_golpe_missa
+PADRE [feliz]: Eu tenho um gerenciador de senhas com acesso de emergência pro secretário da paróquia. E uma carta lacrada com o que fazer se eu for chamado mais cedo. Padre também morre, minha filha. Só que avisa antes.
+@sai padre
+@vai h08_almoco
+
+=== h08_almoco
+@fundo quintal_almoco
+@musica alegre
+> 13h. O quintal voltou a ter fumaça. O Tio Nelson assumiu a churrasqueira com o avental "CHEF DO DISJUNTOR", que ficou apertado nele.
+@entra tio_nelson feliz esquerda
+TIO_NELSON: Ele ia querer. Não ia querer missa sem churrasco depois. Ia achar desperdício de família reunida.
+@entra rodrigo neutra direita
+RODRIGO: Tio, aproveitando. A furadeira de impacto. Eu ia levar.
+TIO_NELSON: A furadeira é minha. Eu emprestei pro teu pai em 2004.
+RODRIGO: Em 2004? Ela tá aqui faz vinte e dois anos!
+TIO_NELSON: Empréstimo não prescreve, Rodrigo. Pergunta pra qualquer contador.
+@entra lucia neutra centro
+LUCIA: A furadeira fica com quem for usar pra ajudar alguém. Que era pra isso que ele usava. Discussão encerrada.
+> Os dois olham para a furadeira. Os dois desistem. Ela fica no quartinho, onde está há vinte e dois anos.
+> A Tia Cida chega com dois bolos de fubá, porque "um é pouco e três é exagero".
+@som notificacao
+@muda bateria-3
+> Na bolsa da mãe, o celular do pai vibra. Na tela de bloqueio: "Bira Elétrica: E aí Valtão!! Sumiu hein. Vai ter churrasco domingo? Tô com saudade da tua linguiça kkkk"
+(O Bira. Sócio dele numa obra em 2010. Mora no interior, não tem rede social, não ficou sabendo.)
+? O que fazer com a mensagem do Bira?
+* Mandar uma mensagem do seu próprio celular para o Bira, se apresentando e contando com carinho -> h08_bira_conta {etica+1}
+* Pedir para o Tio Nelson ligar para ele. Notícia assim é melhor na voz -> h08_bira_tio {uniao+1}
+* Deixar sem resposta. Hoje não -> h08_bira_nada
+
+=== h08_bira_conta
+@zap "Bira Elétrica"
+EU: Oi, Seu Bira. Aqui é a {nome}, filha do Valter. Peguei o seu número na tela do celular dele.
+EU: Eu sinto muito te contar por mensagem. O pai faleceu semana passada, de repente, do coração. Hoje foi a missa.
+> Bira Elétrica está digitando...
+> Bira Elétrica parou de digitar.
+> Bira Elétrica está digitando...
+EU: Ele falava do senhor. Da obra do hospital, em 2010. Dizia que o senhor era o único que não tinha medo de alta tensão.
+> Bira Elétrica: [audio 0:41]
+(Eu não precisei ouvir pra saber o que tinha no áudio. Mas ouvi. Era um homem de setenta anos chorando e dizendo "o Valtão, não".)
+@zap fim
+@vai h08_plano_proposta
+
+=== h08_bira_tio
+> O Tio Nelson tira o avental, limpa as mãos na calça e vai para o portão ligar. Volta quinze minutos depois, de olho vermelho.
+TIO_NELSON: Ele vem amanhã. De ônibus. Disse que traz a linguiça.
+@vai h08_plano_proposta
+
+=== h08_bira_nada
+> Você não responde. Ainda.
+(Amanhã eu escrevo pro Bira. Do meu celular, com o meu nome. Hoje eu só consigo comer o bolo da Tia Cida.)
+@vai h08_plano_proposta
+
+=== h08_plano_proposta
+@musica triste
+@sai todos
+@entra lucia pensativa centro
+> Depois do café, a sua mãe senta do seu lado, com a pasta de plástico da certidão no colo. Ela não larga essa pasta há uma semana.
+LUCIA: Eu fiquei pensando. Teu pai deixou um celular com tudo dentro e ninguém sabia nada. Eu tenho um celular com tudo dentro também.
+LUCIA: Eu não quero que vocês passem por isso de novo. Me ensina a deixar tudo arrumado?
+? O que você responde?
+* "Ensino, mãe. Agora, com todo mundo aqui." -> h08_plano {tecnica+1}
+* "Vamos fazer juntos, os três filhos, e cada um cuida de uma parte" -> h08_plano {uniao+1 rel_lucia+1} [se marca:irmaos_reconciliados]
+* "Hoje não, mãe. Hoje é dia de lembrar. Semana que vem a gente faz." -> h08_plano_adiado {paciencia+1}
+
+=== h08_plano_adiado
+LUCIA: Tá certo. Semana que vem.
+> Ela guarda a pasta. O plano fica para a semana que vem, que é onde mora quase tudo que a gente promete em luto.
+(E tudo bem. Uma coisa de cada vez.)
+@vai h08_noite
+
+=== h08_plano
+> Você pega o caderno. Na página em branco, no alto, com a letra mais bonita que consegue: "PLANO DA DONA LÚCIA".
+@entra rodrigo neutra esquerda
+@entra taina neutra direita
+TIO_NELSON: Faz um pra mim também. Eu tenho conta em três bancos e não lembro de dois.
+@desafio h8_plano -> h08_plano_acerto | h08_plano_erro
+
+=== h08_plano_acerto
+@marca plano_heranca
+@muda tecnica+1 uniao+1
+> Quando o café acaba, a página tem tudo: a lista das contas, o gerenciador de senhas com acesso de emergência, um contato de confiança escolhido e avisado, as fotos em dois lugares, o que fazer com a rede social, o número de recuperação dela mesma.
+LUCIA: E o resto, a casa, o dinheiro?
+EU: Isso a senhora conversa com um advogado de confiança, que a gente escolhe e confere. Testamento, se a senhora quiser. Com orientação, não com bilhete.
+> A Dona Lúcia escolhe a Tainá como contato de confiança. A Tainá chora pela quarta vez no dia, e é a primeira vez que é de um jeito bom.
+TIO_NELSON: Agora eu. E depois o Rodrigo. E depois você, {nome}. Quem ensina também faz.
+@anota h8_plano_heranca
+@vai h08_noite
+
+=== h08_plano_erro
+@muda paciencia-1
+> O caderno fica cheio de setas e rabiscos. A senha do banco escrita num post-it, a Dona Lúcia querendo colar na geladeira, o Tio Nelson dizendo que o melhor gerenciador de senhas é a memória dele.
+LUCIA: Então é só eu deixar o caderninho na gaveta com todas as senhas?
+EU: Não, mãe. Caderninho com senha é a primeira coisa que qualquer um acha.
+> Ninguém se entende. Sobra um rascunho e uma promessa: domingo que vem, com calma, do começo.
+@anota h8_plano_heranca
+@vai h08_noite
+
+=== h08_noite
+@fundo quarto_do_pai
+@musica triste
+@sai todos
+> 22h. A casa dorme de verdade, pela primeira vez em doze dias. Dá pra ouvir a geladeira e o cachorro do vizinho.
+> Você está sentada, enfim, do lado dele da cama. Na mão, o celular do pai.
+@fundo gaveta_celular
+> A gaveta da mesinha dele está aberta. Fita isolante, óculos de leitura, o terço, a caneta da loja de material elétrico. Tem espaço do lado.
+(Doze dias. Esse aparelho recebeu golpe, código, cobrança, saudade. Guardou trinta anos de pôr do sol. Avisou a gente de tudo, mesmo trancado.)
+? O que fazer com o celular do pai?
+* Desligar com calma e guardar na gaveta, do lado da fita isolante -> h08_desliga {marca:celular_guardado}
+* Guardar na gaveta, ligado, sem carregar mais. Deixar a bateria acabar sozinha, por escolha -> h08_bateria {marca:celular_guardado}
+* Entregar para a mãe. Ela decide -> h08_mae {rel_lucia+1}
+
+=== h08_desliga
+> Você segura o botão do lado. "Desligar." A tela pergunta se você tem certeza.
+(Não tenho. Mas é a hora.)
+> A tela apaga. A foto da Dona Lúcia de chapéu de palha, em 1994, some por último.
+> A gaveta fecha com o mesmo estalo de sempre.
+@vai fim_escolha
+
+=== h08_bateria
+@muda bateria=1
+> Você coloca o celular na gaveta, de tela para cima, ligado. Não põe no carregador.
+> O indicador desce devagar a noite toda. De manhã, um por cento.
+> Às 6h12, a hora em que ele acordava para trabalhar, a tela acende uma última vez, mostra a foto da mãe na praia e apaga.
+(Eu não desliguei. Eu só deixei ele descansar no tempo dele.)
+@vai fim_escolha
+
+=== h08_mae
+@entra lucia neutra centro
+> Você leva o celular até a cozinha. A sua mãe está tomando chá de camomila, de camisola e broche.
+LUCIA: Eu vou deixar na minha bolsa. Mais um tempo. Às vezes ele vibra e eu acho que é ele me ligando da obra.
+EU: Quando a senhora quiser, a gente guarda.
+LUCIA: Quando eu quiser.
+@vai fim_escolha

@@ -319,7 +319,7 @@ a { color: var(--ciano); }
 /* cofre de contas (formulário com visual cofre) */
 .formulario-doc.form-cofre { background: linear-gradient(#2b2f3a, #1c1f27); color: #e9ecef; box-shadow: inset 0 0 0 2px #495057, 0 10px 24px #0008; border-radius: 16px; }
 .form-cofre .form-campo { background: #ffffff0d; border-radius: 12px; padding: 10px; }
-.form-cofre .form-campo legend { color: #ffd43b; float: left; width: 100%; padding-bottom: 6px; }
+.form-cofre .form-campo legend { color: #ffd43b; padding: 0 0 6px; }
 .form-cofre .form-campo legend::before { content: '🔐 '; }
 .form-cofre .form-opcao { background: #343a40; color: #e9ecef; border-color: #495057; }
 .form-cofre .form-opcao.marcada { border-color: #ffd43b; background: #4a3f12; }

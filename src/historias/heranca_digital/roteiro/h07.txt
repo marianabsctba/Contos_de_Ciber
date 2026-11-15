@@ -1,0 +1,308 @@
+# Parte 2, capítulo 7: As fotos (quarta à noite)
+
+=== h07_inicio
+@cap 7 "As fotos"
+@fundo home_office_noite
+@musica triste
+> Quarta-feira, 20h. A sala virou escritório: o computador velho da família, de 2011, ligado com um barulho de avião decolando; o seu notebook do lado; e, no meio, apoiado na almofada de crochê, o celular do pai.
+@entra taina neutra esquerda
+@entra rodrigo neutra direita
+TAINA: Trinta anos de foto. A gente vai ver todas?
+RODRIGO: Trinta e oito mil? Vai ser a missa de sétimo dia e a gente ainda no ano 2003.
+EU: A gente não vai ver. A gente vai salvar. Ver é pro resto da vida.
+(Três lugares onde as fotos dele podem estar: no celular, que está bloqueado; na nuvem, que está no nome dele; e no computador velho, onde ele descarregava tudo até 2016.)
+@se marca:h6_nuvem_em_risco -> h07_nuvem_risco
+@vai h07_email
+
+=== h07_nuvem_risco
+@expr taina pensativa
+TAINA: E a nuvem, tá paga mesmo? Depois de ontem eu não confio em mais nada.
+EU: Tá. A mãe pagou no cartão dela. Eu conferi o recibo duas vezes.
+(Errar a ordem uma vez já foi o suficiente. Hoje eu faço devagar.)
+@vai h07_email
+
+=== h07_email
+@musica misterio
+@som notificacao
+> O e-mail da Dona Lúcia, aberto no notebook, apita. Uma mensagem nova, com o assunto em letras maiúsculas.
+@entra lucia neutra centro
+LUCIA: Chegou um negócio dizendo que as fotos do teu pai vão ser apagadas. Em vinte e quatro horas.
+TAINA [assustada]: Apagadas?
+> Você puxa o notebook para perto antes que alguém clique em qualquer coisa.
+@desafio h7_email_fotos -> h07_email_acerto | h07_email_erro
+
+=== h07_email_acerto
+@muda tecnica+1
+EU: Respira, Tainá. Olha o remetente: não é do serviço, é um endereço qualquer com o nome do serviço no meio. Olha o prazo. Olha o botão "restaurar acesso" pedindo a senha dele e uma taxa de R$ 49,90.
+TAINA: Quem manda isso pra uma família que acabou de...
+EU: Quem lê obituário. É o mesmo golpe do doutor Ricardo, com outra roupa.
+> Você marca como golpe e apaga. A mãe pede para você mostrar de novo o remetente, para aprender.
+@anota h7_golpe_fotos
+@vai h07_caminho
+
+=== h07_email_erro
+@muda paciencia-1 rel_taina-1
+> Enquanto você ainda lê, a Tainá já clicou no botão. Uma página com a logomarca do serviço de fotos pede "e-mail e senha do titular".
+TAINA: Eu ia tentar a senha que eu acho que é a dele.
+EU: Para. Fecha. Fecha agora.
+@expr taina brava
+TAINA: Você não precisava gritar.
+EU: Não precisava. Desculpa. Mas o remetente era falso, o prazo era falso, e a página quer exatamente o que golpista quer: a senha dele.
+> Ela fecha a aba. Ninguém digitou nada. Por pouco.
+@anota h7_golpe_fotos
+@vai h07_caminho
+
+=== h07_caminho
+@musica triste
+> O alarme falso deixa uma pergunta de verdade: como pegar as fotos da nuvem do pai, que está no nome dele?
+@expr taina pensativa
+TAINA: Eu acho que sei a senha. É o meu aniversário e o nome do Pipoca. Ele usava pra tudo.
+RODRIGO: Então entra e baixa tudo. Pronto. Meia hora.
+? Como recuperar as fotos?
+* Pedir pelo caminho oficial do serviço para familiares de quem faleceu, com certidão de óbito e documentos -> h07_oficial {etica+1 tecnica+1}
+* Entrar com a senha que a Tainá acha que sabe -> h07_senha_taina {marca:entrou_na_conta_do_pai etica-1}
+* Começar pelo que já está com a família: o computador velho, os pendrives, o grupo -> h07_familia {uniao+1}
+** Abrir primeiro a caixa de sapato com as fotos de papel da mãe -> h07_caixa_papel {rel_lucia+2 uniao+1}
+
+=== h07_caixa_papel
+@musica alegre
+> A Dona Lúcia volta do quarto com uma caixa de sapato de 1988, a tampa presa com elástico de cabelo.
+LUCIA: Antes de celular, antes de nuvem, tinha isso. E isso ninguém apaga com e-mail.
+> Lá dentro: o casamento em preto e branco, o Fusca azul, o Rodrigo bebê no colo do pai de bigode, você de maria-chiquinha num aniversário com bolo de chantili, a Tainá recém-nascida dormindo no capacete de eletricista.
+RODRIGO: Eu não lembrava do bigode.
+LUCIA: Ninguém lembra. Eu fiz ele tirar em 1995.
+TAINA [feliz]: Eu dormia no capacete?
+LUCIA: Era o único lugar onde você dormia.
+(A primeira cópia de segurança desta família é uma caixa de sapato. E funciona até hoje.)
+@vai h07_caminho_depois
+
+=== h07_caminho_depois
+@musica triste
+EU: E a nuvem, a gente pede pelo caminho certo. Agora, com calma.
+@vai h07_oficial
+
+=== h07_oficial
+> Você procura, no site oficial do serviço de fotos, digitando o endereço, a página de ajuda para familiares de usuário falecido.
+EU: Tem um formulário. Pede a certidão de óbito, documento de quem pede, comprovação de que é da família. Em alguns casos pode pedir decisão judicial. E avisa que leva semanas.
+RODRIGO: Semanas.
+EU: Semanas é melhor que um golpista. E melhor que a gente entrar no nome dele, coisa que os termos do serviço nem permitem.
+> A Tainá preenche, devagar, com a certidão escaneada. Protocolo número tal, prazo estimado de quatro a seis semanas.
+@anota h7_fotos_familiares
+@vai h07_familia
+
+=== h07_senha_taina
+> A Tainá digita: o aniversário dela e o nome do cachorro. A tela pensa.
+@som notificacao
+> "Enviamos um código para o número terminado em 47."
+@se marca:h6_chip_cancelado -> h07_senha_chip_cancelado
+@muda bateria-3
+> No celular do pai, a tela de bloqueio acende com o código. A Tainá copia, de mão tremendo.
+> Entra. A tela se enche de miniaturas: pôr do sol, pôr do sol, quadro de disjuntor, pôr do sol, a Dona Lúcia dormindo de boca aberta, pôr do sol.
+TAINA: Eu entrei. Eu tô dentro dele.
+(Ela está dentro da conta dele. E a conta dele tem as fotos, mas tem também os álbuns compartilhados com os amigos, os comentários, os arquivos que ele nunca mostrou.)
+EU: Tainá. Só as fotos. A gente baixa as fotos e sai. Não abre mais nada.
+@anota h7_fotos_familiares
+@vai h07_familia
+
+=== h07_senha_chip_cancelado
+@musica misterio
+> O número terminado em 47 é o do pai. O mesmo que o Rodrigo cancelou ontem.
+RODRIGO: Cancelei. Ontem. O código foi pra onde?
+EU: Pra lugar nenhum, por enquanto. Um dia, pode ir pra quem receber esse número.
+@expr taina triste
+TAINA: Então a gente não entra.
+EU: Não desse jeito. Pelo caminho oficial, com a certidão. E devagar.
+@anota h7_fotos_familiares
+@vai h07_familia
+
+=== h07_familia
+@musica alegre
+> Você liga o computador velho de vez. Usuário: VALTER. Sem senha, porque ele dizia que "computador de casa não tem ladrão".
+> Pasta "FOTOS". Dentro, pastas por ano, de 2003 a 2016, com nomes que só ele entenderia: "NATAL 2008 (O BOM)", "OBRA DO SEU JUAREZ", "POR DO SOL LAJE 1", "POR DO SOL LAJE 2", "POR DO SOL LAJE 3 (MELHORES)".
+RODRIGO: Quantas fotos de pôr do sol, {nome}?
+EU: Quatro mil trezentas e doze.
+RODRIGO: Da mesma laje?
+EU: Da mesma laje.
+TAINA [feliz]: Cada uma é diferente. Ele dizia que o céu nunca repete.
+@zap "Família Valter 🕊️"
+EU: Família, pedido especial: quem tiver foto do pai no celular, manda aqui ou no meu privado. Qualquer uma. Até as tremidas.
+TIO_NELSON: [foto] Churrasco de 2019. Ele tá de avental escrito CHEF DO DISJUNTOR
+TIO_NELSON: Tenho mais 200. Mando aos poucos pra não travar teu telefone
+> Tia Cida está digitando...
+> Tia Cida enviou 47 fotos.
+> Tia Cida enviou 1 foto do bolo de fubá que ela levou no velório.
+TAINA: A tia do bolo
+RODRIGO: A tia do bolo nunca erra
+@zap fim
+(A família inteira é uma cópia de segurança. Espalhada, desorganizada, cheia de figurinha. Mas é.)
+@vai h07_backup
+
+=== h07_backup
+@musica triste
+EU: Agora a parte que ninguém gosta: onde guardar. Um lugar só não é cópia de segurança. É só um lugar.
+? Como guardar as fotos?
+* Duas cópias em lugares diferentes: um HD externo que fica com a mãe e uma pasta compartilhada da família na nuvem, no nome de quem está vivo -> h07_backup_certo {marca:fotos_salvas tecnica+1}
+* Deixar tudo no computador velho. Ele aguentou até agora -> h07_backup_velho {paciencia+1}
+* Cada irmão copia para o próprio celular o que quiser -> h07_backup_celular
+
+=== h07_backup_certo
+> O HD externo é do Rodrigo, que tinha trazido "pra assistir filme no hotel". Vira o HD da família, com uma etiqueta em fita crepe, na letra da mãe: "FOTOS DO VALTER. NÃO MEXER".
+> A cópia na nuvem fica numa pasta compartilhada no nome da sua mãe, com os três filhos como membros.
+LUCIA: E se o computador velho morrer?
+EU: Tem o HD. E se o HD morrer, tem a nuvem. E se tudo morrer, tem a caixa de sapato.
+LUCIA [feliz]: Então tá bom. Então eu durmo.
+@anota h7_backup
+@vai h07_pasta
+
+=== h07_backup_velho
+> O computador de 2011 faz um barulho de avião, depois um estalo, depois volta.
+RODRIGO: Isso não é cópia de segurança. Isso é relíquia.
+(Ele tem razão. Mas hoje ninguém tem força para comprar HD. Fica pra outra semana.)
+@anota h7_backup
+@vai h07_pasta
+
+=== h07_backup_celular
+> Cada um escolhe as suas. O Rodrigo pega as do futebol. A Tainá pega todas em que o pai está sorrindo, que são quase todas. Você pega as do quadro de disjuntor, porque ninguém mais vai querer.
+(Três celulares, três pedaços. Se um quebra, foi junto um pedaço do pai.)
+@anota h7_backup
+@vai h07_pasta
+
+=== h07_pasta
+@musica nenhuma
+> Na pasta do usuário VALTER, entre "FOTOS" e "NOTAS FISCAIS", tem uma pasta que ninguém abriu. Chama "PARTICULAR".
+> Dentro, arquivos de texto com nomes de gente: "conversa ze", "conversa nelson", "conversa padre". Cópias de conversas que ele exportou do aplicativo de mensagens, sabe-se lá por quê.
+TAINA: Abre.
+RODRIGO: Apaga.
+> Os dois falam ao mesmo tempo. Os dois olham para você.
+(Não é escândalo. Eu sei que não é. É só a parte da vida dele que ele não mostrou pra gente. E metade de cada conversa é de outra pessoa, que está viva e nunca autorizou ninguém a ler.)
+? O que fazer com a pasta "PARTICULAR"?
+* Fechar sem ler. O que ele não mostrou em vida, não é meu para abrir agora -> h07_pasta_fecha {etica+2}
+* Ler só um pouco, só para ver se tem alguma coisa importante, dívida ou pedido -> h07_pasta_le {marca:leu_conversas_privadas etica-1}
+* Apagar tudo, como o Rodrigo quer -> h07_pasta_apaga {rel_rodrigo+1 rel_taina-2 uniao-1}
+
+=== h07_pasta_fecha
+EU: Eu não vou abrir. Nem apagar. Vai pro HD numa pasta lacrada, com o nome dele, e quem decide é a mãe. Um dia. Ou nunca.
+@expr taina brava
+TAINA: É tudo que sobrou dele! As palavras dele!
+EU: Não é tudo, Tainá. É a parte que ele guardou pra ele. E a parte do Zé, do tio, do padre, que são vivos e nunca deixaram a gente ler.
+@anota h7_privacidade
+@vai h07_briga
+
+=== h07_pasta_le
+> Você abre "conversa ze". Lê três telas.
+> O Zé do futebol contando da separação dele, das dívidas, do filho que não liga. O pai respondendo com áudio transcrito torto: "aguenta firme compadre, domingo tem churrasco, vc não paga nada".
+> Nada de escândalo. Nada que a família não soubesse do pai. Muita coisa que a família não devia saber do Zé.
+(Agora eu sei da separação do Zé. E o Zé não sabe que eu sei. Na missa, ele vai me abraçar e eu vou saber.)
+> Você fecha. Não abre as outras.
+@expr taina brava
+TAINA: Você leu? Você leu e não me deixou ler?
+@anota h7_privacidade
+@vai h07_briga
+
+=== h07_pasta_apaga
+> Você arrasta a pasta para a lixeira. A Tainá levanta tão rápido que a cadeira cai.
+TAINA: Você não tinha o direito!
+RODRIGO: Ninguém tinha o direito de ler, Tainá. Por isso mesmo.
+(Talvez apagar fosse o certo. Talvez guardar sem ler fosse mais justo. Agora já foi.)
+@anota h7_privacidade
+@vai h07_briga
+
+=== h07_briga
+@musica triste
+@se marca:pix_conta_do_pai -> h07_briga_pix
+@vai h07_briga_geral
+
+=== h07_briga_pix
+@expr taina brava
+TAINA: E não vem falar de direito, Rodrigo. Eu descobri do Pix da funerária pelo extrato que chegou no e-mail da mãe. Nove mil e oitocentos. Ninguém me perguntou.
+RODRIGO: Era pro enterro do teu pai!
+TAINA: Do NOSSO pai. E a conta era dele, não sua.
+@muda uniao-1
+@vai h07_briga_geral
+
+=== h07_briga_geral
+@expr rodrigo brava
+RODRIGO: Vocês acham que eu não sinto porque eu moro longe. Eu sinto de longe faz doze anos. Eu sinto pelo telefone.
+TAINA: Você nem ligava domingo!
+RODRIGO: Eu ligava! Ele que não atendia, porque tava no churrasco!
+> E então ninguém fala. A Dona Lúcia aparece na porta da cozinha, de pano de prato no ombro, e não diz nada. Só olha para os três.
+(O pai resolvia briga com um "chega" e uma picanha. A gente não tem nem a picanha.)
+? O que você faz?
+* Ir atrás do Rodrigo, que saiu para o quintal -> h07_vai_rodrigo {uniao+1 rel_rodrigo+1}
+* Ficar com a Tainá, que está chorando no sofá -> h07_fica_taina {rel_taina+1}
+* Deixar todo mundo esfriar e ir dormir -> h07_esfria {paciencia+1 uniao-1}
+** Abrir a pasta "OS TRÊS" e colocar as fotos na televisão da sala -> h07_os_tres {uniao+2}
+
+=== h07_os_tres
+@musica alegre
+> No computador velho, dentro de "FOTOS", tem uma pasta que ninguém tinha visto porque está no fim da lista, com o nome em minúsculas: "os tres".
+> Você liga o cabo na televisão. Duzentas e doze fotos. Em todas, os três filhos juntos.
+> O Rodrigo ensinando a Tainá a andar de bicicleta. Você e o Rodrigo dividindo um picolé. Os três dormindo amontoados no banco de trás do Fusca, voltando da praia.
+> A última foto da pasta é de dois anos atrás: os três no churrasco, de costas, olhando o pôr do sol na laje. O pai tirou escondido.
+@entra rodrigo triste esquerda
+@entra taina triste direita
+RODRIGO: Ele fez uma pasta. Só da gente junto.
+TAINA: Ele nunca falou.
+EU: Ele não falava. Ele guardava. Numa pasta, numa caixa, num cabo enrolado com elástico.
+@vai h07_reconcilia
+
+=== h07_vai_rodrigo
+@fundo quintal_almoco
+@entra rodrigo triste centro
+> Ele está no banquinho do pai, de novo, olhando a churrasqueira fria.
+RODRIGO: Eu sei que eu fiz besteira essa semana. Eu só queria ser útil. Lá de longe a gente nunca é útil.
+EU: Você é útil. Você trouxe o HD, trouxe sonho de creme, discutiu com golpista. Só não precisa resolver tudo em dois dias.
+RODRIGO: O pai resolvia.
+EU: O pai levava trinta anos. Ele só fazia parecer rápido.
+@vai h07_reconcilia_teste
+
+=== h07_fica_taina
+> Você senta do lado dela. Ela encosta a cabeça no seu ombro, do jeito que fazia aos seis anos, quando tinha trovão.
+TAINA: Eu escrevo pra ele todo dia. Ele não responde. E vocês querem apagar o pouco que responde.
+EU: Ninguém vai apagar ele, Tainá. Nem o Rodrigo. O Rodrigo só tem medo diferente do seu.
+@vai h07_reconcilia_teste
+
+=== h07_esfria
+@sai todos
+> Cada um vai para um quarto. A casa, que tinha cinco pessoas, tem três portas fechadas e uma mãe lavando louça que já estava limpa.
+@vai h07_frio
+
+=== h07_reconcilia_teste
+@se uniao>=4 -> h07_reconcilia
+@vai h07_frio
+
+=== h07_reconcilia
+@fundo sala_familia
+@musica triste
+@entra rodrigo neutra esquerda
+@entra taina neutra direita
+> Meia-noite. Os três no chão da sala, encostados no sofá, como quando eram crianças e a luz acabava.
+RODRIGO: Desculpa, Tainá. Por decidir sem você.
+TAINA: Desculpa por dizer que você não ligava. Você ligava. Eu ouvia ele falando "é o Rodrigo" com aquela voz de orgulho.
+@se marca:pix_conta_do_pai -> h07_reconcilia_pix
+@vai h07_reconcilia_fim
+
+=== h07_reconcilia_pix
+RODRIGO: E o Pix. Eu vou contar pro advogado do inventário, com a nota da funerária. Do jeito certo, mesmo atrasado.
+(Pedir desculpa não desfaz o Pix. Mas muda o que ele vira.)
+@vai h07_reconcilia_fim
+
+=== h07_reconcilia_fim
+@marca irmaos_reconciliados
+@muda uniao+1
+> Vocês decidem juntos: o que for do pai, decide-se em três. E a pasta "PARTICULAR", se ainda existir, fica com a mãe.
+@vai h07_fim
+
+=== h07_frio
+@fundo quarto_madrugada
+@musica triste
+@sai todos
+> 1h20. Você está deitada no seu antigo quarto, olhando o teto com estrelinhas que brilham no escuro, coladas em 1999 pelo pai em cima de uma escada.
+> No celular, o grupo dos irmãos, "Os 3 do Valter", tem a última mensagem de três dias atrás.
+(Ninguém escreveu. Eu também não.)
+@vai h07_fim
+
+=== h07_fim
+@som notificacao
+> No seu celular, uma mensagem do Padre Jonas: "A missa de sétimo dia ficou para domingo às 10h. Que Deus conforte a família. Ah, e quem for ler a primeira leitura, ensaia, tá?"
+@vai h08_inicio

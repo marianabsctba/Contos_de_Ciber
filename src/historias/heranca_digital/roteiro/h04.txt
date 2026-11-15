@@ -1,0 +1,268 @@
+=== h04_inicio
+@cap 4 "O perfil continua postando"
+@fundo quarto_madrugada
+@musica misterio
+> Sexta-feira, 6h04. Você acorda com a Tainá batendo na porta do seu quarto. Não batendo: esmurrando.
+@entra taina assustada centro
+TAINA: {nome}. O pai postou.
+EU: O quê?
+TAINA: O pai postou. Agora. Olha.
+> Ela vira o celular para você. No perfil do Seu Valter, na rede social, uma postagem de 6h00 em ponto.
+> Uma foto de pôr do sol, com letras douradas e brilho: "Bom dia, família! ☀️ Que Deus abençoe a sua sexta-feira!"
+> Embaixo, os comentários já começaram.
+> Zé Carlos (Futebol): ???
+> Dirce Irmã: VALTER?? 😭😭
+> Marlene Vizinha: que brincadeira de mau gosto, quem está mexendo nisso
+> E um comentário de 6h02, da própria Tainá: "pai?"
+(Ela comentou "pai?". Às seis e dois da manhã. Antes de pensar.)
+@vai h04_sala
+
+=== h04_sala
+@fundo sala_familia
+@entra lucia triste direita
+@entra rodrigo brava esquerda
+> 6h30. A família inteira está de pé na sala, de pijama, em volta de um celular.
+RODRIGO: Alguém invadiu. Só pode. Apaga essa conta hoje, {nome}. Hoje.
+LUCIA: Eu não quero que ninguém fale em nome do teu pai. Faz parar, filha.
+TAINA: Ninguém apaga nada! É o perfil do pai! Tem tudo dele lá!
+(Três pessoas, três pedidos. E eu nem sei ainda o que aconteceu.)
+? Antes de decidir qualquer coisa, você precisa entender quem postou.
+* Olhar a tela de bloqueio do celular do pai, que pode ter recebido algum aviso -> h04_tela_bloqueio {bateria-3 tecnica+1}
+* Rolar o perfil para trás e ver em que horário ele postava nos outros dias -> h04_historico {tecnica+1}
+* Avisar no grupo da família que o perfil do pai foi invadido -> h04_alarme_grupo {paciencia-1}
+
+=== h04_tela_bloqueio
+> O celular do seu pai está onde ficou. A tela acende quando você pega.
+@se bateria<=0 -> h04_sem_bateria
+> Na tela de bloqueio, uma notificação de 6h00:
+> Bom Dia Abençoado ☀️: Sua mensagem diária foi publicada com sucesso! Plano Premium ativo.
+EU: Não foi invasão. É um aplicativo. Um desses de mensagem de bom dia. Ele deu permissão para o aplicativo postar no perfil dele todo dia às seis.
+LUCIA: Teu pai pagava para mandar bom dia?
+EU: Pelo jeito pagava, mãe. Plano Premium.
+LUCIA: Esse homem reclamava de pagar estacionamento.
+@vai h04_descoberta
+
+=== h04_sem_bateria
+> A tela não acende. A bateria acabou de novo durante a noite, sem ninguém perceber.
+> Você liga no carregador e espera. Dez minutos depois, a tela volta, com uma notificação de 6h00:
+@muda bateria=30
+> Bom Dia Abençoado ☀️: Sua mensagem diária foi publicada com sucesso! Plano Premium ativo.
+EU: É um aplicativo, gente. De bom dia. Ele autorizou o aplicativo a postar por ele.
+@vai h04_descoberta
+
+=== h04_historico
+> Você rola o perfil para baixo. Ontem, 6h00: "Bom dia! Quinta-feira abençoada!" Anteontem, 6h00: "Bom dia! Quarta de luz!" Terça, 6h00. Segunda, 6h00.
+> Todo dia, há três anos, 6h00 em ponto. Sempre com uma figurinha de letra dourada. E, embaixo de algumas, um comentário dele mesmo, à tarde, de verdade: "esse aplicativo manda sozinho kkk mas eu assino embaixo".
+EU: Ninguém invadiu. É automático. Ele tinha um aplicativo que posta bom dia todo dia às seis. A postagem de hoje saiu sozinha, igual às outras.
+TAINA: Então ninguém está fingindo ser ele.
+EU: Ninguém. É só o costume dele, que ficou ligado.
+@vai h04_descoberta
+
+=== h04_alarme_grupo
+@zap "Família Valter 🕊️"
+EU: Gente, invadiram o perfil do pai. Não respondam nada que vier de lá.
+> Dirce Irmã: meu deus!!! vou trocar minha senha
+> Cleiton Primo: invadiram como??
+TIO_NELSON: Calma. Ele usava aquele aplicativo de bom dia. Mandava todo dia às seis. Eu reclamava que me acordava.
+> Dirce Irmã: então não invadiram?
+TIO_NELSON: Não. É automático.
+@zap fim
+(O Tio Nelson resolveu em uma mensagem o que eu ia levar a manhã inteira para descobrir. E agora a Tia Dirce trocou a senha dela por nada.)
+@vai h04_descoberta
+
+=== h04_descoberta
+@musica triste
+@expr taina triste
+> A Tainá senta no sofá. Ela parece aliviada e decepcionada ao mesmo tempo.
+TAINA: Eu sabia que não era ele. Eu sei que ele morreu. Mas por um segundo, às seis da manhã...
+> Ela não termina a frase. Não precisa.
+@se marca:clicou_mensagem_falsa -> h04_alerta_acesso
+@vai h04_senha_taina
+
+=== h04_alerta_acesso
+@musica misterio
+> O celular do seu pai vibra na sua mão. Uma notificação nova, da própria rede social:
+> "Alguém tentou entrar na sua conta a partir de um dispositivo desconhecido. Se não foi você, proteja sua conta."
+@muda bateria-3
+(Isso sim é outra pessoa. Desde que aquele link do cartão foi aberto no velório, alguém sabe que esse número está vivo. E agora está tentando a conta dele.)
+@vai h04_senha_taina
+
+=== h04_senha_taina
+TAINA: Eu sei a senha do perfil dele. É o nome do time do bairro com o número da camisa. Ele me disse uma vez, rindo. Deixa eu entrar e desligar esse aplicativo.
+RODRIGO: Entra logo e apaga tudo, Tai.
+LUCIA: Entrar na conta do teu pai? Pode isso?
+? A Tainá já está com o celular dela na mão, na tela de entrar.
+* Deixar a Tainá entrar "só para desligar o aplicativo" -> h04_entra {marca:entrou_na_conta_do_pai etica-1}
+* "Ninguém entra com a senha dele. A gente faz pelo caminho oficial da rede social." -> h04_nao_entra {etica+1 rel_taina-1}
+* Tomar o celular da mão dela: "Ninguém entra e acabou." -> h04_toma_celular {marca:taina_magoada rel_taina-2}
+** Sentar do lado da Tainá e perguntar o que ela faz quando entra no perfil do pai -> h04_conversa_taina {rel_taina+2 paciencia+1}
+
+=== h04_entra
+> A Tainá digita. A senha entra de primeira. Uma notificação de "novo acesso" pisca no celular do seu pai, na sua mão.
+> Ela procura nas configurações o aplicativo de bom dia. Acha, remove a permissão. Pronto.
+> Mas, para chegar lá, ela passou pela caixa de mensagens. E as mensagens estão abertas.
+@musica triste
+TAINA: Tem conversa do Seu Zé com o pai. O Seu Zé contando que está se separando. Que não contou pra ninguém. Só pro pai.
+> Ela fecha o aplicativo rápido, como quem fecha a porta de um quarto errado.
+TAINA [envergonhada]: Eu não queria ler isso. Eu não tinha nada que ler isso.
+EU: Eu sei, Tai. Essas conversas não são só do pai. São de quem conversava com ele também. O Seu Zé contou pro amigo, não pra família do amigo.
+EU: E entrar com a senha de quem morreu pode ir contra as regras do próprio serviço. A rede social tem um caminho para a família, com documento. É por ele que a gente vai.
+(E tem outra coisa. Se a Tainá adivinhou a senha com o nome do time e o número da camisa, qualquer pessoa que olhar a foto de perfil dele, de camisa e tudo, também adivinha.)
+@anota h4_privacidade
+@vai h04_cofre
+
+=== h04_nao_entra
+TAINA: Por quê? É rapidinho!
+EU: Porque entrar na conta de quem morreu usando a senha dele pode ir contra as regras do serviço. E porque lá dentro tem conversa dele com outras pessoas, que contaram coisas pro pai, não pra gente.
+EU: A rede social tem um caminho para a família. Com a certidão de óbito, que o Rodrigo trouxe em doze cópias.
+RODRIGO: Doze. Eu falei que ia servir.
+TAINA: Tá. Mas ninguém apaga nada sem me perguntar.
+EU: Combinado. Ninguém apaga nada sem te perguntar.
+@anota h4_privacidade
+@vai h04_cofre
+
+=== h04_toma_celular
+> Você pega o celular da mão dela. Ela solta, mas os olhos não soltam.
+TAINA [brava]: Você não manda em mim. Você não manda no pai.
+EU: Tai, não é isso, é que tem um caminho certo...
+TAINA: Você sempre tem um caminho certo! Você é "a que resolve". Resolve então!
+> Ela sobe a escada e bate a porta do quarto. A música alta começa um segundo depois.
+LUCIA: Ela vai descer, filha. Ela desce sempre na hora do almoço.
+(Eu estava certa sobre a senha. E errada sobre como dizer.)
+@anota h4_privacidade
+@vai h04_cofre
+
+=== h04_conversa_taina
+> Você senta do lado dela no sofá. Não fala de senha, nem de rede social. Só pergunta.
+EU: Tai, o que você faz quando entra no perfil do pai?
+> Ela demora. Depois mostra o celular: uma conversa dela com o pai, pelo perfil dele. A última mensagem dele é de segunda: "dorme cedo, filha, amanhã te busco às seis".
+> Embaixo, mensagens dela. De terça. De quarta. De quinta. Todas sem resposta.
+TAINA: Eu conto o dia pra ele. Sei que ele não lê. Mas se apagarem o perfil, eu conto pra onde?
+EU: Ninguém vai apagar o lugar onde você conta o dia pra ele. Eu prometo. A gente só vai cuidar para ninguém mais entrar.
+TAINA: Nem eu?
+EU: Nem você. Nem eu. Fica do jeito que ele deixou, protegido.
+> Ela pensa. Depois encosta a cabeça no seu ombro.
+TAINA: Tá. Mas a foto do perfil fica a dele de boné do time.
+@anota h4_privacidade
+@vai h04_cofre
+
+=== h04_cofre
+@sai todos
+@fundo casa_cozinha
+@musica triste
+@entra tio_nelson neutra esquerda
+> 10h. O Tio Nelson chegou com pão e com o caderno de capa dura onde ele faz o imposto de renda da família inteira desde 1990.
+TIO_NELSON: Contador aposentado, filha. Antes de mexer em qualquer coisa, a gente faz uma lista. Toda conta do teu pai, uma linha. E, do lado, o que a gente faz com cada uma.
+EU: Um cofre. Uma lista de tudo o que ele tinha, sem a senha de nada.
+TIO_NELSON: Sem senha de nada. Senha de morto não é chave de ninguém.
+> Você começa pelas contas que estão pegando fogo hoje.
+@desafio h4_cofre_primeiras -> h04_cofre_acerto | h04_cofre_erro
+
+=== h04_cofre_acerto
+TIO_NELSON: Isso. Rede social pelo pedido oficial da plataforma, com a certidão. O aplicativo de bom dia, a gente conta para a plataforma no mesmo pedido e cancela a assinatura depois, pelo atendimento dele. E o e-mail fica quieto, anotado, até a gente saber o que tem nele.
+EU: Nada de chute de senha. Nada de apagar no susto.
+TIO_NELSON: Seu pai ia gostar dessa lista. Ele fazia lista de material para cada obra. Errava a conta, mas fazia.
+@muda tecnica+1 rel_tio_nelson+1
+@anota h4_app_terceiros
+@vai h04_decisao
+
+=== h04_cofre_erro
+TIO_NELSON: Calma, filha. Algumas dessas a gente ia fazer do jeito errado.
+TIO_NELSON: A rede social tem pedido oficial para a família, com certidão de óbito. O aplicativo de bom dia não se desliga entrando na conta com senha adivinhada: a gente conta para a plataforma e cancela a assinatura pelo atendimento do aplicativo. E o e-mail fica quieto por enquanto.
+EU: Eu estou cansada, tio. Estou querendo fazer tudo hoje.
+TIO_NELSON: Luto não é obra com prazo de entrega. Uma linha por vez.
+@muda paciencia-1
+@anota h4_app_terceiros
+@vai h04_decisao
+
+=== h04_decisao
+@sai todos
+@fundo sala_familia
+@entra taina neutra esquerda
+@entra lucia neutra direita
+@entra rodrigo neutra centro
+> 15h. A família na sala. A certidão de óbito em cima da mesa. O perfil do pai aberto no celular da Tainá, com a foto de boné do time.
+EU: A rede social deixa a família pedir duas coisas, pelo caminho oficial, com a certidão: transformar o perfil em memorial, que fica lá, com as fotos e as mensagens, sem ninguém poder entrar nem postar; ou encerrar a conta.
+EU: Algumas plataformas deixam a pessoa escolher em vida um contato para cuidar do memorial. O pai nunca escolheu. Então a gente pede assim.
+RODRIGO: Encerrar é mais seguro. Acaba e pronto.
+TAINA: Memorial. Por favor.
+LUCIA: Eu só quero que ninguém finja que é ele.
+? A decisão é da família. Mas todo mundo está olhando para você.
+* Pedir o memorial pelo caminho oficial, com a certidão, e contar no pedido sobre o aplicativo que posta sozinho -> h04_memorial {marca:perfil_memorial rel_taina+2 uniao+1}
+* Pedir o encerramento da conta. Mais seguro, mesmo doendo. -> h04_encerrar {marca:taina_magoada rel_taina-2 rel_rodrigo+1}
+* Deixar como está por enquanto. Ninguém tem cabeça para isso hoje. -> h04_deixar {paciencia+1}
+
+=== h04_memorial
+> Você abre o formulário oficial da rede social, na central de ajuda, digitando o endereço. Pede o memorial. Anexa a certidão de óbito, informa o link do perfil, o seu parentesco e escreve, no campo de observações, que um aplicativo de terceiros continua publicando por ele.
+> A Tainá escolhe com você o que escrever no campo "conte para nós sobre essa pessoa". Ela escreve só uma linha: "Ele mandava bom dia para todo mundo, até para quem não respondia."
+> A tela confirma: "Recebemos sua solicitação." Com número de protocolo.
+TAINA: E as minhas mensagens pra ele?
+EU: Ficam. O perfil fica, as fotos ficam. A diferença é que ninguém mais entra. Nem o aplicativo, nem golpista, nem a gente.
+LUCIA: Nem ninguém fingindo que é ele.
+EU: Nem ninguém, mãe.
+@anota h4_memorial
+@vai h04_fim
+
+=== h04_encerrar
+> Você abre o formulário oficial da rede social e pede o encerramento da conta, com a certidão de óbito anexada.
+> A Tainá olha a tela enquanto você preenche. Não diz nada. Quando você aperta "enviar", ela levanta e vai para o quarto.
+TAINA [triste]: Ele vai sumir. As fotos, os comentários, os bom dia. Tudo.
+RODRIGO: Tai, é mais seguro...
+TAINA: Eu sei que é mais seguro, Rodrigo. Eu não perguntei o que é mais seguro.
+> A porta do quarto fecha sem bater. É pior do que se tivesse batido.
+(Eu protegi o perfil do pai. E deixei a Tainá sem lugar para contar o dia pra ele.)
+@anota h4_memorial
+@vai h04_fim
+
+=== h04_deixar
+> Ninguém decide nada. A certidão volta para a pasta plástica. O perfil continua lá, aberto, com a bolinha de "ativo" e o bom dia de amanhã já agendado.
+@se marca:entrou_na_conta_do_pai -> h04_invadido
+@se marca:clicou_mensagem_falsa -> h04_invadido
+(Amanhã às seis vai ter outro bom dia. E a gente vai ter que aguentar.)
+@anota h4_memorial
+@vai h04_fim
+
+=== h04_invadido
+@musica misterio
+> 23h17. O celular do seu pai vibra em cima da mesa. Você está sozinha na sala.
+> "A senha da sua conta foi alterada. Se não foi você, recupere sua conta agora."
+> No seu celular, o perfil do seu pai tem uma postagem nova, de 23h15. Sem letra dourada. Sem pôr do sol.
+> "Amigos, estou passando por um momento difícil. Preciso de uma ajuda urgente. Me chamem no privado."
+@marca perfil_invadido
+(Alguém virou o pai. Com a foto dele. Com o boné dele. Enquanto a gente dormia em cima da decisão.)
+> Você abre, no seu celular, a central de ajuda da rede social e denuncia a conta como invadida, pelo caminho oficial, anexando a certidão de óbito e pedindo o memorial.
+@zap "Família Valter 🕊️"
+EU: Gente, o perfil do pai foi invadido agora à noite. Qualquer pedido de dinheiro que vier de lá é golpe. Avisem os amigos dele. Não mandem nada.
+TIO_NELSON: Avisando o futebol agora.
+TAINA: não acredito
+TAINA: alguém tá usando o pai
+@zap fim
+@anota h4_memorial
+@vai h04_fim
+
+=== h04_fim
+@sai todos
+@fundo quarto_do_pai
+@musica triste
+> Sexta, quase meia-noite. Você entra no quarto dos seus pais para devolver o celular dele à gaveta do criado-mudo.
+> A sua mãe está deitada do lado dela da cama, acordada, olhando para o lado dele.
+@entra lucia triste centro
+LUCIA: Teu irmão disse que segunda vocês vão no banco.
+EU: Vamos, mãe. Com a certidão.
+LUCIA: Teu pai deixou tudo nesse aparelho, né? O banco, as fotos, os amigos. Até o bom dia.
+? A sua mãe está esperando alguma coisa. Talvez só companhia.
+* "A gente vai cuidar de tudo, mãe. Uma coisa por vez." -> h04_fim_promessa {rel_lucia+1}
+** Deitar do lado dela, no lugar dele, como fazia quando era pequena e tinha pesadelo -> h04_fim_deita {rel_lucia+2 paciencia+1}
+
+=== h04_fim_promessa
+LUCIA: Uma coisa por vez. Teu pai dizia isso na obra. "Um fio por vez, Lúcia, senão dá curto."
+> Ela fecha os olhos. Você deixa o celular na gaveta, com a tela para baixo.
+@vai h05_inicio
+
+=== h04_fim_deita
+> Você deita do lado dela. O travesseiro dele ainda tem o cheiro de sabonete de coco.
+LUCIA: Você fazia isso com sete anos. Teu pai ia dormir no sofá resmungando.
+EU: E voltava às três da manhã e deitava no pé da cama.
+LUCIA: Todo pesadelo. Todo.
+> Ela segura a sua mão. As duas dormem assim, com o celular dele na gaveta, entre vocês e o resto do mundo.
+@vai h05_inicio

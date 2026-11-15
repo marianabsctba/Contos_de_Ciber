@@ -1,0 +1,264 @@
+=== h03_inicio
+@cap 3 "Doutor Ricardo resolve seu inventário"
+@fundo casa_cozinha
+@musica triste
+> Quinta-feira, 8h50. A cozinha tem café passado, pão de ontem e a cadeira dele encostada na mesa, sem ninguém.
+> O Rodrigo saiu cedo para o cartório, buscar as cópias da certidão de óbito. Levou o caderno. A Tainá ainda dorme.
+@entra lucia neutra direita
+LUCIA: Teu irmão saiu às sete. Disse que queria ser o primeiro da fila. O cartório abre às nove.
+EU: Ele sempre foi o primeiro da fila, mãe.
+LUCIA: Até pra nascer. Chegou duas semanas antes. Teu pai nem tinha terminado o berço.
+@se marca:celular_apagou e !marca:achou_carregador -> h03_tio_carregador
+@vai h03_toca
+
+=== h03_tio_carregador
+@entra tio_nelson feliz esquerda
+> A campainha toca. É o Tio Nelson, com o terno de cerimônia trocado por uma camisa polo e, embaixo do braço, uma caixa de sapato.
+TIO_NELSON: Acordei às quatro da manhã pensando: "Nelson, a caixa." Eu tenho uma caixa de cabos, filha. Etiquetada.
+> Dentro, saquinhos com etiquetas: "2006 a 2009", "2010 a 2013", "MISTÉRIO". No de "2010 a 2013", um carregador igual ao do seu pai.
+TIO_NELSON: Ele me deu em 2012. Disse "fica com você, Nelson, você guarda melhor".
+> O celular do seu pai acende com o raio verde. E, de uma vez, despencam as notificações de um dia inteiro no escuro: pêsames, propagandas, dois "seguro de vida liberado" e um "seu cartão foi bloqueado".
+@muda bateria=100 rel_tio_nelson+1
+@marca achou_carregador
+(Chegou tudo junto. Ainda bem que ninguém estava olhando para clicar em nada.)
+@sai tio_nelson
+@vai h03_toca
+
+=== h03_toca
+@musica misterio
+@som notificacao
+> 9h05. O celular da sua mãe toca em cima da mesa. Número desconhecido, de outro estado.
+LUCIA: Deve ser da funerária. Ou do plano de saúde. Todo mundo liga.
+> Ela atende. Do outro lado, uma voz de homem, educada, devagar, com aquele tom de quem fala com viúva.
+LUCIA: Sim, sou eu. Sim, era meu marido. O senhor é de onde?
+> Ela tampa o celular com a mão e sussurra para você:
+LUCIA: É um advogado. Diz que é especialista em inventário. Sabe o nome inteiro do teu pai.
+? Sua mãe está ouvindo com atenção. Demais.
+* Pedir para ela pôr no viva-voz -> h03_viva_voz {tecnica+1}
+* Deixar ela conversar sozinha. Ela pediu um pouco de espaço. -> h03_mae_sozinha {rel_lucia+1}
+** Pegar papel e caneta e anotar tudo: nome, número da OAB, telefone, o que ele pedir -> h03_anota_tudo {tecnica+2} [se tecnica>=2]
+
+=== h03_viva_voz
+> Ela aperta o viva-voz. A voz enche a cozinha.
+FALSO_ADVOGADO: ...como eu dizia, Dona Lúcia, meus sentimentos pelo Seu Valter Aparecido. Sessenta e oito anos, não é? Tão novo. Vi que o velório foi ontem, na capela do bairro.
+FALSO_ADVOGADO: Eu trabalho justamente com famílias nesse momento. A senhora sabe que os valores dele ficam presos, não sabe? Pode levar anos.
+FALSO_ADVOGADO: Mas nós temos um procedimento de liberação rápida. Em quarenta e oito horas. Só uma taxinha de custas antecipadas. Vou mandar tudo por mensagem, está bem?
+(Sessenta e oito anos. A capela. O nome do meio. Tudo o que estava no obituário da funerária, ontem de manhã.)
+@vai h03_mensagem
+
+=== h03_mae_sozinha
+> Ela leva o celular para a área de serviço. Você ouve só pedaços: "sim, doutor", "quarenta e oito horas?", "é que eu não entendo dessas coisas".
+> Cinco minutos depois, ela volta, com os olhos mais animados do que estavam desde terça.
+LUCIA: Filha, que homem educado. Doutor Ricardo. Ele disse que o dinheiro do teu pai fica preso anos, mas ele libera em dois dias. Ele vai mandar a guia por mensagem.
+(Ninguém é tão educado com viúva às nove da manhã de graça.)
+@vai h03_mensagem
+
+=== h03_anota_tudo
+> Você pega o bloquinho da farmácia da porta da geladeira e faz sinal para a sua mãe pôr no viva-voz. Ela põe.
+EU: Doutor, qual o nome completo do senhor e o número da sua inscrição na OAB?
+FALSO_ADVOGADO: Doutor Ricardo Mendes. OAB 154.872. Mas não precisa anotar, eu mando tudo por mensagem, bonitinho.
+EU: E o endereço do escritório?
+FALSO_ADVOGADO: Nós trabalhamos de forma digital, para agilizar. A senhora entende, é tudo moderno hoje.
+> Você anota: "Ricardo Mendes. OAB 154.872, sem estado. Sem endereço. Liga de outro estado."
+(Inscrição na OAB tem número e estado. Ele deu só o número. E advogado sem endereço nenhum é como eletricista sem alicate.)
+@vai h03_mensagem
+
+=== h03_mensagem
+@sai todos
+@som mensagem
+@zap "Dr. Ricardo Inventários ⚖️"
+FALSO_ADVOGADO: Prezada Sra. Lúcia, meus sentimentos pelo falecimento do Sr. Valter Aparecido.
+FALSO_ADVOGADO: Identificamos valores em nome do falecido que podem ficar retidos por anos.
+FALSO_ADVOGADO: Com nosso procedimento de LIBERAÇÃO RÁPIDA, a senhora recebe em 48h, sem precisar de inventário.
+FALSO_ADVOGADO: Basta a taxa de custas antecipadas de R$ 1.870,00 via Pix.
+FALSO_ADVOGADO: Chave Pix: Marcos V. Soares ME
+FALSO_ADVOGADO: Condição especial válida só até hoje às 17h.
+FALSO_ADVOGADO: Não precisa incomodar os outros herdeiros, eu cuido de tudo. Atenciosamente, Dr. Ricardo
+@zap fim
+@entra lucia neutra direita
+LUCIA: Mil oitocentos e setenta. É dinheiro, mas se ele resolve em dois dias...
+(Eu preciso mostrar para ela, item por item. Ela não vai aceitar um "é golpe" seco. Ele foi educado demais para isso.)
+@desafio h3_guia_doutor -> h03_desafio_acerto | h03_desafio_erro
+
+=== h03_desafio_acerto
+EU: Mãe, olha comigo. "Sem precisar de inventário." Não existe isso. O que era do pai vira herança e é dividido pelo inventário, com advogado que a gente escolhe.
+EU: "Taxa via Pix" para uma empresa com outro nome. "Só até as 17h." E "não precisa incomodar os outros herdeiros": ele quer que a senhora decida sozinha, sem falar com a gente.
+LUCIA: Mas ele sabia o nome do teu pai. A idade. A capela.
+EU: Estava tudo no obituário da funerária, mãe. Ontem. Na internet. Ele leu.
+> A sua mãe olha para o celular como se ele tivesse acabado de mentir na cara dela. E tinha.
+@muda tecnica+1 rel_lucia+1
+@anota h3_falso_advogado
+@vai h03_rodrigo
+
+=== h03_desafio_erro
+EU: Mãe, isso tem cara de golpe.
+LUCIA: Cara de golpe por quê? Ele é doutor. Tem até a balancinha da justiça no nome.
+EU: É que... é rápido demais. E é por Pix.
+LUCIA: Tudo é por Pix hoje, filha. O padre aceita Pix.
+(Eu senti que estava errado, mas não consegui mostrar onde. E ela está com o aplicativo do banco aberto.)
+@muda rel_lucia-1
+@marca mae_quer_pagar
+@anota h3_falso_advogado
+@vai h03_rodrigo
+
+=== h03_rodrigo
+@fundo videochamada
+@entra rodrigo neutra centro
+> 9h40. O Rodrigo liga por vídeo, da fila do cartório. Atrás dele, um painel de senha marca 047. Ele está com a 063.
+RODRIGO: Mãe, a {nome} me mandou print. Um advogado que resolve em dois dias? Mãe, paga. Mil e oitocentos é nada perto de meses de inventário.
+RODRIGO: Eu volto domingo, eu não posso ficar vindo aqui toda semana.
+? A sua mãe olha para você, depois para o Rodrigo na tela, depois para o aplicativo do banco.
+* "Rodrigo, espera. Antes de qualquer centavo, a gente confere esse advogado no cadastro oficial da OAB." -> h03_oab {uniao+1 marca:conferiu_oab}
+* "Você só quer se livrar da gente e voltar pra sua vida, Rodrigo." -> h03_briga {uniao-1 rel_rodrigo-1 marca:rodrigo_impaciente}
+* Ficar quieta. A mãe é adulta e o dinheiro é dela. -> h03_pagou {etica-1} [se marca:mae_quer_pagar]
+** "Ligar para o Tio Nelson. Ele fez o inventário da vó e conhece advogado de verdade." -> h03_tio_chega {rel_tio_nelson+1 uniao+1}
+
+=== h03_briga
+RODRIGO [brava]: Me livrar? Eu tô numa fila de cartório às nove da manhã, {nome}! Por vocês!
+EU: E mandando a mãe pagar um desconhecido no Pix!
+LUCIA: Chega. Os dois. Teu pai odiava briga no café.
+> Silêncio. O painel do cartório muda para 048.
+LUCIA [brava]: Eu decido. Eu pago e pronto. Vocês dois que se entendam depois.
+? Ela está digitando o valor no aplicativo do banco.
+* Pedir com calma: "Mãe, me dá cinco minutos. Só cinco. A gente confere juntas." -> h03_oab {rel_lucia+1 paciencia+1 marca:conferiu_oab}
+* Deixar. Ela já decidiu. -> h03_pagou
+
+=== h03_tio_chega
+@sai todos
+@fundo casa_cozinha
+@entra tio_nelson neutra esquerda
+@entra lucia neutra direita
+> Quinze minutos depois, o Tio Nelson entra pela porta da cozinha, sem tocar a campainha, como sempre entrou nessa casa.
+TIO_NELSON: Deixa eu ver essa mensagem.
+> Ele lê com os óculos na ponta do nariz, em silêncio, como quem confere balancete.
+TIO_NELSON: Lúcia, isso aqui é golpe. Eu fiz o inventário da nossa mãe. Ninguém libera herança por taxa no Pix. Nem em quarenta e oito horas, nem em quarenta e oito dias.
+LUCIA: Mas ele é doutor, Nelson.
+TIO_NELSON: Então vamos ver se é. Advogado de verdade está no cadastro da OAB, com nome e número. Leva um minuto.
+@marca conferiu_oab
+@vai h03_oab
+
+=== h03_oab
+@sai todos
+@fundo casa_cozinha
+@musica misterio
+@entra lucia pensativa direita
+> Você abre no seu celular o site oficial da OAB, digitando o endereço, sem clicar em link de ninguém. Lá tem o cadastro nacional de advogados, onde dá para buscar pelo nome e pelo número de inscrição.
+> Você digita "Ricardo Mendes".
+> Aparecem alguns Ricardos Mendes, de estados diferentes. Nenhum com o número que ele deu.
+> Você busca pelo número, 154.872, em cada estado. Num deles, aparece uma advogada chamada Maria das Graças, inscrita há trinta anos, que certamente não se chama Ricardo.
+LUCIA: Então ele não é advogado?
+EU: Ou não é advogado, ou é alguém usando o número de outra pessoa. Dos dois jeitos, ele não é o nosso advogado.
+EU: E mesmo se fosse advogado de verdade, mãe, ninguém libera herança por taxa pelo telefone. Se um dia aparecer um nome que existe, a gente liga no telefone do escritório que está no cadastro, não no número que ele deu.
+> A sua mãe senta devagar.
+LUCIA: Ele falou do teu pai como se conhecesse. "Tão novo."
+(Essa foi a parte mais cruel. Não foi o Pix. Foi o "tão novo".)
+@anota h3_conferir_oab
+@vai h03_responder
+
+=== h03_responder
+@zap "Dr. Ricardo Inventários ⚖️"
+FALSO_ADVOGADO: Sra. Lúcia, conseguiu fazer o Pix? Lembrando que a condição é só até as 17h.
+FALSO_ADVOGADO: Sem a liberação, os valores podem ser perdidos. Estou à disposição.
+@zap fim
+? O "doutor" continua mandando mensagem.
+* Bloquear o número e não responder mais nada -> h03_bloqueia {paciencia+1}
+* Responder perguntando o endereço do escritório, só para ver ele inventar -> h03_provoca {paciencia-1}
+* Bloquear e avisar a família no grupo, sem expor a mãe -> h03_avisa_grupo {uniao+1 rel_lucia+1}
+
+=== h03_bloqueia
+> Você mostra para a sua mãe onde fica o botão. Ela mesma aperta "bloquear". E depois "denunciar".
+LUCIA: Pronto. Que vá ser educado com outra.
+EU: Se ele ligar de outro número, mãe, a senhora desliga e me liga.
+@vai h03_inventario
+
+=== h03_provoca
+@zap "Dr. Ricardo Inventários ⚖️"
+EU: Doutor, qual o endereço do escritório? A gente prefere levar os documentos pessoalmente.
+FALSO_ADVOGADO: Trabalhamos 100% digital para sua comodidade.
+EU: E o número da inscrição com o estado?
+> Dr. Ricardo Inventários bloqueou você.
+@zap fim
+LUCIA: Ele me bloqueou? Ele que me bloqueou?
+(Golpista fica muito ofendido quando a gente faz pergunta. E eu perdi dez minutos que não tinha.)
+@vai h03_inventario
+
+=== h03_avisa_grupo
+@zap "Família Valter 🕊️"
+EU: Gente, tem um "advogado do inventário" ligando para a família, sabendo o nome do pai pelo obituário. Pede taxa no Pix para "liberação rápida". É golpe. Ninguém paga, ninguém passa dado.
+TIO_NELSON: Confirmo. Advogado se confere no cadastro da OAB. E inventário quem cuida é o advogado que a família escolher.
+> Dirce Irmã: meu deus ligaram aqui ontem também!! eu achei que era da funerária
+> Cleiton Primo: ligaram pra mim perguntando se eu era herdeiro kkkk eu disse que só da furadeira
+TIO_NELSON: A furadeira é minha, Cleiton.
+@zap fim
+(Ninguém precisou saber que a mãe quase pagou. Só precisou saber que o golpe existe.)
+@vai h03_inventario
+
+=== h03_pagou
+@sai todos
+@fundo casa_cozinha
+@entra lucia neutra direita
+> A sua mãe digita. Confirma. Aparece o comprovante: R$ 1.870,00 para Marcos V. Soares ME.
+@som dinheiro
+@marca pagou_taxa_advogado
+LUCIA: Pronto. Agora ele resolve.
+> Vinte minutos depois, outra mensagem chega.
+@zap "Dr. Ricardo Inventários ⚖️"
+FALSO_ADVOGADO: Recebido, Sra. Lúcia. Muito obrigado.
+FALSO_ADVOGADO: Para concluir, falta apenas a taxa do cartório, de R$ 3.400,00. Assim que cair, a liberação é imediata.
+@zap fim
+@musica triste
+> A sua mãe lê duas vezes. O rosto dela muda devagar, como quem percebe que entrou na rua errada.
+LUCIA [triste]: Filha. Eu acho que eu fiz besteira.
+(Agora não é hora de "eu avisei". Agora é hora de correr.)
+EU: A senhora não fez besteira, mãe. Ele fez. A gente vai cuidar disso agora.
+> Você liga para o banco da sua mãe pelo número que está atrás do cartão dela, não por nenhum número que veio na mensagem. Conta que foi golpe, informa o valor, o horário e a conta de destino, e pede a contestação.
+> Depois, juntas, vocês fazem o boletim de ocorrência pela delegacia online, com o print das mensagens e o comprovante.
+EU: E a segunda taxa a gente não paga. Nunca. Golpista sempre pede a segunda.
+@entra tio_nelson triste esquerda
+> O Tio Nelson chega no meio do boletim, lê tudo e senta do lado da cunhada.
+TIO_NELSON: Lúcia, golpista desse tipo lê obituário de manhã e liga de tarde. Não é falta de juízo de ninguém. É gente sem vergonha nenhuma escolhendo a pior semana da vida dos outros.
+> Ele mesmo abre o cadastro da OAB no celular dele e mostra: nenhum Ricardo com aquele número.
+@marca conferiu_oab
+@anota h3_conferir_oab
+@vai h03_inventario
+
+=== h03_inventario
+@sai todos
+@musica triste
+@entra tio_nelson neutra esquerda
+@entra lucia neutra direita
+TIO_NELSON: Agora, o jeito certo. Senta aqui, Lúcia. Você também, filha.
+TIO_NELSON: O que era do Valter, a conta, o carro, a casa, vira herança. É dividido no inventário. Pode ser no juiz ou no cartório, dependendo do caso, mas sempre com advogado.
+TIO_NELSON: E o advogado, quem escolhe é a família. Não é quem liga oferecendo.
+LUCIA: E esse dinheiro que ele falou que fica preso?
+TIO_NELSON: Não fica "preso" para ninguém roubar. Fica guardado até a partilha. Tem caminho para despesa urgente e para valor pequeno, e quem orienta é o advogado de confiança. A Dra. Sônia, que fez o da nossa mãe, ainda atende. Eu ligo pra ela hoje.
+EU: E ninguém mexe na conta do pai até lá.
+TIO_NELSON: Ninguém. Nem com senha, nem com boa intenção. Mexer na conta de quem morreu por conta própria dá briga entre herdeiro e dá problema com o banco.
+> Ele olha para a cadeira vazia na ponta da mesa.
+TIO_NELSON: Seu pai me ligava toda vez que recebia boleto estranho. "Nelson, isso é golpe?" Era sempre.
+@anota h3_inventario
+@vai h03_fim
+
+=== h03_fim
+@sai todos
+@fundo sala_familia
+@musica triste
+> 22h. O Rodrigo voltou do cartório com doze cópias da certidão de óbito numa pasta plástica. Doze. "Pra não faltar", ele disse.
+@entra rodrigo triste centro
+@se marca:rodrigo_impaciente -> h03_fim_rodrigo
+RODRIGO: Fiquei pensando no tal doutor o dia inteiro na fila. Ainda bem que vocês conferiram.
+@vai h03_fim_noite
+
+=== h03_fim_rodrigo
+RODRIGO: Desculpa por hoje cedo. Eu queria que alguém resolvesse por mim. Qualquer um. Até um golpista.
+EU: Eu sei. Eu também queria.
+@vai h03_fim_noite
+
+=== h03_fim_noite
+> A Tainá aparece na porta da sala, de pijama, com o celular dela na mão.
+@entra taina pensativa esquerda
+TAINA: Gente, é normal o perfil do pai ainda ter a bolinha de "ativo agora"?
+> Ninguém responde. Ninguém sabe.
+@sai todos
+> Na gaveta, em cima da geladeira ou onde ficou, o celular do Seu Valter acende uma vez no escuro.
+@vai h04_inicio

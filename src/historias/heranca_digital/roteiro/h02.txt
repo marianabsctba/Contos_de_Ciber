@@ -1,0 +1,250 @@
+=== h02_inicio
+@cap 2 "O velório e o carregador"
+@fundo velorio
+@musica triste
+> Quarta-feira, 9h. A capela do bairro tem cadeiras de madeira, flores demais e uma garrafa térmica de café que ninguém sabe quem trouxe.
+> O celular do seu pai está na sua bolsa. A noite levou um pouco da bateria, mesmo sem ninguém mexer.
+@muda bateria-4
+@entra lucia triste centro
+> A sua mãe está de pé ao lado dele, a mão apoiada na borda de madeira, por muito tempo. Ninguém tem coragem de chamar ela para sentar.
+@entra tio_nelson neutra direita
+TIO_NELSON: Deixa ela, filha. Quarenta e um anos não se despede em cinco minutos.
+> O Tio Nelson está de terno marrom, o mesmo de todos os velórios e casamentos desde 1994. Ele chama de "terno de cerimônia". A família chama de "o terno".
+@sai lucia
+@vai h02_parentes
+
+=== h02_parentes
+@musica alegre
+> 10h30. A capela enche. E, como em todo velório brasileiro, começa o segundo velório: o da cozinha dos fundos, onde tem bolo.
+> A Tia Dirce trouxe três bolos de fubá e um pudim "porque o Valter gostava". O Valter não gostava de pudim. A Tia Dirce gosta de pudim.
+> O Primo Cleiton chegou de óculos escuros e camisa preta de banda, cumprimentou todo mundo como se fosse o anfitrião e já perguntou duas vezes da furadeira.
+> O Rodrigo chegou às oito, direto do aeroporto, e passou a manhã de pé perto da porta, resolvendo papel da funerária pelo celular.
+TIO_NELSON: Três pessoas me perguntaram quem fica com a furadeira. Três. Antes do meio-dia.
+EU: E quem fica?
+TIO_NELSON: A furadeira é minha, filha. Ele pegou emprestada em 2011.
+> Dois homens do futebol chegam com a camisa do time do bairro por baixo do paletó. Um deles traz uma faixa: "VALTÃO, ETERNO LATERAL ESQUERDO". Escrita à mão. Com um erro de concordância que ninguém vai corrigir.
+@entra taina triste esquerda
+TAINA: Eu postei no meu perfil. Foto dele com o boné do time. Já tem trezentos comentários.
+TAINA: A funerária também pôs no site. Obituário. Com o nome inteiro, a hora do enterro e o nome de todo mundo da família.
+(O nome inteiro, a hora e o nome de todo mundo. Na internet. Hoje de manhã.)
+@se marca:celular_apagou -> h02_sem_celular
+@vai h02_vibra
+
+=== h02_vibra
+@musica misterio
+> Na sua bolsa, o celular do seu pai vibra. Duas vezes curtas. Uma mensagem de texto.
+? A Tainá viu a bolsa vibrar. Ela está olhando para você.
+* Ler a mensagem na tela de bloqueio, com a Tainá do lado -> h02_le_mensagem {bateria-3 rel_taina+1}
+* Ler sozinha, no corredor, para poupar a Tainá -> h02_le_mensagem {bateria-3 paciencia+1}
+
+=== h02_le_mensagem
+> A mensagem aparece inteira na tela de bloqueio, porque o seu pai nunca soube esconder a prévia das notificações.
+@zap "SMS no celular do pai"
+> Remetente: 28451
+> BCO SEGURANCA: Prezado cliente VALTER, seu cartao final 4471 foi BLOQUEADO por suspeita de uso indevido.
+> Regularize em ate 2 horas ou sua conta sera encerrada.
+> Acesse: desbloqueio-cliente-seguro.com/valter
+> Tenha em maos senha do cartao e o codigo que voce recebera por SMS.
+@zap fim
+TAINA: É do banco do pai? Será que alguém pegou o cartão dele no hospital?
+(Um dia depois. O nome dele em maiúscula. Duas horas para "regularizar". Eu já vi essa mensagem mil vezes na escola, no celular dos professores. Mas nunca no celular de alguém que acabou de morrer.)
+@desafio h2_cartao_bloqueado -> h02_desafio_acerto | h02_desafio_erro
+
+=== h02_desafio_acerto
+EU: Não é do banco, Tai. É golpe.
+TAINA: Como você sabe?
+EU: Banco não manda link para "desbloquear". Banco não pede senha nem código por mensagem. E esse prazo de duas horas é para a gente clicar com medo, sem pensar.
+TAINA: Mas ele sabe o nome do pai.
+EU: Pode ser mensagem em massa. Ou pode ser alguém que leu o obituário. Nome não prova nada. Hoje o nome do pai está em todo lugar.
+> Você não toca no link. Deixa a mensagem lá, na tela de bloqueio, sem abrir.
+EU: Se alguém quiser saber do cartão dele, a gente liga no número que está atrás do cartão. Ou vai na agência. Nunca pelo que chega aqui.
+@muda tecnica+1
+@anota h2_golpe_no_luto
+@vai h02_carregador
+
+=== h02_desafio_erro
+> Você ainda está lendo quando a Tainá, nervosa, toca na mensagem por cima do seu ombro.
+> O link abre. A tela pede para destravar o aparelho primeiro. A Tainá olha para você, perdida.
+TAINA: Não abre sem a senha. Mas no meu abre. Deixa eu digitar o endereço no meu celular?
+EU: Não, Tai. Para. Pode ser golpe.
+> Tarde demais para metade: ela já digitou. No celular dela, abre uma página com o logo meio torto de um banco, pedindo CPF, número do cartão e senha do titular.
+EU: Fecha. Fecha agora. Não digita nada.
+> Ela fecha. Ninguém digitou dado nenhum. Mas a página carregou, e alguém do outro lado agora sabe que esse link foi aberto.
+TAINA [assustada]: Desculpa. Eu achei que era o banco.
+EU: Não foi culpa sua, Tai. Eles fazem a mensagem para parecer o banco justamente num dia como hoje.
+(Golpe que mira família de quem morreu é o mais covarde que existe. E eles sabem que a gente está distraída.)
+@muda bateria-5 rel_taina+1
+@marca clicou_mensagem_falsa
+@anota h2_golpe_no_luto
+@se bateria<=0 -> h02_apagou
+@vai h02_carregador
+
+=== h02_sem_celular
+> A bolsa fica quieta. O celular do seu pai está apagado lá dentro, frio.
+(Se alguém mandar alguma coisa para ele hoje, ninguém vai ver. Talvez seja até melhor assim.)
+@vai h02_carregador
+
+=== h02_carregador
+@musica alegre
+@entra tio_nelson neutra direita
+TIO_NELSON: Filha, esse aparelho do teu pai é do tempo em que cada fabricante fazia um buraquinho diferente. Ninguém mais tem esse carregador.
+EU: Alguém nesse velório deve ter.
+TIO_NELSON: Tem cento e vinte pessoas aqui. Uma delas tem. A pergunta é qual.
+? Para quem pedir primeiro?
+* Para a Tia Dirce, que tem uma bolsa onde cabe uma farmácia inteira -> h02_dirce {bateria-4}
+* Para o Primo Cleiton, que diz ter "um carregador universal com sete pontas" -> h02_cleiton {bateria-4}
+* Para o próprio Tio Nelson, que guarda tudo em caixa etiquetada -> h02_tio_caixa
+** Perguntar à sua mãe onde o pai deixava as coisas que "um dia ia consertar" -> h02_mae_lembra {rel_lucia+1} [se rel_lucia>=1]
+
+=== h02_dirce
+> A Tia Dirce abre a bolsa. Sai um guarda-chuva, dois terços, um pote de doce de leite, um leque, uma pomada para tudo e, no fundo, três carregadores.
+> Nenhum serve. Um é do celular novo dela. Outro é de um barbeador. O terceiro ela não sabe de quê, mas "guarda porque um dia serve".
+> Enquanto ela procura, chegam mais mensagens de pêsames para ele. Cada uma acende a tela e come um pedacinho da bateria.
+@se bateria<=0 -> h02_apagou
+@vai h02_segunda_tentativa
+
+=== h02_cleiton
+> O Primo Cleiton tira da mochila um polvo de fios. Sete pontas, todas brilhantes, nenhuma igual à outra.
+> Ele testa a primeira. Não entra. A segunda entra pela metade. Na terceira, ele força com o dedão.
+EU: Cleiton, não força, você vai quebrar a entrada!
+> Ele para. A entrada está inteira. Mas nenhuma das sete pontas serve.
+> Enquanto isso, o celular acende de novo, e de novo, com mensagens que você não abre.
+@se bateria<=0 -> h02_apagou
+@vai h02_segunda_tentativa
+
+=== h02_segunda_tentativa
+? Ainda falta achar um carregador que sirva.
+* Ir com o Tio Nelson até o carro dele, onde mora a famosa caixa -> h02_tio_caixa
+* Esperar o enterro acabar e procurar em casa -> h02_espera_casa {paciencia+1}
+
+=== h02_mae_lembra
+@entra lucia triste centro
+EU: Mãe, onde o pai deixava as coisas que ele ia consertar "um dia"?
+LUCIA: No carro, filha. No porta-luvas. Ele tinha um carregador velho lá, que ele dizia que era o único que prestava.
+> A sua mãe fala sem tirar os olhos dele. Depois, com a voz mais baixa:
+LUCIA: Ele carregava esse aparelho no carro porque dizia que em casa eu tirava da tomada pra ligar a batedeira.
+EU: E a senhora tirava?
+LUCIA: Todo dia.
+@sai lucia
+@vai h02_porta_luvas
+
+=== h02_porta_luvas
+@sai todos
+> No estacionamento, o carro dele. Um sedã prata de 2008, com adesivo do time e um rosário pendurado no retrovisor.
+> No porta-luvas: o manual do carro, uma lanterna, três notas fiscais de material elétrico e, enrolado com cuidado, o carregador. O único do mundo.
+> Você liga no carregador do carro do Tio Nelson. O celular vibra, a tela acende e aparece o raio verde.
+@muda bateria=100
+@marca achou_carregador
+@vai h02_carregado
+
+=== h02_tio_caixa
+@sai todos
+@entra tio_nelson feliz centro
+> O Tio Nelson abre o porta-malas do carro dele com a solenidade de quem abre um cofre.
+> Dentro, uma caixa de sapato com uma etiqueta escrita à mão: "CABOS. NÃO MEXER. NELSON."
+> Dentro da caixa, saquinhos de plástico com etiquetas menores: "2006 a 2009", "2010 a 2013", "MISTÉRIO".
+TIO_NELSON: Contador aposentado, filha. Eu arquivo até cabo.
+> No saquinho "2010 a 2013", um carregador igualzinho ao do seu pai.
+TIO_NELSON: Esse aqui ele me deu em 2012. Disse "fica com você, Nelson, você guarda melhor".
+> O celular vibra, a tela acende e aparece o raio verde.
+@muda bateria=100 rel_tio_nelson+1
+@marca achou_carregador
+@vai h02_carregado
+
+=== h02_espera_casa
+> Você guarda o celular na bolsa e decide esperar. Hoje é dia de outra coisa.
+> Na bolsa, ele continua acendendo com cada mensagem que chega. Às três da tarde, você olha e ele não acende mais.
+@vai h02_apagou
+
+=== h02_apagou
+> A tela fica preta no meio de uma notificação. Uma última vibração, curta. Depois, nada.
+@muda bateria=0
+@marca celular_apagou
+(Apagou. Tudo o que chegar para ele agora, chega no escuro.)
+@vai h02_enterro
+
+=== h02_carregado
+@musica triste
+> Com o celular carregando no carro, chegam de uma vez as mensagens que estavam presas.
+> Zé Carlos (Futebol): Valtão, sábado tem churrasco ou não tem?
+> Zé Carlos (Futebol): Valtão??
+> Seguro Proteção Família: Sr. Valter, seu SEGURO DE VIDA foi liberado. Clique para receber
+(Agora também tem "seguro de vida liberado". Seguro de vida de verdade não avisa por link. Se ele tinha seguro, a gente descobre pelos papéis, pelo banco ou pela seguradora, pelo telefone oficial. Não por aqui.)
+> E o Zé Carlos, do futebol, que ainda não sabe.
+? O Zé Carlos continua perguntando do churrasco.
+* Deixar quieto. Alguém do futebol vai avisar. -> h02_enterro
+** Ligar do seu celular para o Zé Carlos e contar você mesma -> h02_ze_carlos {rel_lucia+1 etica+1}
+
+=== h02_ze_carlos
+> Você pede o número do Zé Carlos para o Tio Nelson, que tem o telefone de meio bairro, e liga do seu celular.
+> Ele atende com barulho de televisão e rádio ao mesmo tempo.
+EU: Seu Zé? Aqui é a {nome}, filha do Valter.
+> Você conta. Do outro lado, a televisão é desligada. O rádio também.
+> O Zé Carlos não diz nada por um tempo. Depois diz uma coisa só, com a voz que não é mais de torcedor:
+> "Ele marcou o único gol da vida dele de cabeça, em 1983, e nunca deixou ninguém esquecer. Eu tô indo aí, filha."
+(Ele chegou meia hora depois, de chinelo e camisa do time. Ficou até o fim.)
+@vai h02_enterro
+
+=== h02_enterro
+@fundo velorio
+@musica triste
+@sai todos
+> 16h. A hora do enterro chega do jeito que chega sempre: rápido demais.
+@entra lucia triste centro
+@entra taina triste esquerda
+@entra tio_nelson triste direita
+> O Rodrigo está ao lado da sua mãe, de terno emprestado do Tio Nelson, dois números maior. Ele não fala. Pela primeira vez desde ontem, ele não tem lista.
+> O padre fala pouco. Os homens do futebol cantam o hino do time, desafinados, e ninguém acha estranho.
+> A Tia Dirce distribui bolo de fubá na saída do cemitério. "Ninguém volta para casa de estômago vazio", ela diz. Ninguém discute.
+(Eu achei que ia pensar no celular o dia inteiro. Não pensei. Por umas duas horas, eu só fui filha dele.)
+@vai h02_noite
+
+=== h02_noite
+@sai todos
+@fundo casa_cozinha
+@musica triste
+> 21h. Na cozinha, sobrou bolo, sobrou café e sobrou silêncio.
+@entra taina triste esquerda
+@entra lucia triste direita
+TAINA: Eu vi no meu perfil. Tem gente que nem conhecia o pai comentando. Perfil com nome estranho, oferecendo "ajuda com papelada".
+LUCIA: Que papelada?
+TAINA: Sei lá. "Inventário rápido". "Resolva tudo em 48h".
+(Já começou. Na mesma tarde.)
+@se marca:celular_apagou e !marca:achou_carregador -> h02_noite_apagado
+@vai h02_noite_ligado
+
+=== h02_noite_ligado
+> O celular do seu pai está carregando em cima da geladeira, onde sua mãe não vai tirar da tomada para ligar a batedeira.
+> Na tela de bloqueio, outra mensagem chega: "Banco: Atualize seus dados cadastrais para evitar bloqueio da conta. Clique aqui."
+@muda bateria-3
+? Mais uma. Na mesma noite.
+* Não abrir. Anotar o horário e o remetente num papel, para mostrar ao banco depois -> h02_anota_golpes {tecnica+1}
+* Desligar as notificações? Não dá, o celular está bloqueado. Só deixar quieto. -> h02_deixa_quieto
+
+=== h02_noite_apagado
+> O celular do seu pai está em cima da geladeira, apagado. O carregador remendado da gaveta não funcionou.
+LUCIA: Deixa ele descansar também, filha.
+(Amanhã alguém arruma um carregador. Hoje não chega mais nada nele. Nem golpe, nem pêsames.)
+@vai h02_fim
+
+=== h02_anota_golpes
+> Você pega um bloquinho da farmácia que mora na porta da geladeira e escreve:
+> "Terça, 22h: promoção de rodízio. Quarta, 10h40: cartão bloqueado, link. Quarta, 15h: seguro de vida liberado, link. Quarta, 21h: atualizar dados, link."
+TAINA: Você vai fazer planilha do velório?
+EU: Vou fazer lista do que chegou. Se um dia o banco perguntar, a gente tem.
+> A Tainá olha a lista e acrescenta, com a letra dela: "Quarta, o dia todo: todo mundo amava ele."
+@anota h2_conferir_canal_oficial
+@vai h02_fim
+
+=== h02_deixa_quieto
+> Você deixa a mensagem lá. Ela fica na tela de bloqueio, acesa por alguns segundos, e apaga.
+(Não abrir já é proteger. Mas eu queria um jeito de fazer isso parar de chegar.)
+@anota h2_conferir_canal_oficial
+@vai h02_fim
+
+=== h02_fim
+@musica triste
+> 23h. A sua mãe vai dormir no quarto dela pela primeira vez sozinha. Deixa a porta aberta.
+> O Rodrigo dorme no sofá, de meia, com o caderno da lista aberto no peito. A Tainá dorme no quarto dela, de fone.
+> Na lista do Rodrigo, embaixo de "funerária" e "cartório", alguém escreveu a lápis, com letra de tio: "furadeira: é do Nelson".
+@vai h03_inicio

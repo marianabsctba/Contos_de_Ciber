@@ -94,6 +94,7 @@ export function aplica(efs: Efeito[], e: Estado): void {
     e.vars[ef.nome] = ef.op === '+' ? v + ef.valor : ef.op === '-' ? v - ef.valor : ef.valor;
     if (ef.nome === 'saude' || ef.nome === 'paciencia' || ef.nome === 'risco') e.vars[ef.nome] = Math.max(0, Math.min(10, e.vars[ef.nome]));
     if (ef.nome === 'minutos') e.vars.minutos = Math.max(0, e.vars.minutos);
+    if (ef.nome === 'bateria') e.vars.bateria = Math.max(0, Math.min(100, e.vars.bateria));
   }
 }
 

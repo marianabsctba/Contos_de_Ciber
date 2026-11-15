@@ -207,7 +207,7 @@ export function telaLeitura(h: Historia): void {
     hud.replaceChildren(
       ...itens.map((x) => {
         const v = ex.estado.vars[x.var];
-        return el('span', { class: `hud-item ${(x.var === 'minutos' && v <= 10) || (x.var === 'prazo' && v <= 1) || (x.var === 'risco' && v >= 8) ? 'urgente' : ''}` }, `${x.icone} ${v}${x.sufixo ?? ''}`);
+        return el('span', { class: `hud-item ${(x.var === 'minutos' && v <= 10) || (x.var === 'prazo' && v <= 1) || (x.var === 'risco' && v >= 8) || (x.var === 'bateria' && v <= 10) ? 'urgente' : ''}` }, `${x.icone} ${v}${x.sufixo ?? ''}`);
       }),
     );
   }

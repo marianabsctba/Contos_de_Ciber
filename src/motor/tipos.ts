@@ -110,6 +110,8 @@ export type Desafio =
       tipo: 'formulario';
       titulo: string;
       enunciado: string;
+      /** aparência: documento (padrão) ou cofre de contas */
+      visual?: 'documento' | 'cofre';
       /** cada campo tem opções e uma certa; o jogo embaralha as opções */
       campos: { rotulo: string; opcoes: string[]; certa: number; porque: string }[];
       /** acertos mínimos para passar */

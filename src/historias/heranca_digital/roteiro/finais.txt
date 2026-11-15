@@ -1,0 +1,238 @@
+# Parte 2, finais. A ordem dos @se define a prioridade.
+
+=== fim_escolha
+@se marca:pagou_taxa_advogado -> fim_taxa
+@se marca:pix_conta_do_pai -> fim_pix
+@se marca:perfil_invadido -> fim_invadida
+@se marca:entrou_na_conta_do_pai e !marca:trocou_numero_recuperacao -> fim_invadida
+@se !marca:irmaos_reconciliados e uniao<=4 -> fim_separados
+@se !marca:cancelou_assinaturas e !marca:fotos_salvas -> fim_gaveta
+@vai fim_lembrar
+
+=== fim_lembrar
+@fundo sala_familia
+@musica triste
+@sai todos
+> Meses depois, quando alguém pergunta o que ficou do Seu Valter, cada um da família responde uma coisa.
+> Você também tem a sua resposta.
+? O que ficou?
+* As fotos, de mão em mão -> fim_album [se marca:fotos_salvas e uniao>=2]
+* Um plano, para ninguém passar por isso de novo -> fim_plano [se marca:plano_heranca]
+* O perfil dele, em memória -> fim_memorial [se marca:perfil_memorial]
+* Uma gaveta, e o direito de ir devagar -> fim_gaveta
+
+# ===================== O ÁLBUM DA FAMÍLIA =====================
+
+=== fim_album
+@musica final_bom
+@fundo sala_familia
+> Natal. Oito meses depois.
+> Em cima da mesa da sala, entre a farofa e o pavê, um álbum de capa dura, impresso numa gráfica do bairro. Na capa, em letra dourada: "VALTER. 1958 a 2026. O CÉU NUNCA REPETE."
+@entra lucia feliz centro
+LUCIA: Duzentas páginas. Eu escolhi as fotos, a Tainá escolheu a ordem, o Rodrigo pagou a gráfica e brigou com ela por causa da cor do pôr do sol.
+@entra taina feliz direita
+TAINA: Tem uma página só de quadro de disjuntor. Foi exigência da {nome}.
+EU [feliz]: Era a arte dele.
+> O álbum passa de mão em mão. Os netos do Tio Nelson, o filho pequeno do Rodrigo, a afilhada da Tia Cida. Cada um vira uma página e pergunta: "quem é esse de bigode?".
+@se marca:leu_conversas_privadas -> fim_album_ze
+@vai fim_album_ultima
+
+=== fim_album_ze
+> O Zé do futebol vira as páginas devagar. Para numa foto dele com o pai, abraçados, de camisa do time.
+> Você sabe coisas do Zé que ele nunca te contou. Nunca vai contar que sabe. Só aperta o ombro dele um pouco mais forte.
+@vai fim_album_ultima
+
+=== fim_album_ultima
+> As fotos originais estão em três lugares: no HD com etiqueta de fita crepe, na pasta da família na nuvem, e na caixa de sapato de 1988.
+> Na última página do álbum, o Seu Valter de bermuda, em cima de uma escada, consertando a fiação do vizinho. De graça. Como sempre.
+(A gente salvou as fotos pelo caminho certo. E elas salvaram um pouco a gente.)
+@final album_da_familia
+
+# ===================== NINGUÉM PASSA POR ISSO DE NOVO =====================
+
+=== fim_plano
+@musica final_bom
+@fundo quintal_almoco
+> Um ano depois. Missa de um ano, e depois churrasco, que é a liturgia da família.
+@entra lucia feliz centro
+LUCIA: Gente, atualização do plano. Troquei de celular. Já mudei o número de recuperação, conferi o acesso de emergência e avisei a Tainá.
+@entra tio_nelson feliz esquerda
+TIO_NELSON: Eu fiz o meu. Descobri que tinha conta em quatro bancos, não três. Fechei dois. Contador aposentado também se surpreende.
+@entra rodrigo feliz direita
+RODRIGO: Eu fiz o meu e o da minha sogra. Ela me odeia um pouco menos agora.
+> Cada um tem uma folha na pasta da família: as contas que existem, quem é o contato de confiança, onde estão as fotos, o que fazer com cada perfil. As senhas, não. As senhas ficam no gerenciador, com o acesso de emergência configurado.
+@se marca:celular_guardado -> fim_plano_gaveta
+@vai fim_plano_ultima
+
+=== fim_plano_gaveta
+> O celular do Seu Valter continua na gaveta da mesinha, do lado da fita isolante. Ninguém mais precisa dele para nada. Por isso mesmo ele pode ficar lá.
+@vai fim_plano_ultima
+
+=== fim_plano_ultima
+LUCIA: Fui a primeira, né? Pra não dar trabalho pra vocês.
+EU: Foi, mãe.
+LUCIA: Teu pai ia dizer que eu exagerei.
+EU: Ele ia dizer isso e depois pedir pra senhora fazer o dele.
+(Herança digital não é sobre senha. É sobre deixar um caminho aceso pra quem fica.)
+@final plano_para_todos
+
+# ===================== MEMORIAL DO VALTER =====================
+
+=== fim_memorial
+@musica final_bom
+@fundo quarto_madrugada
+> Quatorze de março. Aniversário do Seu Valter.
+@entra taina neutra centro
+> A Tainá abre o perfil do pai. Do lado do nome, discreto, "em memória". Ninguém mais entra, ninguém mais posta como ele. A conta não vai ser tomada por ninguém, porque não tem mais porta para abrir.
+> Ela escreve, como escreve todo dia catorze:
+TAINA: Feliz aniversário, pai. Passei na prova de circuitos. Tirei nove. Você ia dizer que faltou um.
+@som notificacao
+> Os comentários começam a chegar. O Zé do futebol manda foto de churrasco. O Bira manda uma foto antiga dos dois numa obra, de capacete. A Dona Cida manda uma foto do bolo de fubá.
+@expr taina feliz
+TAINA: A tia do bolo.
+EU: A tia do bolo nunca erra.
+@se marca:leu_conversas_privadas -> fim_memorial_privado
+@vai fim_memorial_ultima
+
+=== fim_memorial_privado
+(Eu li uma conversa que não era minha, naquela quarta. Desde então, eu entendi o que esse memorial protege: não só ele. Todo mundo que conversava com ele.)
+@vai fim_memorial_ultima
+
+=== fim_memorial_ultima
+> O perfil dele continua lá, como uma praça onde a família se encontra uma vez por mês. Ninguém finge ser ele. Todo mundo fala com ele.
+@final memorial_do_valter
+
+# ===================== TUDO RESOLVIDO, MENOS OS IRMÃOS =====================
+
+=== fim_separados
+@musica triste
+@fundo carro_noite
+> As contas foram encerradas. O banco foi avisado. O golpe, evitado. Tudo do Seu Valter ficou em ordem.
+> Menos o que ele mais cuidava.
+> O Rodrigo voltou para o estado dele na segunda depois da missa. Não se despediu direito. Você também não.
+> O grupo "Os 3 do Valter" ficou com a última mensagem de março. A Tainá ainda manda, às vezes, uma foto do pôr do sol na laje. Ninguém responde. Mas todo mundo visualiza.
+(A gente resolveu a herança dele. Esqueceu de resolver a gente.)
+@fundo sala_familia
+@musica final_bom
+> Onze meses depois. Aniversário de setenta anos da Dona Lúcia.
+@entra rodrigo envergonhada esquerda
+> A campainha toca. É o Rodrigo, com o filho no colo e um pavê numa travessa de vidro.
+RODRIGO: Eu não sabia o que trazer. A Tia Cida disse que pavê resolve.
+@entra lucia feliz centro
+LUCIA: Pavê não resolve nada. Mas entra.
+? O que você faz?
+* Pegar o pavê e dar um abraço nele, sem dizer nada -> fim_separados_fim {uniao+1}
+* "Demorou, hein." E abrir a porta inteira -> fim_separados_fim
+
+=== fim_separados_fim
+> O pavê fica no meio da mesa, como uma bandeira branca de creme e biscoito. A Tainá chega depois e senta entre os dois.
+> Ninguém fala do ano que passou. Ainda não. Mas o grupo "Os 3 do Valter", naquela noite, tem uma mensagem nova. Uma foto da mesa. Três pratos.
+@final irmaos_separados
+
+# ===================== O CELULAR NA GAVETA =====================
+
+=== fim_gaveta
+@musica triste
+@fundo gaveta_celular
+> Quatro meses depois.
+> O celular do Seu Valter está na gaveta da mesinha, do lado da fita isolante, dos óculos de leitura e do terço. Desligado. A última vez que alguém olhou, tinha um por cento.
+@muda bateria=1
+@se !marca:cancelou_assinaturas -> fim_gaveta_cobrancas
+@vai fim_gaveta_fotos
+
+=== fim_gaveta_cobrancas
+> Algumas contas ainda cobram. A revista de pesca chegou em julho com uma reportagem sobre tucunaré. A Dona Lúcia deixou na mesinha, por cima do celular.
+@vai fim_gaveta_fotos
+
+=== fim_gaveta_fotos
+@se !marca:fotos_salvas -> fim_gaveta_fotos_la
+@vai fim_gaveta_ultima
+
+=== fim_gaveta_fotos_la
+> E algumas fotos ainda estão lá, na nuvem e no aparelho, esperando o dia em que alguém tiver força para fazer o pedido pelo caminho certo.
+@vai fim_gaveta_ultima
+
+=== fim_gaveta_ultima
+@entra lucia neutra centro
+LUCIA: Uma hora a gente resolve o resto. Não precisa ser hoje.
+EU: Não precisa, mãe.
+> Ela abre a gaveta, olha, fecha. Faz isso quase todo dia. Não chora mais toda vez.
+(Luto também tem fila. E tudo bem ir devagar. O importante, a gente não deixou ninguém levar.)
+@final celular_na_gaveta
+
+# ===================== A TAXA DO DR. RICARDO =====================
+
+=== fim_taxa
+@musica final_ruim
+@fundo casa_cozinha
+@sai todos
+> Três semanas depois.
+> A "liberação em 48 horas" nunca chegou. Chegou outra mensagem, pedindo mais uma taxa, "de cartório". Depois, nenhuma. O número não existe mais. A conta "R. S. Consultoria" foi encerrada.
+@entra lucia triste centro
+LUCIA: Eu passei o nome do teu pai para ele. Eu dei o número do Rodrigo. Ele foi tão educado.
+EU: A senhora não fez nada de errado, mãe. Ele leu o obituário. Ele faz isso com todo mundo, toda semana.
+> O boletim de ocorrência foi feito. O banco que recebeu o dinheiro foi avisado. O dinheiro não volta.
+? O que dizer para a mãe?
+* "Quem errou foi ele. A gente só estava triste." -> fim_taxa_fim {rel_lucia+1}
+* Abraçar e não dizer nada -> fim_taxa_fim
+
+=== fim_taxa_fim
+> O inventário de verdade começou no mês seguinte, com uma advogada que o Tio Nelson conhecia, conferida no cadastro oficial da OAB, pelo nome e pelo número de inscrição. Ela não pediu taxa por mensagem. Pediu documentos.
+> A Dona Lúcia colou na geladeira, com o ímã da pizzaria que fechou, um papel na letra dela: "ADVOGADO DE VERDADE NÃO LIBERA HERANÇA POR PIX".
+(Golpista lê obituário. A gente aprendeu a ler golpista. Só aprendeu na semana em que menos podia pagar a aula.)
+@final taxa_do_inventario
+
+# ===================== ALGUÉM VIROU O VALTER =====================
+
+=== fim_invadida
+@musica final_ruim
+@fundo quarto_madrugada
+@sai todos
+> Dois meses depois, numa quinta-feira, o seu telefone toca às 23h. É o Zé do futebol.
+@zap "Zé do Futebol"
+> Zé do Futebol: [audio 0:52]
+EU: Zé, calma. O que aconteceu?
+> Zé do Futebol: O Valter me mandou mensagem. A conta dele. Pedindo 800 reais emprestado pra um remédio. Com a foto dele. Eu mandei.
+@zap fim
+(Alguém tomou a conta dele. Por alguma porta que ficou aberta, por um código que foi parar onde não devia.)
+> Em uma noite, a conta do Seu Valter pediu dinheiro para trinta e um contatos. Dois mandaram. Os outros ligaram para a Dona Lúcia, chorando, perguntando se era ele.
+@entra taina triste centro
+TAINA: Ele tá pedindo dinheiro. O pai. Na tela.
+EU: Não é ele, Tainá. Nunca mais vai ser ele. É alguém usando o rosto dele.
+? O que fazer agora?
+* Avisar todos os contatos dele, pelo grupo e um por um, que a conta foi tomada -> fim_invadida_fim {etica+1}
+* Denunciar pelo caminho oficial da plataforma e pedir memorial ou remoção, com a certidão -> fim_invadida_fim {tecnica+1}
+
+=== fim_invadida_fim
+> Você faz as duas coisas, na verdade. Até as três da manhã. A plataforma tira a conta do ar em quatro dias. O boletim de ocorrência fica com o nome do Zé e do Bira, que também mandou.
+> O Zé não quer o dinheiro de volta da família. Diz que mandaria de novo, "se fosse ele de verdade".
+(A pior mensagem do mês foi a que parecia vir do pai. Conta de quem morreu não pode ficar com a porta aberta e o número de recuperação na mão de qualquer um.)
+@final conta_invadida_do_pai
+
+# ===================== O PIX DA DISCÓRDIA =====================
+
+=== fim_pix
+@musica final_ruim
+@fundo cartorio
+@sai todos
+> Sete meses depois. No cartório, o inventário que podia ter sido simples parou. Inventário em cartório pede todo mundo de acordo, e a família não está. Vai para a Justiça.
+> O inventário parou numa linha: "Transferência de R$ 9.800,00 realizada após o óbito, com credenciais do falecido."
+@entra rodrigo brava esquerda
+RODRIGO: Era pra funerária. Tem nota. Tem tudo.
+@entra taina brava direita
+TAINA: Então por que ninguém me perguntou?
+> Cada um tem um advogado agora. O da Tainá pergunta o que mais foi movimentado. O do Rodrigo pede que conste que foi despesa de funeral. A Dona Lúcia, no meio, segura a pasta de plástico com elástico.
+@se marca:irmaos_reconciliados -> fim_pix_reconciliados
+@vai fim_pix_fim
+
+=== fim_pix_reconciliados
+> Vocês tinham feito as pazes naquela quarta, no chão da sala. Mas inventário tem um jeito próprio de reabrir ferida que já estava fechando.
+@vai fim_pix_fim
+
+=== fim_pix_fim
+@entra lucia triste centro
+LUCIA: Ele trabalhou a vida inteira de escada em escada pra vocês três não brigarem por nada.
+> Ninguém responde.
+(Se o dinheiro tivesse esperado o inventário, ia para o mesmo lugar. Mas ia pelo caminho que todo mundo enxerga. Um Pix com a senha do pai, por amor, virou um Pix contra o irmão.)
+> Três irmãos, dois advogados, nenhum churrasco naquele ano.
+@final pix_da_discordia

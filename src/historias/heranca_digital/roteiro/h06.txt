@@ -1,0 +1,240 @@
+# Parte 2, capítulo 6: As assinaturas (terça)
+
+=== h06_inicio
+@cap 6 "As assinaturas"
+@fundo quarto_do_pai
+@musica triste
+> Terça-feira, 9h. Uma semana.
+> O quarto dos seus pais tem cheiro de desodorante de bastão e de graxa. Do lado dele da cama, a mesinha: óculos de leitura, um rolo de fita isolante, um terço e uma caneta da loja de material elétrico.
+(Eu ainda não consigo sentar desse lado da cama. Sento na beirada do lado da mãe.)
+> No colo, o celular do pai. Na mão, o seu caderno. Na cabeça, a notificação de ontem à noite.
+@som notificacao
+@muda bateria-3
+> "Compra aprovada: StreamFlix Família, R$ 55,90. Cartão final 7731."
+@entra taina neutra direita
+TAINA: Ele assinava streaming? Ele dormia no segundo episódio de qualquer coisa.
+EU: Dormia. Mas pagava os episódios inteiros.
+@se marca:taina_magoada -> h06_taina_magoada
+@vai h06_lista
+
+=== h06_taina_magoada
+@expr taina brava
+TAINA: Só não cancela nada sem me falar. Igual vocês fizeram com o resto.
+(Ela ainda não me perdoou pela semana passada. Talvez tenha razão em não perdoar tão rápido.)
+EU: Combinado. Nada sem você.
+@muda rel_taina+1
+@vai h06_lista
+
+=== h06_lista
+@expr taina neutra
+> Vocês fazem a lista no caderno, pelas notificações que aparecem na tela de bloqueio e pelos e-mails de cobrança que chegam na caixa da Dona Lúcia, porque ele usava o e-mail dela para metade das coisas.
+> Cartão final 7731, o "moderno":
+> Streaming, R$ 55,90. Plano do aplicativo de transporte, R$ 19,90, "corridas com desconto". Nuvem de fotos, R$ 9,90. Paciência Premium Sem Anúncios, R$ 14,90. Revista Pesca & Cia, R$ 29,90.
+TAINA: Revista de pesca. O pai foi pescar uma vez. Em 1997.
+EU: E voltou com sardinha do mercado embrulhada no jornal, dizendo que pegou no rio.
+TAINA [feliz]: A mãe fingiu que acreditou por vinte e nove anos.
+@entra lucia neutra esquerda
+LUCIA: Eu não fingi. Eu acreditei por amor. É diferente.
+@muda bateria-3
+> Na tela, uma notificação do jogo: "Valter, você não joga há 7 dias! Seu recorde de 2.311 vitórias está esperando."
+(Sete dias. O aplicativo contou certo. Ninguém contou pra ele.)
+? Por onde começar?
+* Fazer tudo hoje, conta por conta, com calma e com a Tainá do lado -> h06_cofre_prepara {uniao+1 paciencia-1}
+* Fazer só o urgente: avisar o cartão. O resto fica pra outro dia -> h06_devagar {paciencia+1}
+** Abrir o jogo de paciência na tela de bloqueio e ler o recorde em voz alta, antes de qualquer coisa -> h06_recorde {rel_taina+1 rel_lucia+1}
+
+=== h06_recorde
+> Você toca na notificação. O celular está bloqueado, mas o aviso mostra a imagem: um troféu dourado, cartas espalhadas e o placar.
+EU: Valter Aparecido. Duas mil, trezentas e onze vitórias. Sequência máxima: quarenta e duas.
+LUCIA: Ele jogava no banheiro. Achava que eu não sabia.
+TAINA: Ele dizia que era pra treinar a mente. "Paciência é exercício, Tainá. Igual flexão."
+> A Tainá tira um print da tela com o próprio celular. O recorde vai ficar. A assinatura, não precisa.
+@muda bateria-2
+@vai h06_cofre_prepara
+
+=== h06_devagar
+EU: Hoje eu só aviso o cartão. O resto pode esperar uma semana. Ninguém morre por pagar R$ 14,90 de paciência mais um mês.
+> Silêncio.
+EU [envergonhada]: Desculpa. Força de expressão.
+LUCIA: Seu pai ia rir disso. Ele ia rir muito.
+> Você liga para o número do verso do cartão moderno, informa o óbito e pede o bloqueio. Pedem a certidão pelo canal oficial deles, e você manda.
+(A revista de pesca ainda vai chegar mês que vem. E tudo bem. Luto também tem fila.)
+@anota h6_assinaturas
+@vai h06_chip
+
+=== h06_cofre_prepara
+EU: Regra da casa: a gente não entra em conta nenhuma com senha adivinhada. Cada conta pelo caminho oficial dela. E nada que tem foto a gente cancela antes de salvar.
+TAINA: A nuvem não. A nuvem é onde ele botava tudo.
+EU: A nuvem por último. Promessa.
+> Você abre o caderno numa página nova e desenha uma tabela, igual o pai desenhava os circuitos: uma linha por conta, uma coluna para o que fazer.
+@se marca:perfil_memorial -> h06_memorial_confirmado
+@se marca:perfil_invadido -> h06_cofre
+@vai h06_rede_pendente
+
+=== h06_memorial_confirmado
+@som notificacao
+> No e-mail da Tainá, a resposta da rede social ao pedido de sexta: "Sua solicitação foi aprovada. O perfil agora é um memorial."
+@expr taina triste
+TAINA: Aprovaram. Do lado do nome dele agora tem "em memória".
+EU: Ninguém mais entra. Ninguém mais posta como ele. E você continua podendo escrever pra ele lá.
+TAINA: Então ele fica. Só que seguro.
+@muda rel_taina+1
+@vai h06_cofre
+
+=== h06_rede_pendente
+@expr taina pensativa
+TAINA: E o perfil dele? Ainda tá lá do mesmo jeito. Ninguém decidiu nada.
+? O que fazer com a rede social do pai, agora?
+* Pedir pelo caminho oficial da plataforma, com a certidão, que o perfil vire memorial -> h06_rede_memorial {marca:perfil_memorial etica+1 rel_taina+2}
+* Deixar como está por enquanto. A Tainá ainda não está pronta -> h06_cofre {rel_taina+1}
+
+=== h06_rede_memorial
+> A Tainá preenche o formulário oficial da plataforma, no navegador do computador, com a certidão escaneada e o documento dela. Você só segura o café.
+TAINA: Vai continuar lá? As fotos, os comentários, o "parabéns, filha" do meu aniversário?
+EU: Vai continuar. Só que ninguém mais entra, ninguém mais posta como ele. Vai aparecer "em memória" do lado do nome.
+TAINA: Então ele fica. Só não fica sozinho com qualquer um entrando.
+@vai h06_cofre
+
+=== h06_cofre
+@musica misterio
+> A tabela está pronta. Agora é decidir o destino de cada conta.
+@desafio h6_cofre_completo -> h06_cofre_acerto | h06_cofre_erro
+
+=== h06_cofre_acerto
+@musica triste
+@marca cancelou_assinaturas
+@muda tecnica+2 uniao+1
+> Uma por uma, pelo canal de cada serviço. O cartão é comunicado e cancelado. A revista de pesca pede desculpas pelo incômodo e manda condolências por e-mail, o que é mais do que muita gente fez.
+> A nuvem fica paga, intacta, até as fotos estarem salvas. O e-mail do pai, ninguém abre.
+TAINA: A gente fez tudo sem entrar em nada dele.
+EU: É isso. O pai nunca entrou na casa de cliente sem chamar no portão.
+@anota h6_assinaturas
+@vai h06_novela
+
+=== h06_cofre_erro
+@musica triste
+@marca cancelou_assinaturas
+@marca h6_nuvem_em_risco
+@muda paciencia-1
+> Na pressa, você cancela o cartão primeiro e manda cancelar tudo que estava nele. Inclusive a nuvem.
+@som notificacao
+@muda bateria-3
+> Três horas depois, chega no e-mail da sua mãe: "Não conseguimos processar o pagamento do armazenamento. Se o plano não for regularizado, sua conta terá o espaço reduzido e alguns arquivos poderão ficar indisponíveis."
+@expr taina assustada
+TAINA: Você prometeu que a nuvem era por último!
+EU: Eu sei. Eu errei a ordem. Ainda dá tempo, não apagou nada.
+> A Dona Lúcia acerta o plano no cartão dela mesma, pelo aplicativo oficial do serviço, enquanto a Tainá olha sem piscar.
+(Cancelar é fácil. Desfazer o cancelamento de uma coisa que guarda trinta anos não é.)
+@anota h6_assinaturas
+@vai h06_novela
+
+=== h06_novela
+@entra lucia pensativa centro
+LUCIA: Só uma coisa. O streaming. Eu via a novela das nove nele, depois que ele dormia no sofá.
+LUCIA: Eu não quero ver nada de pesca, nada de paciência. Mas a novela eu queria terminar. Faltam doze capítulos.
+? O que fazer com a novela da mãe?
+* Assinar um plano no nome dela, com o e-mail e o cartão dela -> h06_novela_fim {rel_lucia+1 tecnica+1}
+* Colocar a mãe como perfil na sua conta de streaming -> h06_novela_fim {rel_lucia+1}
+
+=== h06_novela_fim
+> Dez minutos depois, a Dona Lúcia tem um perfil com a foto de um girassol e o nome "LÚCIA (NÃO MEXER)".
+LUCIA: Aprendi com o teu pai. Põe o nome na tampa que ninguém mexe.
+@sai lucia
+@vai h06_chip
+
+=== h06_chip
+@sai lucia
+@fundo sala_familia
+@entra rodrigo neutra esquerda
+> 15h. O Rodrigo volta da padaria com sonho de creme, que era o doce do pai, e uma ideia.
+RODRIGO: Tem mais uma: a linha do celular dele. Quarenta e nove por mês. Passo na loja da operadora agora e cancelo.
+@expr taina surpresa
+TAINA: E o número dele? O número que eu ligava?
+RODRIGO: Tainá, é um número. Não é ele.
+(É um número. E é também o lugar para onde vai o código de verificação de metade das contas desta casa.)
+@muda bateria-3
+> Como se tivesse ouvido, o celular do pai acende: "Seu código de verificação do e-mail é 551208. Se não foi você, ignore."
+LUCIA: Isso deve ser meu. Eu tentei entrar no meu e-mail no computador e ele mandou código pro teu pai. Sempre manda pro teu pai.
+? O que fazer com o chip?
+* Explicar: o número pode ser reaproveitado pela operadora. Antes, trocar o telefone de recuperação das contas que importam. Depois, encerrar com cuidado -> h06_chip_troca {marca:trocou_numero_recuperacao tecnica+1}
+* Deixar o Rodrigo cancelar hoje. São quarenta e nove reais por mês -> h06_chip_cancela {marca:h6_chip_cancelado rel_rodrigo+1}
+* Não mexer em nada. Deixar o chip do jeito que está -> h06_chip_nada {paciencia+1}
+** Perguntar para a mãe em quais contas dela o número do pai aparece como recuperação -> h06_chip_mae {marca:trocou_numero_recuperacao rel_lucia+1 uniao+1}
+
+=== h06_chip_mae
+@entra lucia pensativa centro
+LUCIA: Em quais? Em todas, ué. Ele que criava. O e-mail, o aplicativo do posto de saúde, o da farmácia, a rede social que eu nunca uso. Ele dizia "se você esquecer a senha, o código vem pra mim e eu te ajudo".
+> Ela fala isso sorrindo. Depois para de sorrir, quando entende.
+LUCIA: E agora vem pra quem?
+EU: Por enquanto, pro aparelho dele, aqui. Se o número for cancelado e um dia for parar na mão de outra pessoa, pode ir pra um desconhecido.
+@vai h06_chip_troca
+
+=== h06_chip_troca
+EU: A ordem é essa: primeiro, o número de recuperação das contas que ficam. As da mãe, as da Tainá, a conta de luz que agora vai pro nome da mãe. Tudo pro número de quem está vivo.
+RODRIGO: E as contas do pai?
+EU: As dele a gente encerra ou pede pelo caminho oficial de cada serviço. Ninguém fica usando o número dele pra entrar em nada.
+EU: Depois, a linha. Dá pra pedir na operadora, com a certidão, a troca de titularidade pro nome da mãe ou o cancelamento. Sem pressa, quando nada mais depender dela.
+> Uma hora e quinze minutos. Cada troca pede um código. Cada código chega no celular do pai. Você lê, a mãe digita, a Tainá confere.
+@muda bateria-8
+@se bateria<=0 -> h06_apagou
+@vai h06_chip_troca_fim
+
+=== h06_apagou
+@musica nenhuma
+@marca celular_apagou
+> No meio do código do aplicativo da farmácia, a tela apaga. Sem aviso, sem animação. Só preto.
+@expr taina assustada
+TAINA: Não. Não, não, não.
+> Vinte minutos no carregador, a família inteira em silêncio olhando para um celular desligado como quem espera um parto.
+> O logotipo volta.
+@muda bateria=12 paciencia-1
+(Doze por cento. Ninguém vai falar alto perto desse aparelho hoje.)
+@vai h06_chip_troca_fim
+
+=== h06_chip_troca_fim
+> O último código chega às 16h40. É do e-mail da sua mãe. O e-mail que ele criou para ela em 2009, com o nome dela e o ano do casamento.
+LUCIA: Pronto? Agora é meu?
+EU: Agora é seu, mãe. Só seu.
+(O último código que chegou no celular do pai serviu para proteger a mãe. Ele ia gostar disso.)
+@anota h6_chip_recuperacao
+@vai h06_noite
+
+=== h06_chip_cancela
+@musica misterio
+> O Rodrigo vai à loja da operadora com a certidão e volta com um protocolo. A linha foi cancelada às 16h12.
+RODRIGO: Pronto. Uma conta a menos.
+> Às 18h, a sua mãe tenta entrar no e-mail no computador. O e-mail manda código para o número do pai. O número do pai não existe mais.
+@expr lucia triste
+LUCIA: Não chegou nada. Eu fiquei olhando pro aparelho dele e não chegou nada.
+EU: Mãe, a gente resolve pelo caminho de recuperação do próprio e-mail. Vai demorar mais, mas a gente resolve.
+(E com o tempo a operadora pode dar aquele número pra outra pessoa. E os códigos que ainda apontam pra ele vão pra ela.)
+@anota h6_chip_recuperacao
+@vai h06_noite
+
+=== h06_chip_nada
+EU: Deixa a linha. Mais um mês não faz diferença.
+RODRIGO: Faz quarenta e nove reais de diferença.
+EU: Então eu pago os quarenta e nove.
+> Ninguém troca nada, ninguém cancela nada. O celular do pai continua sendo, em silêncio, a chave de metade das contas da casa.
+@anota h6_chip_recuperacao
+@vai h06_noite
+
+=== h06_noite
+@fundo quarto_do_pai
+@musica triste
+@sai todos
+> 22h30. A casa dorme, ou finge. Você passa pelo corredor e vê luz no quarto dos seus pais.
+@entra taina triste centro
+> A Tainá está deitada do lado dele da cama, com o celular do pai em cima do peito, a tela apagada, as duas mãos em volta.
+TAINA: Eu só queria ouvir o barulhinho de mensagem chegando. Parece que ele tá digitando.
+? O que você faz?
+* Deitar do outro lado, do lado da mãe, e ficar em silêncio com ela -> h06_fim {rel_taina+2 uniao+1}
+* "Amanhã a gente vê as fotos. Todas. Eu prometo." -> h06_fim {rel_taina+1}
+* Pegar o celular de volta. Ele precisa ficar carregando -> h06_fim {bateria+5 rel_taina-1}
+
+=== h06_fim
+> Na tela de bloqueio, por baixo de tudo, aparece uma notificação antiga que ninguém tinha visto: "Nuvem de fotos: 38.406 itens. Seu armazenamento está 97% cheio."
+TAINA: Trinta e oito mil fotos.
+EU: Ele tirava foto de quadro de disjuntor pra lembrar a fiação. E de todo pôr do sol da laje.
+TAINA [feliz]: Todo. Ele subia correndo com o chinelo na mão.
+@vai h07_inicio
