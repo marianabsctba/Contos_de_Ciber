@@ -1,0 +1,290 @@
+=== m07_inicio
+@cap 7 "A conta do delivery"
+@fundo pastelaria
+@musica alegre
+> Domingo, 11h50. Dez minutos para a loja abrir no aplicativo de delivery.
+> Domingo é o dia do delivery: metade da cidade com preguiça, a outra metade com ressaca, e as duas querendo pastel.
+@entra jefferson feliz direita
+JEFFERSON: Patroa, a chapa está no ponto. O óleo está no ponto. Eu estou no ponto.
+EU: E o tablet dos pedidos?
+JEFFERSON: O tablet está ligado desde sexta. Ele nunca desliga. Ele é o funcionário mais dedicado da casa.
+> Meio-dia. A loja abre no aplicativo.
+> Meio-dia e dez. Nenhum pedido.
+> Meio-dia e vinte. Nenhum pedido. Domingo nunca foi assim.
+@som notificacao
+@zap "Tati do Açaí 🍇"
+TATI: amiga
+TATI: AMIGA
+TATI: [foto] print do seu cardápio no aplicativo
+TATI: tá escrito PASTEL GRÁTIS em tudo. o de carne, o de queijo, o caldo de cana
+TATI: e a foto da loja é um gato de óculos escuros
+@zap fim
+@musica tensao
+@som alarme
+(Pastel grátis. Gato de óculos. Eu não fiz nada disso.)
+> Você abre o e-mail da pastelaria. Três avisos do aplicativo de delivery, de madrugada: "Sua senha foi alterada". "O e-mail da sua conta foi alterado". "Os dados bancários para repasse foram alterados."
+(Os pedidos de hoje vão ser pagos no aplicativo. E o aplicativo vai repassar para a conta que agora não é minha.)
+@vai m07_reage
+
+=== m07_reage
+> Você tenta entrar com a senha de sempre. "Senha incorreta." Tenta de novo. "Senha incorreta."
+> Na calçada, um rapaz de bicicleta grita: "Moça! Cadê o meu pastel grátis?"
+? A conta foi tomada e o domingo está começando.
+* Buscar a ajuda pelo canal oficial: o site oficial do aplicativo de delivery para lojistas, digitado no navegador -> m07_suporte {tecnica+1}
+* Postar uma reclamação nas redes sociais marcando o aplicativo e esperar alguém responder -> m07_post
+* Ficar tentando todas as senhas antigas, uma por uma, até alguma entrar -> m07_tenta_senhas {paciencia-2}
+** Correr para o tablet do balcão, que estava logado desde sexta, e pausar a loja antes de entrar qualquer pedido -> m07_tablet {tecnica+2 marca:pausou_loja}
+
+=== m07_tablet
+@entra tati surpresa esquerda
+> O tablet ainda mostra o painel da loja. Quem invadiu trocou a senha, mas a sessão aberta no balcão continua viva.
+> Você toca em "Pausar loja". A loja sai do ar. O "PASTEL GRÁTIS" para de aparecer para os clientes.
+TATI: Você pausou? Na mão? Sem senha?
+EU: O tablet estava logado. Por enquanto. Agora eu preciso do suporte antes que ele derrube essa sessão também.
+(Primeiro estancar. Depois consertar. A loja pausada não recebe pedido, e pedido que não entra não é repassado para ninguém.)
+@sai tati
+@vai m07_suporte
+
+=== m07_tenta_senhas
+> Pastel2019. Pastel2020. PastelDaFeira. O nome do cachorro. O nome do cachorro com 123.
+> Nenhuma entra. Claro que não: quem invadiu trocou a senha.
+@som notificacao
+> Enquanto isso, o tablet do balcão apita: pedido novo. E outro. E outro. Todos pagos no aplicativo. Todos para o repasse da conta que já não é sua.
+@muda caixa-640 golpes_caidos+1
+@marca conta_invadida
+(Meia hora testando senha velha numa porta que já tinha fechadura nova. Meia hora de pedido pago indo para o bolso de outra pessoa.)
+@vai m07_suporte
+
+=== m07_post
+@zap "Rede social da pastelaria"
+EU: @aplicativodedelivery minha conta de lojista foi invadida e meu cardápio está PASTEL GRÁTIS!!! Me ajudem!!!
+> 4 curtidas. 2 comentários.
+> Comentário de "Suporte Delivery Oficial ✔️": "Olá! Lamentamos. Chame nosso time no privado que resolvemos agora."
+> Mensagem privada de "Suporte Delivery Oficial ✔️": "Para recuperar sua conta, vamos te enviar um código por SMS. Informe o código aqui para confirmarmos a titularidade."
+@zap fim
+(O selo de verificado está escrito no nome, como emoji. E ele quer o código que chega no meu celular.)
+? O "suporte" está esperando o código.
+* Não passar código nenhum, bloquear o perfil e ir para o site oficial do aplicativo -> m07_suporte {tecnica+1}
+* Passar o código, porque eles chegaram rápido e você precisa de ajuda rápida -> m07_passou_codigo
+
+=== m07_passou_codigo
+> Você digita o código. "Obrigado! Agora é só aguardar." O perfil some em dois minutos.
+@som alarme
+> Logo depois chega um e-mail: "Novo aparelho conectado à sua conta de e-mail."
+(O código não era do aplicativo de delivery. Era do meu e-mail. A mesma senha, e agora o código também.)
+@muda caixa-640 golpes_caidos+1 paciencia-1
+@marca conta_invadida
+@marca passou_codigo
+@anota m7_falso_suporte
+@vai m07_suporte
+
+=== m07_suporte
+@zap "Suporte do aplicativo de delivery"
+> Você entrou pelo site oficial do aplicativo, digitado no navegador, e abriu o chat da área de lojistas.
+> Bia, do suporte: Olá! Entendi que sua conta de lojista foi acessada por outra pessoa. Vou te ajudar.
+> Bia, do suporte: Por segurança, vou confirmar a titularidade pelos dados do cadastro. Não vou pedir senha nem código por aqui.
+EU: Graças a Deus alguém que não pede código
+> Bia, do suporte: A conta foi bloqueada para alterações. Revertemos os dados bancários para repasse que estavam no cadastro antes da troca. Repasses pendentes ficam retidos até a análise.
+> Bia, do suporte: Agora você vai criar uma senha nova. E uma pergunta: essa senha antiga era usada em outros lugares?
+EU: Ela era usada em... tudo
+> Bia, do suporte: Então é bem provável que ela tenha vazado de algum outro site e alguém testou aqui. Isso acontece muito. Troque em todos os lugares, começando pelo e-mail.
+@zap fim
+@se marca:passou_codigo -> m07_suporte_email
+@vai m07_balcao
+
+=== m07_suporte_email
+(E o meu e-mail, que agora tem um aparelho estranho conectado.)
+> Você entra no e-mail pelo computador da cozinha, encerra as sessões desconhecidas, troca a senha e confere se não criaram nenhuma regra de encaminhamento escondida. Criaram uma. Você apaga.
+@muda paciencia-1
+@vai m07_balcao
+
+=== m07_balcao
+@fundo pastelaria
+@musica trabalho
+> Na calçada, uma fila de seis pessoas com o celular na mão, mostrando o print do "PASTEL GRÁTIS".
+> Um senhor com camisa de time: "Eu vi no aplicativo, moça. Grátis. Está escrito."
+@entra jefferson pensativa direita
+JEFFERSON: Patroa, eu posso explicar para eles que o pastel grátis é uma ilusão. Que nem a felicidade.
+? A fila do pastel grátis está esperando.
+* Explicar com educação que a conta foi invadida e oferecer o pastel com desconto -> m07_fila_desconto {caixa+60 reputacao+1}
+* Dar um pastel de vento grátis para cada um, por consideração -> m07_fila_vento {caixa-30 reputacao+2}
+** Deixar o Jefferson fazer o discurso filosófico para a fila -> m07_fila_discurso {rel_jefferson+1 reputacao+1}
+
+=== m07_fila_desconto
+EU: Gente, a conta da pastelaria foi invadida. Não fomos nós. Mas quem veio até aqui leva o pastel com vinte por cento de desconto.
+> Quatro ficam. Dois vão embora resmungando. O senhor da camisa de time pede dois de carne.
+@som dinheiro
+@vai m07_jefferson
+
+=== m07_fila_vento
+EU: Gente, a conta foi invadida. Mas ninguém sai daqui sem pastel. Pastel de vento, grátis, por conta da casa.
+> A fila aplaude. Uma moça grava. Um menino pede "de vento com queijo", que é um pastel de queijo, e você finge que não percebe.
+@vai m07_jefferson
+
+=== m07_fila_discurso
+JEFFERSON: Senhoras e senhores. O pastel grátis do aplicativo não existe. Ele foi escrito por alguém que não sabe fritar. Mas o pastel de verdade, esse aqui, existe. E custa oito reais.
+> Silêncio. Depois, uma senhora: "Que rapaz educado." Três pessoas compram.
+@muda caixa+24
+@som dinheiro
+@vai m07_jefferson
+
+=== m07_jefferson
+@fundo cozinha_pastelaria
+@musica triste
+> Na cozinha, você conta para o Jefferson o que a Bia disse: a senha antiga provavelmente vazou e foi testada no aplicativo.
+@expr jefferson envergonhada
+JEFFERSON: Patroa... eu preciso falar uma coisa.
+JEFFERSON: Eu entrava no aplicativo pelo meu celular, com a senha da senhora. E aí... eu achei a senha bonita e usei no meu e-mail também. E no cadastro do jogo de futebol.
+JEFFERSON: E estava escrita num papelzinho do lado da chapa. Com gordura. Mas dava para ler.
+(A senha era minha. Era a mesma do e-mail, do banco, do atacado e do aplicativo. Fui eu que dei para ele, porque era mais fácil do que criar um acesso só dele.)
+? O Jefferson está esperando, com o boné na mão.
+* "Jefferson, foi você que vazou a senha! Você e esse papelzinho!" -> m07_culpa {rel_jefferson-3 etica-2 marca:culpou_jefferson}
+* "A senha era minha, e era a mesma de tudo. O erro não é seu, é do jeito que a gente fazia." -> m07_assume {rel_jefferson+1 etica+1}
+** "Jefferson, a partir de hoje você vai ter o seu próprio acesso, com a sua senha, só com o que você precisa." -> m07_acesso {rel_jefferson+2 etica+1 tecnica+1 marca:acesso_individual}
+
+=== m07_culpa
+@expr jefferson triste
+JEFFERSON: Eu? Patroa, a senhora me deu a senha. A senhora usa ela no banco.
+EU: Mas foi você que escreveu num papel do lado da chapa!
+JEFFERSON: Eu escrevi porque a senhora não quis me dar um usuário. Eu pedi em março.
+> Ele põe o boné. Volta para a chapa. Não fala mais nada pelo resto do dia.
+(Ele pediu em março. Eu me lembro. Eu disse "depois a gente vê".)
+@vai m07_senha
+
+=== m07_assume
+@expr jefferson pensativa
+JEFFERSON: Mas eu usei no meu e-mail, patroa.
+EU: Então hoje você troca a do seu e-mail também. Por uma só sua. E eu troco todas as minhas.
+JEFFERSON: Combinado. E o papelzinho?
+EU: O papelzinho vai para o óleo velho.
+@expr jefferson feliz
+JEFFERSON: Que fim digno.
+@vai m07_senha
+
+=== m07_acesso
+@expr jefferson surpresa
+JEFFERSON: Meu próprio acesso? Com meu nome?
+EU: Com seu nome. Você vê os pedidos e marca como pronto. Não mexe em conta bancária, não mexe em cardápio. E se um dia você sair daqui, eu apago o seu acesso e pronto, sem precisar trocar a minha senha.
+JEFFERSON: Patroa, isso é quase uma carteira assinada digital.
+EU: E troca a senha do seu e-mail hoje. Por uma só sua.
+@expr jefferson feliz
+JEFFERSON: Vou pôr uma que nem eu vou lembrar. Vou anotar no gerenciador que a senhora falou.
+@anota m7_acesso_individual
+@vai m07_senha
+
+=== m07_senha
+@musica hacker
+> A Bia liberou a troca da senha. A tela pede a nova senha da conta de lojista.
+(Nada de "Pastel2019". Nada de data da inauguração. Uma senha nova, longa, que só vai existir nesta conta e em lugar nenhum mais.)
+@desafio m7_senha_delivery -> m07_senha_acerto | m07_senha_erro
+
+=== m07_senha_acerto
+(Longa, esquisita, só desta conta, guardada no gerenciador de senhas. Se algum outro site vazar, esta aqui continua fechada.)
+@muda tecnica+1
+@anota m7_senha_unica
+@vai m07_2fa
+
+=== m07_senha_erro
+> A tela recusa: "Senha fraca."
+(Eu pus o nome da pastelaria com o ano. De novo. A primeira coisa que alguém tentaria.)
+> Na segunda tentativa, você junta quatro palavras sem relação nenhuma e a tela aceita.
+@muda paciencia-1
+@anota m7_senha_unica
+@vai m07_2fa
+
+=== m07_2fa
+> Logo abaixo, a tela oferece: "Ative a verificação em duas etapas. Além da senha, enviaremos um código para o seu celular sempre que alguém entrar de um aparelho novo."
+? A verificação em duas etapas está ali, a um toque.
+* Ativar agora, na conta do aplicativo e no e-mail da pastelaria -> m07_2fa_sim {tecnica+1 marca:ativou_2fa}
+* Deixar para depois, a senha nova já resolve -> m07_2fa_nao
+** Ativar agora e pedir para a Tati fazer o mesmo na conta do açaí, ali na hora -> m07_2fa_tati {tecnica+1 rel_tati+1 reputacao+1 marca:ativou_2fa}
+
+=== m07_2fa_sim
+(Com as duas etapas, uma senha vazada não basta. Quem tentar entrar vai precisar também do código que chega no meu celular. E esse código eu não passo para ninguém, nem para "suporte".)
+@anota m7_duas_etapas
+@vai m07_acessos
+
+=== m07_2fa_tati
+@entra tati feliz esquerda
+TATI: Já ativei. A minha senha do açaí era "acai123", amiga. Eu nunca te disse isso.
+EU: E agora?
+TATI: Agora é uma frase sobre o meu ex que eu não vou repetir em público.
+@sai tati
+@anota m7_duas_etapas
+@vai m07_acessos
+
+=== m07_2fa_nao
+(A senha nova é forte. Mas continua sendo uma chave só: se vazar de novo, a porta abre. Deixa para depois. Depois eu vejo.)
+@muda tecnica-1
+@vai m07_acessos
+
+=== m07_acessos
+> A Bia manda uma última mensagem: "Aproveite e revise quem tem acesso à sua conta e para onde vão os repasses."
+@desafio m7_acessos_delivery -> m07_acessos_acerto | m07_acessos_erro
+
+=== m07_acessos_acerto
+(Cada um com o seu acesso, só com o que precisa. Conta de repasse conferida. Quem sai da equipe, sai também do aplicativo. Parece burocracia, mas é só arrumar as chaves da casa.)
+@muda tecnica+1
+@vai m07_repasse
+
+=== m07_acessos_erro
+(Eu ainda queria deixar todo mundo com a senha da dona, "para facilitar". Facilitou bastante. Para o invasor.)
+@vai m07_repasse
+
+=== m07_repasse
+@se marca:conta_invadida -> m07_repasse_perdido
+> No fim da tarde, a Bia confirma: os pedidos de hoje ficaram retidos e vão ser repassados para a conta certa, a da pastelaria.
+@som dinheiro
+@muda caixa+380
+(Pausar rápido e ir pelo canal oficial salvou o domingo. O gato de óculos saiu da foto da loja. O pastel de queijo voltou a custar oito reais.)
+@vai m07_grupo
+
+=== m07_repasse_perdido
+> No fim da tarde, a Bia confirma: parte dos repasses foi enviada antes do bloqueio para a conta trocada. A equipe vai analisar e orienta você a fazer o boletim de ocorrência e falar com o seu banco.
+> Você faz o boletim pela internet ainda no domingo, com os prints, os e-mails de alteração e o protocolo do suporte.
+(O suporte de verdade ajudou. Mas cada minuto de atraso foi pedido pago indo para outra conta.)
+@vai m07_grupo
+
+=== m07_grupo
+@fundo portao_noite
+@musica nenhuma
+@som mensagem
+@zap "Comerciantes da Rua 7 🍢🛒"
+TATI: gente a conta do delivery da {nome} foi invadida hoje
+TATI: troquem as senhas de vocês AGORA e liguem a verificação em duas etapas
+ZECA: Eu não tenho aplicativo de delivery. O meu bar é na base do grito
+ZECA: Mas o meu e-mail é 1234
+TATI: SEU ZECA
+ZECA: 12345 então
+> Dona Cida da farmácia: "Menina, a minha senha é o nome do meu neto. Isso é ruim?"
+> Seu Marcão da loja de 1,99: "A minha é a data do aniversário da loja. Está escrita na fachada."
+@se marca:culpou_jefferson -> m07_grupo_culpa
+EU: Gente, senha boa é frase comprida que só você entende. Uma diferente para cada coisa. E as duas etapas ligadas
+ZECA: Isso é muita modernidade para um domingo
+TATI: o senhor quer modernidade ou quer um gato de óculos na foto do bar?
+ZECA: ...vou ver isso amanhã
+@zap fim
+@vai m07_fim
+
+=== m07_grupo_culpa
+EU: Foi o meu chapeiro. Deixou a senha num papel do lado da chapa
+TATI: amiga...
+TATI: a senha era sua e era a mesma de tudo, você mesma me falou
+> Dona Cida da farmácia: "Coitado do Jefferson. Ele é tão educado."
+@zap fim
+(A rua inteira sabe que não foi ele. Eu também sei.)
+@vai m07_fim
+
+=== m07_fim
+> 22h. A porta de aço desce. O tablet do balcão está desligado pela primeira vez desde sexta.
+@se marca:culpou_jefferson -> m07_fim_culpa
+@entra jefferson feliz direita
+JEFFERSON: Patroa, sabe o que eu aprendi hoje? Senha é que nem tempero. Cada pastel tem o seu. Se você usa o mesmo em tudo, tudo fica com o mesmo gosto. E o ladrão aprende o gosto.
+(Eu vou pendurar essa frase na parede.)
+@sai jefferson
+@vai m08_inicio
+
+=== m07_fim_culpa
+> O Jefferson vai embora sem dizer tchau. O avental fica pendurado no prego, mas torto.
+(Amanhã eu falo com ele. Amanhã.)
+@vai m08_inicio

@@ -1,0 +1,252 @@
+=== m03_inicio
+@cap 3 "QR code por cima"
+@fundo pastelaria
+@musica trabalho
+> Segunda-feira, 6h50. A porta de ferro sobe com o mesmo rangido de sempre e a Rua 7 entra junto com o cheiro de café.
+> De segunda, a loja abre cedo para o combo trabalhador: pastel de queijo e café com leite, doze reais. Pedreiro, enfermeira, motorista de aplicativo, estudante atrasado.
+@entra jefferson neutra direita
+JEFFERSON: Patroa, segunda-feira é o pastel de vento da semana. Por fora parece dia, por dentro é só sono.
+EU: Liga a chapa, filósofo.
+> No balcão, do lado da maquininha, a plaquinha de acrílico com o QR code da loja. É por ali que metade da manhã paga: aponta a câmera, confirma, vai embora com o café na mão.
+@som dinheiro
+> O primeiro cliente do dia aponta o celular para a plaquinha.
+@se marca:conferiu_extrato -> m03_confere_primeiro
+@vai m03_manha_corrida
+
+=== m03_confere_primeiro
+> Desde sábado, o celular da loja fica aberto no extrato. O cliente confirma. Você olha a tela.
+> Nada.
+EU: Moço, me mostra o seu comprovante, por favor? Aqui não chegou.
+> Ele vira o celular, meio sem graça. Na tela dele, o Pix saiu às 6h58. Doze reais. Recebedor: R. F. COSTA.
+(R. F. Costa. Eu não sou R. F. Costa. A minha conta tem o nome da loja.)
+> Você olha para a plaquinha de acrílico. O QR code parece o de sempre. Mas a borda está levantada, só um pouquinho, num cantinho.
+@som alarme
+@muda caixa-12
+(Por cima do meu QR code tem um adesivo. Igualzinho, do mesmo tamanho. Colado em cima.)
+@vai m03_descobre
+
+=== m03_manha_corrida
+> E o segundo. E o terceiro. A manhã de segunda corre como sempre: rápida, barulhenta, cheia de "bom dia" com sono.
+> Você frita, embala, sorri, ouve o apito do celular dos clientes confirmando o pagamento e já está com o próximo pedido na mão.
+@som dinheiro
+> 9h40. Uma enfermeira paga quatro combos para a equipe do posto.
+> 10h15. Um motorista paga dois pastéis de carne e um caldo de cana.
+> 11h30. Hora de fechar a manhã. Você abre o extrato no aplicativo do banco da loja para conferir.
+> Desde as 6h50, nenhum Pix entrou. Nenhum.
+@som alarme
+@muda caixa-412
+@marca caiu_qrcode
+(Trinta e quatro vendas no Pix. Quatrocentos e doze reais. Todo mundo pagou. Ninguém pagou para mim.)
+@entra tati surpresa esquerda
+TATI: {nome}? Que cara é essa?
+EU: Os Pix da manhã sumiram.
+TATI: Sumiram como? Pix não some.
+> A Tati se debruça no balcão e passa a unha na plaquinha de acrílico. Um cantinho do QR code levanta.
+TATI [assustada]: Amiga. Isso aqui é um adesivo. Colaram um QR code por cima do seu.
+@vai m03_descobre
+
+=== m03_descobre
+> Você puxa devagar. O adesivo descola inteiro. Embaixo, intacto, o seu QR code de verdade.
+> O de cima é idêntico de longe. De perto, a impressão é mais brilhante e a borda é um tiquinho mais larga.
+JEFFERSON [brava]: Quem fez isso entrou aqui. Passou pelo balcão. Ficou do meu lado.
+EU: Ou passou no fim de semana, de madrugada, pela grade. Ou ontem à noite, quando a gente estava fechando.
+(Não importa quando. Importa que, por toda a manhã, cada cliente apontou o celular e pagou para outra pessoa. E nenhum deles olhou o nome do recebedor, porque ninguém olha.)
+? O que fazer com o adesivo?
+* Guardar num saquinho, tirar foto e anotar o horário em que foi achado -> m03_guarda_prova {tecnica+1 marca:guardou_adesivo}
+* Rasgar e jogar no lixo, de raiva -> m03_rasga {paciencia-1}
+** Chamar o Jefferson para fazer o "registro oficial": foto do adesivo ao lado de um pastel, para dar escala -> m03_foto_pastel {tecnica+1 rel_jefferson+1 marca:guardou_adesivo}
+
+=== m03_guarda_prova
+> Você põe o adesivo num saquinho de pastel limpo, fecha com grampo e escreve com caneta: "Achado no balcão, segunda, 11h40".
+> Foto da plaquinha, foto do adesivo, print do extrato vazio.
+(Isso vai para o boletim. E, se alguém mais da rua tiver um igual, dá para mostrar que é o mesmo padrão.)
+@vai m03_grupo
+
+=== m03_rasga
+> O adesivo vira confete em cima do balcão. Você joga no lixo do óleo.
+> Dois segundos depois, você se arrepende.
+(Era a única prova física. Muito bem, {nome}. Destruí a evidência com o mesmo carinho que eu tenho pelo pastel queimado.)
+> Pelo menos você tirou uma foto antes de rasgar. Torta, com o dedo na frente, mas tirou.
+@vai m03_grupo
+
+=== m03_foto_pastel
+JEFFERSON: Pastel de carne do lado, para referência de tamanho. Igual em reportagem de buraco na rua.
+> A foto fica estranhamente profissional. O adesivo vai para um saquinho, com data e horário escritos.
+(É ridículo e é útil. A melhor combinação da Rua 7.)
+@vai m03_grupo
+
+=== m03_grupo
+@sai jefferson
+@sai tati
+@som mensagem
+@zap "Comerciantes da Rua 7 🍢🛒"
+> Tati adicionou você ao assunto "URGENTE"
+TATI: GENTE olhem o QR code do balcão de vocês AGORA
+TATI: [foto] Adesivo de QR code colado por cima do QR da {nome}
+> Farmácia Bem Estar: meu deus aqui também. tava por cima do nosso desde sexta
+> Rô do Salão: o meu tá normal... não pera. não tá normal
+> Loja Tudo 1,99: aqui colaram até na porta da geladeira de refrigerante
+ZECA: Por isso que eu falo. Pix é moda. Lá no bar é dinheiro na mão e caderninho
+TATI: Seu Zeca o seu caderninho de fiado é de 1998
+ZECA: E até hoje ninguém hackeou
+> Farmácia Bem Estar: quanto vocês perderam?
+@se marca:caiu_qrcode -> m03_grupo_perdeu
+EU: Pouco aqui, doze reais. Eu vi no primeiro Pix porque estou conferindo o extrato a cada venda desde sábado.
+ZECA: Conferindo o extrato a cada venda? Que trabalheira
+TATI: trabalheira é perder 400 conto Seu Zeca
+@vai m03_grupo_aviso
+
+=== m03_grupo_perdeu
+EU: Aqui foi a manhã inteira. Quatrocentos e doze.
+> Rô do Salão: 😢
+TATI: força amiga
+ZECA: Viu? No meu caderninho isso não acontece
+@vai m03_grupo_aviso
+
+=== m03_grupo_aviso
+? O grupo está em pânico. Cada um mandando foto de adesivo.
+* Mandar no grupo um passo a passo curto do que cada um deve fazer agora -> m03_aviso_rua {marca:avisou_rua reputacao+2 tecnica+1}
+* Mandar um "que absurdo 😡" e voltar para a chapa -> m03_so_raiva {reputacao-1}
+** Mandar um áudio de 40 segundos, curto e direto, do jeito que o Seu Zeca escuta -> m03_audio_zeca {marca:avisou_rua reputacao+2 rel_zeca+2}
+
+=== m03_aviso_rua
+EU: Gente, faz assim:
+EU: 1. Passa a unha em todo QR code impresso da loja. Se levantar, é adesivo por cima
+EU: 2. Não joga fora: guarda num saquinho, tira foto, anota a hora
+EU: 3. Avisa o banco da loja e faz boletim de ocorrência
+EU: 4. Pede para o cliente conferir o NOME de quem vai receber na tela, antes de confirmar o Pix
+EU: 5. Quem puder, gera o QR code na hora, pela maquininha ou pelo app do banco, com o valor da venda
+> Farmácia Bem Estar: salvando 🙏
+> Loja Tudo 1,99: vou imprimir e colar no caixa
+ZECA: Isso do nome eu entendi. O resto eu peço pro meu sobrinho
+@zap fim
+@anota m3_qrcode_trocado
+@vai m03_clientes
+
+=== m03_so_raiva
+EU: Que absurdo 😡
+> Rô do Salão: absurdo mesmo
+> Loja Tudo 1,99: 😡😡
+ZECA: Absurdo é essa tal de modernidade
+> O grupo continua mandando foto de adesivo, sem ninguém dizer o que fazer com eles.
+@zap fim
+(Indignação junta gente, mas não ensina ninguém. A Farmácia vai jogar o adesivo no lixo e a Rô vai colar o dela de volta, só para ver se ainda funciona.)
+@anota m3_qrcode_trocado
+@vai m03_clientes
+
+=== m03_audio_zeca
+EU: [audio 0:40] Seu Zeca, pessoal, é rápido. Passa a unha no QR code. Se tiver adesivo, guarda e tira foto. E fala pro cliente: antes de confirmar o Pix, olha o nome que aparece na tela. Tem que ser o nome da loja. Se aparecer nome de gente que você não conhece, não paga. Só isso. Nome na tela.
+ZECA: [audio 0:12] Nome na tela. Tá. Isso eu consigo. Quarenta segundos, gostei. Os outros mandam áudio de cinco minutos.
+TATI: ele OUVIU o áudio inteiro gente
+> Farmácia Bem Estar: milagre na Rua 7
+@zap fim
+@anota m3_qrcode_trocado
+@vai m03_clientes
+
+=== m03_clientes
+@musica interior
+> 12h10. A notícia corre. Antes do almoço, a enfermeira dos quatro combos volta, preocupada.
+@entra tati neutra esquerda
+TATI: A Rô contou para ela. Agora ela quer saber se tem que pagar de novo.
+> A enfermeira mostra o comprovante dela no celular: R$ 48,00, recebedor R. F. COSTA.
+(Ela pagou. De boa-fé, apontando para o meu balcão. O golpe foi em mim e nela ao mesmo tempo.)
+? O que dizer para os clientes da manhã?
+* "Não precisa pagar de novo. Mas liga para o seu banco hoje, conta que foi golpe e pede a devolução pelo MED." -> m03_med {etica+2 reputacao+2}
+* "Desculpa, mas o dinheiro não chegou. Vou ter que cobrar de novo." -> m03_cobra {etica-2 reputacao-2 caixa+48}
+** Escrever num papel, para cada cliente, o horário do Pix e o nome do recebedor errado, para ajudar no pedido ao banco -> m03_med_papel {etica+2 reputacao+3 tecnica+1}
+
+=== m03_med
+EU: A senhora não me deve nada. Mas o seu dinheiro foi para um golpista e quem pode pedir de volta é a senhora, pelo seu banco.
+EU: Liga hoje, pelo aplicativo ou pelo número oficial, diz que foi golpe e pede a devolução pelo Mecanismo Especial de Devolução, o MED. Quanto mais cedo, melhor.
+> A enfermeira agradece, emocionada de um jeito que você não esperava por um café com leite.
+(Eu perdi a venda. Ela perdeu o dinheiro. Dá para eu pelo menos não perder a cliente.)
+@anota m3_med_devolucao
+@vai m03_desafio
+
+=== m03_med_papel
+> Você pega o bloco de comandas e, para cada cliente que aparece, escreve: horário do Pix, valor, nome do recebedor que apareceu na tela, e "golpe: QR code adesivado no balcão do Pastel da {nome}".
+EU: Leva isso quando falar com o seu banco. Pede a devolução pelo MED, que é o mecanismo de devolução do Pix para golpe. E faz boletim, se puder.
+> Até o fim do dia, onze clientes passam para pegar o papelzinho. Três trazem amigos para almoçar.
+TATI: Você transformou prejuízo em fidelização. Eu odeio como você é boa nisso.
+@anota m3_med_devolucao
+@vai m03_desafio
+
+=== m03_cobra
+> A enfermeira paga de novo, em silêncio, com o maxilar travado.
+> No grupo das enfermeiras do posto, a mensagem chega antes dela voltar: "Pastel da {nome} cobrou duas vezes por um golpe que foi no balcão dela."
+(O dinheiro voltou para o meu caixa. A confiança foi embora pela mesma porta.)
+@som dinheiro
+@anota m3_med_devolucao
+@vai m03_desafio
+
+=== m03_desafio
+@sai tati
+@entra jefferson pensativa direita
+JEFFERSON: Patroa, e se a gente plastificar o QR code? Aí não gruda nada.
+(Adesivo gruda em plástico, Jefferson. Gruda em tudo. Eu preciso de uma solução que funcione mesmo que alguém cole outra coisa por cima.)
+@desafio m3_qrcode_defesa -> m03_desafio_acerto | m03_desafio_erro
+
+=== m03_desafio_acerto
+(O QR code impresso é um alvo parado. O QR code gerado na hora, para aquela venda, com aquele valor, aparece numa tela que fica comigo. E o cliente ainda confere o nome antes de confirmar.)
+@muda tecnica+1
+@vai m03_decisao
+
+=== m03_desafio_erro
+JEFFERSON: Então plastifica e cola com fita dupla face. Dupla, patroa. Dupla.
+(Eu quase concordei com fita dupla face como política de segurança.)
+@muda paciencia-1
+@vai m03_decisao
+
+=== m03_decisao
+? O que vai valer no balcão a partir de amanhã?
+* QR code gerado na hora pela maquininha ou pelo app do banco, com o valor de cada venda, e conferência no extrato -> m03_dinamico {marca:qrcode_dinamico tecnica+2}
+* Plastificar o QR code impresso e vigiar o balcão -> m03_plastifica
+** QR code gerado na hora e uma placa enorme: "ANTES DE PAGAR, CONFIRA: TEM QUE APARECER PASTEL DA {nome}" -> m03_dinamico_placa {marca:qrcode_dinamico tecnica+2 reputacao+1}
+
+=== m03_dinamico
+> Você descobre, mexendo no app da maquininha, que dá para gerar um QR code para cada venda, com o valor certinho, direto no visor.
+> O cliente aponta, aparece o nome da loja e o valor, ele confirma. O celular da loja apita. Pronto.
+JEFFERSON: É tipo pastel feito na hora. Não fica esquentando na estufa esperando alguém mexer.
+(Ele não está errado. Ele nunca está totalmente errado.)
+@anota m3_qrcode_dinamico
+@vai m03_fim
+
+=== m03_dinamico_placa
+> QR code na hora, na tela da maquininha, para cada venda. E uma placa nova, letra grande, do lado do caixa.
+> Uma senhora lê em voz alta, aponta o celular e grita, vitoriosa: "APARECEU PASTEL DA {nome}!"
+> A fila aplaude. Não por ela ter pago. Por ela ter conferido.
+@anota m3_qrcode_dinamico
+@vai m03_fim
+
+=== m03_plastifica
+> O QR code impresso volta, agora plastificado, com fita dupla face nas quatro pontas.
+> Você passa a manhã olhando para a plaquinha como quem vigia criança em piscina.
+(Funciona enquanto eu estiver olhando. Mas eu também frito pastel, dou troco e atendo telefone.)
+@anota m3_qrcode_dinamico
+@vai m03_fim
+
+=== m03_fim
+@fundo portao_noite
+@musica interior
+> 20h30. Porta de ferro descendo. Do outro lado da rua, a Farmácia Bem Estar cola um cartaz escrito à mão: "CONFIRA O NOME ANTES DO PIX".
+@se marca:guardou_adesivo -> m03_fim_bo
+> Você registra o boletim de ocorrência online com a foto torta do adesivo e o print do extrato. É pouco, mas é registro.
+@vai m03_fim_zeca
+
+=== m03_fim_bo
+> Você registra o boletim de ocorrência online, com as fotos do adesivo, o horário e o print do extrato. O saquinho com o adesivo fica guardado na gaveta, com etiqueta.
+@muda tecnica+1
+@vai m03_fim_zeca
+
+=== m03_fim_zeca
+@entra zeca neutra centro
+ZECA: {nome}.
+EU: Seu Zeca.
+ZECA: Aquilo do nome na tela. Eu fiz hoje, num Pix do fornecedor da cerveja. Apareceu o nome certo.
+ZECA [pensativa]: Não estou dizendo que o Pix é bom, viu. Estou dizendo que conferir é bom.
+EU: É diferente.
+ZECA: É bem diferente.
+@sai zeca
+@muda rel_zeca+1
+(O presidente da associação da Rua 7, que acha que Pix é moda, conferiu o nome do recebedor. Hoje foi um dia ruim. Mas não foi um dia perdido.)
+@vai m04_inicio

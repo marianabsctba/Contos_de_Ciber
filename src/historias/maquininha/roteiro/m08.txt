@@ -1,0 +1,262 @@
+=== m08_inicio
+@cap 8 "Feira da Cidade"
+@fundo pastelaria
+@musica trabalho
+> Um mês depois.
+> O mês fechou do jeito que todo mês de comércio fecha: aluguel, luz, gás, o salário do Jefferson e a parcela da fritadeira nova.
+@muda caixa-1800
+> Na parede, ao lado do cardápio, tem um papel novo, escrito com caneta de quadro branco: "PIX SÓ VALE QUANDO CAI NO EXTRATO."
+@se caixa<0 -> m08_vermelho
+@vai m08_roupa
+
+=== m08_vermelho
+@musica triste
+(O caixa está no vermelho. Motoboy, comprovante, QR code, boleto, contestação, conta invadida. Cada golpe levou um pedaço. Hoje é a Feira da Cidade, e talvez seja a última feira da pastelaria.)
+@muda paciencia-1
+@vai m08_roupa
+
+=== m08_roupa
+@fundo feira_pastel
+@musica festa
+> Sábado, 7h. A Feira da Cidade toma a praça inteira: barraca de pastel, de caldo de cana, de queijo, de artesanato, um palco com caixa de som chiando e uma faixa enorme: "CONCURSO DO MELHOR PASTEL DA CIDADE".
+> A sua barraca é a mesma da época em que tudo começou. Lona listrada, duas panelas, o banquinho bambo.
+(Hoje é dia de feira. Hoje é dia de me vestir de dona.)
+@roupa "Feira da Cidade"
+@se marca:culpou_jefferson -> m08_jefferson_frio
+@entra jefferson feliz direita
+JEFFERSON: Patroa! A senhora está parecendo a dona de uma rede de pastelaria. Com franquia.
+EU: É só um avental novo, Jefferson.
+JEFFERSON: Franquia começa com avental.
+@vai m08_mae
+
+=== m08_jefferson_frio
+@entra jefferson neutra direita
+> O Jefferson está na barraca, fritando. Faz o trabalho direito, como sempre. Mas não filosofa mais.
+JEFFERSON: Bom dia.
+EU: Bom dia, Jefferson. Sobre aquele domingo...
+JEFFERSON: Depois da feira a gente conversa, patroa. Eu já pedi as contas. Hoje é o meu último dia.
+(Ele falou "patroa" sem graça nenhuma. Antes, ele falava "patroa" como quem fala "capitã".)
+@vai m08_mae
+
+=== m08_mae
+@entra mae feliz esquerda
+MAE: Filha! Trouxe as meninas da igreja para torcer. E trouxe notícia.
+@se marca:bloqueou_cartao_rapido e marca:contestou_compra e marca:fez_bo -> m08_mae_ganhou
+@se marca:contestou_compra -> m08_mae_analise
+@vai m08_mae_perdeu
+
+=== m08_mae_ganhou
+MAE: O banco devolveu! O dinheiro todinho do motoboy!
+EU: Mãe! Sério?
+MAE: A moça do banco disse que ajudou muito eu ter bloqueado o cartão na hora, contestado a compra rápido e levado o boletim. Disse que eu fui "exemplar". Eu! Exemplar!
+> As meninas da igreja aplaudem. A irmã Socorro chora um pouquinho.
+(Bloquear rápido, contestar logo e registrar o boletim. Não é garantia de dinheiro de volta. Mas é o que dá a melhor chance.)
+@muda rel_mae+1
+@anota m8_registrar_tudo
+@vai m08_taxa
+
+=== m08_mae_analise
+MAE [pensativa]: A contestação ainda está em análise. A moça do banco pediu o boletim de ocorrência e eu não tinha feito. Fiz semana passada.
+MAE: Ela disse que ajuda, mas que podia ter ajudado mais se fosse no mesmo dia.
+EU: Ainda pode dar certo, mãe.
+MAE: Pode. E se não der, eu aprendi. Visor rachado eu não pago nem com reza.
+@anota m8_registrar_tudo
+@vai m08_taxa
+
+=== m08_mae_perdeu
+MAE [triste]: O dinheiro do motoboy não voltou, filha. Demorou muito para bloquear, eu não contestei direito, não fiz o boletim. O banco disse que não tinha como provar.
+EU: Mãe...
+MAE: Não faz essa cara. Eu já chorei o que tinha que chorar. Agora eu conto para todo mundo da igreja, que é para nenhuma delas pagar taxa de flor nunca mais.
+(O dinheiro foi. A lição ficou. E a minha mãe virou o alarme mais barulhento da paróquia.)
+@anota m8_registrar_tudo
+@vai m08_taxa
+
+=== m08_taxa
+@sai mae
+@som notificacao
+> 8h30. Uma mensagem nova, de um número que você não conhece, com a foto da faixa do concurso.
+> "Comissão Organizadora da Feira da Cidade: identificamos pendência na sua taxa de inscrição do concurso. Regularize até as 10h."
+(Eu paguei a inscrição semana passada. Na tenda da prefeitura. Com recibo.)
+@desafio m8_taxa_feira -> m08_taxa_acerto | m08_taxa_erro
+
+=== m08_taxa_acerto
+(Pendência que não existe, prazo apertado, ameaça de desclassificação, chave Pix de uma pessoa qualquer e um "não precisa vir na tenda". É o golpe do motoboy vestido de feira.)
+@muda tecnica+1
+@anota m8_taxa_falsa
+@vai m08_taxa_decide
+
+=== m08_taxa_erro
+(Desclassificada? Depois de tudo? A palavra "desclassificado" me deu um frio na barriga que apagou o resto da mensagem.)
+@muda paciencia-1
+@anota m8_taxa_falsa
+@vai m08_taxa_decide
+
+=== m08_taxa_decide
+? A tenda da organização fica a trinta metros. A fila de clientes já está se formando.
+* Atravessar a praça até a tenda da organização e perguntar lá, com o recibo na mão -> m08_tenda {tecnica+1}
+* Pagar os R$ 150 no Pix, para não correr o risco de ser desclassificada -> m08_pagou_taxa
+** Mandar o Jefferson até a tenda com o recibo e um pastel para a comissão, "para adoçar" -> m08_tenda_jefferson {rel_jefferson+1 tecnica+1}
+
+=== m08_pagou_taxa
+> Você manda o Pix. O nome que aparece na tela é de uma pessoa, não da organização. Você vê tarde demais.
+@som alarme
+@muda caixa-150 golpes_caidos+1
+@marca caiu_taxa_feira
+> Dez minutos depois, a moça da organização passa de barraca em barraca com um megafone: "Atenção, expositores! A comissão NÃO cobra nada por mensagem! Inscrição é só na tenda!"
+(Visor rachado, comprovante, QR code, técnico, boleto, cartão digitado, senha. E agora a taxa da feira. A roupa muda, o golpe é o mesmo.)
+@vai m08_concurso
+
+=== m08_tenda
+@fundo feira_pastel
+> Na tenda, a moça da comissão olha o seu recibo, olha a mensagem e suspira.
+> "Já é a sétima barraca hoje. A gente não cobra nada por mensagem. A sua inscrição está paga desde terça."
+> Ela pega o megafone: "Atenção, expositores! A comissão NÃO cobra nada por mensagem! Inscrição é só na tenda!"
+(Confirmar no lugar de verdade, com quem é de verdade. Trinta metros de caminhada valeram cento e cinquenta reais.)
+@muda reputacao+1
+@vai m08_concurso
+
+=== m08_tenda_jefferson
+> O Jefferson volta em cinco minutos, sem o pastel e com um sorriso.
+JEFFERSON: Patroa, é golpe. A moça disse que a inscrição está paga desde terça. E disse que o pastel estava ótimo, mas que não pode influenciar o júri.
+EU: E influenciou?
+JEFFERSON: Ela pediu outro.
+> Logo depois, o megafone: "Atenção, expositores! A comissão NÃO cobra nada por mensagem!"
+@muda reputacao+1
+@vai m08_concurso
+
+=== m08_concurso
+@fundo feira_pastel
+@musica festa
+> 11h. O júri chega: uma chef da cidade, o padre da paróquia e o Delegado Paulo, que, segundo a lenda, nunca comeu outro pastel que não fosse de carne.
+@entra delegado neutra centro
+DELEGADO: Bom dia. Sou do júri. Já aviso: eu voto em carne.
+EU: Mas o senhor nem provou o de queijo.
+DELEGADO: Nem preciso. É uma questão de princípios.
+? Cada barraca entrega um único pastel ao júri. Qual vai ser o seu?
+* O pastel de carne do Jefferson, com a receita do molho que só ele sabe -> m08_carne {rel_jefferson+1}
+* O pastel de queijo, com a muçarela do Seu Osvaldo -> m08_queijo
+** Um pastel meio carne, meio queijo, para acabar de uma vez com a disputa -> m08_meio {rel_jefferson+1 paciencia+1}
+
+=== m08_carne
+> O Delegado Paulo morde, fecha os olhos e não fala nada por dez segundos.
+DELEGADO: Esse molho. Quem fez esse molho?
+@se marca:culpou_jefferson -> m08_carne_triste
+JEFFERSON [feliz]: Fui eu, doutor. Receita de família. Minha vó fazia.
+> Segundo lugar. Medalha, aplauso, um vale de R$ 200 em compras do atacado.
+@muda caixa+200
+@vai m08_video
+
+=== m08_carne_triste
+JEFFERSON: Fui eu, doutor. Receita da minha vó. Vai embora comigo hoje.
+> Segundo lugar. Medalha e um vale de R$ 200. O Jefferson recebe a medalha e coloca no bolso sem olhar.
+@muda caixa+200
+@vai m08_video
+
+=== m08_queijo
+@se rel_osvaldo>=2 -> m08_queijo_osvaldo
+> O pastel de queijo é bom. É honesto. Mas o queijo veio do mercado, às pressas, e o júri percebe.
+> Terceiro lugar. Medalha de bronze e um vale de R$ 100.
+@muda caixa+100
+@vai m08_video
+
+=== m08_queijo_osvaldo
+@entra osvaldo feliz esquerda
+OSVALDO: Menina! Trouxe a peça especial. Curada noventa dias. Para a menina que me ligou no telefone certo.
+> O pastel derrete. A chef do júri fecha os olhos, igual à Dona Cida.
+DELEGADO [surpresa]: Isso aqui é... queijo?
+OSVALDO: É queijo, doutor. Do bom. Pago com boleto conferido.
+> Primeiro lugar. Troféu de pastel dourado, faixa e R$ 500.
+@muda caixa+500 reputacao+1
+@sai osvaldo
+@vai m08_video
+
+=== m08_meio
+> Metade carne, metade queijo, numa massa só, com uma divisória de massa no meio que o Jefferson inventou na hora.
+DELEGADO: Isso é... uma provocação.
+> Ele morde o lado da carne. Depois, devagar, o lado do queijo.
+DELEGADO [feliz]: Eu vou negar que disse isso. Mas o queijo está ótimo.
+> Primeiro lugar. Troféu de pastel dourado, faixa e R$ 500. A praça inteira grita. A disputa eterna da pastelaria termina empatada, como devia ser.
+@muda caixa+500 reputacao+1
+@vai m08_video
+
+=== m08_video
+@sai todos
+@musica alegre
+> 14h. Movimento da tarde. Entre um pastel e outro, uma cliente pergunta como você "descobriu tanta coisa de golpe".
+> Você explica: o visor rachado, o comprovante bonito, o QR code por cima, o técnico, o boleto do queijo, o Rodrigo do RH, o pastel grátis.
+> Uma moça grava tudo com o celular. Duas horas depois, o vídeo tem cento e vinte mil visualizações.
+@som notificacao
+> Uma mensagem de uma agência de conteúdo: "Queremos fazer uma série com você. Um vídeo por dia, viagens, palestras. Você vai precisar largar o balcão, claro. Pastel a gente arruma em qualquer lugar."
+? Um vídeo virou cento e vinte mil pessoas. E agora?
+* Recusar com educação. O seu lugar é atrás do balcão. -> m08_video_nao
+* Gravar um vídeo por semana, na própria pastelaria, sem largar a chapa -> m08_video_semana {reputacao+1}
+* Aceitar a série e passar o balcão para outra pessoa -> m08_video_sim {marca:virou_video}
+
+=== m08_video_nao
+(Cento e vinte mil pessoas é muita gente. Mas a Dona Cida fecha os olhos no primeiro pedaço. Isso não cabe num vídeo.)
+@vai m08_reuniao
+
+=== m08_video_semana
+(Um vídeo por semana, com o avental sujo de farinha e o Jefferson de fundo. Se golpe se espalha rápido, aviso também pode.)
+@vai m08_reuniao
+
+=== m08_video_sim
+(Viagens, palestras, cento e vinte mil pessoas. Eu ajudo muita gente assim. E o balcão... o balcão aguenta sem mim. Será?)
+@vai m08_reuniao
+
+=== m08_reuniao
+@fundo associacao_comerciantes
+@musica misterio
+> 19h. Reunião da associação de comerciantes, no salão dos fundos do bar do Seu Zeca. Cadeiras de plástico, um ventilador que gira para um lado só e um quadro de cortiça com o calendário de 2019.
+@entra zeca neutra centro
+@entra delegado neutra direita
+@entra tati feliz esquerda
+ZECA: Ordem do dia: a festa de fim de ano, a lâmpada do poste da esquina e... essa história de golpe que a {nome} quer falar.
+DELEGADO: Eu pedi para vir. Este mês, a delegacia recebeu boletim de quase todas as lojas desta rua.
+DELEGADO: QR code colado por cima, boleto de fornecedor trocado, um tal de Rodrigo do RH que ligou para catorze lojas, conta de delivery invadida.
+DELEGADO: Cada boletim sozinho é um papel. Todos juntos mostram que é a mesma gente, fazendo a mesma coisa, na mesma rua. Isso ajuda a investigar.
+ZECA: Delegado, com todo respeito, isso é modernidade. No meu tempo era dinheiro na mão e pronto.
+TATI: Seu Zeca, o senhor guardava o dinheiro do bar dentro do freezer.
+ZECA: E nunca roubaram!
+TATI: Porque ninguém quer abrir o seu freezer, Seu Zeca.
+@anota m8_rede_de_alerta
+? Todo mundo olha para você.
+* Propor um plano: uma cartilha de golpes na parede de cada loja, o grupo da rua só para alertas e uma conversa por mês com o delegado -> m08_plano {reputacao+2 marca:organizou_associacao}
+* Contar a sua história e deixar o Seu Zeca decidir -> m08_so_conta {reputacao+1}
+** Mostrar para o Seu Zeca o boleto do queijo que chegou para ele também, com os sinais marcados -> m08_zeca_boleto {reputacao+2 rel_zeca+2 marca:organizou_associacao} [se rel_zeca>=1]
+
+=== m08_zeca_boleto
+EU: Seu Zeca, lembra do boleto do queijo com reajuste? O seu também era falso. Olha: outro nome, outro CNPJ, outro banco.
+ZECA [surpresa]: Eu ia pagar esse aí na segunda.
+EU: O senhor ia pagar mil e trezentos para um desconhecido com uma vaquinha.
+> O Seu Zeca olha o celular por muito tempo. Depois olha para o quadro de cortiça.
+ZECA: Tira esse calendário de 2019 daí. Põe a tal da cartilha.
+@vai m08_plano
+
+=== m08_plano
+EU: É simples. Uma folha em cada balcão: conferir o valor na maquininha antes da senha, Pix só vale quando cai no extrato, conferir o nome do recebedor, ninguém de empresa séria liga pedindo aplicativo ou código, boleto se confere e se confirma por telefone conhecido.
+EU: E o grupo da rua vira grupo de alerta. Chegou golpe, avisa. Sem vergonha. Quem cai e avisa salva o vizinho.
+DELEGADO: E todo golpe, mesmo pequeno, vira boletim. Eu venho uma vez por mês tirar dúvida.
+TATI: E come pastel de carne.
+DELEGADO: É condição.
+ZECA [pensativa]: Eu voto a favor. Mas a cartilha do meu bar vai ter letra grande.
+> A reunião aprova por unanimidade. Até o ventilador parece concordar.
+@vai m08_fim
+
+=== m08_so_conta
+> Você conta tudo. O Seu Zeca escuta, coça a cabeça e anuncia que "vai pensar".
+ZECA: Próximo item: a lâmpada do poste.
+TATI: Seu Zeca...
+ZECA: A lâmpada também é segurança, menina.
+(Ele não está errado sobre a lâmpada. Mas o golpe de agora não vem pela esquina escura. Vem pelo celular.)
+@vai m08_fim
+
+=== m08_fim
+@fundo portao_noite
+@musica nenhuma
+@sai todos
+> 22h. Você volta para a pastelaria e abaixa a porta de aço até a metade.
+> Um mês. Uma maquininha de visor rachado, um comprovante bonito, um QR code por cima, um técnico educado, um boleto com vaquinha, duzentos pastéis para ninguém, um gato de óculos escuros e uma taxa de feira.
+> No balcão, o troféu ou a medalha. No celular, o grupo da rua. No caixa, o que sobrou.
+(E agora, {nome}? O que você faz com tudo isso?)
+@vai fim_escolha

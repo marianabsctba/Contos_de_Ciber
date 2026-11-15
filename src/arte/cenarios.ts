@@ -3343,6 +3343,419 @@ function homeOfficeNoite(): string {
   return c.fim(corpo, true);
 }
 
+// --- Maquininha -------------------------------------------------------------
+
+function pastel(x: number, y: number, s: number, rot = 0): string {
+  return g(
+    cam(`M${x - 50 * s},${y} Q${x},${y - 46 * s} ${x + 50 * s},${y} Z`, "#e8a840") +
+      cam(`M${x - 50 * s},${y} Q${x},${y - 46 * s} ${x + 50 * s},${y}`, "none", `stroke="#c9802a" stroke-width="${4 * s}" stroke-dasharray="${5 * s} ${4 * s}"`) +
+      elip(x - 10 * s, y - 14 * s, 14 * s, 5 * s, "#f6d080", `opacity="0.7"`),
+    rot ? `transform="rotate(${rot} ${x} ${y})"` : "",
+  );
+}
+
+function maquininha(x: number, y: number, s: number, cor = "#2a2a34"): string {
+  return g(
+    rr(x - 40 * s, y - 120 * s, 80 * s, 120 * s, 12 * s, cor) +
+      ret(x - 30 * s, y - 108 * s, 60 * s, 40 * s, "#9ad0b0") +
+      txt(x, y - 82 * s, "R$ 12,00", 11 * s, "#1a3a2a", { fonte: MONO, peso: "bold" }) +
+      (() => {
+        let k = "";
+        for (let r = 0; r < 3; r++) for (let q = 0; q < 3; q++) k += rr(x - 28 * s + q * 20 * s, y - 60 * s + r * 16 * s, 16 * s, 11 * s, 2 * s, "#555");
+        return k;
+      })() +
+      ret(x - 30 * s, y - 128 * s, 60 * s, 12 * s, "#fff", `opacity="0.9"`),
+  );
+}
+
+function qrPlaca(x: number, y: number, s: number): string {
+  let q = "";
+  semear(777);
+  for (let r = 0; r < 9; r++) for (let k = 0; k < 9; k++) if (rnd() < 0.5) q += ret(x - 36 * s + k * 8 * s, y - 120 * s + r * 8 * s, 8 * s, 8 * s, "#111");
+  const canto = (cx: number, cy: number) => ret(cx, cy, 22 * s, 22 * s, "#111") + ret(cx + 5 * s, cy + 5 * s, 12 * s, 12 * s, "#fff") + ret(cx + 8 * s, cy + 8 * s, 6 * s, 6 * s, "#111");
+  return g(
+    cam(`M${x - 30 * s},${y} L${x + 30 * s},${y} L${x + 20 * s},${y - 20 * s} L${x - 20 * s},${y - 20 * s} Z`, "#888") +
+      rr(x - 48 * s, y - 150 * s, 96 * s, 132 * s, 6 * s, "#fff", `stroke="#2a9d8f" stroke-width="${4 * s}"`) +
+      q +
+      canto(x - 40 * s, y - 124 * s) +
+      canto(x + 18 * s, y - 124 * s) +
+      canto(x - 40 * s, y - 66 * s) +
+      txt(x, y - 132 * s, "PAGUE COM PIX", 10 * s, "#2a9d8f", { peso: "bold" }),
+  );
+}
+
+function pastelaria(): string {
+  const c = new Cena("pastelaria");
+  semear(6161);
+  let vitrine = "";
+  for (let r = 0; r < 3; r++) for (let i = 0; i < 8; i++) vitrine += pastel(260 + i * 70 + (r % 2) * 30, 930 + r * 50, 0.7, entre(-10, 10));
+  const corpo =
+    // interior com porta aberta para a calçada à direita
+    ret(0, 0, 1080, 1360, c.lin([[0, "#fbe6b0"], [1, "#f2cf86"]])) +
+    ret(0, 560, 1080, 340, azulejo(c, "#fffdf6", "#d6402a", 56)) +
+    ret(0, 552, 1080, 14, "#d6402a") +
+    // letreiro
+    rr(80, 40, 920, 150, 16, "#d6402a") +
+    rr(92, 52, 896, 126, 12, "none", `stroke="#ffd23f" stroke-width="5" stroke-dasharray="14 10"`) +
+    txt(540, 125, "PASTEL QUENTINHO", 70, "#fff", { peso: "bold" }) +
+    txt(540, 168, "desde a feira de domingo", 24, "#ffe9a0", { fonte: MAO }) +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 9; i++) s += circ(130 + i * 103, 32, 9, "#fff3c0") + c.brilho(130 + i * 103, 32, 30, "#ffd27a", 0.7);
+      return s;
+    })() +
+    // cardápio escrito à mão
+    lousa(80, 240, 520, 290, "#232a26") +
+    txt(340, 290, "CARDÁPIO", 36, "#ffd23f", { fonte: MAO, peso: "bold" }) +
+    txt(110, 340, "Carne ........... R$ 9", 26, "#f2efe6", { fonte: MAO, ancora: "start" }) +
+    txt(110, 380, "Queijo .......... R$ 9", 26, "#f2efe6", { fonte: MAO, ancora: "start" }) +
+    txt(110, 420, "Frango c/ catupiry  R$ 11", 26, "#f2efe6", { fonte: MAO, ancora: "start" }) +
+    txt(110, 460, "Especial da Vó ... R$ 14", 26, "#f2efe6", { fonte: MAO, ancora: "start" }) +
+    txt(110, 505, "Caldo de cana 500ml R$ 7", 24, "#9ae0a0", { fonte: MAO, ancora: "start" }) +
+    linha(460, 410, 560, 395, "#ff6a6a", 3) +
+    txt(560, 440, "12!", 26, "#ff6a6a", { fonte: MAO, rot: -8 }) +
+    // placas de humor
+    placa(650, 240, 360, 130, "#fff200", [{ t: "PIX SÓ VALE", tam: 34, cor: "#c0001a" }, { t: "QUANDO CAI", tam: 34, cor: "#c0001a" }], { rot: 3 }) +
+    placa(660, 400, 340, 120, "#fff", [{ t: "Comprovante de", tam: 22 }, { t: "print não é Pix", tam: 26, cor: "#1a3ea8" }, { t: "(a gerência)", tam: 16, cor: "#888" }], { rot: -2 }) +
+    // chapa e fritadeira ao fundo
+    ret(620, 600, 420, 240, "#b8bec4") +
+    ret(640, 620, 180, 120, "#2a2a2a") +
+    c.brilho(730, 640, 140, "#ff8a2a", 0.35) +
+    ret(650, 640, 160, 70, c.lin([[0, "#c08a3a"], [1, "#7a4a1a"]])) +
+    ret(840, 620, 180, 120, "#9aa0a6") +
+    ret(850, 630, 160, 60, "#5a3a14") +
+    linha(870, 600, 900, 660, "#555", 6) +
+    linha(960, 600, 990, 660, "#555", 6) +
+    g(`<path d="M720,600 C700,550 750,520 720,470 M930,600 C960,550 900,520 940,470" stroke="#fff" stroke-width="22" fill="none" opacity="0.3" stroke-linecap="round"/>`, c.blur(10)) +
+    // coifa
+    cam(`M600,600 L1060,600 L1000,540 L660,540 Z`, "#cfd4d8") +
+    // balcão de vidro cheio de pastéis
+    ret(180, 840, 700, 30, "#e8eef0") +
+    ret(190, 870, 680, 170, c.lin([[0, "#e8f6fa", 0.55], [1, "#bfe0ea", 0.35]])) +
+    vitrine +
+    ret(190, 870, 680, 170, "none", `stroke="#c0c8cc" stroke-width="6"`) +
+    cam(`M200,876 L340,876 L200,1030 Z`, "#fff", `opacity="0.25"`) +
+    ret(180, 1040, 700, 320, c.lin([[0, "#d6402a"], [1, "#a82a1a"]])) +
+    ret(180, 1040, 700, 10, "#000", `opacity="0.2"`) +
+    // QR, maquininha, pote de molho e guardanapo
+    qrPlaca(240, 840, 0.9) +
+    maquininha(360, 840, 0.9) +
+    rr(780, 770, 40, 70, 6, "#c0392b") +
+    rr(830, 780, 40, 60, 6, "#f1c40f") +
+    rr(700, 790, 60, 50, 4, "#f2f2ee") +
+    // caldo de cana em garrafas
+    (() => {
+      let s = "";
+      for (let i = 0; i < 4; i++) s += rr(60 + i * 30, 780 - (i % 2) * 6, 24, 70, 6, "#b8d860", `opacity="0.9"`) + ret(64 + i * 30, 770 - (i % 2) * 6, 16, 12, "#2a8a3a");
+      return s + ret(40, 850, 140, 16, "#8a6a4a") + ret(40, 866, 140, 494, "#e8d4b0");
+    })() +
+    // porta para a calçada à direita com mesinhas
+    ret(900, 860, 180, 500, c.lin([[0, "#9ad0f0"], [1, "#e8e0c8"]])) +
+    ret(890, 850, 14, 510, "#7a5a3a") +
+    g(cadeiraPlastico(990, 1300, 0.7, "#e8e6e0") + ret(950, 1180, 120, 12, "#e8e6e0") + ret(1000, 1192, 10, 108, "#dcdad4") + cadeiraPlastico(1060, 1310, 0.6, "#d9302c"), c.blur(1.2)) +
+    lampadaPendente(c, 400, 190, 230, "#ffd88a", 0.4) +
+    piso(c, 1360, "#c9a07a", "#8a6a4a") +
+    ret(0, 1360, 1080, 560, ladrilho(c, "#c9a07a", "#b58e6a", 80), `opacity="0.2"`);
+  return c.fim(corpo);
+}
+
+function feiraPastel(): string {
+  const c = new Cena("feira_pastel");
+  semear(6262);
+  const toldo = (x: number, y: number, w: number, a: string, b: string) => {
+    let s = "";
+    for (let i = 0; i < 8; i++) s += cam(`M${x + (w / 8) * i},${y} L${x + (w / 8) * (i + 1)},${y} L${x + (w / 8) * (i + 1) + 8},${y + 100} L${x + (w / 8) * i + 8},${y + 100} Z`, i % 2 ? a : b);
+    let fran = "";
+    for (let i = 0; i < 8; i++) fran += cam(`M${x + 8 + (w / 8) * i},${y + 100} Q${x + 8 + (w / 8) * (i + 0.5)},${y + 130} ${x + 8 + (w / 8) * (i + 1)},${y + 100} Z`, i % 2 ? a : b);
+    return s + fran;
+  };
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#5fb2ec"], [1, "#e6f3fb"]])) +
+    nuvem(250, 150, 1, "#fff", 0.9, c.blur(2)) +
+    nuvem(880, 230, 0.7, "#fff", 0.8, c.blur(3)) +
+    // fundo: outras barracas e prédios baixos desfocados
+    g(
+      ret(0, 420, 1080, 300, "#e8c08a") +
+        ret(80, 470, 120, 140, "#5a8ab0") +
+        ret(600, 450, 160, 160, "#5a8ab0") +
+        toldo(-20, 560, 360, "#2a9d8f", "#fff") +
+        toldo(720, 560, 380, "#e14f4f", "#fff") +
+        multidao(9, 20, 1060, 820, 0.8, ["#c0392b", "#2f6f95", "#f0a020", "#3a8a4a", "#6d4c8d"]),
+      c.blur(4),
+    ) +
+    bandeirinhas(-20, 1100, 380, 25, 16, ["#e63946", "#f1c40f", "#2a9d8f", "#3a86ff"], 0.8) +
+    // barraca de açaí (esquerda)
+    ret(20, 640, 10, 520, "#666") +
+    ret(320, 640, 10, 520, "#666") +
+    toldo(10, 620, 330, "#6a2a8a", "#f2e8ff") +
+    placa(50, 780, 260, 90, "#6a2a8a", [{ t: "AÇAÍ", tam: 40, cor: "#fff" }, { t: "300ml R$ 12", tam: 20, cor: "#f6d65a" }], { fonte: SANS }) +
+    ret(20, 960, 310, 200, "#3a1a4a") +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 4; i++) s += rr(40 + i * 70, 900, 56, 60, 8, "#5a1a6a") + elip(68 + i * 70, 900, 28, 8, "#9a5aaa");
+      return s;
+    })() +
+    // barraca de pastel (centro, maior)
+    ret(350, 600, 12, 560, "#666") +
+    ret(740, 600, 12, 560, "#666") +
+    toldo(340, 570, 420, "#d6402a", "#ffd23f") +
+    placa(400, 730, 300, 110, "#fff", [{ t: "PASTEL QUENTINHO", tam: 28, cor: "#d6402a" }, { t: "carne, queijo, palmito", tam: 20 }], { fonte: SANS, borda: "#d6402a" }) +
+    placa(420, 860, 160, 60, "#fff200", [{ t: "R$ 9", tam: 34, cor: "#c0001a" }], { rot: -4 }) +
+    // tacho de óleo e pastéis
+    elip(660, 960, 70, 20, "#555") +
+    ret(590, 960, 140, 50, "#444") +
+    elip(660, 962, 60, 14, "#c8902a") +
+    g(`<path d="M640,950 C620,900 680,880 650,830" stroke="#fff" stroke-width="16" fill="none" opacity="0.35"/>`, c.blur(6)) +
+    ret(360, 1010, 380, 150, "#8a6a4a") +
+    pastel(420, 1000, 0.8, -6) +
+    pastel(500, 1004, 0.8, 4) +
+    pastel(580, 1000, 0.8, -2) +
+    maquininha(700, 1010, 0.6) +
+    // caldo de cana com moenda (direita)
+    ret(770, 640, 10, 520, "#666") +
+    ret(1060, 640, 10, 520, "#666") +
+    toldo(760, 620, 320, "#2a8a3a", "#e8f8d0") +
+    placa(790, 780, 260, 90, "#2a8a3a", [{ t: "CALDO DE CANA", tam: 28, cor: "#fff" }, { t: "com limão R$ 8", tam: 20, cor: "#f6d65a" }], { fonte: SANS }) +
+    rr(820, 900, 200, 180, 14, "#c0392b") +
+    circ(880, 960, 40, "#888", `stroke="#555" stroke-width="6"`) +
+    circ(960, 960, 40, "#888", `stroke="#555" stroke-width="6"`) +
+    linha(1000, 920, 1060, 880, "#555", 8) +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 6; i++) s += ret(790 + i * 12, 760, 8, 280, "#c9b060", `transform="rotate(${-8 + i * 2} ${794 + i * 12} 1040)"`);
+      return s;
+    })() +
+    rr(830, 1060, 40, 60, 6, "#b8d860", `opacity="0.9"`) +
+    // caixotes de frutas
+    ret(40, 1170, 200, 120, "#c4955a", `stroke="#8a6a4a" stroke-width="6"`) +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 9; i++) s += circ(60 + (i % 5) * 38, 1170 - Math.floor(i / 5) * 26, 20, i % 2 ? "#f59a2a" : "#f0b03a");
+      return s;
+    })() +
+    ret(850, 1180, 190, 110, "#c4955a", `stroke="#8a6a4a" stroke-width="6"`) +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 8; i++) s += elip(870 + (i % 4) * 44, 1178 - Math.floor(i / 4) * 24, 26, 16, "#e63946");
+      return s;
+    })() +
+    piso(c, 1290, "#8a8680", "#5a5650") +
+    linha(0, 1300, 1080, 1300, "#f2c12e", 6, `opacity="0.5"`);
+  return c.fim(corpo);
+}
+
+function portaoNoite(): string {
+  const c = new Cena("portao_noite");
+  semear(6363);
+  const chapisco = c.padrao(40, 40, ret(0, 0, 40, 40, "#8a8070") + circ(8, 10, 3, "#6e6658") + circ(28, 6, 2, "#a09684") + circ(20, 26, 3, "#6e6658") + circ(34, 32, 2, "#a09684") + circ(6, 34, 2, "#776f60"));
+  let grade = "";
+  for (let x = 360; x < 760; x += 34) grade += ret(x, 560, 10, 640, "#2a2a30") + cam(`M${x - 6},${560} L${x + 5},${530} L${x + 16},${560} Z`, "#2a2a30");
+  const corpo =
+    ret(0, 0, 1080, 1400, c.lin([[0, "#070a20"], [0.7, "#1a1a40"], [1, "#2a2440"]])) +
+    estrelas(80, 0, 1080, 0, 500) +
+    circ(180, 200, 46, "#f6f0d8") +
+    c.brilho(180, 200, 180, "#f6f0d8", 0.3) +
+    // casa atrás do muro
+    ret(260, 300, 560, 300, "#4a5a7a") +
+    cam(`M230,310 L540,180 L850,310 Z`, "#3a2a2a") +
+    ret(320, 380, 120, 110, "#ffd27a") +
+    c.brilho(380, 435, 160, "#ffc766", 0.4) +
+    ret(320, 380, 120, 110, "none", `stroke="#2a2a30" stroke-width="6"`) +
+    linha(380, 380, 380, 490, "#2a2a30", 5) +
+    ret(640, 380, 120, 110, "#1a2040") +
+    // muro chapiscado
+    ret(0, 560, 360, 640, chapisco) +
+    ret(760, 560, 320, 640, chapisco) +
+    ret(0, 540, 360, 24, "#6a6258") +
+    ret(760, 540, 320, 24, "#6a6258") +
+    // caco de vidro em cima do muro (clássico)
+    (() => {
+      let s = "";
+      for (let x = 10; x < 350; x += 22) s += cam(`M${x},540 L${x + 8},${520 - (x % 3) * 4} L${x + 14},540 Z`, "#7ab0a0", `opacity="0.7"`);
+      for (let x = 770; x < 1070; x += 22) s += cam(`M${x},540 L${x + 8},${520 - (x % 3) * 4} L${x + 14},540 Z`, "#7ab0a0", `opacity="0.7"`);
+      return s;
+    })() +
+    // portão de grade
+    ret(360, 560, 400, 640, "#1a1d30", `opacity="0.6"`) +
+    grade +
+    ret(360, 560, 400, 14, "#2a2a30") +
+    ret(360, 860, 400, 12, "#2a2a30") +
+    // número e interfone
+    rr(200, 640, 90, 50, 6, "#e8e0c8") +
+    txt(245, 677, "127", 32, "#2a2a30", { peso: "bold" }) +
+    rr(240, 760, 70, 110, 8, "#d8d4c8") +
+    circ(275, 790, 14, "#333") +
+    rr(258, 820, 34, 16, 3, "#555") +
+    circ(275, 850, 6, "#ff3b3b") +
+    c.brilho(275, 850, 30, "#ff3b3b", 0.6) +
+    placa(40, 720, 150, 100, "#fff", [{ t: "CUIDADO", tam: 22, cor: "#c0392b" }, { t: "cão bravo", tam: 18 }, { t: "(é um poodle)", tam: 14, cor: "#888" }], { rot: -4 }) +
+    // poste com luz amarela
+    poste(c, 900, 1220, 820, true, "#ffb030") +
+    fios([[908, 410], [1080, 380]], "#111", 3) +
+    fios([[0, 380], [908, 410]], "#111", 3) +
+    // moto parada
+    g(
+      circ(780, 1190, 52, "#111") +
+        circ(780, 1190, 20, "#777") +
+        circ(1000, 1190, 52, "#111") +
+        circ(1000, 1190, 20, "#777") +
+        cam(`M800,1170 L860,1100 L960,1100 L1000,1170 Z`, "#c0392b") +
+        rr(840, 1080, 110, 30, 12, "#1a1a1a") +
+        linha(960, 1100, 990, 1040, "#888", 8) +
+        linha(980, 1040, 1020, 1030, "#888", 6) +
+        circ(1010, 1060, 12, "#fff6c0") +
+        rr(760, 1040, 80, 70, 10, "#e63946"),
+      "",
+    ) +
+    // buquê de flores no chão
+    cam(`M480,1240 L560,1240 L600,1170 L440,1170 Z`, "#f2e8d8", `transform="rotate(-20 520 1210)"`) +
+    (() => {
+      let s = "";
+      const cores = ["#e63946", "#ff9ac2", "#fff", "#f6d65a", "#c9a0ff"];
+      for (let i = 0; i < 9; i++) s += circ(450 + entre(0, 100), 1150 + entre(-30, 20), entre(14, 22), cores[i % 5]);
+      return g(s, `transform="rotate(-20 520 1210)"`);
+    })() +
+    bilhete(560, 1200, 90, 50, ["desculpa"], 14, 10, "#fff", "#c0392b") +
+    piso(c, 1220, "#3a3632", "#18160f") +
+    elip(900, 1260, 340, 70, "#ffb030", `opacity="0.18"`);
+  return c.fim(corpo, true);
+}
+
+function associacaoComerciantes(): string {
+  const c = new Cena("associacao_comerciantes");
+  semear(6464);
+  let fileiras = "";
+  for (let r = 0; r < 3; r++) {
+    const s = 0.55 + r * 0.22;
+    const y = 1080 + r * 110;
+    const n = 7 - r;
+    for (let i = 0; i < n; i++) {
+      const x = 540 + (i - (n - 1) / 2) * 150 * s * 1.2;
+      fileiras += cadeiraPlastico(x, y, s, (i + r) % 3 === 0 ? "#d9302c" : "#e8e6e0");
+    }
+  }
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#f0ead8"], [1, "#ddd2b8"]])) +
+    ret(0, 820, 1080, 540, "#9ab0a0") +
+    ret(0, 812, 1080, 12, "#7a9080") +
+    ventiladorTeto(c, 270, 40, 0.7) +
+    ventiladorTeto(c, 810, 40, 0.7) +
+    // faixa
+    rr(80, 160, 920, 150, 8, "#1d4a7a") +
+    txt(540, 230, "ASSOCIAÇÃO DOS COMERCIANTES", 44, "#fff", { peso: "bold" }) +
+    txt(540, 285, "DA RUA 7", 44, "#ffd23f", { peso: "bold" }) +
+    // bandeira do Brasil num mastro
+    ret(120, 360, 10, 560, "#c9a46a") +
+    circ(125, 356, 10, "#d6a63a") +
+    cam(`M130,370 Q200,350 280,380 L280,540 Q200,510 130,530 Z`, "#2a9a4a") +
+    cam(`M150,450 L205,400 L260,455 L205,500 Z`, "#f6d65a") +
+    circ(205, 452, 28, "#1a3a9a") +
+    `<path d="M178,446 Q205,436 232,452" stroke="#fff" stroke-width="4" fill="none"/>` +
+    // quadros de avisos
+    placa(360, 360, 360, 200, "#fff", [{ t: "PAUTA DE HOJE", tam: 28, cor: "#1d4a7a" }, { t: "1. Golpe da maquininha", tam: 20 }, { t: "2. Boleto falso do IPTU", tam: 20 }, { t: "3. Quem leva o bolo", tam: 20 }, { t: "na próxima", tam: 20 }], { fonte: SANS }) +
+    placa(760, 360, 260, 160, "#fff7d6", [{ t: "Confira o", tam: 24 }, { t: "beneficiário", tam: 24, cor: "#c0392b" }, { t: "antes de pagar!", tam: 22 }], { rot: 3 }) +
+    relogio(880, 610, 44, 19, 35) +
+    quadro(400, 600, 280, 170, "#7a5235", ret(414, 614, 252, 142, "#c9d8b8") + multidao(6, 440, 650, 760, 0.45, ["#1d4a7a", "#c0392b", "#555"]) + txt(540, 640, "Fundadores 1998", 16, "#3a3a2a")) +
+    // mesa com toalha, garrafa de café e bolo
+    ret(260, 880, 560, 30, "#fff") +
+    cam(`M260,906 L820,906 L830,1010 L250,1010 Z`, "#fff") +
+    (() => {
+      let s = "";
+      for (let x = 270; x < 820; x += 40) s += linha(x, 910, x - 5, 1006, "#d6c8b0", 2);
+      return s;
+    })() +
+    rr(330, 780, 60, 110, 14, "#2a6aa0") +
+    rr(342, 760, 36, 24, 6, "#222") +
+    ret(410, 850, 26, 30, "#fff") +
+    ret(442, 850, 26, 30, "#fff") +
+    ret(474, 850, 26, 30, "#fff") +
+    elip(620, 870, 100, 20, "#ddd") +
+    rr(540, 810, 160, 60, 12, "#8a4a2a") +
+    rr(540, 806, 160, 16, 8, "#f2e8d8") +
+    ret(608, 806, 24, 64, "#5a2a14") +
+    rr(720, 830, 70, 50, 6, "#f2f2ee") +
+    txt(755, 862, "R$", 18, "#2a8a3a", { peso: "bold" }) +
+    // microfone de pedestal
+    linha(860, 1000, 860, 800, "#888", 5) +
+    elip(860, 792, 12, 18, "#333") +
+    // caixa de som
+    rr(920, 820, 110, 170, 8, "#1a1a1a") +
+    circ(975, 880, 28, "#333") +
+    circ(975, 950, 18, "#333") +
+    fluorescente(c, 360, 110, 360, 0.4) +
+    g(fileiras, c.blur(0.5)) +
+    piso(c, 1350, "#b8ac90", "#887c62") +
+    ret(0, 1350, 1080, 570, ladrilho(c, "#c0b498", "#a89c80", 80), `opacity="0.18"`);
+  return c.fim(corpo);
+}
+
+function cozinhaPastelaria(): string {
+  const c = new Cena("cozinha_pastelaria");
+  semear(6565);
+  let notas = "";
+  for (let i = 0; i < 5; i++) notas += txt(entre(900, 1020), entre(240, 420), escolhe(["♪", "♫"]), entre(26, 40), "#2a2a2a", { op: 0.6, rot: entre(-15, 15) });
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#f2e6cc"], [1, "#e2d0a8"]])) +
+    ret(0, 520, 1080, 400, azulejo(c, "#fffdf6", "#2a9d8f", 50)) +
+    ret(0, 512, 1080, 12, "#2a9d8f") +
+    // janela basculante
+    janela(c, 380, 160, 300, 160, { ceu: [[0, "#cfe8f4"], [1, "#f6f6ee"]], moldura: "#e0dcd0", div: 3 }) +
+    lampadaPendente(c, 540, 0, 380, "#fff3c4", 0.35) +
+    // calendário de fornecedor
+    calendario(80, 160, 190, "TRIGO BOM", "Farinha especial", "2027  ligue e peça") +
+    // avental e pano de prato pendurados
+    circ(330, 330, 6, "#555") +
+    cam(`M300,340 L360,340 L380,500 L280,500 Z`, chita(c)) +
+    cam(`M310,340 Q330,300 350,340`, "none", `stroke="#d6402a" stroke-width="5"`) +
+    // prateleira com potes
+    ret(720, 360, 320, 16, "#8a6a4a") +
+    (() => {
+      let s = "";
+      const rot = ["sal", "orég.", "cominho", "?"];
+      for (let i = 0; i < 4; i++) s += rr(735 + i * 76, 280, 60, 80, 8, "#e8f4fa", `opacity="0.85" stroke="#bcd"`) + ret(735 + i * 76, 300 + (i % 2) * 10, 60, 60 - (i % 2) * 10, ["#f2f2ee", "#5a8a3a", "#c08a3a", "#a03a2a"][i], `opacity="0.7"`) + txt(765 + i * 76, 345, rot[i], 13, "#333", { fonte: MAO });
+      return s;
+    })() +
+    // caixa de som tocando
+    rr(870, 420, 140, 90, 12, "#1a1a1a") +
+    circ(910, 465, 26, "#333") +
+    circ(970, 465, 26, "#333") +
+    c.brilho(940, 465, 90, "#ff5fd2", 0.25) +
+    notas +
+    // bilhete do fornecedor
+    bilhete(560, 380, 140, 90, ["boleto do trigo", "CONFERIR CNPJ"], 14, 5, "#ffd0d0", "#7a1f1f") +
+    // fogão com panelas de recheio
+    rr(720, 760, 330, 600, 8, "#e8e8e4") +
+    ret(720, 760, 330, 24, "#cfcfca") +
+    rr(740, 640, 130, 120, 14, c.lin([[0, "#d8dde2"], [1, "#9aa2aa"]], 0, 0, 1, 0)) +
+    elip(805, 640, 65, 14, "#8a4a2a") +
+    rr(890, 660, 140, 100, 14, c.lin([[0, "#d8dde2"], [1, "#9aa2aa"]], 0, 0, 1, 0)) +
+    elip(960, 660, 70, 14, "#f6e0a0") +
+    linha(960, 650, 990, 580, "#8a6a4a", 8) +
+    g(`<path d="M800,630 C780,580 830,560 800,500 M960,640 C990,600 940,560 970,510" stroke="#fff" stroke-width="16" fill="none" opacity="0.35" stroke-linecap="round"/>`, c.blur(6)) +
+    txt(805, 720, "CARNE", 16, "#555", { peso: "bold" }) +
+    txt(960, 730, "QUEIJO", 16, "#555", { peso: "bold" }) +
+    // bancada com massa aberta, rolo e farinha
+    ret(0, 900, 700, 40, "#c9b8a0") +
+    ret(0, 940, 700, 420, "#b8a68a") +
+    linha(350, 940, 350, 1360, "#a08e72", 3) +
+    cam(`M80,890 Q120,840 300,850 Q480,840 520,880 Q500,905 300,902 Q120,906 80,890 Z`, "#f6ead0") +
+    elip(300, 870, 160, 18, "#fff8e8", `opacity="0.6"`) +
+    g(circ(150, 880, 30, "#fff", `opacity="0.5"`) + circ(460, 885, 24, "#fff", `opacity="0.4"`), c.blur(4)) +
+    rr(380, 820, 220, 34, 17, "#d9b07a", `transform="rotate(-8 490 837)"`) +
+    rr(360, 826, 34, 22, 8, "#b8905a", `transform="rotate(-8 490 837)"`) +
+    rr(586, 798, 34, 22, 8, "#b8905a", `transform="rotate(-8 490 837)"`) +
+    // pastéis prontos numa assadeira
+    rr(540, 860, 150, 40, 6, "#9aa0a6") +
+    pastel(580, 880, 0.6, 0) +
+    pastel(650, 880, 0.6, 6) +
+    // saco de farinha
+    rr(20, 760, 130, 140, 30, "#f2efe6") +
+    txt(85, 840, "TRIGO", 22, "#c0392b", { peso: "bold" }) +
+    piso(c, 1350, "#a8a090", "#787060") +
+    ret(0, 1350, 1080, 570, ladrilho(c, "#b0a898", "#9a9282", 70), `opacity="0.2"`);
+  return c.fim(corpo);
+}
+
 // ---------------------------------------------------------------------------
 // Registro
 // ---------------------------------------------------------------------------
@@ -3393,6 +3806,11 @@ function montar(): Record<string, Cenario> {
     ["sala_dpo", "Sala da encarregada", salaDpo],
     ["studio_pilates", "Estúdio de pilates", studioPilates],
     ["home_office_noite", "Home office à noite", homeOfficeNoite, true],
+    ["pastelaria", "Pastelaria", pastelaria],
+    ["feira_pastel", "Feira de domingo", feiraPastel],
+    ["portao_noite", "Portão à noite", portaoNoite, true],
+    ["associacao_comerciantes", "Associação dos comerciantes", associacaoComerciantes],
+    ["cozinha_pastelaria", "Cozinha da pastelaria", cozinhaPastelaria],
   ];
   const out: Record<string, Cenario> = {};
   for (const [id, nome, fn, noite] of lista) {

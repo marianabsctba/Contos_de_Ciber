@@ -1,0 +1,273 @@
+=== m06_inicio
+@cap 6 "Encomenda grande pelo telefone"
+@fundo pastelaria
+@musica alegre
+> Sábado, 7h15. Dia de feira de manhã, dia de movimento à tarde, dia em que o Jefferson chega cantando.
+@entra jefferson feliz direita
+JEFFERSON: Patroa, hoje eu sinto que vai ser um dia de pastel de carne. O vento está de carne.
+EU: Ontem o vento estava de queijo.
+JEFFERSON: O vento muda. A carne fica.
+> A disputa eterna da pastelaria: o Jefferson é time carne, você é time queijo, a Dona Fátima é time "o que tiver mais recheio".
+@som notificacao
+> O celular toca. O mesmo número desconhecido da mensagem de ontem à noite.
+@entra cliente_pix neutra esquerda
+> A voz é animada, de quem está sorrindo do outro lado.
+CLIENTE_PIX: Bom dia! Aqui é o Rodrigo, do RH de uma empresa de logística aqui da região. Vi a avaliação de vocês no aplicativo de delivery. Cinco estrelas!
+CLIENTE_PIX: A gente vai fazer a confraternização da equipe hoje à noite e eu queria encomendar duzentos pastéis. Metade carne, metade queijo.
+JEFFERSON: Metade carne! Eu falei do vento!
+(Duzentos pastéis. A oito reais cada, são R$ 1.600 num pedido só. Isso é a semana inteira de balcão em uma ligação.)
+? Duzentos pastéis para hoje à noite, de uma pessoa que você nunca viu.
+* "Que maravilha! Me passa os detalhes que eu anoto tudo." -> m06_detalhes {paciencia+1}
+* "Fechado! Pode mandar que a gente faz." -> m06_fechado_rapido
+** "Rodrigo, o senhor prefere de carne ou de queijo? É pergunta de segurança." -> m06_pergunta_queijo {rel_jefferson+1 paciencia+1}
+
+=== m06_pergunta_queijo
+CLIENTE_PIX: Ha ha, tanto faz! O que for mais rápido.
+JEFFERSON: Tanto faz?
+> O Jefferson larga a espátula e olha para você como quem ouviu uma heresia.
+JEFFERSON: Ninguém neste país acha "tanto faz" entre carne e queijo, patroa. Isso é sinal.
+(É piada. Mas é piada com fundo de verdade: quem vai comer de verdade se importa com o pedido. Quem não vai, só quer que o pedido aconteça.)
+@vai m06_detalhes
+
+=== m06_fechado_rapido
+CLIENTE_PIX: Perfeito! A senhora é rápida, gostei. Já te mando tudo por mensagem.
+(Pedido grande, cliente simpático, dinheiro bom. Eu falei "fechado" antes de saber quem paga e como.)
+@vai m06_detalhes
+
+=== m06_detalhes
+CLIENTE_PIX: O pagamento é com o cartão corporativo da empresa. Eu passo os números e a senhora digita aí na maquininha, sem cartão presente, pode ser?
+CLIENTE_PIX: E é urgente, viu? Preciso fechar em meia hora, senão o diretor contrata outro lugar.
+CLIENTE_PIX: Ah, e se der algum problema com o limite, eu passo em dois cartões. Tem mais um aqui.
+@som notificacao
+> Logo depois, chega a mensagem com o resumo do pedido, cheia de emoji e de pressa.
+@sai cliente_pix
+(Duzentos pastéis, cartão digitado, dois cartões, meia hora. Antes de responder, deixa eu ler isso como se fosse um boleto do Seu Osvaldo.)
+@desafio m6_pedido_grande -> m06_pedido_acerto | m06_pedido_erro
+
+=== m06_pedido_acerto
+(Desconhecido, valor alto, pressa, cartão de terceiro digitado, "se não passar, tem outro cartão" e, de cereja, um motoboy dele para buscar e um pedido de troco por Pix. Isso é pedido de festa ou pedido de golpe?)
+@muda tecnica+1
+@vai m06_quiz
+
+=== m06_pedido_erro
+(Eu olhei os duzentos pastéis e meu coração virou uma calculadora. Não li direito o resto.)
+> Você relê a mensagem. Na terceira vez, os detalhes começam a aparecer: o nome no cartão não é o do Rodrigo, e ele já avisa que tem um segundo cartão "se o primeiro não passar".
+@muda paciencia-1
+@vai m06_quiz
+
+=== m06_quiz
+> Você vai para a cozinha, longe da chapa e do Jefferson cantando, e pensa na pergunta que importa.
+(Se eu digitar esse cartão e der certo, o dinheiro é meu? Ou é só meu por enquanto?)
+@desafio m6_venda_nao_presencial -> m06_quiz_acerto | m06_quiz_erro
+
+=== m06_quiz_acerto
+(Compra aprovada só quer dizer que o cartão tinha limite. Se o dono de verdade contestar, quem vendeu sem o cartão presente devolve o dinheiro. E fica sem os pastéis.)
+@muda tecnica+1
+@anota m6_venda_nao_presencial
+@vai m06_decide
+
+=== m06_quiz_erro
+(Eu achava que "aprovado" era "pago". Aprovado é só "o cartão tinha limite naquela hora".)
+@anota m6_venda_nao_presencial
+@vai m06_decide
+
+=== m06_decide
+@fundo pastelaria
+@entra cliente_pix feliz esquerda
+CLIENTE_PIX: E aí, minha querida? Posso passar os números do cartão? O diretor está me cobrando aqui.
+? A meia hora dele está correndo. A decisão é sua.
+* "Para encomenda grande, eu só fecho com Pix antecipado na conta da pastelaria, e só começo depois que cair no extrato." -> m06_antecipado {tecnica+1 marca:pediu_antecipado}
+* "Pode passar os números, eu digito aqui." -> m06_digita
+* "Então vem buscar pessoalmente e paga aqui na maquininha, com o cartão na mão e a senha." -> m06_presencial {tecnica+1}
+** Passar o telefone para o Jefferson, que pergunta o nome do diretor, o CNPJ da empresa e o endereço da festa -> m06_jefferson_entrevista {rel_jefferson+2 marca:pediu_antecipado}
+
+=== m06_jefferson_entrevista
+@expr jefferson pensativa
+JEFFERSON: Bom dia, Rodrigo. Jefferson, chapeiro. Qual é o CNPJ da empresa, para a nota fiscal?
+CLIENTE_PIX: CNPJ? Ah... depois eu te mando.
+JEFFERSON: E o endereço da festa? Para a gente saber se o pastel chega quente.
+CLIENTE_PIX: É... um salão. O motoboy da empresa busca, não precisa saber.
+JEFFERSON: E o nome do diretor?
+CLIENTE_PIX: Rapaz, vocês fazem muita pergunta para um pastel.
+JEFFERSON: Para duzentos, Rodrigo. Para um, eu não pergunto nada.
+> O Jefferson devolve o telefone com a cara mais séria que você já viu nele.
+JEFFERSON: Patroa, ele não sabe o próprio CNPJ. Pede o Pix antes. Na conta da pastelaria.
+@vai m06_antecipado
+
+=== m06_antecipado
+EU: Rodrigo, para encomenda desse tamanho, a gente trabalha assim: Pix antecipado na conta da pastelaria. Quando cair no extrato, a gente compra a carne e o queijo e começa a fritar.
+CLIENTE_PIX [surpresa]: Antecipado? Mas a empresa só paga no cartão corporativo...
+EU: Então pode ser metade de sinal agora, e o resto na retirada. No Pix. Conferido.
+CLIENTE_PIX: É que... o diretor... olha, eu vou ver aqui e te retorno.
+> Ele desliga. Não retorna.
+@sai cliente_pix
+> Meia hora depois, a mensagem com o pedido some. "Esta mensagem foi apagada."
+@se marca:conferiu_extrato -> m06_antecipado_eco
+@vai m06_antecipado_fim
+
+=== m06_antecipado_eco
+(Igual ao cliente do comprovante bonito: quando o pagamento tem que aparecer no extrato de verdade, o golpista some. Extrato é o melhor repelente que existe.)
+@vai m06_antecipado_fim
+
+=== m06_antecipado_fim
+JEFFERSON: Duzentos pastéis que a gente não vai fritar.
+EU: Duzentos pastéis que a gente não vai perder.
+JEFFERSON: É a mesma conta, só que do lado certo.
+@muda reputacao+1
+@anota m6_pagamento_antecipado
+@vai m06_igreja
+
+=== m06_presencial
+CLIENTE_PIX: Buscar? Não dá, minha querida, eu estou no escritório o dia inteiro. O motoboy da empresa passa aí.
+EU: Então o motoboy traz o cartão, insere na maquininha e o dono digita a senha. Ou paga no Pix antes.
+CLIENTE_PIX: Ah, aí complica... deixa eu ver com o diretor.
+> Ele desliga. Não retorna. A mensagem do pedido é apagada logo depois.
+@sai cliente_pix
+(Venda presencial com o cartão e a senha do dono é outra história. Mas o mais seguro para encomenda grande de desconhecido continua sendo o dinheiro na conta antes do óleo esquentar.)
+@muda reputacao+1
+@anota m6_pagamento_antecipado
+@vai m06_igreja
+
+=== m06_digita
+EU: Pode passar.
+> Ele dita os números do cartão, a validade e o código de trás. O nome no cartão é o mesmo do resumo: uma mulher, "Marlene alguma coisa".
+EU: O cartão está no nome de uma Marlene?
+CLIENTE_PIX: É a dona da empresa! Cartão corporativo, está no nome dela. Pode passar tranquila.
+> Você digita na maquininha, no modo de venda sem cartão presente. Aprovada. R$ 1.600,00.
+@som dinheiro
+@muda caixa+1600
+@marca levou_contestacao
+CLIENTE_PIX [feliz]: Maravilha! O motoboy passa às 19h. Ah, e se sobrar algum troco, ou se der algum valor a mais, a senhora me devolve no Pix, tá?
+@sai cliente_pix
+(Devolver "valor a mais" no Pix. Isso é a cereja que eu não vi no bolo.)
+@vai m06_fritura
+
+=== m06_fritura
+@fundo cozinha_pastelaria
+@musica trabalho
+> Você corre no atacado e compra seis quilos de carne moída, quatro de muçarela, massa, óleo e caixas. A conta do atacado vai direto para o caixa.
+@muda caixa-540
+@entra jefferson feliz direita
+JEFFERSON: Duzentos pastéis, patroa. Isso é uma obra. Isso é a Muralha da China do pastel.
+> A tarde inteira é óleo, fumaça e o Jefferson contando: "cento e doze, cento e treze, cento e catorze...".
+> Às 19h, chega um motoboy sem uniforme, sem nome de empresa, sem conversa. Pega as caixas e vai embora sem dizer obrigado.
+JEFFERSON [pensativa]: Patroa. Motoboy de empresa que dá festa diz obrigado.
+(Eu sei, Jefferson. Eu sei.)
+@vai m06_contestacao
+
+=== m06_contestacao
+@musica tensao
+@fundo pastelaria
+> Vinte e três dias depois.
+@som alarme
+> Chega a notificação da empresa da maquininha: "Contestação de compra. Venda de R$ 1.600,00 não reconhecida pela titular do cartão. Valor será debitado do estabelecimento."
+> A Marlene alguma coisa existe. Ela mora em outro estado, nunca ouviu falar de festa de empresa e contestou a compra assim que viu a fatura.
+@muda caixa-1600 golpes_caidos+1
+(Os R$ 1.600 voltaram para a Marlene, que é vítima também. Eu fiquei sem o dinheiro, sem a carne, sem o queijo e sem os duzentos pastéis. Quem levou foi o Rodrigo, que nunca existiu.)
+? A notificação está aberta na tela.
+* Juntar tudo que tem do pedido, ligar para a empresa da maquininha pelo canal oficial e fazer o boletim de ocorrência -> m06_contestacao_defesa {tecnica+1}
+* Ligar para o número do Rodrigo e exigir os pastéis de volta -> m06_contestacao_liga {paciencia-1}
+
+=== m06_contestacao_defesa
+> A atendente da empresa da maquininha explica com calma: em venda digitada, sem o cartão presente e sem a senha do dono, quem vende assume o risco se o titular disser que não fez a compra.
+> Você envia as mensagens, o áudio e o horário da retirada. Faz o boletim de ocorrência. A atendente registra tudo, mas avisa que a chance de reverter é pequena.
+(Fica a lição e fica o registro. Talvez o boletim ajude a pegar o Rodrigo um dia. E o Rodrigo com certeza já ligou para outras pastelarias.)
+@anota m6_contestacao_lojista
+@vai m06_volta_sabado
+
+=== m06_contestacao_liga
+> O número não existe mais. A mensagem do pedido foi apagada no mesmo dia. A foto de perfil do Rodrigo era de um banco de imagens.
+(Golpista não devolve pastel. Golpista nem come pastel.)
+@anota m6_contestacao_lojista
+@vai m06_volta_sabado
+
+=== m06_volta_sabado
+@musica alegre
+> Mas isso ainda ia demorar vinte e três dias. Naquele sábado, você ainda tinha uma tarde inteira de balcão pela frente.
+@vai m06_igreja
+
+=== m06_igreja
+@fundo pastelaria
+@musica alegre
+@som mensagem
+@zap "Mãe 💐"
+MAE: Filha, a irmã Socorro da igreja quer encomendar 80 pastéis para o bazar de domingo
+MAE: Eu falei que você é a melhor pastelaria do bairro e que agora é especialista em golpe também
+EU: Mãe, a senhora contou do motoboy pra igreja inteira?
+MAE: Contei pra irmã Socorro. Que contou pra igreja inteira. É diferente
+MAE: Ela quer saber como paga
+@zap fim
+(Encomenda de oitenta pastéis de alguém que a minha mãe conhece há trinta anos. Mesmo assim, a regra vale para todo mundo.)
+? Como fechar a encomenda da irmã Socorro?
+* Sinal de metade no Pix, conferido no extrato, e o resto na entrega -> m06_igreja_sinal {tecnica+1 rel_mae+1}
+* Fiado, porque é da igreja e Deus vê tudo -> m06_igreja_fiado {rel_mae+1}
+** Pedir para a mãe mostrar à irmã Socorro como conferir o nome do recebedor antes de mandar o Pix -> m06_igreja_mae {rel_mae+2 reputacao+1}
+
+=== m06_igreja_sinal
+@zap "Mãe 💐"
+EU: Mãe, fala pra ela mandar metade agora no Pix da pastelaria, que eu confiro e começo. O resto na entrega
+MAE: Ela mandou! Olha aí
+EU: Deixa eu ver no extrato primeiro... caiu. R$ 320, nome dela certinho
+MAE: Que chique. Parece banco
+@zap fim
+@som dinheiro
+@muda caixa+640 caixa-210
+> A encomenda sai na manhã seguinte. O resto do pagamento cai no extrato antes da última caixa sair pela porta.
+@vai m06_tarde
+
+=== m06_igreja_fiado
+@zap "Mãe 💐"
+EU: Pode ser fiado, mãe. É da igreja
+MAE: Que lindo, filha. Ela paga no fim do mês
+MAE: Ou no outro
+@zap fim
+@muda caixa-210
+> Os oitenta pastéis saem. O pagamento vai chegar. Um dia. A irmã Socorro é honesta, mas tem a memória de uma vela de aniversário.
+(Fiado só amanhã, dizia a placa da barraca da feira. Eu devia ter escutado a placa.)
+@vai m06_tarde
+
+=== m06_igreja_mae
+@zap "Mãe 💐"
+EU: Mãe, mostra pra irmã Socorro: antes de confirmar o Pix, olha o nome que aparece na tela. Tem que ser o da pastelaria
+MAE: Ela conferiu! E falou que agora vai conferir até o dízimo
+MAE: [foto] A irmã Socorro de óculos olhando o celular
+EU: Caiu aqui. Metade de sinal, nome certinho. O resto na entrega
+MAE: Filha, eu tô ensinando a igreja. Eu, que caí no motoboy
+EU: É por isso que a senhora ensina melhor que ninguém, mãe
+@zap fim
+@som dinheiro
+@muda caixa+640 caixa-210
+@vai m06_tarde
+
+=== m06_tarde
+@fundo pastelaria
+@entra jefferson feliz direita
+> A tarde de sábado é a mais cheia da semana. Pastel de carne, pastel de queijo, caldo de cana com limão e um pastel de vento para um menino que tinha dois reais.
+@muda caixa+520
+@som dinheiro
+> R$ 520 de balcão. Cada Pix conferido no extrato antes do pastel sair da mão.
+@entra tati feliz esquerda
+TATI: Amiga, o pessoal da padaria recebeu ligação de um tal de "Rodrigo do RH". Duzentos pastéis. Só que de coxinha.
+EU: E a padaria?
+TATI: Pediu Pix antecipado, porque você falou no grupo.
+@se marca:levou_contestacao -> m06_tarde_tati_ruim
+TATI: Você salvou a coxinha da padaria, amiga.
+@vai m06_fim
+
+=== m06_tarde_tati_ruim
+EU: Eu não falei nada no grupo, Tati. Eu fritei duzentos pastéis para ele.
+TATI [surpresa]: Ai, amiga. Então quem avisou a padaria?
+EU: Ninguém. A padaria desconfiou sozinha.
+(A padaria aprendeu antes de mim. Daqui a vinte e três dias, eu vou aprender do jeito caro.)
+@vai m06_fim
+
+=== m06_fim
+@fundo portao_noite
+@musica nenhuma
+> 22h. A porta de aço desce. O Jefferson tira o avental e pendura no prego de sempre.
+JEFFERSON: Patroa, amanhã é domingo. Eu entro mais tarde?
+EU: Entra às onze. O aplicativo de delivery abre ao meio-dia.
+JEFFERSON: Fechado. Ah, a senha do aplicativo ainda é aquela mesma, né? A do e-mail? Para eu não esquecer.
+(É. É a mesma do e-mail. E do banco. E do aplicativo. E do cadastro do atacado. Por que mudar uma senha que eu lembro tão bem?)
+@sai todos
+@vai m07_inicio

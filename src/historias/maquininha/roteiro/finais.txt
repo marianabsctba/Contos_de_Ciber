@@ -1,0 +1,193 @@
+# Parte 2, finais. A ordem dos @se define a prioridade.
+
+=== fim_escolha
+@se golpes_caidos>=4 -> fim_caiu_tudo
+@se caixa<0 -> fim_fechou
+@se marca:culpou_jefferson -> fim_culpou
+@se marca:virou_video -> fim_influencer
+@vai fim_decisao
+
+=== fim_decisao
+@fundo pastelaria
+@musica alegre
+> Segunda-feira, 6h. Você levanta a porta de aço inteira. O sol entra torto, como sempre, e bate na placa do Pix.
+? O mês mais longo da sua vida acabou. O que vem agora?
+* Ficar no balcão, conferindo cada venda, do jeito que você aprendeu -> fim_blindada [se golpes_caidos<=1]
+* Levar a cartilha, de loja em loja, por toda a Rua 7 -> fim_rua [se marca:organizou_associacao e reputacao>=3]
+* Acompanhar a Dona Fátima na palestra do grupo da igreja -> fim_mae [se marca:bloqueou_cartao_rapido e marca:contestou_compra e marca:fez_bo]
+* Fechar a loja e voltar para a barraca de domingo, menor e mais simples -> fim_feira
+
+# ===================== PASTELARIA BLINDADA =====================
+
+=== fim_blindada
+@musica final_bom
+@fundo pastelaria
+@sai todos
+> Seis meses depois.
+> O Pastel da {nome} tem fila na hora do almoço, uma placa nova na parede e uma maquininha com visor inteiro, virado para o cliente.
+@entra jefferson feliz direita
+JEFFERSON: Patroa, o QR code do balcão é gerado na hora para cada venda. O comprovante na tela do cliente a gente nem olha. A gente olha o extrato.
+EU: E o boleto do queijo?
+JEFFERSON: Conferido e confirmado no fixo do Seu Osvaldo. Ele já atende dizendo "é boleto, menina? É o de sempre".
+> Esta semana, chegaram dois e-mails de "atualização obrigatória da maquininha", um "Rodrigo do RH" com outra voz e uma mensagem de taxa do sindicato. Todos foram para o lixo em menos de um minuto.
+@se marca:ativou_2fa -> fim_blindada_2fa
+@vai fim_blindada_placa
+
+=== fim_blindada_2fa
+> A conta do aplicativo de delivery pediu o código de verificação duas vezes este mês, de aparelhos que não eram seus. As duas tentativas pararam ali.
+(A senha pode até vazar de algum site. O código no meu celular, não.)
+@vai fim_blindada_placa
+
+=== fim_blindada_placa
+> Na parede, do lado do cardápio, a placa que o Jefferson pintou à mão: "Pix só vale quando cai. Pastel só sai quando cai."
+(Não é que golpe parou de chegar. Golpe chega toda semana. É que agora ele bate no balcão e volta.)
+@final pastelaria_blindada
+
+# ===================== A RUA 7 APRENDEU =====================
+
+=== fim_rua
+@musica final_bom
+@fundo associacao_comerciantes
+@sai todos
+> Três meses depois.
+> Em cada balcão da Rua 7, uma folha plastificada com o título "ANTES DE PAGAR, CONFIRA": valor no visor antes da senha, Pix só quando cai no extrato, nome do recebedor, ninguém sério pede aplicativo nem código, boleto se confirma por telefone conhecido.
+@entra zeca feliz centro
+ZECA: Hoje um rapaz veio pagar a conta do bar com Pix. Eu olhei o extrato. Não tinha caído. Era agendado para o ano que vem.
+EU: E o senhor?
+ZECA: Eu falei: "rapaz, no meu tempo era dinheiro na mão. Hoje é dinheiro no extrato. Ou o senhor lava os copos."
+@entra tati feliz esquerda
+TATI: Ele lavou os copos.
+@som mensagem
+@zap "Alerta da Rua 7 🚨"
+> Dona Cida da farmácia: "Chegou boleto do fornecedor com CNPJ diferente. Liguei no fixo. Era golpe. Não paguei."
+> Seu Marcão da loja de 1,99: "Ligaram dizendo ser da maquininha. Desliguei e liguei no número de trás. Era golpe."
+ZECA: Conferi o nome do recebedor antes do Pix do gás. Estava certo. Aviso só para constar
+TATI: seu zeca virou o fiscal da rua kkkk
+@zap fim
+> O Delegado Paulo continua vindo uma vez por mês. Os boletins da rua ajudaram a identificar a turma do QR code colado. E ele continua pedindo pastel de carne.
+(Eu achei que segurança era eu conferindo tudo sozinha. Era a rua inteira conferindo junto.)
+@final rua_protegida
+
+# ===================== DONA FÁTIMA GANHOU =====================
+
+=== fim_mae
+@musica final_bom
+@fundo sala_familia
+@sai todos
+> Domingo, 16h. Salão paroquial. Quarenta senhoras, um projetor emprestado e uma mesa com pastel de queijo para o intervalo.
+@entra mae feliz centro
+MAE: Boa tarde, irmãs. Eu sou a Fátima. E eu caí no golpe do motoboy.
+> Silêncio. Depois, um aplauso tímido. Depois, um aplauso de verdade.
+MAE: Mas eu bloqueei o cartão na mesma hora, contestei a compra com o banco e fiz o boletim. E o dinheiro voltou.
+MAE: Então hoje eu vou ensinar três coisas. Primeira: visor rachado, não pago nem com reza.
+MAE: Segunda: o cartão não sai da minha mão. E quando volta, eu olho se é o meu.
+MAE: Terceira: se der errado, não tenha vergonha. Liga para o banco na hora. Vergonha a gente sente depois, com calma.
+> A irmã Socorro anota tudo num caderno de capa florida. Ela é a nova tesoureira do grupo de alerta da igreja.
+EU [feliz]: Mãe, a senhora devia cobrar por essa palestra.
+MAE: Cobrar? Filha. Quem cobra taxa é golpista.
+@final mae_ganhou_a_contestacao
+
+# ===================== INFLUENCER DO GOLPE =====================
+
+=== fim_influencer
+@musica alegre
+@fundo pastelaria
+@sai todos
+> Quatro meses depois.
+> Seus vídeos passam de um milhão de visualizações. "A pasteleira que explica golpe" vira assunto em programa de televisão, em palestra de banco e em grupo de família de outros estados.
+@som notificacao
+> Todo dia chegam mensagens: "Minha avó não pagou a taxa do motoboy por sua causa." "Conferi o boleto do fornecedor e era falso." "Obrigada, moça do pastel."
+(Eu ajudo milhares de pessoas. Isso é verdade e me enche o peito.)
+@entra tati pensativa esquerda
+TATI: Amiga, passei na pastelaria hoje. O rapaz novo não sabe o ponto da massa. E esqueceu de conferir um Pix.
+EU: Eu volto semana que vem. Tenho gravação em três cidades.
+TATI: Você falou isso semana passada.
+> No balcão, o pastel de queijo continua bom. Mas não é o mesmo. A Dona Cida não fecha mais os olhos no primeiro pedaço.
+@musica triste
+(Eu ensino o Brasil inteiro a conferir o extrato. E não estou lá para conferir o meu.)
+@final virou_influencer
+
+# ===================== DE VOLTA PARA A FEIRA =====================
+
+=== fim_feira
+@musica alegre
+@fundo feira_pastel
+@sai todos
+> Domingo, dois meses depois.
+> A lanchonete da Rua 7 tem outro dono agora. Você voltou para a barraca de lona listrada, com duas panelas e o banquinho bambo.
+@se caixa<1000 -> fim_feira_aperto
+> Não foi por falta de dinheiro. Foi escolha: menos aluguel, menos aplicativo, menos tela. Mais feira.
+@vai fim_feira_barraca
+
+=== fim_feira_aperto
+> O caixa estava magro. Não deu para segurar aluguel, delivery e funcionário. Mas desistir, você não desistiu: só mudou de tamanho.
+@vai fim_feira_barraca
+
+=== fim_feira_barraca
+@se marca:culpou_jefferson -> fim_feira_sozinha
+@entra jefferson feliz direita
+JEFFERSON: Patroa, barraca é melhor. Na barraca o vento tem cheiro. Na loja o vento tinha cheiro de exaustor.
+> Na frente da panela, um QR code gerado na hora para cada venda e uma plaquinha: "Pagou? Mostra aqui que eu confiro no meu extrato."
+(É menor. É mais simples. E cada real que entra, eu vejo entrar.)
+@final voltou_pra_feira
+
+=== fim_feira_sozinha
+> Você frita sozinha. Sem chapeiro, sem filosofia, sem o molho da vó de alguém.
+> Na frente da panela, um QR code gerado na hora para cada venda e uma plaquinha: "Pagou? Mostra aqui que eu confiro no meu extrato."
+(É menor. É mais simples. E cada real que entra, eu vejo entrar.)
+@final voltou_pra_feira
+
+# ===================== PORTAS FECHADAS =====================
+
+=== fim_fechou
+@musica final_ruim
+@fundo portao_noite
+@sai todos
+> Três semanas depois da Feira da Cidade.
+> O caixa não fechou. Não fechou em outubro, não fechou em novembro. O fornecedor da massa passou a pedir pagamento adiantado. O Seu Osvaldo, com pena, mandou queijo fiado duas vezes. Na terceira, não deu.
+@entra jefferson triste direita
+JEFFERSON: Patroa, eu arrumei vaga numa lanchonete da rodoviária. Só até a senhora reabrir.
+EU: Vai, Jefferson. Vai que lá a chapa é nova.
+JEFFERSON: Chapa nova não tem história.
+@sai jefferson
+> Você cola na porta de aço uma folha de sulfite: "PASSA-SE O PONTO". Embaixo, com a mesma caneta, você escreve mais uma linha: "Confira o valor antes de digitar a senha."
+(Cada golpe levou um pedaço pequeno. Nenhum sozinho fechava a loja. Todos juntos fecharam.)
+@final fechou_as_portas
+
+# ===================== CAIU EM TUDO =====================
+
+=== fim_caiu_tudo
+@musica final_ruim
+@fundo pastelaria
+@sai todos
+> Segunda-feira, 9h.
+@som notificacao
+> Chega um e-mail: "Prezada cliente, sua maquininha precisa de atualização obrigatória". Chega uma mensagem: "Sua conta de delivery será suspensa, clique aqui". Chega uma ligação: "Aqui é o Rodrigo, do RH, a gente adorou os pastéis da última vez".
+@entra tati triste esquerda
+TATI: Amiga, eu tenho que te falar uma coisa, e é com carinho. O seu número está circulando entre os golpistas. Como cliente boa.
+EU: Como assim, cliente boa?
+TATI: Quem paga uma vez entra numa lista de quem paga. Eles vão continuar tentando.
+(Motoboy, comprovante, QR code, técnico, boleto, cartão, senha, taxa. Ninguém está imune. Mas eu caí, caí de novo e não mudei o jeito de conferir.)
+> No balcão, o comprovante na tela do próximo cliente brilha bonito. Você estica a mão para entregar o pastel antes de olhar o extrato.
+@sai tati
+(De novo, não. Por favor, de novo não.)
+@final caiu_em_tudo
+
+# ===================== SEM CHAPEIRO E SEM MOLHO =====================
+
+=== fim_culpou
+@musica final_ruim
+@fundo cozinha_pastelaria
+@sai todos
+> Segunda-feira, 10h. O prego do avental está vazio.
+> O Jefferson foi embora no sábado, depois da feira. Deixou a chave na caixa de correio, junto com um bilhete: "A senha era sua, patroa. Eu só pedi um usuário."
+> Ele levou a receita do molho. A receita da vó dele, que nunca esteve escrita em lugar nenhum além da cabeça dele.
+@som mensagem
+@zap "Comerciantes da Rua 7 🍢🛒"
+TATI: o jefferson começou na lanchonete da rodoviária
+TATI: a fila lá dá a volta no quarteirão
+ZECA: Fui lá ontem. Que molho, minha nossa
+@zap fim
+> O pastel de carne da segunda-feira vem sem graça. O da terça também. Um cliente antigo pergunta, com cuidado, se mudou o fornecedor.
+(Eu culpei uma pessoa por um problema que era do jeito que eu fazia: uma senha só, para tudo, dividida com todo mundo. Trocar a senha resolvia. Trocar o Jefferson, não.)
+@final culpou_o_jefferson

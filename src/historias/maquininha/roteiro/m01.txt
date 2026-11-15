@@ -1,0 +1,311 @@
+=== m01_inicio
+@cap 1 "Taxa de R$ 5,99"
+@idade adulta
+@fundo pastelaria
+@musica alegre
+> Sexta-feira, 20h. A Rua 7 cheira a óleo quente, açaí e escapamento de moto.
+> No letreiro, em vermelho e amarelo, a pintura que custou dois meses de domingo na feira: PASTEL DA {nome}.
+> Um balcão, duas mesas na calçada, uma geladeira de caldo de cana que faz barulho de avião e uma chapa que nunca esfria.
+(Três anos de barraca, um ano de loja. Ainda não acredito que tenho um ponto com porta de ferro e conta de luz no meu nome.)
+@roupa "Avental do dia"
+@muda caixa=3200
+> No caderno do caixa, a soma da semana: R$ 3.200,00. Dá para pagar o queijo, o aluguel e, se Deus quiser, um ventilador novo.
+@entra jefferson feliz direita
+JEFFERSON: Patroa, você já reparou que o pastel é igual à vida?
+EU: Lá vem.
+JEFFERSON: Por fora, todo mundo vê a casquinha bonita. Mas o que importa é o recheio. E se fura, vaza tudo.
+EU: Jefferson, isso é um pastel de carne furado na chapa.
+JEFFERSON [envergonhada]: É uma metáfora com falha estrutural. Eu como esse.
+@entra tati feliz esquerda
+TATI: {nome}, sua fila tá chegando no meu açaí. Vou começar a cobrar pedágio.
+EU: Manda os seus clientes pra cá que eu mando os meus pra lá. Pastel e açaí, casamento perfeito.
+TATI: Casamento perfeito é açaí com leite em pó. Pastel é amante.
+@vai m01_movimento
+
+=== m01_movimento
+@sai tati
+> A fila da sexta começa a crescer: a turma da academia que vem "só olhar", o casal que divide um pastel de queijo e briga pelo último pedaço, o Seu Zeca do bar da esquina que pede "o de sempre" e nunca diz qual é o de sempre.
+@som dinheiro
+@muda caixa+180
+> Na maquininha do balcão, aquela que só pega encostada na janela, as vendas vão pingando.
+> Um cliente pergunta se tem pastel de vento. O Jefferson responde, sério, que pastel de vento é o que o cliente leva quando paga com fiado.
+JEFFERSON: E fiado só amanhã. Amanhã sempre.
+> Um menino entrega uma nota de dez para um pastel de oito. Não tem moeda no caixa.
+? Troco de dois reais e nenhuma moeda na gaveta.
+* Dar o troco em bala, como manda a tradição -> m01_troco_bala {reputacao-1}
+* Arredondar e dar um caldo de cana pequeno de brinde -> m01_troco_caldo {caixa-4 reputacao+1}
+* Pedir para o menino passar amanhã pegar o troco -> m01_troco_amanha {etica+1}
+** Fazer o desempate oficial da rua: "carne ou queijo?" e quem acertar o sabor do dia leva o troco em pastel -> m01_carne_queijo {reputacao+1 rel_jefferson+1}
+
+=== m01_troco_bala
+> Duas balas de hortelã atravessam o balcão. O menino olha para as balas com a dignidade ferida de quem ainda vai se lembrar disso aos quarenta.
+(Um dia o governo vai reconhecer a bala de hortelã como moeda oficial. Até lá, eu sou só uma comerciante sem moeda.)
+@vai m01_telefone
+
+=== m01_troco_caldo
+> O menino sai com um caldo de cana com limão e um sorriso que vale mais do que quatro reais de prejuízo.
+JEFFERSON: Fidelização, patroa. Daqui a dez anos ele traz os filhos.
+@vai m01_telefone
+
+=== m01_troco_amanha
+> Você anota no caderno, ao lado das contas: "Menino de boné azul, R$ 2 de troco". O caderno tem uma página inteira dessas.
+@vai m01_telefone
+
+=== m01_carne_queijo
+EU: Pergunta da noite! Qual pastel vende mais nesta casa: carne ou queijo?
+JEFFERSON: Carne. Carne é tradição. Carne é família.
+> A fila inteira se divide. Uma senhora defende o queijo com a firmeza de quem já ganhou discussão em reunião de condomínio.
+> O menino grita "PIZZA!" e, por pura confusão, todo mundo aplaude.
+(Ninguém acertou, mas a fila esqueceu que estava esperando. Isso é marketing.)
+@vai m01_telefone
+
+=== m01_telefone
+@som notificacao
+> 20h37. O celular vibra em cima da geladeira de caldo de cana. Na tela: "Mãe 💐".
+> A sua mãe, Dona Fátima, nunca liga em horário de movimento. Ela manda áudio. Áudio de quatro minutos, mas manda áudio.
+@musica tensao
+MAE [triste]: Filha... filha, eu fiz besteira.
+EU: Mãe? Que foi? A senhora tá bem?
+MAE: Chegou um buquê aqui. Lindo, de rosa. Sem cartão, sem nome. O moço disse que tinha uma taxa de entrega de cinco e noventa e nove.
+MAE: Eu passei no cartão. A maquininha dele tava com a tela rachada, ele disse que não tinha passado, passou de novo...
+MAE: Agora o banco mandou mensagem. Cinco mil novecentos e noventa reais, filha. Cinco mil!
+@som alarme
+(Cinco e noventa e nove. Cinco mil novecentos e noventa. A mesma conta com uma vírgula a menos.)
+JEFFERSON: Patroa? Você ficou da cor do pastel de palmito.
+? A mãe está chorando do outro lado. A fila está esperando do lado de cá.
+* Deixar o Jefferson cuidando do balcão e correr para a casa da mãe -> m01_sai_jefferson {rel_jefferson+1 marca:jefferson_fechou}
+* Baixar a porta de ferro, pedir desculpa para a fila e ir -> m01_baixa_porta {reputacao-1 rel_mae+1}
+* Ficar no telefone e pedir para ela abrir o aplicativo do banco agora -> m01_bloqueia_telefone {tecnica+1}
+** Pedir para a mãe respirar junto com você, três vezes, antes de qualquer coisa -> m01_respira {paciencia+1 rel_mae+1}
+
+=== m01_respira
+EU: Mãe, primeiro respira comigo. Puxa o ar. Solta. De novo.
+MAE: Filha, não é hora de ioga...
+EU: É hora de ioga, sim. Mais uma.
+> Do outro lado, um suspiro comprido. O choro dá lugar a um soluço só.
+MAE: Tá. Tá bom. Respirei.
+(Pessoa apavorada aperta qualquer botão que alguém mandar. Pessoa que respirou aperta o botão certo.)
+EU: Agora pega o celular e abre o aplicativo do banco. Eu vou ficar na linha.
+@vai m01_bloqueia_telefone
+
+=== m01_bloqueia_telefone
+> Você enfia o celular entre o ombro e a orelha e vai guiando, devagar.
+EU: Abriu? Procura "cartões". Depois o seu cartão. Tem um botão de bloquear.
+MAE: Tem um cadeadinho!
+EU: Esse. Aperta o cadeadinho.
+MAE: Apertei. Apareceu "cartão bloqueado". Isso quer dizer que acabou?
+EU: Quer dizer que ninguém mais compra nada com ele. O que já passou a gente resolve agora.
+@marca bloqueou_cartao_rapido
+@muda tecnica+1
+(Bloquear primeiro, pensar depois. Cada minuto com o cartão ativo é um minuto para o golpista tentar outra compra.)
+@anota m1_bloquear_contestar
+JEFFERSON: Patroa, vai lá. Eu fecho a loja.
+@marca jefferson_fechou
+@muda rel_jefferson+1
+@vai m01_sai_jefferson
+
+=== m01_sai_jefferson
+EU: Jefferson, você fecha hoje. Caixa no envelope, porta trancada, gás desligado.
+JEFFERSON [surpresa]: Eu? Sozinho? Com a chave?
+EU: Com a chave.
+JEFFERSON [feliz]: Patroa, isso é o dia mais importante da minha carreira.
+JEFFERSON: Vai. A chapa e eu seguramos.
+@sai jefferson
+@vai m01_caminho
+
+=== m01_baixa_porta
+@sai jefferson
+> A porta de ferro desce com aquele barulho que a rua inteira reconhece. Na fila, alguém resmunga. Alguém pergunta se é assalto.
+EU: Desculpa, gente! Emergência de família! Amanhã tem pastel em dobro!
+(Pastel em dobro. Eu acabei de prometer pastel em dobro sem saber quanto o queijo vai custar.)
+@vai m01_caminho
+
+=== m01_caminho
+@fundo portao_noite
+@musica tensao
+> A casa da Dona Fátima fica a seis quadras. Você vai a pé, depois correndo, depois andando de novo porque o chinelo não colabora.
+> No portão, preso com fita durex, um envelope vazio do buquê. Nenhum nome de floricultura. Nenhum telefone.
+@se !marca:bloqueou_cartao_rapido -> m01_chega_sem_bloqueio
+@vai m01_chega
+
+=== m01_chega_sem_bloqueio
+> No celular da sua mãe, uma notificação nova acende enquanto você abre o portão: "Compra de R$ 1.290,00 negada: cartão com tentativas acima do limite".
+(Eles tentaram de novo. Enquanto eu corria, o cartão ainda estava ativo. Foi o limite que segurou, não fui eu.)
+> Você pega o celular dela e bloqueia o cartão pelo aplicativo, ali mesmo no portão.
+@muda tecnica+1
+@anota m1_bloquear_contestar
+@vai m01_chega
+
+=== m01_chega
+@fundo sala_familia
+@musica triste
+@entra mae triste centro
+> Na mesinha da sala, o buquê de rosas brilha debaixo da luz. Lindo. Caro. Sem dono.
+MAE: Eu achei que era do seu pai. Ele mandava flor no nosso aniversário de namoro. Achei que alguém tinha lembrado.
+(Meu pai morreu faz seis anos. E ela ainda olha para a porta quando toca a campainha.)
+EU: Mãe, não foi besteira. Esse golpe é feito justamente para pegar quem gosta de surpresa.
+MAE: Eu sou uma velha boba.
+EU: A senhora é uma pessoa que abriu a porta para um buquê. Bobo é quem rouba buquê de aposentada.
+> Ela ri um pouco. É pouco, mas é riso.
+MAE: Olha o cartão que ele me devolveu.
+> Ela estende um cartão da mesma cor do dela, mesma bandeira, mesmo banco. Você vira o plástico.
+> No nome impresso: M. S. OLIVEIRA.
+MAE [surpresa]: Esse não é o meu nome.
+EU: Não é o seu cartão, mãe. Ele trocou na hora em que disse que não tinha passado.
+@vai m01_reconstitui
+
+=== m01_reconstitui
+(Antes de ligar para o banco, eu preciso saber exatamente o que ela viu. O banco vai perguntar, a polícia vai perguntar e eu quero que ela saiba explicar.)
+EU: Mãe, me conta como era a tela da maquininha. Tudo o que a senhora lembrar.
+MAE [pensativa]: Era preta, com letra verde. Tinha uma rachadura bem no meio, assim, atravessada.
+> Num guardanapo, ela desenha a tela de memória. Letra por letra, do jeito que lembra.
+@desafio m1_maquininha_mae -> m01_reconst_acerto | m01_reconst_erro
+
+=== m01_reconst_acerto
+(Visor rachado bem em cima do valor, pedido para inserir e digitar senha, "tente de novo" com o cartão saindo da mão dela, e nenhum comprovante impresso. Ela não fez besteira. Ela foi enganada com um roteiro inteiro.)
+EU: Mãe, a senhora lembra muito bem. Com isso a gente explica tudo para o banco.
+MAE: Lembro mesmo? Eu esqueço onde deixo os óculos.
+EU: Os óculos estão na sua cabeça.
+@muda tecnica+1 rel_mae+1
+@anota m1_visor_e_cartao
+@vai m01_banco
+
+=== m01_reconst_erro
+(Eu fiquei olhando a rachadura no guardanapo e não consegui separar o que era normal do que era golpe. Ela percebeu que eu fiquei perdida.)
+MAE [triste]: Viu? Nem você entende. Imagina eu.
+EU: Eu entendo, mãe. O valor ficou escondido e a senhora digitou a senha sem conseguir ver. Isso a gente vai contar do jeito que foi.
+@muda paciencia-1
+@anota m1_visor_e_cartao
+@vai m01_banco
+
+=== m01_banco
+@musica tensao
+> 21h12. Agência fechada, gerente em casa, a cidade pedindo pizza. Mas o banco tem canal aberto vinte e quatro horas.
+(O cartão que está na mão dela é de outra pessoa. O telefone atrás dele é de outro banco, de outra conta, de outra vítima. Eu preciso do canal do banco dela, não do cartão que o golpista deixou.)
+? Como falar com o banco da Dona Fátima agora?
+* Ligar pelo número do aplicativo oficial dela, que está na área de ajuda -> m01_central {tecnica+1}
+* Ligar para o número atrás do cartão que o motoboy devolveu -> m01_numero_errado
+* Procurar "central do banco" na internet e ligar para o primeiro resultado -> m01_busca_errada {paciencia-1}
+** Pegar a fatura de papel da gaveta da mãe, que tem o telefone oficial impresso, e ligar dali -> m01_central {tecnica+1 rel_mae+1}
+
+=== m01_numero_errado
+> Você liga. Atende a central de outro banco. A atendente escuta a história, confirma que o cartão M. S. OLIVEIRA consta como roubado desde terça e agradece.
+> "Mas a senhora precisa falar com o banco da sua mãe. Daqui eu não consigo ver nada da conta dela."
+(Pelo menos alguém vai devolver esse cartão para o dono certo. Mas eu perdi dez minutos.)
+@muda paciencia-1
+@vai m01_central
+
+=== m01_busca_errada
+> O primeiro resultado é um anúncio: "Central de Cancelamento 24h, atendimento rápido". A voz do outro lado pede, logo de cara, o número completo do cartão e a senha "para validar o cancelamento".
+@som alarme
+(Banco não pede senha. Nunca. Nem por telefone, nem por mensagem, nem chorando.)
+> Você desliga na hora. Abre o aplicativo oficial do banco da sua mãe e procura o telefone lá dentro.
+@muda tecnica+1
+@vai m01_central
+
+=== m01_central
+> A espera toca uma música de elevador que já foi sucesso nos anos noventa. Na terceira volta, alguém atende.
+> Você explica: cartão bloqueado pelo aplicativo, compra de R$ 5.990,00 que a cliente não reconhece, maquininha de visor danificado, cartão trocado no ato.
+> A atendente confirma o bloqueio e pergunta se vocês querem contestar a compra.
+? Contestar agora ou deixar para a agência na segunda?
+* Contestar agora, pelo telefone, e anotar o número de protocolo -> m01_contesta {marca:contestou_compra tecnica+1}
+* Deixar para segunda, com a gerente, olhando no olho -> m01_espera_segunda {paciencia-1}
+** Contestar agora e pedir para a mãe ditar o protocolo em voz alta enquanto ela mesma anota no caderno de receitas -> m01_contesta_mae {marca:contestou_compra rel_mae+2}
+
+=== m01_contesta
+> A atendente registra a contestação. Faz perguntas: horário, endereço, como era a maquininha, se o cartão saiu da mão da cliente.
+> Você responde cada uma com o que a sua mãe lembrou.
+> No fim, ela dita um número comprido. Protocolo. Você anota no braço, na falta de papel.
+EU: E agora?
+> "Agora o banco analisa. Ajuda muito ter o boletim de ocorrência. Guarde tudo: a mensagem da compra, o cartão que foi deixado e este protocolo."
+@vai m01_bo
+
+=== m01_contesta_mae
+> A atendente vai fazendo as perguntas e é a própria Dona Fátima quem responde, cada vez com a voz mais firme.
+MAE: Ele disse que não passou. Pegou o cartão da minha mão. Devolveu outro. Eu sei porque agora eu sei.
+> Quando a atendente dita o protocolo, a sua mãe anota no caderno de receitas, entre o bolo de fubá e o pavê.
+MAE: Protocolo do golpe. Página 34. Do lado do pudim.
+(Ela não está mais chorando. Ela está trabalhando no caso dela. Isso muda tudo.)
+@vai m01_bo
+
+=== m01_espera_segunda
+> A atendente avisa, com educação, que quanto antes a contestação for aberta, melhor, e que pode ser feita ali mesmo.
+EU: É que eu queria ver com a gerente...
+> "A senhora pode ver com a gerente também. Mas abrir agora não impede nada."
+(Ela está certa. Esperar até segunda é dar dois dias de vantagem para quem não merece nem dois minutos.)
+? Mudar de ideia?
+* Tudo bem, contesta agora -> m01_contesta {marca:contestou_compra}
+* Não, prefiro segunda mesmo -> m01_bo {rel_mae-1}
+
+=== m01_bo
+@anota m1_bo_registro
+> 21h50. A mãe faz chá de camomila para duas e bebe as duas xícaras.
+? E o boletim de ocorrência?
+* Fazer agora, na delegacia online, com o print da compra e a descrição do motoboy -> m01_bo_online {marca:fez_bo tecnica+1}
+* Levar a mãe agora na delegacia de plantão, onde o Delegado Paulo está hoje -> m01_bo_delegacia {marca:fez_bo rel_mae+1}
+* Deixar quieto, boletim não traz dinheiro de volta -> m01_sem_bo {rel_mae-1 etica-1}
+
+=== m01_bo_online
+> No notebook velho da mãe, aquele que só liga na tomada, você abre o site da delegacia online do estado.
+> Descreve tudo: horário, endereço, a maquininha de visor rachado, o cartão trocado, o motoboy de jaqueta jeans e boné, a moto sem placa visível do portão.
+> Anexa o print da mensagem do banco e uma foto do cartão M. S. OLIVEIRA.
+MAE: Põe que ele era educado. Educado e com pressa.
+EU: Vou pôr.
+(Boletim não devolve dinheiro sozinho, mas é ele que mostra para o banco e para a polícia que isso aconteceu, quando e como. E se tiver outra vítima na rua, o padrão aparece.)
+@vai m01_volta
+
+=== m01_bo_delegacia
+@fundo delegacia
+@musica misterio
+> 22h20. Um táxi, uma mãe de chinelo e casaco por cima da camisola, a delegacia de plantão. Lá dentro, o Delegado Paulo está comendo um pastel de carne embrulhado em guardanapo.
+@entra delegado neutra direita
+DELEGADO: Pastel da {nome}? Eu sabia que conhecia esse avental.
+DELEGADO: Maquininha de visor rachado e cartão trocado? Terceira essa semana no bairro. Senta aí, Dona Fátima.
+> Ele escuta a história inteira, anota a jaqueta jeans, o boné, o horário, o cartão de outra pessoa.
+DELEGADO: A senhora fez certo em bloquear e contestar. Esse cartão aqui eu fico, que tem dono para avisar.
+DELEGADO [feliz]: E, {nome}, o seu pastel de carne é melhor que o daqui da frente. Mas não conta pra ninguém.
+@sai delegado
+@fundo sala_familia
+@vai m01_volta
+
+=== m01_sem_bo
+MAE [triste]: Então ninguém vai saber que aconteceu comigo?
+(Ela tem razão. Se ninguém registra, para a polícia esse motoboy nunca existiu. E para o banco também fica mais difícil entender.)
+EU: Tem razão, mãe. Amanhã eu vejo isso.
+@vai m01_volta
+
+=== m01_volta
+@fundo sala_familia
+@musica triste
+MAE: Filha, e as flores? Eu jogo fora?
+EU: Não. Elas não têm culpa. Põe na água.
+MAE: Rosa roubada dura mais, dizem.
+EU: Ninguém diz isso, mãe.
+MAE [feliz]: Agora diz.
+@sai mae
+@se marca:jefferson_fechou -> m01_jefferson_relatorio
+@vai m01_fim
+
+=== m01_jefferson_relatorio
+@som mensagem
+@zap "Jefferson 🔥"
+JEFFERSON: patroa fechei
+JEFFERSON: [foto] envelope do caixa com fita crepe escrito "NÃO ABRIR, SÓ A PATROA"
+JEFFERSON: vendi mais 23 pastel depois que vc saiu
+JEFFERSON: o seu zeca pediu o de sempre e eu dei carne. ele disse que o de sempre era queijo. agora ninguém sabe mais nada
+JEFFERSON: gás desligado, porta trancada, chave no bolso da frente da calça, não no de trás
+EU: Jefferson, você é um anjo.
+JEFFERSON: eu sou um chapeiro com responsabilidade. é diferente
+@zap fim
+@som dinheiro
+@muda caixa+276
+@vai m01_fim
+
+=== m01_fim
+@fundo portao_noite
+@musica tensao
+> 23h10. Você volta andando pela Rua 7. A porta de ferro está fechada. A barraca da Tati, coberta com lona.
+(Cinco e noventa e nove. Ele contou com a pressa, com o visor rachado e com o carinho de uma viúva por flores. Não foi azar. Foi método.)
+(E se fizeram com a minha mãe, a seis quadras daqui, quem garante que não vão tentar no meu balcão?)
+> Você olha para a maquininha da loja pela grade. Tela inteira, sem rachadura. Por enquanto.
+@vai m02_inicio

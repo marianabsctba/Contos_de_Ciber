@@ -9,7 +9,7 @@ Jogue em: https://marianabsctba.github.io/Contos_de_Ciber/
 - **Sinal Fraco**: uma menina de Pedra Lisa do Norte, cidade onde o sinal só pega em cima da caixa d'água, decide trabalhar com segurança da informação. Da lan house fiado aos freelas de clientes duvidosos, da escolha entre ficar no interior ou ir para a capital às seleções que pedem cinco anos de experiência para júnior. Onze finais.
 - **Grupo da Família**: sexta, 18h47, a Tia Neide mandou R$ 4.800 para o "Juninho de número novo". Com o relógio correndo e boa parte da história dentro do celular, no grupo da família, você enfrenta oito golpes em um fim de semana até o almoço de 80 anos da Vó Dita. Oito finais.
 - **A DPO Apavorada**: a recepcionista da clínica mandou a planilha de pacientes no grupo do pilates. Você é a encarregada de dados há três dias, com prazo de três dias úteis para comunicar a ANPD e os titulares. Oito finais.
-- Em breve: Maquininha.
+- **Maquininha**: o motoboy das flores com "taxa de R$ 5,99" e visor rachado é só o começo. Um mês de golpes no balcão de uma pastelaria: comprovante falso, QR code colado por cima, falso técnico, boleto adulterado, compra por telefone e conta do delivery invadida. Oito finais.
 
 ## Como funciona
 

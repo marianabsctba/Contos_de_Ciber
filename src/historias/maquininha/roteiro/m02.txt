@@ -1,0 +1,241 @@
+=== m02_inicio
+@cap 2 "Comprovante bonito"
+@fundo pastelaria
+@musica alegre
+> Sábado, 11h. A Rua 7 acorda tarde e com fome.
+> Você dormiu quatro horas, sonhou com uma maquininha gigante de visor rachado e acordou com o despertador cantando "taxa de entrega, taxa de entrega".
+@entra jefferson neutra direita
+JEFFERSON: Patroa, como tá a Dona Fátima?
+EU: Bloqueou, contestou, dormiu abraçada no buquê. Tá melhor do que eu.
+JEFFERSON [pensativa]: O golpe é que nem óleo velho. Você não vê, mas tá lá, deixando tudo com gosto ruim.
+EU: Essa até que foi boa.
+JEFFERSON [feliz]: Eu treino de madrugada.
+@som dinheiro
+@muda caixa+210
+> O almoço de sábado é o melhor da semana: família inteira, criança que quer pastel de chocolate, avô que quer pastel de bacalhau "igual ao de 1987".
+@vai m02_balcao
+
+=== m02_balcao
+@entra tati feliz esquerda
+TATI: {nome}, a Rua 7 inteira tá comentando da sua mãe.
+EU: Como assim, a rua inteira?
+TATI: A Dona Cida da farmácia contou pra Rô do salão, a Rô contou no grupo, o grupo contou pro bairro. Fofoca é o Pix original, chega na hora.
+TATI [pensativa]: Mas sério. Se acontecer de novo com alguém da rua, a gente tem que saber.
+? A Tati quer saber o que aconteceu.
+* Contar a história inteira, com o visor rachado e o cartão trocado -> m02_conta_tati {rel_tati+1 tecnica+1}
+* Dizer que foi azar e mudar de assunto -> m02_azar {rel_tati-1}
+** Fazer uma encenação no balcão: Jefferson de motoboy, Tati de Dona Fátima, você de narradora -> m02_teatro {rel_tati+1 rel_jefferson+1 reputacao+1}
+
+=== m02_conta_tati
+EU: Taxa de entrega de cinco e noventa e nove. O visor tava rachado bem em cima do valor. Ele disse que não passou, pegou o cartão, devolveu outro.
+TATI [surpresa]: E o outro era de quem?
+EU: De outra vítima, de terça.
+TATI: Gente. Vou falar pra minha avó não abrir portão nem pra Papai Noel.
+(Uma pessoa avisada na Rua 7 vale por dez. A Tati é um canal de comunicação com pernas.)
+@vai m02_cliente
+
+=== m02_azar
+EU: Foi azar, Tati. Acontece.
+TATI: Hum.
+> Ela volta para o açaí com aquela cara de quem não acreditou e vai descobrir de outro jeito.
+(Não foi azar. Mas é mais fácil falar "azar" do que contar que minha mãe chorou ao telefone.)
+@vai m02_cliente
+
+=== m02_teatro
+> O Jefferson põe um capacete de isopor de caixa de pastel. A Tati amarra um pano de prato na cabeça, estilo senhora de novela.
+JEFFERSON: Boa noite, senhora, entrega de flor, taxa de cinco e noventa e nove!
+TATI: Ai, que surpresa! Deixa eu ver a maquininha... essa tela tá rachada, moço.
+EU: E NESSA HORA, A DONA FÁTIMA DEVIA TER DITO...
+> Três clientes da fila, em coro: "NÃO PAGO SEM VER O VALOR!"
+(Eu não ensaiei isso. A fila aprendeu sozinha. A Rua 7 tem futuro.)
+@sai tati
+@vai m02_cliente
+
+=== m02_cliente
+@sai tati
+@musica cidade
+> 13h20. Entra um homem de camisa polo e óculos quadrados, sorriso de propaganda de pasta de dente.
+@entra cliente_pix feliz esquerda
+CLIENTE_PIX: Boa tarde! Me falaram que aqui é o melhor pastel do bairro. Vim confirmar.
+JEFFERSON: Confirmo daqui. Pode pedir.
+CLIENTE_PIX: Vou levar doze. Seis de carne, seis de queijo, que lá em casa é dividido igual eleição. E um caldo de cana de um litro com limão.
+EU: Doze pastéis e um caldo de litro, cento e sessenta e oito.
+CLIENTE_PIX: Pago no Pix! Qual a chave?
+> Você aponta para a plaquinha do balcão com a chave da loja. Ele digita, sorrindo, comentando do tempo, do time, do preço do queijo.
+CLIENTE_PIX: É festa de aniversário da minha sogra. Setenta anos. Se o pastel for bom, eu vou ser o genro preferido.
+> Enquanto o Jefferson frita, ele conversa. Conversa com você, com o Jefferson, com o cachorro da rua. Pergunta o nome da loja, há quanto tempo vocês estão ali, se a receita é de família.
+(Gente simpática existe. Eu sou simpática. Mas esse moço fala como quem está vendendo alguma coisa, não comprando.)
+@vai m02_pix_feito
+
+=== m02_pix_feito
+CLIENTE_PIX: Pronto, Pix feito! Olha aqui.
+> Ele vira o celular para você. Na tela, um comprovante verde, bonito, com o logo de um banco.
+CLIENTE_PIX: Ih, olha só, digitei errado. Mandei trezentos em vez de cento e sessenta e oito.
+CLIENTE_PIX [envergonhada]: Que vergonha. Você me volta os cento e trinta e dois em dinheiro? Aí fica tudo certo e eu já levo a festa.
+> Os pastéis estão prontos, embalados, quentinhos. O caldo de cana suando no copo de litro.
+JEFFERSON: Patroa, saquinho fechado.
+? O comprovante está na sua frente, o cliente sorrindo e a fila crescendo atrás.
+* Olhar o comprovante com atenção, linha por linha -> m02_olha_comprovante
+* Abrir o aplicativo do banco da loja e ver se o dinheiro caiu -> m02_extrato {marca:conferiu_extrato tecnica+1}
+* Entregar, voltar o troco e agradecer, que a fila tá grande -> m02_entrega {marca:caiu_comprovante}
+** Dizer, com o seu melhor sorriso: "Aqui o pastel só sai quando o Pix apita, moço. É a regra da casa" -> m02_regra_casa {marca:conferiu_extrato tecnica+1 reputacao+1}
+
+=== m02_olha_comprovante
+(Comprovante bonito é fácil de fazer. Mas vamos ver o que esse aqui está dizendo, de verdade.)
+@desafio m2_comprovante_bonito -> m02_comp_acerto | m02_comp_erro
+
+=== m02_comp_acerto
+(Agendado. Para o mês que vem. Para outra pessoa. Com valor maior para eu devolver troco em dinheiro vivo. Isso não é um comprovante, é uma promessa com logo.)
+@muda tecnica+1
+@anota m2_comprovante_agendado
+@vai m02_extrato
+
+=== m02_comp_erro
+(A tela estava verde, tinha logo, tinha número comprido. Parecia tudo certo. Tudo bonito.)
+> Você olha de novo, mas o cliente já está estendendo a mão para o saquinho.
+CLIENTE_PIX: Tá com pressa? Eu também, a festa começa às duas!
+@anota m2_comprovante_agendado
+@vai m02_entrega_dubia
+
+=== m02_entrega_dubia
+? A mão dele está no saquinho.
+* Segurar o saquinho e conferir no app do banco antes -> m02_extrato {marca:conferiu_extrato}
+* Soltar, contar o troco e entregar -> m02_entrega {marca:caiu_comprovante}
+
+=== m02_extrato
+EU: Só um minutinho, que eu confiro tudo aqui no aplicativo. É rapidinho.
+> Você abre o aplicativo do banco da loja. Extrato do dia. Os Pix do almoço, um embaixo do outro: R$ 16,00, R$ 32,00, R$ 8,00.
+> Nenhum de R$ 300,00. Nenhum de R$ 168,00. Nada de nenhum genro de nenhuma sogra.
+@entra cliente_pix surpresa esquerda
+CLIENTE_PIX: Às vezes demora, né? O sistema do meu banco é lento.
+(Pix não é lento. Pix cai em segundos. Se não caiu, não foi pago. O que vale não é a tela dele, é o extrato meu.)
+? O que dizer?
+* "Sem problema. Espero cair. Pode sentar ali que eu trago um cafezinho." -> m02_espera {paciencia+1 reputacao+1}
+* "Isso aí é Pix agendado, moço. Agendado não é pago." -> m02_confronta {tecnica+1}
+** Jefferson, com a escumadeira na mão: "Senhor, aqui a gente acredita em Deus e no extrato. O resto paga adiantado." -> m02_jefferson_escumadeira {rel_jefferson+2}
+
+=== m02_espera
+> Ele senta. Olha para o celular. Olha para a porta. Levanta.
+CLIENTE_PIX: Sabe que eu vou ali no carro pegar o outro celular? Esse aqui tá com a internet ruim.
+> Ele sai. O carro, que você nem tinha visto, arranca da esquina com pressa demais para quem tinha festa às duas.
+@sai cliente_pix
+@vai m02_depois
+
+=== m02_confronta
+EU: O seu comprovante diz "agendado", com data do mês que vem, e o nome do recebedor nem é o da loja. Não caiu nada aqui.
+CLIENTE_PIX [brava]: Você tá me chamando de golpista?
+EU: Tô dizendo que o pastel sai quando o dinheiro chegar. Igual pra todo mundo.
+> Ele resmunga alguma coisa sobre "comércio que não confia no cliente", pega o celular e sai sem olhar para trás.
+@sai cliente_pix
+@vai m02_depois
+
+=== m02_jefferson_escumadeira
+> O Jefferson aparece no balcão com a escumadeira levantada como um cetro. Não é ameaça. É liturgia.
+CLIENTE_PIX: Calma, campeão! Eu vou ali ver o que aconteceu com o meu banco.
+@sai cliente_pix
+JEFFERSON: Ele não volta.
+EU: Ele não volta.
+JEFFERSON [feliz]: Doze pastéis para o almoço da equipe, então.
+@vai m02_depois
+
+=== m02_regra_casa
+CLIENTE_PIX: Claro, claro! É só esperar, já foi!
+> Você olha o extrato no celular. Vinte segundos. Trinta. Um minuto.
+> Nada.
+CLIENTE_PIX: Engraçado... deve ser o meu banco. Volto já.
+@sai cliente_pix
+(Pix de verdade chega antes de eu terminar de falar "Pix". Quem diz "já foi" e não chega, não foi.)
+@anota m2_comprovante_agendado
+@vai m02_depois
+
+=== m02_entrega
+@sai jefferson
+> Você conta cento e trinta e dois reais do caixa, nota por nota, e entrega junto com o saquinho e o caldo.
+CLIENTE_PIX: Você é um anjo! Vou deixar cinco estrelas!
+@sai cliente_pix
+> Ele sai. O carro arranca da esquina.
+> Meia hora depois, entre um pastel e outro, você abre o extrato para fechar o almoço.
+> Não tem nenhum Pix de R$ 300,00.
+@som alarme
+@muda caixa-300
+(Cento e sessenta e oito em pastel e caldo, cento e trinta e dois em dinheiro vivo. Trezentos reais por uma tela bonita.)
+@entra jefferson triste direita
+JEFFERSON: Patroa... aquele comprovante era agendado. Eu vi de canto de olho, mas achei que você tinha visto.
+EU: Por que você não falou?
+JEFFERSON [envergonhada]: Porque você é a patroa.
+(E é justamente por isso que ele devia ter falado. Regra nova: qualquer um aqui pode dizer "espera". Inclusive para mim.)
+@muda rel_jefferson+1
+@anota m2_comprovante_agendado
+@vai m02_depois
+
+=== m02_depois
+@musica alegre
+@se marca:caiu_comprovante -> m02_depois_prejuizo
+@som dinheiro
+@muda caixa+168
+> Os doze pastéis não desperdiçam: a família de cinco que chega logo depois leva tudo, caldo incluso, e paga no Pix. Pix que cai na hora, apita, aparece no extrato com o nome do pagador.
+(Assim. É assim que fica um Pix de verdade. No meu extrato, não na tela de ninguém.)
+@vai m02_regra
+
+=== m02_depois_prejuizo
+> O resto do sábado passa com você conferindo cada Pix duas vezes. Uma senhora reclama da demora. Um menino pergunta se o caixa travou.
+(Não travou. Quem travou fui eu, por meia hora, olhando uma tela verde bonita.)
+@vai m02_regra
+
+=== m02_regra
+@anota m2_extrato_vale
+@entra jefferson neutra direita
+JEFFERSON: E agora, patroa? Vai ter regra nova?
+? O que muda no balcão a partir de hoje?
+* Placa no balcão: "Pix só vale quando cai na nossa conta. Obrigada pela paciência!" -> m02_placa {reputacao+1 tecnica+1}
+* Celular da loja sempre aberto no extrato, em cima do balcão, para conferir cada venda -> m02_celular_balcao {tecnica+1 marca:conferiu_extrato}
+* Parar de aceitar Pix, só dinheiro e cartão -> m02_so_dinheiro {reputacao-2 caixa-90}
+** Placa escrita pelo Jefferson, em letra de forma: "PIX AGENDADO É PIX IMAGINÁRIO. O PASTEL TAMBÉM." -> m02_placa_jefferson {rel_jefferson+1 reputacao+1}
+
+=== m02_placa
+> A placa vai para o balcão, do lado do pote de bala que serve de troco.
+> Ninguém reclama. Uma cliente até tira foto.
+(Regra escrita é regra que não depende do meu humor nem da minha pressa.)
+@vai m02_fim
+
+=== m02_celular_balcao
+> Um suporte de celular de cinco reais, um carregador emendado e o extrato do banco aberto em cima do balcão.
+> A cada Pix, um apito, um nome, um valor. Você olha, confirma, entrega.
+JEFFERSON: Parece um painel de controle de nave.
+EU: É um painel de controle de pastel.
+@vai m02_fim
+
+=== m02_so_dinheiro
+> À tarde, três clientes vão embora porque não têm dinheiro na carteira. Uma moça pergunta, educadamente, em que ano vocês estão.
+(O problema não é o Pix. O problema é acreditar na tela dos outros. Vou voltar com o Pix amanhã, com a regra certa.)
+@vai m02_fim
+
+=== m02_placa_jefferson
+> O Jefferson capricha. Desenha até um pastel de óculos escuros.
+> Três clientes leem em voz alta. Dois riem. Um pergunta se pastel imaginário tem caloria.
+JEFFERSON: Pastel imaginário não engorda. Mas também não mata a fome.
+(Ele devia escrever cartilha.)
+@vai m02_fim
+
+=== m02_fim
+@fundo portao_noite
+@musica interior
+> 21h. A porta de ferro desce. Você fecha o caixa no caderno e soma a semana.
+@se caixa<3200 -> m02_fim_baixo
+> O caixa respira. Por enquanto.
+@vai m02_mensagem_mae
+
+=== m02_fim_baixo
+> A conta dá menos do que você queria. O queijo da semana que vem já está apertado.
+@vai m02_mensagem_mae
+
+=== m02_mensagem_mae
+@som mensagem
+@zap "Mãe 💐"
+MAE: [audio 1:48] Filha, a moça do banco ligou. Disse que tá analisando. Eu falei que tenho o boletim, o protocolo e a página 34 do caderno de receitas. Ela não entendeu a parte da página 34. Ah, e o buquê ainda tá bonito. Vou fazer uma foto pro grupo da igreja e escrever embaixo "flor de golpe não murcha, mas eu também não".
+MAE: [foto] Buquê na mesa da sala com um papel escrito "NÃO PAGO TAXA DE NADA"
+EU: Mãe, você é a melhor.
+MAE: Eu sei. Amanhã é domingo, vem almoçar.
+@zap fim
+(Domingo de descanso. Segunda a gente começa de novo, com a maquininha inteira, o extrato aberto e o olho bem aberto.)
+@vai m03_inicio

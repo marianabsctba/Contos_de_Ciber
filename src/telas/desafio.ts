@@ -100,7 +100,7 @@ export function abrirDesafio(app: HTMLElement, d: Desafio, fim: (acertou: boolea
 
   if (d.tipo === 'achar') {
     const marcados = new Set<number>();
-    const msg = el('div', { class: 'mensagem-suspeita' });
+    const msg = el('div', { class: `mensagem-suspeita moldura-${d.visual ?? 'mensagem'}` });
     d.trechos.forEach((t, i) => {
       const s = el('span', {
         class: 'trecho',

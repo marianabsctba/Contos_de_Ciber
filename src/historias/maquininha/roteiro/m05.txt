@@ -1,0 +1,289 @@
+=== m05_inicio
+@cap 5 "Boleto do queijo"
+@fundo pastelaria
+@musica trabalho
+> Sexta-feira, 8h40. Uma semana depois do motoboy das flores.
+> A chapa ainda está fria, o óleo ainda está limpo e o Jefferson já está filosofando.
+@entra jefferson pensativa direita
+JEFFERSON: Patroa, a senhora já pensou que o pastel é um envelope? A massa é o papel. O recheio é a carta.
+EU: E o pastel de vento?
+JEFFERSON: O pastel de vento é carta de golpista. Bonito por fora, nada por dentro.
+(Ele fala isso às oito da manhã, antes do café. Imagina depois do terceiro.)
+@muda golpes_caidos=0
+@vai m05_conta_a
+
+# Contagem dos golpes da Parte 1 para o final caiu_em_tudo
+=== m05_conta_a
+@se !marca:caiu_comprovante -> m05_conta_b
+@muda golpes_caidos+1
+@vai m05_conta_b
+
+=== m05_conta_b
+@se !marca:caiu_qrcode -> m05_conta_c
+@muda golpes_caidos+1
+@vai m05_conta_c
+
+=== m05_conta_c
+@se !marca:caiu_tecnico -> m05_manha
+@muda golpes_caidos+1
+@vai m05_manha
+
+=== m05_manha
+> Na geladeira, o pote de muçarela tem aquele fundo triste de quem vai acabar antes do almoço de sábado.
+JEFFERSON: E falando em carta: o queijo acaba amanhã. O Seu Osvaldo vem segunda, mas o boleto dele vence hoje.
+EU: Ele mandou?
+JEFFERSON: A neta dele mandou. Por e-mail. O Seu Osvaldo diz que "boleto de papel a neta proibiu, porque é coisa do século passado".
+@som notificacao
+> Seu celular vibra no bolso do avental. Ao mesmo tempo, a primeira cliente do dia encosta no balcão: Dona Cida da farmácia, querendo um pastel de queijo e um caldo de cana com limão.
+? O e-mail chegou e a fila começou. O que vem primeiro?
+* Atender a Dona Cida primeiro, que freguesa não espera e o e-mail não foge -> m05_cida {caixa+14 rel_jefferson+1}
+* Abrir o e-mail ali mesmo, no meio do balcão, para resolver logo -> m05_email {paciencia-1}
+** Pedir para o Jefferson atender e anunciar o pastel do dia com voz de locutor de rodeio -> m05_locutor {caixa+14 rel_jefferson+2}
+
+=== m05_cida
+@sai jefferson
+> Você frita, embrulha e entrega. A Dona Cida paga no Pix e você confere no extrato do aplicativo do banco antes de soltar o pastel. Caiu. R$ 14,00, nome certinho.
+@som dinheiro
+(Uma semana atrás eu soltava pastel com comprovante na tela. Hoje eu solto com o dinheiro na conta. É menos charmoso e muito mais barato.)
+> A Dona Cida morde o pastel e fecha os olhos.
+> Ela sempre fecha os olhos no primeiro pedaço. Diz que é para "sentir o queijo sem distração".
+@vai m05_email
+
+=== m05_locutor
+JEFFERSON: SENHORAS E SENHORES! DIRETO DA RUA SETE! O PASTEL QUE DERRETE O CORAÇÃO E A MUÇARELA!
+> A Dona Cida ri tanto que pede dois. A moça do salão, do outro lado da rua, aparece na porta para ver quem morreu.
+@som dinheiro
+@sai jefferson
+(Ele é chapeiro, filósofo e agora locutor. Se eu pagasse por função, eu falia.)
+@vai m05_email
+
+=== m05_email
+@fundo cozinha_pastelaria
+> Você vai para os fundos, enxuga as mãos no pano de prato e abre o e-mail.
+> Remetente: financeiro.laticiniososvald0@ (um endereço comprido, com um zero no fim do nome).
+> Assunto: URGENTE, NOVOS DADOS BANCÁRIOS, PAGAMENTO HOJE.
+> "Prezada cliente, informamos que mudamos de banco. Desconsidere boletos anteriores. Segue boleto atualizado com reajuste do mês. Favor pagar até hoje para não suspender a entrega."
+(O Seu Osvaldo escreve "prezada cliente"? O Seu Osvaldo me chama de "menina" desde os meus catorze anos.)
+> No anexo, um boleto em PDF, bem diagramado, com o desenho de uma vaquinha no canto.
+? O boleto está aberto na tela.
+* Conferir o boleto com calma, campo por campo, antes de qualquer coisa -> m05_confere {tecnica+1}
+* Pagar logo pelo aplicativo do banco, para não faltar queijo no sábado -> m05_paga_pressa
+* Mandar o print para a Tati e perguntar o que ela acha -> m05_tati_print {rel_tati+1}
+
+=== m05_tati_print
+@zap "Tati do Açaí 🍇"
+EU: [foto] Tati, olha esse boleto do queijo. Normal?
+TATI: amiga a vaquinha tá fofa
+TATI: mas desde quando o seu osvaldo escreve URGENTE em maiúscula??
+TATI: ele escreve tudo em minúscula e sem vírgula, parece telegrama
+TATI: confere direito antes de pagar, faz favor
+@zap fim
+(A Tati entende de golpe pelo jeito que as pessoas escrevem. É análise de estilo de autoria com açaí na mão.)
+@vai m05_confere
+
+=== m05_paga_pressa
+> Você abre o aplicativo do banco, aponta a câmera para o código de barras e a tela de confirmação aparece.
+> Valor, data, um nome de beneficiário que você lê com o canto do olho, pensando no queijo.
+@som notificacao
+> Antes de você apertar "confirmar", o Jefferson grita lá da frente.
+JEFFERSON: PATROA! A senhora lembrou de olhar se é o mesmo nome do Seu Osvaldo? Depois daquele QR code eu fiquei cismado com tudo!
+(Ele tem razão. Eu nem li o nome.)
+@vai m05_confere
+
+=== m05_confere
+(Boleto não tem cara. Boleto tem campo. E cada campo tem que bater com o que eu já conheço do Seu Osvaldo.)
+> Você puxa da gaveta a pasta azul dos fornecedores: as notas fiscais do queijo dos últimos meses, grampeadas em ordem, com o carimbo do laticínio.
+@desafio m5_boleto_queijo -> m05_boleto_acerto | m05_boleto_erro
+
+=== m05_boleto_acerto
+(Beneficiário com outro nome, CNPJ que não bate com a nota fiscal, banco que ele nunca usou, valor reajustado sem ninguém avisar e um "desconsidere os anteriores" de brinde. Isso não é boleto de queijo. Isso é boleto de queijo suíço: cheio de buraco.)
+@muda tecnica+1
+@anota m5_boleto_conferir
+@vai m05_confirmar
+
+=== m05_boleto_erro
+(Eu olhei a vaquinha, olhei o valor, achei que era o reajuste do leite e quase passei batido no resto.)
+> Você confere de novo, devagar, a nota fiscal do mês passado ao lado da tela. O nome do beneficiário não é o mesmo. Nem o CNPJ.
+(Quase. Quase de novo.)
+@muda paciencia-1
+@anota m5_boleto_conferir
+@vai m05_confirmar
+
+=== m05_confirmar
+> No fim do e-mail, uma assinatura nova: "Dúvidas, ligue para o nosso financeiro", com um número de celular que você nunca viu.
+? Como confirmar se esse boleto é mesmo do Seu Osvaldo?
+* Ligar para o telefone fixo do laticínio, o que está na pasta azul há quinze anos -> m05_liga_osvaldo {tecnica+1 rel_osvaldo+1 marca:confirmou_osvaldo}
+* Ligar para o número que veio na assinatura do e-mail -> m05_liga_email
+* Pagar mesmo assim, porque sem queijo não tem pastel de queijo e sem pastel de queijo não tem sábado -> m05_paga_golpe
+** Subir na moto e ir até o sítio do Seu Osvaldo, levando um pastel de queijo de presente -> m05_visita {rel_osvaldo+2 paciencia+1 marca:confirmou_osvaldo}
+
+=== m05_liga_email
+> Atende um homem de voz macia, com barulho de escritório atrás.
+> "Laticínios Osvaldo, financeiro, bom dia! Sim, senhora, mudamos de banco, pode pagar tranquila que está tudo certo."
+(Ele confirmou rápido demais. E o Seu Osvaldo não tem "financeiro". O Seu Osvaldo tem uma caderneta e a Dona Neusa.)
+> Você pergunta pela Dona Neusa. Silêncio de dois segundos.
+> "A Dona Neusa... está de férias, senhora. Mas o boleto é esse mesmo, pode pagar."
+? O número do e-mail confirmou o próprio e-mail. Isso vale alguma coisa?
+* Desligar e ligar para o telefone que você já conhecia -> m05_liga_osvaldo {tecnica+1 rel_osvaldo+1 marca:confirmou_osvaldo}
+* Acreditar e pagar, porque a voz era tão educada -> m05_paga_golpe
+
+=== m05_paga_golpe
+@musica tensao
+> Você confirma o pagamento. R$ 1.380,00. Comprovante na tela, com uma vaquinha que agora parece estar rindo de você.
+@muda caixa-1380 golpes_caidos+1
+@marca caiu_boleto
+@som alarme
+> Meia hora depois, o celular toca. Na tela: "Seu Osvaldo Queijo 🧀". O número de sempre.
+@entra osvaldo surpresa centro
+OSVALDO: Menina, a minha neta mandou o boleto ontem? Ela falou que mandou. R$ 1.240, que nem todo mês.
+EU: Seu Osvaldo... eu paguei um de R$ 1.380. Com outro nome. O senhor mudou de banco?
+OSVALDO [brava]: Mudar de banco? Eu estou no mesmo banco desde o Plano Real, menina! Eu conheço o gerente pelo nome do cachorro!
+(O boleto de verdade estava no e-mail de verdade. O falso chegou primeiro, com urgência e vaquinha.)
+@vai m05_depois_golpe
+
+=== m05_depois_golpe
+? O dinheiro saiu. E agora?
+* Ligar na hora para o banco pelo número do aplicativo, contar tudo e depois fazer o boletim de ocorrência -> m05_avisa_banco {tecnica+1}
+* Ficar com vergonha e não contar para ninguém -> m05_vergonha {paciencia-2}
+
+=== m05_avisa_banco
+@fundo pastelaria
+> O atendente do banco registra a reclamação, anota o código de barras, a hora e o beneficiário e diz, com honestidade, que vai tentar contato com o banco de quem recebeu, mas que não pode prometer nada.
+> À tarde, você faz o boletim de ocorrência pela internet, com o e-mail, o boleto falso e o comprovante anexados.
+(Boleto pago não volta com um clique. Mas registrado, pelo menos, vira peça para pegar quem fez. E o Seu Osvaldo precisa saber que o e-mail da neta está na mira.)
+@anota m5_boleto_pago
+@vai m05_osvaldo_combina
+
+=== m05_vergonha
+(Uma pastelaria de catorze anos de feira caindo num boleto com vaquinha. Não conto nem para o espelho.)
+> Você guarda o comprovante falso no fundo da gaveta, embaixo do bloquinho de comanda.
+> Não liga para o banco. Não faz boletim. O dinheiro, se tinha alguma chance, perdeu ali.
+@vai m05_osvaldo_combina
+
+=== m05_osvaldo_combina
+OSVALDO [triste]: Menina, eu não vou te cobrar duas vezes de uma vez. Paga o meu agora e o resto a gente vê. Mas eu vou falar com a minha neta, que esse e-mail dela está mandando coisa que eu não mando.
+@muda caixa-1240 rel_osvaldo+1
+@sai osvaldo
+@vai m05_tarde
+
+=== m05_liga_osvaldo
+> Você disca o fixo do laticínio. Chama quatro vezes, que é o tempo do Seu Osvaldo largar a forma de queijo, limpar a mão no avental e achar o telefone.
+@entra osvaldo neutra centro
+OSVALDO: Alô! Laticínio!
+EU: Seu Osvaldo, é a {nome}, do pastel. O senhor mudou de banco?
+OSVALDO: Mudar de banco? Menina, eu estou no mesmo banco desde o Plano Real. Eu conheço o gerente pelo nome do cachorro.
+EU: Chegou um boleto de R$ 1.380 com outro nome e outro CNPJ. Dizendo que era do senhor.
+OSVALDO [surpresa]: Mil trezentos e oitenta? O meu é mil duzentos e quarenta, que nem todo mês! Quem é que está mandando boleto em meu nome?
+(Pronto. Um telefonema de um minuto, para um número que eu já conhecia, e o golpe inteiro desmontou.)
+@vai m05_osvaldo_certo
+
+=== m05_visita
+@fundo feira_rua
+> Você deixa o Jefferson no comando, sobe na moto e pega a estrada de terra até o sítio. Vinte minutos, duas porteiras e um cachorro que te conhece desde a barraca.
+@entra osvaldo feliz centro
+OSVALDO: Menina! Trouxe pastel? Trouxe de queijo? Do MEU queijo?
+EU: Do seu queijo, Seu Osvaldo. E trouxe uma pergunta: o senhor mudou de banco?
+OSVALDO: Mudar de banco? Eu conheço o gerente pelo nome do cachorro! Que conversa é essa?
+> Você mostra o boleto no celular. Ele põe os óculos de leitura, tira, põe de novo.
+OSVALDO [brava]: Esse nome aí não sou eu. Esse banco aí eu nunca vi. E essa vaquinha nem é das minhas, as minhas são malhadas.
+(Confirmar pessoalmente, com quem eu conheço, vale mais que qualquer número que venha dentro do próprio e-mail.)
+@vai m05_osvaldo_certo
+
+=== m05_osvaldo_certo
+OSVALDO: A minha neta mandou o de verdade ontem. Procura aí, deve ter ido para aquela pasta dos "promoção".
+> Você procura. Está lá: o boleto de verdade, com o nome do laticínio, o CNPJ da nota fiscal, o banco de sempre e R$ 1.240,00.
+> Você confere campo por campo mesmo assim. Bate tudo.
+@muda caixa-1240
+@som dinheiro
+OSVALDO: E eu vou falar com a minha neta hoje. Se alguém está mandando e-mail com o meu nome, ela tem que trocar a senha e ligar aquela coisa de código no celular.
+EU: Verificação em duas etapas, Seu Osvaldo.
+OSVALDO: Isso. A coisa do código. E vou ligar para os outros clientes. Tem a padaria, o bar do Zeca, o restaurante da rodoviária.
+@anota m5_telefone_conhecido
+@sai osvaldo
+@vai m05_tarde
+
+=== m05_tarde
+@fundo pastelaria
+@musica alegre
+> 15h. O movimento da tarde é aquele de sempre: aposentado querendo pastel de carne, estudante querendo pastel de vento com desconto e um homem de terno querendo "um pastel que não suje a gravata".
+@entra jefferson feliz direita
+JEFFERSON: Patroa, pastel que não suja a gravata não existe. Isso é que nem golpe sem pressa. Não existe.
+@muda caixa+460
+@som dinheiro
+> A tarde rende R$ 460 entre balcão, Pix conferido e as duas mesas da calçada.
+@se marca:caiu_boleto -> m05_tarde_ruim
+@vai m05_grupo
+
+=== m05_tarde_ruim
+(Quatrocentos e sessenta entrando. Mil trezentos e oitenta saindo para um desconhecido com vaquinha. O caixa não mente.)
+@expr jefferson pensativa
+JEFFERSON: Patroa, eu fiz as contas na cabeça. A gente precisa vender cem pastéis só para tapar o queijo do golpista.
+EU: Obrigada, Jefferson. Eu precisava dessa informação.
+JEFFERSON: De nada. Informação é tudo.
+@vai m05_grupo
+
+=== m05_grupo
+@sai jefferson
+@som mensagem
+@zap "Comerciantes da Rua 7 🍢🛒"
+ZECA: Boa tarde a todos. Alguém recebeu boleto estranho hoje? O meu do queijo veio com reajuste
+TATI: seu zeca o senhor pagou??
+ZECA: Ainda não. Eu pago tudo na sexta à noite, em dinheiro, na mão do Osvaldo, quando ele passa
+TATI: ele não passa na sexta à noite, seu zeca
+ZECA: Então eu pago no sábado
+> Dona Cida da farmácia enviou um áudio: "Gente, chegou boleto do fornecedor de fralda com nome diferente também. Será que é coisa?"
+> Seu Marcão da loja de 1,99 enviou uma figurinha de um gato desconfiado.
+TATI: {nome} vc que é a especialista agora, fala aí
+? O grupo inteiro está esperando a especialista da rua.
+* Mandar o print do boleto falso com os sinais marcados e explicar como conferir -> m05_grupo_aula {reputacao+1 rel_zeca+1}
+* Mandar só "cuidado com boleto" e voltar para a chapa -> m05_grupo_curto
+** Mandar um áudio imitando o Seu Osvaldo: "Menina, eu conheço o gerente pelo nome do cachorro" -> m05_grupo_imita {reputacao+1 rel_tati+1}
+
+=== m05_grupo_aula
+EU: [foto] Gente, esse aqui é o boleto falso que chegou pra mim. Olhem os sinais
+EU: Antes de pagar qualquer boleto, confiram três coisas na tela do banco: o nome do beneficiário, o CNPJ e o valor. Tem que bater com a nota fiscal e com os boletos antigos
+EU: Se mudou alguma coisa, liguem para o fornecedor no telefone que vocês já têm. Nunca no número que veio no e-mail
+ZECA: E se eu pagar em dinheiro na mão?
+TATI: aí o senhor só cai no golpe do assalto, seu zeca
+ZECA: Muito engraçada
+> Dona Cida da farmácia ligou para o fornecedor de fralda. Era golpe.
+> Dona Cida da farmácia: "Obrigada, menina. Economizei oitocentos reais e uma dor de cabeça."
+@zap fim
+(Na sexta passada, eu não sabia o que era um visor rachado. Hoje a farmácia me agradece no grupo. A rua está aprendendo junto comigo.)
+@vai m05_fim
+
+=== m05_grupo_curto
+EU: Cuidado com boleto, gente
+TATI: só isso?? 😑
+ZECA: Cuidado com o quê exatamente?
+> Ninguém responde por dez minutos.
+> Dona Cida da farmácia: "Paguei o da fralda. Era pra ter cuidado com o quê?"
+@zap fim
+(Aviso sem explicação é igual pastel de vento. Ninguém sabe o que tem dentro.)
+@muda reputacao-1
+@vai m05_fim
+
+=== m05_grupo_imita
+EU: [audio 0:12] Menina, eu estou no mesmo banco desde o Plano Real, eu conheço o gerente pelo nome do cachorro! Boleto com outro nome não é meu!
+TATI: KKKKKKKKKKKKKK
+TATI: é ele escrito
+ZECA: É ele mesmo. Ele falou isso pra mim em 1998
+EU: Brincadeira à parte: confiram nome do beneficiário, CNPJ e valor antes de pagar. E liguem para o fornecedor no número que vocês já têm
+> Dona Cida da farmácia ligou para o fornecedor de fralda. Era golpe.
+> Seu Marcão da loja de 1,99 enviou uma figurinha do Seu Osvaldo. Ninguém sabe de onde ele tirou.
+@zap fim
+(Golpe se explica melhor com risada. Ninguém esquece o gerente com nome de cachorro.)
+@vai m05_fim
+
+=== m05_fim
+@fundo portao_noite
+@musica nenhuma
+> 21h. Você abaixa a porta de aço até a metade, que é o sinal universal de "fechado, mas se for conhecido eu atendo".
+@entra jefferson pensativa direita
+JEFFERSON: Patroa, a senhora reparou que todo golpe vem com pressa? O motoboy tinha pressa. O boleto tinha pressa. O técnico tinha pressa.
+EU: E o pastel?
+JEFFERSON: O pastel também tem pressa. Mas o pastel tem motivo: esfria.
+(Se ele não fosse tão bom de chapa, eu mandava ele dar aula.)
+> O celular vibra. Número desconhecido. Uma mensagem só: "Boa noite, gostaria de fazer uma encomenda grande para amanhã."
+@sai jefferson
+@vai m06_inicio

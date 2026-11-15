@@ -1,0 +1,216 @@
+=== m04_inicio
+@cap 4 "O técnico que ligou"
+@fundo pastelaria
+@musica cidade
+> Quarta-feira, 15h. Chove de lado na Rua 7. A calçada vira rio, as mesas de fora viram ilha e o movimento vira lenda.
+@entra jefferson pensativa direita
+JEFFERSON: Patroa, a chuva é que nem cliente indeciso. Fica na porta, faz barulho e não entra.
+EU: Isso nem faz sentido.
+JEFFERSON: A chuva também não.
+> Você aproveita o vazio para fazer o que comerciante nunca tem tempo de fazer: ler e-mail.
+> No meio das promoções de óleo e do boleto do contador, um assunto em letra maiúscula.
+@som notificacao
+> "URGENTE: SUA MAQUININHA SERÁ BLOQUEADA EM 24H"
+(Bloqueada? A maquininha que só pega encostada na janela, bloqueada? Ela mal funciona desbloqueada.)
+? O e-mail está aberto na tela do celular.
+* Ler com calma, do remetente até a assinatura -> m04_le_email
+* Clicar logo no link para resolver, que sem maquininha não tem venda -> m04_clica_link {paciencia-1}
+** Ler em voz alta para o Jefferson, com voz de locutor de rádio AM -> m04_le_email {rel_jefferson+1}
+
+=== m04_clica_link
+> O dedo chega a encostar no botão azul "INSTALAR AGORA". A tela começa a carregar uma página com o logo meio esticado.
+> O celular trava por um segundo, como se ele mesmo tivesse dúvida.
+(Espera. Por que uma empresa de maquininha ia pedir para eu instalar alguma coisa por um link de e-mail? A maquininha atualiza sozinha.)
+> Você fecha a página antes de baixar qualquer coisa e volta para o e-mail.
+@vai m04_le_email
+
+=== m04_le_email
+(Vamos ver quem é você, e-mail urgente.)
+@desafio m4_email_atualizacao -> m04_email_acerto | m04_email_erro
+
+=== m04_email_acerto
+(Remetente que não é da empresa, ameaça de bloqueio em 24 horas, aplicativo por link, técnico que vai ligar pedindo código. Isso não é atualização. É a preparação de uma ligação.)
+@marca viu_email_falso
+@muda tecnica+1
+@anota m4_email_falso
+@vai m04_apaga_email
+
+=== m04_email_erro
+(Parece oficial. Tem logo, tem "prezado cliente", tem até um número de protocolo. Será que é verdade?)
+> Você deixa o e-mail aberto, meio convencida, meio desconfiada.
+@anota m4_email_falso
+@vai m04_ligacao
+
+=== m04_apaga_email
+? O que fazer com o e-mail?
+* Marcar como golpe na caixa de entrada e apagar -> m04_ligacao {tecnica+1}
+* Encaminhar para o grupo da Rua 7 com o aviso "não cliquem" -> m04_avisa_email {reputacao+1}
+
+=== m04_avisa_email
+@som mensagem
+@zap "Comerciantes da Rua 7 🍢🛒"
+EU: [foto] E-mail falso dizendo que a maquininha vai ser bloqueada. NÃO cliquem no link e não instalem nada
+TATI: chegou um igualzinho aqui ontem
+> Loja Tudo 1,99: eu cliquei mas não instalei. tem problema?
+EU: Se não instalou nem digitou nada, provavelmente não. Mas troca a senha do e-mail por garantia e não atende ninguém que ligar falando disso
+ZECA: Quem ia ligar?
+EU: Aposto que alguém vai
+@zap fim
+@vai m04_ligacao
+
+=== m04_ligacao
+@musica tensao
+@som notificacao
+> 15h40. O celular da loja toca. Número de outra cidade.
+@entra tecnico neutra esquerda
+TECNICO: Boa tarde! Falo com a responsável pelo Pastel da {nome}, na Rua 7?
+EU: É ela.
+TECNICO: Que bom! Aqui é o Rodrigo, do suporte técnico da empresa da sua maquininha. Tudo bem com a senhora? E as vendas, com essa chuva?
+(Ele sabe o nome da loja e a rua. Isso está na fachada, na internet e no aplicativo de delivery. Saber o meu endereço não prova que ele é de lugar nenhum.)
+TECNICO: Estou ligando porque a sua maquininha está com o sistema desatualizado e pode ser bloqueada amanhã. A senhora recebeu o nosso e-mail?
+TECNICO: É bem rapidinho. Eu só preciso que a senhora instale um aplicativo de suporte no seu celular, para eu acessar e fazer a atualização daqui. E depois a senhora me passa um código que vai chegar por SMS, para confirmar.
+@som alarme
+? A voz é educada, calma e prestativa. E pediu duas coisas.
+* "Vou desligar e ligar para o número oficial da empresa, que está na maquininha." -> m04_desliga {marca:ligou_oficial tecnica+2}
+* "Tá, qual é o aplicativo?" -> m04_instala {marca:caiu_tecnico}
+* "Me passa o seu nome completo, matrícula e um protocolo." -> m04_pede_dados {paciencia+1}
+** Passar o telefone para o Jefferson -> m04_jefferson_atende {rel_jefferson+2}
+* "O senhor é do mesmo pessoal do e-mail falso de hoje cedo?" -> m04_confronta_email {tecnica+1} [se marca:viu_email_falso]
+
+=== m04_pede_dados
+TECNICO: Claro! Rodrigo Almeida Santos, matrícula 4471, protocolo 2026 1115 0093. Pode anotar.
+> Ele dita tudo sem hesitar, rápido, como quem tem a resposta pronta na frente.
+(Nome, matrícula e protocolo ele inventa em um segundo. Isso não prova nada. A única coisa que prova é eu ligar para o número que eu já conheço.)
+TECNICO: Agora é só instalar o aplicativo, senhora. Senão amanhã a máquina para, e sem máquina, né...
+? Ele está esperando.
+* Desligar e ligar para o número oficial que está na maquininha -> m04_desliga {marca:ligou_oficial tecnica+1}
+* Instalar o aplicativo, já que ele tem até matrícula -> m04_instala {marca:caiu_tecnico}
+
+=== m04_confronta_email
+TECNICO: E-mail falso? Não, senhora, o nosso e-mail é oficial. Inclusive é por isso que estou ligando, para confirmar.
+EU: O e-mail veio de um endereço que não é o da empresa e me mandou instalar aplicativo por link. E agora o senhor liga pedindo a mesma coisa.
+TECNICO [brava]: A senhora vai ficar sem maquininha amanhã, então.
+EU: Prefiro ficar sem maquininha do que sem conta. Vou ligar para a empresa.
+> Ele desliga antes de você.
+@sai tecnico
+@marca ligou_oficial
+@vai m04_oficial
+
+=== m04_jefferson_atende
+> Você estende o celular. O Jefferson limpa a mão no avental, pega o aparelho e fala com a voz mais grave que ele tem.
+JEFFERSON: Alô. Aqui é o gerente de tecnologia do Pastel da {nome}.
+TECNICO: Ah, que ótimo! O senhor precisa instalar um aplicativo de suporte...
+JEFFERSON: Antes, uma pergunta de segurança. Qual o pastel mais vendido desta casa?
+TECNICO: Como?
+JEFFERSON: O pastel. Se o senhor é do suporte, o senhor tem o nosso cadastro. Carne ou queijo?
+TECNICO: Senhor, isso não tem relação com o...
+JEFFERSON: Errou. Era pizza. Boa tarde.
+> Ele desliga e devolve o celular com a dignidade de um ministro.
+@sai tecnico
+JEFFERSON: Patroa, empresa séria não liga pedindo para instalar coisa no seu celular. Meu tio caiu nessa. Ficou sem o dinheiro da moto.
+(Ele é mais esperto do que parece. Ele é sempre mais esperto do que parece.)
+EU: Mesmo assim vou ligar para a empresa, para ter certeza.
+@marca ligou_oficial
+@vai m04_oficial
+
+=== m04_desliga
+EU: Obrigada, Rodrigo. Vou desligar e ligar para o número oficial.
+TECNICO: Senhora, não precisa, eu já estou aqui com a senhora na linha, é só um minutinho...
+EU: Se for de verdade, a empresa vai me falar a mesma coisa. Tchau.
+> Você desliga. O coração está batendo no ritmo da chapa.
+@sai tecnico
+(Desligar não é falta de educação. É a única forma de saber com quem eu estou falando.)
+@vai m04_oficial
+
+=== m04_instala
+TECNICO: Ótimo! Vou mandar o link por SMS.
+> Chega a mensagem. Você baixa. O aplicativo pede várias permissões, uma atrás da outra. Você vai apertando "permitir", com o técnico falando calmo no ouvido.
+TECNICO: Isso, perfeito. Agora vai chegar um código de seis números. A senhora me lê, por favor?
+@som mensagem
+> Chega o SMS. Nele, em letra pequena, uma frase que você lê só depois de ditar os seis números: "Não compartilhe este código com ninguém."
+@som alarme
+(Não compartilhe com ninguém. E eu acabei de compartilhar com o Rodrigo.)
+> A tela do celular pisca. Por um segundo, parece que alguém mexe no seu celular sem você tocar nele.
+TECNICO: Pronto, senhora, já está atualizando. Não mexe no celular por meia hora, tá bom? Obrigado e boa tarde!
+@sai tecnico
+@vai m04_instala_reacao
+
+=== m04_instala_reacao
+@entra jefferson assustada direita
+JEFFERSON: Patroa, o seu celular tá abrindo o app do banco sozinho.
+? A tela está se mexendo sozinha.
+* Desligar o celular na hora e tirar o chip -> m04_desliga_celular {tecnica+1}
+* Esperar a meia hora, como o técnico mandou -> m04_espera_meia_hora {caixa-1290}
+
+=== m04_desliga_celular
+> Você segura o botão de desligar até a tela apagar. Tira a capinha, tira o chip, coloca tudo em cima do balcão como quem desarma uma bomba.
+(Sem internet, ele não mexe em mais nada daqui. Agora eu preciso avisar o banco e a empresa da maquininha, mas por outro aparelho.)
+> Mais tarde, você vai descobrir que, nos dois minutos em que o celular ficou ligado, saiu uma transferência de R$ 480,00 da conta da loja.
+@muda caixa-480
+@vai m04_reporta
+
+=== m04_espera_meia_hora
+> Você espera. Frita um pastel de queijo. Atende uma cliente encharcada.
+> Quando pega o celular de novo, tem quatro notificações do banco. Três transferências e uma mudança de limite.
+> Um mil duzentos e noventa reais a menos na conta da loja.
+@som alarme
+(Ele não estava atualizando nada. Ele estava usando o meu celular como se fosse dele, enquanto eu fritava pastel.)
+@vai m04_reporta
+
+=== m04_reporta
+@musica tensao
+> Pelo celular do Jefferson, você liga para o número que está escrito no verso do seu próprio cartão da conta da loja e, depois, para o número impresso na etiqueta da maquininha.
+> Para o banco: acesso bloqueado, as transferências por Pix comunicadas como golpe, pedido de devolução pelo MED, protocolo anotado. À noite, o boletim de ocorrência online.
+> Para a empresa da maquininha: "Não, senhora. Nós não ligamos pedindo para instalar aplicativo e nunca pedimos código de SMS."
+> Depois, com o celular ainda desligado, você vai à loja de celular da esquina, apaga o aplicativo estranho e restaura o aparelho. Troca a senha do banco, do e-mail e do aplicativo de delivery por um aparelho limpo.
+@marca ligou_oficial
+@muda tecnica+1
+@anota m4_falso_tecnico
+@anota m4_canal_oficial
+@vai m04_fim
+
+=== m04_oficial
+@musica interior
+> Você pega a maquininha, vira de costas e lá está, numa etiqueta: o telefone da central de atendimento. O mesmo que está no contrato e no site da empresa.
+> Você liga. Espera. Escuta uma voz gravada dizer que "sua ligação é muito importante para nós" seis vezes.
+> Até que uma atendente de verdade atende.
+EU: Me ligou um técnico de vocês, pedindo para instalar aplicativo de suporte e passar um código de SMS para atualizar a maquininha.
+> "Não fomos nós, senhora. A empresa não liga pedindo para instalar aplicativo de acesso remoto e nunca pede código que chega por SMS. A sua maquininha está em dia, não tem nenhuma atualização pendente."
+> "A senhora fez muito bem em ligar para cá. Se tiver instalado alguma coisa, desinstale e avise o banco. Se não instalou nada, é só ignorar e não atender mais esse número."
+(Empresa séria não liga oferecendo ajuda que eu não pedi. E, se ligar, quem desliga e confere sou eu.)
+@anota m4_falso_tecnico
+@anota m4_canal_oficial
+@vai m04_fim
+
+=== m04_fim
+@sai todos
+@fundo pastelaria
+@musica cidade
+> 18h. A chuva para do jeito que começou: sem avisar.
+@se marca:caiu_tecnico -> m04_fim_caiu
+@entra jefferson feliz direita
+JEFFERSON: Patroa, quatro golpes numa semana e a gente ainda tá aqui. Isso é resiliência ou teimosia?
+EU: É pastelaria.
+JEFFERSON: Faz sentido.
+@vai m04_osvaldo
+
+=== m04_fim_caiu
+@entra jefferson triste direita
+JEFFERSON: Patroa, não fica assim. O meu tio caiu, a farmácia quase caiu, o mundo cai.
+EU: Eu sabia, Jefferson. Eu sabia que banco não pede código, que empresa não pede para instalar nada. E mesmo assim, com a voz calma do lado e a chuva lá fora...
+JEFFERSON [pensativa]: Saber é a massa. Fazer na hora é a fritura. As duas coisas têm que dar certo.
+@muda paciencia-1
+@vai m04_osvaldo
+
+=== m04_osvaldo
+@som notificacao
+> O celular vibra. Uma mensagem do Seu Osvaldo, o fornecedor de queijo há quinze anos, o homem mais analógico da região metropolitana.
+@zap "Seu Osvaldo 🧀"
+OSVALDO: Boa tarde Dona {nome}. A partir de agora vou mandar o boleto do queijo por e mail. Minha neta falou que é mais moderno.
+OSVALDO: Ela que vai mandar. Eu não sei mexer nisso não.
+OSVALDO: O queijo de sexta vai ser o mesmo. O preço também. Por enquanto.
+EU: Combinado, Seu Osvaldo. Qualquer coisa estranha eu te ligo no seu número de sempre.
+OSVALDO: Número de sempre, 15 anos o mesmo. Igual o queijo.
+@zap fim
+(Boleto por e-mail. Depois de uma semana dessas. Pelo menos eu sei o número dele de cor.)
+@vai m05_inicio
