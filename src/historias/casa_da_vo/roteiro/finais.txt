@@ -1,0 +1,286 @@
+# Parte 2, finais. A ordem dos @se define a prioridade.
+
+=== fim_escolha
+@sai todos
+@fundo sala_vo_tech
+@se marca:suporte_dinheiro_saiu -> fim_golpe_do_suporte
+@se marca:camera_escondida e marca:mauro_convencido -> fim_vo_no_repouso
+@se autonomia_vo<=0 -> fim_vo_no_repouso
+@se marca:camera_ficou_aberta e marca:camera_nunca_trocou -> fim_camera_na_internet
+@se marca:camera_quintal_aberta -> fim_camera_na_internet
+@se marca:vo_assustada e marca:vo_tirou_tudo -> fim_vo_desligou_tudo
+@se marca:caique_culpado e marca:caique_magoado -> fim_caique_aprendeu_tarde
+@se marca:caique_culpado e rel_caique<=-3 -> fim_caique_aprendeu_tarde
+@se marca:vo_ensinou_vila e autonomia_vo>=5 -> fim_vo_influencer_tech
+@se seguranca>=7 e autonomia_vo>=6 -> fim_casa_segura_e_dela
+@se marca:vo_ensinou_vila -> fim_vo_influencer_tech
+@se marca:desligou_inuteis e seguranca>=6 -> fim_menos_e_mais
+@entra vo feliz centro
+> 22h. A festa acabou. Sobraram copos, um pedaço de pudim da Dona Jura e a lâmpada da sala, ainda roxa.
+> A vó senta na poltrona e olha em volta: a caixa da câmera, a moça na prateleira, a pulseira na mesa, os fios atrás da TV.
+VO: E agora, {nome}? O que fica?
+? O que responder para a vó?
+* "A senhora decide. Eu só explico cada um, e a senhora escolhe." -> fim_casa_segura_e_dela [se autonomia_vo>=5 e seguranca>=5]
+* "Se a senhora ainda quer tirar tudo da tomada, a gente tira agora." -> fim_vo_desligou_tudo [se marca:vo_assustada]
+* "Fica só o que a senhora usa. O resto a gente desliga agora, juntas." -> fim_menos_e_mais
+
+# ===================== A CASA É DELA =====================
+
+=== fim_casa_segura_e_dela
+@musica final_bom
+@fundo sala_vo_tech
+@sai todos
+> Fevereiro. Três meses depois.
+> Você chega para o almoço de domingo e a fechadura pede a senha. A senha que você sabia não funciona mais.
+@som erro
+@entra vo feliz centro
+> A vó abre a porta por dentro, com cara de quem estava esperando por isso.
+VO: Troquei ontem. Sozinha. A Jura não sabe, você não sabe, nem o Santo Antônio sabe.
+EU: E se a bateria acabar?
+VO: Tem chave física com a Jura e outra no meu sutiã. E eu troco a pilha todo primeiro sábado do mês, junto com o teste do botão. Está no caderno.
+> No caderno, com letra de agência, a lista completa: cada aparelho da casa, o que faz, quem tem acesso e como desliga.
+@se marca:botao_emergencia -> fim_casa_segura_botao
+@vai fim_casa_segura_moca
+
+=== fim_casa_segura_botao
+> Na mesa, a pulseira do botão de emergência, carregando. A lista de quem recebe o alerta mudou duas vezes. Na última versão, o Tio Mauro subiu para terceiro lugar, por bom comportamento.
+@vai fim_casa_segura_moca
+
+=== fim_casa_segura_moca
+VO: Moça, compra pilha para a fechadura.
+> A assistente de voz pede o código de confirmação. A vó fala o código. A assistente confirma o pedido.
+VO: Viu? Agora ela pergunta antes. Igual gente educada.
+EU: E se alguém da TV falar "compra pilha"?
+VO: Aí ela pergunta o código para a TV. E a TV não sabe.
+? Antes do almoço, uma última pergunta.
+* "Vó, a senhora quer que eu revise alguma coisa hoje?" -> fim_casa_segura_fim
+** "Vó, me ensina como a senhora desliga tudo, caso eu precise um dia?" -> fim_casa_segura_fim {rel_vo+1}
+
+=== fim_casa_segura_fim
+VO: Não precisa. Eu revisei tudo semana passada. Mas senta, que o frango está saindo, e me explica de novo aquilo de atualização automática, que a Jura me perguntou e eu quero responder certinho.
+(Eu passei uma semana tentando proteger a casa da minha avó. No fim, a proteção mais forte foi devolver a casa para ela, com o manual aberto.)
+@final casa_segura_e_dela
+
+# ===================== A VÓ DA VILA =====================
+
+=== fim_vo_influencer_tech
+@musica final_bom
+@fundo portao_vila
+@sai todos
+> Março. Quatro meses depois.
+> Sábado de manhã, portão da vila. A Dona Jura segura o celular na horizontal, com as duas mãos, como quem segura um troféu.
+@entra dona_jura feliz direita
+DONA_JURA: Gravando. Pode falar, Zilá.
+@entra vo feliz centro
+VO: Bom dia, vizinhança. Hoje o assunto é campainha com vídeo. Primeira regra: senha da caixa é para quem quer visita. Admin, admin, é convite.
+VO: Segunda regra: quem tem acesso ao aplicativo? Abre lá e confere. Se tiver ex-genro, tira o ex-genro.
+DONA_JURA: Foi o meu caso.
+VO: Terceira regra: empresa séria não liga oferecendo conserto. Desliga e liga no número da caixa. Essa eu aprendi do jeito difícil.
+> O vídeo tem um minuto e meio. Em uma semana, passa pelos grupos de três bairros. O padre pede para ela repetir depois da missa. O posto de saúde pede uma versão sobre golpe do falso suporte.
+@se marca:caique_tecnico -> fim_vo_influencer_caique
+@vai fim_vo_influencer_fim
+
+=== fim_vo_influencer_caique
+@entra caique feliz esquerda
+> O Caíque faz a parte prática: de crachá plastificado escrito "TÉCNICO OFICIAL DA VÓ", ele vai de casa em casa com a vó trocando senha de fábrica. Ele lê o manual antes. Às vezes até em voz alta.
+CAIQUE: Hoje a gente fez a casa do Seu Arlindo. Ele tinha onze aparelhos e usava dois.
+VO: Os outros nove foram para a caixa da aposentadoria.
+@vai fim_vo_influencer_fim
+
+=== fim_vo_influencer_fim
+> À noite, uma mensagem no seu celular.
+@zap "Vó Zilá 👵💜"
+VO: [audio 0:22] {nome}, uma senhora de outro bairro me mandou mensagem pedindo para eu olhar a câmera dela. Eu falei que olhar a câmera dos outros eu não olho. Mas ensinei ela a trocar a senha por telefone. Ela que mexeu. Eu só falei. Tá certo assim?
+EU: Tá certíssimo, vó. É exatamente assim.
+VO: [figurinha] Boa noite, vila protegida 🔒🌻
+@zap fim
+(A vó tem mais alcance que eu, que trabalho com isso há dez anos. E ela nunca mexeu na casa de ninguém. Ela ensina a pessoa a mexer.)
+@final vo_influencer_tech
+
+# ===================== MENOS É MAIS =====================
+
+=== fim_menos_e_mais
+@musica final_bom
+@fundo sala_vo_tech
+@sai todos
+> Janeiro. Seis semanas depois.
+> A caixa de sapato do Caíque, a da aposentadoria, está em cima do guarda-roupa, cheia. Balança, impressora do vô, campainha com vídeo, a câmera da sala.
+@entra vo feliz centro
+VO: Sabe que a casa ficou mais quieta? Antes eu achava que tinha gente aqui. Era tudo piscando, apitando, mandando aviso. Agora é só eu, a novela e a moça.
+@se marca:botao_emergencia -> fim_menos_botao
+> Na mesa, ela deixou uma pulseira de botão de emergência ainda na caixa.
+VO: Esse aqui eu estou pensando. Sem pressa. Quando eu decidir, você me ajuda a configurar.
+@vai fim_menos_fim
+
+=== fim_menos_botao
+> No pulso, a pulseira do botão de emergência. Ela testa todo primeiro sábado do mês e anota no caderno.
+VO: Esse fica. Esse não filma, não grava e não me julga. Só chama a Jura.
+@vai fim_menos_fim
+
+=== fim_menos_fim
+> Ficou pouca coisa. E cada uma está atualizada, com senha própria, na rede dos trecos, e a vó sabe para que serve.
+> Às 20h59, a lâmpada da sala fica roxa. Abertura da novela.
+VO: Essa nunca vai para a caixa.
+(Oito aparelhos instalados numa tarde. Três ficaram. A casa ficou menor no aplicativo e maior para ela.)
+@final menos_e_mais
+
+# ===================== TUDO FORA DA TOMADA =====================
+
+=== fim_vo_desligou_tudo
+@musica triste
+@fundo sala_vo_tech
+@sai todos
+> Dezembro. Duas semanas depois da festa.
+> A casa da vó está como era antes do Caíque: sem câmera, sem campainha com vídeo, sem lâmpada colorida, sem a moça. Tudo numa caixa de papelão, embaixo da escada.
+@entra vo neutra centro
+VO: Pelo menos ninguém entra pela tomada.
+> Ela tem razão. A casa está segura. Não tem porta aberta na internet porque não tem nada ligado na internet.
+> Numa terça à noite, a vó escorrega no tapete do banheiro. Não quebra nada. Mas fica no chão quarenta minutos, chamando, até a Dona Jura ouvir pela parede.
+@se marca:botao_emergencia -> fim_desligou_botao
+@vai fim_desligou_fim
+
+=== fim_desligou_botao
+VO: O botão estava na gaveta. Com a bateria carregada e tudo.
+(O único aparelho que não filmava, não gravava e não ouvia nada foi junto com os outros. Porque o medo não escolhe.)
+@vai fim_desligou_fim
+
+=== fim_desligou_fim
+@expr vo pensativa
+VO: Eu não quero a casa piscando de novo, {nome}. Mas aquilo de chamar alguém quando eu cair. Isso eu quero pensar.
+? O que responder?
+* "A gente pensa junto, vó. No seu tempo. Só o que a senhora escolher." -> fim_desligou_ultima {autonomia_vo+1}
+* "Eu falei que o botão era importante." -> fim_desligou_ultima {rel_vo-1}
+
+=== fim_desligou_ultima
+> No Natal, a pulseira sai da gaveta. Uma só. Sem câmera, sem campainha, sem lâmpada. A vó escolhe quem recebe o alerta, testa uma vez e guarda o manual dentro do caderno.
+(Ela ficou segura. Mas o medo levou junto o que ajudava. Da próxima vez que alguém se assustar, eu quero estar lá antes de o susto decidir.)
+@final vo_desligou_tudo
+
+# ===================== O CAÍQUE APRENDEU =====================
+
+=== fim_caique_aprendeu_tarde
+@musica triste
+@fundo sala_vo_tech
+@sai todos
+> A casa ficou arrumada. Senhas trocadas, aparelhos que não serviam na caixa, a vó dona das próprias decisões.
+> Mas no almoço de domingo, tem uma cadeira vazia.
+@entra vo pensativa centro
+VO: O Caíque não vem de novo. Diz que está trabalhando.
+EU: Num domingo?
+VO: Ele não vem desde a festa. Acha que todo mundo acha que foi culpa dele.
+(Todo mundo, não. Eu achei. E disse em voz alta, na frente do pai dele.)
+> As semanas passam. O Caíque responde o grupo com figurinha, curte as fotos, manda "parabéns" no aniversário do Tio Mauro. Mas não aparece.
+? Em dezembro, você tenta mais uma vez.
+* Mandar uma mensagem para ele, só ele, pedindo desculpas sem "mas" -> fim_caique_natal {rel_caique+2}
+* Pedir para a vó chamar ele para o Natal -> fim_caique_natal {autonomia_vo+1}
+
+=== fim_caique_natal
+@entra caique envergonhada direita
+> Véspera de Natal. O Caíque aparece no portão com um presente embrulhado e um papel na mão.
+CAIQUE: Vó, é um porta-retrato digital. Mas eu li o manual inteiro antes. Tem senha nova, está atualizado, e eu imprimi as configurações para a senhora conferir.
+VO: Leu o manual?
+CAIQUE: Li até a caixa, vó. A caixa tem informação importante.
+@expr vo feliz
+VO: Senta aqui do meu lado. E pede desculpa para a sua prima, que ela também te deve uma.
+(Deu tudo certo com a casa. Com o Caíque, demorou quatro meses. A casa a gente configura numa tarde. Gente, não.)
+@final caique_aprendeu_tarde
+
+# ===================== A SALA VIROU VÍDEO =====================
+
+=== fim_camera_na_internet
+@musica final_ruim
+@fundo home_office_noite
+@sai todos
+> Fevereiro. Uma quarta-feira, 23h40.
+> Um colega do trabalho te manda um link, com uma mensagem curta: "isso não é a casa da sua avó?".
+> É. Um fórum estranho, com imagens de câmeras abertas do mundo inteiro. Um trecho de vídeo, com a data da semana passada.
+@se marca:camera_quintal_aberta -> fim_camera_quintal
+> A sala da vó. A poltrona, a lâmpada roxa, a novela. A vó cochilando de boca aberta. Alguém comentou embaixo com um emoji de risada.
+@vai fim_camera_desliga
+
+=== fim_camera_quintal
+> O quintal da vó. A horta, o gato do vizinho e, às sete da manhã, a vó de camisola regando o manjericão, conversando sozinha. Alguém comentou embaixo com um emoji de risada.
+@vai fim_camera_desliga
+
+=== fim_camera_desliga
+(Senha de fábrica. A que eu deixei para "depois". O depois chegou e eu não estava lá.)
+> No dia seguinte cedo, você tira a câmera da tomada, troca a senha de tudo, revisa quem tem acesso e denuncia o vídeo no próprio fórum e nos lugares onde ele foi repassado. Alguns tiram do ar. Outros, não.
+@entra vo triste centro
+VO: Quantas pessoas viram?
+EU: Não sei, vó.
+VO: Eu cochilando. Na minha sala.
+> Ela não chora. Ela vira a poltrona de costas para a estante, onde a câmera ficava, e passa a assistir novela de lado.
+? O que você faz agora?
+* Sentar do lado dela e assistir a novela de lado também -> fim_camera_ultima {rel_vo+1}
+* Explicar de novo como aconteceu -> fim_camera_ultima {paciencia-1}
+
+=== fim_camera_ultima
+(Uma câmera com admin e admin é uma porta destrancada numa rua em que passa o mundo inteiro. Eu sabia disso desde o primeiro domingo.)
+@final camera_na_internet
+
+# ===================== O SUPORTE QUE NÃO ERA =====================
+
+=== fim_golpe_do_suporte
+@musica final_ruim
+@fundo agencia_banco
+@sai todos
+> Dezembro. Agência do banco, terceira visita.
+@entra vo triste centro
+> A contestação do Pix foi analisada. O dinheiro saiu da conta de destino em menos de dez minutos e foi pulverizado em outras contas. Os três mil e oitocentos reais não voltam.
+VO: Era o dinheiro do presente de Natal dos netos. E da pilha da fechadura. E do gás.
+EU: Vó, a gente fez tudo certo depois. Boletim, contestação, senha nova. O resto foi ele.
+VO: Eu instalei. Eu li o número. Eu abri o banco.
+> No caderno dela, na página do dia, está escrito com letra trêmula: "EMPRESA NÃO LIGA."
+@se marca:mauro_convencido -> fim_golpe_mauro
+@vai fim_golpe_fim
+
+=== fim_golpe_mauro
+@entra tio_mauro neutra direita
+TIO_MAURO: Viu, mãe? É isso que eu falo.
+VO: Fala, Mauro. Mas paga o gás esse mês, que eu estou sem.
+> Pela primeira vez, o Tio Mauro não abre a planilha. Ele só paga o gás.
+@vai fim_golpe_fim
+
+=== fim_golpe_fim
+? O que dizer para a vó na saída da agência?
+* "A culpa é de quem rouba, vó. Não de quem foi roubada." -> fim_golpe_ultima {rel_vo+1}
+* "Da próxima vez, me liga antes de qualquer coisa." -> fim_golpe_ultima
+
+=== fim_golpe_ultima
+> Na semana seguinte, a vó conta a história inteira na reunião da terceira idade da paróquia. Sem esconder nada, nem o número que ela leu.
+VO: Se eu caí, vocês caem. Ele é profissional. Então desliga, e liga no número da caixa.
+(Ela perdeu o dinheiro. Não perdeu a coragem de contar. Mas eu queria tanto ter chegado um minuto antes.)
+@final golpe_do_suporte
+
+# ===================== CONTRA A VONTADE DELA =====================
+
+=== fim_vo_no_repouso
+@musica final_ruim
+@fundo hospital_corredor
+@sai todos
+> Janeiro. Recanto Feliz.
+> O corredor cheira a desinfetante e a sopa. As portas têm o nome de cada morador num papel plastificado. Numa delas: "ZILÁ".
+@se marca:camera_escondida -> fim_repouso_video
+> A confusão daquelas semanas virou um documento. A câmera na internet, a moça, a fechadura, o golpe. Cada coisa que a gente deixou de configurar virou uma linha na aba "Ocorrências". E cada vez que alguém decidiu por ela, a planilha ficou mais forte.
+@vai fim_repouso_quarto
+
+=== fim_repouso_video
+> A câmera escondida gravou a vó tropeçando no tapete da sala numa noite. Ela levantou sozinha, ajeitou o tapete e voltou para a novela. O Tio Mauro mostrou só a parte do tropeço, para a família inteira.
+(Uma câmera escondida não protegeu ninguém. Ela só deu ao Tio Mauro o vídeo que ele queria.)
+@vai fim_repouso_quarto
+
+=== fim_repouso_quarto
+@entra vo triste centro
+> A vó está sentada na cama, de vestido florido, com o caderno de capa dura no colo.
+VO: A comida é boa. A enfermeira é educada. A janela dá para um jardim bonito.
+VO: Mas não é a minha casa, {nome}. Aqui eu não decido nem a hora do banho.
+> Pela janela, um jardim muito bem cuidado, com flores que ela não plantou.
+? O que você faz?
+* Prometer que vai conversar com o Tio Mauro de novo, com ela junto, e que ela vai ser ouvida -> fim_repouso_ultima {autonomia_vo+1}
+* Dizer que talvez seja melhor assim -> fim_repouso_ultima {rel_vo-1}
+
+=== fim_repouso_ultima
+VO: Leva o meu caderno para casa. Deixa na gaveta da cozinha. Para quando eu voltar.
+> Lá fora, no estacionamento, você senta no carro e fica um tempo sem ligar o motor.
+(A gente queria proteger a vó da tecnologia. Ninguém protegeu a vó da gente. Segurança que tira a autonomia de alguém não é segurança.)
+@final vo_no_repouso

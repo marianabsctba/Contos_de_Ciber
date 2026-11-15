@@ -4456,6 +4456,487 @@ function quartoDoPai(): string {
   return c.fim(corpo);
 }
 
+// --- A Casa Inteligente da Vó -----------------------------------------------
+
+function assistenteVoz(c: Cena, x: number, y: number, s: number): string {
+  // (x, y) = base
+  return g(
+    c.brilho(x, y - 40 * s, 90 * s, "#5ad8ff", 0.4) +
+      rr(x - 40 * s, y - 90 * s, 80 * s, 90 * s, 30 * s, "#2a2d34") +
+      cam(`M${x - 40 * s},${y - 60 * s} L${x + 40 * s},${y - 60 * s}`, "none", `stroke="#3a3e48" stroke-width="2"`) +
+      elip(x, y - 88 * s, 38 * s, 8 * s, "#1a1c22") +
+      elip(x, y - 88 * s, 30 * s, 5 * s, "none", `stroke="#5ad8ff" stroke-width="${3 * s}"`) +
+      (() => {
+        let p = "";
+        for (let r = 0; r < 3; r++) for (let k = 0; k < 5; k++) p += circ(x - 24 * s + k * 12 * s, y - 50 * s + r * 12 * s, 2 * s, "#4a4e58");
+        return p;
+      })(),
+  );
+}
+
+function cameraSeg(c: Cena, x: number, y: number, s: number, rot = 0): string {
+  return g(
+    rr(x - 14 * s, y - 50 * s, 28 * s, 50 * s, 6 * s, "#f2f2ee") +
+      rr(x - 40 * s, y, 80 * s, 56 * s, 22 * s, "#fbfbf8", `stroke="#ddd" stroke-width="2"`) +
+      circ(x + 10 * s, y + 28 * s, 18 * s, "#1a1c22") +
+      circ(x + 10 * s, y + 28 * s, 8 * s, "#3a4a6a") +
+      circ(x + 14 * s, y + 24 * s, 3 * s, "#fff", `opacity="0.7"`) +
+      circ(x - 22 * s, y + 14 * s, 4 * s, "#3ab0ff") +
+      c.brilho(x - 22 * s, y + 14 * s, 26 * s, "#3ab0ff", 0.8),
+    rot ? `transform="rotate(${rot} ${x} ${y})"` : "",
+  );
+}
+
+function salaVoTech(): string {
+  const c = new Cena("sala_vo_tech");
+  semear(9191);
+  const crocheSofa = c.padrao(40, 40, ret(0, 0, 40, 40, "#f2e2c8") + circ(20, 20, 12, "none", `stroke="#e08aa0" stroke-width="4"`) + circ(20, 20, 4, "#f6d65a") + circ(0, 0, 8, "none", `stroke="#9ac0a0" stroke-width="3"`) + circ(40, 40, 8, "none", `stroke="#9ac0a0" stroke-width="3"`));
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#f0dcd0"], [1, "#e0c4b4"]])) +
+    // luz roxa das lâmpadas coloridas
+    c.brilho(300, 140, 560, "#b46aff", 0.45, 420) +
+    c.brilho(840, 160, 480, "#ff6ad8", 0.3, 360) +
+    ret(0, 0, 1080, 1360, c.padrao(70, 70, ret(0, 0, 70, 70, "none") + circ(35, 35, 5, "#c08a9a", `opacity="0.25"`))) +
+    ret(0, 0, 1080, 80, "#f6eadf") +
+    // pendentes com lâmpada colorida
+    linha(300, 0, 300, 120, "#3a2a2a", 3) +
+    circ(300, 145, 26, "#d8a0ff") +
+    c.brilho(300, 145, 90, "#c08aff", 0.9) +
+    linha(840, 0, 840, 100, "#3a2a2a", 3) +
+    circ(840, 125, 24, "#ff9ae8") +
+    c.brilho(840, 125, 80, "#ff8ae0", 0.9) +
+    // câmera branca no canto do teto
+    cameraSeg(c, 1020, 90, 1.1, 20) +
+    // estante com TV, santinho, assistente de voz, porta-retratos
+    ret(200, 460, 680, 620, "#7a4e2e") +
+    ret(220, 480, 640, 580, "#5a3820") +
+    ret(220, 740, 640, 16, "#7a4e2e") +
+    ret(220, 920, 640, 16, "#7a4e2e") +
+    // TV com novela
+    rr(360, 520, 360, 210, 6, "#111") +
+    ret(372, 532, 336, 176, c.lin([[0, "#f2b88a"], [1, "#b86a5a"]])) +
+    pessoa(470, 708, 0.85, "#8a1f3a", "#e0b48c") +
+    pessoa(610, 708, 0.9, "#1a2a4a", "#8a5a3c") +
+    elip(470, 545, 30, 18, "#5a2a14") +
+    txt(540, 560, "\"VOCÊ NÃO É MEU PAI!\"", 18, "#fff", { peso: "bold" }) +
+    croche(540, 508, 380) +
+    // santinho + assistente de voz lado a lado
+    rr(250, 600, 70, 120, 35, "#f6f0e0") +
+    elip(285, 640, 12, 14, "#e0b48c") +
+    cam(`M262,720 Q285,650 308,720 Z`, "#3a6ab0") +
+    circ(285, 638, 24, "none", `stroke="#f6d65a" stroke-width="3"`) +
+    assistenteVoz(c, 790, 730, 0.9) +
+    bilhete(740, 600, 110, 60, ["chama de", "a moça"], 14, 6) +
+    // porta-retratos dos netos
+    portaRetrato(250, 800, 110, 120, "#d6a63a", "#9ac0d8", 2) +
+    portaRetrato(380, 790, 100, 130, "#f2efe6", "#f6d0a0", 1) +
+    portaRetrato(500, 805, 140, 115, "#c0c0c0", "#b8d8a0", 3) +
+    portaRetrato(660, 795, 100, 125, "#ff9ac2", "#d0c0f0", 1) +
+    // tomada inteligente na cafeteira (prateleira de baixo)
+    rr(270, 960, 120, 90, 10, "#3a3a3a") +
+    rr(290, 930, 80, 40, 6, "#e8f4fa", `opacity="0.6"`) +
+    rr(400, 1010, 50, 46, 8, "#fbfbf8", `stroke="#ccc"`) +
+    circ(425, 1022, 4, "#4cff6a") +
+    c.brilho(425, 1022, 24, "#4cff6a", 0.7) +
+    `<path d="M390,1030 C395,1040 398,1040 400,1035" stroke="#222" stroke-width="3" fill="none"/>` +
+    rr(500, 980, 180, 70, 6, "#2a2a2a") +
+    txt(590, 1022, "DVD", 18, "#888") +
+    vaso(760, 1010, 0.6, "#c0392b", "#e8e1d0") +
+    // relógio cuco e quadro de paisagem
+    quadro(40, 200, 130, 180, "#7a4e2e", ret(52, 212, 106, 156, "#7aa0c0") + morro(52, 158, 300, 368, 20, 2, "#5a8a4a")) +
+    cam(`M920,220 L1000,180 L1080,220 L1080,380 L920,380 Z`, "#6a4428") +
+    circ(1000, 290, 40, "#fbfaf5") +
+    linha(1000, 290, 1000, 262, "#222", 4) +
+    linha(1000, 290, 1020, 300, "#222", 4) +
+    linha(980, 380, 980, 440, "#c9a46a", 3) +
+    linha(1020, 380, 1020, 470, "#c9a46a", 3) +
+    // sofá de crochê
+    rr(20, 1150, 1040, 210, 40, "#6a3a3a") +
+    rr(40, 1080, 1000, 150, 50, "#7a4444") +
+    rr(80, 1100, 440, 170, 40, crocheSofa, `opacity="0.95"`) +
+    rr(560, 1100, 440, 170, 40, crocheSofa, `opacity="0.95"`) +
+    rr(140, 1120, 110, 80, 20, chita(c), `transform="rotate(-10 195 1160)"`) +
+    // controles e celular da vó com letra gigante
+    rr(820, 1140, 70, 120, 10, "#111", `transform="rotate(15 855 1200)"`) +
+    rr(828, 1150, 54, 90, 6, "#fff", `transform="rotate(15 855 1200)"`) +
+    txt(856, 1205, "A", 40, "#111", { peso: "bold", rot: 15 }) +
+    piso(c, 1360, "#b89a7a", "#8a6a50", "#7a5a40") +
+    elip(540, 1560, 420, 100, "#b46aff", `opacity="0.18"`);
+  return c.fim(corpo);
+}
+
+function portaoVila(): string {
+  const c = new Cena("portao_vila");
+  semear(9292);
+  const casinha = (x: number, w: number, cor: string, porta: string) =>
+    ret(x, 420, w, 900, cor) + cam(`M${x - 10},430 L${x + w / 2},330 L${x + w + 10},430 Z`, "#a8553a") + rr(x + w / 2 - 60, 1040, 120, 280, 6, porta) + ret(x + 40, 560, 110, 120, "#cfe8f4", `stroke="#fff" stroke-width="8"`);
+  const lata = (x: number, y: number, cor: string) => ret(x - 30, y - 70, 60, 70, cor) + ret(x - 30, y - 70, 60, 8, "#999") + vaso(x, y - 70, 0.55, "#3e8a4f", "none");
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#8ac8f0"], [1, "#e6f4fb"]])) +
+    nuvem(800, 150, 0.9, "#fff", 0.9, c.blur(2)) +
+    // fios e poste ao fundo
+    fios([[0, 200], [540, 230], [1080, 190]], "#333", 2) +
+    // casinhas geminadas
+    g(casinha(-40, 300, "#f2b84b", "#2f6f95") + casinha(860, 300, "#9ad0b0", "#7a3a2a"), c.blur(1.5)) +
+    casinha(260, 600, "#f4d6e0", "#3a5a8a") +
+    // janela da vizinha com cortina entreaberta (casa da direita)
+    ret(900, 560, 110, 120, "#3a3a4a") +
+    cam(`M900,560 L955,560 Q945,620 960,680 L900,680 Z`, "#f6e8a0") +
+    cam(`M1010,560 L968,560 Q975,620 968,680 L1010,680 Z`, "#f6e8a0") +
+    elip(964, 610, 10, 14, "#c48b63") +
+    circ(962, 606, 3, "#222") +
+    // muro baixo com gato
+    ret(0, 980, 1080, 120, "#e8e0d0") +
+    ret(0, 970, 1080, 16, "#c9c0ae") +
+    elip(170, 950, 60, 26, "#2a2a2a") +
+    circ(220, 930, 22, "#2a2a2a") +
+    cam(`M206,914 L210,896 L220,912 Z`, "#2a2a2a") +
+    cam(`M226,912 L234,894 L238,914 Z`, "#2a2a2a") +
+    circ(214, 930, 3, "#f6d65a") +
+    circ(228, 930, 3, "#f6d65a") +
+    `<path d="M110,950 Q80,990 100,1030" stroke="#2a2a2a" stroke-width="10" fill="none" stroke-linecap="round"/>` +
+    // portão baixo de grade
+    ret(420, 980, 280, 340, "#3a5a8a", `opacity="0.25"`) +
+    (() => {
+      let s = "";
+      for (let x = 430; x < 700; x += 30) s += ret(x, 960, 8, 360, "#2a3a5a");
+      return s + ret(420, 960, 280, 12, "#2a3a5a") + ret(420, 1140, 280, 10, "#2a3a5a");
+    })() +
+    // campainha com câmera
+    rr(740, 800, 60, 120, 14, "#1a1c22") +
+    circ(770, 830, 14, "#3a4a6a") +
+    circ(770, 830, 6, "#111") +
+    circ(770, 885, 14, "none", `stroke="#5ad8ff" stroke-width="4"`) +
+    c.brilho(770, 885, 40, "#5ad8ff", 0.6) +
+    placa(720, 720, 160, 60, "#fff", [{ t: "SORRIA :)", tam: 20, cor: "#1a3ea8" }, { t: "a vó tá vendo", tam: 14 }], { rot: -3 }) +
+    // número e caixa de correio
+    rr(300, 760, 80, 50, 6, "#fff") +
+    txt(340, 795, "14-B", 22, "#333", { peso: "bold" }) +
+    rr(300, 840, 90, 70, 6, "#c0392b") +
+    ret(310, 860, 70, 8, "#7a1f1f") +
+    // plantas em lata
+    lata(80, 1320, "#d8d8d0") +
+    lata(170, 1320, "#e63946") +
+    lata(950, 1320, "#f1c40f") +
+    lata(1030, 1320, "#2a9d8f") +
+    // varal de vizinho e bandeirinhas residuais
+    bandeirinhas(-20, 1100, 300, 20, 14, ["#e63946", "#f1c40f", "#2a9d8f"], 0.7) +
+    piso(c, 1320, "#b8b0a2", "#8a8274") +
+    ret(0, 1320, 1080, 600, c.padrao(90, 50, `<rect x="2" y="2" width="86" height="46" fill="none" stroke="#7a7266" stroke-width="3" opacity="0.25"/>`));
+  return c.fim(corpo);
+}
+
+function cozinhaVo(): string {
+  const c = new Cena("cozinha_vo");
+  semear(9393);
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#f6e6b8"], [1, "#e8cc90"]])) +
+    ret(0, 640, 1080, 480, azulejo(c, "#ffffff", "#e0608a", 56)) +
+    ret(0, 632, 1080, 12, "#e0608a") +
+    lampadaPendente(c, 540, 0, 120, "#ffe8a0", 0.35) +
+    // janela com cortininha
+    janela(c, 380, 220, 300, 260, { ceu: [[0, "#8ac8f0"], [1, "#e6f4fb"]], paisagem: arvore(c, 560, 540, 0.6, "#3f7a35", "#79b85a"), moldura: "#5aa0a0", cortina: chita(c) }) +
+    // calendário e terço
+    calendario(80, 180, 170, "PADARIA", "Pão quentinho", "2027") +
+    // prateleira com potes e rádio
+    ret(60, 560, 260, 14, "#8a6a4a") +
+    rr(70, 490, 80, 70, 10, "#7b2d26") +
+    circ(100, 525, 20, "#3a2a25") +
+    ret(120, 505, 24, 8, "#e0c47a") +
+    linha(140, 490, 180, 430, "#999", 3) +
+    rr(170, 500, 50, 60, 6, "#f2efe6", `stroke="#ccc"`) +
+    txt(195, 535, "açúcar", 11, "#c0392b", { fonte: MAO }) +
+    rr(230, 500, 50, 60, 6, "#f2efe6", `stroke="#ccc"`) +
+    txt(255, 535, "café", 11, "#7a3a1a", { fonte: MAO }) +
+    // geladeira com ímãs e bilhete
+    rr(780, 380, 260, 980, 26, c.lin([[0, "#fbfbf9"], [1, "#e2e2de"]], 0, 0, 1, 0)) +
+    ret(780, 700, 260, 6, "#ccc") +
+    ret(800, 440, 12, 200, "#bbb") +
+    ret(800, 740, 12, 240, "#bbb") +
+    bilhete(830, 420, 190, 140, ["senha do wifi", "NÃO é o nome", "do gato", "(Bolinha123)"], 18, 3, "#fdf6b2", "#c0392b") +
+    circ(880, 600, 18, "#e63946") +
+    circ(930, 610, 16, "#2a9d8f") +
+    rr(960, 590, 50, 40, 6, "#f1c40f") +
+    portaRetrato(830, 760, 110, 130, "#ff9ac2", "#bfe0f0", 2) +
+    rr(960, 770, 60, 80, 6, "#fff", `stroke="#ccc"`) +
+    txt(990, 800, "ÍMÃ", 12, "#555") +
+    txt(990, 820, "Gás", 12, "#c0392b", { peso: "bold" }) +
+    // bancada com caixinha de assistente de voz
+    ret(320, 860, 440, 34, "#8f9499") +
+    ret(330, 894, 420, 466, "#e8e1d2") +
+    assistenteVoz(c, 690, 860, 0.8) +
+    bilhete(560, 760, 100, 60, ["não fala", "\"compra\""], 13, -5) +
+    rr(380, 800, 70, 60, 6, "#d9dde0") +
+    `<path d="M420,860 L420,820 Q420,800 445,800 L460,800" stroke="#c0c6cc" stroke-width="10" fill="none"/>` +
+    // filtro de barro
+    ret(40, 980, 240, 20, "#7a5235") +
+    ret(50, 1000, 14, 360, "#6b4a33") +
+    ret(256, 1000, 14, 360, "#6b4a33") +
+    elip(160, 920, 72, 60, c.rad([[0, "#d98a5c"], [1, "#9c4d2c"]], 0.35, 0.3, 0.75)) +
+    elip(160, 810, 62, 52, c.rad([[0, "#df9465"], [1, "#a3532f"]], 0.35, 0.3, 0.75)) +
+    elip(160, 764, 46, 12, "#8a4224") +
+    ret(218, 930, 22, 8, "#c9ccce") +
+    // mesa com toalha e bolo
+    ret(180, 1120, 720, 30, chita(c)) +
+    cam(`M180,1146 L900,1146 L920,1230 L160,1230 Z`, chita(c)) +
+    ret(160, 1226, 760, 8, "#000", `opacity="0.15"`) +
+    elip(540, 1110, 130, 24, "#f2f2ee", `stroke="#ccc"`) +
+    rr(440, 1020, 200, 90, 30, c.lin([[0, "#c08040"], [1, "#9a5a2a"]])) +
+    cam(`M440,1040 Q480,1020 520,1046 Q560,1020 600,1046 Q620,1030 640,1040 L640,1030 Q540,1000 440,1030 Z`, "#fbf2dc") +
+    rr(700, 1060, 60, 60, 8, "#fff", `stroke="#ddd"`) +
+    rr(300, 1070, 46, 50, 6, "#f2efe6", `stroke="#ccc"`) +
+    g(`<path d="M323,1060 C310,1020 340,1000 320,960" stroke="#fff" stroke-width="10" fill="none" opacity="0.4"/>`, c.blur(4)) +
+    piso(c, 1360, "#c86a4a", "#8a3a2a") +
+    elip(540, 1560, 480, 120, "#fff", `opacity="0.05"`);
+  return c.fim(corpo);
+}
+
+// --- O Primeiro Celular do Theo ---------------------------------------------
+
+function blocoJogo(x: number, y: number, t: number, cor: string): string {
+  return ret(x, y, t, t, cor) + ret(x, y, t, t * 0.2, "#fff", `opacity="0.25"`) + ret(x, y + t * 0.8, t, t * 0.2, "#000", `opacity="0.2"`);
+}
+
+function quartoTheo(): string {
+  const c = new Cena("quarto_theo");
+  semear(9494);
+  const lencol = c.padrao(60, 60, ret(0, 0, 60, 60, "#3a6ab0") + ret(10, 10, 14, 14, "#5ad86a") + ret(36, 34, 14, 14, "#f1c40f") + ret(36, 8, 8, 8, "#fff", `opacity="0.4"`));
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#b8d8f0"], [1, "#98bede"]])) +
+    ret(0, 820, 1080, 540, "#7aa0c8") +
+    ret(0, 812, 1080, 12, "#5a80a8") +
+    // pôster grande do jogo de blocos inventado
+    quadro(60, 140, 380, 300, "#1a1a2a",
+      ret(72, 152, 356, 276, c.lin([[0, "#7ac8ff"], [1, "#c8f0ff"]])) +
+        (() => {
+          let s = "";
+          for (let i = 0; i < 9; i++) s += blocoJogo(72 + i * 40, 388, 40, i % 3 ? "#5aaa3a" : "#8a5a3a");
+          for (let i = 0; i < 3; i++) s += blocoJogo(232, 268 + i * 40, 40, "#8a5a3a");
+          s += blocoJogo(192, 228, 40, "#3a9a3a") + blocoJogo(232, 228, 40, "#3a9a3a") + blocoJogo(272, 228, 40, "#3a9a3a") + blocoJogo(232, 188, 40, "#3a9a3a");
+          s += blocoJogo(340, 348, 40, "#8a8a8a") + blocoJogo(340, 308, 20, "#e63946");
+          return s;
+        })() +
+        txt(250, 190, "BLOCOVERSO", 30, "#fff", { peso: "bold", extra: `stroke="#1a1a2a" stroke-width="2"` })) +
+    quadro(470, 170, 200, 260, "#1a1a2a", ret(482, 182, 176, 236, "#2a1a3a") + blocoJogo(530, 250, 80, "#3a9a3a") + ret(548, 270, 14, 14, "#111") + ret(578, 270, 14, 14, "#111") + ret(558, 296, 24, 20, "#111") + txt(570, 380, "BUUM!", 30, "#f1c40f", { peso: "bold" })) +
+    // janela com tarde
+    janela(c, 760, 200, 260, 300, { ceu: [[0, "#6ab8ec"], [1, "#e6f4fb"]], paisagem: predios(c, 760, 1020, 500, 40, 140, "#9ab0c8", "#fff", 0.05), moldura: "#f2efe6", cortina: "#f1c40f" }) +
+    // prateleira com troféu de futsal e bonecos de bloco
+    ret(470, 520, 300, 14, "#8a6a4a") +
+    cam(`M500,520 L540,520 L530,470 L510,470 Z`, "#d6a63a") +
+    ret(505, 450, 30, 22, "#f6d65a") +
+    blocoJogo(570, 480, 40, "#5aaa3a") +
+    blocoJogo(620, 490, 30, "#e63946") +
+    rr(680, 470, 60, 50, 6, "#2a9d8f") +
+    // mesa de estudo
+    ret(380, 900, 520, 34, "#e8d4b0") +
+    ret(400, 934, 20, 420, "#c9b090") +
+    ret(860, 934, 20, 420, "#c9b090") +
+    ret(700, 940, 180, 220, "#d8c4a0") +
+    ret(720, 970, 140, 70, "#c9b090") +
+    ret(720, 1060, 140, 70, "#c9b090") +
+    // caderno aberto, lápis, estojo
+    cam(`M440,890 L640,890 L650,860 L430,860 Z`, "#fff") +
+    linha(540, 860, 540, 890, "#ccc", 2) +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 4; i++) s += linha(450 + i * 2, 866 + i * 6, 530, 866 + i * 6, "#9ab", 1) + linha(550, 866 + i * 6, 630 - i * 2, 866 + i * 6, "#9ab", 1);
+      return s;
+    })() +
+    rr(660, 870, 90, 26, 10, "#e63946") +
+    linha(470, 896, 560, 884, "#f1c40f", 6) +
+    // luminária acesa
+    linha(820, 900, 840, 760, "#333", 8) +
+    linha(840, 760, 780, 720, "#333", 8) +
+    cam(`M740,700 L810,720 L790,770 L730,750 Z`, "#5ad86a") +
+    c.brilho(770, 790, 220, "#fff3c0", 0.5) +
+    // celular usado com adesivo de unicórnio e carregador
+    c.brilho(600, 850, 120, "#bcd8ff", 0.5) +
+    g(
+      rr(570, 790, 64, 120, 12, "#e8e8ea") +
+        circ(602, 850, 22, "#fff") +
+        cam(`M600,828 L606,812 L610,830 Z`, "#f6d65a") +
+        circ(602, 852, 16, "#ff9ae8") +
+        circ(596, 848, 3, "#222") +
+        cam(`M590,870 Q580,880 586,890 M614,870 Q624,880 618,890`, "none", `stroke="#9a5aff" stroke-width="5"`),
+      `transform="rotate(-14 602 850)"`,
+    ) +
+    `<path d="M590,910 C580,980 520,1000 500,1060 C480,1120 440,1140 420,1150" stroke="#fff" stroke-width="5" fill="none"/>` +
+    rr(392, 1130, 50, 70, 6, "#f2f2ee", `stroke="#aaa"`) +
+    rr(400, 1140, 34, 30, 4, "#fff", `stroke="#aaa"`) +
+    // mochila da escola encostada
+    rr(920, 1120, 140, 220, 40, "#e63946") +
+    rr(940, 1210, 100, 90, 20, "#c0302c") +
+    `<path d="M950,1130 Q990,1060 1030,1130" stroke="#a02020" stroke-width="12" fill="none"/>` +
+    rr(960, 1220, 40, 40, 8, "#f1c40f") +
+    // cama
+    rr(0, 960, 340, 400, 20, "#3a5a8a") +
+    rr(0, 1040, 330, 320, 20, lencol) +
+    rr(20, 990, 180, 70, 30, "#fff") +
+    // bola e tênis
+    circ(300, 1290, 50, "#fbfbf8", `stroke="#222" stroke-width="3"`) +
+    cam(`M300,1260 L318,1275 L312,1298 L288,1298 L282,1275 Z`, "#222") +
+    piso(c, 1360, "#c9a77a", "#9a7a52", "#8a6a44") +
+    elip(560, 1540, 340, 90, "#5ad86a", `opacity="0.25"`);
+  return c.fim(corpo);
+}
+
+function patioEscola(): string {
+  const c = new Cena("patio_escola");
+  semear(9595);
+  const corpo =
+    ret(0, 0, 1080, 1360, c.lin([[0, "#5fb2ec"], [1, "#d8eefa"]])) +
+    nuvem(250, 160, 0.9, "#fff", 0.9, c.blur(2)) +
+    // prédio da escola
+    ret(0, 300, 1080, 420, "#e8d090") +
+    ret(0, 300, 1080, 30, "#c9a85a") +
+    (() => {
+      let s = "";
+      for (let i = 0; i < 6; i++) s += ret(40 + i * 175, 380, 130, 110, "#9ad0e8", `stroke="#fff" stroke-width="6"`) + ret(40 + i * 175, 380, 130, 110, c.padrao(26, 26, ret(0, 0, 26, 26, "none") + ret(10, 0, 4, 26, "#3a3a3a", `opacity="0.6"`)));
+      return s;
+    })() +
+    rr(380, 340, 320, 30, 6, "#1d4a7a") +
+    txt(540, 362, "E. M. PROF.ª MARIA DAS DORES", 20, "#fff", { peso: "bold" }) +
+    ret(0, 560, 1080, 160, "#2a8a5a") +
+    ret(0, 556, 1080, 10, "#1a6a4a") +
+    // quadra com alambrado
+    ret(0, 720, 1080, 300, "#3a8aa0") +
+    ret(60, 740, 960, 260, "none", `stroke="#fff" stroke-width="5"`) +
+    linha(540, 740, 540, 1000, "#fff", 5) +
+    circ(540, 870, 60, "none", `stroke="#fff" stroke-width="5"`) +
+    ret(60, 820, 60, 100, "none", `stroke="#fff" stroke-width="5"`) +
+    ret(960, 820, 60, 100, "none", `stroke="#fff" stroke-width="5"`) +
+    ret(0, 600, 1080, 130, c.padrao(24, 24, `<path d="M0,0 L24,24 M24,0 L0,24" stroke="#888" stroke-width="2" opacity="0.6"/>`)) +
+    ret(0, 596, 1080, 8, "#777") +
+    g(multidao(7, 120, 960, 990, 0.6, ["#fff", "#1d4a7a", "#e8e8e8", "#2a6aa0"]), c.blur(3.5)) +
+    // árvore grande
+    arvore(c, 120, 1150, 1.5, "#2f6a2c", "#6aa64f") +
+    // mural de avisos
+    ret(640, 1000, 360, 220, "#8a5a36") +
+    ret(654, 1014, 332, 192, "#c9a77a") +
+    bilhete(670, 1030, 120, 70, ["FESTA", "JUNINA!"], 14, -4, "#ffd0d0", "#7a1f1f") +
+    bilhete(800, 1028, 120, 80, ["celular só", "no recreio"], 14, 3) +
+    bilhete(680, 1120, 130, 70, ["vacinação", "dia 12"], 14, 2, "#bfe6ff") +
+    bilhete(830, 1120, 130, 70, ["achados e", "perdidos"], 14, -3, "#d6f5c0") +
+    ret(816, 1220, 10, 100, "#6a4a2e") +
+    // bebedouro
+    rr(420, 1080, 160, 220, 10, "#c9ced2") +
+    ret(420, 1080, 160, 40, "#aeb4b8") +
+    circ(460, 1100, 10, "#555") +
+    circ(540, 1100, 10, "#555") +
+    placa(410, 1010, 180, 50, "#fff", [{ t: "ÁGUA FRIA (às vezes)", tam: 14 }], { rot: -2 }) +
+    g(multidao(4, 250, 1050, 1280, 0.85, ["#e8eef2", "#1d4a7a", "#cfd8de"]), c.blur(7)) +
+    piso(c, 1310, "#bcb4a4", "#8a8274");
+  return c.fim(corpo);
+}
+
+function salaReuniaoPais(): string {
+  const c = new Cena("sala_reuniao_pais");
+  semear(9696);
+  let roda = "";
+  for (let i = 0; i < 12; i++) {
+    const a = Math.PI + (Math.PI * i) / 11;
+    const x = 540 + Math.cos(a) * 420;
+    const y = 1150 + Math.sin(a) * 160;
+    roda += cadeiraEscola(x - 40, y + 60, 0.55);
+  }
+  const corpo =
+    ret(0, 0, 1080, 1360, "#f1e6c8") +
+    ret(0, 860, 1080, 500, "#9ab8d8") +
+    ret(0, 850, 1080, 14, "#7a98b8") +
+    ventiladorTeto(c, 220, 50, 0.7) +
+    ventiladorTeto(c, 860, 50, 0.7) +
+    fluorescente(c, 380, 140, 320, 0.4) +
+    lousa(170, 270, 740, 360) +
+    txt(540, 360, "REUNIÃO 1º BIMESTRE", 52, "#f3f3ea", { fonte: MAO, peso: "bold" }) +
+    txt(260, 440, "Pauta:", 30, "#f7e39a", { fonte: MAO, ancora: "start" }) +
+    txt(280, 490, "1. Notas", 28, "#e9efe0", { fonte: MAO, ancora: "start" }) +
+    txt(280, 535, "2. Uso do celular", 28, "#e9efe0", { fonte: MAO, ancora: "start" }) +
+    txt(280, 580, "3. Excursão (R$ 35)", 28, "#e9efe0", { fonte: MAO, ancora: "start" }) +
+    txt(820, 600, "Sejam bem-vindos!", 22, "#ffd0e0", { fonte: MAO }) +
+    // cartazes dos alunos
+    bilhete(20, 300, 130, 160, ["MINHA", "FAMÍLIA", ":)"], 18, -4, "#fff", "#2a6aa0") +
+    bilhete(930, 300, 130, 160, ["SISTEMA", "SOLAR"], 18, 4, "#fdf6b2", "#c0392b") +
+    bilhete(20, 500, 130, 140, ["Internet", "segura!"], 18, 3, "#d6f5c0", "#1d6a3a") +
+    bilhete(930, 500, 130, 140, ["Dengue", "NÃO"], 18, -3, "#ffd0d0", "#7a1f1f") +
+    relogio(540, 190, 44, 19, 5) +
+    // mesa da professora com lista e café
+    ret(380, 760, 320, 24, "#c58b4f") +
+    ret(400, 784, 280, 80, "#a8763f") +
+    ret(420, 730, 120, 30, "#fbfaf5") +
+    rr(600, 720, 40, 40, 4, "#e63946") +
+    rr(560, 740, 30, 20, 4, "#fff") +
+    // roda de carteiras
+    g(roda, c.blur(0.6)) +
+    piso(c, 1350, "#c9bfae", "#9a8f7e", "#7a7060");
+  return c.fim(corpo);
+}
+
+function onibusEscolar(): string {
+  const c = new Cena("onibus_escolar");
+  semear(9797);
+  const corpo =
+    ret(0, 0, 1080, 1400, c.lin([[0, "#d8dfe4"], [1, "#b8c2ca"]])) +
+    ret(0, 0, 1080, 140, "#eef2f4") +
+    fluorescente(c, 140, 100, 300, 0.4) +
+    fluorescente(c, 640, 100, 300, 0.4) +
+    // janelões com rua de manhã
+    (() => {
+      let s = "";
+      for (let i = 0; i < 3; i++) {
+        const x = 30 + i * 350;
+        s += rr(x, 230, 320, 420, 20, "#9aa4ad");
+        s += g(
+          ret(x + 12, 242, 296, 396, c.lin([[0, "#ffd8a8"], [1, "#e8f4fb"]])) +
+            predios(c, x + 12, x + 308, 560, 60, 200, "#c8b8a8", "#fff", 0.05) +
+            arvore(c, x + 100 + i * 30, 640, 0.6, "#4a8a3c", "#8cc56a") +
+            ret(x + 12, 560, 296, 80, "#8a8a8a"),
+          `${c.blur(3)} ${c.clip(`<rect x="${x + 12}" y="242" width="296" height="396" rx="12"/>`)}`,
+        );
+        s += ret(x + 12, 420, 296, 8, "#9aa4ad");
+      }
+      return s;
+    })() +
+    // sol batendo
+    cam(`M0,240 L1080,240 L1080,700 L0,900 Z`, "#ffe8c0", `opacity="0.12" ${c.blur(14)}`) +
+    // barras de apoio
+    ret(0, 190, 1080, 12, "#e0b030") +
+    ret(320, 190, 14, 1200, "#e0b030") +
+    ret(760, 190, 14, 1200, "#e0b030") +
+    (() => {
+      let s = "";
+      for (let x = 80; x < 1060; x += 140) s += linha(x, 200, x, 270, "#999", 3) + `<path d="M${x - 16},270 Q${x},306 ${x + 16},270 Z" fill="none" stroke="#e0b030" stroke-width="7"/>`;
+      return s;
+    })() +
+    // aviso lugar preferencial e cobrador
+    placa(380, 680, 320, 90, "#ffd23f", [{ t: "LUGAR PREFERENCIAL", tam: 22, cor: "#222" }, { t: "idosos, gestantes, PcD", tam: 16 }], { fonte: SANS }) +
+    placa(40, 690, 240, 70, "#fff", [{ t: "Não fale com", tam: 16 }, { t: "o motorista", tam: 16 }], { fonte: SANS }) +
+    // bancos
+    (() => {
+      let s = "";
+      for (let i = 0; i < 4; i++) s += rr(40 + i * 260, 900, 200, 180, 20, "#2a6aa0") + rr(40 + i * 260, 1060, 200, 60, 14, "#1d4a7a");
+      return s;
+    })() +
+    // alunos de mochila em silhueta (mochila aparece atrás do ombro)
+    g(
+      (() => {
+        let s = "";
+        for (let i = 0; i < 5; i++) {
+          const x = 120 + i * 210;
+          s += rr(x + 10, 1010, 110, 150, 30, escolhe(["#e63946", "#f1c40f", "#2a9d8f", "#9b5de5", "#ff7ad8"])) + rr(x + 30, 1060, 70, 50, 12, "#000", `opacity="0.15"`);
+        }
+        return s;
+      })() +
+        (() => {
+          let s = "";
+          for (let i = 0; i < 5; i++) s += pessoa(100 + i * 210, 1270, 1.25, escolhe(["#fff", "#1d4a7a", "#e8e8e8"]), escolhe(["#8a5a3c", "#c48b63", "#5e3a26", "#e0b48c"]));
+          return s;
+        })(),
+      c.blur(3),
+    ) +
+    piso(c, 1390, "#5a6068", "#3a4048", "#2a3038");
+  return c.fim(corpo);
+}
+
 // ---------------------------------------------------------------------------
 // Registro
 // ---------------------------------------------------------------------------
@@ -4520,6 +5001,13 @@ function montar(): Record<string, Cenario> {
     ["igreja_missa", "Missa de sétimo dia", igrejaMissa],
     ["cartorio", "Cartório", cartorio],
     ["quarto_do_pai", "Quarto do pai", quartoDoPai],
+    ["sala_vo_tech", "Sala da vó conectada", salaVoTech],
+    ["portao_vila", "Portão da vila", portaoVila],
+    ["cozinha_vo", "Cozinha da vó", cozinhaVo],
+    ["quarto_theo", "Quarto do Theo", quartoTheo],
+    ["patio_escola", "Pátio da escola", patioEscola],
+    ["sala_reuniao_pais", "Reunião de pais", salaReuniaoPais],
+    ["onibus_escolar", "Ônibus de manhã", onibusEscolar],
   ];
   const out: Record<string, Cenario> = {};
   for (const [id, nome, fn, noite] of lista) {

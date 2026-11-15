@@ -1,0 +1,257 @@
+# Parte 2, capítulo 8: Reunião de pais. Do lado da mãe.
+
+=== t08_inicio
+@cap 8 "Reunião de pais"
+@fundo casa_cozinha
+@musica alegre
+@pov fim
+> Fim do bimestre. Sábado, 8h40. A reunião de pais é às 9h30 e a escola fica a dois ônibus daqui.
+> É a primeira reunião na escola nova. Você não vai de jaleco. Hoje não.
+@roupa "Reunião de pais"
+@entra vo_cida feliz esquerda
+VO_CIDA: Ficou bonita. Parece até que dormiu.
+EU: Obrigada, Vó. Eu acho.
+@entra theo neutra direita
+THEO: Mãe, você vai falar de mim lá?
+EU: Vou falar da gente. É diferente.
+THEO: Diferente como?
+EU: Ainda tô descobrindo.
+@se marca:regras_combinadas -> t08_regras_tem
+@vai t08_regras_nao_tem
+
+=== t08_regras_tem
+> Na porta da geladeira, presa com o ímã da pizzaria, está a folha com as regras que vocês escreveram juntos no começo do bimestre. Tem letra sua, letra dele e um desenho de unicórnio no canto.
+THEO: Leva as regras. A professora vai gostar. Ela gosta de lista.
+? Dez minutos antes de sair.
+* Revisar as regras com o Theo, à luz de tudo o que aconteceu, antes de levar -> t08_revisa {confianca+1}
+* Tirar uma foto da folha e ir logo, antes de perder o ônibus -> t08_caminho
+
+=== t08_regras_nao_tem
+> A porta da geladeira tem o ímã da pizzaria, um boleto e um desenho do Theo de quando ele tinha seis anos. Regra nenhuma.
+(A gente nunca escreveu nada. Foi tudo no grito, no susto e no "depois a gente vê". E o "depois" chegou.)
+? Dez minutos antes de sair.
+* Sentar com o Theo agora e escrever as regras juntos, rapidinho -> t08_revisa {marca:regras_combinadas confianca+1}
+* Escrever sozinha uma lista de proibições e colar na geladeira -> t08_lista_sozinha {confianca-1}
+* Ir sem nada e só ouvir o que a escola tem a dizer -> t08_caminho
+
+=== t08_lista_sozinha
+> Você escreve em cinco minutos: "PROIBIDO jogo depois das 20h. PROIBIDO grupo da sala. PROIBIDO falar com estranho. PROIBIDO tudo que eu não souber."
+THEO: Isso não é regra, mãe. É castigo com caneta.
+VO_CIDA: No meu tempo a gente chamava de "porque sim".
+(E "porque sim" funciona até a primeira vez que ele achar um jeito de não precisar de mim.)
+@vai t08_caminho
+
+=== t08_revisa
+> Vocês sentam na mesa com uma folha nova e a caneta que só funciona se você sacudir.
+THEO: Eu escrevo. Minha letra é mais bonita.
+EU: Sua letra parece receita médica.
+THEO: Você é que fala que receita médica é bonita.
+@desafio t8_regras -> t08_revisa_ok | t08_revisa_erro
+
+=== t08_revisa_ok
+@som acerto
+> A folha fica pronta em quinze minutos. Assinada pelos dois. Com um unicórnio no canto, desenhado pelo Theo, de óculos escuros.
+THEO: Ficou bom. Dá pra seguir. Não é só proibição.
+EU: É isso. Regra que a pessoa entende ela segue até quando ninguém está olhando.
+@anota t8_regras_familia
+@vai t08_caminho
+
+=== t08_revisa_erro
+@som erro
+> A primeira versão sai torta: celular no quarto "se ele prometer", compra "até cinquenta reais sem pedir", e nada sobre o que fazer se alguém estranho aparecer.
+THEO: Mãe, não tem nada do Kaio aqui. Nem da zoação.
+EU: Tem razão. A gente escreveu o fácil e esqueceu o importante.
+> Vocês riscam, reescrevem e chegam atrasados no ponto. A folha nova vai na bolsa, ainda com a tinta fresca.
+@anota t8_regras_familia
+@vai t08_caminho
+
+=== t08_caminho
+@sai todos
+@fundo sala_reuniao_pais
+@musica interior
+> Sala de reunião da escola. Vinte e duas cadeiras de plástico, um ventilador de teto que range e uma mesa com café e biscoito de maisena.
+> Você reconhece a Mãe do grupo pela figurinha: ela está de roupa de academia e um laço igual ao da foto de perfil.
+@entra mae_grupo neutra esquerda
+MAE_GRUPO: Você é a mãe do Theo! A do "alguém tem a fonte?".
+@se marca:alerta_falso_checado -> t08_caminho_checou
+EU: Sou eu. A do plantão.
+@vai t08_renata
+
+=== t08_caminho_checou
+MAE_GRUPO: Olha, eu fiquei com raiva na hora. Depois eu vi que era boato mesmo. Agora eu pergunto pra minha cunhada de onde ela tirou.
+EU: E ela sabe?
+MAE_GRUPO: Nunca sabe.
+@vai t08_renata
+
+=== t08_renata
+@entra prof_renata feliz centro
+PROF_RENATA: Bom dia, famílias! Prometo ser rápida, porque sei que tem gente que saiu de plantão.
+> Ela pisca para você. Você não sabe se é solidariedade ou se a sua olheira está visível da porta.
+PROF_RENATA: O bimestre foi intenso. Teve zoação em grupo, teve desafio perigoso circulando, teve alerta falso no grupo de pais, e teve criança abordada por desconhecido em jogo.
+PROF_RENATA: Não vou dizer nomes. Vou dizer que as crianças que se protegeram melhor foram as que contaram para um adulto. E as que contaram foram as que sabiam que não iam levar bronca por contar.
+@se marca:theo_zoou -> t08_renata_davi
+@vai t08_renata_pergunta
+
+=== t08_renata_davi
+> Na lista de chamada presa na porta, o nome do Davi Lucas está riscado com caneta vermelha. Transferido.
+(Uma das montagens que fizeram ele ir embora tem a assinatura do meu filho. Ele pediu desculpa. Não foi suficiente para ele ficar.)
+@vai t08_renata_pergunta
+
+=== t08_renata_pergunta
+PROF_RENATA: Alguma família quer contar o que funcionou em casa? Ou o que não funcionou. As duas coisas ensinam.
+> Silêncio. O ventilador range. Alguém come um biscoito alto demais.
+? Vinte e uma cabeças se viram para os lados, menos para a frente.
+* Apresentar as regras que você e o Theo escreveram juntos -> t08_apresenta {marca:regras_para_sala} [se marca:regras_combinadas]
+* Contar o caso do Kaio sem dizer o nome do Theo, para alertar os outros pais -> t08_alerta_pais {etica+1} [se marca:kaio_denunciado]
+* Contar tudo, com o nome do Theo e mostrando os prints no celular -> t08_expoe {confianca-2}
+* Dizer que o celular vai para a gaveta até o ano que vem, porque é o único jeito seguro -> t08_gaveta {marca:celular_confiscado confianca-2}
+* Ficar quieta e ouvir os outros -> t08_ouve
+
+=== t08_apresenta
+> Você tira a folha da bolsa. O unicórnio de óculos escuros arranca a primeira risada da manhã.
+EU: A gente escreveu junto, eu e ele. Celular dorme na sala. Compra no jogo só com a minha aprovação e sem cartão salvo. Foto sem uniforme e sem localização. Zoação não se repassa, se guarda e se conta.
+EU: E a mais importante: se alguém estranho puxar conversa, ele me conta, e contar nunca dá bronca.
+MAE_GUI: Pode mandar foto disso no grupo?
+PROF_RENATA: Posso usar na aula de tecnologia? Cada turma escreve a sua, a partir dessa.
+@expr prof_renata feliz
+(Uma folha de caderno com ímã de pizzaria. Virou material didático.)
+@vai t08_grupo
+
+=== t08_alerta_pais
+EU: Quero contar uma coisa sem dizer de quem é. Uma criança da sala foi abordada no jogo por um desconhecido. Elogio, moeda de presente, pergunta da escola, pedido para mudar de aplicativo, pedido de segredo e pedido de foto.
+@expr mae_grupo surpresa
+EU: Ela contou para um adulto. A conta foi denunciada no jogo, bloqueada, e a família foi à delegacia com os prints.
+MAE_GRUPO: Eu nunca olhei o chat do jogo do Murilo. Nunca. Nem sabia que jogo tinha chat.
+PROF_RENATA: Obrigada. Isso ajuda mais que qualquer palestra minha.
+@anota t8_confianca
+@vai t08_alerta_mais
+
+=== t08_alerta_mais
+PROF_RENATA: E em casa? Como vocês combinaram o uso depois disso?
+? A sala inteira espera.
+* Mostrar as regras que vocês escreveram juntos -> t08_apresenta {marca:regras_para_sala} [se marca:regras_combinadas]
+* Dizer que ainda estão aprendendo, os dois -> t08_grupo {paciencia+1}
+
+=== t08_expoe
+EU: Vou ser sincera. Meu filho, o Theo, foi abordado por um desconhecido no jogo. Olha aqui os prints.
+> O celular passa de mão em mão. Três mães tiram foto da tela.
+PROF_RENATA: {nome}, obrigada pela coragem. Mas vamos cuidar para que isso não saia desta sala com o nome dele, tá?
+> Na segunda-feira, o Murilo pergunta para o Theo, no recreio, se é verdade que "um cara pediu foto dele". O Theo chega em casa e não fala com você até o jantar.
+(Eu quis proteger os filhos dos outros e expus o meu. A história era dele. Eu contei como se fosse minha.)
+@vai t08_grupo
+
+=== t08_gaveta
+EU: Eu vou guardar o celular dele na gaveta até o ano que vem. É o único jeito de ter certeza.
+@expr prof_renata pensativa
+PROF_RENATA: A decisão é sua, e eu entendo o medo. Só um pensamento: o celular sai da gaveta um dia. E ele vai precisar saber o que fazer, e com quem falar, quando isso acontecer.
+MAE_GRUPO: Eu fiz isso com o Murilo. Ele começou a usar o celular do primo escondido.
+(A gaveta protege o aparelho. Ela não ensina nada.)
+@vai t08_grupo
+
+=== t08_ouve
+> Você ouve. Um pai conta que descobriu uma compra de cento e vinte reais em moedas de jogo. Uma mãe conta que a filha postou o endereço sem querer. Outra diz que não sabe nem a senha do celular do filho.
+(Todo mundo está perdido. Ninguém está sozinho. É meio reconfortante, meio desesperador.)
+@vai t08_grupo
+
+=== t08_grupo
+@sai todos
+@fundo ponto_onibus
+@musica alegre
+> No ponto de ônibus, o celular vibra. Claro que vibra.
+@zap "Mães e Pais 6º B 📚"
+MAE_GRUPO: [figurinha] Boa tarde, mamães guerreiras 🌻
+MAE_GRUPO: Gente chegou essa aqui: "Aplicativo novo de jogo está roubando dados das crianças, desinstalem TODOS os jogos hoje!!!"
+MAE_GRUPO: Antes de alguém perguntar: eu não achei a fonte 😅
+MAE_GUI: kkkkk evoluímos
+@zap fim
+? O grupo espera alguém dizer alguma coisa.
+* Responder com o jeito de checar: data, fonte oficial e site de checagem -> t08_grupo_checa {etica+1}
+* Silenciar o grupo por oito horas e ir para casa em paz -> t08_casa {paciencia+1}
+** Mandar uma figurinha: "Boa tarde, mães que checam antes de repassar 🌻" -> t08_grupo_figurinha {etica+1} [se marca:alerta_falso_checado]
+
+=== t08_grupo_checa
+@zap "Mães e Pais 6º B 📚"
+EU: Gente, regra rápida: corrente sem data, sem fonte e com URGENTE em maiúscula, a gente confere antes. Procura o texto num site de checagem e vê se algum órgão oficial falou
+EU: E não precisa desinstalar tudo. Precisa saber o que nossos filhos jogam e com quem conversam ali
+MAE_GRUPO: Anotado. Vou fixar sua mensagem
+@zap fim
+@vai t08_casa
+
+=== t08_grupo_figurinha
+@zap "Mães e Pais 6º B 📚"
+EU: [figurinha] Boa tarde, mães que checam antes de repassar 🌻
+MAE_GRUPO: KKKKKKK
+MAE_GRUPO: [figurinha] Boa tarde, mães que checam antes de repassar 🌻
+MAE_GUI: ela já baixou e reenviou kkkk
+@zap fim
+(Corrente do bem também é corrente. Mas pelo menos é verdadeira.)
+@vai t08_casa
+
+=== t08_casa
+@fundo quarto_theo
+@musica interior
+@se marca:celular_confiscado -> t08_casa_gaveta
+@entra theo feliz centro
+THEO: Mãe! Como foi? Falaram de mim?
+EU: Falaram da turma inteira. Você estava lá no meio.
+THEO: Tá. Então. Eu queria pedir uma coisa. Eu quero começar o canal. O primeiro vídeo ia ser ensinando a não cair em site de moeda grátis.
+@se marca:caiu_moeda_gratis -> t08_casa_moeda
+@vai t08_canal_pedido
+
+=== t08_casa_moeda
+THEO: Eu caí, né. Então eu sei explicar melhor que ninguém.
+(Ele transformou o pior dia do bimestre em roteiro. Isso é coisa de youtuber ou de enfermeira?)
+@vai t08_canal_pedido
+
+=== t08_canal_pedido
+? Ele está segurando um roteiro escrito à mão, com três páginas e um desenho de cartão de crédito chorando.
+* Topar com regras: sem rosto, sem uniforme, sem localização, e você vê antes de publicar -> t08_canal_sim {marca:canal_do_theo confianca+1}
+* "Canal? Nem pensar. Internet já deu problema demais esse ano." -> t08_canal_nao {confianca-1}
+** Topar com as regras e chamar o Gui para editor e a Vó Cida para primeira inscrita -> t08_canal_turma {marca:canal_do_theo rel_gui+1 rel_vo_cida+1}
+
+=== t08_canal_sim
+EU: Pode. Com regra. Sem rosto, sem uniforme, sem nada que mostre a casa ou a rua, sem localização. Comentário moderado. E eu assisto antes de publicar.
+THEO: Posso usar a voz?
+EU: A voz pode. A cara fica para quando você tiver dezoito e eu tiver cabelo branco.
+THEO: Você já tem cabelo branco.
+EU: Então para quando eu tiver mais.
+@anota t8_canal_seguro
+@vai t08_fim
+
+=== t08_canal_turma
+EU: Pode. Com as regras: sem rosto, sem uniforme, sem localização, comentários moderados e eu assisto antes de publicar. E chama o Gui pra editar. Ele sabe os atalhos.
+THEO: E a Vó?
+@entra vo_cida feliz esquerda
+VO_CIDA: Eu sou a primeira inscrita. Como é que se inscreve? Precisa desligar alguma tomada?
+THEO: Precisa ligar, vó.
+VO_CIDA: Ah. Isso eu nunca fiz.
+@anota t8_canal_seguro
+@vai t08_fim
+
+=== t08_canal_nao
+EU: Canal não. Esse ano já deu.
+@expr theo triste
+THEO: Tá.
+> Ele guarda o roteiro na gaveta da escrivaninha, embaixo dos cadernos. Não discute. Isso é o que preocupa.
+(Talvez fosse o jeito dele de transformar o susto em alguma coisa. E eu fechei a porta antes de ver o que tinha atrás.)
+@anota t8_canal_seguro
+@vai t08_fim
+
+=== t08_casa_gaveta
+@fundo quarto_theo
+@entra theo neutra centro
+> O celular está na gaveta da sua cômoda, embaixo das meias. O Theo está lendo um gibi antigo que ele nem gosta.
+EU: Como foi o dia?
+THEO: Normal.
+EU: Aconteceu alguma coisa na escola?
+THEO: Não.
+(Ele está seguro. E respondendo tudo com uma palavra só. A gaveta guardou o celular. Junto, guardou alguma outra coisa.)
+@anota t8_confianca
+@vai t08_fim
+
+=== t08_fim
+@sai todos
+@fundo casa_cozinha
+> A noite cai. O bimestre acabou. A Vó Cida dorme no sofá com o controle da TV na mão e o roteador, por milagre, ligado.
+(Dois meses. Um celular usado com adesivo de unicórnio. E eu aprendi mais sobre o meu filho do que em onze anos.)
+@vai fim_escolha

@@ -101,3 +101,24 @@ EU: Tia, não manda mais nada!
     expect(ex.estado.vars.minutos).toBe(35);
   });
 });
+
+describe('ponto de vista', () => {
+  const pov = `
+=== a
+EU: Sou a mãe.
+@pov theo
+EU: Agora sou o Theo, e a mãe se chama {nome}.
+@pov fim
+@final fim
+`;
+  it('troca e volta o ponto de vista sem mudar o nome da protagonista', () => {
+    const r = lerRoteiro({ 'p.txt': pov });
+    const ex = new Executor(r, novoEstado(h, 'Ana', h.protagonistaPadrao.visual));
+    ex.executar();
+    expect(ex.estado.pov).toBeUndefined();
+    expect(ex.avancar()).toEqual({ t: 'fala', quem: 'eu', texto: 'Agora sou o Theo, e a mãe se chama Ana.' });
+    expect(ex.estado.pov).toBe('theo');
+    expect(ex.avancar()).toEqual({ t: 'final', id: 'fim' });
+    expect(ex.estado.pov).toBeUndefined();
+  });
+});

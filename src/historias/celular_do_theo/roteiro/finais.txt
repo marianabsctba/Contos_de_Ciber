@@ -1,0 +1,243 @@
+# Parte 2, finais. A ordem dos @se define a prioridade: primeiro os ruins, depois os agridoces.
+# Quem passa por todos chega à escolha da lembrança, que tem sempre uma opção liberada.
+
+=== fim_escolha
+@pov fim
+@sai todos
+@se marca:theo_zoou -> fim_zoador
+@se marca:segredo_semanas -> fim_segredo
+@se marca:conta_jogo_roubada e !marca:cartao_salvo_removido -> fim_fatura
+@se marca:celular_confiscado -> fim_gaveta
+@se marca:controle_escondido -> fim_espia
+@se marca:mae_descobriu_espiando -> fim_espia
+@se !marca:theo_contou_kaio -> fim_segredo
+@se !marca:kaio_denunciado -> fim_segredo
+@vai fim_lembranca
+
+=== fim_lembranca
+@fundo casa_cozinha
+@musica final_bom
+> Um mês depois. Férias. A porta da geladeira tem espaço para mais uma coisa só, entre o boleto e o ímã da pizzaria.
+? Qual lembrança do bimestre vai para a geladeira?
+* O desenho que o Theo fez da noite em que ele contou do Kaio -> fim_contou
+* A folha das regras, agora com o carimbo da escola -> fim_geladeira [se marca:regras_combinadas e marca:regras_para_sala]
+** O print do primeiro vídeo do canal -> fim_canal [se marca:canal_do_theo]
+
+# ===================== THEO CONTOU TUDO =====================
+
+=== fim_contou
+@fundo quarto_theo
+@musica final_bom
+@entra theo feliz centro
+> O desenho é feito com canetinha: uma sala, um sofá, uma mulher de crachá dormindo e um menino de pijama cutucando o ombro dela. Embaixo, escrito torto: "a noite que eu contei".
+THEO: A professora pediu pra desenhar "um dia importante do bimestre". Todo mundo desenhou a festa junina.
+EU: E você desenhou eu dormindo de boca aberta.
+THEO: Você não tava de boca aberta. Muito.
+@se marca:kaio_denunciado -> fim_contou_protocolo
+@vai fim_contou_noite
+
+=== fim_contou_protocolo
+> O número do protocolo da denúncia está guardado numa pasta, junto com os prints e o boletim da delegacia. A pasta tem uma etiqueta na letra do Theo: "provas. NÃO JOGAR FORA".
+> Duas semanas depois da denúncia, o perfil Kaio_Pro_2009 não existe mais no BlocoVerso.
+@vai fim_contou_noite
+
+=== fim_contou_noite
+> Na hora de dormir, ele chama você de volta quando você já está na porta.
+THEO: Mãe.
+EU: Hum?
+THEO: Naquela noite eu quase não fui. Mas aí eu pensei que você ia me ouvir. E eu sabia que você ia me ouvir.
+@expr theo feliz
+(Nenhum aplicativo de controle, nenhuma configuração, nenhuma senha faz isso. Ele contou porque confiava. Eu passei o bimestre inteiro construindo isso sem saber que estava construindo.)
+EU: Eu sempre vou te ouvir. Até de boca aberta.
+@final theo_contou_tudo
+
+# ===================== REGRAS NA GELADEIRA =====================
+
+=== fim_geladeira
+@fundo sala_reuniao_pais
+@musica final_bom
+@entra prof_renata feliz esquerda
+> A escola imprimiu a folha de vocês em tamanho de cartaz. O unicórnio de óculos escuros saiu meio pixelado, mas saiu.
+PROF_RENATA: Cada turma do sexto ano escreveu as suas regras a partir das de vocês. O 6º A colocou "celular não vai ao banheiro". O 6º C colocou "não pode mandar áudio de mais de dois minutos".
+EU: Essa última é para os pais.
+PROF_RENATA: Eu sei. Foi ideia minha.
+@entra theo feliz direita
+THEO: Mãe, o Gui quer que a família dele copie a nossa.
+@entra gui feliz centro
+GUI: Mas sem a do horário. A do horário a gente negocia.
+@se marca:alerta_falso_checado -> fim_geladeira_grupo
+@vai fim_geladeira_fim
+
+=== fim_geladeira_grupo
+@zap "Mães e Pais 6º B 📚"
+MAE_GRUPO: [foto] As regras da família do Theo, na minha geladeira 🌻
+MAE_GRUPO: O Murilo assinou. Eu também. A regra 7 é minha: "conferir a fonte antes de repassar"
+@zap fim
+@vai fim_geladeira_fim
+
+=== fim_geladeira_fim
+@sai todos
+@fundo casa_cozinha
+> Em casa, a folha original continua lá, presa com o ímã da pizzaria, com uma mancha de café no canto e duas assinaturas.
+(Regra que é só proibição dura até a primeira porta aberta. Regra combinada dura porque a pessoa ajudou a escrever. Até a Vó Cida assinou. Embaixo, ela escreveu: "e desligar da tomada quando precisar".)
+@final regras_na_geladeira
+
+# ===================== CANAL DO THEO =====================
+
+=== fim_canal
+@fundo quarto_theo
+@musica final_bom
+@entra theo feliz centro
+> O primeiro vídeo do canal tem quatro minutos e doze segundos. Mostra as mãos do Theo, um celular com adesivo de unicórnio e uma tela de jogo. A voz dele explica, devagar, como reconhecer site de moeda grátis.
+THEO: "Se pede a senha da sua conta, é golpe. Se é grátis demais, é golpe. Se tem contador correndo, é golpe. Se você ficou na dúvida, mostra pra um adulto."
+> Nenhum rosto. Nenhum uniforme. Nenhuma placa de rua na janela. Os comentários estão moderados e a localização está desligada.
+@se marca:perfil_privado -> fim_canal_privado
+@vai fim_canal_numeros
+
+=== fim_canal_privado
+> E o perfil pessoal dele continua privado, só para amigos que ele conhece de verdade. O canal é uma coisa. A vida dele é outra.
+@vai fim_canal_numeros
+
+=== fim_canal_numeros
+THEO: Trinta e oito visualizações, mãe. TRINTA E OITO.
+EU: Quantas são da Vó?
+THEO: Trinta.
+@entra vo_cida feliz esquerda
+VO_CIDA: Eu assisto de novo toda vez que ele fala "golpe". Fica bonito.
+@entra gui feliz direita
+GUI: O próximo vai ser sobre zoação. Eu já tenho a edição. Tem um unicórnio dançando no final.
+(Ele quer ser youtuber desde os oito anos. Agora ele é. Um youtuber que ensina os outros a se proteger, sem mostrar a cara. Acho que eu posso viver com isso.)
+@final theo_youtuber_responsavel
+
+# ===================== CELULAR NA GAVETA =====================
+
+=== fim_gaveta
+@fundo gaveta_celular
+@musica triste
+> Dezembro. O celular com adesivo de unicórnio está na gaveta da cômoda, embaixo das meias, desligado desde a reunião de pais.
+> O Theo não pediu de volta nenhuma vez. Isso devia ser bom.
+@fundo casa_cozinha
+@entra theo neutra centro
+EU: Como foi a escola?
+THEO: Normal.
+EU: E o Gui?
+THEO: Normal.
+@entra vo_cida pensativa esquerda
+VO_CIDA: Ele conta as coisas pra mim. Pouca coisa. Ontem disse que o Enzo arrumou um celular novo e criou outro grupo da sala. Ele não está no grupo.
+(Ele está seguro. Não está em grupo nenhum, não está em jogo nenhum. E também não está me contando nada. A gaveta protege o aparelho. A conversa é que protegia o meu filho.)
+@se marca:kaio_denunciado -> fim_gaveta_kaio
+@vai fim_gaveta_fim
+
+=== fim_gaveta_kaio
+> A denúncia do Kaio foi feita, as provas estão guardadas. Essa parte você fez certo. O que ficou na gaveta foi o depois.
+@vai fim_gaveta_fim
+
+=== fim_gaveta_fim
+EU: Filho, no ano que vem, quando o celular sair da gaveta, a gente escreve as regras juntos. Pode ser?
+THEO: Pode.
+> Ele diz "pode" como quem diz "normal". Vai levar um tempo.
+@final celular_na_gaveta
+
+# ===================== MÃE ESPIÃ =====================
+
+=== fim_espia
+@fundo quarto_theo
+@musica triste
+@entra theo neutra centro
+> O aplicativo escondido mostrou tudo: o Kaio, as moedas, as perguntas, o pedido de foto. Deu para proteger a tempo.
+> Mas o Theo descobriu o aplicativo. E agora toda conversa entre vocês tem uma pergunta não dita no meio: "você leu isso?".
+THEO: Mãe, você ainda tá olhando meu celular?
+EU: Agora eu olho com você do lado. Às claras. Combinado.
+THEO: Mas como eu vou saber que não tem outro escondido?
+(Não vai. Não por um tempo. Essa é a parte que o aplicativo não mostra na tela.)
+@se marca:theo_contou_kaio -> fim_espia_contou
+@vai fim_espia_fim
+
+=== fim_espia_contou
+THEO: Eu te contei do Kaio. Eu ia te contar de qualquer jeito. Você não precisava espiar.
+(E é isso que dói. Ele estava confiando em mim enquanto eu não confiava nele.)
+@vai fim_espia_fim
+
+=== fim_espia_fim
+@entra vo_cida pensativa esquerda
+VO_CIDA: No meu tempo a mãe lia o diário escondido. A gente descobria e passava a esconder o diário melhor.
+EU: E deu certo?
+VO_CIDA: Eu escondo o meu até hoje.
+> Vocês dois riem um pouco. É um começo. A confiança vai demorar para voltar, e vocês dois sabem disso.
+@final mae_espia
+
+# ===================== SEGREDO COM ESTRANHO =====================
+
+=== fim_segredo
+@fundo quarto_madrugada
+@musica final_ruim
+> Uma da manhã. Você não consegue dormir. Relê a conversa do Kaio pela décima vez, mesmo já tendo entregue tudo na delegacia.
+> Semanas. Ele carregou aquilo por semanas, a dez passos do seu quarto, porque achou que ia levar bronca.
+(Deu tempo. O Theo não mandou foto, não mudou de aplicativo, não foi a lugar nenhum. Deu tempo porque um menino de onze anos chamado Gui chorou na frente da mãe dele.)
+@zap "Rose, mãe do Gui"
+MAE_GUI: Tá acordada? Eu também não consigo dormir
+MAE_GUI: O Gui perguntou se o Theo ainda é amigo dele, por ter contado
+EU: Fala pra ele que o Theo disse que ele é o melhor amigo do mundo. E que eu também acho
+MAE_GUI: 💚
+@zap fim
+@fundo quarto_theo
+@entra theo triste centro
+> De manhã, o Theo está tomando café com o olho inchado.
+THEO: Mãe. Se acontecer de novo, eu te conto primeiro. Antes do Gui.
+EU: E eu prometo não fazer a cara que eu fiz.
+THEO: Que cara?
+EU: Aquela que faz você achar que vai perder o celular. Contar nunca vai dar bronca. Nunca.
+(Foi por pouco. Por muito pouco. E a diferença entre "por pouco" e "tarde demais" foi alguém ter contado.)
+@final segredo_com_estranho
+
+# ===================== FATURA DO BLOCOVERSO =====================
+
+=== fim_fatura
+@fundo casa_cozinha
+@musica final_ruim
+> Dia 10. A fatura do cartão chega e você abre na mesa da cozinha, com a calculadora do celular aberta do lado, como quem abre exame.
+> Moedas de BlocoVerso. Moedas de BlocoVerso. Pacote premium do BlocoVerso. O cartão continuava salvo na conta, e cada toque virou uma compra.
+@entra theo triste centro
+THEO: E o castelo, mãe? O suporte respondeu?
+EU: Respondeu. A conta foi roubada pelo site de moedas grátis, e quem roubou trocou a senha e o e-mail. Eles não conseguiram devolver.
+THEO: Dois anos de mundo. Três torres. A cachoeira no fosso.
+(O mês acabou antes do salário. E o menino perdeu a coisa que ele mais construiu na vida. Os dois prejuízos tinham a mesma porta: senha dada para um site e cartão salvo sem aprovação.)
+@vai fim_fatura_fim
+
+=== fim_fatura_fim
+> Naquela noite, vocês dois sentam juntos. Você tira o cartão de todas as contas. Liga a aprovação de compra por um adulto. O Theo cria uma conta nova no jogo, com senha forte e verificação em duas etapas, que ele mesmo anota no caderno.
+THEO: Vou construir outro castelo. Maior.
+EU: Com fosso?
+THEO: Com cachoeira no fosso. Dessa vez trancado.
+@final fatura_do_blocoverso
+
+# ===================== THEO FOI O ZOADOR =====================
+
+=== fim_zoador
+@fundo patio_escola
+@musica final_ruim
+> Último dia do bimestre. No banco das formigas, do lado do pé de jambo, ninguém senta. O Davi Lucas mudou de escola há duas semanas.
+@entra theo triste centro
+THEO: Ele não respondeu a minha mensagem, mãe. A de desculpa.
+EU: Talvez ele não responda nunca. Pedir desculpa não obriga o outro a desculpar.
+THEO: Então pra que serve?
+EU: Serve pra você não ser mais a pessoa que fez aquilo e fingiu que não fez.
+@se marca:theo_virou_alvo -> fim_zoador_alvo
+@vai fim_zoador_casa
+
+=== fim_zoador_alvo
+THEO: Quando o Enzo fez a do unicórnio comigo, eu achei que ia morrer de vergonha. E eu fiz uma pior com ele antes. Com o Davi.
+(Ele aprendeu dos dois lados no mesmo mês. É o jeito mais doloroso de aprender. Às vezes é o único.)
+@vai fim_zoador_casa
+
+=== fim_zoador_casa
+@fundo sala_familia
+@entra vo_cida pensativa esquerda
+> À noite, a família inteira senta na sala. Até o celular, de tela para baixo, no meio da mesa de centro.
+VO_CIDA: No meu tempo, quem zoava pedia desculpa na frente da mãe do outro. Era horrível. Funcionava.
+> Vocês conversam sobre o que é engraçado e o que é machucar. Sobre rir com o dedo e não com o coração. Sobre o que fazer quando o grupo inteiro está rindo e você é o único que sente o buraco na barriga.
+(Foi o pior bimestre da família. E foi também a primeira vez que a gente teve essa conversa. Eu queria que ela tivesse chegado antes do Davi Lucas ir embora.)
+THEO: Mãe, se eu vir alguém fazendo isso de novo, eu printo e conto. E não rio.
+EU: Nem com o dedo.
+THEO: Nem com o dedo.
+@final theo_foi_o_zoador

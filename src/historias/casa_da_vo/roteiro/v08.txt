@@ -1,0 +1,304 @@
+# Parte 2, capítulo 8: Setenta e sete (sábado, aniversário)
+
+=== v08_inicio
+@cap 8 "Setenta e sete"
+@fundo portao_vila
+@musica festa
+@vai v08_chegada
+
+=== v08_chegada
+> Sábado, 16h. A vila está enfeitada de bandeirinha, que a Dona Jura insistiu que aniversário em novembro também merece bandeirinha.
+> No portão da vó, um cartaz escrito à mão: "77 ANOS DA ZILÁ. ENTRA, QUE O PORTÃO TÁ ABERTO. A INTERNET NÃO."
+(A vó fez o cartaz sozinha. Eu não sei se rio ou se choro de orgulho.)
+@roupa "Aniversário de 77 anos da Vó Zilá"
+> Você ajeita a roupa no reflexo da janela do carro e respira fundo. Lá dentro, alguém já colocou samba para tocar pela assistente de voz.
+@se marca:rede_separada -> v08_recap_rede
+@vai v08_recap_uma
+
+=== v08_recap_rede
+(Na casa, duas redes: a da vó e a dos trecos. Tudo o que pisca, fala ou filma está na panela certa.)
+@vai v08_recap_roteador
+
+=== v08_recap_uma
+(A casa continua com uma rede só, tudo junto, igual família no Natal. Pelo menos atualizado.)
+@vai v08_recap_roteador
+
+=== v08_recap_roteador
+@se marca:roteador_protegido -> v08_recap_roteador_ok
+(E o painel do roteador ainda está com a senha da etiqueta. Está anotado no meu celular, em vermelho, há uma semana.)
+@vai v08_presente
+
+=== v08_recap_roteador_ok
+(E o roteador, embaixo do paninho de crochê e do Santo Antônio, está com senha própria e atualizado. A internet não caiu nenhuma quinta desde então. O santo levou o crédito.)
+@vai v08_presente
+
+=== v08_presente
+@fundo sala_vo_tech
+@entra vo feliz centro
+> A vó está de vestido novo, florido, com o batom do casamento da prima e o cabelo feito no salão da esquina.
+VO: Chegou a minha técnica. Cadê o presente?
+? Qual presente você entrega?
+* Um caderno bonito, de capa dura, para ela anotar os aparelhos da casa e como desliga cada um -> v08_presente_caderno {autonomia_vo+1 seguranca+1}
+* Um lenço bordado, sem nada de tecnologia, só porque combina com ela -> v08_presente_lenco {rel_vo+1}
+** Uma plaquinha para a porta: "Aqui quem decide é a Zilá" -> v08_presente_placa {autonomia_vo+1 rel_vo+1}
+
+=== v08_presente_caderno
+VO: Um caderno! Igual o da agência.
+EU: Para a senhora anotar o que tem na casa, o que cada coisa faz e como desliga. Quem manda nos aparelhos é quem sabe desligar.
+VO: E as senhas?
+EU: Senha anotada em papel, guardada dentro de casa, numa gaveta que só a senhora sabe, é bem mais segura do que senha fácil de lembrar. Só não deixa colado no roteador.
+@vai v08_check_escondida
+
+=== v08_presente_lenco
+VO: Que lindo. Sem bateria, sem senha, sem aplicativo.
+EU: Sem nada. Só lenço.
+VO: É o melhor aparelho que eu ganhei esse mês.
+@vai v08_check_escondida
+
+=== v08_presente_placa
+> A vó lê a plaquinha em voz alta. Duas vezes. Depois pede um prego para o Caíque e pendura ela mesma, na porta da sala, na altura dos olhos de quem entra.
+VO: O Mauro vai ler isso na hora que chegar.
+EU: Essa é a ideia, vó.
+@vai v08_check_escondida
+
+=== v08_check_escondida
+@se marca:camera_escondida -> v08_escondida
+@vai v08_jura
+
+=== v08_escondida
+@musica tensao
+@expr vo pensativa
+> A vó vai até a tomada ao lado da TV e puxa o "carregador" branco. A luzinha minúscula pisca na palma da mão dela.
+VO: Eu fui carregar o celular nisso ontem. Não carregou. Mas a luzinha pisca quando eu passo. Isso aqui não é carregador, é?
+(Ela descobriu. Sozinha. No dia do aniversário.)
+? O que você diz?
+* "Não é, vó. É uma câmera. Fui eu, com o tio. Errei. Desculpa." -> v08_confessa {etica+2 autonomia_vo+1 rel_vo-1}
+* "Foi ideia do Tio Mauro." -> v08_culpa_mauro {rel_tio_mauro-1}
+* "É só um carregador com defeito, vó. Deixa que eu jogo fora." -> v08_disfarca {etica-2 autonomia_vo-2 rel_vo-2}
+
+=== v08_confessa
+@expr vo triste
+VO: Uma semana. Uma semana me filmando na minha sala. A novela, o cochilo, eu conversando com o retrato do seu avô.
+EU: Eu sei, vó. Não tem desculpa boa. Cuidar não é esconder.
+> Ela segura a câmera um tempo. Depois põe na mesa, longe da tomada.
+VO: Obrigada por contar. Doeu. Mas doeria mais se eu descobrisse que você mentiu.
+@se autonomia_vo>=4 -> v08_vo_enfrenta
+@vai v08_jura
+
+=== v08_culpa_mauro
+@expr vo brava
+VO: Ideia do Mauro. E você deixou.
+EU: Eu...
+VO: Ideia ruim não se instala sozinha numa tomada, {nome}.
+> Ela tira a câmera da tomada e põe na mesa.
+@se autonomia_vo>=5 -> v08_vo_enfrenta
+@vai v08_jura
+
+=== v08_disfarca
+VO: Com defeito. Sei.
+> Ela devolve o aparelho para a tomada, devagar, olhando para você. Ela não acreditou. Mas também não vai discutir no próprio aniversário.
+(Eu menti para a minha avó no aniversário dela. Para proteger uma câmera que eu nem queria.)
+@vai v08_jura
+
+=== v08_vo_enfrenta
+@entra tio_mauro neutra direita
+> O Tio Mauro chega com um bolo de padaria e um sorriso. A vó não sorri de volta. Ela estende a câmera para ele.
+VO: Mauro, isso é seu.
+@expr tio_mauro envergonhada
+TIO_MAURO: Mãe, era para a sua segurança.
+VO: Minha segurança é eu saber quem entra na minha sala. Pela porta ou por isso aí. Você filmou a sua mãe sem ela saber. Leva embora. E leva junto aquele folheto do Recanto.
+> O Tio Mauro pega a câmera. Pela primeira vez na vida, ele não tem planilha para responder.
+TIO_MAURO: Desculpa, mãe.
+@desmarca mauro_convencido
+@sai tio_mauro
+@vai v08_jura
+
+=== v08_jura
+@fundo portao_vila
+@musica festa
+@sai todos
+@entra dona_jura feliz centro
+> A Dona Jura chega com um pudim do tamanho de uma calota e uma caixa debaixo do braço.
+DONA_JURA: Feliz aniversário, Zilá! E olha o que o meu sobrinho me deu: campainha com vídeo, igual a sua. Ainda não abri. Fiquei com medo de aparecer na internet também.
+@entra vo feliz esquerda
+VO: Jura, a sua casa também está cheia de trecos. O seu genro pôs câmera, o seu neto pôs a moça.
+DONA_JURA: E eu não sei mexer em nada. Só sei olhar pela janela.
+? O que fazer com a casa da Dona Jura?
+* Deixar a vó ensinar a Dona Jura, e você só fica do lado conferindo -> v08_vo_ensina {autonomia_vo+1}
+* Pegar o celular da Dona Jura e configurar você mesma, rapidinho -> v08_voce_configura {rel_dona_jura+1}
+* "Hoje é festa, Dona Jura. Semana que vem eu passo lá." -> v08_depois
+** Propor que a vó dê uma aula ali mesmo, no portão, para a vila inteira -> v08_aula_vila {marca:vo_ensinou_vila autonomia_vo+2 rel_dona_jura+1}
+
+=== v08_vo_ensina
+VO: Vem cá, Jura. Senta. Primeiro a gente desenha a sua casa, cômodo por cômodo, com os trecos. Depois a gente vê qual porta está aberta.
+> A vó pega o caderno, desenha a planta da casa da Dona Jura e vai perguntando. Você só confere.
+@vai v08_planta_jura
+
+=== v08_aula_vila
+EU: Vó, por que a senhora não ensina para todo mundo? Metade da vila está aqui.
+VO: Eu? Dar aula?
+EU: A senhora atendeu o público trinta e quatro anos. Explica melhor que eu.
+> Em dez minutos, tem doze vizinhos sentados em cadeira de plástico na calçada. A vó de pé, na frente do portão, com o caderno na mão, como se fosse abrir o guichê.
+VO: Boa tarde. Hoje a aula é sobre os trecos da casa. Primeiro exemplo: a casa da Jura, que ela deixou.
+DONA_JURA: Deixei nada!
+VO: Deixou sim, que eu vi você balançando a cabeça.
+@vai v08_planta_jura
+
+=== v08_planta_jura
+@musica hacker
+@desafio v8_casa_jura -> v08_jura_acerto | v08_jura_erro
+
+=== v08_jura_acerto
+@marca vo_ensinou_vila
+@muda tecnica+1
+> A vó vai apontando, um por um: a campainha com senha de fábrica gravando a calçada inteira, a câmera do quintal com acesso para gente que nem é mais da família, a senha do Wi-Fi colada na janela virada para a rua, a moça comprando sem confirmação.
+VO: E esse rádio de pilha aí, Jura, pode deixar. Esse não fala com ninguém além de você.
+DONA_JURA: Zilá, você virou técnica.
+VO: Não. Eu virei curiosa. Técnica é a minha neta. Eu só perguntei tudo.
+> O Seu Arlindo, do número 7, levanta a mão.
+DONA_JURA: Pergunta, Arlindo.
+> E o Seu Arlindo pergunta se a fechadura com senha dele precisa de chave de reserva. A vó responde antes de você.
+@anota v8_ensinar_vizinha
+@vai v08_decisao
+
+=== v08_jura_erro
+> A vó acha a campainha e a senha na janela, mas passa pela câmera do quintal e pela moça sem desconfiar.
+VO: {nome}, me ajuda aqui. Eu acho que deixei passar coisa.
+EU: Deixou duas, vó. A câmera do quintal tem acesso para gente que nem é mais da família, e a moça compra sem confirmação.
+VO: Viu, Jura? Até professora erra. A diferença é que professora pergunta.
+@anota v8_ensinar_vizinha
+@vai v08_decisao
+
+=== v08_voce_configura
+> Você pega o celular da Dona Jura e resolve tudo em vinte minutos: campainha com senha nova, câmera do quintal com acessos revisados, Wi-Fi com senha nova.
+DONA_JURA: Pronto? Mas eu não entendi nada.
+EU: Está seguro, Dona Jura.
+DONA_JURA: Seguro e eu não sei mexer. Então se der problema eu chamo você de novo.
+(Consertei a casa dela. Não ensinei ninguém. Na semana que vem, o neto dela compra outro treco e começa tudo de novo.)
+@vai v08_decisao
+
+=== v08_depois
+DONA_JURA: Tá bom, filha. Mas não esquece.
+> Ela leva a caixa de volta para casa. Meia hora depois, você vê pela janela: o sobrinho dela instalando a campainha nova, com o manual ainda no plástico.
+(Semana que vem. A frase mais perigosa de toda essa história.)
+@vai v08_decisao
+
+=== v08_decisao
+@fundo sala_vo_tech
+@musica interior
+@sai todos
+@se marca:vo_assustada -> v08_assustada
+@vai v08_caique_check
+
+=== v08_assustada
+@entra vo pensativa centro
+> Entre o parabéns da vizinha do 3 e a chegada do pastor, a vó te puxa para o corredor, ao lado do roteador e do Santo Antônio.
+VO: Filha, eu vou te falar uma coisa e você não vai brigar comigo.
+VO: Eu ainda sonho com aquela semana. A setinha andando sozinha, o moço do telefone, a câmera na internet. Toda vez que alguma coisa pisca nessa casa, eu acho que é alguém entrando.
+VO: Eu quero tirar tudo da tomada. Tudo.
+? A decisão é dela. O que você faz?
+* "A casa é sua, vó. Se a senhora quer tirar tudo, a gente tira. Posso só explicar o botão antes?" -> v08_tira_explica {autonomia_vo+1}
+* "E se a gente tirar só o que assusta e deixar o botão e a moça?" -> v08_tira_parte {marca:desligou_inuteis seguranca+1}
+* "Não, vó. A senhora precisa dessas coisas. Morando sozinha, ainda mais." -> v08_insiste {autonomia_vo-2 rel_vo-1}
+
+=== v08_tira_explica
+EU: O botão não filma, não grava e não escuta. Ele só chama quem a senhora escolheu quando a senhora aperta. Se cair de noite, é ele que avisa.
+> A vó ouve tudo, de braços cruzados. Depois descruza.
+@se marca:botao_emergencia -> v08_tira_fica_botao
+VO: Eu entendi. E agradeço. Mas eu quero sossego. Tira tudo. Se eu cair, eu grito para a Jura, que ela ouve até pensamento.
+@marca vo_tirou_tudo
+@anota v8_quem_decide
+@vai v08_caique_check
+
+=== v08_tira_fica_botao
+VO: Então tira tudo. Menos o botão. O botão eu já testei, eu sei o que ele faz. O resto vai para a caixa.
+> Ela mesma vai de tomada em tomada. No fim, sobra a pulseira no pulso e a lâmpada roxa, que ela religa escondido "só para a novela".
+@marca desligou_inuteis
+@muda seguranca+1
+@anota v8_quem_decide
+@vai v08_caique_check
+
+=== v08_tira_parte
+VO: Só o que assusta?
+EU: A câmera, a campainha com vídeo, a lâmpada se a senhora quiser. Fica o que ajuda: o botão, que não filma nada, e a moça, que pede confirmação.
+VO: A lâmpada fica. Ela fica roxa na novela. Isso não assusta, isso alegra.
+> Vocês tiram da tomada o que ela aponta. A casa fica com três aparelhos, e a vó sabe o nome de cada um.
+@anota v8_quem_decide
+@vai v08_caique_check
+
+=== v08_insiste
+@expr vo brava
+VO: Preciso? Eu preciso é de sossego. Setenta e sete anos hoje, {nome}. Eu sei do que eu preciso.
+> Ela mesma vai de tomada em tomada, de vestido de festa, puxando fio. A lâmpada, a moça, a campainha, a pulseira para a gaveta.
+(Eu insisti e ela tirou tudo, até o que ajudava. Insistência não é argumento.)
+@marca vo_tirou_tudo
+@anota v8_quem_decide
+@vai v08_caique_check
+
+=== v08_caique_check
+@sai todos
+@se marca:caique_magoado -> v08_caique_magoado
+@vai v08_mauro_check
+
+=== v08_caique_magoado
+@entra caique triste centro
+> O Caíque está na festa, mas não está. Fica na cozinha, lavando copo que ninguém sujou, e responde tudo com "de boa".
+(Desde o domingo do almoço. Desde que eu disse, na frente do pai dele, que a culpa era dele.)
+? O que fazer com o Caíque?
+* Ir até a cozinha e pedir desculpas de verdade pelo que você disse no domingo -> v08_caique_desculpa {rel_caique+3 !marca:caique_magoado}
+* Deixar para depois da festa, que hoje é dia da vó -> v08_caique_depois
+
+=== v08_caique_desculpa
+EU: Caíque. Aquilo que eu disse no almoço, que a culpa era sua. Eu estava errada. Você deu um presente com amor. Quem tinha que ter configurado junto era eu, que sei.
+CAIQUE: Você disse na frente do meu pai.
+EU: Eu sei. Por isso estou falando de novo, agora, para você.
+@expr caique pensativa
+CAIQUE: Me ensina a configurar a campainha da Dona Jura semana que vem? Eu quero fazer certo uma vez.
+EU: Ensino. E você explica para ela.
+@expr caique feliz
+@vai v08_mauro_check
+
+=== v08_caique_depois
+> Você volta para a sala. O Caíque continua na cozinha, lavando o mesmo copo pela terceira vez.
+@vai v08_mauro_check
+
+=== v08_mauro_check
+@sai todos
+@se marca:mauro_convencido -> v08_mauro_folheto
+@vai v08_parabens
+
+=== v08_mauro_folheto
+@entra tio_mauro neutra direita
+@entra vo neutra esquerda
+> O Tio Mauro chega com um bolo de padaria e um envelope. Dentro do envelope, um folheto do Recanto Feliz, com uma foto de jardim e um laço de fita.
+TIO_MAURO: Mãe, é só para a senhora conhecer. Eu marquei uma visita para segunda.
+@se autonomia_vo>=6 -> v08_mauro_desiste
+VO: Segunda eu tenho hidroginástica.
+TIO_MAURO: Então terça.
+> A vó guarda o folheto na gaveta, embaixo da toalha de mesa, sem responder. O Tio Mauro anota "terça" no celular.
+(Ele ainda acha que é cuidado. E ninguém aqui conseguiu mostrar para ele que não é.)
+@vai v08_parabens
+
+=== v08_mauro_desiste
+VO: Mauro. Senta aqui.
+> Ele senta.
+VO: Eu dou conta da minha casa. Eu desliguei golpista, eu configurei botão, eu dei aula para a vila. Se um dia eu não der, eu vou te dizer. Eu. Não a sua planilha.
+> O Tio Mauro olha o folheto. Olha a mãe. Guarda o folheto no bolso de dentro do paletó.
+TIO_MAURO: Tá bom, mãe. Quando a senhora disser.
+@desmarca mauro_convencido
+@vai v08_parabens
+
+=== v08_parabens
+@sai todos
+@musica festa
+@entra vo feliz centro
+> 19h. Apagam as luzes da sala. O bolo chega com duas velas, um sete e outro sete.
+VO: Moça, toca o parabéns.
+> A assistente de voz toca o parabéns. A família canta junto, a vila canta junto, a Dona Jura canta mais alto que todo mundo e meio tom acima.
+> Na hora do "é pique", a lâmpada da sala, que ninguém programou para isso, fica roxa.
+VO: Ela achou que era a novela.
+(Uma semana atrás, essa casa era uma porta aberta com oito aparelhos falando sozinhos. Agora é a casa da vó de novo. Com ou sem trecos, do jeito que ela escolher.)
+EU: Faz um pedido, vó.
+VO: Já fiz. Mas não conto. Igual senha.
+@anota v8_revisao
+@vai fim_escolha

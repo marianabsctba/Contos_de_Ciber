@@ -1,0 +1,320 @@
+# Parte 2, capítulo 5: Suporte Casa Conectada (quinta-feira)
+
+=== v05_inicio
+@cap 5 "Suporte Casa Conectada"
+@fundo escritorio_moderno
+@musica trabalho
+> Quinta-feira, 10h14. Terceira reunião da semana sobre o mesmo switch que ninguém quer trocar.
+> O seu celular está virado para baixo na mesa. Ele vibra uma vez. Depois outra. Depois começa a andar sozinho em direção à borda, como se quisesse fugir da reunião também.
+(Câmera, a moça, campainha, fechadura. Quatro dias, quatro aparelhos. Eu durmo com o celular do lado do travesseiro. Não ajudou no sono. Ajudou para isso.)
+@se marca:chave_reserva -> v05_recap_chave
+@se marca:fechadura_1234 -> v05_recap_1234
+@vai v05_zap_vo
+
+=== v05_recap_chave
+(Pelo menos agora tem chave física de reserva, e a vó sabe onde está. Ela me mandou foto da chave hoje às seis da manhã, com a legenda "pra você dormir sossegada".)
+@vai v05_zap_vo
+
+=== v05_recap_1234
+(A fechadura da vó continua pedindo 1234. Eu prometi voltar no sábado para trocar. Ela prometeu não dar a senha para mais ninguém. Uma de nós duas vai cumprir.)
+@vai v05_zap_vo
+
+=== v05_zap_vo
+@som mensagem
+@zap "Vó Zilá 👵💜"
+VO: [figurinha] Bom dia netinha, Deus te abençoe ☕🌻
+VO: [audio 0:58] Ô {nome}, é a vó. Ontem de noite chegou mensagem avisando que um técnico ia ligar hoje cedo. E ligou mesmo, pontualíssimo, um moço muito educado do Suporte Casa Conectada. Disse que detectou uma invasão na minha câmera, que tem gente olhando a minha sala. Ele vai resolver de graça. Só preciso instalar um aplicativo que ele mandou e ler pra ele um número que vai aparecer. Ele tá esperando na linha, tá? Pus no viva voz pra não perder ele.
+VO: [foto] Ele mandou isso aqui também, pra eu seguir
+@zap fim
+(Um SMS avisando da ligação, para a ligação parecer oficial. Invasão detectada. Aplicativo. Um número para ler. Ah, não.)
+@musica tensao
+> Você sai da reunião sem pedir licença e abre a foto que ela mandou.
+@desafio v5_mensagem_suporte -> v05_msg_acerto | v05_msg_erro
+
+=== v05_msg_acerto
+@muda tecnica+1
+(Nome com selinho que qualquer um escreve, alarme de invasão, aplicativo de acesso remoto, código e "não desligue". É o golpe inteiro numa mensagem só.)
+(E eu li em dez segundos. Os dez segundos mais bem gastos da minha semana.)
+@anota v5_falso_suporte
+@vai v05_reagir
+
+=== v05_msg_erro
+@marca v5_demorou
+> Você lê duas vezes. O protocolo parece sério, o horário de atendimento também. Você chega a pensar que, vai que é a empresa mesmo, oferecendo um serviço.
+(Não. Empresa nenhuma fica olhando a minha câmera e liga para avisar. Quem liga oferecendo ajuda que ninguém pediu está vendendo outra coisa.)
+(Mas eu perdi um minuto inteiro. E um minuto, para quem está no viva voz com golpista, é muito tempo.)
+@anota v5_falso_suporte
+@vai v05_reagir
+
+=== v05_reagir
+? A vó está com o golpista no viva voz agora. O que você faz?
+* Ligar no telefone fixo da vó, aquele de fio na cozinha -> v05_fixo {paciencia+1}
+* Mandar um áudio curto: "Vó, desliga agora. É golpe." -> v05_audio_curto
+* Escrever uma explicação completa sobre o que é aplicativo de acesso remoto -> v05_texto_longo {tecnica+1}
+* Pedir para o Caíque, que trabalha a duas quadras, correr até lá -> v05_caique_corre {rel_caique+1}
+** Ligar para a Dona Jura e pedir para ela bater no portão da vó -> v05_jura_corre {rel_dona_jura+1}
+
+=== v05_fixo
+@som clique
+> O fixo da cozinha toca quatro vezes. Na quinta, a vó atende ofegante.
+VO: Alô? Espera, querida, que eu tô no outro telefone com o moço da câmera.
+EU: Vó, é justamente sobre o moço. Ele não é da empresa.
+VO: Como não? Ele sabia o meu nome. Sabia até que eu tenho câmera.
+EU: Nome se descobre fácil, vó. E quase todo mundo hoje tem câmera. Empresa séria não liga oferecendo conserto que ninguém pediu.
+? Como terminar essa ligação?
+* Explicar com calma e deixar a vó decidir desligar -> v05_fixo_calma {autonomia_vo+1 rel_vo+1}
+* "Vó, desliga AGORA. Não discute comigo." -> v05_fixo_ordem {autonomia_vo-1}
+
+=== v05_fixo_calma
+EU: Ele pediu para a senhora instalar um aplicativo que deixa outra pessoa mexer no seu celular de longe. E pediu um número que é a chave dessa porta. A senhora entregaria a chave de casa para um moço educado que ligou do nada?
+> Silêncio do outro lado. Depois, ao fundo, a voz da vó, firme como quando ela fechava o guichê da agência às cinco em ponto.
+VO: Moço, eu vou desligar. Se a sua empresa quiser falar comigo, eu ligo no número da caixa da câmera. Passar bem.
+> Clique.
+@vai v05_desligou
+
+=== v05_fixo_ordem
+VO: Tá bom, tá bom. Não precisa gritar.
+> Ao fundo, um clique seco.
+VO: Desliguei. Mas eu não entendi nada, viu? Parece que eu sou criança.
+(Funcionou. Mas eu tirei dela a chance de entender. Da próxima vez, quem atende é ela, não eu.)
+@vai v05_desligou
+
+=== v05_audio_curto
+@se marca:v5_demorou -> v05_audio_tarde
+@zap "Vó Zilá 👵💜"
+EU: [audio 0:06] Vó, desliga agora. É golpe. Empresa séria não liga pedindo pra instalar aplicativo. Eu te explico depois.
+> Vó Zilá ouviu o áudio.
+VO: [audio 0:14] Desliguei. O moço ouviu o seu áudio no viva voz e falou que a minha neta não entende de segurança. Aí eu desliguei com mais gosto ainda.
+@zap fim
+@vai v05_desligou
+
+=== v05_audio_tarde
+@zap "Vó Zilá 👵💜"
+EU: [audio 0:06] Vó, desliga agora. É golpe. Não instala nada.
+> Dois tiques cinza. Um minuto. Dois. Vó Zilá ouviu o áudio.
+VO: [audio 0:11] Ai, filha, chegou agora. Eu já instalei e já li o número pra ele. Ele disse que tá limpando.
+@zap fim
+@vai v05_instalou
+
+=== v05_texto_longo
+@zap "Vó Zilá 👵💜"
+EU: Vó, isso que ele está pedindo é um aplicativo de acesso remoto. Esse tipo de aplicativo existe de verdade e serve para um técnico mexer no computador de alguém de longe, com permissão, mas golpistas usam para controlar o celular da vítima, ver a tela, abrir o banco e
+> Dois minutos digitando. Três parágrafos e uma lista numerada. Vó Zilá visualizou.
+VO: [audio 0:09] Ai, é muita letra, meu amor. Eu leio depois. O moço disse que já está quase terminando.
+@zap fim
+(Ela leu a primeira linha. A primeira linha dizia que esse aplicativo "existe de verdade".)
+@vai v05_instalou
+
+=== v05_caique_corre
+@zap "Caíque 🛒"
+EU: CAÍQUE. Corre na vó agora. Golpe no telefone. Faz ela desligar.
+CAIQUE: TO INDO de chinelo mas to indo
+@zap fim
+@se marca:v5_demorou -> v05_caique_tarde
+> Oito minutos depois, o Caíque te liga de dentro da sala da vó, sem fôlego.
+CAIQUE: Cheguei! Ela ia ler o número AGORA. Eu peguei o celular e desliguei na cara do cara.
+(Deu certo. Mas tomar o celular da mão dela não é o mesmo que ela saber dizer não.)
+@muda autonomia_vo-1
+@vai v05_desligou
+
+=== v05_caique_tarde
+> Oito minutos depois, o Caíque te liga, sem fôlego.
+CAIQUE: Cheguei. Prima, ela já instalou. E já leu o número. Tem uma setinha andando sozinha na tela.
+@vai v05_instalou
+
+=== v05_jura_corre
+@fundo portao_vila
+> Você liga para a Dona Jura. Ela atende no primeiro toque, como sempre, porque ela vive com o telefone na mão e o olho na vila.
+DONA_JURA: Já sei. Tô ouvindo pela parede. Um tal de suporte. Tô indo.
+> Trinta segundos depois, do outro lado da linha, você ouve o portão de ferro, a porta da sala e um grito que a vila inteira escuta.
+DONA_JURA: ZILÁ, DESLIGA ESSE TELEFONE QUE ISSO É GOLPE, MEU GENRO CAIU NO MESMO NO ANO PASSADO!
+VO: Jura? Como você sabe?
+DONA_JURA: Eu sei tudo, Zilá. Desliga.
+> Clique.
+@fundo escritorio_moderno
+@vai v05_desligou
+
+=== v05_desligou
+@marca vo_desligou_suporte
+@muda seguranca+1
+@musica misterio
+> 10h31. A linha caiu. A vó não instalou nada, não leu código nenhum.
+(Respira. Ninguém entrou no celular dela. A câmera da sala continua sendo a câmera da sala.)
+@vai v05_suporte_chama
+
+=== v05_instalou
+@marca vo_instalou_app
+@marca vo_assustada
+@muda seguranca-2
+@musica tensao
+> Na tela do celular da vó, um aplicativo novo. Um ícone azul com uma chave inglesa. E uma setinha que anda sozinha, abrindo e fechando coisas.
+VO: Filha, ele disse que tá limpando. Mas a tela ficou escura e a setinha mexe sem eu mexer. Isso é normal?
+(Não é normal. Alguém está dentro do celular da minha avó agora, olhando o que ela olha.)
+? Cada segundo conta. O que a vó faz agora?
+* "Vó, desliga o Wi-Fi e os dados do celular agora. Ou segura o botão e desliga o celular inteiro." -> v05_corta {tecnica+1 marca:agiu_a_tempo}
+* "Vó, pede para ele parar, que a senhora não quer mais" -> v05_pede_parar
+* "Vó, abre o aplicativo do banco para ver se está tudo certo" -> v05_banco_aberto
+** "Vó, puxa o roteador da tomada e desliga o celular. Depois liga pro banco no fixo." -> v05_corta {tecnica+2 marca:agiu_a_tempo}
+
+=== v05_pede_parar
+VO: Moço, eu não quero mais. Pode parar.
+TECNICO_FALSO: Senhora, se eu parar agora, o invasor fica com acesso à sua conta. Estou quase terminando. Só preciso que a senhora abra o aplicativo do banco para eu verificar se ele já entrou lá.
+(Agora ficou claro. Ele nunca quis a câmera. Ele quer o banco.)
+? Última chance antes de o banco abrir.
+* "Vó, não abre nada. Desliga o celular agora, segura o botão." -> v05_corta {marca:agiu_a_tempo}
+* "Abre só para conferir, vó, mas não digita nada" -> v05_banco_aberto
+
+=== v05_corta
+> A setinha para no meio da tela. O celular apaga.
+VO: Desliguei tudo. Tirei até o carregador da tomada, por via das dúvidas.
+EU: Perfeito, vó. Agora pelo fixo, não pelo celular: liga no número que está atrás do cartão do banco. Conta que instalou um aplicativo de acesso remoto por pedido de um falso suporte e pede para bloquear o acesso e conferir se saiu alguma coisa.
+> Vinte minutos depois, ela liga de volta.
+VO: Tentaram fazer um Pix de três mil e oitocentos às 10h33. O banco segurou porque eu nunca faço Pix desse tamanho. A moça do banco, a de verdade, disse que eu fui muito esperta.
+EU: Foi mesmo. Hoje à noite eu passo aí. A gente apaga o aplicativo, troca as senhas de outro aparelho e faz o boletim de ocorrência.
+@anota v5_instalou_e_agora
+@vai v05_suporte_chama
+
+=== v05_banco_aberto
+@marca suporte_dinheiro_saiu
+@musica triste
+> A vó abre o aplicativo do banco. Digita a senha. A setinha anda mais rápido agora, muito mais rápido.
+> 10h36. Uma notificação: "Pix enviado. R$ 3.870,00."
+VO: {nome}? Saiu dinheiro. Eu não mandei nada. Eu não mandei nada pra ninguém.
+EU: Vó, desliga o celular agora. Segura o botão até apagar.
+> Ela desliga. Mas o Pix já foi.
+EU: Agora pelo fixo: liga no número atrás do cartão. Conta tudo. Pede para bloquear e para abrir a contestação do Pix. Eu chego aí em meia hora.
+(Três mil e oitocentos reais. Quase dois meses de aposentadoria. Porque eu demorei, e porque o golpista sabia exatamente o que pedir.)
+@anota v5_instalou_e_agora
+@vai v05_suporte_chama
+
+=== v05_suporte_chama
+@som notificacao
+> 11h02. Uma mensagem de um número desconhecido chega no seu celular.
+@zap "Suporte Casa Conectada ✅"
+TECNICO_FALSO: Bom dia! Aqui é o Suporte Casa Conectada, setor de segurança residencial.
+TECNICO_FALSO: A Sra. Zilá informou que a neta é responsável pelos dispositivos da residência.
+TECNICO_FALSO: O atendimento foi interrompido e a residência está VULNERÁVEL. Para reativar a proteção, instale o aplicativo no celular da senhora e me informe o código.
+TECNICO_FALSO: Protocolo 2026-118-447 ✅
+@zap fim
+(A vó deu o meu número para ele. "A minha neta cuida de tudo." Obrigada, vó. De coração.)
+? O que responder para o "suporte"?
+* Não responder. Bloquear e denunciar o número no próprio aplicativo de mensagens -> v05_bloqueia {etica+1 seguranca+1}
+* "Vou ligar no telefone oficial que está na caixa da câmera e confirmar esse protocolo." -> v05_protocolo {tecnica+1}
+* Responder com tudo o que você pensa dele, em letras maiúsculas -> v05_xinga {paciencia-2}
+** Mandar a figurinha de bom dia da vó e bloquear em seguida -> v05_figurinha {paciencia+1}
+
+=== v05_bloqueia
+(Bloquear e denunciar. Golpista não merece nem o "visualizado".)
+@vai v05_ensinar
+
+=== v05_protocolo
+@zap "Suporte Casa Conectada ✅"
+EU: Vou ligar no telefone oficial que está na caixa da câmera e confirmar esse protocolo.
+TECNICO_FALSO: Não é necessário, o número oficial é este mesmo.
+EU: Que coincidência. O seu também vai ficar.
+> Você bloqueou este contato.
+@zap fim
+(Golpista sempre tem uma resposta para "vou ligar no número oficial". E a resposta é sempre "não precisa". Quando alguém diz que não precisa conferir, é aí que precisa.)
+@vai v05_ensinar
+
+=== v05_xinga
+@zap "Suporte Casa Conectada ✅"
+EU: VOCÊ NÃO TEM VERGONHA DE ENGANAR UMA SENHORA DE SETENTA E SEIS ANOS
+TECNICO_FALSO: Senhora, mantenha a calma. Sua residência continua vulnerável.
+TECNICO_FALSO: 😊
+@zap fim
+> Você bloqueia o número com tanta força que quase derruba o celular no chão do corredor.
+(Gritei para alguém que ganha a vida ouvindo grito. A única pessoa que ficou nervosa fui eu.)
+@vai v05_ensinar
+
+=== v05_figurinha
+@zap "Suporte Casa Conectada ✅"
+EU: [figurinha] Bom dia netinha, Deus te abençoe ☕🌻
+TECNICO_FALSO: ?
+> Você bloqueou este contato.
+@zap fim
+(A vó vai adorar saber que a figurinha dela foi usada contra o crime.)
+@vai v05_ensinar
+
+=== v05_ensinar
+@fundo sala_vo_tech
+@musica interior
+@sai todos
+> 19h40. Casa da vó. A novela ainda não começou, então a sala está em silêncio, exceto pela lâmpada colorida, que pisca amarelo sem motivo nenhum.
+@entra vo pensativa centro
+@se marca:vo_instalou_app -> v05_ensinar_instalou
+VO: Eu desliguei. Mas fiquei pensando o dia inteiro. Como é que eu ia saber que não era a empresa? Ele sabia o meu nome.
+EU: Não dá para saber pela voz, vó. Por isso a regra é simples: quem liga oferecendo conserto, a senhora desliga e liga de volta no número oficial, que está na caixa, no manual ou no site da empresa. Nunca no número que ele passar.
+@vai v05_ensinar_regra
+
+=== v05_ensinar_instalou
+@expr vo triste
+VO: Eu fiz tudo que ele mandou. Instalei, li o número. Setenta e seis anos e caí igual patinho.
+EU: Vó, ele faz isso o dia inteiro. É profissional. A senhora fez a parte mais importante: desligou e ligou para o banco.
+> Vocês sentam juntas. O aplicativo do ícone azul sai do celular. As senhas do banco e do e-mail são trocadas pelo seu notebook, não pelo celular dela. O boletim de ocorrência é feito pela internet, com o print da mensagem e o horário da ligação.
+@vai v05_ensinar_regra
+
+=== v05_ensinar_regra
+EU: E outra coisa: código que chega no celular da senhora é só da senhora. Não se lê para ninguém. Nem para mim.
+VO: Nem para você?
+EU: Nem para mim. Se um dia alguém com a minha voz pedir código, desliga também.
+@anota v5_codigo
+? Como fazer essa regra ficar na casa?
+* Escrever junto com a vó um bilhete para a geladeira -> v05_bilhete {autonomia_vo+1 rel_vo+1}
+* Configurar o celular dela para silenciar números desconhecidos, sem explicar muito -> v05_silenciar {seguranca+1 autonomia_vo-1}
+* Combinar com a vó uma palavra secreta da família para ligações estranhas -> v05_palavra {autonomia_vo+1 tecnica+1}
+** Pegar a caixa da câmera e deixar a vó ligar ela mesma para o número oficial da empresa -> v05_oficial {autonomia_vo+2 rel_vo+1}
+
+=== v05_bilhete
+> A vó pega a caneta dos Correios que ela guarda há vinte anos e escreve, com letra de quem preenchia formulário o dia inteiro.
+> "EMPRESA NÃO LIGA PEDINDO APLICATIVO. DESLIGA. LIGA NO NÚMERO DA CAIXA. CÓDIGO NÃO SE LÊ PRA NINGUÉM."
+VO: E embaixo: "nem pra neta".
+EU: Pode pôr.
+> O bilhete vai para a geladeira, preso por um ímã de abacaxi, entre a foto do vô e o calendário da farmácia.
+@vai v05_mauro
+
+=== v05_silenciar
+> Você mexe nas configurações do celular dela. Números que não estão nos contatos vão direto para a caixa de mensagens, sem tocar.
+VO: E se for o médico?
+EU: Aí ele deixa recado e a senhora liga de volta.
+VO: Hum. Eu gostava de atender o telefone, sabia? Às vezes era engano e eu conversava.
+(Ficou mais seguro. E ficou um pouco mais solitário. Eu devia ter perguntado antes.)
+@vai v05_mauro
+
+=== v05_palavra
+EU: Uma palavra só nossa. Se alguém ligar dizendo que é da família e pedindo qualquer coisa, a senhora pergunta a palavra.
+VO: Pode ser "pudim".
+EU: Todo mundo sabe que a senhora faz pudim, vó.
+VO: Então "Tibério".
+EU: Quem é Tibério?
+VO: Um namorado que eu tive antes do seu avô. Ninguém nessa família sabe que ele existiu. Agora você sabe. Pronto, é segredo duplo.
+@expr vo feliz
+@vai v05_mauro
+
+=== v05_oficial
+> Você acha a caixa da câmera embaixo da escada, ainda com o isopor dentro. No verso, o número de atendimento do fabricante.
+@expr vo pensativa
+VO: Alô? Boa noite. Eu queria saber se vocês ligaram pra mim hoje de manhã falando de invasão.
+VO: Não ligaram. Vocês nunca ligam. Tá. E se alguém ligar eu desligo. Obrigada, minha filha. Boa noite pra você também.
+@expr vo feliz
+VO: A moça disse que eles nunca ligam oferecendo conserto. E que eu fiz certinho em conferir. Ela me chamou de "senhora muito atenta".
+@vai v05_mauro
+
+=== v05_mauro
+@sai todos
+@som notificacao
+@zap "Netos da Vó Zilá 👵💜"
+CAIQUE: gente o que aconteceu hoje
+CAIQUE: meu pai ficou sabendo pela Dona Jura e tá aumentando a PLANILHA
+VO: Eu tô nesse grupo, Caíque.
+CAIQUE: vó????? desde quando
+VO: Desde sempre. Boa noite netinhos 🌻
+@zap fim
+@som mensagem
+@zap "Tio Mauro"
+TIO_MAURO: Fiquei sabendo do telefonema de hoje. Isso só confirma o que eu venho dizendo. A sua avó não dá mais conta de morar sozinha com essas coisas todas.
+TIO_MAURO: Domingo eu passo lá para o almoço. Vou levar uns números.
+@zap fim
+(Uns números. Com o Tio Mauro, números sempre vêm em colunas, com fórmula e cor condicional.)
+(Sábado eu vou lá arrumar a rede. Domingo eu vou ter que arrumar o Tio Mauro.)
+@vai v06_inicio

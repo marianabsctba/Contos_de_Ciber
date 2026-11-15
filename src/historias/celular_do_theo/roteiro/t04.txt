@@ -1,0 +1,269 @@
+# Parte 1, capítulo 4: A foto do uniforme. Primeiro do lado da mãe, depois do lado do Theo.
+
+=== t04_inicio
+@cap 4 "A foto do uniforme"
+@fundo hospital_corredor
+@musica trabalho
+> Terça-feira, 15h20. Intervalo do plantão. Café de máquina, cadeira de plástico e 63 mensagens no grupo de pais.
+@zap "Mães e Pais 6º B 📚"
+MAE_GRUPO: [figurinha] Boa tarde, mamães e papais abençoados 🌻☕
+MAE_GRUPO: ATENÇÃO!!! Repassando!!! Tem um perfil chamado "Fofocas da Iracema 👀" postando foto dos nossos filhos!!!
+MAE_GRUPO: [foto] Print do perfil de fofoca, com a foto de um menino de uniforme na frente do portão da escola
+> 9 pessoas reagiram com 😱
+MAE_GRUPO: Gente, esse não é o filho da {nome}? O novato? Tá com o uniforme e tudo, e ainda tá marcado o lugar 😱😱
+MAE_GRUPO: E olha o que o perfil escreveu embaixo!!
+MAE_GRUPO: [foto] Legenda: "o novato do 6º B que vai sozinho no busão das 6h40 🚌👀 alguém conhece?"
+@musica tensao
+(É o Theo. Na frente da escola. Com o nome da escola no peito, o ponto de ônibus atrás, o horário dele na legenda. Repostado por um perfil que eu nunca vi, para gente que eu não conheço.)
+? O grupo inteiro está esperando a mãe do novato. O que você responde?
+* "Gente, desculpa, meu filho não sabe o que posta. Já vou resolver isso com ele." -> t04_expoe {confianca-1 paciencia-1}
+* "Obrigada pelo aviso. Vou denunciar o perfil e falar com a escola." E resolver o resto fora do grupo -> t04_calma {etica+1}
+* Ligar para o Theo agora, no meio da aula -> t04_liga {confianca-1}
+** Perguntar à Mãe do grupo de onde veio o print, antes de alguém repassar de novo -> t04_origem {tecnica+1}
+
+=== t04_expoe
+EU: Gente, desculpa, meu filho não sabe o que posta. Já vou resolver isso com ele.
+MAE_GRUPO: Ai, coitado. Essas crianças de hoje 🙏
+MAE_GRUPO: O meu Murilo nunca faria isso, eu vejo tudo no celular dele
+> 4 pessoas reagiram com 🙏
+(Pronto. Agora o grupo de pais inteiro sabe que o Theo "não sabe o que posta". E o filho de alguém vai ouvir isso no jantar e repetir no recreio.)
+@zap fim
+@vai t04_renata
+
+=== t04_calma
+EU: Obrigada pelo aviso. Vou denunciar o perfil e falar com a escola.
+EU: Peço só que ninguém repasse o print, nem para avisar. Cada repasse espalha a foto das crianças mais um pouco.
+MAE_GRUPO: Verdade!! Não repassem!!
+MAE_GRUPO: Eu já repassei em três grupos 😬 vou apagar
+@zap fim
+(Uma mãe a menos espalhando. Agora o resto, fora do grupo.)
+@vai t04_renata
+
+=== t04_liga
+@zap fim
+> Você liga. Chama. Chama. Ninguém atende: celular de escola fica na mochila, como manda a regra da sala.
+> Dois minutos depois, chega uma mensagem do Theo: "mãe tô na aula de ciências, aconteceu alguma coisa com a vó??"
+(Agora ele vai passar a aula inteira achando que a avó morreu. Ótimo trabalho, enfermeira.)
+> Você responde: "A vó tá ótima. Conversamos em casa." E se arrepende de não ter escrito isso primeiro.
+@vai t04_renata
+
+=== t04_origem
+EU: Alguém sabe de onde veio esse print? Quem mandou primeiro?
+MAE_GRUPO: Ah, eu recebi do grupo do judô
+MAE_GRUPO: Que recebeu do grupo da catequese
+MAE_GRUPO: Mas é verdade, eu vi o perfil!!
+EU: Então vamos fazer assim: ninguém repassa mais. Eu denuncio o perfil e aviso a escola.
+@zap fim
+(O print fez mais viagem que o Theo nas férias. Cada grupo que repassou mostrou a foto do meu filho para mais gente, achando que estava protegendo.)
+@vai t04_renata
+
+=== t04_renata
+@fundo hospital_corredor
+@musica misterio
+> Você abre o perfil "Fofocas da Iracema 👀". Fotos de alunos, apelidos, uma enquete de "quem é o mais chato do 6º A". 2.300 seguidores.
+> Você tira print de tudo, com a data e o endereço do perfil aparecendo. Depois usa o botão "Denunciar" da própria plataforma: "Expõe menores de idade".
+@zap "Professora Renata"
+EU: Professora, boa tarde. Sou a mãe do Theo, do 6º B. Um perfil de fofoca repostou uma foto dele com uniforme e localização. Já denunciei na plataforma e guardei os prints. A escola sabe desse perfil?
+PROF_RENATA: Boa tarde! Sabe sim, e obrigada por guardar os prints. A coordenação já está juntando os casos.
+PROF_RENATA: Uma coisa importante: o Theo não fez nada de errado sendo repostado. Quem expôs foi o perfil.
+PROF_RENATA: Mas vale uma conversa em casa sobre o que a foto mostra. Eu faço isso na aula também, sem nome de ninguém.
+@zap fim
+(Sem nome de ninguém. Já gostei dela.)
+@vai t04_casa
+
+=== t04_casa
+@fundo casa_cozinha
+@musica infancia
+> 20h10. Você chega em casa com a marmita vazia e a cabeça cheia.
+@entra theo neutra direita
+@entra vo_cida neutra esquerda
+THEO: Mãe! A vó tá bem mesmo? Você ligou na aula!
+VO_CIDA: Eu tô ótima. Vou viver até os 104. Já avisei o médico.
+> Você senta. Mostra para ele o print do perfil de fofoca.
+@expr theo surpresa
+THEO: Mas... essa foto é minha. Como foi parar aí?
+@se marca:foto_uniforme_publica -> t04_era_publica
+@vai t04_era_amigos
+
+=== t04_era_publica
+EU: Seu perfil está aberto. Qualquer pessoa no mundo pode ver. O perfil de fofoca só precisou copiar.
+@expr theo envergonhada
+THEO: Mas todo mundo posta foto de uniforme! E eu deixei aberto pra galera da escola me achar.
+EU: E achou. A galera da escola, e quem não é da escola também. Você conhece todo mundo que começou a te seguir depois dessa foto?
+THEO: Não.
+(Nem eu. E isso é o que me tira o sono.)
+@vai t04_conversa
+
+=== t04_era_amigos
+EU: Você postou só para os amigos próximos, né?
+THEO: Só pra sala. E pro Gui.
+EU: Alguém da lista tirou print e mandou para o perfil. Print passa por cima de qualquer configuração.
+@expr theo pensativa
+THEO: Então não adianta nada deixar fechado?
+EU: Adianta muito. Diminui quem vê. Mas não é cofre: tudo o que vai para a tela de outra pessoa pode sair dela.
+@anota t4_print_escapa
+@vai t04_conversa
+
+=== t04_conversa
+? O Theo está com o celular na mão, esperando a bronca. Como você segue?
+* "Vamos olhar a foto juntos, como se a gente fosse um estranho que não te conhece." -> t04_olhar {confianca+1 paciencia+1}
+* "Eu falei que isso era perigoso. Você não escuta." -> t04_bronca {confianca-2}
+** Pedir para o Theo mostrar como ele postou, passo a passo, porque ele sabe mais que você -> t04_theo_ensina {confianca+2 rel_theo+1}
+
+=== t04_bronca
+@expr theo triste
+THEO: Você não falou isso. Você falou pra pensar quem vai ver. Eu pensei. Eu pensei que ia ser a escola.
+(Ele tem razão. Eu disse para pensar em quem vai ver. Ninguém ensinou a pensar como um estranho pensa.)
+EU: Tá. Desculpa. Vamos olhar a foto juntos, como se a gente fosse um estranho.
+@muda confianca+1
+@vai t04_olhar
+
+=== t04_theo_ensina
+@expr theo feliz
+THEO: Tá, olha. Tira a foto. Escolhe o filtro. Escreve a legenda. Aqui tem "Adicionar local". Aqui embaixo, "Quem pode ver".
+EU: Você tocou em "Adicionar local"?
+THEO: Toquei. Senão ninguém acha.
+EU: E esse "Quem pode ver" fica sempre do jeito da última vez?
+THEO: Fica. Por isso eu nem olho mais.
+(Em dois minutos ele me explicou o aplicativo inteiro, e o furo junto. Agora é a minha vez de explicar o resto.)
+@vai t04_olhar
+
+=== t04_olhar
+EU: Finge que você é uma pessoa que nunca te viu. O que essa foto te conta sobre o Theo?
+@desafio t4_foto_expoe -> t04_olhar_acerto | t04_olhar_erro
+
+=== t04_olhar_acerto
+@expr theo surpresa
+THEO: A escola, pelo uniforme e pelo local. O ponto onde eu pego o ônibus. O horário. Que eu vou sozinho. E o meu nome, no usuário.
+THEO: Mãe, eu contei pra todo mundo onde eu tô às 6h40 de todo dia.
+(Ele mesmo achou. Isso vale mais que qualquer palestra.)
+EU: Uma coisa só não é perigosa. Juntas, elas desenham a sua rotina para quem não devia saber.
+@muda tecnica+1
+@anota t4_foto_uniforme
+@vai t04_ajustes
+
+=== t04_olhar_erro
+@expr theo pensativa
+THEO: Hum. Que eu sou bonito?
+VO_CIDA: Isso todo mundo já sabia.
+EU: Olha de novo. A camiseta tem o nome da escola. O local está marcado. A legenda tem o horário do ônibus e diz que você vai sozinho. Atrás, o ponto.
+THEO: Ah. Juntando tudo, dá pra saber onde eu tô todo dia de manhã.
+(Ele precisou de ajuda para enxergar. Eu também precisei, na primeira vez.)
+@anota t4_foto_uniforme
+@vai t04_ajustes
+
+=== t04_ajustes
+? E o perfil do Theo, daqui pra frente?
+* Sentar junto e deixar o perfil privado: só segue quem ele aceitar, e ele conhece cada um -> t04_privado_juntos {marca:perfil_privado confianca+1 tecnica+1}
+* Pegar o celular e deixar tudo no privado sozinha, com a senha que você sabe -> t04_privado_sozinha {marca:perfil_privado confianca-1}
+* Apagar o perfil e o aplicativo, e acabou o assunto -> t04_apaga {confianca-2}
+
+=== t04_privado_juntos
+> Vocês dois, no sofá. Perfil privado: só vê quem ele aprovar. Seguidor que ele não conhece de verdade: removido, um por um, com ele dizendo quem é quem.
+> Localização: desligada na câmera e no "Adicionar local". A foto do portão: arquivada.
+EU: Pode postar foto. Mas sem uniforme com o nome da escola, sem local marcado na hora, e sem contar o horário em que você está sozinho.
+THEO: E se eu quiser postar a foto do ônibus?
+EU: Posta depois, em casa, e sem dizer que é todo dia às 6h40.
+@expr theo feliz
+THEO: Tipo os famosos, que postam a foto da praia quando já voltaram.
+(Exatamente. Meu filho acabou de inventar o conceito de postar atrasado.)
+@anota t4_perfil_privado
+@vai t04_vira
+
+=== t04_privado_sozinha
+> Você pega o celular, digita a senha, coloca o perfil no privado, remove seguidores que não conhece e arquiva a foto. Sozinha, em três minutos.
+@expr theo brava
+THEO: Você mexeu no meu celular sem eu ver. Você disse que a gente ia olhar junto.
+(Fiz a coisa certa do jeito errado. O perfil ficou seguro; a combinação, nem tanto.)
+@anota t4_perfil_privado
+@vai t04_vira
+
+=== t04_apaga
+> Você apaga o aplicativo de fotos. O perfil fica lá, parado, ainda público, só que sem ninguém cuidando dele.
+@expr theo triste
+THEO: Mas a foto continua lá. Você só tirou o aplicativo do meu celular.
+(Ele tem razão. Apagar o aplicativo não apaga o perfil. E agora a foto continua aberta e ninguém está olhando.)
+> Você instala de novo, só para deixar o perfil privado e arquivar a foto. O Theo não fala mais nada.
+@marca perfil_privado
+@anota t4_perfil_privado
+@vai t04_vira
+
+=== t04_vira
+@sai todos
+@fundo quarto_theo
+@musica cidade
+> Mais tarde, no quarto do Theo. A história muda de lado.
+@pov theo
+> Agora você é o Theo de novo.
+(O perfil de fofoca ainda está lá. Com a minha foto. A minha mãe denunciou. Mas eu também posso fazer alguma coisa, né?)
+@zap "6º B 🔥🔥🔥"
+ENZO: theo famoso 👀👀 apareceu no fofocas
+DUDA: quem é que faz esse perfil??
+BIA: eu denunciei, todo mundo denuncia
+ENZO: ninguém sabe, é isso que é legal kkk
+LARA: não é legal. tem foto minha lá também
+@zap fim
+? O que você faz?
+* Denunciar o repost na própria plataforma e mandar os prints pra mãe e pra professora Renata -> t04_theo_denuncia {etica+1}
+* Comentar no post do perfil de fofoca, com raiva -> t04_theo_responde {etica-1}
+* Ficar quieto e esperar o assunto passar -> t04_theo_quieto
+** Pedir pro Gui o atalho pra desligar a localização em tudo, de uma vez -> t04_theo_gui {tecnica+1 rel_gui+1}
+
+=== t04_theo_denuncia
+> Você aperta no repost. Três pontinhos. "Denunciar". "Expõe informações pessoais". "Sou eu na foto".
+> Depois manda os prints para a sua mãe e para a professora Renata.
+@zap "6º B 🔥🔥🔥"
+EU: denunciei também. se tiver foto de vcs lá, denuncia e fala com a prof renata, ela tá juntando
+LARA: valeu theo, vou fazer
+@zap fim
+(Contra um perfil que ninguém sabe quem é, uma denúncia não faz nada. Vinte denúncias e uma escola juntando prova fazem.)
+@vai t04_theo_fim
+
+=== t04_theo_responde
+> Você escreve um comentário bravo. Apaga. Escreve outro, mais bravo ainda. Publica.
+@som notificacao
+> Em cinco minutos, o perfil de fofoca responde: "o novato ficou nervosinho 👀". 40 curtidas.
+(Eu dei mais assunto pra eles. Briga é o que esse perfil come no café da manhã.)
+> Você apaga o comentário e denuncia o repost pelo botão da plataforma.
+@vai t04_theo_fim
+
+=== t04_theo_quieto
+> Você deixa o celular de lado e fica olhando o teto.
+(Se eu não falar nada, passa. Né? A minha mãe já denunciou. A professora já sabe.)
+> No fim, antes de dormir, você aperta "Denunciar" no repost. Uma denúncia só. Sem contar pra ninguém.
+@vai t04_theo_fim
+
+=== t04_theo_gui
+@zap "Gui 🎮"
+EU: gui como tira a localização de tudo
+GUI: configurações, privacidade, localização. lá tem a lista de todos os apps. câmera: nunca. fotos: nunca
+GUI: e o compartilhar com a família deixa ligado, senão sua mãe surta
+EU: vc sabe tudo mesmo
+GUI: sei. mas eu também postei foto de uniforme semana passada. vou apagar agora
+@zap fim
+(O Gui sabe todos os atalhos. Hoje, pela primeira vez, ele usou um pra fechar uma porta em vez de abrir.)
+> Depois, você denuncia o repost pelo botão da plataforma.
+@vai t04_theo_fim
+
+=== t04_theo_fim
+@se confianca>=6 -> t04_theo_cozinha
+@vai t04_theo_dorme
+
+=== t04_theo_cozinha
+@fundo casa_cozinha
+> Você leva o celular para a cozinha, para dormir carregando. A sua mãe está lavando a louça.
+EU: Mãe. Obrigado por não ter gritado. Muito.
+> Ela seca a mão no pano de prato e dá risada. Diz que gritou um pouquinho por dentro.
+EU: Se aparecer mais alguma coisa esquisita, eu te mostro. Antes.
+> Ela aponta para a geladeira, para a linha que diz que ninguém leva bronca por contar.
+@sai todos
+@pov fim
+@vai t05_inicio
+
+=== t04_theo_dorme
+> Você deixa o celular carregando na cozinha sem falar nada. A luz do quarto da sua mãe ainda está acesa.
+(Eu podia ter falado mais. Do grupo, do perfil, do que o Enzo escreveu. Mas ela ia ficar com aquela cara.)
+(Amanhã eu conto. Talvez.)
+@sai todos
+@pov fim
+@vai t05_inicio

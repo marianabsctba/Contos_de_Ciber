@@ -1,0 +1,308 @@
+# Parte 2, capítulo 6: A rede da casa (sábado)
+
+=== v06_inicio
+@cap 6 "A rede da casa"
+@fundo portao_vila
+@musica alegre
+@vai v06_chegada
+
+=== v06_chegada
+> Sábado, 8h50. A vila acorda devagar: um rádio tocando samba antigo, um cachorro discutindo com outro e o cheiro de pão de queijo saindo de alguma janela.
+> Você chega com uma mochila de cabos, um notebook e a paciência que sobrou da semana.
+@entra dona_jura feliz centro
+DONA_JURA: Chegou a técnica! A de verdade, não aquela do telefone.
+EU: Bom dia, Dona Jura. A senhora já sabe da quinta-feira?
+DONA_JURA: Minha filha, a vila inteira sabe. Eu contei para três pessoas antes do almoço e elas contaram para o resto. Agora ninguém aqui atende suporte nenhum.
+(A Dona Jura é a rede de alertas mais rápida da cidade. Zero configuração, cem por cento de alcance.)
+@sai dona_jura
+@se marca:vo_instalou_app -> v06_recap_app
+@vai v06_sala
+
+=== v06_recap_app
+(O celular da vó passou a sexta-feira inteira desligado, até eu restaurar ele do zero e trocar todas as senhas de outro aparelho. Ela diz que a casa ficou "silenciosa demais". Eu digo que silêncio é bom.)
+@vai v06_sala
+
+=== v06_sala
+@fundo sala_vo_tech
+@musica interior
+@entra vo feliz esquerda
+@entra caique feliz direita
+VO: Café na mesa, bolo de fubá no forno. Hoje é dia de faxina na internet.
+CAIQUE: E eu trouxe uma surpresa!
+> Ele levanta uma caixa nova, com foto de uma câmera branca e um selo vermelho: "OFERTA RELÂMPAGO".
+CAIQUE: Câmera para o quintal! Visão noturna, detecta movimento, manda alerta. Estava quarenta por cento off.
+VO: No quintal só tem a minha horta e o gato do vizinho.
+CAIQUE: Exatamente, vó. Agora a senhora vai saber o que o gato faz de noite.
+? O que fazer com a caixa nova?
+* "Caíque, câmera nova só depois que a rede estiver pronta. E com senha nova desde o primeiro minuto." -> v06_caixa_espera {seguranca+1}
+* "Vó, a senhora quer uma câmera no quintal?" -> v06_caixa_vo {autonomia_vo+1 rel_vo+1}
+* Deixar o Caíque instalar no quintal enquanto você cuida do roteador -> v06_caixa_deixa {seguranca-1 marca:quintal_pendente}
+** Ensinar o Caíque a instalar direito, do zero, com ele no controle -> v06_caixa_ensina {rel_caique+2 tecnica+1 seguranca+1}
+
+=== v06_caixa_espera
+@expr caique triste
+CAIQUE: Tá bom. Mas ela vai ficar aqui, olhando pra mim.
+> A caixa fica no sofá, ao lado do gato de pano da vó, esperando a vez dela.
+(Aparelho novo entra numa casa arrumada, não numa casa bagunçada. Senão é só mais uma porta aberta.)
+@vai v06_roteador
+
+=== v06_caixa_vo
+VO: Não quero. O quintal já tem quem vigie.
+> Ela aponta para o muro. Do outro lado, um coque grisalho some rapidinho atrás de um pé de manjericão.
+VO: A Jura vê tudo. Pra que eu vou pagar luz de câmera?
+@expr caique envergonhada
+CAIQUE: Ainda dá para devolver, tá no prazo.
+VO: Então devolve e compra um pão de queijo pra vó com o dinheiro.
+(Às vezes a configuração mais segura de um aparelho é ele voltar para a loja.)
+@vai v06_roteador
+
+=== v06_caixa_deixa
+CAIQUE: Deixa comigo! Em vinte minutos tá rodando.
+> Ele sai para o quintal com a caixa, uma escada e a confiança de quem nunca leu um manual na vida.
+(Depois eu vejo o que ele fez. Depois.)
+@vai v06_roteador
+
+=== v06_caixa_ensina
+EU: Instala você. Mas do jeito certo. Primeiro: antes de ligar a câmera na rede, a gente pensa em qual rede ela vai entrar.
+CAIQUE: Tem mais de uma rede?
+EU: Daqui a pouco vai ter. Segundo: no primeiro uso, o aplicativo pede para criar uma conta e trocar a senha de fábrica. Senha longa, só dessa câmera. Terceiro: atualização antes de qualquer outra coisa.
+CAIQUE: Isso tudo dá mais trabalho que a promoção.
+EU: Dá. Por isso que a promoção é barata.
+> Ele anota tudo no celular, com uma seriedade que você não vê nele desde a prova do Detran.
+@marca camera_quintal_ok
+@vai v06_roteador
+
+=== v06_roteador
+@fundo cozinha_vo
+> O roteador fica no corredor, entre a cozinha e a sala, embaixo de um paninho de crochê e de uma imagem de Santo Antônio.
+VO: O paninho é para não pegar poeira. O santo é para não cair a internet.
+EU: E está funcionando?
+VO: Cai toda quinta. Mas Santo Antônio é casamenteiro, não técnico.
+> Você vira o roteador. Embaixo, a etiqueta de fábrica: nome da rede, senha do Wi-Fi e a senha do painel de administração. A mesma senha que veio em milhares de roteadores iguais.
+> O nome da rede, que alguém mudou um dia, é "CASA_ZILA". A senha do Wi-Fi é "zila1949".
+VO: É o ano em que eu nasci. Ninguém sabe.
+DONA_JURA: Eu sei!
+> A voz vem da janela da cozinha. A Dona Jura acena com o regador.
+(Senha do Wi-Fi com nome e ano de nascimento. Fácil de lembrar para a vó. Fácil de adivinhar para qualquer um que more na vila. E a vila inteira conhece a vó.)
+EU: Vamos abrir o painel do roteador e arrumar a casa dele primeiro. Ele é a porta de entrada de todo o resto.
+@desafio v6_roteador -> v06_roteador_acerto | v06_roteador_erro
+
+=== v06_roteador_acerto
+@marca roteador_protegido
+@muda seguranca+2 tecnica+1
+> Senha do painel trocada por uma longa, guardada no caderninho da vó, dentro da gaveta da cozinha, longe da etiqueta. Acesso ao painel pela internet desligado. Atualização instalada. Segurança da rede no padrão mais forte que todos os aparelhos aceitam.
+> O roteador reinicia. As luzinhas piscam como árvore de Natal.
+VO: Ele tá rezando?
+EU: Tá atualizando, vó. Que para roteador é quase a mesma coisa.
+@anota v6_roteador
+@vai v06_wifi
+
+=== v06_roteador_erro
+@muda seguranca+1
+> Você troca a senha do Wi-Fi e atualiza, mas se perde no meio do painel, entre trinta menus com nomes em inglês e um botão que diz "Avançado" como se o resto fosse básico.
+> No fim, o acesso ao painel pela internet continua ligado, e a senha do painel continua a da etiqueta.
+(Metade da porta trancada. Eu volto nisso. Anoto num papel para não esquecer. Espero não perder o papel.)
+@anota v6_roteador
+@vai v06_wifi
+
+=== v06_wifi
+EU: Vó, a senha nova do Wi-Fi é a senhora que escolhe. Longa. Pode ser uma frase, com espaço, do jeito que a senhora fala. Só não pode ser nome, data nem nada que a Dona Jura saiba.
+VO: Ela sabe tudo.
+EU: Então algo que nem ela imagina.
+> A vó pensa. Fecha os olhos. Abre. Escreve num papelzinho, dobra três vezes e não mostra para ninguém.
+VO: Essa nem você vai saber. Quando você vier, eu digito no seu celular.
+@muda autonomia_vo+1
+(A melhor senha da casa é a que a dona da casa escolheu e eu não sei. Do jeito que devia ser sempre.)
+@vai v06_rede
+
+=== v06_rede
+@fundo sala_vo_tech
+EU: Agora a parte mais importante. Hoje, o celular da senhora, o banco da senhora, a câmera, a lâmpada, a moça e a balança estão todos na mesma rede. Se um aparelho desses tiver uma falha, ele fica do lado das coisas importantes.
+CAIQUE: Mas é tudo da vó.
+EU: É tudo da vó, mas não é tudo igual. A lâmpada não precisa conversar com o aplicativo do banco.
+? Como organizar a rede da casa?
+* Criar uma rede só para os aparelhos, separada da rede do celular e do computador da vó -> v06_rede_separa {seguranca+2 tecnica+1 marca:rede_separada}
+* Deixar tudo numa rede só. Menos coisa para a vó entender -> v06_rede_uma
+** Explicar para a vó com as panelas da cozinha e deixar ela batizar as redes -> v06_rede_panelas {seguranca+2 autonomia_vo+1 marca:rede_separada}
+
+=== v06_rede_separa
+> O roteador da vó tem uma rede de convidados que nunca ninguém ligou. Você liga, dá outro nome, outra senha forte, e isola: quem está nela sai para a internet, mas não enxerga os aparelhos da rede principal.
+> Um por um, câmera, lâmpada, campainha, a moça e a tomada da cafeteira vão para a rede nova. O celular da vó e o notebook ficam na principal.
+CAIQUE: Então se a lâmpada for hackeada...
+EU: ...ela fica brava sozinha, longe do banco da vó.
+@anota v6_rede_separada
+@vai v06_camera_check
+
+=== v06_rede_uma
+(Tudo junto é mais fácil hoje. E mais difícil no dia em que um desses aparelhos tiver uma falha. Uma lâmpada vulnerável dividindo a casa com o aplicativo do banco.)
+EU: Tá. Fica uma rede só. Mas pelo menos todo mundo atualizado.
+VO: Eu gosto de tudo junto. Igual família no Natal.
+(Família no Natal também briga, vó.)
+@vai v06_camera_check
+
+=== v06_rede_panelas
+> Você pega duas panelas da cozinha e põe na mesa da sala.
+EU: Esta é a panela das coisas da senhora: o celular, o banco, as fotos. Esta outra é a panela dos trecos: lâmpada, câmera, a moça, a campainha. Cada panela tem a sua tampa. Se um treco estragar, estraga só a panela dos trecos.
+VO: E o arroz não pega gosto de feijão.
+EU: Exatamente, vó.
+VO: Então a rede de lá se chama "ZILA_GENTE" e a de cá se chama "ZILA_TRECOS".
+> Você digita os nomes no painel. A rede de convidados do roteador vira a panela dos trecos: senha própria, forte, e isolada da rede principal.
+@expr vo feliz
+@anota v6_rede_separada
+@vai v06_camera_check
+
+=== v06_camera_check
+@se marca:camera_ficou_aberta e !marca:trocou_senha_camera -> v06_camera_sala
+@vai v06_planta
+
+=== v06_camera_sala
+@musica misterio
+> Na estante da sala, a câmera do domingo continua olhando para o sofá. Ninguém trocou a senha dela. Admin, admin, desde o primeiro dia.
+(A câmera que começou tudo isso. Que aparecia naquele site que lista câmeras abertas. A vó assiste novela na frente dela todas as noites.)
+? O que fazer com a câmera da sala?
+* Trocar agora a senha, atualizar e revisar quem tem acesso no aplicativo -> v06_camera_troca {seguranca+2 marca:trocou_senha_camera}
+* Perguntar para a vó se ela quer mesmo uma câmera na sala -> v06_camera_pergunta {autonomia_vo+1 seguranca+2 marca:camera_removida}
+* "Depois do almoço eu vejo a câmera da sala, agora é a vez dos outros aparelhos" -> v06_camera_depois {marca:camera_nunca_trocou}
+
+=== v06_camera_troca
+> Aplicativo aberto. Senha nova, longa e única. Atualização instalada. Na lista de acessos, três contas: a da vó, a do Caíque e uma chamada "teste123", que ninguém sabe de onde veio. Remover.
+CAIQUE: Teste123 era eu. No dia da instalação.
+EU: Cada pessoa com o próprio acesso, e só quem precisa. Teste não precisa.
+@vai v06_planta
+
+=== v06_camera_pergunta
+EU: Vó, a senhora quer essa câmera aí? Ela fica olhando a sala o dia todo.
+VO: O Caíque disse que era para ver se eu caísse.
+EU: E a senhora quer que alguém veja a sala?
+VO: Eu quero ver a novela em paz. De camisola, se eu quiser.
+> Ela mesma tira a câmera da tomada e põe dentro da caixa, com o isopor e tudo.
+VO: Se um dia eu quiser, eu peço. Com senha nova.
+@vai v06_planta
+
+=== v06_camera_depois
+(Depois do almoço. Eu anoto. Eu volto.)
+> Você não anota.
+@vai v06_planta
+
+=== v06_planta
+@musica hacker
+> 15h. Rede arrumada, café na terceira garrafa, bolo pela metade. Antes de ir embora, você faz a última volta pela casa com o celular na mão e a lista de aparelhos conectados aberta no painel do roteador.
+> Alguns nomes você conhece. Outros, não.
+EU: Vó, a senhora tem impressora?
+VO: Do seu avô. Está no quartinho dos fundos desde 2014.
+EU: E ela está ligada?
+VO: Ela nunca foi desligada. Ele dizia que impressora que desliga não volta.
+@desafio v6_planta_final -> v06_planta_acerto | v06_planta_erro
+
+=== v06_planta_acerto
+@muda seguranca+1 tecnica+1
+> Você marca na planta os quatro pontos: a TV sem atualização com o microfone do controle sempre aberto, a impressora do vô que o fabricante não atualiza mais, a balança do banheiro, de um fabricante que fechou, mandando o peso da vó para um aplicativo abandonado, e a tomada da cafeteira compartilhada com um celular que o Caíque perdeu no Carnaval.
+CAIQUE: Ah, foi para lá que ele foi.
+EU: O celular foi para algum lugar. O acesso à cafeteira da vó foi junto.
+> O acesso do celular perdido sai da tomada. A TV recebe a atualização que esperava havia oito meses.
+@anota v6_sem_suporte
+@vai v06_desligar
+
+=== v06_planta_erro
+> Você pega a TV e a tomada da cafeteira, mas a impressora do vô e a balança do banheiro passam batidas, perdidas entre nomes de aparelhos que parecem senha de Wi-Fi.
+(Faltaram dois. A impressora que ninguém atualiza desde 2014 e a balança que manda o peso da vó para um aplicativo que ninguém mais atualiza. Eu olhei, mas não vi.)
+> Na segunda passada, com mais calma, o nome "SCALE_7A2" chama a sua atenção. Antes tarde.
+@anota v6_sem_suporte
+@vai v06_desligar
+
+=== v06_desligar
+@musica interior
+EU: Vó, tem aparelho aqui que não faz nada pela senhora e só abre porta. A balança que manda o peso para um aplicativo abandonado e a impressora do vô.
+VO: A balança pode ir. Ela me julga.
+CAIQUE: Ela só mostra o número, vó.
+VO: Mostra com cara de julgamento.
+? Como decidir o que sai da tomada?
+* Perguntar à vó, aparelho por aparelho, o que ela usa de verdade -> v06_desliga_juntas {autonomia_vo+2 seguranca+1 marca:desligou_inuteis rel_vo+1}
+* Desligar você mesma o que achou inútil, enquanto a vó passa mais café -> v06_desliga_sozinha {seguranca+1 autonomia_vo-2 marca:desligou_inuteis}
+* Não desligar nada. Atualizar o que der e pronto -> v06_desliga_nada {seguranca+1}
+** Fazer com o Caíque uma "caixa da aposentadoria" para os aparelhos que saem -> v06_caixa_aposentadoria {seguranca+2 autonomia_vo+1 rel_caique+1 marca:desligou_inuteis}
+
+=== v06_desliga_juntas
+> Vocês passam de cômodo em cômodo. A vó segura cada aparelho e responde.
+VO: Balança, fora. E o controle extra da TV, que veio de brinde e eu nunca usei, fora também. Impressora do seu avô... deixa eu pensar.
+> Ela passa a mão na impressora. Um tempo.
+VO: Desliga. Mas não joga fora. Fica de enfeite. Ele ia gostar de ser enfeite.
+VO: A lâmpada fica, que ela fica roxa na abertura da novela. A moça fica, que é minha amiga. A cafeteira fica, que eu sou velha mas não sou boba.
+@expr vo feliz
+(Ela escolheu cada um. Agora a casa tem só o que ela quer, e ela sabe o que tem.)
+@vai v06_quintal_check
+
+=== v06_desliga_sozinha
+> Enquanto a vó está na cozinha, você tira da tomada a balança, a impressora e, por via das dúvidas, a lâmpada da varanda.
+@expr vo brava
+VO: Cadê a minha impressora? Cadê a minha lâmpada?
+EU: Vó, não servem para nada.
+VO: A impressora era do seu avô. E a lâmpada fica roxa na novela. Serve para mim.
+> Ela religa a lâmpada. A impressora ela deixa desligada, mas fecha a porta do quartinho com mais força do que precisava.
+(Eu estava certa sobre os riscos. Estava errada sobre de quem é a casa.)
+@muda rel_vo-1
+@vai v06_quintal_check
+
+=== v06_desliga_nada
+VO: Melhor assim. Vai que um dia eu preciso imprimir.
+EU: Imprimir o quê, vó?
+VO: Sei lá. Receita. Boletim de ocorrência.
+(A impressora do vô vai continuar ligada, sem atualização e sem suporte, na rede da casa. Pelo menos ela imprime receita.)
+@vai v06_quintal_check
+
+=== v06_caixa_aposentadoria
+> O Caíque acha uma caixa de sapato e escreve com canetinha: "APOSENTADOS. OBRIGADO PELOS SERVIÇOS PRESTADOS."
+> A vó escolhe quem vai para a caixa. Balança, impressora, o controle extra da TV. Cada um ganha um adesivo de estrelinha antes de entrar.
+CAIQUE: Desculpa, balança. Foi bom enquanto durou.
+VO: Pra você foi. Pra mim, não.
+@expr caique feliz
+(O Caíque riu, a vó riu, e três portas abertas foram fechadas com estrelinha. Segurança não precisa ser triste.)
+@vai v06_quintal_check
+
+=== v06_quintal_check
+@se marca:quintal_pendente -> v06_quintal
+@vai v06_fim
+
+=== v06_quintal
+@fundo quintal_almoco
+> 18h50. Já está escurecendo. No quintal, presa no muro, a câmera nova pisca uma luz azul para a horta.
+CAIQUE: Tá funcionando! Já mandou três alertas. Dois do gato, um da Dona Jura.
+EU: Senha?
+CAIQUE: A da caixa mesmo. Depois a gente troca.
+? A câmera nova está com a senha de fábrica. Agora ou depois?
+* Trocar a senha agora, com o Caíque, pôr na rede dos aparelhos e atualizar -> v06_quintal_troca {seguranca+1 rel_caique+1}
+* "Hoje não. Já é noite e eu estou morta. Semana que vem." -> v06_quintal_depois {marca:camera_quintal_aberta}
+
+=== v06_quintal_troca
+> Mais quinze minutos, com o celular de lanterna. Senha nova, atualização, rede certa. A câmera reinicia.
+CAIQUE: Ela agora tá trancada?
+EU: Agora ela é só uma câmera. Antes ela era um convite.
+@vai v06_fim
+
+=== v06_quintal_depois
+(Semana que vem. Igual eu disse da câmera da sala, no primeiro domingo.)
+> A luz azul continua piscando para a horta, para o gato e para quem mais quiser olhar.
+@vai v06_fim
+
+=== v06_fim
+@fundo sala_vo_tech
+@musica alegre
+@sai todos
+@entra vo feliz centro
+> 20h59. A vó liga a TV. Começa a abertura da novela. A lâmpada da sala, sozinha, fica roxa.
+VO: Moça, aumenta o volume.
+> A assistente de voz aumenta o volume.
+VO: Obrigada, moça. Você é muito educada. Não é que nem aquele do telefone.
+(A casa está mais quieta. Menos coisa piscando, menos coisa falando sozinha. A vó está mais à vontade nela do que na segunda-feira.)
+@sai vo
+@som mensagem
+@zap "Netos da Vó Zilá 👵💜"
+CAIQUE: gente meu pai mandou foto da planilha pro grupo dos adultos
+CAIQUE: [foto] "Riscos da mãe morar sozinha", agora com 41 linhas
+CAIQUE: tem uma aba chamada "Recanto Feliz"
+CAIQUE: é uma casa de repouso
+VO: Eu tô no grupo, Caíque.
+CAIQUE: eu sei vó. dessa vez foi de propósito
+@zap fim
+(Amanhã é domingo. Almoço. E o Tio Mauro vem com uma aba nova.)
+@vai v07_inicio

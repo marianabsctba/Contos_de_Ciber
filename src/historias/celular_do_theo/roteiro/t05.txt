@@ -1,0 +1,355 @@
+# Parte 2, capítulo 5: Zoação. Capítulo inteiro do lado do Theo.
+
+=== t05_inicio
+@cap 5 "Zoação"
+@fundo onibus_escolar
+@musica cidade
+@pov theo
+> Quinta semana do bimestre. Enquanto a mãe dorme depois do plantão, a história muda de lado.
+> Agora você é o Theo. Onze anos, sexto ano, escola nova e um celular com adesivo de unicórnio que não sai nem com acetona.
+@entra gui feliz direita
+GUI: Mano. Você ainda não tirou o unicórnio?
+EU: Eu tentei. Minha mãe disse que essa cola é mais forte que a da dentadura da Vó Cida.
+GUI: Pega o estilete da sua vó.
+EU: A Vó Cida esconde o estilete junto com o carregador. Diz que os dois são perigosos.
+(O ônibus faz a curva da padaria e todo mundo se inclina pro mesmo lado, que nem plateia.)
+@som notificacao
+GUI: Olha o grupo. Tá pegando fogo.
+@vai t05_grupo
+
+=== t05_grupo
+@zap "6º B 🔥🔥🔥"
+> 47 mensagens não lidas
+ENZO: gente vcs viram o davi lucas na educação física kkkkkk
+ENZO: caiu e chorou igual bebê
+LARA: ele machucou o joelho enzo
+ENZO: [foto] Montagem: o rosto do Davi Lucas colado num bebê de propaganda de fralda, com a legenda "DAVI CHORÃO 🍼"
+> 14 pessoas reagiram com 😂
+ENZO: kkkkkkkkkkk
+ENZO: fiz em 2 min
+GUI: mano...
+LARA: apaga isso
+ENZO: relaxa lara é zoeira
+ENZO: cadê o novato? theo vc manja de edição né, faz uma melhor
+ENZO: quem não ri é pq é chorão tbm kkkk
+@zap fim
+@se marca:theo_compartilhou_zoacao -> t05_grupo_antes
+@vai t05_primeira
+
+=== t05_grupo_antes
+@zap "6º B 🔥🔥🔥"
+ENZO: da outra vez vc mandou print rapidinho, agora vai dar uma de santo?
+@zap fim
+(Da outra vez eu mandei. E achei que não tinha nada de mais. Agora é com o Davi Lucas, que senta do meu lado em matemática e me emprestou a régua no primeiro dia.)
+@vai t05_primeira
+
+=== t05_primeira
+(Catorze risadas. Se eu não rir, eu sou o próximo. Se eu rir, o Davi Lucas vê meu nome lá.)
+GUI: Ele vai ver o grupo no intervalo. Ele tá no grupo, Theo.
+? O grupo inteiro está esperando o novato.
+* Mandar um "kkkkk" e uma figurinha, só pra não ficar de fora -> t05_riu {etica-1}
+* Não responder nada e virar a tela pra baixo -> t05_silencio
+* Escrever no grupo: "isso não tem graça, apaga" -> t05_defende {etica+1}
+** Mandar no privado pro Davi Lucas: "Vi o grupo. Foi zoado. Você tá bem?" -> t05_privado_davi {etica+2}
+
+=== t05_riu
+@zap "6º B 🔥🔥🔥"
+EU: kkkkk
+EU: [figurinha] Macaco rindo
+ENZO: AEEE o novato é dos nossos
+ENZO: agora faz a montagem, quero ver
+@zap fim
+(Eu ri com o dedo. Por dentro eu não ri nada. Mas o dedo é que aparece no grupo.)
+@vai t05_pressao
+
+=== t05_silencio
+> Você vira o celular para baixo no colo. O unicórnio olha para o teto do ônibus.
+@zap "6º B 🔥🔥🔥"
+ENZO: theo visualizou e não falou nada kkkk
+ENZO: tá com medo?
+@zap fim
+(Ficar quieto não apaga a foto. Mas pelo menos meu nome não tá embaixo dela.)
+@vai t05_pressao
+
+=== t05_defende
+@zap "6º B 🔥🔥🔥"
+EU: isso não tem graça. apaga
+LARA: concordo com o theo
+ENZO: nossa que chatos
+ENZO: é só zoeira gente
+> 3 pessoas tiraram a reação 😂
+@se marca:theo_ajudou_colega -> t05_defende_duda
+@vai t05_defende_fim
+
+=== t05_defende_duda
+DUDA: o theo me defendeu da outra vez. apaga enzo
+> 4 pessoas tiraram a reação 😂
+@vai t05_defende_fim
+
+=== t05_defende_fim
+@zap fim
+(Gente tirando a risada. Parece pouco, mas é o começo da fila do outro lado.)
+@vai t05_pressao
+
+=== t05_privado_davi
+@zap "Davi Lucas"
+EU: vi o grupo. foi zoado. vc tá bem?
+> Davi Lucas está digitando...
+> Davi Lucas está digitando...
+DAVI_LUCAS: to de boa
+DAVI_LUCAS: mentira nao to
+DAVI_LUCAS: vlw theo
+@zap fim
+(Ele demorou pra escrever "não tô". Às vezes a coisa mais difícil de digitar é a verdade.)
+@muda rel_theo+1
+@vai t05_pressao
+
+=== t05_pressao
+@fundo patio_escola
+@musica tensao
+> Intervalo. O pátio da escola nova tem um pé de jambo, uma cantina com fila e um banco onde ninguém senta porque tem formiga.
+@entra gui neutra direita
+@entra enzo feliz esquerda
+ENZO: E aí, editor. Vai fazer ou não vai? Coloca ele chorando com música de novela.
+ENZO: Todo mundo vai rir. Você fica famoso no primeiro mês.
+GUI: Fala que não, mano.
+(Ele não tá pedindo. Ele tá me testando. E todo mundo do 6º B tá olhando o teste.)
+? O Enzo espera com o celular na mão.
+* Fazer a montagem "só uma de leve" e mandar no grupo -> t05_montagem {etica-2 marca:theo_zoou}
+* Dizer que não vai fazer e não encaminhar nada -> t05_nao
+* Dizer que não e tirar print do grupo, sem mandar pra ninguém -> t05_print_cedo {tecnica+1}
+
+=== t05_montagem
+> Você abre o editor no celular. O Davi Lucas, o bebê, a música de novela. Leva quatro minutos. Fica bem feito, o que é o pior.
+@zap "6º B 🔥🔥🔥"
+EU: [foto] Montagem: o Davi Lucas de bebê chorão com coroa de príncipe e a legenda "O REI DO CHORORÔ 👑"
+> 22 pessoas reagiram com 😂
+ENZO: KKKKKKKK O NOVATO É BRABO
+> Davi Lucas saiu do grupo
+@zap fim
+@sai enzo
+@expr gui triste
+GUI: Ele saiu, Theo.
+(Vinte e duas risadas e eu não senti nada de bom. Só um buraco na barriga, que nem quando esqueço o dever.)
+> Do outro lado do pátio, o Davi Lucas está sentado sozinho no banco das formigas.
+@vai t05_alvo
+
+=== t05_nao
+EU: Não vou fazer.
+ENZO: Por quê? Você é amigo do chorão agora?
+EU: Porque não. Se fosse comigo eu ia odiar.
+ENZO: Tá bom, santinho.
+@sai enzo
+GUI: Mano, isso foi corajoso. E meio perigoso.
+EU: Perigoso por quê?
+GUI: Porque o Enzo precisa de alguém pra zoar todo dia. Se não é o Davi, é outro.
+@vai t05_alvo
+
+=== t05_print_cedo
+EU: Não vou fazer.
+> Enquanto o Enzo resmunga, você aperta os dois botões do lado do celular ao mesmo tempo. Clique de câmera. Print.
+@sai enzo
+GUI: Você printou?
+EU: O nome do grupo, a montagem e a hora tão aparecendo. Se alguém apagar, a prova fica.
+GUI: Boa. E não manda pra ninguém. Print de zoação mandado pros outros vira zoação de novo.
+@marca theo_print_zoacao
+@vai t05_alvo
+
+=== t05_alvo
+@fundo quarto_theo
+@musica triste
+> Dois dias depois. Noite. Sua mãe está no plantão e a Vó Cida assiste novela na sala com o volume no 38.
+@som notificacao
+@zap "6º B 🔥🔥🔥"
+ENZO: [foto] Montagem: o Theo com um chifre de unicórnio na testa e a legenda "THEO UNICÓRNIO 🦄 CELULAR DA PRIMA"
+> 19 pessoas reagiram com 😂
+ENZO: kkkkk o novato do celular de menina
+ENZO: 🦄🦄🦄🦄🦄🦄
+LARA: para enzo
+ENZO: [figurinha] Unicórnio chorando
+@zap fim
+@marca theo_virou_alvo
+@se marca:theo_zoou -> t05_alvo_zoou
+(O adesivo da prima. A coisa mais boba da minha vida virou a piada da sala inteira. Meu rosto tá quente e eu nem tô na frente de ninguém.)
+@vai t05_alvo_reage
+
+=== t05_alvo_zoou
+(Agora é comigo. E eu sei exatamente como o Davi Lucas se sentiu, porque fui eu que fiz a coroa de príncipe.)
+@som mensagem
+@zap "Davi Lucas"
+DAVI_LUCAS: agora vc sabe como é
+@zap fim
+(Ele tem razão. E isso dói mais que o unicórnio.)
+@vai t05_alvo_reage
+
+=== t05_alvo_reage
+? O celular vibra a cada risada nova.
+* Responder no mesmo tom e fazer uma montagem do Enzo -> t05_revida {etica-1}
+* Sair do grupo, apagar o aplicativo e fingir que nada aconteceu -> t05_engole
+* Não responder e guardar prova antes que alguém apague -> t05_prova
+
+=== t05_revida
+> Você abre o editor. O Enzo de palhaço. Você olha a montagem pronta por um minuto inteiro.
+(Se eu mandar, amanhã ele faz outra. Depois eu faço outra. Vira uma guerra de montagem e quem perde é todo mundo que tá assistindo.)
+> Você apaga a montagem sem mandar. Mas digita no grupo antes de conseguir segurar.
+@zap "6º B 🔥🔥🔥"
+EU: pelo menos meu celular não é que nem a sua cara
+ENZO: KKKK ficou nervoso o unicórnio
+> 25 pessoas reagiram com 😂
+@zap fim
+(Responder deu mais risada pra ele. A zoação come resposta.)
+@vai t05_gui_print
+
+=== t05_engole
+> Você sai do grupo. Apaga o aplicativo. Deita no escuro com o celular no peito.
+(Se eu não vejo, não existe.)
+@som notificacao
+> Mensagem do Gui. Ele sempre acha um jeito.
+@vai t05_gui_print
+
+=== t05_prova
+(Não responder. Guardar. Igual minha mãe faz com as receitas que ela fotografa antes de jogar fora.)
+@vai t05_gui_print
+
+=== t05_gui_print
+@zap "Gui 🎮"
+GUI: mano vi o grupo. o enzo é muito sem noção
+GUI: NAO responde e NAO apaga nada
+GUI: printa tudo. se vc saiu do grupo eu printo daqui
+EU: printar pra que? pra ver de novo?
+GUI: pra provar. se ele apagar amanhã ninguém acredita
+GUI: tem um jeito certo de fazer. vou te falar
+@zap fim
+(O Gui sabe todos os atalhos de tudo. Do jogo, do celular, do micro-ondas da escola. Ele deve saber esse também.)
+@desafio t5_guardar_prova -> t05_prova_ok | t05_prova_erro
+
+=== t05_prova_ok
+@som acerto
+> Pasta nova na galeria: "guardar". Prints com o nome do grupo no topo, o nome de quem mandou, a data e a hora. Nenhum encaminhado para ninguém.
+GUI: [audio 0:08] Isso. Agora não tem como ele dizer que não foi ele. E você não espalhou nada. Agora conta pra um adulto. Sério.
+@anota t5_guardar_prova
+@marca theo_print_zoacao
+@vai t05_contar
+
+=== t05_prova_erro
+@som erro
+> Você tira um print cortado, só com a figurinha, sem nome e sem hora. Depois, no nervoso, manda para o Gui pelo grupo errado.
+@zap "6º B 🔥🔥🔥"
+EU: [foto] Print da montagem do unicórnio
+ENZO: kkkk ele mesmo tá espalhando 🦄
+@zap fim
+GUI: [audio 0:06] Mano! No privado, não no grupo! Apaga pra todos. E tira de novo, com o nome do grupo e a hora aparecendo.
+(Espalhei a minha própria zoação. Recorde mundial de vergonha.)
+@muda tecnica-1
+@anota t5_guardar_prova
+@vai t05_contar
+
+=== t05_contar
+@musica triste
+@anota t5_nao_compartilhar
+(O Gui disse pra contar pra um adulto. Mas contar o quê? Que eu tenho onze anos e tô chorando por causa de um unicórnio?)
+@se marca:theo_zoou -> t05_contar_zoou
+@vai t05_contar_escolha
+
+=== t05_contar_zoou
+(E se eu contar, vou ter que contar a parte da coroa de príncipe também. Não dá pra contar só metade. A metade que eu esconder é justo a que mais importa.)
+@vai t05_contar_escolha
+
+=== t05_contar_escolha
+> Da sala, a novela termina e a Vó Cida grita que o mocinho é o vilão desde o capítulo um.
+? Para quem você conta?
+* Esperar minha mãe chegar do plantão e contar tudo pra ela -> t05_conta_mae {confianca+1} [se confianca>=6]
+* Ir até a sala contar pra Vó Cida agora -> t05_conta_vo {rel_vo_cida+1}
+* Mostrar amanhã pra Professora Renata -> t05_escola {rel_prof_renata+1}
+* Não contar pra ninguém. Vai passar -> t05_guarda
+
+=== t05_conta_mae
+> Sete e meia da manhã. Sua mãe entra em casa com o crachá ainda pendurado e a cara de quem cuidou de vinte pessoas a noite inteira.
+> Você está sentado na mesa da cozinha com o celular na mão, antes da escola. Ela para de tirar o sapato no meio.
+(Ela tá cansada. Mas ela sempre diz: "pode me contar qualquer coisa, até quando eu tô com sono".)
+> Você mostra a pasta "guardar". Ela vê tudo em silêncio. Depois puxa a cadeira pra perto.
+> "Obrigada por me mostrar. Você não fez nada de errado por ser zoado", ela diz. "Agora a gente leva isso pra escola, junto."
+@se marca:theo_zoou -> t05_conta_mae_zoou
+@vai t05_escola
+
+=== t05_conta_mae_zoou
+> Você conta também da coroa de príncipe. A voz falha no meio.
+> Ela fica quieta muito tempo. "Eu tô chateada com o que você fez com o Davi Lucas. E orgulhosa de você ter me contado. As duas coisas ao mesmo tempo. Amanhã a gente pensa em como pedir desculpa de verdade."
+(Eu achei que ia ter grito. Teve um abraço meio torto, que ainda tinha cheiro de hospital.)
+@vai t05_escola
+
+=== t05_conta_vo
+@fundo sala_familia
+@entra vo_cida neutra centro
+EU: Vó. Posso mostrar uma coisa?
+VO_CIDA: Se for vídeo de gato, pode. Se for vídeo de briga, eu vou mandar desligar da tomada.
+> Você mostra. A Vó Cida coloca os óculos, tira, coloca de novo.
+@expr vo_cida brava
+VO_CIDA: Esse menino fez isso com a sua cara? Com chifre?
+EU: É um unicórnio, vó.
+VO_CIDA: No meu tempo a gente apelidava o outro no recreio e pronto, acabava na hora do sinal. Isso aí não acaba. Fica no bolso de todo mundo.
+VO_CIDA: Você não apagou nada, né? Porque a sua mãe vai querer ver. E a escola também.
+@se marca:theo_zoou -> t05_conta_vo_zoou
+VO_CIDA: Amanhã sua mãe chega e a gente conta junto. Agora vem comer bolo de fubá. Não resolve, mas ajuda.
+@sai vo_cida
+@vai t05_escola
+
+=== t05_conta_vo_zoou
+EU: Vó... eu também fiz uma montagem. Do Davi Lucas. Antes.
+@expr vo_cida triste
+VO_CIDA: Ah, meu filho.
+> Ela fica um tempo olhando a novela sem ver.
+VO_CIDA: Então você sabe direitinho o tamanho do estrago. Agora é consertar. Começa pedindo desculpa pra ele, olhando no olho. Depois a gente conta pra sua mãe.
+@sai vo_cida
+@vai t05_escola
+
+=== t05_guarda
+> Você não conta pra ninguém. Dorme mal. No dia seguinte, vai pra escola de capuz, mesmo fazendo trinta graus.
+(Se eu não falar, ninguém fica sabendo que eu me importo.)
+@vai t05_escola_gui
+
+=== t05_escola_gui
+@fundo patio_escola
+@entra gui neutra direita
+GUI: Mano, não me odeia. Eu mostrei os prints pra Professora Renata.
+EU: Gui!
+GUI: Você tava de capuz no calor. Ninguém usa capuz no calor se tá tudo bem.
+(Fiquei com raiva dele por uns três segundos. Depois deu um alívio estranho, tipo tirar a mochila pesada.)
+@sai gui
+@vai t05_escola
+
+=== t05_escola
+@fundo escola_sala
+@musica infancia
+@sai todos
+@entra prof_renata neutra centro
+> Sala de tecnologia, na hora do almoço. A Professora Renata tem trancinhas até a cintura e um adesivo na caneca: "Ctrl+Z não funciona na vida".
+PROF_RENATA: Theo, eu vi os prints. Obrigada por guardar do jeito certo. Isso ajuda muito a escola a agir.
+EU: O Enzo vai ser expulso?
+PROF_RENATA: A gente não resolve zoação criando outro alvo. Vou conversar com ele, com a família dele e com a turma. E com o Davi Lucas também.
+@se marca:theo_zoou -> t05_escola_zoou
+PROF_RENATA: Você fez três coisas certas: não espalhou, guardou prova e contou. Tem adulto que não sabe fazer as três.
+@vai t05_fim
+
+=== t05_escola_zoou
+> Você respira fundo e conta da montagem com a coroa. A Professora Renata não faz cara de espanto. Faz cara de quem já ouviu isso antes e ainda acredita nas pessoas.
+PROF_RENATA: Obrigada pela sinceridade. Ela não apaga o que você fez, mas é por ela que dá pra consertar.
+PROF_RENATA: Vou precisar falar com a sua mãe. E você vai pedir desculpa para o Davi Lucas. Não no grupo. Pessoalmente.
+EU: Ele saiu do grupo.
+PROF_RENATA: Eu sei. Às vezes o grupo perde justo quem fazia falta.
+@vai t05_fim
+
+=== t05_fim
+@sai todos
+@fundo onibus_escolar
+@musica cidade
+> No ônibus de volta, você abre a galeria. A pasta "guardar" está lá, quieta, que nem uma gaveta trancada.
+@entra gui feliz direita
+GUI: Sabia que dá pra tirar o adesivo com secador de cabelo?
+EU: Agora eu não quero mais tirar.
+GUI: Por quê?
+EU: Porque se eu tirar, o Enzo ganhou.
+(Unicórnio fica. Amanhã é outro dia. E a minha mãe chega do plantão às sete e meia.)
+@sai todos
+@pov fim
+@vai t06_inicio

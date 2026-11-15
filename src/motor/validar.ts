@@ -80,6 +80,7 @@ export function validar(h: Historia, rec: Recursos, partidas = 4000): Relatorio 
       if (l.t === 'narra' || l.t === 'pensa' || l.t === 'fala') palavras += l.texto.split(/\s+/).length;
       if ((l.t === 'entra' || l.t === 'expr') && !pers.has(l.id)) erros.push(`${onde}: personagem desconhecido ${l.id}`);
       if (l.t === 'entra' && l.id === 'eu') erros.push(`${onde}: a protagonista não usa @entra, ela aparece sozinha ao falar`);
+      if (l.t === 'pov' && l.id && !pers.has(l.id)) erros.push(`${onde}: ponto de vista de personagem desconhecido ${l.id}`);
       if (l.t === 'fundo' && !rec.fundos.has(l.id)) erros.push(`${onde}: cenário inexistente ${l.id}`);
       if (l.t === 'musica' && l.id !== 'nenhuma' && !rec.musicas.has(l.id)) erros.push(`${onde}: música inexistente ${l.id}`);
       if (l.t === 'som' && !rec.efeitos.has(l.id)) erros.push(`${onde}: efeito inexistente ${l.id}`);

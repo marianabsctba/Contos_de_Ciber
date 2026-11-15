@@ -1,0 +1,318 @@
+# Parte 2, capítulo 7: Casa de repouso? (domingo)
+
+=== v07_inicio
+@cap 7 "Casa de repouso?"
+@fundo quintal_almoco
+@musica interior
+@vai v07_chegada
+
+=== v07_chegada
+> Domingo, 12h20. Quintal da vó. Mesa comprida, toalha xadrez, frango assado e a travessa de maionese que ninguém pode tocar antes da oração.
+> O Tio Mauro chega às 12h21, de camisa social num domingo, com um notebook debaixo do braço e uma sacola de loja de eletrônicos na outra mão.
+@entra tio_mauro neutra direita
+@entra vo feliz esquerda
+TIO_MAURO: Bença, mãe.
+VO: Deus te abençoe, Mauro. Larga esse computador que é almoço.
+TIO_MAURO: É rapidinho. Depois do almoço eu mostro uns números.
+@sai vo
+@entra caique assustada centro
+CAIQUE: [cochichando] Prima. Ele trouxe a planilha impressa também. Em cores.
+(Planilha impressa em cores. É assim que o Tio Mauro diz que é sério.)
+@sai caique
+> O almoço passa com aquela tensão de família que finge que está tudo bem. A vó serve a maionese. Ninguém comenta a sacola.
+@vai v07_planilha
+
+=== v07_planilha
+@musica tensao
+@entra tio_mauro neutra centro
+> Depois do pudim, o Tio Mauro abre o notebook na mesa, entre os pratos sujos. Na tela, a planilha "Riscos da mãe morar sozinha", agora com 41 linhas e três abas novas: "Ocorrências", "Custos" e "Recanto Feliz".
+TIO_MAURO: Mãe, eu vou ser direto. Em uma semana, a câmera da sua sala apareceu na internet. A tal moça comprou fralda sozinha. A campainha mostrava a rua para estranhos. A fechadura te deixou para fora.
+@se marca:suporte_dinheiro_saiu -> v07_planilha_golpe
+@se marca:vo_instalou_app -> v07_planilha_quase
+@vai v07_planilha_desligou
+
+=== v07_planilha_golpe
+TIO_MAURO: E na quinta a senhora perdeu três mil e oitocentos reais para um golpista no telefone. Da aposentadoria.
+@entra vo triste esquerda
+VO: O banco ainda está analisando, Mauro.
+TIO_MAURO: Está analisando porque a senhora entregou o celular para um bandido.
+(Isso doeu nela. Dá para ver no jeito que ela dobrou o guardanapo.)
+@vai v07_proposta
+
+=== v07_planilha_quase
+TIO_MAURO: E na quinta a senhora instalou um aplicativo de golpista. Por sorte o banco segurou.
+@entra vo brava esquerda
+VO: Não foi sorte. Eu desliguei e liguei para o banco.
+TIO_MAURO: Depois de instalar.
+@vai v07_proposta
+
+=== v07_planilha_desligou
+TIO_MAURO: E na quinta ligaram para a senhora fingindo ser do suporte.
+@entra vo brava esquerda
+VO: E eu desliguei na cara dele, Mauro. Está escrito isso aí na sua planilha?
+TIO_MAURO: Está na aba "Ocorrências", linha seis.
+VO: E na linha seis está escrito que eu desliguei?
+> O Tio Mauro rola a planilha. Não está.
+@vai v07_proposta
+
+=== v07_proposta
+TIO_MAURO: Mãe, eu fiz as contas. O Recanto Feliz tem vaga em janeiro. Enfermeira vinte e quatro horas, quarto individual, jardim. Com a venda desta casa, paga com folga.
+> Silêncio. O Caíque para de mexer no pudim. Do outro lado do muro, o regador da Dona Jura para de regar.
+VO: Vender a minha casa.
+TIO_MAURO: É para o seu bem. A senhora não dá conta de tanta coisa.
+> Ele olha para você. Todo mundo olha para você. Você é a neta que mexe com redes, então de repente você virou a perita.
+? O que você diz?
+* "Tio, quem errou fomos nós, que instalamos tudo sem configurar. A vó não." -> v07_defende {autonomia_vo+1 rel_tio_mauro-1}
+* "Vó, o que a senhora acha? A casa é sua." -> v07_pergunta_vo {autonomia_vo+2 marca:vo_decidiu}
+* "A culpa é do Caíque, que comprou tudo na promoção e instalou com a senha da caixa" -> v07_culpa_caique {marca:caique_culpado marca:caique_magoado rel_caique-3 autonomia_vo-1}
+* "O tio tem um ponto. Talvez seja melhor alguém cuidar mais de perto" -> v07_concorda {autonomia_vo-2 rel_tio_mauro+1 marca:mauro_ponto}
+** "Tio, a vó também tem uma planilha. Mostra para ele, vó." -> v07_caderno_vo {autonomia_vo+1 rel_vo+1}
+
+=== v07_defende
+EU: Tio, a câmera veio com senha de fábrica. A campainha veio com convite aberto. A fechadura veio com 1234. Nenhum desses erros foi da vó. Foi de quem instalou e não configurou. Fomos nós.
+TIO_MAURO: Mas ela que deu a senha para o entregador de gás.
+EU: E milhares de pessoas de trinta anos fazem a mesma coisa. Ninguém vende a casa delas por isso.
+@expr vo pensativa
+(Ela não falou nada. Mas sentou mais reta na cadeira.)
+@vai v07_camera
+
+=== v07_pergunta_vo
+EU: Vó, o que a senhora acha? A casa é sua.
+> Todo mundo vira para ela. Por um segundo, ela parece surpresa, como se fizesse tempo que ninguém perguntava.
+VO: Eu acho que eu moro aqui há cinquenta e dois anos. Criei você, Mauro, nesse quintal. Enterrei o seu pai saindo por aquele portão.
+VO: E eu acho que uma semana de aparelho novo não apaga cinquenta e dois anos de casa.
+@expr tio_mauro envergonhada
+TIO_MAURO: Mãe, ninguém está dizendo isso.
+VO: Sua planilha está.
+@vai v07_camera
+
+=== v07_culpa_caique
+EU: Se for para culpar alguém, tio, culpa o Caíque. Ele comprou tudo na promoção e instalou numa tarde, com a senha da caixa.
+@entra caique triste direita
+> O Caíque, que tinha acabado de pegar mais pudim, larga a colher.
+CAIQUE: Valeu, prima.
+TIO_MAURO: Então está aí. Nem o neto sabe cuidar. Mais um motivo.
+(Eu queria tirar o peso da vó. Joguei em cima do Caíque. E o Tio Mauro usou os dois.)
+@sai caique
+@vai v07_camera
+
+=== v07_concorda
+EU: Talvez o tio tenha um ponto. Talvez seja melhor alguém acompanhar mais de perto.
+@expr vo triste
+VO: Mais de perto quanto? Do quarto ao lado? Do Recanto Feliz?
+TIO_MAURO: Viu, mãe? Até ela concorda.
+(Eu não quis dizer casa de repouso. Mas ninguém na mesa ouviu a diferença.)
+@vai v07_camera
+
+=== v07_caderno_vo
+@expr vo feliz
+> A vó levanta, vai até a cozinha e volta com um caderno de capa dura, daqueles de contabilidade, com "CASA" escrito na frente.
+VO: Contas pagas no dia, com recibo grampeado. Remédios da semana, com horário. Telefones de emergência. E desde quinta, olha aqui: "aparelhos da casa", com o que cada um faz e como desliga.
+> Na última página, com a letra dos Correios, uma lista: "câmera: senha nova. moça: pede confirmação. empresa não liga."
+TIO_MAURO: A senhora fez isso sozinha?
+VO: Trinta e quatro anos de agência, Mauro. Eu sei organizar coisa melhor que você e essa planilha colorida.
+@vai v07_camera
+
+=== v07_camera
+@sai todos
+@fundo cozinha_vo
+> Meia hora depois. A vó foi deitar um pouco, que pressão de domingo cansa. O Caíque está no portão com a Dona Jura. O Tio Mauro te chama na cozinha e abre a sacola da loja.
+@entra tio_mauro neutra centro
+> Dentro, uma caixa pequena. Na foto, um carregador de celular comum, branco, de tomada.
+TIO_MAURO: É uma câmera. Ninguém percebe. A gente põe no quarto dela, na tomada do lado da cama, e eu acompanho pelo celular. Se ela cair de noite, eu vejo. Se ela não der conta, eu tenho como provar.
+EU: Ela sabe?
+TIO_MAURO: Se ela souber, ela não deixa. É por isso que tem que ser escondida.
+(Câmera escondida, no quarto, filmando uma mulher de setenta e seis anos dormindo, sem ela saber. Para "provar".)
+? O que fazer com a câmera disfarçada?
+* "Câmera escondida não é cuidado, tio. É vigilância. E no quarto dela, nunca." -> v07_camera_nao {etica+1 rel_tio_mauro-1}
+* "Pode ser. Mas só na sala, e a gente não conta, para não assustar ela." -> v07_camera_esconde {marca:camera_escondida autonomia_vo-3 etica-2 seguranca-1}
+* "Eu vou contar para a vó que o senhor trouxe isso, e ela decide." -> v07_camera_conta {autonomia_vo+1 etica+1}
+** "Tio, tem um jeito de saber se ela cair sem filmar ninguém: um botão de emergência, que ela usa e ela controla." -> v07_botao_proposta {autonomia_vo+1 tecnica+1}
+
+=== v07_camera_nao
+EU: Câmera escondida não é cuidado, tio. É vigilância. Ela tem direito de saber quem vê o quarto dela. E quarto, banheiro, lugar onde a pessoa se troca e dorme, nenhuma câmera precisa estar.
+TIO_MAURO: E se ela cair?
+EU: Aí ela precisa de um jeito de chamar ajuda. Não de alguém assistindo ela dormir.
+@expr tio_mauro pensativa
+@anota v7_camera_dentro
+@vai v07_vo_volta
+
+=== v07_camera_esconde
+> O Tio Mauro sorri pela primeira vez no dia.
+TIO_MAURO: Na sala, então. Do lado da TV. Ela nem vai reparar.
+> Vocês trocam o carregador da tomada da sala pela câmera disfarçada. Uma luzinha minúscula acende e apaga.
+(Eu disse que era "só na sala". Como se a sala não fosse dela também. Como se a novela de camisola, o cochilo e o choro do aniversário de morte do vô fossem de outra pessoa.)
+@anota v7_camera_dentro
+@vai v07_vo_volta
+
+=== v07_camera_conta
+EU: Eu não vou esconder nada da vó, tio. Ela vai saber que o senhor trouxe isso. E ela decide.
+TIO_MAURO: Ela vai dizer não.
+EU: Então é não. A casa é dela, o quarto é dela.
+> O Tio Mauro fecha a caixa com mais força do que precisava.
+@anota v7_camera_dentro
+@vai v07_vo_volta
+
+=== v07_botao_proposta
+EU: Tio, se o medo é ela cair sozinha, existe aparelho para isso. Um botão de emergência, no pulso ou no pescoço. Ela aperta, chega alerta para quem ela escolher, com a localização na hora. Alguns até percebem queda, se ela quiser ligar isso.
+TIO_MAURO: E se ela não apertar?
+EU: Aí a gente conversa com ela sobre a detecção de queda, e sobre quem liga para ela todo dia. Mas quem decide é ela. É o pulso dela.
+@expr tio_mauro pensativa
+TIO_MAURO: E a câmera?
+EU: A câmera volta para a loja. Ou vai para o senhor, se quiser filmar o seu quarto.
+@anota v7_camera_dentro
+@vai v07_vo_volta
+
+=== v07_vo_volta
+@sai todos
+@fundo sala_vo_tech
+@musica misterio
+@entra vo neutra centro
+> 15h40. A vó volta da soneca, de cabelo arrumado e batom passado, como quem vai a uma reunião. Ela senta na poltrona dela. O Tio Mauro, no sofá. O Caíque, no braço do sofá. Você, no banquinho.
+@se marca:camera_escondida -> v07_vo_volta_escondida
+@vai v07_vo_volta_opcoes
+
+=== v07_vo_volta_escondida
+> Na tomada ao lado da TV, a luzinha do "carregador" acende e apaga. A vó não olha para ela.
+(Ainda.)
+@vai v07_vo_volta_opcoes
+
+=== v07_vo_volta_opcoes
+VO: Eu ouvi tudo do quarto. Essa casa tem parede fina e eu tenho ouvido bom. Agora quem fala sou eu.
+? A vó vai falar. O que você faz?
+* Ficar quieta e deixar a vó falar até o fim -> v07_vo_fala {autonomia_vo+1 paciencia+1 marca:vo_decidiu}
+* Falar por ela, para adiantar: "A vó quer o botão de emergência, tio." -> v07_fala_por_ela {autonomia_vo-1}
+* Interromper para explicar de novo a rede separada, para o tio ver que está tudo sob controle -> v07_explica_demais {paciencia-1}
+
+=== v07_vo_fala
+VO: Eu não vou para o Recanto Feliz. Não esse ano. Quando eu quiser ir, eu mesma ligo para lá, que eu sei ligar para número oficial.
+VO: Eu caí num golpe, ou quase caí, numa semana em que vocês encheram a minha casa de coisa sem me perguntar. Agora eu quero perguntar.
+VO: Eu quero esse botão de que a {nome} falou. No pulso. Eu escolho quem recebe o aviso. E câmera no meu quarto, nunca. Nem escondida, nem aparecendo.
+@expr tio_mauro envergonhada
+(Ela não levantou a voz nenhuma vez. Nem precisou.)
+@anota v7_autonomia
+@vai v07_botao
+
+=== v07_fala_por_ela
+EU: A vó quer o botão de emergência, tio. Já está decidido.
+@expr vo brava
+VO: Está? Quem decidiu?
+EU: Eu achei que...
+VO: Achou. Todo mundo nessa família acha alguma coisa por mim. O Mauro acha que eu não dou conta, o Caíque achou que eu precisava de oito aparelhos, e agora você acha que eu quero botão.
+VO: Pois eu não quero botão nenhum. Não hoje. Hoje eu não quero nada que ninguém me perguntou.
+TIO_MAURO: Viu? Nem ela sabe o que quer.
+(Ela sabe. Ela quer ser perguntada. Eu pulei essa parte.)
+@anota v7_autonomia
+@vai v07_desfecho
+
+=== v07_explica_demais
+EU: Tio, só para o senhor entender: agora tem duas redes, uma para os aparelhos e outra para o celular dela, isoladas, e o roteador está com...
+VO: {nome}.
+EU: ...e a senha do painel...
+VO: {nome}. Eu disse que agora quem fala sou eu.
+EU [envergonhada]: Desculpa, vó.
+VO: Eu fico na minha casa. Eu quero um botão de emergência, que eu ouvi vocês falando. E câmera no meu quarto, não. Pronto. Agora pode explicar a rede, se quiser. Mas para o Caíque, que ele precisa mais.
+@anota v7_autonomia
+@vai v07_botao
+
+=== v07_botao
+@musica hacker
+> Na terça, chega o botão: uma pulseira cinza, discreta, que a vó acha "parecida com relógio de enfermeira". Você e ela sentam na mesa da cozinha com o aplicativo aberto, para configurar juntas.
+VO: Eu leio as perguntas, você me explica e eu respondo.
+@desafio v7_botao -> v07_botao_acerto | v07_botao_erro
+
+=== v07_botao_acerto
+@marca botao_emergencia
+@muda seguranca+1 autonomia_vo+1
+> A vó escolhe a lista: você, o Caíque, a Dona Jura e, em quarto lugar, o Tio Mauro. A localização só vai quando ela aperta. Nada grava, nada filma. Teste todo primeiro sábado do mês.
+VO: Vamos testar agora.
+> Ela aperta. Três celulares tocam na mesma hora. O da Dona Jura toca do outro lado do muro, seguido de um grito.
+DONA_JURA: ZILÁ, TÁ TUDO BEM?
+VO: É TESTE, JURA.
+DONA_JURA: ENTÃO TÁ. MAS EU CHEGUEI EM QUATRO SEGUNDOS, ANOTA AÍ.
+@anota v7_botao_emergencia
+@vai v07_desfecho
+
+=== v07_botao_erro
+@marca botao_emergencia
+> Na pressa, vocês deixam a localização ligada o tempo todo, compartilhada com todo mundo da lista. No dia seguinte, o Tio Mauro manda mensagem perguntando o que a vó foi fazer na feira às sete da manhã.
+@expr vo brava
+VO: Esse botão está me seguindo? Eu fui comprar banana, Mauro!
+> Vocês abrem o aplicativo de novo. Localização só quando ela aperta. A vó revisa a lista sozinha e passa o Tio Mauro para o último lugar.
+(O botão era para ela chamar ajuda, não para virar rastreador. A configuração muda tudo.)
+@muda autonomia_vo-1
+@anota v7_botao_emergencia
+@vai v07_desfecho
+
+=== v07_desfecho
+@musica interior
+@se marca:camera_escondida e !marca:vo_decidiu -> v07_mauro_conv
+@se marca:mauro_ponto e !marca:vo_decidiu -> v07_mauro_conv
+@se autonomia_vo<=1 -> v07_mauro_conv
+@vai v07_mauro_recua
+
+=== v07_mauro_conv
+@marca mauro_convencido
+@entra tio_mauro neutra centro
+> Quarta-feira, 19h. O Tio Mauro aparece no portão de surpresa, com a pasta da planilha debaixo do braço.
+TIO_MAURO: Eu visitei o Recanto Feliz ontem. Só visitei. Para ter um plano.
+EU: Tio, a vó disse...
+TIO_MAURO: A sua avó diz muita coisa. Os fatos estão na planilha.
+@sai tio_mauro
+(Ele saiu mais convencido do que entrou. E parte disso é culpa minha.)
+@vai v07_caique
+
+=== v07_mauro_recua
+@entra tio_mauro pensativa centro
+> Quarta-feira, 19h. O Tio Mauro aparece no portão, sem notebook, e fica parado um tempo com a pasta na mão.
+TIO_MAURO: Ela sempre foi assim. Quando eu tinha doze anos e quebrei o vidro do vizinho, ela não me defendeu nem me castigou. Ela me fez ir lá pedir desculpa e pagar com a minha mesada.
+EU: E o senhor foi?
+TIO_MAURO: Fui. Ela decide as coisas dela. Eu esqueci disso.
+TIO_MAURO: Mas eu quero estar na lista do botão.
+EU: O senhor está. Em quarto lugar.
+TIO_MAURO: Quarto?
+EU: Ela que escolheu.
+@sai tio_mauro
+@vai v07_caique
+
+=== v07_caique
+@fundo portao_vila
+@entra caique triste centro
+> Quinta, 18h. O Caíque está sentado no meio-fio, na frente do portão, chutando uma tampinha de garrafa.
+CAIQUE: Eu só queria que ela ficasse segura. Que ela não caísse sozinha. Eu juntei dinheiro três meses para aquilo tudo.
+CAIQUE: E agora o meu pai quer vender a casa dela usando o meu presente como desculpa.
+? O que dizer para o Caíque?
+* "Você deu o presente com amor. O que faltou foi configurar. Isso a gente aprende." -> v07_caique_conforta {rel_caique+2}
+* "É, Caíque. Estragou um pouco, sim." -> v07_caique_sincera {rel_caique-1 etica+1}
+** "No sábado da festa, você me ajuda a revisar tudo e explica para a vó. Você vira o técnico oficial." -> v07_caique_tecnico {rel_caique+2 tecnica+1}
+
+=== v07_caique_conforta
+@expr caique pensativa
+CAIQUE: Você acha que ela ficou brava comigo?
+EU: Acho que ela ficou brava de ninguém perguntar. Com você, ela fez bolo de fubá. Ela não faz bolo para quem ela está brava.
+@expr caique feliz
+@vai v07_fim
+
+=== v07_caique_sincera
+CAIQUE: Valeu pela sinceridade. Doeu, mas valeu.
+> Ele chuta a tampinha longe, até a porta da Dona Jura, que abre a janela na mesma hora.
+DONA_JURA: Quem chutou isso?
+CAIQUE: Desculpa, Dona Jura.
+@vai v07_fim
+
+=== v07_caique_tecnico
+@expr caique feliz
+CAIQUE: Técnico oficial? Com crachá?
+EU: Com crachá. E com manual lido.
+CAIQUE: Até a parte da garantia?
+EU: Principalmente a da garantia.
+@marca caique_tecnico
+@vai v07_fim
+
+=== v07_fim
+@sai todos
+@fundo sala_vo_tech
+@musica alegre
+> Quinta, 21h. Da janela, você vê a sala da vó iluminada de roxo. Abertura da novela. Ela canta junto, desafinada, sozinha, na casa dela.
+(Faltam dois dias para os setenta e sete anos. E a festa vai ser aqui. Isso, pelo menos, ninguém tirou dela.)
+@vai v08_inicio

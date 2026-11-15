@@ -1,0 +1,314 @@
+=== v01_inicio
+@cap 1 "Admin, admin"
+@idade adulta
+@fundo quintal_almoco
+@musica alegre
+@muda seguranca=1
+> Domingo, 12h10. A vila da Vó Zilá tem oito casas, um pé de manga que não respeita muro e um cachorro que late só para moto.
+> Do portão já dá para sentir o cheiro de frango assado com batata e o som da televisão no volume "para a rua inteira ouvir a novela".
+(Almoço de domingo na vó. A única reunião da semana sem pauta, sem ata e sem ninguém perguntando se eu já reiniciei o roteador.)
+> Você para na frente do espelhinho do retrovisor e arruma o cabelo, porque a Vó Zilá repara em tudo.
+@roupa "Almoço de domingo na vó"
+> Na porta, em vez da campainha de botão que fazia "dlim-dlom" desde 1989, tem uma caixinha preta com uma lente redonda olhando para você.
+@som notificacao
+> A caixinha acende uma luz azul. Uma voz de mulher, educadíssima, diz: "Olá. Alguém está na porta."
+(A campainha acabou de me anunciar para mim mesma.)
+@vai v01_chegada
+
+=== v01_chegada
+@fundo sala_vo_tech
+@entra vo feliz esquerda
+VO: Entra, minha filha! A porta abriu sozinha? Abriu sozinha. O Caíque botou senha na porta. Senha!
+EU: Bênção, vó. Que senha?
+VO: Um, dois, três, quatro. Para eu não esquecer.
+(Primeiro minuto na casa e eu já tenho um chamado aberto.)
+> A sala está irreconhecível. Na estante, ao lado do santo e do porta-retrato do vô, uma câmera branca gira a cabeça devagar, como uma coruja de plástico.
+> Em cima da mesinha, um cilindro de tecido cinza com uma luz que pisca quando alguém fala. No teto, uma lâmpada colorida. Na cozinha, até a cafeteira ganhou uma tomada nova, cheia de luzinha.
+@entra caique feliz direita
+CAIQUE: Prima! Chegou na hora do tour! Bem-vinda à Casa Inteligente da Vó Zilá, versão 1.0!
+EU: Caíque. Quando foi que isso aconteceu?
+CAIQUE: Sábado retrasado, numa tarde! Tudo em promoção. A câmera saiu por menos que uma pizza grande. A campainha veio com cupom. A fechadura parcelei em dez sem juros.
+VO: Ele trabalhou a tarde inteira, coitado. Nem almoçou. Comeu três pães de queijo e um pudim.
+CAIQUE: E nem precisei ler o manual. É tudo intuitivo. Liga na tomada, aperta "avançar" até acabar.
+? O Caíque está esperando os aplausos. A vó também.
+* "Ficou lindo, Caíque. Você fez isso tudo sozinho?" -> v01_elogio {rel_caique+1 paciencia+1}
+* "E quantos desses aparelhos ainda estão com a senha que veio na caixa?" -> v01_pergunta_senha {tecnica+1 rel_caique-1}
+* Perguntar para a vó do que ela mais gostou na casa nova -> v01_pergunta_vo {autonomia_vo+1 rel_vo+1}
+** Perguntar para a assistente de voz, bem alto, qual é a senha dela -> v01_pergunta_moca {paciencia+1 rel_vo+1}
+
+=== v01_elogio
+@expr caique feliz
+CAIQUE: Sozinho! Quer dizer, com um vídeo de um rapaz que instala tudo em quatro minutos. Eu levei quatro horas, mas o vídeo é editado.
+EU: Ficou bonito mesmo. Você pensou na vó em cada detalhe.
+CAIQUE: Pensei! Até na balança que manda o peso pro celular dela.
+VO: Essa eu não gostei. Balança fofoqueira.
+(Coração enorme. Manual nenhum. A combinação mais perigosa da tecnologia doméstica.)
+@vai v01_tour
+
+=== v01_pergunta_senha
+@expr caique envergonhada
+CAIQUE: Senha da caixa? Ah, prima, quem vai querer invadir a câmera da vó? Pra ver o quê? A novela?
+EU: Ninguém precisa querer a vó, Caíque. Tem programa que sai testando senha de fábrica em tudo que está ligado na internet. Ele não escolhe a casa, ele tenta todas.
+CAIQUE: Nossa. Que estraga-prazeres.
+VO: Ela sempre foi assim. Com seis anos ela abriu o rádio do seu avô para ver onde morava o locutor.
+(E descobri que não morava ninguém lá dentro. Foi o começo da minha carreira.)
+@vai v01_tour
+
+=== v01_pergunta_vo
+@expr vo feliz
+VO: Do que eu mais gostei? Da moça.
+EU: Que moça, vó?
+VO: Dela, ali. A moça do cilindro. Ela me dá bom dia, me fala a temperatura e toca as músicas do Roberto. Melhor que muita visita.
+VO: E a luz da sala fica roxa quando começa a novela. Eu não pedi, mas gostei.
+CAIQUE: Isso é um bug, vó.
+VO: Bug nada, é charme.
+(Ela gosta. De verdade. Seja lá o que eu for mexer aqui, a casa é dela e ela gosta da casa. Anotado.)
+@vai v01_tour
+
+=== v01_pergunta_moca
+EU: Moça! Qual é a sua senha?
+> A luz do cilindro gira. A voz educadíssima responde: "Desculpe, não entendi. Você gostaria de comprar uma senha?"
+VO: Ela compra de tudo. Outro dia ofereceu pra comprar uma novela inteira.
+CAIQUE: Ela é muito prestativa!
+(Uma assistente que responde "quer comprar?" para qualquer frase. Vou guardar isso para depois. Eu tenho um pressentimento.)
+@vai v01_tour
+
+=== v01_tour
+> O Caíque conduz o tour como quem apresenta um apartamento decorado. Ele abre o aplicativo no celular dele e vai apontando.
+CAIQUE: Aqui a câmera da sala. Ela grava tudo e manda para o celular. Se a vó cair, a gente vê!
+CAIQUE: Ali o portão: a campainha com vídeo. Ela avisa quem chegou, mostra a rua e guarda as gravações.
+CAIQUE: A fechadura da porta, com senha. Na varanda, a lâmpada colorida. Na cozinha, a cafeteira liga às seis da manhã sozinha. E a moça faz o resto!
+CAIQUE: Eu ia botar uma câmera no quarto dela também, mas acabou a extensão.
+VO: E ainda bem que acabou. No meu quarto quem entra é Nossa Senhora e o ventilador.
+(Câmera no quarto, não. Nem no banheiro. Para saber se alguém caiu existe coisa muito melhor que uma lente olhando a pessoa dormir.)
+> Pela janela, uma cabeça de coque grisalho aparece por cima do muro da casa ao lado. Some. Aparece de novo, agora com um pano de prato na mão, fingindo que estava estendendo roupa.
+@entra dona_jura feliz centro
+DONA_JURA: Zilá, que maravilha essa casa nova! Eu vi o rapaz instalando tudo sábado. Vi tudinho. A câmera é branca, né? Combina com a cortina.
+VO: Jura, você viu daqui ou de casa?
+DONA_JURA: De casa, de casa. Mas a minha janela é estratégica.
+@sai dona_jura
+(A Dona Jura monitora a vila há quarenta anos sem Wi-Fi, sem nuvem e sem assinatura mensal. O sistema de vigilância mais estável que eu já vi.)
+@vai v01_almoco
+
+=== v01_almoco
+@fundo quintal_almoco
+@musica alegre
+> O almoço é servido no quintal, debaixo da mangueira. Frango, farofa, arroz soltinho e o pudim que a vó faz desde que o pudim foi inventado.
+> O Tio Mauro não veio. Mandou mensagem às 11h58 dizendo que estava "fechando uma planilha". Num domingo.
+VO: O Mauro vive dentro de uma planilha. Quando ele morrer, vão enterrar numa célula.
+CAIQUE: Vó!
+> Depois do pudim, a vó cochila na cadeira de fio. O Caíque lava a louça cantando. Você abre o celular para ver o grupo do trabalho.
+@vai v01_descoberta
+
+=== v01_descoberta
+@zap "Redes e Infra 🖧"
+> No grupo do trabalho, um colega mandou uma reportagem.
+> [link] "Site lista milhares de câmeras domésticas abertas na internet; maioria usa senha de fábrica"
+> A reportagem mostra uma montagem de miniaturas borradas, com o aviso de que o jornal escondeu os rostos e os endereços. Garagens, lojas, salas de estar.
+> Numa das miniaturas, pequena, no canto: um sofá com uma manta de crochê roxa, um santo na estante e um porta-retrato.
+@zap fim
+@musica misterio
+(Não. Não pode ser. Tem muito sofá no Brasil. Tem muita manta de crochê roxa no Brasil.)
+> Você vira o celular para a janela da sala, de onde dá para ver a estante. O santo. O porta-retrato do vô. A manta roxa no braço do sofá.
+@som alarme
+(É a sala da minha avó. Numa reportagem sobre câmeras abertas. Com a lente que o Caíque comprou por menos que uma pizza grande.)
+> Você não vai procurar a câmera de ninguém em site nenhum. Você só precisa olhar a câmera da sua própria família, pelo aplicativo do Caíque, e ver se a configuração bate com o que a reportagem descreve.
+EU: Caíque, me empresta o celular? Quero ver o aplicativo da câmera.
+CAIQUE: Claro! Senha do celular é...
+EU: Não precisa falar alto. Destrava você.
+> Nas configurações da câmera: usuário "admin". Senha "admin". Acesso pela internet ligado. A última atualização do aparelho é da fábrica.
+@zap "Netos da Vó Zilá 👵💜"
+> O Caíque criou o grupo dos netos e, "para ela ver as fotos", adicionou a vó.
+EU: Caíque, vem aqui no quintal. Agora. Sem drama.
+CAIQUE: [figurinha] Gatinho correndo com um pano de prato
+CAIQUE: tô indo, tô de luva
+VO: [audio 0:04] Quem tá correndo? Eu tô dormindo.
+@zap fim
+? A sala da vó estava aberta para quem soubesse a senha mais famosa do mundo. O que fazer primeiro?
+* Chamar o Caíque num canto e mostrar a reportagem com calma -> v01_conta_caique {rel_caique+1 paciencia+1}
+* Acordar a vó e contar para ela primeiro, porque a casa é dela -> v01_conta_vo {autonomia_vo+1 rel_vo+1 etica+1}
+* Tirar a câmera da tomada na hora, sem explicar nada para ninguém -> v01_tira_tomada {seguranca+1 autonomia_vo-1 rel_vo-1}
+** Jogar a manta de crochê da vó por cima da câmera, como quem cobre gaiola de passarinho -> v01_manta {seguranca+1 paciencia+1}
+
+=== v01_conta_caique
+@fundo sala_vo_tech
+@entra caique assustada centro
+CAIQUE: Essa sala é... essa sala é da vó?!
+EU: É. E a culpa não é sua, Caíque. É da senha que veio de fábrica e de ninguém ter mandado trocar no primeiro uso. Tem sistema que testa "admin, admin" em tudo, o dia inteiro, automaticamente.
+CAIQUE [triste]: Eu só queria ver se ela caía. Eu não queria que o mundo visse ela cochilando.
+EU: Eu sei. Por isso a gente vai arrumar. Junto.
+@vai v01_varredura_inicio
+
+=== v01_conta_vo
+@fundo sala_vo_tech
+@entra vo surpresa esquerda
+@entra caique neutra direita
+EU: Vó, acorda um pouquinho. Tenho que mostrar uma coisa da sua casa.
+VO: Morreu alguém?
+EU: Não. Mas a câmera da sala estava com a senha que veio na caixa. E ela apareceu numa reportagem sobre câmeras que qualquer um consegue abrir.
+VO [pensativa]: Qualquer um vê a minha sala?
+EU: Podia ver. A gente pode arrumar hoje. Mas a casa é sua, então a senhora decide o que fica e como fica.
+VO: Pois vamos arrumar. E depois eu decido se essa coruja branca fica.
+CAIQUE [envergonhada]: Coruja...
+@vai v01_varredura_inicio
+
+=== v01_tira_tomada
+@fundo sala_vo_tech
+> Você atravessa a sala e puxa o fio da câmera. A coruja de plástico para de girar com a cabeça meio torta.
+@entra vo brava esquerda
+@entra caique surpresa direita
+VO: Ué. Quem desligou a minha câmera?
+EU: Fui eu, vó. Ela estava aberta na internet.
+VO: E não dava pra me perguntar antes? A câmera é da minha casa, minha filha. Não é do seu trabalho.
+(Ela tem razão. Eu resolvi o problema técnico e criei outro: tratei a casa dela como se fosse um servidor da empresa.)
+EU: Desculpa, vó. A senhora tem razão. Deixa eu explicar e a senhora decide.
+@vai v01_varredura_inicio
+
+=== v01_manta
+@fundo sala_vo_tech
+> Você pega a manta roxa do sofá e joga por cima da câmera. A coruja branca vira um fantasminha de crochê.
+@entra vo surpresa esquerda
+@entra caique surpresa direita
+VO: Por que a minha manta tá na câmera?
+EU: Porque a câmera estava mostrando a sala para a internet, vó. A manta é o primeiro curativo. Agora vem o tratamento.
+CAIQUE: Prima, tecnicamente a manta não é uma configuração de segurança...
+EU: Tecnicamente ela funcionou melhor que a sua.
+VO: Deixa a manta. Ela ficou elegante.
+@vai v01_varredura_inicio
+
+=== v01_varredura_inicio
+@fundo sala_vo_tech
+@musica hacker
+> Você senta no sofá com um papel de pão e uma caneta. Desenha a casa em quadradinhos: portão, sala, cozinha, varanda, quarto, banheiro.
+EU: Se a câmera estava assim, o resto da casa também pode estar. Vamos olhar aparelho por aparelho.
+CAIQUE: Tipo uma vistoria?
+EU: Tipo uma varredura. A primeira de muitas.
+VO: Eu faço o café. Vistoria sem café é inquérito.
+(Planta da casa na mão. Agora é olhar cada cômodo com calma e separar o que é risco do que só parece moderno.)
+@desafio v1_planta_domingo -> v01_varredura_acerto | v01_varredura_erro
+
+=== v01_varredura_acerto
+@musica alegre
+(Câmera com senha de fábrica, campainha sem atualização, fechadura com 1234 e uma assistente que compra sem pedir confirmação. E, no meio disso tudo, aparelhos que estavam bem. Nem tudo que pisca é perigo.)
+EU: Caíque, olha. A tomada da cafeteira, a lâmpada, a balança e o rádio estão bem. O problema são quatro coisas. Quatro dá para arrumar.
+CAIQUE: Quatro? Só quatro? Eu achei que você ia dizer que a casa inteira era uma bomba.
+@muda tecnica+1 seguranca+1
+@anota v1_senha_de_fabrica
+@vai v01_decisao_camera
+
+=== v01_varredura_erro
+(Eu fiquei desconfiada de tudo que tem luzinha. Até do rádio de pilha da vó, que não tem nem tomada.)
+CAIQUE: Prima, você marcou o rádio. O rádio é de 1978.
+EU: Desculpa. Senha de fábrica me deixa paranoica.
+> Você recomeça a lista com mais calma. Nem tudo que é moderno é perigoso: o risco está na senha que veio na caixa, na atualização que nunca foi feita e nas funções que ninguém configurou.
+@muda paciencia-1
+@anota v1_senha_de_fabrica
+@vai v01_decisao_camera
+
+=== v01_decisao_camera
+@musica interior
+> O café chega numa bandeja com o pano de crochê embaixo das xícaras. A vó senta na poltrona dela, a única que ninguém ousa ocupar.
+EU: Agora a câmera da sala. Ela precisa de uma senha nova, forte, que só sirva para ela. E precisa ser atualizada.
+CAIQUE: Atualizar o quê? Ela é nova!
+EU: Nova na caixa, Caíque. Pode ter ficado meses no estoque. O fabricante corrige falhas pelas atualizações. Aparelho que nunca recebe atualização vai ficando cada vez mais fácil de abrir.
+VO: E essa câmera precisa estar aqui?
+(Melhor pergunta do dia, e não fui eu que fiz.)
+? Senha nova, atualização, e a vó perguntando se a câmera precisa existir.
+* Sentar com a vó e trocar a senha juntas, com ela escolhendo uma frase que só ela sabe -> v01_troca_com_vo {seguranca+2 autonomia_vo+1 rel_vo+1 marca:trocou_senha_camera}
+* Trocar a senha sozinha, rapidinho, e anotar no caderno de receitas da vó -> v01_troca_sozinha {seguranca+2 autonomia_vo-1 marca:trocou_senha_camera}
+* Deixar para o Caíque trocar à noite, em casa, porque hoje é domingo -> v01_deixa_caique {rel_caique+1 marca:camera_ficou_aberta}
+** Responder a pergunta da vó com outra: "A senhora quer essa câmera na sua sala?" -> v01_vo_decide {seguranca+2 autonomia_vo+2 rel_vo+1 marca:trocou_senha_camera}
+
+=== v01_troca_com_vo
+EU: Vó, a senha tem que ser comprida e diferente de tudo. Pode ser uma frase. Uma que a senhora lembre e que ninguém adivinhe.
+VO: Uma frase? Posso escolher qualquer uma?
+EU: Qualquer uma. Só não vale o seu nome, a data do seu aniversário nem "admin".
+> A vó fecha os olhos. Pensa. Cochicha a frase no seu ouvido, cobrindo a boca com a mão como quem conta segredo de confessionário.
+(É o nome do primeiro baile em que ela dançou com o vô, o ano errado de propósito e um palavrão leve em espanhol. Ninguém no mundo adivinharia.)
+> Vocês trocam a senha, desligam o acesso que vinha aberto de fábrica e mandam a câmera procurar atualização. A barrinha anda devagar, como fila de banco.
+CAIQUE: Vó, a senhora sabe a senha da sua câmera e eu não sei. Isso é estranho.
+VO: Isso é certo. A câmera é minha.
+@anota v1_camera_em_casa
+@vai v01_fim
+
+=== v01_troca_sozinha
+> Você troca a senha em dois minutos: comprida, aleatória, cheia de símbolos. Manda atualizar. Desliga o acesso que vinha aberto.
+> Para ninguém esquecer, você anota a senha no caderno de receitas da vó, na página do bolo de fubá.
+VO: O que você escreveu no meu bolo de fubá?
+EU: A senha da câmera, vó. Para a senhora ter.
+VO: Eu nem sei o que é isso. Você decidiu, você escreveu, e eu fico com um bolo de fubá que não sei ler.
+(Ficou seguro. Mas ficou meu, não dela. Eu tranquei a casa e esqueci de entregar a chave para a dona.)
+@anota v1_camera_em_casa
+@vai v01_fim
+
+=== v01_deixa_caique
+CAIQUE: Deixa comigo, prima! Hoje à noite, em casa, com calma, eu troco tudo. Prometo.
+EU: Hoje, Caíque. Não amanhã. Não "semana que vem".
+CAIQUE: Hoje! Palavra de neto.
+> Ele guarda o celular no bolso. Na estante, a coruja branca continua girando, com a senha mais famosa do mundo.
+@musica misterio
+(Eu sei como termina "hoje à noite, com calma". Termina com um jogo de futebol, um lanche e uma câmera aberta até quinta-feira.)
+@muda seguranca-1
+@anota v1_camera_em_casa
+@vai v01_fim
+
+=== v01_vo_decide
+EU: Vó, antes da senha: a senhora quer essa câmera na sua sala?
+VO [pensativa]: Ninguém me perguntou isso.
+CAIQUE [envergonhada]: Eu achei que era óbvio, vó. Pra senhora não ficar sozinha.
+VO: Eu não fico sozinha, Caíque. Eu fico em casa. É diferente.
+VO: Mas eu gosto de saber quem tá no portão. E se eu cair, quero que alguém saiba. Fica a câmera, mas virada pra porta, não pro meu sofá. E quem vê sou eu, você e a {nome}. Mais ninguém.
+EU: Combinado. E a senha a senhora escolhe.
+> A vó escolhe uma frase comprida, sussurrada, impossível de adivinhar. Vocês viram a câmera para a porta, trocam a senha, desligam o acesso aberto e mandam atualizar.
+(Ela acabou de fazer, sozinha, a melhor análise de risco da tarde: o que proteger, de quem, e quem pode ver. E sem papel de pão.)
+@anota v1_camera_em_casa
+@vai v01_fim
+
+=== v01_fim
+@fundo sala_vo_tech
+@musica interior
+> O sol do fim da tarde entra pela janela. A lâmpada do teto fica roxa sozinha: começou a reprise da novela.
+VO: Olha aí. Charme.
+> O Caíque está sentado no braço do sofá, olhando para o chão, com o celular apagado na mão.
+CAIQUE: Prima. Eu estraguei a casa da vó, né?
+? O Caíque está esperando uma resposta. A vó também está ouvindo.
+* "Estragou não. Você quis cuidar dela. Agora a gente aprende a configurar." -> v01_fim_abraco {rel_caique+2}
+* "Estragou um pouco. Da próxima vez, lê o manual antes de instalar na casa dos outros." -> v01_fim_bronca {rel_caique-1 etica+1}
+** Pedir para a vó responder, porque o presente era para ela -> v01_fim_vo_responde {rel_caique+1 autonomia_vo+1 rel_vo+1}
+
+=== v01_fim_abraco
+EU: Você comprou tudo isso pensando nela. Só faltou a parte chata, que é configurar. A parte chata é comigo.
+CAIQUE [feliz]: Você vai me ensinar?
+EU: Vou. E você vai ler pelo menos a página da senha de cada manual.
+CAIQUE: Combinado. Mas só a página da senha.
+@vai v01_saida
+
+=== v01_fim_bronca
+CAIQUE [triste]: Tá. Justo.
+> Ele vai lavar a xícara que já está lavada.
+VO: Ele errou de coração bom, {nome}. Dá bronca de coração bom também.
+(Ela tem razão. Eu falei com ele como falo com fornecedor que deixa porta de servidor aberta.)
+@vai v01_saida
+
+=== v01_fim_vo_responde
+VO: Estragou nada, Caíque. Você me deu uma moça que toca Roberto Carlos e uma luz roxa de novela.
+VO: Agora a sua prima me ensina a mandar nessa casa toda. E você aprende junto, que isso aqui ainda vai dar trabalho.
+CAIQUE [feliz]: A senhora não tá brava?
+VO: Brava eu fico quando você não come. Vem cá.
+> A vó puxa o Caíque para um abraço meio torto, com o celular dele espremido entre os dois.
+@vai v01_saida
+
+=== v01_saida
+@fundo portao_vila
+@musica alegre
+> No portão, a campainha com vídeo anuncia a sua saída: "Alguém está na porta." Ela anuncia todo mundo. Para todo mundo.
+> Na casa ao lado, a cortina da Dona Jura se mexe.
+@zap "Netos da Vó Zilá 👵💜"
+VO: [figurinha] Boa noite com rosas e um anjo dormindo
+VO: [audio 0:09] {nome}, a moça tá falando sozinha aqui. Disse "pedido confirmado". Eu não pedi nada. Só falei com a televisão.
+CAIQUE: deve ser a novela vó
+VO: [audio 0:03] A novela não compra nada, Caíque. A novela só faz a gente sofrer.
+@zap fim
+(Pedido confirmado. De quê?)
+@anota v1_camera_aberta
+@vai v02_inicio

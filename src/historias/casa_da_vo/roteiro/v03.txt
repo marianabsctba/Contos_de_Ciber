@@ -1,0 +1,241 @@
+=== v03_inicio
+@cap 3 "Quem está no portão?"
+@fundo portao_vila
+@musica misterio
+> Terça-feira, 19h05. A vila está naquela hora em que o cheiro de alho frito sai de todas as janelas ao mesmo tempo.
+> Você mal desce do carro e a Dona Jura já está no portão dela, de chinelo, avental e celular na mão, como uma sentinela de plantão.
+@entra dona_jura surpresa direita
+DONA_JURA: Até que enfim! O carro prata voltou. Quatro vezes hoje. Quatro! Eu anotei a placa, o horário e a cor do vidro.
+DONA_JURA: E outra: ontem às quatro da tarde o Seu Arlindo, viúvo do 8, tocou a campainha da Zilá com uma lata de goiabada. Ficou quarenta minutos. Quarenta!
+EU: Dona Jura, como a senhora sabe que ele ficou quarenta minutos?
+DONA_JURA: Ué. Eu vi pelo celular.
+> Ela vira a tela. É o aplicativo da campainha da vó. Uma lista de avisos: "Movimento no portão", "Alguém tocou a campainha", "Movimento no portão". Com vídeo. Com hora. Com o Seu Arlindo e a goiabada.
+(A Dona Jura não precisa mais da janela estratégica. Ela tem a campainha da minha avó no bolso.)
+? A Dona Jura está muito orgulhosa da própria eficiência.
+* Perguntar, com jeito, como ela conseguiu entrar no aplicativo da campainha da vó -> v03_jura_explica {rel_dona_jura+1 paciencia+1}
+* "Dona Jura, a senhora não podia estar vendo isso!" -> v03_jura_bronca {rel_dona_jura-1 etica+1}
+* Ir direto falar com a vó antes de discutir com a vizinha -> v03_vai_vo {autonomia_vo+1}
+** Pedir para ver o caderninho de anotações da Dona Jura sobre o carro prata -> v03_caderninho {rel_dona_jura+2 tecnica+1}
+
+=== v03_jura_explica
+DONA_JURA: Foi o Caíque, querida. Sábado retrasado. Eu falei "me põe aí, que eu ajudo a vigiar a sua avó". Ele apertou um botão e chegou um convite no meu celular.
+DONA_JURA: Eu aceitei. Ninguém recusa convite. É falta de educação.
+EU: E a vó sabe que a senhora vê o portão dela?
+DONA_JURA: Ela deve saber. Ela sabe tudo. Quer dizer, quase tudo. Eu sei mais.
+@vai v03_carro
+
+=== v03_jura_bronca
+DONA_JURA [brava]: Não podia? O seu primo me convidou! Eu não invadi nada, eu fui convidada. Tem diferença.
+EU: Tem. Desculpa, Dona Jura. A senhora tem razão: quem convidou foi ele. O problema é que a vó não sabe.
+DONA_JURA: Ah. Isso é outra coisa.
+DONA_JURA [pensativa]: Ela não sabe que eu vi o Arlindo?
+(Ninguém aqui é vilão. É uma vizinha curiosa, um neto apressado e um aplicativo com um botão "compartilhar" grande demais.)
+@vai v03_carro
+
+=== v03_vai_vo
+> Você vai entrar, mas a Dona Jura segura o seu braço com a força de quem já carregou botijão sozinha.
+DONA_JURA: Espera, menina. Primeiro o carro. O carro é urgente. A goiabada pode esperar.
+(Ela tem a prioridade dela. Errada, mas firme.)
+@vai v03_carro
+
+=== v03_caderninho
+> A Dona Jura tira do bolso do avental um caderninho espiral com capa de gato. Páginas e páginas, com data e hora.
+> "Carro prata, vidro escuro, 10h12, devagar." "10h40, de novo, parou na frente do 3." "14h05, de ré, quase bateu no poste." "17h30, motorista nervoso, buzinou para o cachorro."
+DONA_JURA: Eu anoto tudo desde 1986. Tenho o registro da vila inteira.
+EU: A senhora é melhor que muita câmera, Dona Jura.
+DONA_JURA [feliz]: Eu sei. Câmera não sabe quem é parente de quem.
+(De ré, quase bateu no poste. Motorista nervoso. Isso não parece ladrão estudando casa. Parece outra coisa.)
+@vai v03_carro
+
+=== v03_carro
+@som alarme
+> No fim da vila, faróis. Um carro prata, de vidro escuro, entra devagar, muito devagar. Para na frente da casa 3. Anda um metro. Para de novo.
+DONA_JURA: Olha ele aí! Quinta vez!
+@musica tensao
+? O carro está parado a vinte metros, com o motor ligado.
+* Anotar a placa e mandar mensagem para o Sargento Lopes, o policial do bairro que a vó conhece -> v03_sargento {etica+1 tecnica+1}
+* Postar a foto da placa no grupo de moradores da vila, perguntando "alguém conhece?" -> v03_grupo_vila {etica-1 rel_dona_jura+1}
+* Ir até o carro e bater no vidro para perguntar o que ele quer -> v03_bate_vidro {paciencia-1}
+** Segurar a Dona Jura, que já está indo até o carro de avental e chinelo -> v03_jura_vai {rel_dona_jura+1 paciencia+1}
+
+=== v03_sargento
+@zap "Sargento Lopes"
+EU: Boa noite, Sargento. Aqui é a {nome}, neta da Dona Zilá. Tem um carro prata de vidro escuro passando várias vezes na vila. Mando a placa?
+SARGENTO: Boa noite. Manda. E não vai lá falar com ele, viu? Deixa comigo.
+> Dois minutos.
+SARGENTO: É o carro da autoescola do Valdir. Ele tira o adesivo à noite porque o vidro escuro é do carro particular dele. Ele treina baliza na vila porque a rua é tranquila.
+SARGENTO: Fez certo em avisar e não ir lá. Se fosse coisa séria e na hora, o número é 190.
+@zap fim
+(Autoescola. Cinco passagens. O motorista nervoso era uma aluna aprendendo a dar ré. A vila inteira em alerta por causa de uma baliza.)
+@anota v3_vizinho_suspeito
+@vai v03_entra_casa
+
+=== v03_grupo_vila
+> Você posta a foto da placa no grupo "Moradores da Vila 🌳". Em quatro minutos, chegam trinta respostas.
+> "É sequestrador." "É da prefeitura." "É o amante da Neusinha." "Meu primo é da polícia, vou mandar pra ele." "Compartilhei no grupo do bairro."
+> Na décima mensagem, alguém responde: "Gente, é a autoescola do Valdir. Minha filha tá fazendo aula com ele. Ela que tá dirigindo. Ela tá chorando."
+(Eu expus a placa de um instrutor e o medo de uma menina de dezoito anos para trezentas pessoas. Suspeita se leva para a polícia, não para o grupo.)
+@muda rel_dona_jura+1
+@anota v3_vizinho_suspeito
+@vai v03_entra_casa
+
+=== v03_bate_vidro
+> Você caminha até o carro. O vidro escuro desce devagar. Lá dentro, uma menina de dezoito anos, pálida, agarrada ao volante. No banco do lado, um senhor de bigode com um pedal extra embaixo do pé.
+> "Boa noite, moça. Autoescola. Ela tá treinando baliza. Desculpa o susto, a rua aqui é tranquila."
+(Deu tudo certo. Mas eu fui sozinha, à noite, bater no vidro de um carro que eu achava suspeito. Se fosse o que eu achava, eu seria a última pessoa que devia estar ali. Isso é para a polícia.)
+@anota v3_vizinho_suspeito
+@vai v03_entra_casa
+
+=== v03_jura_vai
+> Você segura a Dona Jura pelo cordão do avental no último segundo.
+EU: Dona Jura! A senhora não vai lá.
+DONA_JURA: Eu tenho setenta e um anos, eu vou onde eu quiser.
+EU: Vai, sim. Mas não até um carro desconhecido, à noite. Deixa eu mandar a placa para o Sargento Lopes.
+> Você manda. A resposta chega em dois minutos: "É a autoescola do Valdir. Treino de baliza. Fizeram certo em não ir lá. Emergência, 190."
+DONA_JURA [envergonhada]: Autoescola. Eu passei o dia inteiro vigiando uma aula de baliza.
+DONA_JURA: Não conta para ninguém. Principalmente para a Neusinha.
+@anota v3_vizinho_suspeito
+@vai v03_entra_casa
+
+=== v03_entra_casa
+@fundo sala_vo_tech
+@musica interior
+@sai dona_jura
+@entra vo neutra esquerda
+@entra caique neutra direita
+> Na sala, a vó assiste à novela com os pés para cima. O Caíque come a goiabada do Seu Arlindo direto da lata.
+EU: Vó, a senhora sabia que a Dona Jura vê a sua campainha pelo celular?
+VO [surpresa]: Vê o quê?
+EU: Tudo que passa no portão. Quem chega, que hora, quanto tempo fica. O Seu Arlindo e a goiabada.
+VO: A JURA VIU O ARLINDO?
+> O Caíque engasga com a goiabada.
+CAIQUE: Eu... eu mandei convite pra ela. Ela pediu! E aí o aplicativo perguntou se eu queria convidar mais gente da agenda, e tinha um botão bem grande...
+EU: E você apertou.
+CAIQUE: Era verde!
+> Você abre o aplicativo da campainha no celular do Caíque e vai em "Membros e acessos". A lista é mais comprida do que deveria.
+(Agora é olhar a casa inteira de novo, desta vez perguntando quem vê o quê. Planta da casa, segunda varredura.)
+@desafio v3_quem_ve_o_portao -> v03_acessos_acerto | v03_acessos_erro
+
+=== v03_acessos_acerto
+@musica hacker
+(Três pessoas que a vó não convidou e uma atualização esperando desde a instalação. A conta da vó, a câmera com cada um na própria conta, a lâmpada e a cafeteira estão bem.)
+EU: Bigode Futsal, Tati com coração e Jura Vila 7. E a campainha pedindo atualização há dezessete dias.
+CAIQUE: O Bigode é meu amigo do futebol! A Tati é... era... minha namorada.
+VO: A Tati que terminou com você no Dia dos Namorados?
+CAIQUE: Essa.
+VO: E ela vê o meu portão de madrugada?
+@muda tecnica+1 seguranca+1
+@anota v3_convites_acesso
+@vai v03_culpa
+
+=== v03_acessos_erro
+@musica tensao
+> Você remove o Bigode Futsal e acha que acabou. Fecha o aplicativo.
+@som notificacao
+> Dois minutos depois, chega uma notificação no celular do Caíque: "Jura Vila 7 visualizou o vídeo: Movimento no portão, 19h31." O vídeo é você, na frente da campainha, contando para a vó a história do Seu Arlindo.
+(A Dona Jura acabou de assistir à reunião sobre a Dona Jura. Eu revisei pela metade. Tinha mais gente na lista, e a atualização também estava pendente.)
+> Você volta, lê a lista inteira, linha por linha, e encontra o resto.
+@marca jura_viu_tudo
+@muda paciencia-1
+@anota v3_convites_acesso
+@vai v03_culpa
+
+=== v03_culpa
+@expr caique triste
+CAIQUE: Prima, eu fiz tudo errado. A câmera, a moça, a campainha. Eu dei a casa da vó para a minha agenda inteira.
+? O Caíque está vermelho. A vó está olhando para você, esperando o que você vai dizer.
+* "Deu, Caíque. A casa da vó virou praça pública por sua causa." -> v03_culpa_dura {rel_caique-2 marca:caique_culpado}
+* "O aplicativo empurra o botão verde para todo mundo. A gente arruma junto." -> v03_culpa_junto {rel_caique+1 paciencia+1}
+** Pedir para o Caíque explicar para a vó quem é cada pessoa da lista, e ela decide quem fica -> v03_caique_explica {rel_caique+1 autonomia_vo+1 rel_vo+1}
+
+=== v03_culpa_dura
+@expr caique triste
+CAIQUE: Tá. Tá certo.
+> Ele pousa a lata de goiabada na mesa e fica olhando para ela, como se a goiabada também tivesse sido culpa dele.
+VO: {nome}. Ele é um menino.
+EU: Ele tem vinte e dois anos, vó.
+VO: Por isso mesmo. É menino.
+(Ele errou. Mas eu acabei de transformar um erro de configuração num defeito de caráter. E, do jeito que o Tio Mauro anda, isso vai virar mais uma linha na planilha.)
+@vai v03_revisao
+
+=== v03_culpa_junto
+EU: Caíque, esses aplicativos são feitos para a gente convidar todo mundo. Quanto mais gente, mais eles crescem. O erro é comum. O conserto é simples.
+CAIQUE: Simples?
+EU: Simples. Chato, mas simples. Cada pessoa com a sua conta, só quem a dona da casa quer, e a lista revisada de vez em quando.
+CAIQUE [feliz]: Tipo revisar os amigos do perfil.
+EU: Tipo isso. Só que com o portão da vó.
+@vai v03_revisao
+
+=== v03_caique_explica
+EU: Caíque, explica para a vó quem é cada um. Ela é a dona da campainha. Ela decide.
+> O Caíque respira fundo e vira o celular para a vó.
+CAIQUE: Esse é o Bigode, do futsal. Esse é o... a Tati. Essa é a Dona Jura. E esse sou eu.
+VO: O Bigode, eu nem sei a cara. Tchau, Bigode.
+VO: A Tati, que me deixou de olho no portão de madrugada? Tchau, Tati.
+CAIQUE [envergonhada]: Ela nem deve ver mais, vó...
+VO: Se não vê, não vai sentir falta.
+(Ninguém precisou levar bronca. Ele explicou, ela decidiu. E o portão voltou a ser dela.)
+@vai v03_revisao
+
+=== v03_revisao
+@musica interior
+EU: E a Dona Jura, vó? A senhora decide. Pode tirar, pode deixar, pode deixar só vendo o aviso de que alguém tocou, sem as gravações.
+VO [pensativa]: A Jura vigia essa vila desde antes de existir câmera.
+? A vó está pensando. A campainha está pedindo atualização. E a lista ainda está aberta.
+* Deixar a vó escolher: cada um com a própria conta, só quem ela quer, e atualizar a campainha agora -> v03_vo_escolhe {seguranca+2 autonomia_vo+1 marca:campainha_revisada}
+* Remover todo mundo, menos você e o Caíque, e atualizar, sem esperar a vó pensar -> v03_remove_tudo {seguranca+2 autonomia_vo-1 marca:campainha_revisada}
+* Deixar a revisão para o fim de semana, com calma, porque já está tarde -> v03_deixa_depois {seguranca-1 marca:jura_viu_tudo}
+
+=== v03_vo_escolhe
+VO: Tira o Bigode e a Tati. A Jura fica, mas só com o aviso de que alguém tocou. Gravação, não. A minha vida não é novela dela.
+VO: E eu quero a minha própria senha nesse aplicativo. Não quero entrar pelo celular do Caíque.
+> Vocês criam a conta da vó, com senha própria. O Caíque fica com a dele. Você, com a sua. A Dona Jura passa a receber só o aviso da campainha, sem vídeo e sem gravação, e a vó manda uma mensagem avisando.
+> Depois, a campainha baixa a atualização. A luz azul pisca devagar por cinco minutos e volta, com a versão nova.
+EU: Pronto. Atualizada. Atualização é como vacina, vó: o fabricante descobre o problema e manda a correção. Se ninguém instala, a correção fica na caixa.
+VO: E se o fabricante parar de mandar?
+EU: Aí o aparelho vira candidato a sair da tomada. Igual aquela babá eletrônica velha que o Caíque achou no armário, que não recebe atualização desde 2019.
+VO: Então tira a babá. Eu não sou bebê.
+@anota v3_atualizacao
+@vai v03_fim
+
+=== v03_remove_tudo
+> Você remove o Bigode, a Tati e a Dona Jura. Atualiza a campainha. Cinco minutos de luz azul piscando.
+@som notificacao
+> No celular da vó, uma mensagem: "Zilá, por que eu não vejo mais o seu portão? Aconteceu alguma coisa? Vocês brigaram comigo?"
+VO: Você tirou a Jura?
+EU: Tirei todo mundo, vó. É mais seguro.
+VO: Mais seguro pra quem? Eu ia deixar ela ver quem toca, só isso. Ela mora sozinha também, minha filha. A gente cuida uma da outra.
+(Eu acertei a configuração e errei a pessoa. A Dona Jura não era só um risco. Era a rede de proteção da minha avó muito antes da campainha.)
+EU: Desculpa, vó. A senhora quer que ela receba só o aviso de que tocaram? Dá para fazer.
+VO: Quero. E da próxima vez você me pergunta antes.
+@anota v3_atualizacao
+@vai v03_fim
+
+=== v03_deixa_depois
+EU: Vamos fazer com calma no sábado, vó. Hoje já está tarde e todo mundo está cansado.
+VO: Tá bom. Mas a Tati continua vendo o meu portão até sábado?
+EU: Só até sábado.
+> Às 22h40, o Seu Arlindo volta para buscar a lata da goiabada. Às 22h41, a Dona Jura já sabe. Às 22h43, a Neusinha do 4 também.
+(Até sábado é muito tempo para uma lista de acessos aberta. E a atualização continua esperando na fila.)
+@anota v3_atualizacao
+@vai v03_fim
+
+=== v03_fim
+@fundo portao_vila
+@musica alegre
+> Na saída, a campainha anuncia você de novo: "Alguém está na porta." A Dona Jura está no portão dela, como sempre.
+@entra dona_jura neutra direita
+DONA_JURA: A Zilá me mandou mensagem. Disse que agora eu sou "vizinha com aviso". Achei chique.
+DONA_JURA: E o carro prata? Era bandido mesmo?
+EU: Era uma aluna de autoescola, Dona Jura.
+DONA_JURA: Eu sabia. Eu sempre soube. Eu só queria confirmar.
+@sai dona_jura
+@zap "Netos da Vó Zilá 👵💜"
+CAIQUE: prima, valeu por hoje
+CAIQUE: [figurinha] Cachorro de óculos lendo um manual
+VO: [audio 0:07] Caíque, você leu o manual da fechadura? Ela tá apitando faz três dias. Eu achei que era a moça reclamando.
+CAIQUE: apitando como vó?
+VO: [audio 0:05] Piii, piii. Igual passarinho com dor de dente.
+@zap fim
+(Fechadura apitando há três dias. Isso costuma ter nome: bateria fraca. Amanhã eu passo lá.)
+@vai v04_inicio

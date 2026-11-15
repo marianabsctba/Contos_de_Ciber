@@ -1,0 +1,293 @@
+=== v04_inicio
+@cap 4 "A fechadura"
+@fundo home_office_noite
+@musica trabalho
+> Quarta-feira, 22h04. Você prometeu passar na vó para ver a fechadura que apita. Aí um servidor caiu às seis da tarde, e um servidor que cai às seis da tarde não levanta antes das dez.
+> O notebook está quente, o chá esfriou e a planilha que você prometeu ao Tio Mauro está com três linhas.
+@som notificacao
+@zap "Vó Zilá 👵"
+VO: [audio 0:31] {nome}? Minha filha, eu tô aqui fora. A porta não abre. Eu cheguei do terço com a Jura, digitei a senha e o tecladinho nem acendeu. Apertei, apertei, nada. A Jura foi dormir na filha dela hoje. Tá frio. Eu tô sentada no banquinho do portão.
+VO: [audio 0:12] Ah, e não é culpa da senha, viu? A senha tá certa. Até o moço do gás usou hoje à tarde, eu dei pra ele por telefone porque eu tava na missa das seis. Ele deixou o botijão direitinho.
+@zap fim
+@musica tensao
+(A fechadura apitando há quatro dias. Bateria fraca. Agora acabou de vez, e a vó ficou do lado de fora. Às dez da noite. E ela deu a senha para o entregador de gás.)
+? A vó está sozinha no portão, no frio, esperando a sua resposta.
+* "Vó, eu tô indo agora. Fica no banquinho embaixo da luz e me manda áudio a cada cinco minutos." -> v04_calma {rel_vo+1 paciencia+1}
+* "Vó, a senhora deu a senha da porta para o moço do gás?!" -> v04_bronca {autonomia_vo-1 rel_vo-1 marca:vo_assustada}
+* Ligar para o Tio Mauro, que é filho dela e precisa saber -> v04_liga_mauro {rel_tio_mauro+1 autonomia_vo-1 marca:vo_assustada}
+** Perguntar se ela quer que você chame o Sargento Lopes, que mora na esquina -> v04_pergunta_sargento {rel_vo+1 autonomia_vo+1}
+
+=== v04_calma
+@zap "Vó Zilá 👵"
+EU: Vó, tô saindo agora. Uns vinte minutos. Fica no banquinho, embaixo da luz da varanda. Se ficar com frio, bate na porta do Seu Arlindo.
+VO: [audio 0:06] No Arlindo não, que a Jura vai saber. Eu fico aqui. A lâmpada da varanda tá roxa, deve ser a novela na casa de alguém.
+@zap fim
+(Ela está calma. Eu é que não estou.)
+@vai v04_portao
+
+=== v04_bronca
+@zap "Vó Zilá 👵"
+EU: Vó, a senhora deu a senha da porta para o moço do gás?! Isso não se faz! Qualquer um pode entrar agora!
+> Vó Zilá está gravando um áudio...
+> Vó Zilá parou de gravar.
+VO: [audio 0:04] Desculpa, minha filha. Eu não sabia.
+VO: [audio 0:09] Agora eu tô com medo de ficar aqui fora. Você disse que qualquer um entra.
+@zap fim
+(Ela estava calma no frio. Eu é que coloquei o medo nela, por áudio, às dez da noite, sozinha no portão. A bronca podia esperar a porta abrir.)
+@vai v04_portao
+
+=== v04_liga_mauro
+@entra tio_mauro brava centro
+TIO_MAURO: Trancada do lado de fora? Às dez da noite? Com setenta e seis anos?
+EU: A bateria da fechadura acabou, tio. Estou indo para lá.
+TIO_MAURO: Eu vou ligar para ela.
+> Ele liga. Você ouve pelo seu próprio telefone, porque ele não desligou o seu: "MÃE, A SENHORA NÃO PODE FICAR SOZINHA NA RUA ASSIM! E SE ACONTECE ALGUMA COISA?"
+@sai tio_mauro
+@zap "Vó Zilá 👵"
+VO: [audio 0:07] O Mauro me ligou gritando. Agora eu tô nervosa. Vem logo, filha.
+@zap fim
+(Eu chamei reforço e veio uma sirene. Ele não está errado em se preocupar. Mas a forma dele de se preocupar deixa a vó menor.)
+@vai v04_portao
+
+=== v04_pergunta_sargento
+@zap "Vó Zilá 👵"
+EU: Vó, quer que eu chame o Sargento Lopes pra ficar com a senhora até eu chegar? Ele mora na esquina.
+VO: [audio 0:10] Chama. O Lopes eu conheço desde que ele era carteiro substituto. Eu entregava a correspondência dele e ele me trazia mexerica.
+@zap fim
+@zap "Sargento Lopes"
+EU: Sargento, a vó está trancada para fora. Bateria da fechadura. Estou a vinte minutos.
+SARGENTO: Já tô descendo. Levo uma cadeira e uma garrafa de café.
+@zap fim
+@vai v04_portao
+
+=== v04_portao
+@fundo portao_vila
+@musica tensao
+> 22h31. A vila está escura, com exceção da lâmpada da varanda da vó, que pisca roxa e verde como árvore de Natal com defeito.
+> No banquinho do portão, a Vó Zilá, enrolada no xale. Do lado dela, de agasalho e chinelo, o Sargento Lopes, com uma garrafa térmica.
+@entra vo triste esquerda
+@entra sargento neutra direita
+SARGENTO: Boa noite, {nome}. A sua avó tá ótima. Já me contou a novela inteira até o capítulo de amanhã.
+VO: Ele não sabia quem era o pai do menino. Agora sabe.
+> Você aperta o teclado da fechadura. Nada. Nem uma luzinha. A tela está tão apagada quanto a planilha do Tio Mauro.
+(Bateria fraca a semana inteira, apitando, e ninguém sabia o que era o apito. Agora é bateria nenhuma.)
+? A porta está trancada, a vó está com frio e o Sargento está olhando para você como quem espera a especialista.
+* Abrir no celular o manual oficial do fabricante e procurar o que fazer quando a bateria acaba -> v04_manual {tecnica+1 paciencia+1}
+* Ligar para o chaveiro 24h do adesivo colado no poste -> v04_chaveiro_poste {paciencia-1}
+* Entrar pela janela da cozinha, que fecha mal desde sempre -> v04_janela {seguranca-1}
+** Perguntar se a vó deu uma chave de reserva para alguém de confiança -> v04_chave_1994 {rel_vo+1}
+
+=== v04_manual
+> Você procura o modelo no site oficial do fabricante, não no primeiro vídeo que aparece. Página 14: "Bateria esgotada".
+EU: Aqui. Essa fechadura tem dois contatos de emergência embaixo do teclado. Encosta uma bateria de nove volts e o teclado acende o suficiente para digitar a senha. E tem uma fechadura de chave escondida embaixo de uma tampinha.
+SARGENTO: Chave? E cadê a chave?
+VO: Dentro de casa. Na gaveta da cozinha. Para não perder.
+(A chave de reserva guardada exatamente no lugar onde ela não serve para nada. Clássico absoluto.)
+@vai v04_nove_volts
+
+=== v04_chaveiro_poste
+> No poste, um adesivo amarelo: "CHAVEIRO 24H, ABRE QUALQUER PORTA, PREÇO JUSTO".
+SARGENTO: Espera aí, {nome}. Esse adesivo aí tem um monte pela cidade. Já atendi ocorrência de "preço justo" que virou oitocentos reais na hora de pagar. E você vai chamar um desconhecido para abrir a porta de uma senhora que mora sozinha.
+EU: O senhor tem razão.
+SARGENTO: Se precisar de chaveiro, chama um que alguém da família conhece, e pergunta o preço antes. Mas vê o manual primeiro, que essas portas novas costumam ter jeito de abrir.
+> Você abre o manual oficial do fabricante. Página 14: contatos de emergência embaixo do teclado, para uma bateria de nove volts, e uma fechadura de chave escondida embaixo de uma tampinha.
+VO: A chave tá dentro de casa. Na gaveta da cozinha.
+@vai v04_nove_volts
+
+=== v04_janela
+> Você vai até a janela da cozinha, a que fecha mal desde sempre. Ela está fechada, mas o trinco é de 1980 e o vidro é de 1990.
+SARGENTO: {nome}, antes de você subir aí, uma pergunta. Se você consegue entrar por essa janela, quem mais consegue?
+(Eu estava olhando para a fechadura eletrônica nova e esquecendo a janela velha do lado. A porta mais moderna da vila não adianta nada com uma janela de 1980 do lado.)
+EU: Sargento, o senhor acabou de ganhar uma linha na planilha do meu tio.
+SARGENTO: Vê o manual da fechadura primeiro. E amanhã troca esse trinco.
+> Você abre o manual oficial no celular. Página 14: contatos de emergência para uma bateria de nove volts, e uma fechadura de chave escondida embaixo de uma tampinha.
+VO: A chave tá na gaveta da cozinha. Lá dentro.
+@vai v04_nove_volts
+
+=== v04_chave_1994
+EU: Vó, a senhora deu alguma chave de reserva para alguém?
+VO: Dei. Pra Jura, em 1994. Ela tem até hoje.
+> Você liga para a Dona Jura, que atende no primeiro toque, como se estivesse com o celular na mão às 22h40. Ela estava.
+@zap "Dona Jura 🌺"
+DONA_JURA: A chave? Tenho! Tá no meu chaveiro de Aparecida. Mas, Zilá, essa chave é da fechadura velha. O Caíque trocou a fechadura.
+DONA_JURA: Ai, meu Deus. Eu tô com a chave de uma porta que não existe.
+DONA_JURA: Mas eu deixei a minha casa aberta pra filha da Neusinha regar as plantas. Tem uma bateria de nove volts no rádio da minha cozinha. Serve?
+@zap fim
+(Uma chave reserva com alguém de confiança é uma ótima ideia. Só precisava ser da fechadura certa.)
+@muda rel_dona_jura+1
+@vai v04_nove_volts
+
+=== v04_nove_volts
+@musica misterio
+> O Sargento busca uma bateria de nove volts, do rádio da cozinha da Dona Jura, que deixou a casa aberta para a vizinha regar as plantas, coisa que a vila inteira já sabia.
+> Você encosta a bateria nos dois contatos embaixo do teclado, do jeito que o manual mostra. Um bipe. O teclado acende, fraquinho.
+VO: Deixa que eu digito. A porta é minha.
+> A vó digita. Bem devagar. Em voz alta, como quem conta troco.
+VO: Um. Dois. Três. Quatro.
+@som porta
+> A porta abre. Do outro lado da rua, uma janela se fecha depressa.
+SARGENTO: Dona Zilá, com todo o respeito. A senhora acabou de falar a senha da sua porta em voz alta, na rua, às onze da noite.
+VO [envergonhada]: É que ela é fácil, Lopes.
+SARGENTO: Pois é esse o problema.
+@vai v04_dentro
+
+=== v04_dentro
+@fundo cozinha_vo
+@musica interior
+@entra vo neutra esquerda
+@entra sargento neutra direita
+> Na cozinha, o botijão novo do moço do gás está no lugar certo, e a chave de reserva está na gaveta, embaixo dos panos de prato. A vó serve café para o Sargento e para a moça, que não aceita.
+SARGENTO: Eu não acho que o moço do gás seja bandido, Dona Zilá. É o Edinho, eu conheço. Mas a senha da sua porta não é coisa de dar. Hoje é ele. Amanhã é quem ele contou, quem estava do lado quando a senhora falou, quem achou o papelzinho.
+VO: Mas eu tava na missa. Como é que ele ia deixar o gás?
+SARGENTO: Isso a sua neta sabe melhor que eu.
+@se marca:vo_assustada -> v04_vo_tremendo
+@vai v04_config
+
+=== v04_vo_tremendo
+@expr vo triste
+> A vó segura a xícara com as duas mãos. A xícara treme um pouco. Não é de frio.
+VO: Eu fiquei com medo lá fora. Pela primeira vez nessa vila. Quarenta anos aqui e eu nunca tive medo do meu portão.
+VO: Será que o Mauro tem razão? Será que eu não dou mais conta?
+(Ela deu conta. Ela ficou calma, chamou ajuda, digitou a senha sozinha. Quem fez ela duvidar disso fomos nós, no telefone.)
+EU: Vó, a senhora deu conta. Quem não deu conta foi uma bateria de nove volts. E isso a gente resolve.
+@muda autonomia_vo-1
+@vai v04_config
+
+=== v04_config
+@musica hacker
+EU: Vó, vamos arrumar a fechadura agora, enquanto o Sargento toma café. Eu explico cada coisa e a senhora escolhe.
+VO: Explica. Mas sem palavra em inglês.
+@desafio v4_fechadura_config -> v04_config_acerto | v04_config_erro
+
+=== v04_config_acerto
+(Senha que não é óbvia, senha temporária para quem presta serviço, chave de reserva com alguém de confiança e bateria trocada no primeiro apito. Simples. Só ninguém tinha pensado nisso antes do frio.)
+@muda tecnica+1 seguranca+1
+@anota v4_senha_fechadura
+@vai v04_senha
+
+=== v04_config_erro
+> Você sugere a data de aniversário da vó, "porque ela não esquece".
+SARGENTO: Data de aniversário? A Dona Jura sabe a data de aniversário de todo mundo da vila. E bota no grupo com figurinha.
+(Ele tem razão. Senha fácil de lembrar não pode ser fácil de adivinhar. Data de aniversário é a segunda tentativa de qualquer um, logo depois do 1234.)
+> Você volta e repassa cada item com mais cuidado: senha, prestadores, chave reserva, bateria.
+@muda paciencia-1
+@anota v4_senha_fechadura
+@vai v04_senha
+
+=== v04_senha
+? Agora, a senha nova da porta.
+* Ajudar a vó a escolher uma sequência longa que ela lembre e ninguém adivinhe -> v04_senha_vo {seguranca+2 autonomia_vo+1 rel_vo+1}
+* Escolher você mesma um número aleatório e escrever num papelzinho para a carteira dela -> v04_senha_papel {seguranca+1 autonomia_vo-1}
+* Deixar o 1234 por hoje, porque ela está cansada, e trocar outro dia -> v04_senha_fica {seguranca-1 marca:fechadura_1234}
+** Perguntar para a vó como ela quer fazer da próxima vez que o moço do gás vier -> v04_senha_gas {seguranca+2 autonomia_vo+2 rel_vo+1}
+
+=== v04_senha_vo
+EU: Vó, a fechadura aceita até oito números. Quanto mais, melhor. Não vale aniversário, telefone, número da casa, nem sequência.
+VO: E se eu esquecer?
+EU: Pensa numa coisa que só a senhora sabe e que vire número.
+> A vó pensa. Sorri. Vai até o teclado de costas para todo mundo, inclusive para o Sargento, que finge olhar para o teto.
+VO: Pronto. É o número da minha matrícula dos Correios, de trás pra frente. Ninguém sabe. Nem o Mauro.
+(Ninguém no mundo adivinharia. E ela nunca vai esquecer.)
+@vai v04_chave
+
+=== v04_senha_papel
+> Você gera oito números aleatórios, cadastra e escreve num papelzinho dobrado em quatro. A vó guarda na carteira, atrás da foto do vô.
+VO: E se eu perder a carteira?
+EU: Aí a gente troca a senha.
+VO: E se eu perder a carteira na rua, com o meu endereço no documento e a senha da porta atrás da foto do meu marido?
+(Ela tem razão. Senha escrita junto com o endereço é um convite com mapa. A senha precisava ser dela, de cabeça, não minha num papel.)
+SARGENTO: Ela é boa nisso, hein, {nome}.
+@vai v04_chave
+
+=== v04_senha_fica
+EU: Hoje fica o 1234, vó. A senhora está cansada. No fim de semana a gente troca.
+VO: Tá bom. Eu nem lembraria de outra agora.
+SARGENTO: Só não fala alto de novo, Dona Zilá.
+(O entregador sabe. A vila ouviu. E eu deixei. Fim de semana é um tempo enorme para uma porta com a senha mais famosa do mundo.)
+@vai v04_chave
+
+=== v04_senha_gas
+VO: Da próxima vez? Eu quero estar em casa. E se eu não estiver, eu não quero dar a minha senha.
+EU: Essa fechadura deixa criar uma senha temporária, vó. Vale só naquele dia, naquele horário. O moço do gás usa, deixa o botijão, e depois ela não abre mais nada.
+VO [surpresa]: Uma senha descartável? Igual copinho de festa?
+EU: Igual copinho de festa.
+VO: Então eu quero. E a minha senha de verdade eu escolho agora.
+> A vó cadastra a senha dela, de costas para todo mundo, oito números que só ela sabe. Depois, com você do lado, ensaia criar uma senha temporária para "quinta, das duas às quatro". Apaga. Cria de novo. Apaga.
+VO: Aprendi. Não sou mais nenhuma senha um dois três quatro.
+@vai v04_chave
+
+=== v04_chave
+@musica interior
+SARGENTO: E a chave de reserva, Dona Zilá? Na gaveta da cozinha ela só serve para quem já está dentro.
+? A chave física é o plano B quando a bateria falha. Onde ela fica?
+* Deixar a vó decidir com quem fica, e ela escolhe a Dona Jura -> v04_chave_jura {autonomia_vo+1 rel_dona_jura+1 marca:chave_reserva}
+* Levar você mesma a chave, porque mora a vinte minutos -> v04_chave_neta {marca:chave_reserva}
+* Esconder debaixo do vaso de samambaia da varanda -> v04_chave_vaso {seguranca-1}
+** Perguntar à vó se ela quer duas chaves: uma com alguém da vila e outra na bolsa, separada do documento -> v04_chave_duas {seguranca+1 autonomia_vo+1 marca:chave_reserva}
+
+=== v04_chave_jura
+VO: Fica com a Jura. Ela não sai de casa, ela vê tudo e ela atende no primeiro toque.
+EU: E ela vai contar para a vila inteira que tem a chave.
+VO: Vai. Mas ninguém da vila tem coragem de passar na frente da Jura.
+@vai v04_bateria
+
+=== v04_chave_neta
+> Você guarda a chave no seu chaveiro, entre a do carro e a do escritório.
+VO: E se for de madrugada? Você vem?
+EU: Venho.
+VO: Em vinte minutos. No frio.
+(Ela tem razão. Funciona, mas o plano B dela agora depende de mim e do trânsito. A gente pode pensar em alguém mais perto depois.)
+@vai v04_bateria
+
+=== v04_chave_vaso
+> Você põe a chave embaixo do vaso de samambaia da varanda.
+SARGENTO: {nome}, o vaso da varanda, o tapete da porta e a caixa do relógio de luz são os três primeiros lugares que qualquer um olha. Na ordem.
+> Você tira a chave do vaso e devolve para a gaveta, sem graça.
+(Vou ter que resolver isso direito. Chave de reserva serve para a dona da casa, não para quem procura.)
+@vai v04_bateria
+
+=== v04_chave_duas
+VO: Duas? Uma com a Jura e uma comigo, na bolsa, longe da carteira?
+EU: Isso. Se a senhora perder a bolsa, a Jura tem. Se a Jura viajar, a senhora tem.
+VO: E se as duas sumirem?
+EU: Aí a senhora liga para o Sargento e ele traz café.
+SARGENTO: Com mexerica.
+@vai v04_bateria
+
+=== v04_bateria
+> Você abre a tampinha de baixo da fechadura e troca as pilhas por umas novas da gaveta de pilhas da vó, que tem pilha de todo tamanho desde 1997.
+EU: Vó, o apito era isso: a fechadura avisando que a bateria estava acabando. Da próxima vez que apitar, troca as pilhas. E deixa sempre um pacote reserva na gaveta.
+VO: E por que ela não manda mensagem no meu celular, igual a campainha?
+EU: Ela manda, se estiver ligada no aplicativo da senhora. Vamos ligar o aviso de bateria fraca no seu celular também.
+@se marca:voz_com_confirmacao -> v04_moca_pilha
+@anota v4_bateria_e_chave
+@vai v04_fim
+
+=== v04_moca_pilha
+VO: Moça, compra pilha da fechadura.
+> "Para confirmar a compra, diga o seu código."
+> A vó vai até o corredor e cochicha o código para o cilindro, como quem conta segredo a uma amiga.
+> "Pedido confirmado: um pacote de pilhas."
+SARGENTO: Ela pede código pra comprar pilha?
+VO: Pede. Ela agora tem modos, Lopes.
+@anota v4_bateria_e_chave
+@vai v04_fim
+
+=== v04_fim
+@fundo portao_vila
+@musica tensao
+> 23h40. O Sargento vai embora com a garrafa térmica vazia e um saco de mexerica que a vó insistiu que ele levasse.
+SARGENTO: Boa noite, Dona Zilá. Qualquer coisa, a senhora me chama. A senhora, viu? Não precisa ser pela neta.
+@sai sargento
+@anota v4_prestadores
+@zap "Tio Mauro 📊"
+TIO_MAURO: Fiquei sabendo que a mãe ficou trancada para fora hoje.
+TIO_MAURO: A Neusinha do 4 contou para a minha esposa.
+TIO_MAURO: Domingo a gente conversa sobre essa casa. Eu levo a planilha. Já são trinta e quatro linhas.
+@zap fim
+(Três dias seguidos de casa inteligente e o Tio Mauro já tem três linhas novas. E nenhuma delas diz que a vó resolveu cada uma.)
+@sai todos
+> Você vai para o carro. Na casa da vó, a luz da varanda fica roxa, depois apaga.
+@som notificacao
+> No celular da Vó Zilá, em cima da mesa da cozinha, chega uma mensagem que ninguém vê. "Casa Conectada: detectamos atividade suspeita nos seus aparelhos. Um técnico entrará em contato amanhã cedo para uma atualização de segurança."
+@vai v05_inicio

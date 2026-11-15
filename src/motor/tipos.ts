@@ -39,6 +39,7 @@ export type Linha =
   | { t: 'anota'; id: string }
   | { t: 'final'; id: string }
   | { t: 'zap'; grupo: string | null }
+  | { t: 'pov'; id: string | null }
   | { t: 'escolha'; pergunta?: string; opcoes: Opcao[] };
 
 export interface Cena {
@@ -90,7 +91,7 @@ export type Desafio =
       titulo: string;
       enunciado: string;
       /** moldura onde os trechos aparecem (padrão: mensagem) */
-      visual?: 'mensagem' | 'maquininha' | 'comprovante' | 'boleto' | 'email' | 'navegador';
+      visual?: 'mensagem' | 'maquininha' | 'comprovante' | 'boleto' | 'email' | 'navegador' | 'casa';
       /** mensagem montada em trechos; os suspeitos precisam ser marcados */
       trechos: { texto: string; suspeito?: boolean; porque?: string }[];
       minimo: number;

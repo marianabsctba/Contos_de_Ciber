@@ -26,6 +26,8 @@ export interface Estado {
   /** conversa aberta no celular e suas últimas mensagens */
   zap?: string;
   zapLog?: MensagemZap[];
+  /** ponto de vista: id do personagem que a jogadora controla agora (ausente: a protagonista) */
+  pov?: string;
   zapUltima?: string;
 }
 
@@ -92,7 +94,7 @@ export function aplica(efs: Efeito[], e: Estado): void {
     }
     const v = e.vars[ef.nome] ?? 0;
     e.vars[ef.nome] = ef.op === '+' ? v + ef.valor : ef.op === '-' ? v - ef.valor : ef.valor;
-    if (ef.nome === 'saude' || ef.nome === 'paciencia' || ef.nome === 'risco') e.vars[ef.nome] = Math.max(0, Math.min(10, e.vars[ef.nome]));
+    if (['saude', 'paciencia', 'risco', 'seguranca', 'autonomia_vo', 'confianca'].includes(ef.nome)) e.vars[ef.nome] = Math.max(0, Math.min(10, e.vars[ef.nome]));
     if (ef.nome === 'minutos') e.vars.minutos = Math.max(0, e.vars.minutos);
     if (ef.nome === 'bateria') e.vars.bateria = Math.max(0, Math.min(100, e.vars.bateria));
   }
@@ -157,6 +159,10 @@ export class Executor {
         case 'anota':
           this.aoAnotar(l.id);
           return { t: 'anota', id: l.id };
+        case 'pov':
+          e.pov = l.id ?? undefined;
+          e.exprEu = 'neutra';
+          break;
         case 'zap':
           e.zap = l.grupo ?? undefined;
           e.zapLog = [];

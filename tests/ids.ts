@@ -11,6 +11,7 @@ export const FUNDOS = [
   'pastelaria', 'feira_pastel', 'portao_noite', 'associacao_comerciantes', 'cozinha_pastelaria',
   'sala_tv_velha', 'loja_eletronicos', 'ponto_onibus', 'shopping_corredor',
   'gaveta_celular', 'velorio', 'igreja_missa', 'cartorio', 'quarto_do_pai',
+  'sala_vo_tech', 'portao_vila', 'cozinha_vo', 'quarto_theo', 'patio_escola', 'sala_reuniao_pais', 'onibus_escolar',
 ];
 export const MUSICAS_IDS = [
   'infancia', 'interior', 'tensao', 'misterio', 'triste', 'alegre', 'romance', 'cidade', 'trabalho', 'hacker',

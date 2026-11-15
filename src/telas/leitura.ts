@@ -148,13 +148,13 @@ export function telaLeitura(h: Historia): void {
     const euAparece = quemFala === 'eu';
     for (const p of e.palco) {
       const per = pers.get(p.id);
-      if (!per) continue;
+      if (!per || p.id === e.pov) continue;
       let pos: string = p.pos;
       if (euAparece && pos === 'centro') pos = 'direita';
       if (euAparece && pos === 'esquerda') pos = 'direita';
       itens.push({ id: p.id, v: visualDe(per), expr: p.expr, pos });
     }
-    if (euAparece) itens.push({ id: 'eu', v: { ...e.visual, idade: e.idade }, expr: e.exprEu, pos: 'esquerda' });
+    if (euAparece) itens.push({ id: 'eu', v: eu().visual, expr: e.exprEu, pos: 'esquerda' });
 
     const atuais = new Map([...palco.children].map((c) => [(c as HTMLElement).dataset.id!, c as HTMLElement]));
     for (const [id, nodo] of atuais) {
@@ -200,6 +200,14 @@ export function telaLeitura(h: Historia): void {
       pronto();
     };
     digitando = { fim };
+  }
+
+  /** nome, cor e aparência de quem a jogadora controla agora */
+  function eu(): { nome: string; cor: string; visual: Visual } {
+    const e = ex.estado;
+    const p = e.pov ? pers.get(e.pov) : undefined;
+    if (p) return { nome: p.nome, cor: p.cor, visual: visualDe(p) };
+    return { nome: e.nome, cor: '#ff4f8b', visual: { ...e.visual, idade: e.idade } };
   }
 
   function pintarHud() {
@@ -301,15 +309,15 @@ export function telaLeitura(h: Historia): void {
     } else if (ev.t === 'pensa') {
       pintarPalco('eu');
       fala.classList.add('pensamento');
-      fala.replaceChildren(el('div', { class: 'nome', style: '--cor:#c3a6ff' }, `${ex.estado.nome} pensa`), textoEl);
+      fala.replaceChildren(el('div', { class: 'nome', style: '--cor:#c3a6ff' }, `${eu().nome} pensa`), textoEl);
     } else {
       pintarPalco(ev.quem);
       const per = pers.get(ev.quem);
-      const nome = ev.quem === 'eu' ? ex.estado.nome : per?.nome ?? ev.quem;
-      const cor = ev.quem === 'eu' ? '#ff4f8b' : per?.cor ?? '#888';
+      const nome = ev.quem === 'eu' ? eu().nome : per?.nome ?? ev.quem;
+      const cor = ev.quem === 'eu' ? eu().cor : per?.cor ?? '#888';
       const rosto =
         ev.quem === 'eu'
-          ? desenharRosto({ ...ex.estado.visual, idade: ex.estado.idade }, ex.estado.exprEu)
+          ? desenharRosto(eu().visual, ex.estado.exprEu)
           : per
             ? desenharRosto(visualDe(per), ex.estado.palco.find((p) => p.id === ev.quem)?.expr ?? 'neutra')
             : '';

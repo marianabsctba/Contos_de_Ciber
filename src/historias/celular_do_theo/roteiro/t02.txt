@@ -1,0 +1,291 @@
+# Parte 1, capítulo 2: Grupo da sala. Capítulo inteiro do lado do Theo.
+
+=== t02_inicio
+@cap 2 "Grupo da sala"
+@fundo onibus_escolar
+@musica cidade
+> Primeira semana de aula. Enquanto a mãe dorme depois do plantão, a história muda de lado.
+@pov theo
+> Agora você é o Theo. Onze anos, primeira semana no sexto ano, escola nova e um celular com adesivo de unicórnio.
+(Linha das 6h40. Terceiro banco do lado da janela. Fone de ouvido sem música, só pra ninguém puxar assunto.)
+@entra gui feliz direita
+GUI: Mano, você vai ficar com esse fone sem som até quando?
+EU: Até o fim do ano.
+GUI: Eu vim da escola antiga junto com você e caí no 6º A. Você caiu no 6º B. A gente tá separado por uma parede, não por um oceano.
+EU: Pra mim é oceano. No 6º B todo mundo se conhece desde o prézinho.
+GUI: Dica: se te colocarem no grupo da sala, não manda áudio no primeiro dia. Regra de ouro.
+EU: Quem inventou essa regra?
+GUI: Eu. Agora.
+@sai gui
+@som notificacao
+> Bia adicionou você ao grupo "6º B 🔥🔥🔥"
+@vai t02_grupo
+
+=== t02_grupo
+@zap "6º B 🔥🔥🔥"
+BIA: gente o novato entrou, o theo. sejam legais
+ENZO: novato 👀👀
+DUDA: oiii theo
+LARA: oi theo! bem-vindo
+ENZO: [figurinha] Gato de óculos escuros dizendo "quem é você"
+ENZO: theo se apresenta aí, é regra do grupo
+BIA: não tem essa regra enzo
+ENZO: agora tem
+> 14 pessoas estão vendo
+(Catorze pessoas. Catorze pessoas esperando eu ser legal em uma mensagem só.)
+? O grupo inteiro está esperando. O que você manda?
+* "oi, sou o Theo, vim de outra escola e jogo BlocoVerso" -> t02_apresenta
+* Só um "oi" e um joinha -> t02_joinha
+** Mandar uma foto do unicórnio do celular: "herdei da minha prima, não julguem" -> t02_unicornio {rel_bia+1 rel_lara+1}
+
+=== t02_apresenta
+EU: oi, sou o Theo, vim de outra escola e jogo BlocoVerso
+DUDA: eu jogo tbm!! qual seu mundo?
+ENZO: BlocoVerso é jogo de criança kkk
+LARA: vc joga todo dia enzo, eu vejo vc online
+ENZO: é pra pesquisa
+(Pronto. Já tenho assunto. Obrigado, BlocoVerso.)
+@vai t02_zoacao
+
+=== t02_joinha
+EU: oi 👍
+ENZO: misterioso
+BIA: deixa ele enzo, é o primeiro dia
+DUDA: 👍
+(Ninguém riu de mim. Ninguém lembrou de mim também. É um empate.)
+@vai t02_zoacao
+
+=== t02_unicornio
+EU: [foto] Celular com capinha rosa e adesivo de unicórnio com glitter
+EU: herdei da minha prima, não julguem
+LARA: KKKKK eu amei
+BIA: o glitter tá fazendo barulho daqui
+DUDA: o meu tem a cara de um cachorro que não é meu, era do meu tio
+ENZO: unicórnio 🦄 kkkk
+(Eles riram junto comigo, não de mim. Tem diferença. Acho.)
+@vai t02_zoacao
+
+=== t02_zoacao
+> Quarta-feira, 12h31
+ENZO: GENTE OLHA ISSO KKKKKKKK
+ENZO: [foto] Print de um áudio da Duda no grupo da família dela, cantando parabéns pra avó, com a voz falhando no fim
+ENZO: a duda no show de calouros kkkkk 🎤
+ENZO: [figurinha] Galo cantando de olho fechado
+> 3 pessoas reagiram com 😂
+ENZO: alguém manda pro 6º A também
+LARA: enzo para
+ENZO: é só zoeira lara
+> Duda visualizou.
+> Duda saiu do grupo
+BIA: ela saiu enzo
+ENZO: ué, era brincadeira
+@musica tensao
+(Como esse print saiu do grupo da família dela? Alguém que tava lá mandou pra alguém, que mandou pro Enzo. Um print anda sozinho.)
+(A Duda foi a primeira a dizer oi pra mim.)
+? O print está ali, no meio do grupo. O que você faz?
+* Mandar "kkkkk" e encaminhar o print pro Gui -> t02_compartilha {marca:theo_compartilhou_zoacao etica-2}
+* Escrever no grupo: "gente, não tem graça, apaga isso" -> t02_defende {marca:theo_ajudou_colega etica+2}
+* Não falar nada no grupo e mandar mensagem no privado pra Duda -> t02_privado_duda {marca:theo_ajudou_colega etica+1 rel_duda+1}
+* Fingir que não viu e fechar o celular -> t02_ignora
+** Mudar de assunto mandando o vídeo do porco do BlocoVerso que vira diamante -> t02_porco {etica+1}
+
+=== t02_compartilha
+EU: kkkkk
+@zap fim
+> Você aperta e segura o print. "Encaminhar". Gui 🎮.
+> A risada saiu antes de você pensar. O dedo também.
+> A Duda viu o seu "kkkkk" antes de sair? Não dá pra saber. Mas dá pra imaginar.
+(Eu só mandei pro Gui. Só um. Mas o Enzo também só mandou pro grupo. E a pessoa que mandou pro Enzo também só mandou pra um.)
+@vai t02_gui
+
+=== t02_defende
+EU: gente, não tem graça. apaga isso
+ENZO: ihhh o novato é fiscal
+LARA: ele tá certo
+BIA: enzo apaga, sou eu que vou levar bronca se a professora vir
+> Enzo apagou esta mensagem
+ENZO: chatos
+(Meu coração tá batendo no ouvido. Mas o print sumiu.)
+@vai t02_gui
+
+=== t02_privado_duda
+@zap "Duda"
+EU: oi duda, é o theo. eu achei muito chato o que o enzo fez
+EU: e sua voz não tava ruim, eu não consigo nem cantar parabéns sem rir
+> Duda está digitando...
+DUDA: obg theo
+DUDA: eu nem sei como ele pegou isso. era do grupo da minha família
+DUDA: minha mãe vai ficar brava
+EU: se quiser, eu tirei print do grupo também, caso precise mostrar pra alguém
+DUDA: pode guardar
+(Print pra guardar prova é diferente de print pra espalhar. Um protege, o outro machuca.)
+@vai t02_gui
+
+=== t02_ignora
+@zap fim
+> Você bloqueia a tela. O unicórnio fica virado para cima, brilhando, como se nada tivesse acontecido.
+(Não é problema meu. Eu cheguei agora. Ninguém me conhece.)
+(Mas a Duda também tinha chegado em algum momento.)
+@vai t02_gui
+
+=== t02_porco
+EU: [foto] Vídeo: um porco do BlocoVerso que pisa num bloco e vira diamante
+EU: alguém sabe fazer isso?? achei um bug
+LARA: MENTIRA
+BIA: como assim vira diamante
+ENZO: isso é fake
+ENZO: não, pera, como faz
+> Em dois minutos, o print da Duda está lá em cima, enterrado embaixo de 40 mensagens sobre porco de diamante.
+> Bia adicionou Duda
+DUDA: ??? por que tem 40 mensagens de porco
+(Funcionou. Não resolveu o que o Enzo fez, mas tirou o holofote de cima dela.)
+@vai t02_gui
+
+=== t02_gui
+@zap "Gui 🎮"
+@se marca:theo_compartilhou_zoacao -> t02_gui_print
+GUI: mano o 6º B tá pegando fogo, o 6º A já tá sabendo de um áudio
+GUI: o que rolou?
+EU: o Enzo mandou um print de áudio da Duda e todo mundo riu
+GUI: e vc?
+@vai t02_pergunta
+
+=== t02_gui_print
+GUI: mano vc me mandou o print da menina
+GUI: quem é?
+EU: a Duda, da minha sala. o Enzo mandou no grupo
+GUI: ela sabe que tá rodando?
+EU: ela saiu do grupo
+GUI: ...
+GUI: mano, isso não é engraçado se ela saiu do grupo
+@vai t02_pergunta
+
+=== t02_pergunta
+@zap fim
+(O que dá pra fazer de verdade, quando a zoação já está no grupo?)
+@desafio t2_print_zoacao -> t02_zoacao_acerto | t02_zoacao_erro
+
+=== t02_zoacao_acerto
+(Não repassar, não rir junto, ficar do lado de quem foi zoado e, se continuar, contar pra um adulto. Guardar print só pra provar, nunca pra espalhar.)
+@muda etica+1 tecnica+1
+@anota t2_zoacao
+@se marca:theo_compartilhou_zoacao -> t02_desfaz
+@vai t02_patio
+
+=== t02_desfaz
+@zap "Gui 🎮"
+EU: gui apaga o print que eu te mandei. por favor
+GUI: apaguei
+GUI: e não manda pra mais ninguém
+EU: não vou
+@zap fim
+(Eu não consigo desmandar. O print que eu mandei já existiu. Mas pelo menos ele para aqui.)
+@vai t02_patio
+
+=== t02_zoacao_erro
+@zap "Gui 🎮"
+GUI: relaxa, mano. todo mundo manda print
+GUI: amanhã ninguém lembra
+@zap fim
+(Amanhã ninguém lembra. Menos a Duda.)
+> Você fica um tempão olhando o teto do ônibus, com uma sensação estranha na barriga.
+@anota t2_zoacao
+@vai t02_patio
+
+=== t02_patio
+@fundo patio_escola
+@musica alegre
+> Sexta-feira. Fim da primeira semana. O pátio tem um pé de jambo, uma cantina com fila e um banco onde ninguém senta porque tem formiga.
+@se marca:theo_ajudou_colega -> t02_duda_agradece
+@vai t02_foto
+
+=== t02_duda_agradece
+@entra duda feliz esquerda
+DUDA: Theo! Valeu por aquilo.
+EU: Aquilo o quê?
+DUDA: Você sabe. Minha mãe já falou com a coordenação. E eu ensinei minha avó a não mandar áudio meu pra ninguém.
+DUDA: Ela disse que vai mandar só figurinha agora. Vai ser pior.
+@sai duda
+(Primeira semana e eu já tenho uma pessoa que fala comigo no pátio. Isso é quase um recorde.)
+@vai t02_foto
+
+=== t02_foto
+> Na saída, o sol bate no portão da escola nova. O uniforme ainda tem cheiro de loja. O nome da escola está bordado bem no peito: "Escola Professora Iracema Lopes".
+(Isso dá uma foto muito boa. Pro meu perfil. Pra galera da escola antiga ver que eu tô vivo e pra galera da nova saber quem eu sou.)
+> Você tira a foto de frente para o portão, com o ponto de ônibus atrás. Escreve a legenda.
+> "Primeira semana na escola nova 🏫 busão das 6h40 todo dia sozinho 😎"
+> No aplicativo de fotos que a sua mãe liberou depois de muita conversa, tem um botão "Adicionar local". Você toca. Aparece a escola, certinha.
+(Com o local, quem é da escola vai achar meu perfil. Faz sentido.)
+? Antes de publicar, a tela pergunta: "Quem pode ver?"
+* "Público": qualquer pessoa, pra galera nova encontrar seu perfil -> t02_foto_publica {marca:foto_uniforme_publica}
+* "Amigos próximos": só a lista dos colegas que você aceitou -> t02_foto_amigos
+** Pedir para o Gui, que sabe todos os atalhos, escolher o filtro -> t02_foto_gui {marca:foto_uniforme_publica rel_gui+1}
+
+=== t02_foto_publica
+> Publicado. Público. Com o local. Com o uniforme. Com o horário do ônibus na legenda.
+@som notificacao
+> 12 curtidas em dez minutos. Gente que você nem conhece. Uma conta com foto de paisagem segue você.
+(Uau. Eu sou meio famoso.)
+@vai t02_fim
+
+=== t02_foto_amigos
+> Publicado para os amigos próximos. A lista tem a Bia, a Lara, o Gui, a Duda e, porque ele pediu na quarta, o Enzo.
+@som notificacao
+ENZO: [foto] Comentário: "o novato todo arrumadinho kkk 🦄"
+(Pelo menos só a sala vê. Né?)
+@vai t02_fim
+
+=== t02_foto_gui
+@zap "Gui 🎮"
+EU: gui qual filtro eu coloco
+GUI: o de brilho no olho. e aperta ali em cima, segura dois segundos, que fica mais rápido de postar
+EU: mas aí vai pra quem?
+GUI: pra todo mundo ué. é o atalho
+@zap fim
+> Publicado. Com brilho no olho. Público. Com o local da escola.
+(O Gui sabe todos os atalhos. Mas atalho é só o caminho mais curto, não quer dizer que é o caminho certo.)
+@vai t02_fim
+
+=== t02_fim
+@fundo quarto_theo
+@musica infancia
+> À noite, no quarto. O celular vai dormir na cozinha daqui a meia hora.
+(Primeira semana. Grupo da sala, um print que andou sozinho, um pátio com formiga e uma foto que deu certo.)
+> A foto continua lá, no perfil, com o local da escola embaixo. Você nem pensa mais nela.
+@anota t2_quem_pode_ver
+(A minha mãe tá no plantão. Ela não sabe de nada da semana. Nem da Duda.)
+? Na sala, a Vó Cida assiste novela com o volume no 40. O que você faz com a semana?
+* Deixar um bilhete na geladeira: "Mãe, quando acordar, quero te contar uma coisa da escola" -> t02_bilhete [se confianca>=6]
+* Guardar tudo pra você. Amanhã ninguém lembra -> t02_guarda
+** Contar tudo pra Vó Cida, no intervalo da novela -> t02_vo {rel_vo_cida+1}
+
+=== t02_bilhete
+@fundo casa_cozinha
+> Você arranca uma folha do caderno e prende embaixo do ímã da pizzaria, do lado das regras do celular.
+> "Mãe, quando acordar, quero te contar uma coisa da escola. Não é nada grave. É mais ou menos. Beijo, Theo."
+(Ela disse que ninguém leva bronca por contar. Vamos ver se é verdade.)
+@vai t02_encerra
+
+=== t02_guarda
+> Você deixa o celular carregando na cozinha e volta pro quarto.
+(Contar o quê? Que alguém zoou alguém? Isso acontece toda hora. Ela ia achar que é bobagem. Ou ia surtar. Uma das duas.)
+@vai t02_encerra
+
+=== t02_vo
+@fundo sala_familia
+@entra vo_cida neutra esquerda
+EU: Vó, posso contar uma coisa no intervalo?
+VO_CIDA: Pode, meu filho. Tem quatro minutos de propaganda de margarina.
+> Você conta do print, da Duda saindo do grupo, do Enzo dizendo que era brincadeira.
+@expr vo_cida pensativa
+VO_CIDA: No meu tempo, a gente zoava no recreio e acabava no recreio. Agora fica guardado pra sempre nesse aparelho, né?
+VO_CIDA: Brincadeira boa é a que todo mundo ri. Se um saiu chorando, não era brincadeira.
+VO_CIDA: Conta pra sua mãe também. Ela entende dessas coisas de tomada melhor que eu.
+@sai vo_cida
+@vai t02_encerra
+
+=== t02_encerra
+@sai todos
+@pov fim
+> Do outro lado da cidade, a mãe sai de mais um plantão. Ela ainda não sabe de quase nada dessa semana.
+@vai t03_inicio

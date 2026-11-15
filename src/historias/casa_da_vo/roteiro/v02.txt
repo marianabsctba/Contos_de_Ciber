@@ -1,0 +1,283 @@
+=== v02_inicio
+@cap 2 "A moça comprou"
+@fundo escritorio_moderno
+@musica trabalho
+> Segunda-feira, 9h14. O escritório cheira a café de garrafa térmica e a ar-condicionado que alguém regulou para o Polo Norte.
+> Você está no meio de uma reunião sobre "a internet do terceiro andar", que na verdade é um cabo pisado por uma cadeira, quando o celular vibra três vezes seguidas.
+@som notificacao
+@zap "Netos da Vó Zilá 👵💜"
+CAIQUE: [foto] E-mail: "Seu pedido foi confirmado! 12 pacotes de fralda geriátrica tamanho G. Entrega prevista: hoje."
+CAIQUE: gente
+CAIQUE: GENTE
+CAIQUE: a moça comprou fralda
+CAIQUE: no cartão que eu cadastrei
+VO: [audio 0:18] Eu não uso fralda. Ainda. Quando eu usar, eu mesma compro, e compro da marca boa, não dessa aí. Eu só tava vendo a novela, {nome}. Eu juro pelo seu avô.
+CAIQUE: vó a senhora falou "compra" perto da moça?
+VO: [audio 0:06] Eu não falei nada. Quem falou foi a Dona Lurdes da novela. A novela fala muito.
+@zap fim
+(Uma assistente de voz que compra sozinha, com cartão salvo e sem pedir confirmação. E uma novela que grita. A conta fecha.)
+@se marca:camera_ficou_aberta -> v02_camera_cobranca
+@vai v02_primeira_reacao
+
+=== v02_camera_cobranca
+@zap "Netos da Vó Zilá 👵💜"
+EU: Caíque, e a senha da câmera? Você trocou ontem à noite?
+> Caíque está digitando...
+> Caíque parou de digitar.
+CAIQUE: tinha jogo prima
+CAIQUE: hoje eu troco, juro, juro mesmo
+@zap fim
+(A câmera da sala continua com "admin, admin". E eu deixei. Na próxima, eu não deixo para depois.)
+@muda paciencia-1
+@vai v02_primeira_reacao
+
+=== v02_primeira_reacao
+? Doze pacotes de fralda a caminho e uma reunião sobre um cabo pisado.
+* Sair da reunião um minuto e ligar para a vó, para ela não ficar envergonhada -> v02_liga_vo {rel_vo+1 etica+1}
+* Mandar o Caíque cancelar o pedido no aplicativo da loja agora, antes de sair para entrega -> v02_cancela {tecnica+1 seguranca+1}
+* Responder no grupo com um textão sobre como funcionam as palavras de ativação -> v02_textao {paciencia-1}
+** Pedir para a vó perguntar para a própria moça o que ela comprou -> v02_vo_pergunta {autonomia_vo+1 rel_vo+1}
+
+=== v02_liga_vo
+> Você sai da sala com o celular na orelha, fingindo que é uma ligação muito técnica.
+VO: Alô? É a {nome}? Ou é a moça?
+EU: Sou eu, vó. A senhora não fez nada de errado. A moça entendeu a televisão como se fosse a senhora.
+VO: Ela é surda, então.
+EU: Ela ouve demais, vó. Esse é o problema.
+VO: Igual a Jura.
+(Igual a Jura. Vou usar isso na próxima palestra.)
+@vai v02_cancela
+
+=== v02_textao
+@zap "Netos da Vó Zilá 👵💜"
+EU: Gente, a assistente fica ouvindo o tempo todo esperando a palavra de ativação. Quando ouve algo parecido, ela começa a gravar e manda para o servidor interpretar o pedido. Se a compra por voz está ligada sem confirmação e tem cartão salvo, qualquer frase parecida vira pedido. Inclusive da televisão. Inclusive de...
+VO: [audio 0:02] Não li.
+CAIQUE: prima resume
+EU: A TV comprou fralda.
+VO: [audio 0:03] Ah, agora entendi.
+@zap fim
+@vai v02_cancela
+
+=== v02_vo_pergunta
+@zap "Netos da Vó Zilá 👵💜"
+EU: Vó, pergunta pra moça: "moça, o que você comprou hoje?"
+VO: [audio 0:21] Moça, o que você comprou hoje? ... Ela disse que eu tenho um pedido a caminho. Doze pacotes. E perguntou se eu quero acompanhar a entrega. Eu disse que não, que eu quero é devolver. Ela disse "desculpe, não entendi". Ela não entende só quando convém, igual o Mauro.
+CAIQUE: kkkkkkk vó
+EU: Isso, vó. A senhora acabou de fazer auditoria do pedido.
+VO: [audio 0:02] Fiz o quê?
+@zap fim
+@vai v02_cancela
+
+=== v02_cancela
+> O Caíque abre o aplicativo da loja e cancela o pedido. Chega tarde: três pacotes já saíram no primeiro caminhão. Nove ficam no estoque.
+@zap "Netos da Vó Zilá 👵💜"
+CAIQUE: cancelei 9, os outros 3 já tão na rua
+CAIQUE: e o meu pai viu a notificação no cartão dele
+CAIQUE: é cartão adicional
+CAIQUE: ele vai ligar pra você prima
+CAIQUE: desculpa
+@zap fim
+@som notificacao
+> O celular toca. Na tela: "Tio Mauro 📊".
+@vai v02_mauro
+
+=== v02_mauro
+@fundo escritorio_moderno
+@musica tensao
+@entra tio_mauro brava centro
+TIO_MAURO: {nome}. Doze pacotes de fralda geriátrica na minha fatura. Em plena segunda-feira.
+EU: Nove já foram cancelados, tio. E não foi a vó que pediu. Foi a assistente de voz, que ouviu a novela.
+TIO_MAURO: É exatamente isso que eu digo. A mãe não dá conta de uma televisão. Imagina de uma casa.
+TIO_MAURO: Eu fiz uma planilha. Tem uma aba chamada "Riscos da mãe morar sozinha". Ela tem trinta e duas linhas.
+(Trinta e duas linhas. E nenhuma delas deve ser "o neto instalou tudo com a senha da caixa".)
+? O Tio Mauro está montando um argumento. E a fralda virou a linha 33.
+* "Tio, não foi ela. Foi a configuração. E configuração se arruma." -> v02_mauro_defende {autonomia_vo+1 rel_tio_mauro-1 etica+1}
+* "É, tio, ela se confundiu um pouco com a tecnologia." -> v02_mauro_concorda {autonomia_vo-1 rel_tio_mauro+1}
+* Desligar dizendo que está em reunião, o que é verdade -> v02_mauro_desliga {paciencia+1}
+** Prometer mandar para ele uma planilha com os riscos da casa e quem é responsável por cada um -> v02_mauro_planilha {rel_tio_mauro+1 autonomia_vo+1 tecnica+1}
+
+=== v02_mauro_defende
+TIO_MAURO: Configuração. Você fala como se a casa fosse um computador.
+EU: Hoje ela é, tio. E se eu ligar a compra por voz no seu celular sem confirmação, o senhor compra fralda também.
+TIO_MAURO [pensativa]: Hm.
+TIO_MAURO: Isso não entra na planilha.
+@sai tio_mauro
+@vai v02_tarde
+
+=== v02_mauro_concorda
+TIO_MAURO: Pois é. Ninguém da família tem coragem de dizer isso. Obrigado, {nome}.
+> Ele desliga satisfeito. Você fica olhando para a tela apagada.
+(Eu concordei que a vó se confundiu. A vó não se confundiu. A assistente se confundiu. E eu acabei de dar uma linha a mais para a planilha dele.)
+@sai tio_mauro
+@vai v02_tarde
+
+=== v02_mauro_desliga
+EU: Tio, estou em reunião. Depois a gente conversa, prometo.
+TIO_MAURO: Depois, depois. Na sua família ninguém tem tempo, só eu.
+@sai tio_mauro
+(Ele vai ligar de novo. Ele sempre liga de novo. Mas hoje não, hoje é a vez da fralda.)
+@vai v02_tarde
+
+=== v02_mauro_planilha
+EU: Tio, faz assim: eu mando uma planilha. Cada aparelho da casa numa linha, o risco, o que foi feito e quem é responsável. Inclusive o cartão adicional.
+TIO_MAURO [surpresa]: Uma planilha?
+EU: Com filtro. E formatação condicional.
+TIO_MAURO: ...com cor?
+EU: Verde quando está configurado. Vermelho quando não está.
+TIO_MAURO: Manda até quarta. Eu leio na hora do almoço.
+@sai tio_mauro
+(Eu não converti o Tio Mauro. Mas pelo menos agora ele vai brigar com uma planilha que diz que o problema é a configuração, não a mãe dele.)
+@vai v02_tarde
+
+=== v02_tarde
+@fundo cozinha_vo
+@musica alegre
+> Segunda, 18h40. Você chega na vó depois do trabalho. Na mesa da cozinha, três pacotes enormes de fralda geriátrica tamanho G fazem companhia ao bolo de fubá.
+@entra vo feliz esquerda
+@entra caique envergonhada direita
+VO: Moça, a {nome} chegou. Diz boa noite pra ela.
+> O cilindro acende. "Boa noite! Posso ajudar em algo?"
+VO: Educada, né? Eu ofereço café pra ela toda tarde. Ela nunca aceita.
+CAIQUE: Vó, ela não bebe café.
+VO: Eu sei, mas é falta de educação não oferecer.
+> Você abre o aplicativo da assistente no celular do Caíque e vai para o histórico de pedidos e de gravações.
+> Às 21h12 de domingo, a gravação: a voz da Dona Lurdes, na novela, gritando "Ô moça, compra logo doze pacotes de fralda pro asilo!". Logo depois, a voz da assistente: "Pedido confirmado."
+EU: O Caíque cadastrou a palavra de ativação como "moça". E a personagem da novela gritou "moça" e "compra".
+VO: Então a culpa é da Dona Lurdes.
+CAIQUE: A culpa é minha. Eu achei que "moça" era fofo.
+@anota v2_compra_por_voz
+@vai v02_gravacoes
+
+=== v02_gravacoes
+@musica misterio
+> Embaixo do pedido, a lista de gravações continua. Dezenas.
+> A vó cantando "Detalhes" enquanto lavava louça. A vó rezando o terço, inteiro. O Caíque no telefone com a namorada. E, na quinta-feira passada, a Dona Jura, na cozinha, contando com detalhes quem da vila está devendo o condomínio.
+VO [surpresa]: Ela gravou a Jura?
+EU: Ela grava um pedacinho sempre que acha que ouviu a palavra de ativação. E guarda. Fica tudo aqui, nas configurações da conta.
+VO: A Jura não sabe que a moça ouve. Nenhuma visita sabe.
+(Esse é o ponto que ninguém lembra: a assistente não grava só quem mora. Grava quem visita. E quem visita nem sabe que tem alguém ouvindo.)
+? A vó está olhando para a lista de gravações como quem acha um diário que não escreveu.
+* Mostrar à vó como revisar e apagar, e deixar ela decidir o que fica -> v02_vo_apaga {autonomia_vo+1 rel_vo+1 marca:apagou_gravacoes}
+* Apagar tudo de uma vez, rapidinho, antes que alguém escute -> v02_apaga_tudo {seguranca+1 autonomia_vo-1 marca:apagou_gravacoes}
+* Deixar como está. São só gravações de casa, não fazem mal a ninguém -> v02_deixa {seguranca-1}
+** Ouvir com a vó a gravação dela cantando "Detalhes" antes de qualquer coisa -> v02_ouve_detalhes {rel_vo+2 autonomia_vo+1 marca:apagou_gravacoes}
+
+=== v02_vo_apaga
+EU: Vó, aqui a senhora vê cada gravação. Esse botão apaga uma. Esse apaga todas. E aqui dá para escolher que ela apague sozinha depois de um tempo.
+VO: Posso apagar a da Jura?
+EU: Pode. A casa é sua, a conta é sua.
+> A vó aperta devagar, com a ponta do dedo, como quem aperta campainha de vizinho brigado.
+VO: Apaguei a Jura. Apaguei o terço, que reza é entre eu e Deus. Apaguei o Caíque com a namorada.
+CAIQUE: Obrigado, vó.
+VO: Não foi por você. Foi pela moça, coitada, que teve que ouvir.
+@anota v2_gravacoes
+@vai v02_config
+
+=== v02_apaga_tudo
+> Você aperta "apagar todo o histórico". A lista some. Tela branca.
+VO: Ué. Cadê?
+EU: Apaguei tudo, vó. Era mais seguro.
+VO: Tinha uma de mim cantando. Eu queria mandar pra sua tia em Recife.
+(Seguro, sim. Mas eu apaguei a voz da minha avó cantando sem perguntar se ela queria guardar. A segurança dela não precisava ser decidida por mim em três segundos.)
+@anota v2_gravacoes
+@vai v02_config
+
+=== v02_deixa
+EU: Deixa, vó. São só coisas de casa.
+VO: Coisa de casa é a casa que guarda. Isso aí tá guardado onde?
+EU: Na conta da assistente. No servidor da empresa.
+VO: Então não é coisa de casa, minha filha. É coisa da empresa.
+(Ela entendeu mais rápido do que eu queria. A gente vai ter que voltar nisso.)
+@anota v2_gravacoes
+@vai v02_config
+
+=== v02_ouve_detalhes
+> Você dá play. Sai do celular, meio abafada pela torneira, a voz da Vó Zilá: "Detalhes tão pequenos de nós dois..."
+VO [feliz]: Olha eu! Desafinada, mas com sentimento.
+CAIQUE: Vó, a senhora canta bem!
+VO: Seu avô dizia que eu cantava igual chaleira. Mas chaleira afinada.
+> Ela manda a gravação para a tia de Recife. Depois, sozinha, com o dedo, apaga o terço, a Dona Jura, o Caíque e o resto. Deixa marcada a opção de apagar automaticamente.
+VO: A cantoria eu já guardei no meu celular. O resto não é da conta da moça.
+(Ela não apagou por medo. Apagou porque escolheu o que era dela guardar.)
+@anota v2_gravacoes
+@vai v02_config
+
+=== v02_config
+@musica hacker
+> Você abre a tela de configurações da assistente. Compras, gravações, microfone, conta, cartão. Muitas chavinhas, todas no padrão de fábrica, que é o padrão de quem vende.
+EU: Vó, vamos olhar uma por uma. Eu explico o que cada uma faz e a senhora diz como quer.
+VO: Pode explicar. Devagar, que eu fui dos Correios trinta anos e nunca extraviei uma carta.
+@desafio v2_config_moca -> v02_config_acerto | v02_config_erro
+
+=== v02_config_acerto
+(Compra só com código, gravação apagada sozinha de tempos em tempos, botão do microfone para quando tiver visita e cada pedido avisando no celular. A moça continua tocando Roberto Carlos. Só não compra mais nada sozinha.)
+@muda tecnica+1 seguranca+1
+@anota v2_microfone_visitas
+@vai v02_compras
+
+=== v02_config_erro
+> Você deixa a compra liberada até um valor "baixinho" e acha que resolveu.
+CAIQUE: Prima, fralda é baixinho. Doze fraldas também é baixinho. Só que doze vezes.
+(Limite de valor não é confirmação. Quem decide se a compra acontece tem que ser uma pessoa, com um código que a televisão não sabe.)
+> Você volta, corrige a configuração e explica para a vó o que tinha ficado errado.
+@muda paciencia-1
+@anota v2_microfone_visitas
+@vai v02_compras
+
+=== v02_compras
+@musica interior
+EU: Falta decidir o principal, vó. As compras por voz.
+? A moça está esperando, com a luzinha azul acesa. A vó também.
+* Deixar as compras ligadas, mas com um código que a vó escolhe e só ela fala -> v02_codigo_vo {seguranca+2 autonomia_vo+1 marca:voz_com_confirmacao}
+* Desligar as compras por voz de vez, sem perguntar -> v02_desliga_compras {seguranca+2 autonomia_vo-1 marca:voz_com_confirmacao}
+* Deixar como estava. Agora que a vó sabe, ela presta atenção na novela -> v02_deixa_compras {seguranca-1 autonomia_vo-1}
+** Perguntar à vó o que ela compraria com a moça, se pudesse -> v02_vo_lista {seguranca+2 autonomia_vo+2 rel_vo+1 marca:voz_com_confirmacao}
+
+=== v02_codigo_vo
+EU: A moça só vai concluir uma compra se a senhora falar um código. Quatro números que a senhora escolhe e não conta para ninguém. Nem pra mim.
+VO: Nem pra você?
+EU: Principalmente pra mim.
+> A vó leva o celular para o corredor e digita o código de costas para todo mundo, curvada, como quem protege a senha do caixa eletrônico.
+VO: Pronto. E não é o meu aniversário. Nem o seu. Nem o do Roberto Carlos.
+@vai v02_fim
+
+=== v02_desliga_compras
+> Você desliga a chave das compras por voz. Pronto. Acabou o problema.
+VO: E se eu quiser pedir o meu remédio pela moça?
+EU: Aí a senhora pede pelo celular, vó.
+VO: Eu gostava de pedir pela moça. Era a única coisa que eu pedia sem ter que ligar pro Mauro.
+(Resolvi a fralda e tirei dela a única compra que ela fazia sozinha. Dá para voltar e ligar com código depois. Se ela quiser. Se eu perguntar.)
+@vai v02_fim
+
+=== v02_deixa_compras
+VO: Pode deixar. Agora eu fico de olho na Dona Lurdes.
+EU: Vó, a novela tem cento e oitenta capítulos.
+VO: E eu tenho setenta e seis anos de olho. Dá.
+(Não dá. Ninguém vigia uma televisão cento e oitenta capítulos. Mas eu deixei.)
+@vai v02_fim
+
+=== v02_vo_lista
+VO: Se eu pudesse? Remédio da pressão, que acaba sempre no domingo. Ração do gato da Jura, que eu dou escondido. E pilha.
+EU: Então a moça pode comprar, mas só com um código que a senhora fala. E todo pedido avisa no seu celular.
+VO: E fralda?
+EU: Só se a senhora falar o código.
+VO: Então nunca. Ou quando eu tiver noventa. Aí a gente vê.
+> A vó escolhe o código sozinha, de costas para todo mundo. Depois pede à moça "pilha pequena, dessas do controle". A moça responde: "Para confirmar a compra, diga o seu código." A vó fala baixinho. Confirmado.
+VO [feliz]: Olha, ela pediu licença. Agora ela tem modos.
+@vai v02_fim
+
+=== v02_fim
+@musica alegre
+> Os três pacotes de fralda ficam ao lado da porta. A vó já decidiu o destino deles.
+VO: Vou doar pro asilo São Vicente. Aproveito e peço desconto na vaga que o Mauro quer arrumar pra mim.
+CAIQUE: Vó, ele não quer...
+VO: Quer. Eu conheço o filho que eu tenho. Mas ele vai ter que me carregar, que eu não vou andando.
+> Pela janela da cozinha, a Dona Jura aparece regando uma planta que já está encharcada.
+@entra dona_jura surpresa centro
+DONA_JURA: Zilá, é verdade que a sua moça grava as visitas? A Neusinha do 4 disse que ouviu do neto dela que ouviu do seu neto.
+VO: Gravava, Jura. Agora não grava mais o que eu não quero.
+DONA_JURA: Ah, bom. Porque eu falo umas coisas aí na sua cozinha que não são pra ficar escritas.
+DONA_JURA: E outra coisa. Vocês viram um carro prata, de vidro escuro, passando na vila? Hoje passou três vezes. Eu anotei a placa.
+@sai dona_jura
+(A Dona Jura anotou a placa. É claro que a Dona Jura anotou a placa.)
+@vai v03_inicio

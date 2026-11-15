@@ -1,0 +1,284 @@
+# Parte 1, capítulo 3: Moedas do BlocoVerso. Do lado da mãe.
+
+=== t03_inicio
+@cap 3 "Moedas do BlocoVerso"
+@fundo casa_cozinha
+@musica alegre
+> Três semanas depois. Sexta-feira, dia 10. Dia de fatura do cartão.
+> Você abre o aplicativo do banco com o café numa mão e a esperança na outra.
+@musica tensao
+@som dinheiro
+> BLOCOVERSO MOEDAS · R$ 24,90
+> BLOCOVERSO MOEDAS · R$ 24,90
+> BLOCOVERSO MOEDAS · R$ 49,90
+> BLOCOVERSO MOEDAS · R$ 49,90
+> BLOCOVERSO PACOTE LENDÁRIO · R$ 99,90
+> BLOCOVERSO MOEDAS · R$ 49,90
+> Total do BlocoVerso no mês: R$ 299,40.
+(Duzentos e noventa e nove reais e quarenta centavos. Um plantão inteiro. Em moeda que não existe.)
+(Mas o celular do Theo pede minha aprovação para qualquer compra. Eu configurei. Eu li três fóruns. Eu perdi uma noite de sono.)
+@entra vo_cida neutra esquerda
+VO_CIDA: Que cara é essa, minha filha? Parece que viu assombração.
+EU: Vó, o Theo usou algum outro aparelho aqui em casa enquanto eu tava no plantão?
+VO_CIDA: Ah. O celular dele tava esquentando, eu tirei da tomada. Aí acabou a bateria. Aí ele ficou triste. Aí eu dei o tablet da sala.
+(O tablet da sala. Com a minha conta. E o meu cartão salvo desde que eu assinei aquele filme no Natal. Sem senha para comprar, porque "o tablet é só meu".)
+VO_CIDA: No meu tempo, se a criança queria moeda, a gente dava moeda. De verdade. De cinco centavos.
+? O Theo está no quarto, ainda de pijama. Como você começa?
+* Chamar o Theo para a cozinha e mostrar a fatura na mesa, com calma -> t03_conversa {confianca+1 paciencia+1}
+* Gritar "THEO!" do corredor, com o nome completo -> t03_grito {confianca-2 paciencia-1}
+* Pegar o tablet e o celular e trancar no armário antes de perguntar qualquer coisa -> t03_confisca {confianca-1}
+** Perguntar à Vó Cida, antes, se ela também comprou alguma coisa -> t03_vo_compras {rel_vo_cida+1 paciencia+1}
+
+=== t03_vo_compras
+@expr vo_cida envergonhada
+VO_CIDA: Eu? Imagina.
+VO_CIDA: Quer dizer. Eu comprei uma vaquinha pro mundo dele. Pequenininha. Malhada. Ele disse que eu tinha que apertar o botão verde.
+VO_CIDA: Ela dá leite de diamante, minha filha. É um investimento.
+(Uma das compras de R$ 24,90 foi uma vaca. A Vó Cida também caiu no botão verde. Isso não é falta de juízo do Theo, é tablet sem senha.)
+@vai t03_conversa
+
+=== t03_grito
+> O grito atravessa o corredor. O Theo aparece na porta da cozinha com cara de quem já sabe.
+@entra theo assustada direita
+THEO: Eu não fiz nada! Quer dizer. O que eu fiz?
+(Ele ficou com medo antes de saber o assunto. Medo não ensina nada; só ensina a esconder melhor da próxima vez.)
+@vai t03_conversa
+
+=== t03_confisca
+> Você pega o tablet e o celular e tranca os dois no armário de remédios, que tem chave.
+@entra theo brava direita
+THEO: Por quê? O que eu fiz? Mãe, eu tinha um mundo aberto!
+VO_CIDA: Agora o mundo dele tá junto com a dipirona.
+(Eu tranquei os aparelhos antes de explicar. Ele não sabe nem do que está sendo acusado.)
+@vai t03_conversa
+
+=== t03_conversa
+@entra theo envergonhada direita
+> Você vira o celular com a fatura para ele ler.
+@expr theo surpresa
+THEO: Isso é dinheiro de verdade?
+THEO: Eu achei que era moeda do jogo. No tablet aparecia "comprar" e eu apertava e vinha moeda. Não pediu senha, não pediu nada.
+THEO: Eu achei que se não pediu senha, era porque podia.
+(Ele tem razão numa coisa: se o aparelho não pediu nada, o furo da configuração é meu. Eu tranquei a porta da frente e deixei a dos fundos aberta.)
+EU: Filho, cada uma dessas compras saiu do meu cartão. Dá quase um plantão inteiro da mãe.
+@expr theo triste
+THEO: Um plantão inteiro? Daqueles de doze horas?
+? E o que acontece com o Theo agora?
+* Combinar que ele ajuda a pagar uma parte, com a mesada, e explicar por quê -> t03_combina {confianca+1 etica+1}
+* "Você vai pagar tudo, com a mesada, até os quinze anos." -> t03_mesada {confianca-1}
+** Fazer o Theo calcular quantos meses de mesada valem os R$ 299,40 -> t03_conta_mesada {confianca+1 tecnica+1}
+
+=== t03_combina
+EU: Você não sabia que era dinheiro de verdade. Mas agora sabe. Então, uma parte sai da sua mesada, por três meses. O resto é meu, porque o tablet sem senha foi erro meu.
+THEO: Três meses? É muito.
+EU: É menos que um plantão de doze horas.
+THEO: Tá. É justo. Mais ou menos justo.
+@vai t03_cartao
+
+=== t03_mesada
+@expr theo triste
+THEO: Até os quinze? Mãe, eu tenho onze!
+VO_CIDA: Quatro anos de mesada por uma vaca. Nem no meu tempo.
+(Exagerei. Ele vai lembrar do castigo e esquecer o motivo.)
+@vai t03_cartao
+
+=== t03_conta_mesada
+EU: Sua mesada é de R$ 30. Quantos meses dá R$ 299,40?
+@expr theo pensativa
+THEO: Trinta vezes dez é trezentos. Então... dez meses. Dez meses sem nada.
+THEO: Mãe, eu comprei dez meses em uma tarde.
+(Nenhuma bronca ia ensinar isso melhor do que a calculadora do próprio celular.)
+EU: Pois é. Vamos fazer assim: três meses da sua parte, e o resto é meu, porque o tablet sem senha foi erro meu.
+@vai t03_cartao
+
+=== t03_cartao
+@fundo sala_familia
+> Você pega o tablet. Na conta, lá está o cartão salvo, com os quatro últimos números aparecendo, faceiro.
+? E o cartão salvo?
+* Remover o cartão salvo da conta e ligar a senha para qualquer compra no tablet -> t03_remove_cartao {marca:cartao_salvo_removido tecnica+1}
+* Só colocar senha de bloqueio no tablet e deixar o cartão salvo, que é prático -> t03_so_senha
+** Pedir ao Theo para mostrar onde ele apertou, passo a passo, e desligar cada furo junto com ele -> t03_theo_mostra {marca:cartao_salvo_removido confianca+1 tecnica+1}
+
+=== t03_theo_mostra
+THEO: Aqui, ó. Loja do jogo. Aperta no pacote. Aparece "confirmar". Pronto.
+EU: E se tivesse pedido senha?
+THEO: Eu ia te chamar. Eu não sei a senha do tablet.
+(Ele me deu a auditoria inteira em trinta segundos. De graça.)
+@vai t03_remove_cartao
+
+=== t03_remove_cartao
+> Você tira o cartão salvo da conta. Liga a opção que pede senha para qualquer compra no tablet. E, no celular do Theo, confere que as compras dele continuam pedindo a sua aprovação.
+> Na loja de aplicativos, você encontra o pedido de reembolso para compra feita sem querer. Preenche explicando que foi uma criança, num aparelho sem senha.
+(Reembolso não é garantido. Às vezes devolvem, às vezes não. Mas pedir não custa um plantão.)
+@anota t3_compras
+@vai t03_segredo
+
+=== t03_so_senha
+> Você coloca uma senha de bloqueio no tablet. O cartão continua salvo, porque assim é mais rápido para pagar o filme.
+VO_CIDA: Prático, prático. Prático é o ladrão.
+(Senha no tablet segura quem não sabe a senha. Mas quem desbloquear o tablet compra do mesmo jeito. Inclusive a vaca.)
+> Mesmo assim, você manda o pedido de reembolso na loja de aplicativos, explicando que foi uma criança.
+@anota t3_compras
+@vai t03_segredo
+
+=== t03_segredo
+@fundo casa_cozinha
+@entra theo pensativa direita
+> O Theo fica parado na porta. Abre a boca. Fecha. Mexe no elástico do pijama.
+(Eu conheço essa cara. É a cara de "tem mais uma coisa".)
+@se confianca>=7 -> t03_theo_antes
+@se confianca>=6 -> t03_theo_conta
+@vai t03_theo_esconde
+
+=== t03_theo_antes
+THEO: Mãe. Tem mais uma coisa. Mas eu não fiz. Quase fiz.
+THEO: O Enzo mandou no grupo da sala um site que dá moeda grátis. Ontem eu abri. Ele pediu meu usuário e a senha do BlocoVerso.
+THEO: Aí eu lembrei da regra da senha. E achei estranho um site pedir a senha do jogo. Então eu não coloquei, e vim te mostrar.
+(Ele parou antes. E veio me contar. No mesmo dia em que eu descobri a fatura.)
+EU: Obrigada por me contar, filho. Mostra o site.
+@muda confianca+1
+@vai t03_site
+
+=== t03_theo_conta
+@expr theo envergonhada
+THEO: Mãe. Tem mais uma coisa. Mas promete que não vai brigar?
+THEO: O Enzo mandou no grupo da sala um site que dá moeda grátis. Ontem à noite eu abri no tablet. Ele pediu meu usuário e a senha do BlocoVerso.
+THEO: Eu coloquei. Mas não veio moeda nenhuma. Aí eu fiquei com medo e não dormi direito.
+@marca caiu_moeda_gratis
+(Ele contou. Com medo, mas contou. Agora cada minuto conta.)
+EU: Obrigada por me contar. Ninguém vai brigar. Mostra o site.
+@vai t03_site
+
+=== t03_theo_esconde
+@expr theo neutra
+THEO: Nada. Posso voltar pro quarto?
+(Tinha mais uma coisa. Mas ele não confia em mim o bastante para contar, não hoje.)
+@sai theo
+@fundo quarto_theo
+@musica misterio
+> Sábado, 9h10. Um grito vem do quarto do Theo.
+@som erro
+@entra theo triste direita
+THEO: Mãe! Entraram na minha conta! Mudaram a senha! Meu mundo sumiu, meu castelo, tudo! Dois anos!
+> No e-mail ligado à conta do jogo, que é o seu, chegou ontem às 23h40: "A senha da sua conta BlocoVerso foi alterada."
+THEO: O Enzo mandou um site de moeda grátis no grupo. Eu coloquei a senha lá. Na quinta.
+@marca caiu_moeda_gratis
+@marca conta_jogo_roubada
+(Na quinta. Ele guardou isso dois dias, com medo de mim. Agora o site levou a conta e o medo levou o tempo.)
+EU: Vem cá. Você não está de castigo por isso. Me mostra o site.
+@vai t03_site
+
+=== t03_site
+@musica tensao
+> O Theo abre o histórico do tablet. O site ainda está lá, colorido, com o mesmo bloquinho verde do jogo.
+THEO: Olha, mãe, tem até a logo do BlocoVerso. Parece do jogo mesmo.
+(Parece. Golpe bom sempre parece.)
+@desafio t3_moeda_gratis -> t03_site_acerto | t03_site_erro
+
+=== t03_site_acerto
+(Endereço que não é do jogo, "gerador" que não existe, pressa, pedido para espalhar o link e, o pior, a senha da conta pedida fora do jogo. Ninguém dá moeda de graça pedindo senha. Quem pede senha quer a conta.)
+@muda tecnica+1
+@anota t3_moeda_gratis
+@se marca:conta_jogo_roubada -> t03_recupera
+@se marca:caiu_moeda_gratis -> t03_troca_rapida
+@vai t03_fecha_site
+
+=== t03_site_erro
+> Você olha, olha de novo. A logo está certinha. As cores também. Tem até um selo de "verificado".
+(Será que é promoção do próprio jogo? Deixa eu ver no fórum.)
+> Vinte minutos depois, uma mãe do fórum responde: "Isso é golpe clássico, querida. Site de fora pedindo a senha do jogo é para roubar a conta."
+@muda paciencia-1
+@anota t3_moeda_gratis
+@se marca:conta_jogo_roubada -> t03_recupera
+@se marca:caiu_moeda_gratis -> t03_tarde_demais
+@vai t03_fecha_site
+
+=== t03_troca_rapida
+> Você abre o aplicativo oficial do jogo, não o site. Entra na conta do Theo, que ainda funciona.
+> Troca a senha. Toca em "sair de todos os aparelhos". Confere o e-mail de recuperação: é o seu, ninguém mudou.
+(Quem pegou a senha ainda não tinha entrado. Chegamos antes.)
+@vai t03_senha_nova
+
+=== t03_tarde_demais
+> Você abre o aplicativo oficial do jogo e tenta entrar na conta do Theo.
+@som erro
+> "Senha incorreta."
+@expr theo triste
+THEO: Mãe... meu mundo.
+(Vinte minutos de fórum. Foi o tempo que o golpista precisou.)
+@marca conta_jogo_roubada
+@vai t03_recupera
+
+=== t03_recupera
+> No aplicativo oficial do jogo, não no primeiro resultado da busca, você encontra "Recuperar conta".
+> O golpista trocou a senha e também o e-mail da conta, então o "esqueci minha senha" agora manda o link para ele, não para você.
+> O formulário de recuperação pede o e-mail original, quando a conta foi criada e o que foi comprado nela. Você tem tudo: o e-mail original é seu e as compras estão na fatura.
+> Você também denuncia o site e o perfil que espalhou o link, pelo botão de denúncia do próprio jogo.
+@expr theo triste
+THEO: E se não voltar?
+EU: Pode voltar, pode não voltar. O jogo diz que responde em alguns dias. Mas você não fez nada de errado por me contar.
+(Não posso prometer o castelo. Posso prometer que da próxima vez a conta vai estar mais protegida.)
+@vai t03_senha_nova
+
+=== t03_fecha_site
+> Você fecha a página e apaga o site do histórico, sem colocar nada.
+EU: Ninguém dá moeda de graça pedindo senha. Quem pede senha quer a conta, não quer te dar presente.
+THEO: Então o Enzo é golpista?
+EU: Provavelmente o Enzo caiu também, e mandou para frente achando que era verdade. Por isso o site pede para compartilhar com cinco amigos.
+> Mesmo sem o Theo ter colocado a senha, você aproveita para reforçar a conta.
+@vai t03_senha_nova
+
+=== t03_senha_nova
+@fundo sala_familia
+> A tela do jogo pede uma senha nova para a conta do Theo.
+@entra vo_cida feliz esquerda
+? Como vai ser a senha nova do BlocoVerso?
+* Uma senha longa, só desse jogo, inventada juntos, e ligar a verificação em duas etapas no seu celular -> t03_duas_etapas {tecnica+1 confianca+1}
+* A mesma senha do seu e-mail, pra não esquecer -> t03_mesma_senha {tecnica-1}
+** Deixar a Vó Cida inventar uma frase-senha -> t03_frase_vo {rel_vo_cida+1 tecnica+1}
+
+=== t03_frase_vo
+VO_CIDA: Coloca assim: "a vaca malhada do Theo dá leite de diamante".
+THEO: Vó, isso é muito comprido.
+EU: Por isso mesmo, filho. Frase comprida e que só a gente entende é difícil de adivinhar.
+VO_CIDA: Viu? Investimento.
+@vai t03_duas_etapas
+
+=== t03_duas_etapas
+> A senha nova é longa, é só desse jogo e não é a de mais nada.
+> Você liga a verificação em duas etapas: quando alguém tentar entrar num aparelho novo, chega um código no seu celular.
+EU: Mesmo que alguém descubra a senha, sem esse código não entra. E o código chega pra mim.
+THEO: Então se alguém tentar entrar, você fica sabendo?
+EU: Eu fico sabendo. E você fica sabendo, porque eu vou te contar.
+@anota t3_senha_jogo
+@vai t03_fim
+
+=== t03_mesma_senha
+> Você coloca a mesma senha do seu e-mail. Fácil de lembrar.
+(Espera. Se essa senha vazar de novo, ela abre o jogo e o meu e-mail. E o meu e-mail recupera todas as outras contas.)
+> Você apaga e faz uma senha nova, só para o jogo. E liga a verificação em duas etapas no seu celular, por via das dúvidas.
+@muda paciencia-1
+@anota t3_senha_jogo
+@vai t03_fim
+
+=== t03_fim
+@musica infancia
+> À noite, o tablet dorme na cozinha, do lado do celular do Theo. Os dois carregando.
+@se !marca:cartao_salvo_removido -> t03_fim_vo
+@vai t03_fim_regra
+
+=== t03_fim_vo
+> Antes de dormir, a Vó Cida tira o tablet da tomada.
+VO_CIDA: Se não tem bateria, ninguém compra vaca. Pronto.
+(O cartão continua salvo. A Vó Cida é, oficialmente, a única proteção dele.)
+@vai t03_fim_regra
+
+=== t03_fim_regra
+> Na geladeira, embaixo das regras, o Theo prende um papel novo com o ímã da pizzaria.
+> "8. Moeda grátis não existe. Site que pede senha do jogo é golpe. Mostrar para a mãe antes."
+@expr theo feliz
+THEO: Eu que escrevi. Pode ficar?
+EU: Pode. É a melhor regra da geladeira.
+(Um plantão inteiro de moeda e uma regra escrita por ele. Talvez a conta tenha saído barata.)
+@sai todos
+@vai t04_inicio

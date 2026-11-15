@@ -198,6 +198,10 @@ function lerComando(l: string, erro: (m: string) => never): Linha {
       const mr = args.match(/^"(.+)"$/);
       return { t: 'roupa', titulo: mr ? mr[1] : 'Escolha o visual' };
     }
+    case 'pov': {
+      if (partes.length !== 1) erro('use @pov id ou @pov fim');
+      return { t: 'pov', id: partes[0] === 'fim' ? null : partes[0].toLowerCase() };
+    }
     case 'zap': {
       if (args === 'fim') return { t: 'zap', grupo: null };
       const mz = args.match(/^"(.+)"$/);

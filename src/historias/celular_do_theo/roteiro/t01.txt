@@ -1,0 +1,282 @@
+# Parte 1, capítulo 1: Caixa de presente. Do lado da mãe.
+
+=== t01_inicio
+@cap 1 "Caixa de presente"
+@idade adulta
+@fundo hospital_corredor
+@musica trabalho
+> Domingo, 7h04. Fim de um plantão de doze horas na pediatria.
+> Três soros trocados, uma criança que engoliu uma peça de montar e devolveu inteira, e um residente que chorou na copa às quatro da manhã.
+(Agora é casa, banho e a caixa que está escondida em cima do armário há duas semanas.)
+> No vestiário, você troca o jaleco pela roupa de ir embora.
+@roupa "Saindo do plantão"
+@som notificacao
+> No bolso, o celular vibra. É a Vó Cida, mãe do pai do Theo, que fica com ele nas noites de plantão.
+@zap "Vó Cida 🌻"
+VO_CIDA: [audio 0:31] Bom dia, minha filha. O Theo acordou às cinco e meia perguntando se você já tinha chegado. Eu disse que não. Ele perguntou de novo às cinco e quarenta. Vem logo, que eu já não tenho mais resposta.
+VO_CIDA: [foto] Theo de pijama, grudado na janela
+EU: Chego em 40 minutos. Não deixa ele abrir o armário!
+VO_CIDA: Já tentou duas vezes. Eu fiquei na frente com a vassoura.
+@zap fim
+(O primeiro celular do meu filho. Usado, herdado da Júlia, minha sobrinha. Capinha rosa e um adesivo de unicórnio com glitter que não sai nem com álcool.)
+(E eu, que leio fórum de mãe à meia-noite, estou com mais medo do que ele.)
+@vai t01_casa
+
+=== t01_casa
+@fundo casa_cozinha
+@musica alegre
+@entra vo_cida feliz esquerda
+@entra theo surpresa direita
+THEO: Mãe! Você chegou! Tá tudo bem no hospital? Você tá cansada? Cadê?
+VO_CIDA: Ele ensaiou esse "tá tudo bem no hospital" desde as seis.
+> Você tira a caixa de cima do armário. É uma caixa de sapato, com o laço reaproveitado do Natal.
+> Dentro, o celular da Júlia: um trincadinho no canto da tela, a capinha rosa e, atrás, o unicórnio. Com arco-íris. E glitter.
+@expr theo feliz
+THEO: É MEU? É meu mesmo? De verdade?
+@expr theo pensativa
+THEO: Mãe. O unicórnio.
+VO_CIDA: É lindo o unicórnio. No meu tempo, telefone era preto e ficava pendurado na parede.
+THEO: Vó, no seu tempo telefone não tinha unicórnio porque não tinha nada.
+VO_CIDA: Tinha tomada. Deu problema, desliga da tomada, acabou.
+(Se fosse simples assim, eu não teria lido três fóruns essa semana.)
+? O Theo segura o celular como quem segura um troféu. O que você diz?
+* "É seu. Mas antes de ligar, a gente configura junto e combina umas coisas." -> t01_juntos {confianca+1 paciencia+1}
+* "É seu, mas fica comigo hoje. Eu configuro tudo sozinha e te entrego amanhã." -> t01_sozinha {confianca-1}
+* "É seu. Pode ligar e usar, depois a gente vê essa história de configuração." -> t01_depois {tecnica-1}
+** Propor um trato: quem conseguir tirar o adesivo de unicórnio ganha uma pizza -> t01_adesivo {rel_theo+2 rel_vo_cida+1}
+
+=== t01_adesivo
+> Dez minutos depois, a mesa da cozinha parece uma bancada de laboratório.
+> Álcool. Óleo de cozinha. A unha da Vó Cida. Um secador de cabelo. Um vídeo de um moço que jura que funciona com manteiga.
+VO_CIDA: Manteiga não, que eu acabei de comprar.
+THEO: Saiu um pedaço do arco-íris!
+> Não saiu. Era glitter que grudou no dedo dele.
+@expr theo feliz
+THEO: Tá. O unicórnio fica. Mas a pizza a gente come do mesmo jeito, né?
+(Ele está rindo. Ótimo. Menino que ri escuta melhor o que vem depois.)
+@vai t01_juntos
+
+=== t01_depois
+> O Theo liga o celular. Em trinta segundos, ele já sabe mais do aparelho do que você.
+> Em um minuto, ele grita da sala.
+THEO: Mãe! Tem foto da Júlia aqui! E as conversas dela! E ela ainda tá logada na conta da loja de aplicativos!
+VO_CIDA: A Júlia não apagou nada? Essa menina vai casar e esquecer o noivo na igreja.
+(Celular usado é isso: se ninguém restaurar de fábrica, ele chega com a vida inteira da outra pessoa dentro. Talvez com o cartão da minha irmã salvo, inclusive.)
+EU: Theo, desliga. Mudança de plano: a gente vai fazer isso junto, do zero.
+@expr theo brava
+THEO: Ah, mãe...
+@muda paciencia-1
+@vai t01_juntos
+
+=== t01_juntos
+@fundo sala_familia
+> Vocês sentam no sofá. A Vó Cida traz café para você, achocolatado para o Theo, e senta na poltrona para "fiscalizar".
+EU: Primeiro passo: restaurar de fábrica. Sai tudo da Júlia: foto, conta, senha salva. O celular fica novo por dentro.
+THEO: Igual apagar um mundo do BlocoVerso e começar outro.
+EU: Igual. Depois a gente cria a sua conta. De criança, ligada à minha.
+@expr theo brava
+THEO: De criança? Mãe, eu tenho onze anos.
+EU: Pois é. Conta de criança foi feita pra quem tem onze anos. Ela fica ligada à minha, e algumas coisas passam por mim antes.
+VO_CIDA: Igual quando ele quer ir no mercadinho sozinho. Vai, mas avisa.
+THEO: E a senha de bloqueio? Pode ser 1234?
+VO_CIDA: A minha é 0000. Nunca esqueci.
+EU: Vó!
+VO_CIDA: Agora eu vou ter que trocar, né. Obrigada, Theo.
+? A tela pede uma senha de bloqueio. Como vai ser?
+* "Você escolhe seis números, que não sejam o seu aniversário, e me conta. Só nós dois sabemos." -> t01_senha_combinada {confianca+1 tecnica+1}
+* "Eu escolho e não te conto. Quando quiser usar, você me pede." -> t01_senha_mae {confianca-1}
+** Desafiar a Vó Cida a adivinhar a senha que o Theo inventou -> t01_senha_vo {rel_vo_cida+1 tecnica+1}
+
+=== t01_senha_combinada
+> O Theo pensa, digita, cobre a tela com a mão e cochicha os números no seu ouvido.
+VO_CIDA: Eu não ouvi nada. Ouvi um pouco. Tinha um sete.
+THEO: Vó!
+EU: Essa senha não vai pro Gui, nem pra ninguém da escola nova. Nem se for o seu melhor amigo do mundo.
+THEO: Nem pra Vó?
+EU: A Vó já ouviu o sete. A gente aceita a perda.
+@vai t01_controle
+
+=== t01_senha_mae
+@expr theo triste
+> Você escolhe os números e vira a tela para ele não ver.
+THEO: Então o celular é seu, não é meu.
+(Ele não está errado. Mas ele tem onze anos e eu tenho medo. Às vezes as duas coisas não cabem no mesmo sofá.)
+@vai t01_controle
+
+=== t01_senha_vo
+> O Theo inventa a senha em segredo e entrega o celular para a avó.
+VO_CIDA: Zero, zero, zero, zero.
+THEO: São seis números, Vó.
+VO_CIDA: Zero, zero, zero, zero, zero, zero.
+VO_CIDA: O aniversário dele. O dia em que ele nasceu, que eu sei de cor.
+VO_CIDA: O nome do cachorro do vizinho.
+THEO: Vó, é número. O cachorro chama Bolacha.
+VO_CIDA: Então eu desisto. Essa senha é melhor que a do meu banco.
+(Se a avó, que sabe tudo dele, não adivinha, a sala da escola nova também não vai adivinhar. Ele me conta baixinho depois.)
+@vai t01_controle
+
+=== t01_sozinha
+@expr theo triste
+THEO: Amanhã? Mas... tá bom.
+VO_CIDA: Deixa, meu filho. Amanhã chega rápido. É só dormir.
+THEO: Eu dormi a noite inteira esperando hoje.
+(Ele ficou com cara de quem ganhou um presente e devolveu na mesma hora. Mas eu quero fazer isso direito.)
+@vai t01_forum
+
+=== t01_forum
+@sai todos
+@fundo quarto_madrugada
+@musica misterio
+> 23h52. Você, o celular da Júlia, o seu celular e três abas de fórum de mãe.
+> Aba 1: "Meu filho de 11 anos e o primeiro celular, socorro". 214 respostas.
+> Aba 2: "Controle dos pais funciona? (desabafo longo)".
+> Aba 3: um vídeo de 40 minutos de um moço de colete explicando tudo devagar demais.
+(Uma mãe proibiu tudo até os dezoito. Outra deu celular aos seis e diz que está ótimo. Outra só posta corrente. Isso não é fórum, é grupo de família com senha.)
+> Mesmo assim, você aprende. Restaura o celular de fábrica, e sai tudo da Júlia. Cria a conta de criança do Theo, ligada à sua. Liga a aprovação para compras e para aplicativos novos.
+> 1h14. Hora da senha de bloqueio. Você digita a data de aniversário dele.
+(Não. Espera. Isso todo mundo sabe. A escola põe parabéns no mural com a data. Seis números aleatórios, então. Que eu vou anotar num papel. Que eu vou perder.)
+@muda paciencia-1 tecnica+1
+@vai t01_entrega
+
+=== t01_entrega
+@fundo casa_cozinha
+@musica alegre
+@entra vo_cida neutra esquerda
+@entra theo neutra direita
+> Segunda de manhã. O Theo recebe o celular pronto, com a senha num papelzinho dobrado em quatro.
+THEO: Já tá tudo configurado? Eu não posso nem escolher a senha?
+? Ele olha o papelzinho como quem olha um contrato.
+* "Pode trocar agora, na minha frente. Seis números, não o aniversário, e você me conta." -> t01_controle {confianca+1}
+* "Não. A senha é essa e acabou." -> t01_controle {confianca-1 paciencia-1}
+
+=== t01_controle
+@fundo sala_familia
+> Falta o controle dos pais. No fórum, as opções pareciam simples: limite de tempo de tela, aprovação de aplicativo novo, filtro de conteúdo e localização compartilhada com a família.
+> E, no mesmo fórum, uma mãe com foto de girassol recomendava outra coisa: um aplicativo que lê tudo, escondido. "Ele nunca vai saber. Melhor prevenir do que remediar."
+(De madrugada, o medo dá ótimos conselhos ruins. Ou bons. Eu não sei mais.)
+@expr theo pensativa
+THEO: Mãe, você vai poder ler minhas conversas?
+? O Theo fez a pergunta que o fórum inteiro evitou. Como vai ser o controle dos pais?
+* Mostrar cada opção do controle e explicar o que você vai ver e o que não vai -> t01_controle_combinado {confianca+1 etica+1}
+* "Claro que não, filho." E, mais tarde, instalar o aplicativo que vigia escondido -> t01_controle_escondido {marca:controle_escondido confianca-1 etica-1}
+** Devolver a pergunta: "Se você fosse o pai, o que ia querer saber?" -> t01_theo_pai {confianca+2 rel_theo+1}
+
+=== t01_theo_pai
+@expr theo pensativa
+THEO: Hum. Se eu fosse pai, eu ia querer saber se ele chegou na escola. Porque ônibus às vezes demora.
+THEO: E se alguém chato falar com ele. Tipo alguém que ele não conhece.
+THEO: Mas eu não ia ler as conversas com o Gui. Ia ser muito chato pra mim, ler sobre BlocoVerso o dia inteiro.
+(Ele acabou de desenhar um controle dos pais melhor que o do vídeo de 40 minutos.)
+@vai t01_controle_combinado
+
+=== t01_controle_combinado
+EU: Vou te mostrar tudo, e o que estiver ligado, você sabe.
+EU: Tempo de tela: nos dias de escola, até um tanto. Fim de semana, mais. Se precisar de mais, você pede e a gente conversa.
+EU: Aplicativo novo e qualquer compra passam por mim. Até moeda de jogo.
+EU: Localização com a família, pra eu ver que você chegou na escola. Na câmera e nas postagens, desligada.
+EU: E as suas conversas eu não leio. Se um dia eu achar que preciso ver alguma coisa, a gente olha junto, com você do lado.
+@expr theo feliz
+THEO: E se for uma coisa ruim? Tipo, se alguém mandar uma coisa estranha?
+EU: Aí você me mostra. E ninguém leva bronca por mostrar.
+VO_CIDA: Nem eu, que vou pedir pra ele me ensinar a mandar áudio.
+@anota t1_controle_combinado
+@vai t01_desafio
+
+=== t01_controle_escondido
+@sai theo
+> À noite, enquanto o Theo toma banho, você instala o aplicativo. Ele pede permissões que você nem sabia que existiam. O ícone aparece disfarçado: "Serviços do Sistema".
+@expr vo_cida pensativa
+VO_CIDA: O que você tá fazendo no celular do menino, minha filha?
+EU: Nada, Vó. Segurança.
+VO_CIDA: Eu não vou contar. Mas também não vou mentir, se ele me perguntar.
+(Eu não sou uma mãe ruim por ter medo. Mas acabei de dizer "claro que não" para o meu filho, e ele acreditou.)
+@entra theo neutra direita
+THEO: Mãe, o que é esse "Serviços do Sistema"? Apareceu agora.
+EU: É do celular, filho. Coisa do sistema.
+THEO: Ah, tá.
+(Ele acreditou de novo. Isso deveria me deixar tranquila.)
+@anota t1_controle_combinado
+@vai t01_desafio
+
+=== t01_desafio
+@expr theo neutra
+> Antes de devolver o celular de vez, você revisa tudo, item por item.
+(Igual eu confiro prescrição no plantão: um item errado e o resto não adianta.)
+@desafio t1_configuracao -> t01_config_acerto | t01_config_erro
+
+=== t01_config_acerto
+(Restaurado, conta de criança, senha que só a gente sabe, compra com aprovação e sem cartão nenhum salvo nele, localização só para a família. Nenhum fórum precisou gritar comigo.)
+@muda tecnica+1
+@anota t1_configuracao
+@vai t01_regras
+
+=== t01_config_erro
+> Na revisão, você encontra: a localização estava ligada na câmera. Toda foto ia guardar o lugar exato onde foi tirada.
+(A coisa que mais aparecia no fórum, e eu deixei passar. Desliguei. Mas fico pensando no que mais eu não vi.)
+@muda paciencia-1
+@anota t1_configuracao
+@vai t01_regras
+
+=== t01_regras
+@fundo casa_cozinha
+> Falta a última parte. O fórum chama de "acordo de uso". A Vó Cida chama de "regra da casa".
+VO_CIDA: Regra boa é regra que fica na geladeira. Na geladeira todo mundo olha três vezes por dia.
+? Como nascem as regras do celular?
+* Escrever junto com o Theo: cada um propõe, os dois assinam -> t01_regras_juntos {confianca+1}
+* Imprimir uma lista pronta de 25 regras de um site e colar na geladeira -> t01_regras_prontas {confianca-1 paciencia-1}
+** Deixar a Vó Cida propor a primeira regra -> t01_regras_vo {rel_vo_cida+1 confianca+1}
+
+=== t01_regras_vo
+VO_CIDA: Regra número um: o celular dorme na cozinha. Carregando. Na tomada que eu vejo.
+THEO: Vó, por que tudo com a senhora é tomada?
+VO_CIDA: Porque é a única parte disso tudo que eu entendo, meu filho.
+(É uma regra excelente, e o fórum levou 214 respostas para chegar nela.)
+@vai t01_regras_juntos
+
+=== t01_regras_juntos
+@marca regras_combinadas
+> Uma folha de caderno, uma caneta azul, uma vermelha e o ímã da pizzaria.
+> REGRAS DO CELULAR DO THEO (e da mãe)
+> 1. O celular dorme na cozinha, carregando.
+> 2. A senha é só nossa. Não passa para amigo, nem para o Gui.
+> 3. Comprar qualquer coisa, até moeda de jogo, só pedindo antes.
+> 4. Antes de postar foto, pensar: quem vai ver isso?
+> 5. Se alguém pedir segredo, ou mandar coisa estranha, conta para a mãe ou para a Vó. Ninguém leva bronca por contar.
+@expr theo feliz
+THEO: Agora a minha. Seis: a mãe não pega o celular sem pedir e não lê as conversas sem eu estar junto.
+THEO: Sete: a mãe também não fica no celular no jantar.
+VO_CIDA: Essa sete é pra você, minha filha.
+(Justo. Eu respondo grupo de plantão com o garfo na mão.)
+> Os dois assinam. O Theo faz a assinatura dele com um desenho de bloco do jogo do lado.
+@se marca:controle_escondido -> t01_regras_culpa
+@anota t1_regras
+@vai t01_fim
+
+=== t01_regras_culpa
+(Regra seis. Eu acabei de assinar a regra seis com um aplicativo escondido instalado. Com caneta vermelha.)
+> O ímã da pizzaria parece olhar para você.
+@anota t1_regras
+@vai t01_fim
+
+=== t01_regras_prontas
+> A impressora da sala resolve funcionar justo hoje. Três folhas, letra miúda, 25 regras.
+@expr theo pensativa
+THEO: Regra 17: "proibido usar o celular durante as refeições, no banheiro, no carro, ao acordar e antes de dormir".
+THEO: Mãe, então eu uso quando?
+VO_CIDA: Regra 22: "o responsável deve dar o exemplo". Olha só.
+(Ele não vai ler as 25. Eu também não li.)
+> Antes de colar, você escreve à mão, no final da última folha: "Se acontecer alguma coisa estranha, conta para a mãe. Ninguém leva bronca por contar."
+@anota t1_regras
+@vai t01_fim
+
+=== t01_fim
+@sai todos
+@fundo quarto_madrugada
+@musica infancia
+> 22h30. O Theo dormiu abraçado com o travesseiro, sem o celular, que está carregando na cozinha.
+> Você passa pela cozinha para pegar água. A tomada está vazia. O celular está em cima da mesa, desligado.
+> Tem um bilhete com a letra da Vó Cida: "Tava esquentando. Desliguei. Amanhã ele liga."
+(A tomada é o controle dos pais da Vó Cida. Ninguém instala, ninguém desinstala.)
+> Você liga de novo o carregador. Na capinha virada para cima, o unicórnio brilha no escuro, feliz da vida.
+(Amanhã ele começa no sexto ano, numa escola onde não conhece ninguém, com um celular que conhece todo mundo.)
+@vai t02_inicio

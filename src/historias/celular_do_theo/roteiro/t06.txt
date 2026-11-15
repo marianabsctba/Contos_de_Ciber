@@ -1,0 +1,299 @@
+# Parte 2, capítulo 6: O desafio. Primeiro a mãe, depois o Theo, depois a mãe de novo.
+
+=== t06_inicio
+@cap 6 "O desafio"
+@fundo hospital_corredor
+@musica trabalho
+> Sexta semana. Plantão de dia. 14h12.
+> Você está de volta à sua pele: a mãe. Jaleco, crachá, café frio no copinho e quinze minutos de intervalo que na verdade são nove.
+(Nove minutos. Dá pra comer meia bolacha e ler o grupo de pais. Escolho mal toda vez.)
+@som notificacao
+@zap "Mães e Pais 6º B 📚"
+> 63 mensagens não lidas
+MAE_GRUPO: [figurinha] Boa tarde, mamães guerreiras 🌻
+MAE_GRUPO: ⚠️⚠️ ATENÇÃO PAIS ⚠️⚠️ URGENTE REPASSEM
+MAE_GRUPO: [foto] Corrente: "Novo DESAFIO mortal circulando entre as crianças! Já são 47 internadas no estado esta semana. A polícia confirmou. O desafio vem escondido em desenho infantil e o celular baixa sozinho um vírus que liga a câmera. Veja a lista das escolas atingidas: encurta.li/escolas47"
+MAE_GRUPO: Gente eu tô em pânico. Recolhi o celular do Murilo e o tablet. Desliguei o wifi da casa
+MAE_GUI: Alguém sabe se a escola falou alguma coisa?
+MAE_GRUPO: Não falou nada e isso é o mais preocupante!!! 😱
+MAE_GRUPO: [audio 1:48] Minha cunhada tem um amigo que é delegado e ele disse que é pior do que estão falando
+@zap fim
+@musica tensao
+(Quarenta e sete crianças. A polícia confirmou. Vírus que liga a câmera. Meu coração faz aquela coisa de quando o monitor do leito apita.)
+@som mensagem
+@zap "Família 💙"
+VO_CIDA: [audio 0:22] Filha, chegou uma coisa horrível aqui no grupo da igreja. Eu já desliguei a tomada do roteador. E a da geladeira também, por garantia. A geladeira tem wifi?
+@zap fim
+(A geladeira não tem wifi, Vó. Mas agora a manteiga vai derreter.)
+? Seis minutos de intervalo. O que você faz primeiro?
+* Encaminhar o alerta para o grupo da família e o da enfermagem, na hora -> t06_encaminha {paciencia-1}
+* Ligar para o Theo e mandar ele desligar o celular agora mesmo -> t06_liga_grita {confianca-2 paciencia-1}
+* Respirar e conferir antes: de onde veio, de quando é, quem confirma -> t06_checa {paciencia+1}
+** Perguntar no grupo: "Alguém tem a fonte? Saiu em algum lugar oficial?" -> t06_pergunta_fonte {etica+1}
+
+=== t06_encaminha
+@zap "Plantão Enfermagem 3º andar"
+EU: [foto] Corrente do desafio
+EU: Gente olhem isso, quem tem filho
+> Enf. Cláudia: Isso é de 2023, {nome}. Rodou no meu outro grupo e era boato
+@zap fim
+(Encaminhei para trinta colegas sem ler direito. Eu, que confiro a pulseira do paciente três vezes antes de dar um comprimido.)
+@vai t06_decide_checar
+
+=== t06_liga_grita
+> O Theo atende na segunda chamada. Tem barulho de pátio atrás.
+EU [brava]: Theo, desliga esse celular agora. Agora! Tem um desafio aí que tá matando criança!
+THEO: Que desafio, mãe? Eu tô no intervalo...
+EU: Desliga e não discute!
+THEO: Tá...
+> Ele desliga. Na sua cabeça, ele está agora no pátio, assustado, sem saber de quê, e sem poder falar com você.
+(Eu mandei desligar o único canal que ele tinha pra me contar alguma coisa.)
+@vai t06_decide_checar
+
+=== t06_pergunta_fonte
+@zap "Mães e Pais 6º B 📚"
+EU: Gente, alguém tem a fonte disso? Saiu em algum site oficial ou da escola?
+MAE_GRUPO: A fonte é a minha cunhada, {nome}, ela não ia mentir
+MAE_GUI: Boa pergunta. Eu também não achei nada
+@zap fim
+(Ninguém sabe de onde veio. Corrente sem dono é igual remédio sem bula.)
+@vai t06_checa
+
+=== t06_decide_checar
+(Tá. Já fiz a besteira do primeiro minuto. Ainda dá pra fazer o certo no segundo.)
+@vai t06_checa
+
+=== t06_checa
+> Você senta no banquinho do corredor e lê a corrente devagar, como se fosse uma prescrição com letra ruim.
+@desafio t6_alerta_falso -> t06_checado | t06_nao_checado
+
+=== t06_checado
+@som acerto
+@marca alerta_falso_checado
+> Três minutos de pesquisa. A mesma imagem aparece em sites de checagem de notícia como boato antigo, de dois anos atrás, de outro estado.
+> Nenhum órgão oficial publicou nada parecido. Não existe "vírus que liga a câmera" escondido em desenho. E o "47 internadas" não aparece em lugar nenhum além da própria corrente.
+(Mas tem uma parte verdadeira no meio da mentira: esses "desafios" perigosos existem e circulam em vídeo curto entre as crianças. O alerta é falso. O assunto, não.)
+@anota t6_alerta_falso
+@vai t06_escola
+
+=== t06_nao_checado
+@som erro
+> Você lê, acha estranho, mas o intervalo acaba e o número 47 fica grudado na cabeça.
+> No elevador, você responde no grupo de pais: "Meu Deus. Vou recolher tudo também." Duas mães curtem. Uma terceira encaminha para o grupo do condomínio.
+(Mais tarde vou descobrir que era boato de dois anos atrás. Mas o pânico já pegou o elevador comigo.)
+@muda paciencia-1
+@anota t6_alerta_falso
+@vai t06_escola
+
+=== t06_escola
+@musica trabalho
+> 14h21. Quatro minutos de intervalo.
+? E a escola, que segundo o grupo "não falou nada"?
+* Mandar mensagem para a Professora Renata pelo canal oficial da escola -> t06_escola_renata {marca:contou_escola rel_prof_renata+1}
+* Responder no grupo de pais, com calma, que o alerta é boato e o assunto é real -> t06_desfaz {etica+1} [se marca:alerta_falso_checado]
+* Deixar para lá. À noite você vê isso -> t06_deixa
+
+=== t06_desfaz
+@zap "Mães e Pais 6º B 📚"
+EU: Gente, conferi: essa corrente é boato antigo, de outro estado. O número e a "confirmação da polícia" não aparecem em lugar nenhum oficial
+EU: MAS esses desafios perigosos existem sim e circulam em vídeo entre as crianças. Acho que vale mais conversar com eles do que desligar o wifi
+MAE_GUI: Obrigada, {nome} 🙏
+MAE_GRUPO: Ah. Bom, melhor prevenir do que remediar né
+MAE_GRUPO: [figurinha] Mãe é mãe 💪
+@zap fim
+(Ela não pediu desculpa, mas também não repassou mais. Pra uma sexta-feira, tá ótimo.)
+@vai t06_escola_renata_pergunta
+
+=== t06_escola_renata_pergunta
+? Ainda dá tempo de uma mensagem para a escola.
+* Mandar para a Professora Renata também -> t06_escola_renata {marca:contou_escola rel_prof_renata+1}
+* Voltar para o plantão -> t06_tarde
+
+=== t06_escola_renata
+@zap "Prof. Renata (Tecnologia)"
+EU: Boa tarde, professora. Está circulando no grupo de pais uma corrente sobre um desafio perigoso. A corrente parece boato, mas queria saber se isso apareceu entre as crianças
+PROF_RENATA: Boa tarde, {nome}! Obrigada por avisar pelo canal da escola e não só pelo grupo 🙏
+PROF_RENATA: A corrente é boato antigo. Mas o assunto apareceu sim: alguns alunos comentaram de um vídeo. A coordenação vai conversar com as turmas na segunda
+PROF_RENATA: Um pedido: em casa, pergunte antes de explicar. E não mostre o vídeo para ele "ver o perigo". Não precisa
+EU: Combinado. Obrigada
+@zap fim
+(Uma professora que responde em quatro minutos numa sexta à tarde. Vou mandar bolo.)
+@vai t06_tarde
+
+=== t06_deixa
+(À noite eu vejo. À noite eu sempre vejo. E à noite eu sempre tô cansada demais.)
+@vai t06_tarde
+
+=== t06_tarde
+@sai todos
+@fundo quarto_theo
+@musica misterio
+@pov theo
+> Enquanto isso, no quarto do Theo. 18h40. A Vó Cida está na cozinha brigando com o roteador, que ela religou e desligou quatro vezes.
+> Agora você é o Theo de novo.
+@som notificacao
+@zap "6º B 🔥🔥🔥"
+ENZO: vcs viram o vídeo do desafio?
+ENZO: 🎬 Vídeo encaminhado: "o desafio que tá todo mundo fazendo"
+LARA: minha prima disse que um menino da escola dela passou mal com isso
+ENZO: passou mal pq fez errado kkkk
+ENZO: quem fizer e gravar é lenda
+ENZO: theo unicórnio vai fazer? 🦄
+GUI: ninguém vai fazer isso não mano
+@zap fim
+(Tem um vídeo ali parado com uma setinha de play. Todo mundo fala dele. Eu nem sei o que é.)
+@se marca:theo_virou_alvo -> t06_tarde_alvo
+@vai t06_tarde_escolha
+
+=== t06_tarde_alvo
+(Se eu fizer, eu deixo de ser o unicórnio e viro a lenda. Pelo menos foi isso que o Enzo prometeu. O Enzo promete muita coisa.)
+@vai t06_tarde_escolha
+
+=== t06_tarde_escolha
+? O dedo está em cima do vídeo.
+* Abrir o vídeo só pra ver como é -> t06_abre_video
+* Escrever no grupo: "tô fora" -> t06_to_fora {etica+1}
+* Perguntar pro Gui no privado o que ele sabe -> t06_pergunta_gui {rel_gui+1}
+** Mandar pra minha mãe: "Mãe, o que é esse desafio?" -> t06_manda_mae {confianca+1} [se confianca>=6]
+
+=== t06_abre_video
+> Você aperta o play. São três segundos de gente rindo e depois alguém que claramente não está bem. Você fecha antes de entender o resto.
+(Não parecia brincadeira. Parecia hospital. E eu sei como é hospital, minha mãe trabalha em um.)
+> Você bloqueia a tela e fica olhando para o teto por um tempo.
+@vai t06_mae_chega
+
+=== t06_to_fora
+@zap "6º B 🔥🔥🔥"
+EU: tô fora
+LARA: eu tbm
+GUI: 3
+ENZO: chatos
+@zap fim
+(Três de novo. Tá virando um time.)
+@vai t06_mae_chega
+
+=== t06_pergunta_gui
+@zap "Gui 🎮"
+EU: vc sabe o que é esse desafio?
+GUI: minha mãe falou que é perigoso de verdade, que pode mandar pro hospital
+GUI: ela disse pra eu nem abrir. falou que se eu tiver curiosidade é pra perguntar pra ela
+GUI: e eu perguntei kkk ela não brigou
+@zap fim
+(A mãe do Gui não brigou. Será que a minha brigaria?)
+@vai t06_mae_chega
+
+=== t06_manda_mae
+@zap "Mãe 💙"
+EU: mãe o que é esse desafio que tão falando no grupo?
+EU: eu não fiz nada. só quero saber
+> Mãe 💙 está digitando...
+@zap fim
+(Ela digitou e apagou duas vezes. Deve estar no ônibus.)
+@vai t06_mae_chega
+
+=== t06_mae_chega
+@sai todos
+@pov fim
+@fundo casa_cozinha
+@musica interior
+> 19h35. Você é a mãe de novo. Chega em casa com o pé latejando e a geladeira desligada pela Vó Cida.
+@entra vo_cida brava esquerda
+VO_CIDA: Eu religuei a geladeira, mas o roteador eu não religo. Esse eu não confio.
+@entra theo pensativa direita
+> O Theo está na mesa com o prato de arroz intocado.
+@se marca:alerta_falso_checado -> t06_conversa_checada
+@vai t06_conversa
+
+=== t06_conversa_checada
+(Eu já sei que o alerta é boato. Isso me deixa respirar. Não me deixa relaxar.)
+@vai t06_conversa
+
+=== t06_conversa
+THEO: Mãe... você viu aquele negócio do desafio?
+? Como você começa essa conversa?
+* Perguntar o que ele já sabe, antes de falar qualquer coisa -> t06_escuta {confianca+1 paciencia+1}
+* "Se eu souber que você fez isso, acabou celular para sempre!" -> t06_proibe {confianca-1}
+* Mostrar a corrente e explicar como você conferiu que era boato -> t06_explica {confianca+1 tecnica+1} [se marca:alerta_falso_checado]
+** Admitir que hoje quase espalhou o boato também -> t06_admite {confianca+2}
+
+=== t06_escuta
+EU: Vi. Me conta o que você já sabe. Eu não vou brigar, eu quero entender.
+THEO: Todo mundo fala. O Enzo mandou um vídeo. A Lara disse que um menino passou mal.
+@se marca:theo_virou_alvo -> t06_escuta_alvo
+THEO: Eu fiquei curioso. Só isso.
+@vai t06_escuta_fim
+
+=== t06_escuta_alvo
+THEO: E o Enzo disse que se eu fizer, eu paro de ser o unicórnio.
+(Ah. Então não é curiosidade. É vontade de sair do alvo. Isso muda a conversa inteira.)
+EU: Ninguém precisa se machucar pra parar de ser zoado. Isso a gente resolve de outro jeito. Juntos.
+@vai t06_escuta_fim
+
+=== t06_escuta_fim
+EU: Curiosidade é normal. Eu também ia ficar. Mas esse tipo de desafio é perigoso de verdade, pra saúde. Tem criança que vai parar no hospital. Eu já vi.
+THEO: Você já viu?
+EU: Eu trabalho num hospital, filho. Eu vejo quase tudo.
+THEO: Eu não vou fazer.
+EU: Eu acredito. E se alguém te pressionar, pode jogar a culpa em mim: "minha mãe é enfermeira e me mata". Funciona.
+@expr theo feliz
+@vai t06_fim
+
+=== t06_proibe
+EU [brava]: Se eu souber que você fez isso, acabou celular. Pra sempre. Entendeu?
+@expr theo triste
+THEO: Mas eu não fiz! Eu só perguntei!
+EU: Pois nem pergunte!
+> Ele empurra o prato e vai para o quarto. A porta não bate, mas fecha com força suficiente para você ouvir.
+VO_CIDA: No meu tempo a gente gritava também. E a gente também não contava nada pros nossos pais.
+(Ela tem razão. Eu acabei de ensinar que perguntar dá bronca.)
+@vai t06_proibe_volta
+
+=== t06_proibe_volta
+? A porta do quarto está fechada.
+* Bater na porta e pedir desculpa pelo grito -> t06_desculpa {confianca+1}
+* Deixar ele esfriar até amanhã -> t06_fim
+
+=== t06_desculpa
+@fundo quarto_theo
+EU: Posso entrar? Eu gritei porque fiquei com medo. Medo não é desculpa pra gritar. Desculpa.
+THEO: Eu só queria saber o que era.
+EU: Então vamos conversar direito. É um tipo de desafio perigoso pra saúde. Não precisa ver o vídeo pra entender isso. E você pode me perguntar qualquer coisa. Até as que me assustam.
+@expr theo neutra
+@vai t06_fim
+
+=== t06_explica
+EU: Vi. E olha que interessante: chegou isso no grupo de pais.
+> Você mostra a corrente e vai apontando: "47 internadas" sem fonte, "a polícia confirmou" sem link, o vírus que liga a câmera sozinho, o link encurtado.
+THEO: Vírus que liga a câmera escondido no desenho? Mãe, isso não existe.
+EU: Pois é. A corrente é mentira. Mas o desafio existe, e é perigoso pra saúde de verdade. As duas coisas ao mesmo tempo.
+THEO: Então o Enzo tá certo que existe e a mãe do Murilo tá errada sobre o resto.
+EU: Exato. Quem checa não entra em pânico e não fica bobo. Fica no meio, que é onde mora a verdade.
+@expr theo feliz
+@vai t06_fim
+
+=== t06_admite
+EU: Vi. E vou te contar uma coisa: hoje no intervalo eu quase encaminhei uma corrente falsa sobre isso pra trinta pessoas. Com medo.
+@expr theo surpresa
+THEO: Você? Você que fala pra Vó Cida não repassar corrente?
+VO_CIDA: Ah, agora eu quero ouvir essa história.
+EU: Eu. Medo faz a gente agir sem pensar, filho. Por isso a gente conversa antes de fazer qualquer coisa. Você e eu.
+THEO: Então... é perigoso mesmo esse desafio?
+EU: É perigoso pra saúde. Tem criança que vai parar no hospital. E você não precisa ver o vídeo pra acreditar em mim.
+@expr theo feliz
+@vai t06_fim
+
+=== t06_fim
+@musica interior
+@anota t6_conversar_sem_panico
+@sai todos
+> Mais tarde, a Vó Cida religa o roteador. Escondido, para não perder o capítulo da novela no celular.
+@se marca:contou_escola -> t06_fim_escola
+@vai t06_fim_noite
+
+=== t06_fim_escola
+> Na segunda, a coordenação conversa com as turmas sobre o desafio. Sem vídeo, sem detalhe, sem sermão. O Theo conta no jantar que a Professora Renata disse uma frase que ele achou boa: "Coragem é dizer não na frente de todo mundo."
+@vai t06_fim_noite
+
+=== t06_fim_noite
+(Uma semana. Um boato, um desafio, um grupo de pais em pânico e uma geladeira desligada. E ele ainda me pergunta as coisas. Por enquanto.)
+@vai t07_inicio

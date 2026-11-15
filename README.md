@@ -12,6 +12,8 @@ Jogue em: https://marianabsctba.github.io/Contos_de_Ciber/
 - **Maquininha**: o motoboy das flores com "taxa de R$ 5,99" e visor rachado é só o começo. Um mês de golpes no balcão de uma pastelaria: comprovante falso, QR code colado por cima, falso técnico, boleto adulterado, compra por telefone e conta do delivery invadida. Oito finais.
 - **Black Friday do Desespero**: TV de 65 polegadas por R$ 899, só até meia-noite. Site clonado, boleto com desconto, cupom por SMS, vendedor que quer fechar pelo aplicativo de conversa e falso atendimento na rede social, com um navegador falso na tela para inspecionar cada página. Oito finais.
 - **Herança Digital**: o Seu Valter morreu e deixou o celular com tudo dentro, 23% de bateria e nenhuma senha conhecida. Golpes que leem obituário, o perfil que continua postando, o banco, as assinaturas e as fotos de 30 anos, com um cofre de contas para decidir o destino de cada uma. Oito finais.
+- **A Casa Inteligente da Vó**: o neto encheu a casa da Vó Zilá de câmera, campainha, fechadura e assistente de voz, tudo com a senha de fábrica, e a sala dela aparece num site de câmeras abertas. Com uma planta da casa para achar os aparelhos em risco. Oito finais.
+- **O Primeiro Celular do Theo**: um bimestre contado por dois lados, a mãe e o Theo, de 11 anos. Grupo da sala, moedas do jogo, foto com uniforme, zoação e um desconhecido que quer conversar em segredo. A confiança entre os dois é a mecânica central. Oito finais.
 
 ## Como funciona
 

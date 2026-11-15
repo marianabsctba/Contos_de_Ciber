@@ -1,0 +1,358 @@
+# Parte 2, capítulo 7: Kaio_Pro_2009. Primeiro o Theo, depois a mãe.
+
+=== t07_inicio
+@cap 7 "Kaio_Pro_2009"
+@fundo quarto_theo
+@musica misterio
+@pov theo
+> Sétima semana. Quinta à noite. Enquanto isso, no quarto do Theo.
+> Você é o Theo. Sua mãe dorme no sofá da sala depois de dobrar plantão, com a TV ligada num programa de reforma de casa.
+> No BlocoVerso, o seu castelo está quase pronto: três torres, uma ponte levadiça e um fosso com tubarão de pixel. Três semanas de trabalho.
+@zap "BlocoVerso · Ilha dos Construtores"
+GUI: theo teu fosso tá vazando kkkk
+EU: é de propósito. é uma cachoeira
+GUI: cachoeira em fosso não existe
+EU: no meu castelo existe
+@zap fim
+@som notificacao
+> Uma mensagem privada aparece no canto da tela. De alguém que você nunca viu.
+@zap "BlocoVerso · Kaio_Pro_2009"
+DESCONHECIDO: mano esse castelo é teu??
+DESCONHECIDO: é o mais insano do servidor. sério
+EU: vlw kkk demorei 3 semanas
+DESCONHECIDO: tu é diferente dos outros moleques da tua idade. dá pra ver
+DESCONHECIDO: quer 5 mil moedas? te mando de presente. sem pegadinha
+@zap fim
+(Cinco mil moedas. Minha mãe me deu cinquenta no mês passado e falou que era "muito".)
+? O Kaio espera a resposta.
+* Aceitar as moedas -> t07_aceita
+* Agradecer e voltar a construir -> t07_agradece
+* Não responder e sair da conversa -> t07_ignora
+** Perguntar: "por que você quer dar moeda pra alguém que nem conhece?" -> t07_pergunta {tecnica+1}
+
+=== t07_aceita
+@zap "BlocoVerso · Kaio_Pro_2009"
+EU: sério? pode ser
+> Kaio_Pro_2009 enviou 5.000 moedas
+DESCONHECIDO: viu? sou parceiro. parceiro ajuda parceiro
+DESCONHECIDO: e tem mais. é só a gente continuar parceiro
+@zap fim
+(Ninguém nunca me deu tanta coisa assim. Por que eu tô me sentindo esquisito em vez de feliz?)
+@marca theo_aceitou_moedas
+@vai t07_dias
+
+=== t07_agradece
+@zap "BlocoVerso · Kaio_Pro_2009"
+EU: vlw mas não precisa
+DESCONHECIDO: precisa sim. tu merece. amanhã eu volto
+@zap fim
+@vai t07_dias
+
+=== t07_ignora
+> Você fecha a conversa e volta para o fosso.
+(Gente estranha no jogo tem de monte. Ele vai cansar.)
+@vai t07_dias
+
+=== t07_pergunta
+@zap "BlocoVerso · Kaio_Pro_2009"
+EU: pq vc quer dar moeda pra alguém que nem conhece?
+DESCONHECIDO: pq eu gosto de ajudar quem é talentoso
+DESCONHECIDO: e a gente já se conhece agora né kkk
+@zap fim
+(Ele não respondeu a pergunta. Ele respondeu outra coisa, mais bonita.)
+@vai t07_dias
+
+=== t07_dias
+> Nos dias seguintes, o Kaio aparece toda noite. Sempre depois das nove. Sempre primeiro elogiando o castelo.
+@zap "BlocoVerso · Kaio_Pro_2009"
+DESCONHECIDO: e aí campeão
+DESCONHECIDO: qual escola tu estuda? acho que a gente mora perto
+DESCONHECIDO: e que horas tu fica sozinho em casa? pra gente jogar sem ninguém encher
+@zap fim
+(Por que ele quer saber da minha escola? A gente nem fala da escola. A gente fala de castelo.)
+? O cursor pisca.
+* Responder "segredo de estado kkk" e mudar de assunto -> t07_desvia
+* Falar o nome da escola. Que mal tem? -> t07_disse_escola {marca:theo_disse_escola}
+* Não responder essas perguntas -> t07_nao_responde {etica+1}
+
+=== t07_desvia
+@zap "BlocoVerso · Kaio_Pro_2009"
+EU: segredo de estado kkk
+DESCONHECIDO: kkkk desconfiado
+@zap fim
+@vai t07_pedido
+
+=== t07_disse_escola
+@zap "BlocoVerso · Kaio_Pro_2009"
+EU: estudo na escola nova perto da praça
+DESCONHECIDO: sabia. tô ligado onde é
+@zap fim
+(Tô ligado onde é. Ele não falou onde ele mora. Só que sabe onde eu estudo.)
+@vai t07_pedido
+
+=== t07_nao_responde
+> Você não responde. Mostra a ponte nova no jogo.
+DESCONHECIDO: tá bom tá bom. depois tu me fala
+@vai t07_pedido
+
+=== t07_pedido
+@musica tensao
+@zap "BlocoVerso · Kaio_Pro_2009"
+DESCONHECIDO: bora conversar no outro app? aqui tem moderador chato
+DESCONHECIDO: e não conta pros teus pais tá. eles não entendem a nossa amizade
+DESCONHECIDO: me manda uma foto tua. só pra eu saber quem é meu parceiro
+@zap fim
+> Você fica olhando para a última mensagem. Não responde.
+(Ele nunca fala do que ele constrói. Ele nunca mostrou o castelo dele. Ele só pergunta de mim.)
+(E amigo não pede segredo. O Gui nunca me pediu segredo de nada, só da senha do baú.)
+> A barriga fica fria, igual no dia do unicórnio. Só que pior, porque dessa vez você não sabe direito por quê.
+? O Kaio está digitando de novo.
+* Fechar o jogo e enfiar o celular debaixo do travesseiro -> t07_fecha
+* Tirar print de tudo antes de qualquer coisa -> t07_print_theo {tecnica+1 marca:prova_kaio}
+* Mandar mensagem pro Gui contando -> t07_conta_gui {rel_gui+1}
+
+=== t07_fecha
+> Você fecha o jogo. O celular fica embaixo do travesseiro, vibrando de vez em quando, que nem um bicho.
+@vai t07_decide
+
+=== t07_print_theo
+> Clique. Clique. Clique. Você printa a conversa inteira, de cima a baixo, com o nome dele no topo e a hora de cada mensagem. Igual a pasta "guardar".
+(Se ele apagar, eu tenho. Se eu não souber o que fazer, alguém vai saber.)
+@vai t07_decide
+
+=== t07_conta_gui
+@zap "Gui 🎮"
+EU: mano tem um cara no jogo pedindo foto minha e pra eu não contar pros meus pais
+GUI: QUE. mano isso é muito errado
+GUI: não manda nada. conta pra sua mãe
+EU: ela vai tirar meu celular
+@zap fim
+@vai t07_decide
+
+=== t07_decide
+@se confianca>=6 -> t07_theo_conta
+@vai t07_theo_guarda
+
+=== t07_theo_conta
+(Ela vai brigar? Talvez. Mas semana passada ela pediu desculpa por gritar. E ela disse: "pode me perguntar qualquer coisa, até as que me assustam".)
+> Você levanta, com o celular na mão, e vai até a sala. Pisa no chão frio de meia.
+@marca theo_contou_kaio
+@sai todos
+@pov fim
+@fundo sala_familia
+@musica tensao
+> Você é a mãe de novo. Acorda com alguém mexendo no seu ombro. É o Theo, de pijama, segurando o celular com as duas mãos.
+@entra theo assustada centro
+THEO: Mãe. Acordada? Tem um cara no jogo. Ele tá pedindo umas coisas estranhas. E pediu pra eu não te contar.
+(Pediu pra ele não me contar. E ele está aqui, contando. Respira, {nome}. Respira primeiro.)
+@vai t07_reacao
+
+=== t07_theo_guarda
+(Se eu contar, ela tira o celular. Ela já falou isso. E aí acaba o castelo, acaba o Gui no servidor, acaba tudo.)
+(Eu não vou responder ele. Isso já resolve. Né?)
+> Você não responde o Kaio. Mas também não bloqueia. E não conta para ninguém.
+@sai todos
+@pov fim
+@fundo casa_cozinha
+@musica misterio
+> Você é a mãe de novo. Dias depois, sem saber de nada.
+> O Theo anda quieto. Toma susto quando o celular vibra. Parou de jogar BlocoVerso na sala, onde vocês combinaram. Tem olheira de quem dorme mal.
+@entra vo_cida pensativa esquerda
+VO_CIDA: Esse menino tá estranho, filha. Ontem ele me pediu pra dormir com a porta aberta. Desde os sete anos ele não pede isso.
+@se marca:controle_escondido -> t07_app_ja_tinha
+? Alguma coisa está errada e ele não está contando.
+* Instalar escondido, de madrugada, um aplicativo que mostra tudo o que ele faz no celular -> t07_instala_espiao {confianca-2 marca:mae_descobriu_espiando}
+* Esperar e puxar conversa com calma no café da manhã -> t07_puxa_conversa {paciencia+1}
+
+=== t07_app_ja_tinha
+> Você lembra do aplicativo que instalou escondido no começo do bimestre. Nunca mais abriu. Abre agora, no banheiro, com a porta trancada.
+> As conversas do jogo estão todas lá. Uma delas é com alguém chamado Kaio_Pro_2009.
+@marca mae_descobriu_espiando
+@sai vo_cida
+@vai t07_espiao_le
+
+=== t07_instala_espiao
+> Três da manhã. Você pega o celular do Theo no criado-mudo, digita a senha que vocês criaram juntos e instala o aplicativo de vigilância. Esconde o ícone. Devolve o celular no mesmo ângulo.
+(Eu digitei a senha que ele confiou em mim. Pra usar contra ele. Mas o medo grita mais alto que a culpa.)
+@sai vo_cida
+@vai t07_espiao_le
+
+=== t07_espiao_le
+@fundo quarto_madrugada
+> No dia seguinte, no intervalo do plantão, você lê. E gela.
+> Um jogador desconhecido, Kaio_Pro_2009, elogia o castelo, oferece moedas, pergunta da escola e de quando ele fica sozinho, pede para ir para outro aplicativo, pede segredo e pede uma foto.
+> O Theo não respondeu às últimas mensagens. Não mandou foto nenhuma. Mas também não contou.
+(Ele não me contou. E eu só sei porque estou espiando. Agora eu vou ter que contar como eu sei.)
+@fundo sala_familia
+@entra theo neutra centro
+EU: Theo, senta aqui. Eu sei do Kaio.
+@expr theo surpresa
+THEO: Como você sabe? Eu não mostrei pra ninguém.
+> Você conta do aplicativo. Ele olha para o celular como se o aparelho tivesse traído ele também.
+THEO: Você leu TUDO? As minhas conversas com o Gui também?
+@vai t07_reacao
+
+=== t07_puxa_conversa
+@fundo casa_cozinha
+@entra theo neutra direita
+EU: Filho, você tá meio quieto esses dias. Aconteceu alguma coisa? Na escola, no jogo?
+THEO: Nada, mãe.
+EU: Se tivesse acontecido, você me contaria?
+THEO: Uhum.
+> Ele come o pão em quatro mordidas e vai para o ônibus.
+> Passa mais uma semana. Depois outra.
+@zap "Rose, mãe do Gui"
+MAE_GUI: {nome}, desculpa mandar isso no meio do seu plantão
+MAE_GUI: O Gui veio chorando me contar uma coisa. Tem um homem no jogo que está pedindo foto do Theo e pediu segredo. Faz semanas
+MAE_GUI: O Gui disse que o Theo não mandou nada, mas está com medo de te contar
+EU: Meu Deus. Obrigada, Rose. Obrigada mesmo
+MAE_GUI: Não briga com ele. Ele é criança. O errado é o outro
+@zap fim
+@marca segredo_semanas
+(Semanas. Meu filho carregou isso sozinho por semanas, do lado do meu quarto.)
+@fundo sala_familia
+@entra theo triste centro
+EU: Theo. A mãe do Gui me ligou.
+THEO: Eu não mandei nada pra ele, mãe. Juro. Eu achei que você ia tirar meu celular.
+@vai t07_reacao
+
+=== t07_reacao
+? Ele está esperando a sua cara. A sua cara vai dizer tudo antes da sua boca.
+* Respirar, pegar na mão dele: "Você não está encrencado. O errado é ele." -> t07_acolhe {confianca+1}
+* "Eu SABIA que esse jogo ia dar problema! Me dá esse celular!" -> t07_explode {confianca-2}
+** "Eu também estou com medo. Por isso a gente vai fazer isso junto, passo a passo." -> t07_junto {confianca+2 paciencia+1}
+
+=== t07_acolhe
+EU: Você não está encrencado. Ouviu? Quem está errado é ele. Adulto não pede segredo pra criança, nem foto.
+THEO: Você não vai tirar meu celular?
+EU: Hoje eu vou te ajudar. Celular a gente conversa depois, com calma.
+@se marca:mae_descobriu_espiando -> t07_acolhe_espia
+@vai t07_le_conversa
+
+=== t07_acolhe_espia
+THEO: E o aplicativo que você colocou?
+EU: Eu errei em fazer escondido. Depois a gente fala disso também. Prometo.
+@vai t07_le_conversa
+
+=== t07_explode
+EU [brava]: Eu SABIA! Eu sabia que esse jogo ia dar problema! Me dá esse celular!
+@expr theo assustada
+> Ele entrega o celular e começa a chorar sem barulho, que é o pior jeito de uma criança chorar.
+@entra vo_cida brava esquerda
+VO_CIDA: {nome}. Ele é a vítima. Grita com o tal do Kaio, não com o menino.
+EU: Desculpa, filho. Eu me assustei. Você não fez nada de errado.
+@sai vo_cida
+@vai t07_le_conversa
+
+=== t07_junto
+EU: Vou ser sincera: eu também estou com medo. Por isso a gente vai fazer isso junto, passo a passo. Você me mostra, eu te mostro o que fazer.
+@expr theo neutra
+THEO: Tá. Eu printei algumas coisas. Ou o Gui printou.
+EU: Isso foi muito esperto. Agora vamos ler juntos.
+@vai t07_le_conversa
+
+=== t07_le_conversa
+@musica tensao
+> Vocês sentam lado a lado no sofá. Ele rola a conversa para cima até o começo. Você lê como lê um prontuário: devagar, procurando o que está fora do normal.
+@desafio t7_sinais -> t07_sinais_ok | t07_sinais_erro
+
+=== t07_sinais_ok
+@som acerto
+EU: Olha, Theo. Tudo isso aqui é sinal de alerta: o elogio exagerado, o presente, a pergunta da escola e de quando você fica sozinho, o outro aplicativo, o segredo e a foto.
+THEO: Ele fez quase todos.
+EU: E você não fez o que ele pediu. Nenhum. Você é mais esperto que ele.
+@anota t7_sinais_alerta
+@vai t07_plano
+
+=== t07_sinais_erro
+@som erro
+EU: Bom, as moedas... às vezes é só alguém generoso, né?
+THEO: Mãe. Ele pediu pra eu não contar pra você. E pediu foto.
+(Meu filho de onze anos está me explicando o óbvio. Eu estava procurando o vilão de filme e o vilão de verdade é educado e dá presente.)
+EU: Você tem razão. Desculpa. Presente de desconhecido também é sinal de alerta. Ele dá pra depois cobrar.
+@anota t7_sinais_alerta
+@vai t07_plano
+
+=== t07_plano
+(A primeira vontade é apagar tudo, quebrar o celular e jogar no rio. A primeira vontade está errada.)
+@desafio t7_o_que_fazer -> t07_plano_ok | t07_plano_erro
+
+=== t07_plano_ok
+@som acerto
+> Vocês não respondem mais nada. Não apagam nada. Printam a conversa inteira, com o nome de usuário, a data e a hora.
+> Depois, pelo próprio BlocoVerso: "denunciar jogador", motivo "comportamento inadequado com menor de idade". Em seguida, "bloquear".
+THEO: Bloqueado. Ele sumiu da minha lista.
+EU: Sumiu da sua lista. Não sumiu da prova. Amanhã a gente leva isso para quem cuida desse tipo de coisa.
+@marca kaio_denunciado
+@anota t7_o_que_fazer
+@vai t07_delegacia
+
+=== t07_plano_erro
+@som erro
+> No nervoso, você bloqueia o Kaio primeiro e começa a apagar a conversa. O Theo segura o seu braço.
+THEO: Mãe, não apaga! A Professora Renata falou que tem que guardar a prova!
+> Vocês param. O que sobrou da conversa vira print, com o nome de usuário, a data e a hora. Os prints que já existiam salvam o resto. Pelo menu do jogo, ainda dá para denunciar o perfil pelo nome de usuário.
+EU: Obrigada, filho. Apagar é a pior coisa que eu podia fazer. É o que ele queria.
+@muda paciencia-1
+@marca kaio_denunciado
+@anota t7_o_que_fazer
+@vai t07_delegacia
+
+=== t07_delegacia
+@sai todos
+@fundo delegacia
+@musica trabalho
+> Na manhã seguinte, você troca o plantão com uma colega e vai à delegacia com o celular do Theo e uma pasta de prints impressos na papelaria da esquina.
+> Ela registra a ocorrência, anota o nome de usuário, as datas, a plataforma. Diz que a senhora fez certo em não apagar e em não responder fingindo ser o filho.
+> Ela também fala de um canal oficial de denúncia de crimes contra crianças na internet, onde dá para registrar o caso pela internet, e diz para guardar tudo, inclusive o número do protocolo.
+@se marca:theo_disse_escola -> t07_delegacia_escola
+@vai t07_noite
+
+=== t07_delegacia_escola
+> Como o Theo chegou a falar o bairro da escola, a escrivã recomenda avisar a direção. Você liga do corredor. A Professora Renata atende e diz que a escola vai ficar atenta à porta na hora da saída.
+@marca contou_escola
+@vai t07_noite
+
+=== t07_noite
+(Eu achava que delegacia era só pra crime "de verdade". Isso aqui é crime de verdade. Só que acontece em silêncio, dentro de um jogo de castelo.)
+@anota t7_espiar_ou_combinar
+@fundo quarto_theo
+@musica interior
+@entra theo neutra centro
+> À noite, você senta na beirada da cama dele. O castelo de três torres está aberto na tela, pausado.
+@se marca:theo_contou_kaio -> t07_noite_contou
+@se marca:mae_descobriu_espiando -> t07_noite_espia
+@vai t07_noite_segredo
+
+=== t07_noite_contou
+THEO: Mãe. Eu quase não te contei.
+EU: Mas contou. Na mesma noite. Isso é a coisa mais importante que você fez esse ano. Mais que o castelo.
+THEO: O castelo é bem importante.
+EU: Tá. Empatado.
+@vai t07_noite_escolha
+
+=== t07_noite_espia
+THEO: Você ainda tá com aquele aplicativo no meu celular?
+EU: Tô.
+THEO: Então eu nunca mais vou saber se tô conversando sozinho.
+(É isso que espiar faz. Protege o hoje e tranca o amanhã.)
+@vai t07_noite_escolha
+
+=== t07_noite_segredo
+THEO: Eu fiquei com medo de você ficar brava comigo. Por isso eu não contei.
+EU: E eu fiquei com medo de você não me contar. Parece que os dois medos aconteceram.
+(Semanas. Foi por pouco. Foi o Gui que salvou. Eu preciso ser alguém pra quem ele conta antes do Gui.)
+@vai t07_noite_escolha
+
+=== t07_noite_escolha
+? Antes de apagar a luz.
+* "Da próxima vez, qualquer coisa estranha, você me conta. Não vai ter bronca por contar." -> t08_inicio {confianca+1}
+* "Agora você vai ver como eu vou controlar esse celular." -> t08_inicio {confianca-1}
+* Desinstalar o aplicativo escondido na frente dele -> t07_desinstala {confianca+2} [se marca:mae_descobriu_espiando]
+
+=== t07_desinstala
+> Você pega o celular, abre as configurações e remove o aplicativo na frente dele. Ele acompanha cada toque.
+EU: A partir de agora, o que eu olhar no seu celular, eu olho com você do lado. Combinado às claras.
+THEO: Combinado.
+> Ele ainda não sorri. Mas deixa a porta do quarto entreaberta.
+@vai t08_inicio

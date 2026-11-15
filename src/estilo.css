@@ -326,3 +326,9 @@ a { color: var(--ciano); }
 .form-cofre .form-opcao.certa { border-color: var(--ok); background: #123d2b; }
 .form-cofre .form-opcao.errada { border-color: var(--nok); background: #4a1620; }
 .assinatura { font-size: 14px; color: var(--texto); letter-spacing: .3px; } .assinatura strong { font-family: var(--titulo); font-size: 17px; background: linear-gradient(135deg, var(--rosa), var(--ciano)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* planta da casa: cada trecho é um bloco de cômodo e aparelho */
+.mensagem-suspeita.moldura-casa { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: #f1e8d6; color: #3b2f1e; border-radius: 10px; padding: 10px; border: 4px solid #8d6e4a; box-shadow: inset 0 0 0 2px #c9b18c, 0 8px 20px #0007; font-size: 13.5px; line-height: 1.35; }
+.moldura-casa .trecho { display: block; background: #fffaf0; border: 2px dashed #c9b18c; border-radius: 8px; padding: 8px; min-height: 64px; }
+.moldura-casa .trecho.marcado { background: #ffe8a3; border-style: solid; border-color: #e0a800; }
+.moldura-casa .trecho.era-suspeito { outline: 3px solid var(--nok); outline-offset: -3px; }
